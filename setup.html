@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Osteoid — Setup Costs</title>
+<link rel="stylesheet" href="style.css">
+<script>window.PAGE_ID='kurulum';</script>
+
+</head>
+<body>
+<div class="page" style="padding-top:0">
+
+<div id="layout-header"></div>
+
+<div class="group-label">Detailed Model</div>
+
+<div class="section">
+  <div class="section-header" onclick="tog(this)"><h2>Setup Costs</h2><span class="tog">▸</span></div>
+  <div class="section-body">
+    <div class="two-col">
+      <div class="sl-grid" style="grid-template-columns:1fr 1fr;">
+        <div class="sl-row">
+          <label>Rent (₺)</label>
+          <div class="sl-controls">
+            <input type="range" id="s_kira" min="0" max="500000" step="10000" value="120000" oninput="sv('kira',this.value)">
+            <span class="sl-val" id="kira" contenteditable="true" onblur="sv2('kira','s_kira',this)">120.000</span>
+          </div>
+        </div>
+        <div class="sl-row">
+          <label>Deposit (₺)</label>
+          <div class="sl-controls">
+            <input type="range" id="s_depozito" min="0" max="600000" step="10000" value="200000" oninput="sv('depozito',this.value)">
+            <span class="sl-val" id="depozito" contenteditable="true" onblur="sv2('depozito','s_depozito',this)">200.000</span>
+          </div>
+        </div>
+        <div class="sl-row">
+          <label>Real estate agent fee (₺)</label>
+          <div class="sl-controls">
+            <input type="range" id="s_emlakci" min="0" max="300000" step="10000" value="120000" oninput="sv('emlakci',this.value)">
+            <span class="sl-val" id="emlakci" contenteditable="true" onblur="sv2('emlakci','s_emlakci',this)">120.000</span>
+          </div>
+        </div>
+        <div class="sl-row">
+          <label>Center area (m²)</label>
+          <div class="sl-controls">
+            <input type="range" id="s_m2" min="50" max="500" step="5" value="150" oninput="sv('m2',this.value)">
+            <span class="sl-val" id="m2" contenteditable="true" onblur="sv2('m2','s_m2',this)">150</span>
+          </div>
+          <span class="sl-note">Office square meters</span>
+        </div>
+        <div class="sl-row">
+          <label>Renovation (₺/m²)</label>
+          <div class="sl-controls">
+            <input type="range" id="s_tadilatM2" min="500" max="20000" step="250" value="4750" oninput="sv('tadilatM2',this.value)">
+            <span class="sl-val" id="tadilatM2" contenteditable="true" onblur="sv2('tadilatM2','s_tadilatM2',this)">4.750</span>
+          </div>
+          <span class="sl-note">Total: <b id="tadilatTop">₺712.500</b></span>
+        </div>
+        <div class="sl-row">
+          <label>Decoration (₺/m²)</label>
+          <div class="sl-controls">
+            <input type="range" id="s_dekoM2" min="500" max="10000" step="250" value="2000" oninput="sv('dekoM2',this.value)">
+            <span class="sl-val" id="dekoM2" contenteditable="true" onblur="sv2('dekoM2','s_dekoM2',this)">2.000</span>
+          </div>
+          <span class="sl-note">Total: <b id="dekoTop">₺300.000</b></span>
+        </div>
+        <div class="sl-row">
+          <label>Equipment &amp; hardware (₺)</label>
+          <div class="sl-controls">
+            <input type="range" id="s_mobilya" min="0" max="2000000" step="50000" value="600000" oninput="sv('mobilya',this.value)">
+            <span class="sl-val" id="mobilya" contenteditable="true" onblur="sv2('mobilya','s_mobilya',this)">600.000</span>
+          </div>
+        </div>
+        <div class="sl-row">
+          <label>License &amp; permits (₺)</label>
+          <div class="sl-controls">
+            <input type="range" id="s_ruhsat" min="0" max="350000" step="5000" value="50000" oninput="sv('ruhsat',this.value)">
+            <span class="sl-val" id="ruhsat" contenteditable="true" onblur="sv2('ruhsat','s_ruhsat',this)">50.000</span>
+          </div>
+        </div>
+        <hr style="border:none;border-top:1px solid #e8e8e4;margin:12px 0;">
+        <div style="font-size:10px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Osteoid A.Ş. Equipment (intercompany)</div>
+        <div class="sl-row">
+          <label style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+            <span>3D Printer (×€<span id="printerEurDisp">10.000</span>)</span>
+            <label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer;font-weight:400;">
+              <input type="checkbox" id="printerToggle" checked onchange="svPrinterToggle(this.checked)" style="width:14px;height:14px;accent-color:#534AB7;cursor:pointer;">
+              <span id="printerAktifTag" style="font-size:11px;font-weight:700;color:#534AB7;">Included</span>
+            </label>
+          </label>
+          <div style="display:flex;align-items:center;gap:6px;margin-top:3px;">
+            <button onclick="svPrinterAdet(-1)" style="width:24px;height:24px;border-radius:4px;border:1px solid #534AB7;background:#f4f3ff;color:#534AB7;font-size:16px;font-weight:700;cursor:pointer;line-height:1;padding:0;">−</button>
+            <span id="printerAdet" style="font-size:20px;font-weight:700;color:#534AB7;line-height:1;min-width:18px;text-align:center;">2</span>
+            <button onclick="svPrinterAdet(+1)" style="width:24px;height:24px;border-radius:4px;border:1px solid #534AB7;background:#f4f3ff;color:#534AB7;font-size:16px;font-weight:700;cursor:pointer;line-height:1;padding:0;">+</button>
+            <span style="font-size:11px;color:#888;">units · ₺<span id="printerTRY">1.000.000</span></span>
+          </div>
+          <span class="sl-note">Capacity: <span id="printerKapasite">~88–132 braces/month</span></span>
+          <div style="font-size:11px;color:#888;margin-top:3px;" id="printerAutoInfo">—</div>
+        </div>
+        <div class="sl-row" style="margin-top:8px;">
+          <label style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+            <span>Robot Arm — perforated brace</span>
+            <label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer;font-weight:400;">
+              <input type="checkbox" id="robotKolToggle" onchange="svRobotKolToggle(this.checked)" style="width:14px;height:14px;accent-color:#534AB7;cursor:pointer;">
+              <span id="robotKolTag" style="font-size:11px;font-weight:700;color:#888;">Excluded</span>
+            </label>
+          </label>
+          <div style="font-size:11px;color:#888;margin-top:4px;padding-left:2px;" id="robotKolInfo">—</div>
+          <span class="sl-note">₺<span id="robotKolTRY">—</span></span>
+        </div>
+
+        <div class="note-box" style="margin-top:12px;border-left:3px solid #534AB7;background:#f4f3ff;color:#534AB7;">
+          ⚠ The 3D Printer and Robot Arm are supplied by Osteoid Inc. as an intercompany transfer. <strong>Once the principal investment is recovered, the equipment will be transferred to Osteoid Centers at 50% of market price.</strong>
+        </div>
+
+      </div>
+      <div>
+        <div class="kpi" style="margin-bottom:10px;">
+          <div class="kpi-label">Total Setup Cost</div>
+          <div class="kpi-val neg" id="kurulumTop">-₺2.102.500</div>
+          <div style="font-size:11px;color:#888;margin-top:4px;">First month rent + deposit included; monthly rent is in operating costs</div>
+        </div>
+        <div class="kpi" style="margin-bottom:10px;">
+          <div class="kpi-label">Renovation + Decoration</div>
+          <div class="kpi-val neg" id="tadilatDekoTop">-₺1.012.500</div>
+          <div style="font-size:11px;color:#888;margin-top:4px;"><span id="m2d">150</span> m² × (₺<span id="tm2d">4.750</span> + ₺<span id="dm2d">2.000</span>)</div>
+        </div>
+        <div style="position:relative;width:100%;height:180px;margin-top:4px;">
+          <canvas id="kurulumDonut" style="width:100%;height:100%;display:block;" width="1682" height="180"></canvas>
+        </div>
+        <div class="note-box" style="margin-top:8px;">Withholding tax is reflected in the monthly model.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div style="display:flex;justify-content:space-between;margin-top:28px;padding:16px 0;border-top:1px solid #e0e0dc;">
+  <a href="korse.html" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#534AB7;text-decoration:none;padding:9px 20px;border:1.5px solid #534AB7;border-radius:6px;">&#8592; Brace Ramp</a>
+  <a href="fixed.html" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#fff;text-decoration:none;padding:9px 20px;background:#534AB7;border:1.5px solid #534AB7;border-radius:6px;">Fixed Costs &#8594;</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script src="shared.js"></script>
+<script>
+window.addEventListener('load', function() {
+  const v = V.kira || 120000;
+  const sl = document.getElementById('s_kira');
+  if (sl) sl.value = v;
+  const disp = document.getElementById('kira');
+  if (disp) disp.textContent = v.toLocaleString('tr-TR');
+
+
+  const pt = document.getElementById('printerToggle');
+  if (pt) pt.checked = V.printerAktif !== false;
+  const rkt = document.getElementById('robotKolToggle');
+  if (rkt) rkt.checked = !!V.robotKolAktif;
+
+  recalc();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Osteoid — Periodic Costs</title>
+<link rel="stylesheet" href="style.css">
+<script>window.PAGE_ID='donemsel';</script>
+
+</head>
+<body>
+<div class="page" style="padding-top:0">
+
+<div id="layout-header"></div>
+
+<div class="section">
+  <div class="section-header" onclick="tog(this)"><h2>Periodic Costs</h2><span class="tog">▸</span></div>
+  <div class="section-body">
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px;" id="donemLegend"><span style="display:flex;align-items:center;gap:5px;font-size:11px;color:#444;">
+          <span style="width:10px;height:10px;border-radius:2px;background:rgba(83,74,183,0.80);flex-shrink:0;"></span>
+          Advertising / Marketing <b style="color:#222">₺180.000</b>
+        </span><span style="display:flex;align-items:center;gap:5px;font-size:11px;color:#444;">
+          <span style="width:10px;height:10px;border-radius:2px;background:rgba(29,158,117,0.80);flex-shrink:0;"></span>
+          Workshop / Training <b style="color:#222">₺100.000</b>
+        </span><span style="display:flex;align-items:center;gap:5px;font-size:11px;color:#444;">
+          <span style="width:10px;height:10px;border-radius:2px;background:rgba(216,90,48,0.80);flex-shrink:0;"></span>
+          Conference / Symposium <b style="color:#222">₺700.000</b>
+        </span><span style="display:flex;align-items:center;gap:5px;font-size:11px;color:#444;">
+          <span style="width:10px;height:10px;border-radius:2px;background:rgba(136,135,128,0.80);flex-shrink:0;"></span>
+          Other <b style="color:#222">₺0</b>
+        </span></div>
+    <div style="position:relative;width:100%;height:240px;" id="donemWrap">
+      <canvas id="donemCanvas" style="width: 100%; height: 100%; display: block; cursor: default;" width="3383" height="240"></canvas>
+    </div>
+    <div style="font-size:11px;color:#888;background:#fafaf8;border:1px solid #e8e8e4;border-radius:4px;padding:8px 12px;margin-top:8px;">Drag the top edge of each column to adjust. Each category is shown as a narrow side-by-side bar.</div>
+  </div>
+</div>
+
+
+
+
+</div>
+
+<div style="display:flex;justify-content:space-between;margin-top:28px;padding:16px 0;border-top:1px solid #e0e0dc;">
+  <a href="fixed.html" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#534AB7;text-decoration:none;padding:9px 20px;border:1.5px solid #534AB7;border-radius:6px;">&#8592; Fixed Costs</a>
+  <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#fff;text-decoration:none;padding:9px 20px;background:#534AB7;border:1.5px solid #534AB7;border-radius:6px;">12-Month Summary &#8594;</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script src="shared.js"></script>
+<script>
+window.addEventListener('load', function() { recalc(); });
+</script>
+</body>
+</html>

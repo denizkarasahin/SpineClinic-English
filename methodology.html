@@ -1,0 +1,709 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Osteoid — Methodology</title>
+<link rel="stylesheet" href="style.css">
+<script>window.PAGE_ID='metodoloji';</script>
+<style>
+.sec { margin: 28px 0; }
+.sec-title { font-size: 13px; font-weight: 900; color: #fff; background: #2c3e50; padding: 7px 14px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 14px; display: inline-block; }
+.sub-title { font-size: 12px; font-weight: 800; color: #534AB7; margin: 14px 0 6px; text-transform: uppercase; letter-spacing: 0.3px; }
+.param-tbl { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 18px; }
+.param-tbl th { background: #f0efe9; padding: 7px 10px; text-align: left; font-size: 11px; font-weight: 700; color: #555; border: 1px solid #ddd; }
+.param-tbl td { padding: 6px 10px; border: 1px solid #eee; vertical-align: middle; }
+.param-tbl tr:nth-child(even) td { background: #fafaf8; }
+.param-tbl td.val { font-family: monospace; font-size: 12px; font-weight: 700; background: #f0ede5; color: #8c6d3f; border-radius: 3px; white-space: nowrap; }
+.param-tbl td.note { color: #888; font-size: 11px; }
+.fbox { background: #f5f4ef; border: 1px solid #e2e0d4; border-radius: 6px; padding: 14px 18px; margin: 10px 0; font-family: 'Courier New', monospace; font-size: 12px; line-height: 2; white-space: pre-wrap; }
+.fbox .c { color: #888; } .fbox .r { color: #1D9E75; font-weight: 700; } .fbox .d { color: #D85A30; } .fbox .b { color: #534AB7; } .fbox .k { color: #2c3e50; font-weight: 700; }
+.prod-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 16px; }
+.prod-card { border: 1px solid #e0ddd4; border-radius: 6px; padding: 14px; background: #fff; }
+.prod-card h4 { margin: 0 0 10px; font-size: 12px; font-weight: 800; color: #333; border-bottom: 2px solid currentColor; padding-bottom: 5px; }
+.prod-line { display: flex; justify-content: space-between; font-size: 11px; padding: 3px 0; }
+.prod-line .lbl { color: #666; } .prod-line .val { font-family: monospace; font-weight: 700; }
+.prod-line.deduct .val { color: #D85A30; }
+.prod-line.net { border-top: 1px solid #e0ddd4; padding-top: 5px; margin-top: 3px; font-weight: 800; }
+.prod-line.net .val { color: #1D9E75; font-size: 12px; }
+.mtbl-wrap { overflow-x: auto; margin-bottom: 12px; }
+.mtbl { border-collapse: collapse; font-size: 11px; min-width: 900px; }
+.mtbl th { background: #2c3e50; color: #fff; padding: 6px 8px; text-align: center; font-size: 10px; white-space: nowrap; border: 1px solid #1a2836; }
+.mtbl th.lft { text-align: left; }
+.mtbl td { padding: 5px 8px; border: 1px solid #eee; text-align: right; white-space: nowrap; font-size: 11px; }
+.mtbl td.lft { text-align: left; font-weight: 700; }
+.mtbl td.neg { color: #D85A30; } .mtbl td.pos { color: #1D9E75; } .mtbl td.neu { color: #534AB7; }
+.mtbl tr.bas td { background: #e8f5ee; } .mtbl tr.poz td { background: #eee8ff; } .mtbl tr.tot td { background: #f0efe9; font-weight: 700; border-top: 2px solid #ccc; }
+.setup-tbl { width: 100%; border-collapse: collapse; font-size: 12px; max-width: 600px; }
+.setup-tbl td { padding: 7px 12px; border: 1px solid #eee; }
+.setup-tbl td.formula { font-family: monospace; font-size: 11px; color: #888; }
+.setup-tbl td.result { font-family: monospace; font-weight: 700; text-align: right; }
+.setup-tbl tr.total td { background: #f0efe9; font-weight: 700; border-top: 2px solid #888; }
+.proj-tbl { border-collapse: collapse; font-size: 12px; width: 100%; max-width: 800px; }
+.proj-tbl th { background: #f0efe9; padding: 7px 10px; font-size: 11px; font-weight: 700; border: 1px solid #ddd; text-align: left; }
+.proj-tbl td { padding: 6px 10px; border: 1px solid #eee; }
+.proj-tbl td.formula { font-family: monospace; font-size: 11px; color: #555; }
+.proj-tbl td.result { font-family: monospace; font-weight: 700; text-align: right; color: #1D9E75; }
+.proj-tbl tr.grp td { background: #f5f5f0; font-weight: 700; color: #333; }
+.note { background: #fffbf0; border-left: 3px solid #f5c518; padding: 9px 13px; margin: 10px 0; font-size: 12px; color: #554; border-radius: 0 4px 4px 0; }
+.info { background: #edf4ff; border-left: 3px solid #378ADD; padding: 9px 13px; margin: 10px 0; font-size: 12px; color: #1a4a7a; border-radius: 0 4px 4px 0; }
+.trigger-box { background: #e8f5ee; border: 1px solid #68c48a; border-radius: 6px; padding: 12px 16px; font-size: 12px; margin: 12px 0; }
+.kpi-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 12px 0; }
+.kpi-box { background: #fff; border: 1px solid #e0ddd4; border-radius: 6px; padding: 10px 16px; min-width: 140px; }
+.kpi-box .klbl { font-size: 11px; color: #888; margin-bottom: 3px; }
+.kpi-box .kval { font-size: 16px; font-weight: 900; }
+.kpi-box .kval.pos { color: #1D9E75; } .kpi-box .kval.neg { color: #D85A30; } .kpi-box .kval.neu { color: #534AB7; }
+</style>
+</head>
+<body>
+<div class="page" style="padding-top:0">
+
+<div id="layout-header"></div>
+
+<!-- Inner Tabs -->
+<div class="inner-tabs">
+  <button class="inner-tab active" onclick="switchInnerTab(this,'tab-metodoloji')">Methodology</button>
+  <button class="inner-tab" onclick="switchInnerTab(this,'tab-saglamasayfasi')">Formula Validation</button>
+</div>
+
+<div id="tab-metodoloji">
+<!-- METODOLOJİ -->
+<div class="section">
+  <div class="section-header" onclick="tog(this)"><h2>Model Methodology</h2><span class="tog">▸</span></div>
+  <div class="section-body">
+
+    <div class="note-box" style="margin-bottom:20px;">This section explains how the model works, which assumptions are used, and why these approaches were chosen. It establishes common ground for a productive dialogue with investors.</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+
+      <div style="background:#f7f7f4;border:1px solid #e0e0dc;border-radius:8px;padding:16px;">
+        <div style="font-size:12px;font-weight:700;color:#c94f2a;margin-bottom:8px;">Year 1 — Real Data</div>
+        <div style="font-size:12px;color:#555;line-height:1.7;">Year 1 revenue and cost figures are calculated in real time from the model's brace ramp, product mix table, and fixed cost sliders. No assumptions are used — it is the direct output of the slider values.</div>
+      </div>
+
+      <div style="background:#f7f7f4;border:1px solid #e0e0dc;border-radius:8px;padding:16px;">
+        <div style="font-size:12px;font-weight:700;color:#c94f2a;margin-bottom:8px;">Year-End Mix Baseline</div>
+        <div style="font-size:12px;color:#555;line-height:1.7;">For Year 2-3 unit revenue calculations, the <b>Month 10-12 average</b> is used rather than the annual average. Rationale: the product mix shifts toward premium products over time (sensor, perforated); if the mature mix is not used as the baseline, the projection will be understated.</div>
+      </div>
+
+      <div style="background:#f7f7f4;border:1px solid #e0e0dc;border-radius:8px;padding:16px;">
+        <div style="font-size:12px;font-weight:700;color:#534AB7;margin-bottom:8px;">Year 2-3 Net Revenue Calculation</div>
+        <div style="font-size:12px;color:#555;line-height:1.7;">
+          For each year: <b>Net = Gross brace revenue − Operating cost</b><br><br>
+          • <b>Gross revenue:</b> Target brace count × year-end unit net revenue<br>
+          • <b>Cost projection:</b> Grows from Year 1 cost base<br>
+          &nbsp;&nbsp;— Year 2: ×1.15 (rent increase, marketing)<br>
+          &nbsp;&nbsp;— Year 3: ×1.25 (growth, SSI management)<br>
+          • SSI revenue is added in Year 3, with 15% delay/collection loss deducted
+        </div>
+      </div>
+
+      <div style="background:#f7f7f4;border:1px solid #e0e0dc;border-radius:8px;padding:16px;">
+        <div style="font-size:12px;font-weight:700;color:#534AB7;margin-bottom:8px;">Personnel Threshold System</div>
+        <div style="font-size:12px;color:#555;line-height:1.7;">
+          Staff cost is not fixed — it scales with monthly brace volume:<br><br>
+          • Specialist orthotist: fixed from Month 1 at every center<br>
+          • Intern: monthly avg. ≥ <b id="metEsik1">15</b> braces/month<br>
+          • Graduate: monthly avg. ≥ <b id="metEsik2">30</b> braces/month<br>
+          • Support staff: monthly avg. ≥ <b id="metEsik3">76</b> braces/month<br><br>
+          For new centers, threshold is calculated by dividing the annual ramp total by 12.
+        </div>
+      </div>
+
+      <div style="background:#f7f7f4;border:1px solid #e0e0dc;border-radius:8px;padding:16px;">
+        <div style="font-size:12px;font-weight:700;color:#1D9E75;margin-bottom:8px;">Izmir / Ankara Revenue Calculation</div>
+        <div style="font-size:12px;color:#555;line-height:1.7;">
+          New center net revenue = <b>Gross revenue − Year 1 operating cost</b><br><br>
+          • Gross revenue: ramp total braces × year-end unit net revenue<br>
+          • Cost: Istanbul Year 1 cost (or city sliders if custom costs selected)<br>
+          • Staff: automatically scales according to threshold system<br>
+          • Advertising: central cost — not charged separately to new centers
+        </div>
+      </div>
+
+      <div style="background:#f7f7f4;border:1px solid #e0e0dc;border-radius:8px;padding:16px;">
+        <div style="font-size:12px;font-weight:700;color:#1D9E75;margin-bottom:8px;">Valuation EBITDA Calculation</div>
+        <div style="font-size:12px;color:#555;line-height:1.7;">
+          EBITDA ≈ Consolidated Year 3 net clinic revenue (braces + new centers)<br><br>
+          • VAT: orthosis-prosthesis supply is <b>fully exempt (0%)</b> under VAT Law 17/4-s<br>
+          • Corporate tax: clinic activity subject to <b>25%</b> (TGB exemption applies only to Osteoid Inc.)<br>
+          • Depreciation not a separate line item in the model — reasonable simplification at this scale<br>
+          • EV calculation is always based on EBITDA, before tax deductions
+        </div>
+      </div>
+
+      <div style="background:#f7f7f4;border:1px solid #e0e0dc;border-radius:8px;padding:16px;">
+        <div style="font-size:12px;font-weight:700;color:#BA7517;margin-bottom:8px;">Royalty &amp; Cutting Mechanism</div>
+        <div style="font-size:12px;color:#555;line-height:1.7;margin-bottom:12px;">
+          For each brace, a royalty of <b>€75 × EUR/TRY rate</b> flows to Osteoid Inc. Additionally, for SKUs with perforations (Perforated and Sensor+Perforated), a <b>€<span id="kesimEurPerDisp">50</span> cutting fee</b> is paid to Osteoid Inc. per brace. Both amounts are deducted as expenses in the clinic revenue calculation.
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px;">
+          <div class="sl-row">
+            <label style="font-size:10px;">Royalty (€/brace — all SKU)</label>
+            <div class="sl-controls">
+              <input type="range" id="s_royaltyEur" min="0" max="200" step="5" value="75" oninput="sv('royaltyEur',this.value); document.getElementById('royaltyEurDisp').textContent=this.value;">
+              <span class="sl-val" id="royaltyEur" contenteditable="true" onblur="sv2('royaltyEur','s_royaltyEur',this)" style="min-width:40px;">75</span>
+            </div>
+          </div>
+          <div class="sl-row">
+            <label style="font-size:10px;">Cutting (€/brace — perforated SKU)</label>
+            <div class="sl-controls">
+              <input type="range" id="s_kesimEurPer" min="0" max="200" step="5" value="50" oninput="sv('kesimEurPer',this.value); document.getElementById('kesimEurPerDisp').textContent=this.value;">
+              <span class="sl-val" id="kesimEurPer" contenteditable="true" onblur="sv2('kesimEurPer','s_kesimEurPer',this)" style="min-width:40px;">50</span>
+            </div>
+          </div>
+        </div>
+        <div style="font-size:11px;color:#888;">Royalty: all braces · Cutting: Perforated + Sensor+Perforated only</div>
+      </div>
+
+      <div style="background:#f7f7f4;border:1px solid #e0e0dc;border-radius:8px;padding:16px;">
+        <div style="font-size:12px;font-weight:700;color:#BA7517;margin-bottom:8px;">2nd Center Trigger</div>
+        <div style="font-size:12px;color:#555;line-height:1.7;">
+          The Izmir or Ankara decision is tied not to a fixed schedule but to a <b>data-driven trigger</b>: when Istanbul's 4-month moving average monthly net profit turns positive. Financial discipline principle — no scaling before the POC is proven.
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /tab-metodoloji -->
+
+<div id="tab-saglamasayfasi" style="display:none;">
+<div class="group-label">Formula &amp; Validation</div>
+
+<div class="note">⚠️ <strong>Forecast note:</strong> All figures in this projection are assumption-based. Break-even and cumulative positive dates depend on the brace ramp. Figures are prepared for understanding and questioning the business model, not for investment decisions.</div>
+
+<div class="sec">
+  <div class="sec-title">1 — Key Parameters (Input Values)</div>
+  <div class="sub-title">Exchange Rate &amp; Royalty</div>
+  <table class="param-tbl"><thead><tr><th>Parameter</th><th>Code</th><th>Value</th><th>Notes</th></tr></thead><tbody id="p_kur"></tbody></table>
+  <div class="sub-title">Product Sales Prices (₺)</div>
+  <table class="param-tbl"><thead><tr><th>Product</th><th>Code</th><th>Price</th><th>Note</th></tr></thead><tbody id="p_fiyat"></tbody></table>
+  <div class="sub-title">Material Costs (₺ / units)</div>
+  <table class="param-tbl"><thead><tr><th>Product</th><th>Code</th><th>Cost</th><th>Note</th></tr></thead><tbody id="p_malzeme"></tbody></table>
+  <div class="sub-title">Doctor Commission (%)</div>
+  <table class="param-tbl"><thead><tr><th>Product</th><th>Code</th><th>Rate</th><th>₺ / units</th></tr></thead><tbody id="p_danis"></tbody></table>
+  <div class="sub-title">Fixed Monthly Costs (₺)</div>
+  <table class="param-tbl"><thead><tr><th>Cost item</th><th>Code</th><th>Value</th><th>Note</th></tr></thead><tbody id="p_sabit"></tbody></table>
+  <div class="sub-title">Personnel</div>
+  <table class="param-tbl"><thead><tr><th>Position</th><th>Net salary</th><th>SSI multiplier</th><th>Gross cost</th><th>Activation threshold</th></tr></thead><tbody id="p_personel"></tbody></table>
+  <div class="sub-title">B2B Product Sales Prices (₺)</div>
+  <table class="param-tbl"><thead><tr><th>Product</th><th>Code</th><th>B2B Price</th><th>Clinic vs B2B diff</th></tr></thead><tbody id="p_b2b"></tbody></table>
+</div>
+
+<div class="sec">
+  <div class="sec-title">2 — Per-Product Unit Margin Analysis</div>
+  <p style="font-size:12px;color:#555;margin:0 0 12px;">Flow for each brace sale: <strong>Gross price → Doctor fee → Channel fee → Material → Royalty = Net revenue</strong><br>Channel fee = Gross revenue × <span id="kanalPctDisp">—</span> (channel maintenance rate)</p>
+  <div class="prod-grid" id="urunMarjWrap"></div>
+  <div class="sub-title">Comparison Table</div>
+  <table class="param-tbl" id="marjKarsilastirma"><thead><tr><th>Product</th><th>Price</th><th>Doctor fee</th><th>Material</th><th>Royalty</th><th>Net revenue/units</th><th>Net margin %</th></tr></thead><tbody></tbody></table>
+</div>
+
+<div class="sec">
+  <div class="sec-title">3 — Monthly Calculation Formulas</div>
+  <div class="sub-title">Revenue Side — Per Month</div>
+  <div class="fbox" id="formulGelir"></div>
+  <div class="sub-title">Cost Side — Per Month</div>
+  <div class="fbox" id="formulGider"></div>
+  <div class="sub-title">Cumulative Budget &amp; Triggers</div>
+  <div class="fbox" id="formulKumulatif"></div>
+  <div class="info">ℹ️ <strong>Product mix distribution:</strong> Each month, brace units are allocated across 5 product types according to the percentage distribution on the Market &amp; Product Mix page. If a product is not yet active in a given month (activation threshold not reached), that product is set to zero and the total percentage is renormalized.</div>
+</div>
+
+<div class="sec">
+  <div class="sec-title">4 — 12-Month Calculation Table (Live)</div>
+  <p style="font-size:12px;color:#555;margin:0 0 10px;">Full calculation with current parameters. <span style="background:#e8f5ee;padding:2px 6px;border-radius:3px;">Green row</span> = monthly break-even (✓), <span style="background:#eee8ff;padding:2px 6px;border-radius:3px;">purple row</span> = cumulative positive (★). Cumulative start = −(Setup cost).</p>
+  <div class="kpi-row" id="ozet_kpi"></div>
+  <div class="mtbl-wrap">
+    <table class="mtbl" id="monthlyTbl">
+      <thead>
+        <tr>
+          <th class="lft" rowspan="2">Month</th>
+          <th colspan="5">Brace Mix (units)</th>
+          <th rowspan="2">Total Braces</th>
+          <th colspan="5">Revenue (₺)</th>
+          <th colspan="6">Cost (₺)</th>
+          <th rowspan="2">Monthly Net (₺)</th>
+          <th rowspan="2">Cumulative (₺)</th>
+        </tr>
+        <tr>
+          <th style="color:#aaa;">Std-R</th><th style="color:#D85A30;">Std-Rl</th><th style="color:#1D9E75;">Perf.</th><th style="color:#534AB7;">Sens</th><th style="color:#D4537E;">S+D</th>
+          <th>Gross</th><th>−Doctor</th><th>−Channel</th><th>−Material</th><th>−Royalty</th><th>Net Rev.</th>
+          <th>−Fixed</th><th>−Advert.</th><th>−Kitchen</th><th>−W.Tax</th><th>−Period/Prnt</th>
+        </tr>
+      </thead>
+      <tbody id="monthlyTbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-title">5 — Setup Costs (Istanbul Center 1)</div>
+  <p style="font-size:12px;color:#555;margin:0 0 10px;">One-time setup investment. This is the starting value for the cumulative budget calculation (entered as negative).</p>
+  <table class="setup-tbl" id="kurulumTbl"></table>
+</div>
+
+<div class="sec">
+  <div class="sec-title">6 — 3-Year Projection Methodology</div>
+  <div class="sub-title">Year 1 — Model Data</div>
+  <div class="info">Year 1 figures are taken directly from the 12-month calculation model; no projection or coefficient is applied.</div>
+  <div class="sub-title">Year 2-3 Projection Logic</div>
+  <div class="fbox" id="formulProj"></div>
+  <div class="sub-title">3-Year Summary Table (Live)</div>
+  <table class="proj-tbl" id="projTablosu">
+    <thead><tr><th style="min-width:260px;">Revenue Item</th><th>Formula / Source</th><th style="text-align:right;">Year 1 (€K)</th><th style="text-align:right;">Year 2 (€K)</th><th style="text-align:right;">Year 3 (€K)</th></tr></thead>
+    <tbody id="projTbody"></tbody>
+  </table>
+  <div class="note"><strong>SSI calculation:</strong> Y3 SSI revenue = Y3 private channel revenue × 35% (SSI channel share coefficient) × 85% (collection efficiency — discount for average 60–90 day delay). Y2 SSI = Y3 × 25% (approval process + half-year ramp). These coefficients should be validated against operator experience.</div>
+</div>
+
+<div class="sec">
+  <div class="sec-title">7 — New Center Calculation (Izmir / Ankara)</div>
+  <div class="sub-title">Trigger Mechanism</div>
+  <div class="fbox" id="formulTetik"></div>
+  <div id="tetikDurumu" class="trigger-box"></div>
+  <div class="sub-title">Center Revenue Calculation</div>
+  <div class="fbox" id="formulMerkez"></div>
+  <table class="proj-tbl" id="merkezTbl" style="max-width:960px;">
+    <thead><tr><th>Center</th><th>Ramp total (braces/year)</th><th>Unit net revenue (₺/brace)</th><th>Gross annual revenue</th><th>Annual operating cost</th><th>Net revenue (₺)</th><th>Net revenue (€K)</th></tr></thead>
+    <tbody id="merkezTbody"></tbody>
+  </table>
+  <div class="sub-title">Center Setup Cost</div>
+  <table class="proj-tbl" id="merkezKurulumTbl" style="max-width:700px;">
+    <thead><tr><th>Center</th><th>Method</th><th>Formula</th><th style="text-align:right;">Amount (₺)</th><th style="text-align:right;">Amount (€K)</th></tr></thead>
+    <tbody id="merkezKurulumTbody"></tbody>
+  </table>
+</div>
+
+<div style="display:flex;justify-content:flex-end;margin-top:12px;margin-bottom:4px;">
+  <button onclick="window.print()" style="font-size:12px;font-weight:700;padding:9px 20px;border-radius:6px;border:1.5px solid #888;background:#fff;color:#555;cursor:pointer;">&#128424; Print / PDF</button>
+</div>
+
+</div><!-- /tab-saglamasayfasi -->
+
+<div style="display:flex;justify-content:flex-start;margin-top:28px;padding:16px 0;border-top:1px solid #e0e0dc;">
+  <a href="investor.html" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#534AB7;text-decoration:none;padding:9px 20px;border:1.5px solid #534AB7;border-radius:6px;">&#8592; Investor &amp; Agreement</a>
+</div>
+
+</div><!-- /page -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script src="shared.js"></script>
+<script>
+// ── Formül Sağlama: formatters ────────────────────────────────────────────────
+function tf(n) {
+  if (n === undefined || n === null) return '—';
+  if (n === 0) return '₺0';
+  var abs = Math.abs(Math.round(n));
+  return (n < 0 ? '−₺' : '₺') + abs.toLocaleString('tr-TR');
+}
+function tfShort(n) {
+  if (!n) return '—';
+  var abs = Math.abs(Math.round(n));
+  return (n < 0 ? '−₺' : '₺') + abs.toLocaleString('tr-TR');
+}
+function ef(n) { if (!n && n !== 0) return '—'; return '€' + Math.round(n).toLocaleString('tr-TR'); }
+function pf(n) { return (n || 0).toFixed(1) + '%'; }
+
+function renderParams() {
+  function row(name, code, val, note) {
+    return '<tr><td>' + name + '</td><td><code style="font-size:11px;color:#888;">' + code + '</code></td><td class="val">' + val + '</td><td class="note">' + (note||'') + '</td></tr>';
+  }
+  var royaltyTRY = Math.round((V.royaltyEur||75) * (V.eurKur||50));
+  document.getElementById('p_kur').innerHTML = [
+    row('EUR/TRY rate','eurKur','₺'+(V.eurKur||50),'Used in all EUR↔TRY conversions'),
+    row('Royalty (Osteoid A.Ş.)','royaltyEur','€'+(V.royaltyEur||75)+'/brace','₺'+royaltyTRY.toLocaleString('tr-TR')+'/brace (= '+(V.royaltyEur||75)+' × '+(V.eurKur||50)+')'),
+    row('Channel maintenance fee','kanalBakim',(V.kanalBakim||0)+'% (on gross revenue)','Sales channel management fee — currently ₺0 (set to zero)'),
+    row('Cutting fee (EUR)','kesimEurPer','€'+(V.kesimEurPer||50)+'/unit','Used for Perforated and S+P braces; Osteoid A.Ş. cutting revenue'),
+  ].join('');
+
+  var prods = ['stdR','stdRl','delik','sens','sensDelik'];
+  var prodNames = ['Std-No Rep.','Std-Reported','Perf+Rep.','Sensor+Rep.','Sns+Rep+Perf'];
+  var fKeys = ['korseF_stdR','korseF_stdRl','korseF_delik','korseF_sens','korseF_sensDelik'];
+  var mKeys = ['mal_stdR','mal_stdRl','mal_delik','mal_sens','mal_sensDelik'];
+  var dKeys = ['danis_stdR','danis_stdRl','danis_delik','danis_sens','danis_sensDelik'];
+  var b2bFKeys = ['korseFB2B_stdR','korseFB2B_stdRl','korseFB2B_delik','korseFB2B_sens','korseFB2B_sensDelik'];
+
+  document.getElementById('p_fiyat').innerHTML = prods.map(function(p,i){ return row(prodNames[i],fKeys[i],tf(V[fKeys[i]]),i===0?'Month 1-5 starter product':i>=2?'Month 6+ advanced product':''); }).join('');
+  document.getElementById('p_malzeme').innerHTML = prods.map(function(p,i){ return row(prodNames[i],mKeys[i],tf(V[mKeys[i]]),(i===2||i===4)?'+ €'+(V.kesimEurPer||50)+'/unit cutting cost (Osteoid A.Ş. revenue)':''); }).join('');
+  document.getElementById('p_danis').innerHTML = prods.map(function(p,i){
+    var fiyat=V[fKeys[i]]||0, pct=V[dKeys[i]]||0;
+    return '<tr><td>'+prodNames[i]+'</td><td><code style="font-size:11px;color:#888;">'+dKeys[i]+'</code></td><td class="val">'+pct+'%</td><td class="note">= ₺'+Math.round(fiyat*pct/100).toLocaleString('tr-TR')+'/unit ('+fiyat.toLocaleString('tr-TR')+' × '+pct+'%)</td></tr>';
+  }).join('');
+  document.getElementById('p_sabit').innerHTML = [
+    row('Monthly rent','kira',tf(V.kira),'Monthly rent during operations'),
+    row('Deposit','depozito',tf(V.depozito),'Setup cost; not an operating cost'),
+    row('Electricity','elektrik',tf(V.elektrik),''),
+    row('Internet','internet',tf(V.internet),''),
+    row('Consumables','sarf',tf(V.sarf),''),
+    row('Kitchen','mutfak',tf(V.mutfak),''),
+    row('General expenses','genelGider',tf(V.genelGider),'Miscellaneous minor expenses'),
+    row('Advertising (monthly fixed)','reklamSabit',tf(V.reklamSabit),'Fixed every month; periodic advertising is separate'),
+    row('Withholding tax (quarterly)','stopaj',tf(V.stopaj),'Paid in Months 3, 6, 9, 12; ₺0 in other months'),
+  ].join('');
+  var sgk = V.sgkCarpan || 1.25;
+  document.getElementById('p_personel').innerHTML = [
+    ['Orthotist (permanent)','ortotistM','Always active'],
+    ['Intern / Physiotherapist','stajyerM','≥ '+(V.esikStajyer1||16)+' braces/mo'],
+    ['Support staff','destekM','≥ '+(V.esikDestek||31)+' braces/mo'],
+    ['2nd Intern / Graduate','stajyer2M','≥ '+(V.esikStajyer2||46)+' braces/mo'],
+  ].map(function(a){ var net=V[a[1]]||0, brut=Math.round(net*sgk); return '<tr><td>'+a[0]+'</td><td class="val">'+tf(net)+'</td><td class="val">×'+sgk.toFixed(2)+'</td><td class="val" style="color:#1D9E75;">'+tf(brut)+'</td><td class="note">'+a[2]+'</td></tr>'; }).join('');
+  document.getElementById('p_b2b').innerHTML = prods.map(function(p,i){
+    var b2bF=V[b2bFKeys[i]]||0, kF=V[fKeys[i]]||0, diff=kF-b2bF;
+    return row(prodNames[i],b2bFKeys[i],tf(b2bF),diff>0?'vs. clinic −₺'+diff.toLocaleString('tr-TR'):'');
+  }).join('');
+}
+
+function renderUrunMarj() {
+  var prods = [
+    {name:'Std-No Rep.', color:'#888780',fKey:'korseF_stdR',mKey:'mal_stdR',dKey:'danis_stdR'},
+    {name:'Std-Reported',color:'#D85A30',fKey:'korseF_stdRl',mKey:'mal_stdRl',dKey:'danis_stdRl'},
+    {name:'Perf+Rep.',   color:'#1D9E75',fKey:'korseF_delik',mKey:'mal_delik',dKey:'danis_delik',kesim:true},
+    {name:'Sensor+Rep.', color:'#534AB7',fKey:'korseF_sens',mKey:'mal_sens',dKey:'danis_sens'},
+    {name:'Sns+Rep+Perf',color:'#D4537E',fKey:'korseF_sensDelik',mKey:'mal_sensDelik',dKey:'danis_sensDelik',kesim:true},
+  ];
+  var royaltyTRY = (V.royaltyEur||75) * (V.eurKur||50);
+  var kanalPct = (V.kanalBakim||0)/100;
+  document.getElementById('kanalPctDisp').textContent = (V.kanalBakim||0)+'%';
+  var wrap = document.getElementById('urunMarjWrap');
+  wrap.innerHTML = prods.map(function(p){
+    var f=V[p.fKey]||0, m=V[p.mKey]||0;
+    var d=Math.round(f*(V[p.dKey]||0)/100), k=Math.round(f*kanalPct);
+    var kesimTRY=p.kesim?Math.round((V.kesimEurPer||50)*(V.eurKur||50)):0;
+    var net=f-d-k-m-kesimTRY-royaltyTRY, marj=f>0?Math.round(net/f*100):0;
+    return '<div class="prod-card"><h4 style="color:'+p.color+';">'+p.name+'</h4>' +
+      '<div class="prod-line"><span class="lbl">Sale price</span><span class="val">₺'+f.toLocaleString('tr-TR')+'</span></div>' +
+      '<div class="prod-line deduct"><span class="lbl">− Doctor ('+(V[p.dKey]||0)+'%)</span><span class="val">−₺'+d.toLocaleString('tr-TR')+'</span></div>' +
+      (k>0?'<div class="prod-line deduct"><span class="lbl">− Channel fee</span><span class="val">−₺'+k.toLocaleString('tr-TR')+'</span></div>':'') +
+      '<div class="prod-line deduct"><span class="lbl">− Material</span><span class="val">−₺'+m.toLocaleString('tr-TR')+'</span></div>' +
+      (kesimTRY>0?'<div class="prod-line deduct"><span class="lbl">− Cutting (€'+(V.kesimEurPer||50)+')</span><span class="val">−₺'+kesimTRY.toLocaleString('tr-TR')+'</span></div>':'') +
+      '<div class="prod-line deduct"><span class="lbl">− Royalty (€'+(V.royaltyEur||75)+'×'+V.eurKur+')</span><span class="val">−₺'+Math.round(royaltyTRY).toLocaleString('tr-TR')+'</span></div>' +
+      '<div class="prod-line net"><span class="lbl">= Net revenue/unit</span><span class="val">₺'+Math.round(net).toLocaleString('tr-TR')+'</span></div>' +
+      '<div style="font-size:10px;color:#888;text-align:right;margin-top:3px;">Net margin: '+marj+'%</div></div>';
+  }).join('');
+  var tbody = document.querySelector('#marjKarsilastirma tbody');
+  tbody.innerHTML = prods.map(function(p){
+    var f=V[p.fKey]||0, m=V[p.mKey]||0;
+    var d=Math.round(f*(V[p.dKey]||0)/100), k=Math.round(f*kanalPct);
+    var kesimTRY=p.kesim?Math.round((V.kesimEurPer||50)*(V.eurKur||50)):0;
+    var net=f-d-k-m-kesimTRY-royaltyTRY, marj=f>0?Math.round(net/f*100):0;
+    return '<tr><td style="font-weight:700;color:'+p.color+';">'+p.name+'</td>' +
+      '<td style="text-align:right;">₺'+f.toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;color:#D85A30;">−₺'+d.toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;color:#D85A30;">−₺'+(m+kesimTRY).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;color:#D85A30;">−₺'+Math.round(royaltyTRY).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;font-weight:700;color:#1D9E75;">₺'+Math.round(net).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;color:#888;">%'+marj+'</td></tr>';
+  }).join('');
+}
+
+function renderFormulas() {
+  var royTRY = Math.round((V.royaltyEur||75)*(V.eurKur||50));
+  var sgk = (V.sgkCarpan||1.25).toFixed(2);
+  var e1=V.esikStajyer1||16, e2=V.esikDestek||31, e3=V.esikStajyer2||46;
+  var stajBrut=Math.round((V.stajyerM||30000)*(V.sgkCarpan||1.25));
+  var destBrut=Math.round((V.destekM||30000)*(V.sgkCarpan||1.25));
+  var staj2Brut=Math.round((V.stajyer2M||30000)*(V.sgkCarpan||1.25));
+  var ortoBrut=Math.round((V.ortotistM||60000)*(V.sgkCarpan||1.25));
+
+  document.getElementById('formulGelir').innerHTML =
+    '<span class="c">── REVENUE (per month) ──────────────────────────────────────────────────────</span>\n\n' +
+    '<span class="k">GrossRevenue</span>  = Σ [ brace_qty[type] × price[type] ]\n' +
+    '<span class="c">              type ∈ { Std-R, Std-Rl, Perf, Sens, Sns+P }</span>\n\n' +
+    '<span class="k">DoctorFee</span>     = Σ [ brace_qty[type] × price[type] × doctorPct[type] ]\n' +
+    '<span class="c">              Pct: Std-R='+(V.danis_stdR||10)+'%, Std-Rl='+(V.danis_stdRl||15)+'%, Perf='+(V.danis_delik||30)+'%, Sens='+(V.danis_sens||30)+'%, S+P='+(V.danis_sensDelik||30)+'%</span>\n\n' +
+    '<span class="k">ChannelFee</span>    = GrossRevenue × '+(V.kanalBakim||0)+'%\n\n' +
+    '<span class="k">Material</span>      = Σ [ brace_qty[type] × material[type] ]\n' +
+    '<span class="c">              Material (₺): Std-R='+(V.mal_stdR||250)+', Std-Rl='+(V.mal_stdRl||300)+', Perf='+(V.mal_delik||400)+', Sens='+(V.mal_sens||1000)+', S+P='+(V.mal_sensDelik||1250)+'</span>\n\n' +
+    '<span class="k">Royalty</span>       = totalBraces × €'+(V.royaltyEur||75)+' × ₺'+(V.eurKur||50)+' = totalBraces × ₺'+royTRY+'\n\n' +
+    '<span class="r">NetRevenue</span>    = GrossRevenue − DoctorFee − ChannelFee − Material − Royalty';
+
+  document.getElementById('formulGider').innerHTML =
+    '<span class="c">── COSTS (per month, recorded as negative values) ───────────────────────────</span>\n\n' +
+    '<span class="k">FixedCosts</span>  = rent + electricity + internet + consumables + orthotistGross + kitchen + generalExp\n' +
+    '<span class="c">            = ₺'+tf(V.kira)+' + ₺'+tf(V.elektrik)+' + ₺'+tf(V.internet)+' + ₺'+tf(V.sarf)+' + ₺'+ortoBrut.toLocaleString('tr-TR')+' + ₺'+tf(V.mutfak)+' + ₺'+tf(V.genelGider)+'</span>\n\n' +
+    '<span class="k">StaffAdd</span>    = <span class="b">IF</span>(monthlyBraces ≥ '+e1+') → +₺'+stajBrut.toLocaleString('tr-TR')+' intern gross\n' +
+    '             <span class="b">IF</span>(monthlyBraces ≥ '+e2+') → +₺'+destBrut.toLocaleString('tr-TR')+' support staff gross\n' +
+    '             <span class="b">IF</span>(monthlyBraces ≥ '+e3+') → +₺'+staj2Brut.toLocaleString('tr-TR')+' 2nd intern gross\n\n' +
+    '<span class="k">W.Tax</span>       = <span class="b">IF</span>(month ∈ {3,6,9,12}) → ₺'+tf(V.stopaj)+' / 0\n\n' +
+    '<span class="k">Periodic</span>    = congress[month] + advert_fixed\n' +
+    '<span class="c">            congress: variable; advert_fixed: ₺'+tf(V.reklamSabit)+'/mo</span>\n\n' +
+    '<span class="k">PrinterAdd</span>  = <span class="b">IF</span>(braces > currentPrinterCap) → extraPrinter × €'+(V.printerEurFiyat||10000)+' × ₺'+(V.eurKur||50)+'\n' +
+    '<span class="c">            capacity: '+_autoPrinterAdet()+' printer × 66 braces/mo = '+(_autoPrinterAdet()*66)+' braces/mo</span>\n\n' +
+    '<span class="d">TotalCosts</span>  = −(FixedCosts + StaffAdd + W.Tax + Periodic + PrinterAdd + Kitchen)';
+
+  document.getElementById('formulKumulatif').innerHTML =
+    '<span class="c">── CUMULATIVE & TRIGGERS ────────────────────────────────────────────────────</span>\n\n' +
+    '<span class="k">MonthlyNet</span>    = NetRevenue + TotalCosts\n\n' +
+    '<span class="k">Cumulative[mo]</span> = Cumulative[mo−1] + MonthlyNet[mo]\n' +
+    '<span class="c">               Cumulative[Mo0] = −SetupCost (initial)</span>\n\n' +
+    '<span class="k">BreakevenMo</span>   = First month: MonthlyNet ≥ 0\n' +
+    '<span class="k">Cumulative+</span>   = First month: Cumulative ≥ 0';
+}
+
+function renderMonthlyTable() {
+  var rows = window._lastRows || [];
+  if (!rows.length) return;
+  var tKorse=rows.reduce(function(s,r){return s+(r.korse||0);},0);
+  var tGelir=rows.reduce(function(s,r){return s+(r.gelirNet||0);},0);
+  var tGider=rows.reduce(function(s,r){return s+(r.gider||0);},0);
+  var tNet=rows.reduce(function(s,r){return s+(r.net||0);},0);
+  var son=rows[11];
+  var basAy=rows.find(function(r){return r.net>=0;});
+  var pozAy=rows.find(function(r){return r.cumBudget>=0;});
+
+  document.getElementById('ozet_kpi').innerHTML = [
+    {l:'Total braces',v:tKorse+' units',c:'neu'},
+    {l:'Clinic net revenue',v:tfShort(tGelir),c:tGelir>=0?'pos':'neg'},
+    {l:'Total costs',v:tfShort(tGider),c:'neg'},
+    {l:'Annual net',v:tfShort(tNet),c:tNet>=0?'pos':'neg'},
+    {l:'Cumulative year-end',v:tfShort(son.cumBudget),c:son.cumBudget>=0?'pos':'neg'},
+    {l:'Monthly breakeven',v:basAy?'Month '+basAy.ay:'Not reached',c:basAy?'pos':'neg'},
+    {l:'Cumulative positive',v:pozAy?'Month '+pozAy.ay:'Not reached',c:pozAy?'pos':'neg'},
+  ].map(function(k){return '<div class="kpi-box"><div class="klbl">'+k.l+'</div><div class="kval '+k.c+'">'+k.v+'</div></div>';}).join('');
+
+  var tbody=document.getElementById('monthlyTbody');
+  var html='';
+  rows.forEach(function(r){
+    var isBas=basAy&&r.ay===basAy.ay, isPoz=pozAy&&r.ay===pozAy.ay;
+    var cls=isPoz?'poz':isBas?'bas':'';
+    var kk=r.k||[r.korse,0,0,0,0];
+    var donPrn=(r.kongre||0)+(r.printerEkMaliyet||0);
+    html+='<tr class="'+cls+'">' +
+      '<td class="lft">Month '+r.ay+(isBas?' ✓':isPoz?' ★':'')+'</td>' +
+      '<td>'+kk[0]+'</td><td>'+kk[1]+'</td><td>'+kk[2]+'</td><td>'+kk[3]+'</td><td>'+kk[4]+'</td>' +
+      '<td style="font-weight:700;">'+r.korse+'</td>' +
+      '<td>'+tfShort(r.gelirBrut)+'</td>' +
+      '<td class="neg">'+tfShort(-r.danis)+'</td>' +
+      '<td class="neg">'+(r.bakim?tfShort(-r.bakim):'—')+'</td>' +
+      '<td class="neg">'+(r.baskiTop?tfShort(-r.baskiTop):'—')+'</td>' +
+      '<td class="neg">'+tfShort(-r.royaltyTop)+'</td>' +
+      '<td class="'+(r.gelirNet>=0?'pos':'neg')+'" style="font-weight:700;">'+tfShort(r.gelirNet)+'</td>' +
+      '<td class="neg">'+tfShort(-r.sabitGider)+'</td>' +
+      '<td class="neg">'+tfShort(-r.reklamS)+'</td>' +
+      '<td class="neg">'+tfShort(-r.mutfakV)+'</td>' +
+      '<td class="neg">'+(r.ayStopaj?tfShort(-r.ayStopaj):'—')+'</td>' +
+      '<td class="neg">'+(donPrn?tfShort(-donPrn):'—')+'</td>' +
+      '<td class="'+(r.net>=0?'pos':'neg')+'" style="font-weight:700;">'+tfShort(r.net)+'</td>' +
+      '<td class="'+(r.cumBudget>=0?'pos':'neg')+'" style="font-weight:700;">'+tfShort(r.cumBudget)+'</td></tr>';
+  });
+  var tBrut=rows.reduce(function(s,r){return s+(r.gelirBrut||0);},0);
+  var tDanis=rows.reduce(function(s,r){return s+(r.danis||0);},0);
+  var tBakim=rows.reduce(function(s,r){return s+(r.bakim||0);},0);
+  var tBaski=rows.reduce(function(s,r){return s+(r.baskiTop||0);},0);
+  var tRoyalt=rows.reduce(function(s,r){return s+(r.royaltyTop||0);},0);
+  var tSabit=rows.reduce(function(s,r){return s+(r.sabitGider||0);},0);
+  var tRek=rows.reduce(function(s,r){return s+(r.reklamS||0);},0);
+  var tMutfak=rows.reduce(function(s,r){return s+(r.mutfakV||0);},0);
+  var tStopaj=rows.reduce(function(s,r){return s+(r.ayStopaj||0);},0);
+  var tDonPrn=rows.reduce(function(s,r){return s+(r.kongre||0)+(r.printerEkMaliyet||0);},0);
+  var tpK=rows.reduce(function(s,r){var k=r.k||[0,0,0,0,0];return s.map(function(v,j){return v+k[j];});}, [0,0,0,0,0]);
+  html+='<tr class="tot"><td class="lft">Total</td>' +
+    '<td>'+tpK[0]+'</td><td>'+tpK[1]+'</td><td>'+tpK[2]+'</td><td>'+tpK[3]+'</td><td>'+tpK[4]+'</td>' +
+    '<td>'+tKorse+'</td><td>'+tfShort(tBrut)+'</td>' +
+    '<td class="neg">'+tfShort(-tDanis)+'</td>' +
+    '<td class="neg">'+(tBakim?tfShort(-tBakim):'—')+'</td>' +
+    '<td class="neg">'+(tBaski?tfShort(-tBaski):'—')+'</td>' +
+    '<td class="neg">'+tfShort(-tRoyalt)+'</td>' +
+    '<td class="'+(tGelir>=0?'pos':'neg')+'" style="font-weight:700;">'+tfShort(tGelir)+'</td>' +
+    '<td class="neg">'+tfShort(-tSabit)+'</td>' +
+    '<td class="neg">'+tfShort(-tRek)+'</td>' +
+    '<td class="neg">'+tfShort(-tMutfak)+'</td>' +
+    '<td class="neg">'+(tStopaj?tfShort(-tStopaj):'—')+'</td>' +
+    '<td class="neg">'+(tDonPrn?tfShort(-tDonPrn):'—')+'</td>' +
+    '<td class="'+(tNet>=0?'pos':'neg')+'" style="font-weight:700;">'+tfShort(tNet)+'</td>' +
+    '<td class="'+(son.cumBudget>=0?'pos':'neg')+'" style="font-weight:700;">'+tfShort(son.cumBudget)+'</td></tr>';
+  tbody.innerHTML = html;
+}
+
+function renderKurulum() {
+  var m2=V.m2||150, tmR=V.tadilatM2||4750, dmR=V.dekoM2||2000;
+  var tadTop=m2*tmR, dekoTop=m2*dmR;
+  var prAdet=_autoPrinterAdet();
+  var prTRY=prAdet*(V.printerEurFiyat||10000)*(V.eurKur||50);
+  var robTRY=V.robotKolAktif?(V.robotKolEurFiyat||10000)*(V.eurKur||50):0;
+  var toplam=(V.kira||0)+(V.depozito||0)+(V.emlakci||0)+tadTop+dekoTop+(V.mobilya||0)+(V.ruhsat||0)+prTRY+robTRY;
+  var items=[
+    ['Rent (1st month)','V.kira',V.kira||0],
+    ['Deposit','V.depozito',V.depozito||0],
+    ['Agency commission','V.emlakci',V.emlakci||0],
+    ['Renovation',m2+' m² × ₺'+tmR.toLocaleString('tr-TR')+'/m²',tadTop],
+    ['Decoration',m2+' m² × ₺'+dmR.toLocaleString('tr-TR')+'/m²',dekoTop],
+    ['Furniture + Equipment','V.mobilya',V.mobilya||0],
+    ['Permit & licenses','V.ruhsat',V.ruhsat||0],
+    ['3D Printer',prAdet+' units × €'+(V.printerEurFiyat||10000)+' × ₺'+(V.eurKur||50),prTRY],
+    ['Robot arm',V.robotKolAktif?'€'+(V.robotKolEurFiyat||10000)+' × ₺'+(V.eurKur||50):'Inactive (no perf/S+P mix)',robTRY],
+  ];
+  var eurK=Math.round(toplam/(V.eurKur||50)/1000);
+  var tbl=document.getElementById('kurulumTbl');
+  tbl.innerHTML='<thead><tr><th>Item</th><th>Formula</th><th>Amount (₺)</th></tr></thead><tbody>'+
+    items.map(function(a){return '<tr><td>'+a[0]+'</td><td class="formula">'+a[1]+'</td><td class="result">'+(a[2]?tf(a[2]):'₺0')+'</td></tr>';}).join('')+
+    '</tbody><tfoot><tr class="total"><td colspan="2"><strong>TOTAL SETUP COST</strong></td><td class="result" style="color:#D85A30;">'+tf(-toplam)+'<br><span style="font-size:11px;color:#888;">≈ €'+eurK+'K</span></td></tr></tfoot>';
+}
+
+function renderProjection() {
+  var rows=window._lastRows||[];
+  var eurKur=V.eurKur||50;
+  var toEur=function(v){return Math.round(v/eurKur/1000);};
+  var lerp=function(a,b,t){return Math.round(a+(b-a)*t);};
+  var y1KorseNet=rows.reduce(function(s,r){return s+(r.gelirNet||0);},0);
+  var y1Korse=rows.reduce(function(s,r){return s+(r.korse||0);},0);
+  var y1Gider=Math.abs(rows.reduce(function(s,r){return s+(r.gider||0);},0));
+  var y1GiderEur=toEur(y1Gider);
+  var pazarTR=gv('pazarTR'), pazarIstPct=gv('pazarIstPct')/100;
+  var pazarIst=Math.round(pazarTR*pazarIstPct);
+  var hedefPay=gv('hedefOsteoidPay')/100;
+  var y5KorseAdet=Math.round(pazarIst*hedefPay);
+  var sonR=rows.slice(-3);
+  var sonK=sonR.reduce(function(s,r){return s+(r.korse||0);},0)||1;
+  var sonN=sonR.reduce(function(s,r){return s+(r.gelirNet||0);},0);
+  var birimNetEur=sonN/sonK/eurKur;
+  var y5KorseToplam=Math.round(y5KorseAdet*birimNetEur/1000);
+  var y3BrutGelir=y5KorseToplam;
+  var y2GiderEur=Math.round(y1GiderEur*1.15), y3GiderEur=Math.round(y1GiderEur*1.25);
+  var y1BrutM1=toEur(y1KorseNet);
+  var y1NetM1=Math.max(0,y1BrutM1-y1GiderEur);
+  var y2NetM1=Math.max(0,lerp(y1BrutM1,y3BrutGelir,0.4)-y2GiderEur);
+  var y3NetM1=Math.max(0,y3BrutGelir-y3GiderEur);
+  var y3SgkNet=Math.round(y3BrutGelir*0.35*0.85), y2SgkNet=Math.round(y3SgkNet*0.25);
+  var b2bY1=toEur(window._lastGelirB2B||0);
+  var b2bRow=[b2bY1,Math.round(b2bY1*1.5),Math.round(b2bY1*2.2)];
+  var trigResult=calc4AyOrtalama(rows);
+  var _trigAy=trigResult.triggerAy;
+  var _acilisAy=_trigAy?Math.max(13,_trigAy+3):13;
+  var _aktifAy=Math.max(0,Math.min(12,25-_acilisAy));
+  var izmirGelirY2=V.izmirAktif?Math.round(getMerkezGelir('izmir')*_aktifAy/12):0;
+  var ankaraGelirY2=V.ankaraAktif?Math.round(getMerkezGelir('ankara')*_aktifAy/12):0;
+  var pazarIzmir=Math.round(gv('pazarTR')*V.izmirNufusPay/100);
+  var pazarAnkara=Math.round(gv('pazarTR')*V.ankaraNufusPay/100);
+  var y1BirimNetEur=toEur(y1KorseNet)/(y1Korse||1)*1000;
+  var izmirY3Adet=V.izmirAktif?Math.round(pazarIzmir*gv('izmirHedefPay')/100):0;
+  var ankaraY3Adet=V.ankaraAktif?Math.round(pazarAnkara*gv('ankaraHedefPay')/100):0;
+  var izmirY3Gelir=Math.round(izmirY3Adet*y1BirimNetEur/1000);
+  var ankaraY3Gelir=Math.round(ankaraY3Adet*y1BirimNetEur/1000);
+  var sonBirimNet=Math.round(sonN/sonK);
+
+  document.getElementById('formulProj').innerHTML =
+    '<span class="c">── YEAR 1 ──────────────────────────────────────────────────────────────────</span>\n' +
+    '<span class="k">Yr1_M1_Net</span>     = Direct from 12-month model → €'+y1NetM1+'K\n' +
+    '<span class="k">Yr1_CostEur</span>    = -(Σ monthly costs) / eurKur / 1000 → €'+y1GiderEur+'K\n\n' +
+    '<span class="c">── YEAR 2 ──────────────────────────────────────────────────────────────────</span>\n' +
+    '<span class="k">Yr2_GrossM1</span>    = LINEAR(Yr1=€'+y1BrutM1+'K → Yr3=€'+y3BrutGelir+'K, t=0.4)\n' +
+    '<span class="k">Yr2_CostEur</span>    = Yr1_Cost × 1.15 = €'+y2GiderEur+'K\n' +
+    '<span class="k">Yr2_M1_Net</span>     = MAX(0, Yr2_Gross − Yr2_Cost) → €'+y2NetM1+'K\n' +
+    '<span class="k">Yr2_SSI_Net</span>    = Yr3_SSI × 0.25 → €'+y2SgkNet+'K\n\n' +
+    '<span class="c">── YEAR 3 ──────────────────────────────────────────────────────────────────</span>\n' +
+    '<span class="k">Yr3_Target_Braces</span>= MarketIST × '+gv('hedefOsteoidPay')+'% = '+pazarIst.toLocaleString('tr-TR')+' × '+gv('hedefOsteoidPay')+'% = '+y5KorseAdet+' units\n' +
+    '<span class="k">UnitNetEur</span>      = Year-end average (last 3 months) = ₺'+sonBirimNet.toLocaleString('tr-TR')+'/brace\n' +
+    '<span class="k">Yr3_GrossRev</span>   = '+y5KorseAdet+' × ₺'+sonBirimNet.toLocaleString('tr-TR')+' / '+eurKur+' / 1000 = €'+y3BrutGelir+'K\n' +
+    '<span class="k">Yr3_CostEur</span>    = Yr1_Cost × 1.25 → €'+y3GiderEur+'K\n' +
+    '<span class="r">Yr3_M1_Net</span>     = MAX(0, Yr3_Gross − Yr3_Cost) → €'+y3NetM1+'K\n' +
+    '<span class="k">Yr3_SSI_Net</span>    = Yr3_M1_Net × 0.35 × 0.85 → €'+y3SgkNet+'K';
+
+  var fmt=function(v){return v>0?'€'+v+'K':'—';};
+  var trows=[
+    ['Brace — M1 (private channel)','Model Yr1; growth projection Yr2-3',y1NetM1,y2NetM1,y3NetM1],
+    ['Brace — M1 (SSI, Year 2+)','Yr3 × 0.35 × 0.85; Yr2 = Yr3 × 0.25',0,y2SgkNet,y3SgkNet],
+  ];
+  if(b2bRow[0]>0||b2bRow[1]>0) trows.push(['B2B — Istanbul','From Yr1 model; Yr2=×1.5; Yr3=×2.2',b2bRow[0],b2bRow[1],b2bRow[2]]);
+  if(V.izmirAktif) trows.push(['Brace — Izmir','getMerkezGelir × activeMonths/12; Yr3: pop. share × unitNet',0,izmirGelirY2,izmirY3Gelir]);
+  if(V.ankaraAktif) trows.push(['Brace — Ankara','getMerkezGelir × activeMonths/12; Yr3: pop. share × unitNet',0,ankaraGelirY2,ankaraY3Gelir]);
+  var totals=[
+    y1NetM1+b2bRow[0],
+    y2NetM1+y2SgkNet+b2bRow[1]+izmirGelirY2+ankaraGelirY2,
+    y3NetM1+y3SgkNet+b2bRow[2]+izmirY3Gelir+ankaraY3Gelir,
+  ];
+  document.getElementById('projTbody').innerHTML =
+    trows.map(function(a){return '<tr><td>'+a[0]+'</td><td class="formula">'+a[1]+'</td><td class="result">'+(a[2]?fmt(a[2]):'—')+'</td><td class="result">'+(a[3]?fmt(a[3]):'—')+'</td><td class="result">'+(a[4]?fmt(a[4]):'—')+'</td></tr>';}).join('') +
+    '<tr class="grp"><td>Consolidated Total</td><td class="formula">Σ all items</td><td class="result">€'+totals[0]+'K</td><td class="result">€'+totals[1]+'K</td><td class="result">€'+totals[2]+'K</td></tr>';
+}
+
+function renderMerkezler() {
+  var rows=window._lastRows||[];
+  var eurKur=V.eurKur||50;
+  var trigResult=calc4AyOrtalama(rows);
+  var _trigAy=trigResult.triggerAy;
+  var _acilisAy=_trigAy?Math.max(13,_trigAy+3):13;
+  var _aktifAy=Math.max(0,Math.min(12,25-_acilisAy));
+
+  document.getElementById('formulTetik').innerHTML =
+    '<span class="c">── 4-MONTH ROLLING AVERAGE TRIGGER ─────────────────────────────────────────</span>\n\n' +
+    '<span class="c">Monthly net cash flow (MonthlyNet) is used. Months 1-3 cannot be averaged.</span>\n\n' +
+    '<span class="k">MA[mo]</span>  = AVERAGE(MonthlyNet[mo-3], MonthlyNet[mo-2], MonthlyNet[mo-1], MonthlyNet[mo])\n\n' +
+    '<span class="k">TriggerMo</span>  = MIN{ mo ≥ 4 : MA[mo] ≥ 0 }\n' +
+    '<span class="k">OpeningMo</span>  = MAX(13, TriggerMo + 3)\n' +
+    '<span class="c">           3-month prep period; earliest Year 2 start (Month 13)</span>\n\n' +
+    '<span class="k">ActiveMoYr2</span> = MAX(0, MIN(12, 25 − OpeningMo))\n' +
+    '<span class="c">           Number of active operating months in Year 2 (Months 13-24)</span>';
+
+  document.getElementById('tetikDurumu').innerHTML = (_trigAy
+    ? '◎ Current model trigger: <strong>Month '+_trigAy+'</strong> &nbsp;→&nbsp; Opening: <strong>Year 2 Month '+(_acilisAy-12)+'</strong> (Month '+_acilisAy+') &nbsp;→&nbsp; <strong>'+_aktifAy+' months</strong> active in Year 2'
+    : '◎ Current model trigger not yet met — default opening: <strong>Year 2 Month 1</strong> → <strong>12 months</strong> active');
+
+  document.getElementById('formulMerkez').innerHTML =
+    '<span class="c">── NEW CENTER NET REVENUE CALCULATION (getMerkezGelir) ─────────────────────</span>\n\n' +
+    '<span class="k">Ramp</span>        = 12-month brace target array (draggable chart)\n\n' +
+    '<span class="k">TotalBraces</span> = Σ Ramp[0..11]\n\n' +
+    '<span class="k">UnitNetTRY</span>  = Year-end mix average: (last 3 mo net revenue) / (last 3 mo braces)\n\n' +
+    '<span class="k">GrossRev</span>    = TotalBraces × UnitNetTRY\n\n' +
+    '<span class="k">OpCosts</span>     = Σ [ monthly fixed costs + threshold-based staff + w.tax ]\n\n' +
+    '<span class="r">NetRevEurK</span>  = (GrossRev − OpCosts) / eurKur / 1000';
+
+  var sehirler=[{key:'izmir',name:'Izmir',color:'#1D9E75',aktif:V.izmirAktif},{key:'ankara',name:'Ankara',color:'#534AB7',aktif:V.ankaraAktif}];
+  var sonR=rows.slice(-3);
+  var sonK=sonR.reduce(function(s,r){return s+(r.korse||0);},0)||1;
+  var sonN=sonR.reduce(function(s,r){return s+(r.gelirNet||0);},0);
+  var birimNetTRY=Math.round(sonN/sonK);
+
+  document.getElementById('merkezTbody').innerHTML=sehirler.map(function(s){
+    if(!s.aktif) return '<tr><td style="color:'+s.color+';font-weight:700;">'+s.name+'</td><td colspan="6" style="color:#aaa;text-align:center;">Inactive — not selected</td></tr>';
+    var rampa=V[s.key+'Rampa']||[];
+    var topK=rampa.reduce(function(a,v){return a+v;},0);
+    var brutTRY=topK*birimNetTRY;
+    var netEurK=getMerkezGelir(s.key);
+    var isletme=brutTRY-netEurK*(V.eurKur||50)*1000;
+    return '<tr><td style="color:'+s.color+';font-weight:700;">'+s.name+'</td>' +
+      '<td style="text-align:right;">'+topK+' units</td>' +
+      '<td style="text-align:right;">₺'+birimNetTRY.toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;">₺'+Math.round(brutTRY).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;color:#D85A30;">₺'+Math.round(isletme).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;font-weight:700;color:#1D9E75;">₺'+Math.round(netEurK*(V.eurKur||50)*1000).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;font-weight:700;color:#1D9E75;">€'+netEurK+'K</td></tr>';
+  }).join('');
+
+  document.getElementById('merkezKurulumTbody').innerHTML=sehirler.map(function(s){
+    if(!s.aktif) return '<tr><td style="color:'+s.color+';font-weight:700;">'+s.name+'</td><td colspan="4" style="color:#aaa;text-align:center;">Inactive</td></tr>';
+    var useIst=V[s.key+'UseIstKurulum']!==false;
+    var oran=V[s.key+'KurulumOran']||1.0;
+    var top=getMerkezKurulum(s.key);
+    var eurK=Math.round(top/(V.eurKur||50)/1000);
+    var formula=useIst?'IST setup × '+oran.toFixed(2)+' (multiplier)':'Sum of custom line items';
+    return '<tr><td style="color:'+s.color+';font-weight:700;">'+s.name+'</td>' +
+      '<td>'+(useIst?'IST-based':'Custom')+'</td>' +
+      '<td class="formula">'+formula+'</td>' +
+      '<td style="text-align:right;font-weight:700;">₺'+Math.round(top).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;font-weight:700;color:#D85A30;">€'+eurK+'K</td></tr>';
+  }).join('');
+}
+
+// ── Inner tab switcher ────────────────────────────────────────────────────────
+function switchInnerTab(btn, tabId) {
+  ['tab-metodoloji','tab-saglamasayfasi'].forEach(function(id){
+    var el=document.getElementById(id); if(el) el.style.display='none';
+  });
+  var show=document.getElementById(tabId); if(show) show.style.display='';
+  document.querySelectorAll('.inner-tab').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  recalc();
+  if(tabId==='tab-saglamasayfasi'){
+    if(!window._lastRows||!window._lastRows.length) recalc();
+    renderParams(); renderUrunMarj(); renderFormulas();
+    renderMonthlyTable(); renderKurulum(); renderProjection(); renderMerkezler();
+  }
+}
+
+window.addEventListener('load', function() { recalc(); });
+</script>
+</body>
+</html>

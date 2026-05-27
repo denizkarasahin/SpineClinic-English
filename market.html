@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Osteoid — Market & Product Mix</title>
+<link rel="stylesheet" href="style.css">
+<script>window.PAGE_ID='pazar';</script>
+<style>
+.rakip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+@media (max-width: 700px) { .rakip-grid { grid-template-columns: 1fr; } }
+.rakip-card { background: #fff; border: 1px solid #e0ddd4; border-radius: 8px; padding: 16px; }
+.rakip-card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; }
+.rakip-name { font-size: 13px; font-weight: 900; color: #1a1a1a; }
+.rakip-city { font-size: 10px; font-weight: 700; color: #888; background: #f0efe9; padding: 2px 8px; border-radius: 3px; white-space: nowrap; }
+.rakip-desc { font-size: 11px; color: #555; line-height: 1.6; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #eeeee9; }
+.rakip-sliders { display: flex; flex-direction: column; gap: 8px; }
+.rakip-kpis { display: flex; gap: 8px; margin-top: 10px; }
+.rakip-kpi { flex: 1; background: #f9f8f4; border-radius: 5px; padding: 7px 10px; }
+.rakip-kpi .rkl { font-size: 10px; color: #888; margin-bottom: 2px; }
+.rakip-kpi .rkv { font-size: 13px; font-weight: 800; }
+.piyasa-ozet { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-bottom: 20px; }
+.chart-wrap { position: relative; width: 100%; height: 220px; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="page" style="padding-top:0">
+
+<div id="layout-header"></div>
+
+<!-- Inner Tabs -->
+<div class="inner-tabs">
+  <button class="inner-tab active" onclick="switchInnerTab(this,'tab-pazar')">Market &amp; Product Mix</button>
+  <button class="inner-tab" onclick="switchInnerTab(this,'tab-rekabet')">Competition &amp; Current Market</button>
+</div>
+
+<div id="tab-pazar" class="tab-pane">
+<div class="group-label">Market &amp; Product</div>
+
+<div class="section">
+  <div class="section-header" onclick="tog(this)"><h2>Market &amp; Product Mix</h2><span class="tog">▸</span></div>
+  <div class="section-body">
+
+    <!-- Pazar büyüklüğü -->
+    <div style="margin-bottom:18px;">
+      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:4px;">Market Size</div>
+      <div style="font-size:11px;color:#888;margin-bottom:10px;">Adolescent Idiopathic Scoliosis (AIS)</div>
+
+      <div class="sl-grid">
+        <div class="sl-row">
+          <label>Turkey annual braces (units) <span style="font-size:10px;font-weight:600;color:#378ADD;background:#EDF4FF;padding:1px 6px;border-radius:3px;margin-left:4px;">B2B market</span></label>
+          <div class="sl-controls">
+            <input type="range" id="s_pazarTR" min="10000" max="60000" step="1000" value="25000" oninput="sv('pazarTR',this.value)">
+            <span class="sl-val" id="pazarTR" contenteditable="true" onblur="sv2('pazarTR','s_pazarTR',this)">30.000</span>
+          </div>
+          <span class="sl-note">Source: Ministry of Health data · B2B addressable market size</span>
+        </div>
+        <div class="sl-row">
+          <label>Istanbul share (%) <span style="font-size:10px;font-weight:600;color:#534AB7;background:#F0EEFF;padding:1px 6px;border-radius:3px;margin-left:4px;">Clinic market</span></label>
+          <div class="sl-controls">
+            <input type="range" id="s_pazarIstPct" min="10" max="35" step="0.1" value="21.4" oninput="sv('pazarIstPct',this.value)">
+            <span class="sl-val" id="pazarIstPct" contenteditable="true" onblur="sv2('pazarIstPct','s_pazarIstPct',this)">21,4</span>
+          </div>
+          <span class="sl-note">Population + surroundings (TurkStat) · Addressable: <b id="pazarIstAdet">6.420</b> units/year</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Klinik pazar KPI'ları -->
+    <div class="kpi-grid" id="pazarKpi" style="margin-bottom:18px;"><div class="kpi"><div class="kpi-label">Turkey market (year)</div><div class="kpi-val neu">30.000 units</div></div><div class="kpi"><div class="kpi-label">Istanbul market (year)</div><div class="kpi-val neu">6.420 units</div></div><div class="kpi"><div class="kpi-label">Year 1 braces (total)</div><div class="kpi-val neu">325 units</div></div><div class="kpi"><div class="kpi-label">TR market share</div><div class="kpi-val pos">1.08%</div></div><div class="kpi"><div class="kpi-label">Istanbul market share</div><div class="kpi-val pos">5.06%</div></div><div class="kpi"><div class="kpi-label">Break-even market share (IST)</div><div class="kpi-val neg">0.26%</div></div></div>
+
+    <hr class="divider">
+
+    <!-- Ürün fiyat & maliyet -->
+    <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">Product Price &amp; Cost</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:12px;">
+      <div style="background:#fafaf8;border:1.5px solid #88878044;border-top:3px solid #888780;border-radius:6px;padding:14px 12px;min-width:0;">
+        <div style="font-size:11px;font-weight:700;color:#888780;margin-bottom:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Standard — No Report</div>
+        <div style="margin-bottom:8px;">
+          <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Active Month</label>
+          <select id="aktifAy_0" onchange="updAktifAy(0,this.value)" style="width:100%;font-size:12px;padding:4px 6px;border:1px solid #d0d0cc;border-radius:4px;background:#fff;color:#333;"><option value="0" selected="">Month 1+</option><option value="1">Month 2+</option><option value="2">Month 3+</option><option value="3">Month 4+</option><option value="4">Month 5+</option><option value="5">Month 6+</option><option value="6">Month 7+</option><option value="7">Month 8+</option><option value="8">Month 9+</option><option value="9">Month 10+</option><option value="10">Month 11+</option><option value="11">Month 12+</option></select>
+        </div>
+        <div style="margin-bottom:8px;">
+          <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Clinic price (₺)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_korseF_stdR" min="20000" max="60000" step="500" value="25000" style="flex:1;accent-color:#888780;" oninput="sv('korseF_stdR',this.value)">
+            <span class="sl-val" id="korseF_stdR" contenteditable="true" onblur="sv2('korseF_stdR','s_korseF_stdR',this)" style="min-width:60px;font-size:12px;">25.000</span>
+          </div>
+        </div>
+        <div style="margin-bottom:8px;">
+          <label style="font-size:10px;color:#888780;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">B2B price (₺)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_korseFB2B_stdR" min="5000" max="40000" step="500" value="15000" style="flex:1;accent-color:#888780;" oninput="sv('korseFB2B_stdR',this.value)">
+            <span class="sl-val" id="korseFB2B_stdR" contenteditable="true" onblur="sv2('korseFB2B_stdR','s_korseFB2B_stdR',this)" style="min-width:60px;font-size:12px;color:#888780;">15.000</span>
+          </div>
+        </div>
+        <div>
+          <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Cost (₺)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_mal_stdR" min="0" max="5000" step="25" value="250" style="flex:1;accent-color:#888780;" oninput="sv('mal_stdR',this.value)">
+            <span class="sl-val" id="mal_stdR" contenteditable="true" onblur="sv2('mal_stdR','s_mal_stdR',this)" style="min-width:60px;font-size:12px;">250</span>
+          </div>
+        </div>
+        <div style="margin-top:8px;">
+          <label style="font-size:10px;color:#888780;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Doctor Fee (%)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_danis_stdR" min="0" max="50" step="1" value="10" style="flex:1;accent-color:#888780;" oninput="sv('danis_stdR',this.value)">
+            <span class="sl-val" id="danis_stdR" contenteditable="true" onblur="sv2('danis_stdR','s_danis_stdR',this)" style="min-width:60px;font-size:12px;color:#888780;">10</span>
+          </div>
+          <div style="font-size:11px;color:#888780;font-weight:600;margin-top:3px;">
+            = <span id="danisТL_stdR">2.500</span> ₺
+          </div>
+        </div>
+        <div style="margin-top:8px;">
+          <label style="font-size:10px;color:#888780;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Channel Fee (%)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_bakim_stdR" min="0" max="50" step="1" value="0" style="flex:1;accent-color:#888780;" oninput="svKanalBakim(this.value)">
+            <span class="sl-val" id="bakim_stdR" contenteditable="true" onblur="var raw=(this.textContent||'').replace(/\./g,'').replace(',','.');var v=parseFloat(raw);if(!isNaN(v))svKanalBakim(v);else this.textContent=V.kanalBakim||0;" style="min-width:60px;font-size:12px;color:#888780;">0</span>
+          </div>
+          <div style="font-size:11px;color:#888780;font-weight:600;margin-top:3px;">
+            = <span id="bakimТL_stdR">0</span> ₺
+          </div>
+        </div>
+        <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(136,135,128,0.2);">
+          <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:4px;">Net Revenue / Brace</label>
+          <div style="display:flex;gap:14px;">
+            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">Clinic</div><div style="font-size:13px;font-weight:700;color:#888780;"><span id="ciroTL_stdR">—</span> ₺</div></div>
+            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">B2B</div><div style="font-size:13px;font-weight:700;color:#888780;"><span id="ciroB2BTL_stdR">—</span> ₺</div></div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#fafaf8;border:1.5px solid #D85A3044;border-top:3px solid #D85A30;border-radius:6px;padding:14px 12px;min-width:0;">
+        <div style="font-size:11px;font-weight:700;color:#D85A30;margin-bottom:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Standard — Reported</div>
+        <div style="margin-bottom:8px;">
+          <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Active Month</label>
+          <select id="aktifAy_1" onchange="updAktifAy(1,this.value)" style="width:100%;font-size:12px;padding:4px 6px;border:1px solid #d0d0cc;border-radius:4px;background:#fff;color:#333;"><option value="0" selected="">Month 1+</option><option value="1">Month 2+</option><option value="2">Month 3+</option><option value="3">Month 4+</option><option value="4">Month 5+</option><option value="5">Month 6+</option><option value="6">Month 7+</option><option value="7">Month 8+</option><option value="8">Month 9+</option><option value="9">Month 10+</option><option value="10">Month 11+</option><option value="11">Month 12+</option></select>
+        </div>
+        <div style="margin-bottom:8px;">
+          <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Clinic price (₺)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_korseF_stdRl" min="20000" max="60000" step="500" value="30000" style="flex:1;accent-color:#D85A30;" oninput="sv('korseF_stdRl',this.value)">
+            <span class="sl-val" id="korseF_stdRl" contenteditable="true" onblur="sv2('korseF_stdRl','s_korseF_stdRl',this)" style="min-width:60px;font-size:12px;">30.000</span>
+          </div>
+        </div>
+        <div style="margin-bottom:8px;">
+          <label style="font-size:10px;color:#D85A30;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">B2B price (₺)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_korseFB2B_stdRl" min="5000" max="40000" step="500" value="18000" style="flex:1;accent-color:#D85A30;" oninput="sv('korseFB2B_stdRl',this.value)">
+            <span class="sl-val" id="korseFB2B_stdRl" contenteditable="true" onblur="sv2('korseFB2B_stdRl','s_korseFB2B_stdRl',this)" style="min-width:60px;font-size:12px;color:#D85A30;">18.000</span>
+          </div>
+        </div>
+        <div>
+          <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Cost (₺)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_mal_stdRl" min="0" max="5000" step="25" value="300" style="flex:1;accent-color:#D85A30;" oninput="sv('mal_stdRl',this.value)">
+            <span class="sl-val" id="mal_stdRl" contenteditable="true" onblur="sv2('mal_stdRl','s_mal_stdRl',this)" style="min-width:60px;font-size:12px;">300</span>
+          </div>
+        </div>
+        <div style="margin-top:8px;">
+          <label style="font-size:10px;color:#D85A30;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Doctor Fee (%)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_danis_stdRl" min="0" max="50" step="1" value="15" style="flex:1;accent-color:#D85A30;" oninput="sv('danis_stdRl',this.value)">
+            <span class="sl-val" id="danis_stdRl" contenteditable="true" onblur="sv2('danis_stdRl','s_danis_stdRl',this)" style="min-width:60px;font-size:12px;color:#D85A30;">15</span>
+          </div>
+          <div style="font-size:11px;color:#D85A30;font-weight:600;margin-top:3px;">
+            = <span id="danisТL_stdRl">4.500</span> ₺
+          </div>
+        </div>
+        <div style="margin-top:8px;">
+          <label style="font-size:10px;color:#D85A30;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Channel Fee (%)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_bakim_stdRl" min="0" max="50" step="1" value="0" style="flex:1;accent-color:#D85A30;" oninput="svKanalBakim(this.value)">
+            <span class="sl-val" id="bakim_stdRl" contenteditable="true" onblur="var raw=(this.textContent||'').replace(/\./g,'').replace(',','.');var v=parseFloat(raw);if(!isNaN(v))svKanalBakim(v);else this.textContent=V.kanalBakim||0;" style="min-width:60px;font-size:12px;color:#D85A30;">0</span>
+          </div>
+          <div style="font-size:11px;color:#D85A30;font-weight:600;margin-top:3px;">
+            = <span id="bakimТL_stdRl">0</span> ₺
+          </div>
+        </div>
+        <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(216,90,48,0.2);">
+          <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:4px;">Net Revenue / Brace</label>
+          <div style="display:flex;gap:14px;">
+            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">Clinic</div><div style="font-size:13px;font-weight:700;color:#D85A30;"><span id="ciroTL_stdRl">—</span> ₺</div></div>
+            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">B2B</div><div style="font-size:13px;font-weight:700;color:#D85A30;"><span id="ciroB2BTL_stdRl">—</span> ₺</div></div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#fafaf8;border:1.5px solid #534AB744;border-top:3px solid #534AB7;border-radius:6px;padding:14px 12px;min-width:0;">
+        <div style="font-size:11px;font-weight:700;color:#534AB7;margin-bottom:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Sensor + Reported</div>
+        <div style="margin-bottom:8px;">
+          <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Active Month</label>
+          <select id="aktifAy_3" onchange="updAktifAy(3,this.value)" style="width:100%;font-size:12px;padding:4px 6px;border:1px solid #d0d0cc;border-radius:4px;background:#fff;color:#333;"><option value="0">Month 1+</option><option value="1">Month 2+</option><option value="2" selected="">Month 3+</option><option value="3">Month 4+</option><option value="4">Month 5+</option><option value="5">Month 6+</option><option value="6">Month 7+</option><option value="7">Month 8+</option><option value="8">Month 9+</option><option value="9">Month 10+</option><option value="10">Month 11+</option><option value="11">Month 12+</option></select>
+        </div>
+        <div style="margin-bottom:8px;">
+          <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Clinic price (₺)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_korseF_sens" min="20000" max="80000" step="500" value="40000" style="flex:1;accent-color:#534AB7;" oninput="sv('korseF_sens',this.value)">
+            <span class="sl-val" id="korseF_sens" contenteditable="true" onblur="sv2('korseF_sens','s_korseF_sens',this)" style="min-width:60px;font-size:12px;">40.000</span>
+          </div>
+        </div>
+        <div style="margin-bottom:8px;">
+          <label style="font-size:10px;color:#534AB7;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">B2B price (₺)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_korseFB2B_sens" min="5000" max="50000" step="500" value="25000" style="flex:1;accent-color:#534AB7;" oninput="sv('korseFB2B_sens',this.value)">
+            <span class="sl-val" id="korseFB2B_sens" contenteditable="true" onblur="sv2('korseFB2B_sens','s_korseFB2B_sens',this)" style="min-width:60px;font-size:12px;color:#534AB7;">25.000</span>
+          </div>
+        </div>
+        <div>
+          <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Cost (₺)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_mal_sens" min="0" max="5000" step="25" value="400" style="flex:1;accent-color:#534AB7;" oninput="sv('mal_sens',this.value)">
+            <span class="sl-val" id="mal_sens" contenteditable="true" onblur="sv2('mal_sens','s_mal_sens',this)" style="min-width:60px;font-size:12px;">400</span>
+          </div>
+        </div>
+        <div style="margin-top:8px;">
+          <label style="font-size:10px;color:#534AB7;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Doctor Fee (%)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_danis_sens" min="0" max="50" step="1" value="30" style="flex:1;accent-color:#534AB7;" oninput="sv('danis_sens',this.value)">
+            <span class="sl-val" id="danis_sens" contenteditable="true" onblur="sv2('danis_sens','s_danis_sens',this)" style="min-width:60px;font-size:12px;color:#534AB7;">30</span>
+          </div>
+          <div style="font-size:11px;color:#534AB7;font-weight:600;margin-top:3px;">
+            = <span id="danisТL_sens">15.000</span> ₺
+          </div>
+        </div>
+        <div style="margin-top:8px;">
+          <label style="font-size:10px;color:#534AB7;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Channel Fee (%)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_bakim_sens" min="0" max="50" step="1" value="0" style="flex:1;accent-color:#534AB7;" oninput="svKanalBakim(this.value)">
+            <span class="sl-val" id="bakim_sens" contenteditable="true" onblur="var raw=(this.textContent||'').replace(/\./g,'').replace(',','.');var v=parseFloat(raw);if(!isNaN(v))svKanalBakim(v);else this.textContent=V.kanalBakim||0;" style="min-width:60px;font-size:12px;color:#534AB7;">0</span>
+          </div>
+          <div style="font-size:11px;color:#534AB7;font-weight:600;margin-top:3px;">
+            = <span id="bakimТL_sens">0</span> ₺
+          </div>
+        </div>
+        <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(83,74,183,0.2);">
+          <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:4px;">Net Revenue / Brace</label>
+          <div style="display:flex;gap:14px;">
+            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">Clinic</div><div style="font-size:13px;font-weight:700;color:#534AB7;"><span id="ciroTL_sens">—</span> ₺</div></div>
+            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">B2B</div><div style="font-size:13px;font-weight:700;color:#534AB7;"><span id="ciroB2BTL_sens">—</span> ₺</div></div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#fafaf8;border:1.5px solid #1D9E7544;border-top:3px solid #1D9E75;border-radius:6px;padding:14px 12px;min-width:0;">
+        <div style="font-size:11px;font-weight:700;color:#1D9E75;margin-bottom:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Perforated + Reported</div>
+        <div style="margin-bottom:8px;">
+          <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Active Month</label>
+          <select id="aktifAy_2" onchange="updAktifAy(2,this.value)" style="width:100%;font-size:12px;padding:4px 6px;border:1px solid #d0d0cc;border-radius:4px;background:#fff;color:#333;"><option value="0">Month 1+</option><option value="1">Month 2+</option><option value="2">Month 3+</option><option value="3">Month 4+</option><option value="4">Month 5+</option><option value="5">Month 6+</option><option value="6" selected="">Month 7+</option><option value="7">Month 8+</option><option value="8">Month 9+</option><option value="9">Month 10+</option><option value="10">Month 11+</option><option value="11">Month 12+</option></select>
+        </div>
+        <div style="margin-bottom:8px;">
+          <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Clinic price (₺)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_korseF_delik" min="20000" max="60000" step="500" value="50000" style="flex:1;accent-color:#1D9E75;" oninput="sv('korseF_delik',this.value)">
+            <span class="sl-val" id="korseF_delik" contenteditable="true" onblur="sv2('korseF_delik','s_korseF_delik',this)" style="min-width:60px;font-size:12px;">50.000</span>
+          </div>
+        </div>
+        <div style="margin-bottom:8px;">
+          <label style="font-size:10px;color:#1D9E75;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">B2B price (₺)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_korseFB2B_delik" min="5000" max="50000" step="500" value="22000" style="flex:1;accent-color:#1D9E75;" oninput="sv('korseFB2B_delik',this.value)">
+            <span class="sl-val" id="korseFB2B_delik" contenteditable="true" onblur="sv2('korseFB2B_delik','s_korseFB2B_delik',this)" style="min-width:60px;font-size:12px;color:#1D9E75;">22.000</span>
+          </div>
+        </div>
+        <div>
+          <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Cost (₺)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_mal_delik" min="0" max="5000" step="25" value="1000" style="flex:1;accent-color:#1D9E75;" oninput="sv('mal_delik',this.value)">
+            <span class="sl-val" id="mal_delik" contenteditable="true" onblur="sv2('mal_delik','s_mal_delik',this)" style="min-width:60px;font-size:12px;">1.000</span>
+          </div>
+        </div>
+        <div style="margin-top:8px;">
+          <label style="font-size:10px;color:#1D9E75;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Doctor Fee (%)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_danis_delik" min="0" max="50" step="1" value="30" style="flex:1;accent-color:#1D9E75;" oninput="sv('danis_delik',this.value)">
+            <span class="sl-val" id="danis_delik" contenteditable="true" onblur="sv2('danis_delik','s_danis_delik',this)" style="min-width:60px;font-size:12px;color:#1D9E75;">30</span>
+          </div>
+          <div style="font-size:11px;color:#1D9E75;font-weight:600;margin-top:3px;">
+            = <span id="danisТL_delik">12.000</span> ₺
+          </div>
+        </div>
+        <div style="margin-top:8px;">
+          <label style="font-size:10px;color:#1D9E75;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Channel Fee (%)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_bakim_delik" min="0" max="50" step="1" value="0" style="flex:1;accent-color:#1D9E75;" oninput="svKanalBakim(this.value)">
+            <span class="sl-val" id="bakim_delik" contenteditable="true" onblur="var raw=(this.textContent||'').replace(/\./g,'').replace(',','.');var v=parseFloat(raw);if(!isNaN(v))svKanalBakim(v);else this.textContent=V.kanalBakim||0;" style="min-width:60px;font-size:12px;color:#1D9E75;">0</span>
+          </div>
+          <div style="font-size:11px;color:#1D9E75;font-weight:600;margin-top:3px;">
+            = <span id="bakimТL_delik">0</span> ₺
+          </div>
+        </div>
+        <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(29,158,117,0.2);">
+          <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:4px;">Net Revenue / Brace</label>
+          <div style="display:flex;gap:14px;">
+            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">Clinic</div><div style="font-size:13px;font-weight:700;color:#1D9E75;"><span id="ciroTL_delik">—</span> ₺</div></div>
+            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">B2B</div><div style="font-size:13px;font-weight:700;color:#1D9E75;"><span id="ciroB2BTL_delik">—</span> ₺</div></div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#fafaf8;border:1.5px solid #D4537E44;border-top:3px solid #D4537E;border-radius:6px;padding:14px 12px;min-width:0;">
+        <div style="font-size:11px;font-weight:700;color:#D4537E;margin-bottom:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Sensor + Reported + Perforated</div>
+        <div style="margin-bottom:8px;">
+          <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Active Month</label>
+          <select id="aktifAy_4" onchange="updAktifAy(4,this.value)" style="width:100%;font-size:12px;padding:4px 6px;border:1px solid #d0d0cc;border-radius:4px;background:#fff;color:#333;"><option value="0">Month 1+</option><option value="1">Month 2+</option><option value="2">Month 3+</option><option value="3">Month 4+</option><option value="4">Month 5+</option><option value="5">Month 6+</option><option value="6" selected="">Month 7+</option><option value="7">Month 8+</option><option value="8">Month 9+</option><option value="9">Month 10+</option><option value="10">Month 11+</option><option value="11">Month 12+</option></select>
+        </div>
+        <div style="margin-bottom:8px;">
+          <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Clinic price (₺)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_korseF_sensDelik" min="20000" max="80000" step="500" value="65000" style="flex:1;accent-color:#D4537E;" oninput="sv('korseF_sensDelik',this.value)">
+            <span class="sl-val" id="korseF_sensDelik" contenteditable="true" onblur="sv2('korseF_sensDelik','s_korseF_sensDelik',this)" style="min-width:60px;font-size:12px;">65.000</span>
+          </div>
+        </div>
+        <div style="margin-bottom:8px;">
+          <label style="font-size:10px;color:#D4537E;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">B2B price (₺)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_korseFB2B_sensDelik" min="5000" max="60000" step="500" value="35000" style="flex:1;accent-color:#D4537E;" oninput="sv('korseFB2B_sensDelik',this.value)">
+            <span class="sl-val" id="korseFB2B_sensDelik" contenteditable="true" onblur="sv2('korseFB2B_sensDelik','s_korseFB2B_sensDelik',this)" style="min-width:60px;font-size:12px;color:#D4537E;">35.000</span>
+          </div>
+        </div>
+        <div>
+          <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Cost (₺)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_mal_sensDelik" min="0" max="5000" step="25" value="1250" style="flex:1;accent-color:#D4537E;" oninput="sv('mal_sensDelik',this.value)">
+            <span class="sl-val" id="mal_sensDelik" contenteditable="true" onblur="sv2('mal_sensDelik','s_mal_sensDelik',this)" style="min-width:60px;font-size:12px;">1.250</span>
+          </div>
+        </div>
+        <div style="margin-top:8px;">
+          <label style="font-size:10px;color:#D4537E;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Doctor Fee (%)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_danis_sensDelik" min="0" max="50" step="1" value="30" style="flex:1;accent-color:#D4537E;" oninput="sv('danis_sensDelik',this.value)">
+            <span class="sl-val" id="danis_sensDelik" contenteditable="true" onblur="sv2('danis_sensDelik','s_danis_sensDelik',this)" style="min-width:60px;font-size:12px;color:#D4537E;">30</span>
+          </div>
+          <div style="font-size:11px;color:#D4537E;font-weight:600;margin-top:3px;">
+            = <span id="danisТL_sensDelik">19.500</span> ₺
+          </div>
+        </div>
+        <div style="margin-top:8px;">
+          <label style="font-size:10px;color:#D4537E;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Channel Fee (%)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_bakim_sensDelik" min="0" max="50" step="1" value="0" style="flex:1;accent-color:#D4537E;" oninput="svKanalBakim(this.value)">
+            <span class="sl-val" id="bakim_sensDelik" contenteditable="true" onblur="var raw=(this.textContent||'').replace(/\./g,'').replace(',','.');var v=parseFloat(raw);if(!isNaN(v))svKanalBakim(v);else this.textContent=V.kanalBakim||0;" style="min-width:60px;font-size:12px;color:#D4537E;">0</span>
+          </div>
+          <div style="font-size:11px;color:#D4537E;font-weight:600;margin-top:3px;">
+            = <span id="bakimТL_sensDelik">0</span> ₺
+          </div>
+        </div>
+        <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(212,83,126,0.2);">
+          <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:4px;">Net Revenue / Brace</label>
+          <div style="display:flex;gap:14px;">
+            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">Clinic</div><div style="font-size:13px;font-weight:700;color:#D4537E;"><span id="ciroTL_sensDelik">—</span> ₺</div></div>
+            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">B2B</div><div style="font-size:13px;font-weight:700;color:#D4537E;"><span id="ciroB2BTL_sensDelik">—</span> ₺</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+    <!-- Mix slider grid -->
+    <div style="font-size:11px;font-weight:700;color:#534AB7;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Clinic Mix (%) — All Months</div>
+<div id="mixTableWrap"><div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:12px;"><thead><tr><th style="text-align:left;padding:6px 8px;background:#f0efe9;border:1px solid #e0e0dc;font-size:11px;white-space:nowrap;">Month</th><th style="text-align:center;padding:6px 8px;background:#f0efe9;border:1px solid #e0e0dc;font-size:11px;color:#888780;">Std-NR</th><th style="text-align:center;padding:6px 8px;background:#f0efe9;border:1px solid #e0e0dc;font-size:11px;color:#D85A30;">Std-Rep.</th><th style="text-align:center;padding:6px 8px;background:#f0efe9;border:1px solid #e0e0dc;font-size:11px;color:#534AB7;">Sens+Rep.</th><th style="text-align:center;padding:6px 8px;background:#f0efe9;border:1px solid #e0e0dc;font-size:11px;color:#1D9E75;">Perf+Rep.</th><th style="text-align:center;padding:6px 8px;background:#f0efe9;border:1px solid #e0e0dc;font-size:11px;color:#D4537E;">Sns+Rep+Prf</th><th style="text-align:center;padding:6px 8px;background:#f0efe9;border:1px solid #e0e0dc;font-size:11px;">Total</th></tr></thead><tbody><tr><td style="padding:6px 8px;border:1px solid #eeeee9;font-weight:600;color:#555;white-space:nowrap;">Month 1</td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#888780;" min="0" max="100" step="1" value="50" oninput="updMix(0,0,this.value)"><span id="mx_0_0" style="min-width:28px;font-weight:700;color:#888780;font-size:11px;">50%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#D85A30;" min="0" max="100" step="1" value="50" oninput="updMix(0,1,this.value)"><span id="mx_0_1" style="min-width:28px;font-weight:700;color:#D85A30;font-size:11px;">50%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#f8f8f6;"><div style="text-align:center;font-size:11px;color:#ccc;" id="mx_0_2">—</div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#f8f8f6;"><div style="text-align:center;font-size:11px;color:#ccc;" id="mx_0_3">—</div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#f8f8f6;"><div style="text-align:center;font-size:11px;color:#ccc;" id="mx_0_4">—</div></td><td id="mxtot_0" style="padding:6px 8px;border:1px solid #eeeee9;text-align:center;font-weight:700;font-size:11px;">100%</td></tr><tr><td style="padding:6px 8px;border:1px solid #eeeee9;font-weight:600;color:#555;white-space:nowrap;">Month 2</td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#888780;" min="0" max="100" step="1" value="50" oninput="updMix(1,0,this.value)"><span id="mx_1_0" style="min-width:28px;font-weight:700;color:#888780;font-size:11px;">50%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#D85A30;" min="0" max="100" step="1" value="50" oninput="updMix(1,1,this.value)"><span id="mx_1_1" style="min-width:28px;font-weight:700;color:#D85A30;font-size:11px;">50%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#f8f8f6;"><div style="text-align:center;font-size:11px;color:#ccc;" id="mx_1_2">—</div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#f8f8f6;"><div style="text-align:center;font-size:11px;color:#ccc;" id="mx_1_3">—</div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#f8f8f6;"><div style="text-align:center;font-size:11px;color:#ccc;" id="mx_1_4">—</div></td><td id="mxtot_1" style="padding:6px 8px;border:1px solid #eeeee9;text-align:center;font-weight:700;font-size:11px;">100%</td></tr><tr><td style="padding:6px 8px;border:1px solid #eeeee9;font-weight:600;color:#555;white-space:nowrap;">Month 3</td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#888780;" min="0" max="100" step="1" value="40" oninput="updMix(2,0,this.value)"><span id="mx_2_0" style="min-width:28px;font-weight:700;color:#888780;font-size:11px;">40%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#D85A30;" min="0" max="100" step="1" value="40" oninput="updMix(2,1,this.value)"><span id="mx_2_1" style="min-width:28px;font-weight:700;color:#D85A30;font-size:11px;">40%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#534AB7;" min="0" max="100" step="1" value="20" oninput="updMix(2,2,this.value)"><span id="mx_2_2" style="min-width:28px;font-weight:700;color:#534AB7;font-size:11px;">20%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#f8f8f6;"><div style="text-align:center;font-size:11px;color:#ccc;" id="mx_2_3">—</div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#f8f8f6;"><div style="text-align:center;font-size:11px;color:#ccc;" id="mx_2_4">—</div></td><td id="mxtot_2" style="padding:6px 8px;border:1px solid #eeeee9;text-align:center;font-weight:700;font-size:11px;">100%</td></tr><tr><td style="padding:6px 8px;border:1px solid #eeeee9;font-weight:600;color:#555;white-space:nowrap;">Month 4</td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#888780;" min="0" max="100" step="1" value="40" oninput="updMix(3,0,this.value)"><span id="mx_3_0" style="min-width:28px;font-weight:700;color:#888780;font-size:11px;">40%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#D85A30;" min="0" max="100" step="1" value="40" oninput="updMix(3,1,this.value)"><span id="mx_3_1" style="min-width:28px;font-weight:700;color:#D85A30;font-size:11px;">40%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#534AB7;" min="0" max="100" step="1" value="20" oninput="updMix(3,2,this.value)"><span id="mx_3_2" style="min-width:28px;font-weight:700;color:#534AB7;font-size:11px;">20%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#f8f8f6;"><div style="text-align:center;font-size:11px;color:#ccc;" id="mx_3_3">—</div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#f8f8f6;"><div style="text-align:center;font-size:11px;color:#ccc;" id="mx_3_4">—</div></td><td id="mxtot_3" style="padding:6px 8px;border:1px solid #eeeee9;text-align:center;font-weight:700;font-size:11px;">100%</td></tr><tr><td style="padding:6px 8px;border:1px solid #eeeee9;font-weight:600;color:#555;white-space:nowrap;">Month 5</td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#888780;" min="0" max="100" step="1" value="40" oninput="updMix(4,0,this.value)"><span id="mx_4_0" style="min-width:28px;font-weight:700;color:#888780;font-size:11px;">40%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#D85A30;" min="0" max="100" step="1" value="40" oninput="updMix(4,1,this.value)"><span id="mx_4_1" style="min-width:28px;font-weight:700;color:#D85A30;font-size:11px;">40%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#534AB7;" min="0" max="100" step="1" value="20" oninput="updMix(4,2,this.value)"><span id="mx_4_2" style="min-width:28px;font-weight:700;color:#534AB7;font-size:11px;">20%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#f8f8f6;"><div style="text-align:center;font-size:11px;color:#ccc;" id="mx_4_3">—</div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#f8f8f6;"><div style="text-align:center;font-size:11px;color:#ccc;" id="mx_4_4">—</div></td><td id="mxtot_4" style="padding:6px 8px;border:1px solid #eeeee9;text-align:center;font-weight:700;font-size:11px;">100%</td></tr><tr><td style="padding:6px 8px;border:1px solid #eeeee9;font-weight:600;color:#555;white-space:nowrap;">Month 6</td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#888780;" min="0" max="100" step="1" value="40" oninput="updMix(5,0,this.value)"><span id="mx_5_0" style="min-width:28px;font-weight:700;color:#888780;font-size:11px;">40%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#D85A30;" min="0" max="100" step="1" value="40" oninput="updMix(5,1,this.value)"><span id="mx_5_1" style="min-width:28px;font-weight:700;color:#D85A30;font-size:11px;">40%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#534AB7;" min="0" max="100" step="1" value="20" oninput="updMix(5,2,this.value)"><span id="mx_5_2" style="min-width:28px;font-weight:700;color:#534AB7;font-size:11px;">20%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#f8f8f6;"><div style="text-align:center;font-size:11px;color:#ccc;" id="mx_5_3">—</div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#f8f8f6;"><div style="text-align:center;font-size:11px;color:#ccc;" id="mx_5_4">—</div></td><td id="mxtot_5" style="padding:6px 8px;border:1px solid #eeeee9;text-align:center;font-weight:700;font-size:11px;">100%</td></tr><tr><td style="padding:6px 8px;border:1px solid #eeeee9;font-weight:600;color:#555;white-space:nowrap;">Month 7</td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#888780;" min="0" max="100" step="1" value="50" oninput="updMix(6,0,this.value)"><span id="mx_6_0" style="min-width:28px;font-weight:700;color:#888780;font-size:11px;">50%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#D85A30;" min="0" max="100" step="1" value="10" oninput="updMix(6,1,this.value)"><span id="mx_6_1" style="min-width:28px;font-weight:700;color:#D85A30;font-size:11px;">10%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#534AB7;" min="0" max="100" step="1" value="15" oninput="updMix(6,2,this.value)"><span id="mx_6_2" style="min-width:28px;font-weight:700;color:#534AB7;font-size:11px;">15%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#1D9E75;" min="0" max="100" step="1" value="15" oninput="updMix(6,3,this.value)"><span id="mx_6_3" style="min-width:28px;font-weight:700;color:#1D9E75;font-size:11px;">15%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#D4537E;" min="0" max="100" step="1" value="10" oninput="updMix(6,4,this.value)"><span id="mx_6_4" style="min-width:28px;font-weight:700;color:#D4537E;font-size:11px;">10%</span></div></td><td id="mxtot_6" style="padding:6px 8px;border:1px solid #eeeee9;text-align:center;font-weight:700;font-size:11px;">100%</td></tr><tr><td style="padding:6px 8px;border:1px solid #eeeee9;font-weight:600;color:#555;white-space:nowrap;">Month 8</td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#888780;" min="0" max="100" step="1" value="48" oninput="updMix(7,0,this.value)"><span id="mx_7_0" style="min-width:28px;font-weight:700;color:#888780;font-size:11px;">48%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#D85A30;" min="0" max="100" step="1" value="10" oninput="updMix(7,1,this.value)"><span id="mx_7_1" style="min-width:28px;font-weight:700;color:#D85A30;font-size:11px;">10%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#534AB7;" min="0" max="100" step="1" value="17" oninput="updMix(7,2,this.value)"><span id="mx_7_2" style="min-width:28px;font-weight:700;color:#534AB7;font-size:11px;">17%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#1D9E75;" min="0" max="100" step="1" value="15" oninput="updMix(7,3,this.value)"><span id="mx_7_3" style="min-width:28px;font-weight:700;color:#1D9E75;font-size:11px;">15%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#D4537E;" min="0" max="100" step="1" value="10" oninput="updMix(7,4,this.value)"><span id="mx_7_4" style="min-width:28px;font-weight:700;color:#D4537E;font-size:11px;">10%</span></div></td><td id="mxtot_7" style="padding:6px 8px;border:1px solid #eeeee9;text-align:center;font-weight:700;font-size:11px;">100%</td></tr><tr><td style="padding:6px 8px;border:1px solid #eeeee9;font-weight:600;color:#555;white-space:nowrap;">Month 9</td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#888780;" min="0" max="100" step="1" value="45" oninput="updMix(8,0,this.value)"><span id="mx_8_0" style="min-width:28px;font-weight:700;color:#888780;font-size:11px;">45%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#D85A30;" min="0" max="100" step="1" value="10" oninput="updMix(8,1,this.value)"><span id="mx_8_1" style="min-width:28px;font-weight:700;color:#D85A30;font-size:11px;">10%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#534AB7;" min="0" max="100" step="1" value="18" oninput="updMix(8,2,this.value)"><span id="mx_8_2" style="min-width:28px;font-weight:700;color:#534AB7;font-size:11px;">18%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#1D9E75;" min="0" max="100" step="1" value="16" oninput="updMix(8,3,this.value)"><span id="mx_8_3" style="min-width:28px;font-weight:700;color:#1D9E75;font-size:11px;">16%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#D4537E;" min="0" max="100" step="1" value="11" oninput="updMix(8,4,this.value)"><span id="mx_8_4" style="min-width:28px;font-weight:700;color:#D4537E;font-size:11px;">11%</span></div></td><td id="mxtot_8" style="padding:6px 8px;border:1px solid #eeeee9;text-align:center;font-weight:700;font-size:11px;">100%</td></tr><tr><td style="padding:6px 8px;border:1px solid #eeeee9;font-weight:600;color:#555;white-space:nowrap;">Month 10</td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#888780;" min="0" max="100" step="1" value="43" oninput="updMix(9,0,this.value)"><span id="mx_9_0" style="min-width:28px;font-weight:700;color:#888780;font-size:11px;">43%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#D85A30;" min="0" max="100" step="1" value="10" oninput="updMix(9,1,this.value)"><span id="mx_9_1" style="min-width:28px;font-weight:700;color:#D85A30;font-size:11px;">10%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#534AB7;" min="0" max="100" step="1" value="19" oninput="updMix(9,2,this.value)"><span id="mx_9_2" style="min-width:28px;font-weight:700;color:#534AB7;font-size:11px;">19%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#1D9E75;" min="0" max="100" step="1" value="17" oninput="updMix(9,3,this.value)"><span id="mx_9_3" style="min-width:28px;font-weight:700;color:#1D9E75;font-size:11px;">17%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#D4537E;" min="0" max="100" step="1" value="11" oninput="updMix(9,4,this.value)"><span id="mx_9_4" style="min-width:28px;font-weight:700;color:#D4537E;font-size:11px;">11%</span></div></td><td id="mxtot_9" style="padding:6px 8px;border:1px solid #eeeee9;text-align:center;font-weight:700;font-size:11px;">100%</td></tr><tr><td style="padding:6px 8px;border:1px solid #eeeee9;font-weight:600;color:#555;white-space:nowrap;">Month 11</td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#888780;" min="0" max="100" step="1" value="40" oninput="updMix(10,0,this.value)"><span id="mx_10_0" style="min-width:28px;font-weight:700;color:#888780;font-size:11px;">40%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#D85A30;" min="0" max="100" step="1" value="12" oninput="updMix(10,1,this.value)"><span id="mx_10_1" style="min-width:28px;font-weight:700;color:#D85A30;font-size:11px;">12%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#534AB7;" min="0" max="100" step="1" value="20" oninput="updMix(10,2,this.value)"><span id="mx_10_2" style="min-width:28px;font-weight:700;color:#534AB7;font-size:11px;">20%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#1D9E75;" min="0" max="100" step="1" value="17" oninput="updMix(10,3,this.value)"><span id="mx_10_3" style="min-width:28px;font-weight:700;color:#1D9E75;font-size:11px;">17%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#D4537E;" min="0" max="100" step="1" value="11" oninput="updMix(10,4,this.value)"><span id="mx_10_4" style="min-width:28px;font-weight:700;color:#D4537E;font-size:11px;">11%</span></div></td><td id="mxtot_10" style="padding:6px 8px;border:1px solid #eeeee9;text-align:center;font-weight:700;font-size:11px;">100%</td></tr><tr><td style="padding:6px 8px;border:1px solid #eeeee9;font-weight:600;color:#555;white-space:nowrap;">Month 12</td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#888780;" min="0" max="100" step="1" value="38" oninput="updMix(11,0,this.value)"><span id="mx_11_0" style="min-width:28px;font-weight:700;color:#888780;font-size:11px;">38%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#D85A30;" min="0" max="100" step="1" value="12" oninput="updMix(11,1,this.value)"><span id="mx_11_1" style="min-width:28px;font-weight:700;color:#D85A30;font-size:11px;">12%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#534AB7;" min="0" max="100" step="1" value="20" oninput="updMix(11,2,this.value)"><span id="mx_11_2" style="min-width:28px;font-weight:700;color:#534AB7;font-size:11px;">20%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#1D9E75;" min="0" max="100" step="1" value="18" oninput="updMix(11,3,this.value)"><span id="mx_11_3" style="min-width:28px;font-weight:700;color:#1D9E75;font-size:11px;">18%</span></div></td><td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;"><input type="range" style="flex:1;accent-color:#D4537E;" min="0" max="100" step="1" value="12" oninput="updMix(11,4,this.value)"><span id="mx_11_4" style="min-width:28px;font-weight:700;color:#D4537E;font-size:11px;">12%</span></div></td><td id="mxtot_11" style="padding:6px 8px;border:1px solid #eeeee9;text-align:center;font-weight:700;font-size:11px;">100%</td></tr></tbody></table></div></div></div>
+    <div class="note-box" style="margin-top:8px;">Each product's active start month is set via the "Active Month" selector on the card. If the total exceeds 100%, it is automatically normalized. Grey cell = product not yet active.</div>
+
+    <hr class="divider">
+    <!-- B2B Mix -->
+    <div style="font-size:11px;font-weight:700;color:#378ADD;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">B2B Mix (%) — All Months</div>
+    <div id="mixB2BTableWrap"></div>
+    <div class="note-box" style="margin-top:8px;">B2B doctor fee and channel rates are set per SKU on the Market &amp; Product Mix page. Royalty and printing cost are the same as clinic.</div>
+
+    <hr class="divider">
+    <!-- Mix görselleştirme — iki grafik yan yana -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;">Mix Visualization</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr;gap:16px;">
+      <div>
+        <div style="font-size:11px;font-weight:700;color:#534AB7;margin-bottom:6px;">Clinic Mix</div>
+        <div id="mixVizWrap" style="position:relative;width:100%;height:220px;">
+          <canvas id="mixChart" style="display:block;" height="220"></canvas>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;color:#378ADD;margin-bottom:6px;">B2B Mix</div>
+        <div id="mixB2BVizWrap" style="position:relative;width:100%;height:220px;">
+          <canvas id="mixB2BChart" style="display:block;" height="220"></canvas>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div><!-- /tab-pazar -->
+
+<div id="tab-rekabet" style="display:none;">
+<div class="group-label">Competition &amp; Current Market</div>
+
+<div class="section">
+  <div class="section-header open" onclick="tog(this)"><h2>Market Summary</h2><span class="tog">▾</span></div>
+  <div class="section-body" style="display:block;">
+
+    <div class="piyasa-ozet" id="piyasaKpiGrid"></div>
+
+    <div class="note-box">⚠ Competitor data are estimated values compiled from publicly available sources. Actual volume and pricing figures have not been verified. This comparison is prepared for market positioning purposes only, not as the basis for investment decisions.</div>
+
+    <div style="margin-top:16px;">
+      <div style="font-size:11px;font-weight:700;color:#555;margin-bottom:6px;">Annual Estimated Brace Volume Comparison</div>
+      <div class="chart-wrap"><canvas id="rekabetChart" style="width:100%;height:100%;display:block;"></canvas></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header open" onclick="tog(this)"><h2>Competitor Profiles</h2><span class="tog">▾</span></div>
+  <div class="section-body" style="display:block;">
+    <div class="rakip-grid" id="rakipGrid"></div>
+  </div>
+</div>
+
+</div><!-- /tab-rekabet -->
+
+<div style="display:flex;justify-content:space-between;margin-top:28px;padding:16px 0;border-top:1px solid #e0e0dc;">
+  <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#534AB7;text-decoration:none;padding:9px 20px;border:1.5px solid #534AB7;border-radius:6px;">&#8592; 12-Month Summary</a>
+  <a href="korse.html" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#fff;text-decoration:none;padding:9px 20px;background:#534AB7;border:1.5px solid #534AB7;border-radius:6px;">Brace Ramp &#8594;</a>
+</div>
+
+</div><!-- /page -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script src="shared.js"></script>
+<script>
+// ── Rekabet tab data ──
+const RAKIPLER = [
+  { id:'hedefSpine',    ad:'Hedef Spine',             sehir:'Istanbul — Şişli',            renk:'#D85A30',
+    aciklama:'Istanbul-based clinic specializing in scoliosis bracing and orthopedic prosthetics. Offers individual fitting, brace selection, and periodic check-ups. Focused on postural disorders and scoliosis treatment — directly overlapping target audience with Osteoid.',
+    dK:480, dB:0, dFK:25000, dFB:20000 },
+  { id:'bilimOrtopedi', ad:'Bilim Ortopedi',           sehir:'Ankara & Hatay',              renk:'#1D9E75',
+    aciklama:'Orthosis and prosthesis manufacturing and application center operating in Ankara and Hatay. Offers a wide product portfolio including prosthetics, orthotics, insoles, orthopedic footwear, and wheelchairs. Hatay branch provides personalized solutions with computerized foot scanning.',
+    dK:240, dB:0, dFK:18000, dFB:15000 },
+  { id:'nesaOrtopedi',  ad:'Nesa Ortopedi',            sehir:'Istanbul, Tekirdağ, Kocaeli', renk:'#378ADD',
+    aciklama:'Established prosthetics and orthotics center operating since 1976. Served over 10,000 patients across Istanbul (Kadıköy, Şişli), Tekirdağ, and Kocaeli branches. Strong institutional position with internationally trained staff, scoliosis products, and CPM device portfolio.',
+    dK:600, dB:0, dFK:22000, dFB:18000 },
+  { id:'canErdem',      ad:'Can Erdem Ortez Protez',   sehir:'Istanbul — Europe & Anatolia', renk:'#D4537E',
+    aciklama:'Biomechanics-focused clinic founded in 2004, expanded with a Üsküdar branch in 2021. Led by physiotherapist and orthotist Can Erdem, specializing in pediatric orthotics (DAFO, AFO, KAFO, Cranial Helmet). Distinguished by its scientific and ethical approach.',
+    dK:360, dB:0, dFK:28000, dFB:22000 },
+  { id:'proklinik',     ad:'Proklinik',                sehir:'Istanbul (3 branches) & Cyprus',  renk:'#EF9F27',
+    aciklama:'One of Turkey\'s largest prosthetics and orthotics application centers. 20 years of experience, 20,000+ patients, and 40+ specialist staff. Operates with 3 branches in Istanbul and 1 in Cyprus. Provides lower/upper limb and arm prosthetics, carbon walking devices, and rehabilitation services.',
+    dK:960, dB:0, dFK:20000, dFB:16000 },
+  { id:'aktifOrtez',    ad:'Aktif Ortez Protez',       sehir:'Istanbul — Fatih (Şehremini)',renk:'#2A9D8F',
+    aciklama:'Orthosis and prosthesis manufacturing and application center in Fatih/Istanbul, led by specialist physiotherapist Özgür Aydoğan. Focused on custom orthosis production; stands out in the area for combining physiotherapy expertise with orthotic prescription.',
+    dK:180, dB:0, dFK:18000, dFB:14000 },
+];
+
+function gRV(r, key, def) { var k = r.id+'_'+key; return V[k] !== undefined ? V[k] : def; }
+function sRV(id, key, val) { V[id+'_'+key] = val; localStorage.setItem('osteoid_V', JSON.stringify(V)); }
+function ffR(n) { return '₺' + Math.round(n).toLocaleString('tr-TR'); }
+
+function _slRow(id, key, label, def, max, step, color) {
+  var val = gRV({id:id}, key, def);
+  var disp = key.indexOf('Fiyat') !== -1 ? val.toLocaleString('tr-TR') : val;
+  return '<div class="sl-row">' +
+    '<label style="color:'+color+';font-size:10px;font-weight:700;">'+label+'</label>' +
+    '<div class="sl-controls">' +
+    '<input type="range" id="s_'+id+'_'+key+'" min="0" max="'+max+'" step="'+step+'" value="'+val+'"' +
+    ' oninput="sRV(\''+id+'\',\''+key+'\',+this.value); document.getElementById(\'v_'+id+'_'+key+'\').textContent='+(key.indexOf('Fiyat')!==-1?'(+this.value).toLocaleString(\'tr-TR\')':'this.value')+'; renderPiyasaKpi(); renderRekabetChart();">' +
+    '<span class="sl-val" id="v_'+id+'_'+key+'" contenteditable="true"' +
+    ' onblur="var v=parseInt(this.textContent.replace(/\\D/g,\'\'))||0; sRV(\''+id+'\',\''+key+'\',v); document.getElementById(\'s_'+id+'_'+key+'\').value=v; this.textContent='+(key.indexOf('Fiyat')!==-1?'v.toLocaleString(\'tr-TR\')':'v')+'; renderPiyasaKpi(); renderRekabetChart();">'+disp+'</span>' +
+    '</div></div>';
+}
+
+function renderRakipGrid() {
+  var el = document.getElementById('rakipGrid');
+  if (!el) return;
+  el.innerHTML = RAKIPLER.map(function(r) {
+    var kK = gRV(r,'KorseK',r.dK), kB = gRV(r,'KorseB',r.dB);
+    var fK = gRV(r,'FiyatK',r.dFK), fB = gRV(r,'FiyatB',r.dFB);
+    var toplam = kK + kB, ciro = kK*fK + kB*fB;
+    return '<div class="rakip-card">' +
+      '<div class="rakip-card-header"><div class="rakip-name" style="color:'+r.renk+';">'+r.ad+'</div><div class="rakip-city">'+r.sehir+'</div></div>' +
+      '<div class="rakip-desc">'+r.aciklama+'</div>' +
+      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 16px;">' +
+        '<div><div style="font-size:10px;font-weight:800;color:#1a7a45;text-transform:uppercase;letter-spacing:0.5px;margin:8px 0 4px;">Clinic</div>' +
+        _slRow(r.id,'KorseK','Annual braces (units)',r.dK,3600,60,'#1a7a45') +
+        _slRow(r.id,'FiyatK','Brace price (₺)',r.dFK,100000,1000,'#1a7a45') + '</div>' +
+        '<div><div style="font-size:10px;font-weight:800;color:#534AB7;text-transform:uppercase;letter-spacing:0.5px;margin:8px 0 4px;">B2B</div>' +
+        _slRow(r.id,'KorseB','Annual braces (units)',r.dB,3600,60,'#534AB7') +
+        _slRow(r.id,'FiyatB','Brace price (₺)',r.dFB,100000,1000,'#534AB7') + '</div>' +
+      '</div>' +
+      '<div class="rakip-kpis" style="margin-top:10px;">' +
+        '<div class="rakip-kpi"><div class="rkl">Clinic units</div><div class="rkv" style="color:#1a7a45;" id="kpi_'+r.id+'_K">'+kK+'</div></div>' +
+        '<div class="rakip-kpi"><div class="rkl">B2B units</div><div class="rkv" style="color:#534AB7;" id="kpi_'+r.id+'_B">'+kB+'</div></div>' +
+        '<div class="rakip-kpi"><div class="rkl">Total units</div><div class="rkv" style="color:'+r.renk+';" id="kpi_'+r.id+'_T">'+toplam+'</div></div>' +
+        '<div class="rakip-kpi"><div class="rkl">Est. revenue</div><div class="rkv" id="kpi_'+r.id+'_C">₺'+Math.round(ciro/1000).toLocaleString('tr-TR')+'K</div></div>' +
+      '</div></div>';
+  }).join('');
+}
+
+function renderPiyasaKpi() {
+  var osteoidK   = (window._lastRows||[]).reduce(function(s,r){return s+(r.korse||0);},0) || 325;
+  var osteoidB2B = ((window._lastRows||[]).length ? V.korseB2B||[] : []).reduce(function(s,v){return s+(+v||0);},0);
+  var osteoidToplam = osteoidK + osteoidB2B;
+  var osteoidFiyat  = V.korseF_stdR || 30000;
+  var rakipToplam = RAKIPLER.reduce(function(s,r){return s+gRV(r,'KorseK',r.dK)+gRV(r,'KorseB',r.dB);},0);
+  var tumToplam   = osteoidToplam + rakipToplam;
+  var osteoidPay  = tumToplam > 0 ? Math.round(osteoidToplam/tumToplam*100) : 0;
+  var rakipKlinikTop = RAKIPLER.reduce(function(s,r){return s+gRV(r,'KorseK',r.dK);},0);
+  var ortFiyat = rakipKlinikTop > 0
+    ? Math.round(RAKIPLER.reduce(function(s,r){return s+gRV(r,'KorseK',r.dK)*gRV(r,'FiyatK',r.dFK);},0)/rakipKlinikTop) : 0;
+
+  RAKIPLER.forEach(function(r) {
+    var kK=gRV(r,'KorseK',r.dK), kB=gRV(r,'KorseB',r.dB);
+    var fK=gRV(r,'FiyatK',r.dFK), fB=gRV(r,'FiyatB',r.dFB);
+    function el(id){ return document.getElementById(id); }
+    if(el('kpi_'+r.id+'_K')) el('kpi_'+r.id+'_K').textContent = kK;
+    if(el('kpi_'+r.id+'_B')) el('kpi_'+r.id+'_B').textContent = kB;
+    if(el('kpi_'+r.id+'_T')) el('kpi_'+r.id+'_T').textContent = kK+kB;
+    if(el('kpi_'+r.id+'_C')) el('kpi_'+r.id+'_C').textContent = '₺'+Math.round((kK*fK+kB*fB)/1000).toLocaleString('tr-TR')+'K';
+  });
+
+  var grid = document.getElementById('piyasaKpiGrid');
+  if (!grid) return;
+  grid.innerHTML = [
+    { label:'Osteoid clinic (annual)',  val: osteoidK+' units',       c:'pos' },
+    { label:'Osteoid B2B (annual)',     val: osteoidB2B+' units',     c:'neu' },
+    { label:'Competitor total (annual)',val: rakipToplam+' units',     c:'neu' },
+    { label:'Osteoid market share',     val: '%'+osteoidPay,          c: osteoidPay>=10?'pos':'neu' },
+    { label:'Competitor avg. clinic price', val: ffR(ortFiyat),       c:'neu' },
+    { label:'Osteoid base price',       val: ffR(osteoidFiyat),       c: osteoidFiyat>=ortFiyat?'pos':'neg' },
+  ].map(function(k){return '<div class="kpi"><div class="kpi-label">'+k.label+'</div><div class="kpi-val '+k.c+'">'+k.val+'</div></div>';}).join('');
+}
+
+var rekabetChartInst = null;
+function renderRekabetChart() {
+  var osteoidK   = (window._lastRows||[]).reduce(function(s,r){return s+(r.korse||0);},0) || 325;
+  var osteoidB2B = (V.korseB2B||[]).reduce(function(s,v){return s+(+v||0);},0);
+  var labels  = ['Osteoid'].concat(RAKIPLER.map(function(r){return r.ad;}));
+  var dataK   = [osteoidK].concat(RAKIPLER.map(function(r){return gRV(r,'KorseK',r.dK);}));
+  var dataB   = [osteoidB2B].concat(RAKIPLER.map(function(r){return gRV(r,'KorseB',r.dB);}));
+  var colors  = ['#534AB7'].concat(RAKIPLER.map(function(r){return r.renk;}));
+  var fiyatK  = [V.korseF_stdR||30000].concat(RAKIPLER.map(function(r){return gRV(r,'FiyatK',r.dFK);}));
+  var fiyatB  = [V.korseFB2B_stdR||24000].concat(RAKIPLER.map(function(r){return gRV(r,'FiyatB',r.dFB);}));
+
+  if (rekabetChartInst) { rekabetChartInst.destroy(); rekabetChartInst = null; }
+  var ctx = document.getElementById('rekabetChart');
+  if (!ctx) return;
+  rekabetChartInst = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [
+        { label:'Clinic (units)', data:dataK, backgroundColor:colors.map(function(c){return c+'bb';}), borderColor:colors, borderWidth:1.5, borderRadius:3, stack:'s', yAxisID:'y' },
+        { label:'B2B (units)',    data:dataB, backgroundColor:colors.map(function(c){return c+'55';}), borderColor:colors, borderWidth:1,   borderRadius:3, stack:'s', yAxisID:'y' },
+        { label:'Clinic price (₺)', data:fiyatK, type:'line', borderColor:'#1a7a45', backgroundColor:'transparent', borderWidth:2, pointRadius:4, pointBackgroundColor:colors, tension:0.3, yAxisID:'y2' },
+        { label:'B2B price (₺)',    data:fiyatB, type:'line', borderColor:'#534AB7', backgroundColor:'transparent', borderWidth:2, borderDash:[4,3], pointRadius:4, pointBackgroundColor:colors, tension:0.3, yAxisID:'y2' },
+      ]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      plugins: {
+        legend:{ position:'bottom', labels:{ font:{size:11}, boxWidth:10, padding:8 } },
+        tooltip:{ mode:'index', callbacks:{ label: function(c){ return c.datasetIndex<2 ? c.dataset.label+': '+c.raw+' units' : c.dataset.label+': ₺'+c.raw.toLocaleString('tr-TR'); } } }
+      },
+      scales: {
+        x:{ stacked:true, grid:{display:false} },
+        y:{ stacked:true, position:'left',  title:{display:true,text:'Annual braces',font:{size:10}}, grid:{color:'rgba(0,0,0,0.05)'} },
+        y2:{              position:'right', title:{display:true,text:'Price (₺)',font:{size:10}},    grid:{display:false}, ticks:{callback:function(v){return '₺'+(v/1000).toFixed(0)+'K';}} }
+      }
+    }
+  });
+}
+
+// ── Inner tab switcher ──
+function switchInnerTab(btn, tabId) {
+  ['tab-pazar','tab-rekabet'].forEach(function(id) {
+    var el = document.getElementById(id); if (el) el.style.display = 'none';
+  });
+  var show = document.getElementById(tabId); if (show) show.style.display = '';
+  document.querySelectorAll('.inner-tab').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  recalc();
+  if (tabId === 'tab-rekabet') {
+    renderRakipGrid();
+    renderPiyasaKpi();
+    renderRekabetChart();
+  }
+}
+
+window.addEventListener('load', function() {
+  var kb = V.kanalBakim || 0;
+  ['stdR','stdRl','sens','delik','sensDelik'].forEach(function(k) {
+    var sl = document.getElementById('s_bakim_'+k); if (sl) sl.value = kb;
+    var dp = document.getElementById('bakim_'+k); if (dp) dp.textContent = kb;
+  });
+  var b2bKeys = ['stdR','stdRl','delik','sens','sensDelik'];
+  b2bKeys.forEach(function(k) {
+    var vk = 'korseFB2B_'+k;
+    var val = V[vk] || 0;
+    var sl = document.getElementById('s_'+vk); if (sl) sl.value = val;
+    var dp = document.getElementById(vk); if (dp) dp.textContent = val.toLocaleString('tr-TR');
+  });
+  var korseB2B = V.korseB2B || [];
+  korseB2B.forEach(function(val, i) {
+    var sl = document.querySelector('input[oninput*="svKorseB2B('+i+',"]');
+    if (sl) sl.value = val;
+    var dp = document.getElementById('b2bRamp_'+i);
+    if (dp) dp.textContent = val || 0;
+  });
+  (V.aktifAy || []).forEach(function(val, i) {
+    var sel = document.getElementById('aktifAy_' + i);
+    if (sel) sel.value = val;
+  });
+  buildMixB2BTable();
+  recalc();
+});
+</script>
+</body>
+</html>

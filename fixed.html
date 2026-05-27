@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Osteoid — Fixed Costs</title>
+<link rel="stylesheet" href="style.css">
+<script>window.PAGE_ID='sabit';</script>
+
+</head>
+<body>
+<div class="page" style="padding-top:0">
+
+<div id="layout-header"></div>
+
+<div class="section">
+  <div class="section-header" onclick="tog(this)"><h2>Monthly Fixed Costs</h2><span class="tog">▸</span></div>
+  <div class="section-body">
+    <div class="sl-grid">
+      <div class="sl-row">
+        <label>Monthly rent (₺)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_aylikKira" min="0" max="500000" step="5000" value="120000" oninput="sv('kira',this.value)">
+          <span class="sl-val" id="kira" contenteditable="true" onblur="sv2('kira','s_aylikKira',this)">120.000</span>
+        </div>
+      </div>
+      <div class="sl-row">
+        <label>Electricity / water / gas (₺)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_elektrik" min="0" max="50000" step="500" value="10000" oninput="sv('elektrik',this.value)">
+          <span class="sl-val" id="elektrik" contenteditable="true" onblur="sv2('elektrik','s_elektrik',this)">10.000</span>
+        </div>
+      </div>
+      <div class="sl-row">
+        <label>Internet / phone (₺)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_internet" min="0" max="10000" step="100" value="1500" oninput="sv('internet',this.value)">
+          <span class="sl-val" id="internet" contenteditable="true" onblur="sv2('internet','s_internet',this)">1.500</span>
+        </div>
+      </div>
+      <div class="sl-row">
+        <label>Kitchen &amp; meals (₺)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_mutfak" min="0" max="100000" step="1000" value="20000" oninput="sv('mutfak',this.value)">
+          <span class="sl-val" id="mutfak" contenteditable="true" onblur="sv2('mutfak','s_mutfak',this)">20.000</span>
+        </div>
+      </div>
+      <div class="sl-row">
+        <label>General expenses (₺)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_genelGider" min="0" max="100000" step="1000" value="10000" oninput="sv('genelGider',this.value)">
+          <span class="sl-val" id="genelGider" contenteditable="true" onblur="sv2('genelGider','s_genelGider',this)">10.000</span>
+        </div>
+      </div>
+      <div class="sl-row">
+        <label>CPA / Financial Advisor (₺/month)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_ymmM" min="0" max="50000" step="1000" value="10000" oninput="sv('ymmM',this.value)">
+          <span class="sl-val" id="ymmM" contenteditable="true" onblur="sv2('ymmM','s_ymmM',this)">10.000</span>
+        </div>
+        <span class="sl-note">External service — SSI multiplier not applied</span>
+      </div>
+
+      <div style="font-size:10px;color:#888;margin-bottom:8px;">Net salary entry — company cost is calculated as gross (net × SSI multiplier). Expert orthotist is fixed from Month 1 in each center; other roles activate based on the threshold system.</div>
+
+      <!-- SGK çarpanı -->
+      <div class="sl-row" style="margin-bottom:12px;">
+        <label>SSI multiplier (employer contribution)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_sgkCarpan" min="1.0" max="1.6" step="0.01" value="1.25" oninput="sv('sgkCarpan',this.value)">
+          <span class="sl-val" id="sgkCarpan" contenteditable="true" onblur="sv2('sgkCarpan','s_sgkCarpan',this)">1,25</span>
+        </div>
+        <span class="sl-note">Company cost = net salary × multiplier — applies to all roles</span>
+      </div>
+
+      <!-- 1. Uzman Ortezci -->
+      <div style="padding:10px;background:#fdf8f2;border:1px solid #e8d8b0;border-radius:6px;margin-bottom:8px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+          <span style="font-size:11px;font-weight:700;color:#8a5c1a;">① Expert Orthotist</span>
+          <span style="font-size:10px;color:#888;background:#f0e8d0;padding:2px 8px;border-radius:10px;">Month 1 — fixed</span>
+        </div>
+        <div class="sl-row" style="margin-bottom:4px;">
+          <label style="font-size:11px;">Net salary (₺)</label>
+          <div class="sl-controls">
+            <input type="range" id="s_ortotistM" min="20000" max="200000" step="5000" value="60000" oninput="sv('ortotistM',this.value)">
+            <span class="sl-val" id="ortotistM" contenteditable="true" onblur="sv2('ortotistM','s_ortotistM',this)">60.000</span>
+          </div>
+        </div>
+        <div style="font-size:11px;color:#8a5c1a;">Gross cost: <b id="brutOrtotist">75.000</b> ₺/month</div>
+      </div>
+      <div style="margin-bottom:10px;padding:10px;background:#f5f4ee;border-radius:6px;border:1px solid #e0e0dc;">
+        <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Staff Thresholds (monthly braces / month)</div>
+        <div style="font-size:10px;color:#888;margin-bottom:6px;">In new centers, staff scales automatically based on monthly average brace volume.</div>
+        <div class="sl-row" style="margin-bottom:4px;">
+          <label style="font-size:11px;">Intern threshold (≥ X braces/month)</label>
+          <div class="sl-controls">
+            <input type="range" id="s_esikStajyer1" min="1" max="80" step="1" value="15" oninput="sv('esikStajyer1',this.value)">
+            <span class="sl-val" id="esikStajyer1" contenteditable="true" onblur="sv2('esikStajyer1','s_esikStajyer1',this)">15</span>
+          </div>
+        </div>
+        <div class="sl-row" style="margin-bottom:4px;">
+          <label style="font-size:11px;">Support staff threshold (≥ X braces/month)</label>
+          <div class="sl-controls">
+            <input type="range" id="s_esikDestek" min="1" max="80" step="1" value="30" oninput="sv('esikDestek',this.value)">
+            <span class="sl-val" id="esikDestek" contenteditable="true" onblur="sv2('esikDestek','s_esikDestek',this)">30</span>
+          </div>
+        </div>
+        <div class="sl-row">
+          <label style="font-size:11px;">Junior Orthotist threshold (≥ X braces/month)</label>
+          <div class="sl-controls">
+            <input type="range" id="s_esikStajyer2" min="1" max="100" step="1" value="76" oninput="sv('esikStajyer2',this.value)">
+            <span class="sl-val" id="esikStajyer2" contenteditable="true" onblur="sv2('esikStajyer2','s_esikStajyer2',this)">76</span>
+          </div>
+        </div>
+      </div>
+      <!-- 2. Stajyer (eşik 1) -->
+      <div style="padding:10px;background:#f0fdf4;border:1px solid #1D9E7544;border-radius:6px;margin-bottom:8px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+          <span style="font-size:11px;font-weight:700;color:#1D9E75;">② Intern</span>
+          <span id="esikLabel1" style="font-size:10px;color:#888;background:#e8f8f0;padding:2px 8px;border-radius:10px;">15</span>
+        </div>
+        <div class="sl-row" style="margin-bottom:4px;">
+          <label style="font-size:11px;">Net salary (₺)</label>
+          <div class="sl-controls">
+            <input type="range" id="s_stajyerM" min="0" max="60000" step="1000" value="30000" oninput="sv('stajyerM',this.value)">
+            <span class="sl-val" id="stajyerM" contenteditable="true" onblur="sv2('stajyerM','s_stajyerM',this)">30.000</span>
+          </div>
+        </div>
+        <div style="font-size:11px;color:#1D9E75;">Gross cost: <b id="brutStajyer">37.500</b> ₺/month</div>
+      </div>
+
+      <!-- 3. Yeni Mezun (eşik 2) -->
+      <div style="padding:10px;background:#fdf8f2;border:1px solid #e8d8b0;border-radius:6px;margin-bottom:8px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+          <span style="font-size:11px;font-weight:700;color:#8a5c1a;">③ Junior Orthotist</span>
+          <span id="esikLabel3" style="font-size:10px;color:#888;background:#f5eed5;padding:2px 8px;border-radius:10px;">76</span>
+        </div>
+        <div class="sl-row" style="margin-bottom:4px;">
+          <label style="font-size:11px;">Net salary (₺)</label>
+          <div class="sl-controls">
+            <input type="range" id="s_stajyer2M" min="0" max="60000" step="1000" value="25000" oninput="sv('stajyer2M',this.value)">
+            <span class="sl-val" id="stajyer2M" contenteditable="true" onblur="sv2('stajyer2M','s_stajyer2M',this)">30.000</span>
+          </div>
+        </div>
+        <div style="font-size:11px;color:#8a5c1a;">Gross cost: <b id="brutYeniMezun">37.500</b> ₺/month</div>
+      </div>
+
+      <!-- 4. Destek Elemanı (eşik 3) -->
+      <div style="padding:10px;background:#f0f0ff;border:1px solid #534AB744;border-radius:6px;margin-bottom:8px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+          <span style="font-size:11px;font-weight:700;color:#534AB7;">④ Support Staff</span>
+          <span id="esikLabel2" style="font-size:10px;color:#888;background:#eeeeff;padding:2px 8px;border-radius:10px;">30</span>
+        </div>
+        <div class="sl-row" style="margin-bottom:4px;">
+          <label style="font-size:11px;">Net salary (₺)</label>
+          <div class="sl-controls">
+            <input type="range" id="s_destekM" min="0" max="60000" step="1000" value="25000" oninput="sv('destekM',this.value)">
+            <span class="sl-val" id="destekM" contenteditable="true" onblur="sv2('destekM','s_destekM',this)">30.000</span>
+          </div>
+        </div>
+        <div style="font-size:11px;color:#534AB7;">Gross cost: <b id="brutDestek">37.500</b> ₺/month</div>
+      </div>
+    </div>
+    <div class="kpi-grid" style="margin-bottom:12px;">
+      <div class="kpi"><div class="kpi-label">Fixed cost / month</div><div class="kpi-val neg" id="sabitAylik">-₺189.500</div></div>
+      <div class="kpi"><div class="kpi-label">Fixed cost / year</div><div class="kpi-val neg" id="sabitYillik">-₺2.649.000</div></div>
+    </div>
+    <div style="position:relative;width:100%;height:240px;">
+      <canvas id="sabitBar" style="display:block;"></canvas>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div style="display:flex;justify-content:space-between;margin-top:28px;padding:16px 0;border-top:1px solid #e0e0dc;">
+  <a href="setup.html" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#534AB7;text-decoration:none;padding:9px 20px;border:1.5px solid #534AB7;border-radius:6px;">&#8592; Setup Costs</a>
+  <a href="periodic.html" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#fff;text-decoration:none;padding:9px 20px;background:#534AB7;border:1.5px solid #534AB7;border-radius:6px;">Periodic Costs &#8594;</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="shared.js"></script>
+<script>
+window.addEventListener('load', function() {
+  const v = V.kira || 120000;
+  const sl = document.getElementById('s_aylikKira');
+  if (sl) sl.value = v;
+  const disp = document.getElementById('kira');
+  if (disp) disp.textContent = v.toLocaleString('tr-TR');
+
+  [['s_mutfak','mutfak',20000],['s_genelGider','genelGider',10000],['s_ymmM','ymmM',10000]].forEach(([slId,key,def])=>{
+    const val = V[key] || def;
+    const sl = document.getElementById(slId); if (sl) sl.value = val;
+    const dp = document.getElementById(key);  if (dp) dp.textContent = val.toLocaleString('tr-TR');
+  });
+
+  var e1 = document.getElementById('esikLabel1'); if (e1) e1.textContent = V.esikStajyer1 || 15;
+  var e2 = document.getElementById('esikLabel2'); if (e2) e2.textContent = V.esikDestek    || 30;
+  var e3 = document.getElementById('esikLabel3'); if (e3) e3.textContent = V.esikStajyer2  || 76;
+
+  recalc();
+});
+</script>
+</body>
+</html>

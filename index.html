@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Osteoid — 12-Month Summary</title>
+<link rel="stylesheet" href="style.css">
+<script>window.PAGE_ID='index';</script>
+
+</head>
+<body>
+<div class="page" style="padding-top:0">
+
+<div id="layout-header"></div>
+
+<!-- ① 12 AYLIK ÖZET -->
+
+
+
+<div class="section">
+  <div class="section-header open" onclick="tog(this)"><h2>12-Month Summary</h2><span class="tog">▾</span></div>
+  <div class="section-body" style="display:block;">
+    <div class="kpi-grid" id="kpiGrid" style="margin-bottom:20px;"><div class="kpi"><div class="kpi-label">Total braces</div><div class="kpi-val neu">325 units</div></div><div class="kpi"><div class="kpi-label">Clinic net revenue (year)</div><div class="kpi-val pos">₺7.453.900</div></div><div class="kpi"><div class="kpi-label">Year-end cumulative</div><div class="kpi-val pos">₺777.400</div></div><div class="kpi"><div class="kpi-label">Monthly break-even</div><div class="kpi-val pos">Month 4</div></div><div class="kpi"><div class="kpi-label">Cumulative positive</div><div class="kpi-val pos">Month 11</div></div><div class="kpi"><div class="kpi-label">Setup cost</div><div class="kpi-val neg">-₺2.102.500</div></div><div class="kpi"><div class="kpi-label">Printing cost per unit</div><div class="kpi-val neg">-₺50</div></div><div class="kpi"><div class="kpi-label">Royalty / year</div><div class="kpi-val neg">-₺1.218.750</div></div><div class="kpi"><div class="kpi-label">Osteoid A.Ş. royalty</div><div class="kpi-val neu">€24.375</div></div><div class="kpi"><div class="kpi-label">Net margin / brace</div><div class="kpi-val neu">67%</div></div></div>
+    <div style="border-top:1px solid #eeeee9;padding-top:16px;">
+      <div style="display:flex;gap:6px;margin-bottom:12px;" id="tblChartTabs">
+        <button class="tct active" onclick="setTblTab('gelir',this)">Revenue &amp; Cost</button>
+        <button class="tct" onclick="setTblTab('dagılım',this)">Cost Distribution</button>
+        <button class="tct" onclick="setTblTab('kumulatif',this)">Cumulative</button>
+      </div>
+      <div style="position:relative;width:100%;height:260px;">
+        <canvas id="tblChart" style="display:block;" width="778" height="260"></canvas>
+      </div>
+      <div id="kumNote" style="display:none;margin-top:8px;font-size:11px;color:#534AB7;font-weight:700;padding:6px 10px;background:#f4f3ff;border-radius:4px;border-left:3px solid #534AB7;"></div>
+    </div>
+  </div>
+</div>
+
+<div style="display:flex;justify-content:flex-end;margin-top:28px;padding:16px 0;border-top:1px solid #e0e0dc;">
+  <a href="market.html" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#fff;text-decoration:none;padding:9px 20px;background:#534AB7;border:1.5px solid #534AB7;border-radius:6px;">Market &amp; Competition &#8594;</a>
+</div>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script src="shared.js"></script>
+<script>
+window.addEventListener('load', function() { recalc(); });
+</script>
+</body>
+</html>

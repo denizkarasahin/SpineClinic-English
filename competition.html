@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Osteoid — Competition & Current Market</title>
+<link rel="stylesheet" href="style.css">
+<script>window.PAGE_ID='rekabet';</script>
+<style>
+
+.rakip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+@media (max-width: 700px) { .rakip-grid { grid-template-columns: 1fr; } }
+
+.rakip-card { background: #fff; border: 1px solid #e0ddd4; border-radius: 8px; padding: 16px; }
+.rakip-card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; }
+.rakip-name { font-size: 13px; font-weight: 900; color: #1a1a1a; }
+.rakip-city { font-size: 10px; font-weight: 700; color: #888; background: #f0efe9; padding: 2px 8px; border-radius: 3px; white-space: nowrap; }
+.rakip-desc { font-size: 11px; color: #555; line-height: 1.6; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #eeeee9; }
+.rakip-sliders { display: flex; flex-direction: column; gap: 8px; }
+.rakip-kpis { display: flex; gap: 8px; margin-top: 10px; }
+.rakip-kpi { flex: 1; background: #f9f8f4; border-radius: 5px; padding: 7px 10px; }
+.rakip-kpi .rkl { font-size: 10px; color: #888; margin-bottom: 2px; }
+.rakip-kpi .rkv { font-size: 13px; font-weight: 800; }
+
+.piyasa-ozet { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-bottom: 20px; }
+
+.chart-wrap { position: relative; width: 100%; height: 220px; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="page" style="padding-top:0">
+
+<div id="layout-header"></div>
+<div class="group-label">Competition &amp; Current Market</div>
+
+<div class="section">
+  <div class="section-header open" onclick="tog(this)"><h2>Market Summary</h2><span class="tog">▾</span></div>
+  <div class="section-body" style="display:block;">
+
+    <div class="piyasa-ozet" id="piyasaKpiGrid"></div>
+
+    <div class="note-box">⚠ Competitor data are estimated values compiled from publicly available sources. Actual volume and pricing information has not been verified. This comparison is prepared for understanding market positioning, not for investment decisions.</div>
+
+    <div style="margin-top:16px;">
+      <div style="font-size:11px;font-weight:700;color:#555;margin-bottom:6px;">Annual Estimated Brace Volume Comparison</div>
+      <div class="chart-wrap"><canvas id="rekabetChart" style="width:100%;height:100%;display:block;"></canvas></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header open" onclick="tog(this)"><h2>Competitor Profiles</h2><span class="tog">▾</span></div>
+  <div class="section-body" style="display:block;">
+
+    <div class="rakip-grid" id="rakipGrid"></div>
+
+  </div>
+</div>
+
+</div><!-- /nav-wrap -->
+
+<div style="display:flex;justify-content:space-between;margin-top:28px;padding:16px 0;border-top:1px solid #e0e0dc;">
+  <a href="growth.html" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#534AB7;text-decoration:none;padding:9px 20px;border:1.5px solid #534AB7;border-radius:6px;">&#8592; 3-Year Plan</a>
+  <a href="formula-validation.html" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#fff;text-decoration:none;padding:9px 20px;background:#534AB7;border:1.5px solid #534AB7;border-radius:6px;">Formula Validation &#8594;</a>
+</div>
+
+</div><!-- /page -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script src="shared.js"></script>
+<script>
+const RAKIPLER = [
+  {
+    id: 'hedefSpine',    ad: 'Hedef Spine',             sehir: 'Istanbul — Şişli',           renk: '#D85A30',
+    aciklama: 'Istanbul-based clinic specializing in scoliosis braces and orthopedic prosthesis-orthosis applications. Offers brace selection, fitting, and periodic follow-ups based on individual measurements. Focused on postural disorders and scoliosis treatment — target audience directly overlapping with Osteoid.',
+    dK: 480, dB: 0,   dFK: 25000, dFB: 20000,
+  },
+  {
+    id: 'bilimOrtopedi', ad: 'Bilim Ortopedi',          sehir: 'Ankara & Hatay',             renk: '#1D9E75',
+    aciklama: 'Orthosis-prosthesis manufacturing and application center operating in Ankara and Hatay. Has a wide product portfolio including prostheses, orthoses, orthopedic insoles, shoes, and wheelchairs. Offers personalized solutions with computerized foot scanning at the Hatay branch.',
+    dK: 240, dB: 0,   dFK: 18000, dFB: 15000,
+  },
+  {
+    id: 'nesaOrtopedi',  ad: 'Nesa Ortopedi',           sehir: 'Istanbul, Tekirdağ, Kocaeli', renk: '#378ADD',
+    aciklama: 'Established prosthesis-orthosis center operating since 1976. Has served over 10,000 patients with branches in Istanbul (Kadıköy, Şişli), Tekirdağ, and Kocaeli. Holds a strong institutional position with internationally trained staff, scoliosis products, and CPM devices.',
+    dK: 600, dB: 0,   dFK: 22000, dFB: 18000,
+  },
+  {
+    id: 'canErdem',      ad: 'Can Erdem Ortez Protez',  sehir: 'Istanbul — European Side & Anatolian Side', renk: '#D4537E',
+    aciklama: 'Biomechanics-focused clinic founded in 2004, opening its Üsküdar branch in 2021. Specializes in pediatric orthoses (DAFO, AFO, KAFO, Cranial Helmet) under the leadership of physiotherapist and prosthetics-orthotics specialist Can Erdem. Distinguished by its scientific and ethical approach.',
+    dK: 360, dB: 0,   dFK: 28000, dFB: 22000,
+  },
+  {
+    id: 'proklinik',     ad: 'Proklinik',               sehir: 'Istanbul (3 branches) & Cyprus',  renk: '#EF9F27',
+    aciklama: 'One of Turkey\'s largest prosthesis-orthosis application centers. 20 years of experience, 20,000+ patients, and 40+ specialist staff. Operates with 3 branches in Istanbul and 1 in Cyprus. Offers lower/upper leg and arm prostheses, carbon walking devices, and rehabilitation services.',
+    dK: 960, dB: 0,   dFK: 20000, dFB: 16000,
+  },
+  {
+    id: 'aktifOrtez',    ad: 'Aktif Ortez Protez',      sehir: 'Istanbul — Fatih (Şehremini)', renk: '#2A9D8F',
+    aciklama: 'Orthosis-prosthesis manufacturing and application center in Fatih/Istanbul, led by Specialist Physiotherapist Özgür Aydoğan. Focused on custom orthosis production and application; stands out in the area with a clinical profile combining physiotherapy expertise with orthosis prescription.',
+    dK: 180, dB: 0,   dFK: 18000, dFB: 14000,
+  },
+];
+
+function gRV(r, key, def) { const k = r.id+'_'+key; return V[k] !== undefined ? V[k] : def; }
+function sRV(id, key, val) { V[id+'_'+key] = val; localStorage.setItem('osteoid_V', JSON.stringify(V)); }
+function ff(n) { return '₺' + Math.round(n).toLocaleString('tr-TR'); }
+
+function _slRow(id, key, label, def, max, step, color) {
+  const val = gRV({id}, key, def);
+  const disp = key.includes('Fiyat') ? val.toLocaleString('tr-TR') : val;
+  return `<div class="sl-row">
+    <label style="color:${color};font-size:10px;font-weight:700;">${label}</label>
+    <div class="sl-controls">
+      <input type="range" id="s_${id}_${key}" min="0" max="${max}" step="${step}" value="${val}"
+        oninput="sRV('${id}','${key}',+this.value); document.getElementById('v_${id}_${key}').textContent=${key.includes('Fiyat') ? '(+this.value).toLocaleString(\'tr-TR\')' : 'this.value'}; renderPiyasaKpi(); renderRekabetChart();">
+      <span class="sl-val" id="v_${id}_${key}" contenteditable="true"
+        onblur="const v=parseInt(this.textContent.replace(/\\D/g,''))||0; sRV('${id}','${key}',v); document.getElementById('s_${id}_${key}').value=v; this.textContent=${key.includes('Fiyat') ? 'v.toLocaleString(\'tr-TR\')' : 'v'}; renderPiyasaKpi(); renderRekabetChart();">${disp}</span>
+    </div>
+  </div>`;
+}
+
+function renderRakipGrid() {
+  document.getElementById('rakipGrid').innerHTML = RAKIPLER.map(r => {
+    const kK = gRV(r,'KorseK',r.dK), kB = gRV(r,'KorseB',r.dB);
+    const fK = gRV(r,'FiyatK',r.dFK), fB = gRV(r,'FiyatB',r.dFB);
+    const toplam = kK + kB;
+    const ciro = kK*fK + kB*fB;
+    return `<div class="rakip-card">
+      <div class="rakip-card-header">
+        <div class="rakip-name" style="color:${r.renk};">${r.ad}</div>
+        <div class="rakip-city">${r.sehir}</div>
+      </div>
+      <div class="rakip-desc">${r.aciklama}</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 16px;">
+        <div>
+          <div style="font-size:10px;font-weight:800;color:#1a7a45;text-transform:uppercase;letter-spacing:0.5px;margin:8px 0 4px;">Clinic</div>
+          ${_slRow(r.id,'KorseK','Annual braces (units)',r.dK,3600,60,'#1a7a45')}
+          ${_slRow(r.id,'FiyatK','Brace price (₺)',r.dFK,100000,1000,'#1a7a45')}
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:800;color:#534AB7;text-transform:uppercase;letter-spacing:0.5px;margin:8px 0 4px;">B2B</div>
+          ${_slRow(r.id,'KorseB','Annual braces (units)',r.dB,3600,60,'#534AB7')}
+          ${_slRow(r.id,'FiyatB','Brace price (₺)',r.dFB,100000,1000,'#534AB7')}
+        </div>
+      </div>
+      <div class="rakip-kpis" style="margin-top:10px;">
+        <div class="rakip-kpi"><div class="rkl">Clinic units</div><div class="rkv" style="color:#1a7a45;" id="kpi_${r.id}_K">${kK}</div></div>
+        <div class="rakip-kpi"><div class="rkl">B2B units</div><div class="rkv" style="color:#534AB7;" id="kpi_${r.id}_B">${kB}</div></div>
+        <div class="rakip-kpi"><div class="rkl">Total units</div><div class="rkv" style="color:${r.renk};" id="kpi_${r.id}_T">${toplam}</div></div>
+        <div class="rakip-kpi"><div class="rkl">Est. revenue</div><div class="rkv" id="kpi_${r.id}_C">₺${Math.round(ciro/1000).toLocaleString('tr-TR')}K</div></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderPiyasaKpi() {
+  const osteoidK  = (window._lastRows||[]).reduce((s,r)=>s+(r.korse||0),0) || 325;
+  const osteoidB2B = ((window._lastRows||[]).length ? V.korseB2B||[] : []).reduce((s,v)=>s+(+v||0),0);
+  const osteoidToplam = osteoidK + osteoidB2B;
+  const osteoidFiyat  = V.korseF_stdR || 30000;
+  const rakipToplam = RAKIPLER.reduce((s,r)=>s+gRV(r,'KorseK',r.dK)+gRV(r,'KorseB',r.dB),0);
+  const tumToplam   = osteoidToplam + rakipToplam;
+  const osteoidPay  = tumToplam > 0 ? Math.round(osteoidToplam/tumToplam*100) : 0;
+  const rakipKlinikTop = RAKIPLER.reduce((s,r)=>s+gRV(r,'KorseK',r.dK),0);
+  const ortFiyat = rakipKlinikTop > 0
+    ? Math.round(RAKIPLER.reduce((s,r)=>s+gRV(r,'KorseK',r.dK)*gRV(r,'FiyatK',r.dFK),0)/rakipKlinikTop) : 0;
+
+  RAKIPLER.forEach(r => {
+    const kK=gRV(r,'KorseK',r.dK), kB=gRV(r,'KorseB',r.dB);
+    const fK=gRV(r,'FiyatK',r.dFK), fB=gRV(r,'FiyatB',r.dFB);
+    const el = id => document.getElementById(id);
+    if(el('kpi_'+r.id+'_K')) el('kpi_'+r.id+'_K').textContent = kK;
+    if(el('kpi_'+r.id+'_B')) el('kpi_'+r.id+'_B').textContent = kB;
+    if(el('kpi_'+r.id+'_T')) el('kpi_'+r.id+'_T').textContent = kK+kB;
+    if(el('kpi_'+r.id+'_C')) el('kpi_'+r.id+'_C').textContent = '₺'+Math.round((kK*fK+kB*fB)/1000).toLocaleString('tr-TR')+'K';
+  });
+
+  document.getElementById('piyasaKpiGrid').innerHTML = [
+    { label:'Osteoid clinic (annual)',       val: osteoidK+' units',       c:'pos' },
+    { label:'Osteoid B2B (annual)',          val: osteoidB2B+' units',     c:'neu' },
+    { label:'Competitor total (annual)',     val: rakipToplam+' units',    c:'neu' },
+    { label:'Osteoid market share',          val: osteoidPay+'%',          c: osteoidPay>=10?'pos':'neu' },
+    { label:'Competitor avg. clinic price',  val: ff(ortFiyat),            c:'neu' },
+    { label:'Osteoid base price',            val: ff(osteoidFiyat),        c: osteoidFiyat>=ortFiyat?'pos':'neg' },
+  ].map(k=>`<div class="kpi"><div class="kpi-label">${k.label}</div><div class="kpi-val ${k.c}">${k.val}</div></div>`).join('');
+}
+
+let rekabetChartInst = null;
+function renderRekabetChart() {
+  const osteoidK   = (window._lastRows||[]).reduce((s,r)=>s+(r.korse||0),0) || 325;
+  const osteoidB2B = (V.korseB2B||[]).reduce((s,v)=>s+(+v||0),0);
+  const labels  = ['Osteoid', ...RAKIPLER.map(r=>r.ad)];
+  const dataK   = [osteoidK,   ...RAKIPLER.map(r=>gRV(r,'KorseK',r.dK))];
+  const dataB   = [osteoidB2B, ...RAKIPLER.map(r=>gRV(r,'KorseB',r.dB))];
+  const colors  = ['#534AB7', ...RAKIPLER.map(r=>r.renk)];
+  const fiyatK  = [V.korseF_stdR||30000, ...RAKIPLER.map(r=>gRV(r,'FiyatK',r.dFK))];
+  const fiyatB  = [V.korseFB2B_stdR||24000, ...RAKIPLER.map(r=>gRV(r,'FiyatB',r.dFB))];
+
+  if (rekabetChartInst) { rekabetChartInst.destroy(); rekabetChartInst = null; }
+  const ctx = document.getElementById('rekabetChart');
+  if (!ctx) return;
+  rekabetChartInst = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [
+        { label:'Clinic (units)', data:dataK, backgroundColor:colors.map(c=>c+'bb'), borderColor:colors, borderWidth:1.5, borderRadius:3, stack:'s', yAxisID:'y' },
+        { label:'B2B (units)',    data:dataB, backgroundColor:colors.map(c=>c+'55'), borderColor:colors, borderWidth:1,   borderRadius:3, stack:'s', yAxisID:'y' },
+        { label:'Clinic price (₺)', data:fiyatK, type:'line', borderColor:'#1a7a45', backgroundColor:'transparent', borderWidth:2, pointRadius:4, pointBackgroundColor:colors, tension:0.3, yAxisID:'y2' },
+        { label:'B2B price (₺)',    data:fiyatB, type:'line', borderColor:'#534AB7', backgroundColor:'transparent', borderWidth:2, borderDash:[4,3], pointRadius:4, pointBackgroundColor:colors, tension:0.3, yAxisID:'y2' },
+      ]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      plugins: {
+        legend:{ position:'bottom', labels:{ font:{size:11}, boxWidth:10, padding:8 } },
+        tooltip:{ mode:'index', callbacks:{ label: c => c.datasetIndex<2 ? c.dataset.label+': '+c.raw+' units' : c.dataset.label+': ₺'+c.raw.toLocaleString('tr-TR') } }
+      },
+      scales: {
+        x:{ stacked:true, grid:{display:false} },
+        y:{ stacked:true, position:'left',  title:{display:true,text:'Annual braces',font:{size:10}}, grid:{color:'rgba(0,0,0,0.05)'} },
+        y2:{              position:'right', title:{display:true,text:'Price (₺)',font:{size:10}},      grid:{display:false}, ticks:{callback:v=>'₺'+(v/1000).toFixed(0)+'K'} }
+      }
+    }
+  });
+}
+
+window.addEventListener('load', function() {
+  if (!window._lastRows || !window._lastRows.length) recalc();
+  renderRakipGrid();
+  renderPiyasaKpi();
+  renderRekabetChart();
+});
+</script>
+</body>
+</html>

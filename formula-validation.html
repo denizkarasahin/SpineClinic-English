@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formula Validation — Osteoid Centers</title>
+<link rel="stylesheet" href="style.css">
+<script>window.PAGE_ID='saglamasayfasi';</script>
+<style>
+
+
+.sec { margin: 28px 0; }
+.sec-title {
+  font-size: 13px; font-weight: 900; color: #fff; background: #2c3e50;
+  padding: 7px 14px; border-radius: 4px; text-transform: uppercase;
+  letter-spacing: 0.6px; margin-bottom: 14px; display: inline-block;
+}
+.sub-title { font-size: 12px; font-weight: 800; color: #534AB7; margin: 14px 0 6px; text-transform: uppercase; letter-spacing: 0.3px; }
+
+/* Parameter table */
+.param-tbl { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 18px; }
+.param-tbl th { background: #f0efe9; padding: 7px 10px; text-align: left; font-size: 11px; font-weight: 700; color: #555; border: 1px solid #ddd; }
+.param-tbl td { padding: 6px 10px; border: 1px solid #eee; vertical-align: middle; }
+.param-tbl tr:nth-child(even) td { background: #fafaf8; }
+.param-tbl td.val { font-family: monospace; font-size: 12px; font-weight: 700; background: #f0ede5; color: #8c6d3f; border-radius: 3px; white-space: nowrap; }
+.param-tbl td.note { color: #888; font-size: 11px; }
+
+/* Formula boxes */
+.fbox {
+  background: #f5f4ef; border: 1px solid #e2e0d4; border-radius: 6px;
+  padding: 14px 18px; margin: 10px 0; font-family: 'Courier New', monospace;
+  font-size: 12px; line-height: 2; white-space: pre-wrap;
+}
+.fbox .c  { color: #888; }
+.fbox .r  { color: #1D9E75; font-weight: 700; }
+.fbox .d  { color: #D85A30; }
+.fbox .b  { color: #534AB7; }
+.fbox .k  { color: #2c3e50; font-weight: 700; }
+
+/* Product margin cards */
+.prod-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 16px; }
+.prod-card { border: 1px solid #e0ddd4; border-radius: 6px; padding: 14px; background: #fff; }
+.prod-card h4 { margin: 0 0 10px; font-size: 12px; font-weight: 800; color: #333; border-bottom: 2px solid currentColor; padding-bottom: 5px; }
+.prod-line { display: flex; justify-content: space-between; font-size: 11px; padding: 3px 0; }
+.prod-line .lbl { color: #666; }
+.prod-line .val { font-family: monospace; font-weight: 700; }
+.prod-line.deduct .val { color: #D85A30; }
+.prod-line.net { border-top: 1px solid #e0ddd4; padding-top: 5px; margin-top: 3px; font-weight: 800; }
+.prod-line.net .val { color: #1D9E75; font-size: 12px; }
+
+/* Monthly table */
+.mtbl-wrap { overflow-x: auto; margin-bottom: 12px; }
+.mtbl { border-collapse: collapse; font-size: 11px; min-width: 900px; }
+.mtbl th { background: #2c3e50; color: #fff; padding: 6px 8px; text-align: center; font-size: 10px; white-space: nowrap; border: 1px solid #1a2836; }
+.mtbl th.lft { text-align: left; }
+.mtbl td { padding: 5px 8px; border: 1px solid #eee; text-align: right; white-space: nowrap; font-size: 11px; }
+.mtbl td.lft { text-align: left; font-weight: 700; }
+.mtbl td.neg { color: #D85A30; }
+.mtbl td.pos { color: #1D9E75; }
+.mtbl td.neu { color: #534AB7; }
+.mtbl tr.bas td { background: #e8f5ee; }
+.mtbl tr.poz td { background: #eee8ff; }
+.mtbl tr.tot td { background: #f0efe9; font-weight: 700; border-top: 2px solid #ccc; }
+
+/* Setup breakdown */
+.setup-tbl { width: 100%; border-collapse: collapse; font-size: 12px; max-width: 600px; }
+.setup-tbl td { padding: 7px 12px; border: 1px solid #eee; }
+.setup-tbl td.formula { font-family: monospace; font-size: 11px; color: #888; }
+.setup-tbl td.result { font-family: monospace; font-weight: 700; text-align: right; }
+.setup-tbl tr.total td { background: #f0efe9; font-weight: 700; border-top: 2px solid #888; }
+
+/* Projection table */
+.proj-tbl { border-collapse: collapse; font-size: 12px; width: 100%; max-width: 800px; }
+.proj-tbl th { background: #f0efe9; padding: 7px 10px; font-size: 11px; font-weight: 700; border: 1px solid #ddd; text-align: left; }
+.proj-tbl td { padding: 6px 10px; border: 1px solid #eee; }
+.proj-tbl td.formula { font-family: monospace; font-size: 11px; color: #555; }
+.proj-tbl td.result { font-family: monospace; font-weight: 700; text-align: right; color: #1D9E75; }
+.proj-tbl tr.grp td { background: #f5f5f0; font-weight: 700; color: #333; }
+
+/* Note box */
+.note { background: #fffbf0; border-left: 3px solid #f5c518; padding: 9px 13px; margin: 10px 0; font-size: 12px; color: #554; border-radius: 0 4px 4px 0; }
+.info { background: #edf4ff; border-left: 3px solid #378ADD; padding: 9px 13px; margin: 10px 0; font-size: 12px; color: #1a4a7a; border-radius: 0 4px 4px 0; }
+
+/* Trigger box */
+.trigger-box { background: #e8f5ee; border: 1px solid #68c48a; border-radius: 6px; padding: 12px 16px; font-size: 12px; margin: 12px 0; }
+
+/* Print button */
+.print-btn {
+  position: fixed; bottom: 24px; right: 24px; background: #534AB7; color: #fff;
+  border: none; padding: 11px 20px; border-radius: 6px; font-size: 13px;
+  font-weight: 700; cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,0.25); z-index: 999;
+}
+
+/* KPI row */
+.kpi-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 12px 0; }
+.kpi-box { background: #fff; border: 1px solid #e0ddd4; border-radius: 6px; padding: 10px 16px; min-width: 140px; }
+.kpi-box .klbl { font-size: 11px; color: #888; margin-bottom: 3px; }
+.kpi-box .kval { font-size: 16px; font-weight: 900; }
+.kpi-box .kval.pos { color: #1D9E75; }
+.kpi-box .kval.neg { color: #D85A30; }
+.kpi-box .kval.neu { color: #534AB7; }
+
+@media print {
+  .nav-wrap { display: none; }
+  .sec { page-break-inside: avoid; }
+  .mtbl-wrap { overflow-x: visible; }
+}
+</style>
+</head>
+<body>
+<div class="page" style="padding-top:0">
+
+<div id="layout-header"></div>
+<div class="group-label">Formula &amp; Validation</div>
+
+<div class="note">⚠️ <strong>Forecast note:</strong> All figures in this projection are assumption-based. Break-even and cumulative positive dates depend on the brace ramp. Figures are prepared for understanding and questioning the business model, not for investment decisions.</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION 1: PARAMETRELER -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title">1 — Key Parameters (Input Values)</div>
+
+  <div class="sub-title">Exchange Rate &amp; Royalty</div>
+  <table class="param-tbl">
+    <thead><tr><th>Parameter</th><th>Code</th><th>Value</th><th>Notes</th></tr></thead>
+    <tbody id="p_kur"></tbody>
+  </table>
+
+  <div class="sub-title">Product Sales Prices (₺)</div>
+  <table class="param-tbl">
+    <thead><tr><th>Product</th><th>Code</th><th>Price</th><th>Note</th></tr></thead>
+    <tbody id="p_fiyat"></tbody>
+  </table>
+
+  <div class="sub-title">Material Costs (₺ / units)</div>
+  <table class="param-tbl">
+    <thead><tr><th>Product</th><th>Code</th><th>Cost</th><th>Note</th></tr></thead>
+    <tbody id="p_malzeme"></tbody>
+  </table>
+
+  <div class="sub-title">Doctor Commission (%)</div>
+  <table class="param-tbl">
+    <thead><tr><th>Product</th><th>Code</th><th>Rate</th><th>₺ / units</th></tr></thead>
+    <tbody id="p_danis"></tbody>
+  </table>
+
+  <div class="sub-title">Fixed Monthly Costs (₺)</div>
+  <table class="param-tbl">
+    <thead><tr><th>Cost item</th><th>Code</th><th>Value</th><th>Note</th></tr></thead>
+    <tbody id="p_sabit"></tbody>
+  </table>
+
+  <div class="sub-title">Personnel</div>
+  <table class="param-tbl">
+    <thead><tr><th>Position</th><th>Net salary</th><th>SSI multiplier</th><th>Gross cost</th><th>Activation threshold</th></tr></thead>
+    <tbody id="p_personel"></tbody>
+  </table>
+
+  <div class="sub-title">B2B Product Sales Prices (₺)</div>
+  <table class="param-tbl">
+    <thead><tr><th>Product</th><th>Code</th><th>B2B Price</th><th>Clinic vs B2B diff</th></tr></thead>
+    <tbody id="p_b2b"></tbody>
+  </table>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION 2: BİRİM MARJİ -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title">2 — Per-Product Unit Margin Analysis</div>
+  <p style="font-size:12px;color:#555;margin:0 0 12px;">
+    Flow for each brace sale: <strong>Gross price → Doctor fee → Channel fee → Material → Royalty = Net revenue</strong><br>
+    Channel fee = Gross revenue × <span id="kanalPctDisp">—</span> (channel maintenance rate)
+  </p>
+  <div class="prod-grid" id="urunMarjWrap"></div>
+
+  <div class="sub-title">Comparison Table</div>
+  <table class="param-tbl" id="marjKarsilastirma">
+    <thead><tr><th>Product</th><th>Price</th><th>Doctor fee</th><th>Material</th><th>Royalty</th><th>Net revenue/units</th><th>Net margin %</th></tr></thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION 3: FORMÜLLER -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title">3 — Monthly Calculation Formulas</div>
+
+  <div class="sub-title">Revenue Side — Per Month</div>
+  <div class="fbox" id="formulGelir"></div>
+
+  <div class="sub-title">Cost Side — Per Month</div>
+  <div class="fbox" id="formulGider"></div>
+
+  <div class="sub-title">Cumulative Budget &amp; Triggers</div>
+  <div class="fbox" id="formulKumulatif"></div>
+
+  <div class="info">ℹ️ <strong>Product mix distribution:</strong> Each month, brace units are allocated across 5 product types according to the percentage distribution on the Market &amp; Product Mix page. If a product is not yet active in a given month (activation threshold not reached), that product is set to zero and the total percentage is renormalized.</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION 4: 12 AYLIK TABLO -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title">4 — 12-Month Calculation Table (Live)</div>
+  <p style="font-size:12px;color:#555;margin:0 0 10px;">
+    Full calculation with current parameters. <span style="background:#e8f5ee;padding:2px 6px;border-radius:3px;">Green row</span> = monthly break-even (✓),
+    <span style="background:#eee8ff;padding:2px 6px;border-radius:3px;">purple row</span> = cumulative positive (★).
+    Cumulative starting value = −(Setup cost).
+  </p>
+
+  <div class="kpi-row" id="ozet_kpi"></div>
+
+  <div class="mtbl-wrap">
+    <table class="mtbl" id="monthlyTbl">
+      <thead>
+        <tr>
+          <th class="lft" rowspan="2">Month</th>
+          <th colspan="5">Brace Mix (units)</th>
+          <th rowspan="2">Total Braces</th>
+          <th colspan="5">Revenue (₺)</th>
+          <th colspan="6">Cost (₺)</th>
+          <th rowspan="2">Monthly Net (₺)</th>
+          <th rowspan="2">Cumulative (₺)</th>
+        </tr>
+        <tr>
+          <th style="color:#aaa;">Std-R</th>
+          <th style="color:#D85A30;">Std-Rl</th>
+          <th style="color:#1D9E75;">Perf.</th>
+          <th style="color:#534AB7;">Sens</th>
+          <th style="color:#D4537E;">S+D</th>
+          <th>Gross</th>
+          <th>−Doctor</th>
+          <th>−Channel</th>
+          <th>−Material</th>
+          <th>−Royalty</th>
+          <th>Net Rev.</th>
+          <th>−Fixed</th>
+          <th>−Advert.</th>
+          <th>−Kitchen</th>
+          <th>−W.Tax</th>
+          <th>−Period/Prnt</th>
+        </tr>
+      </thead>
+      <tbody id="monthlyTbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION 5: KURULUM GİDERLERİ -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title">5 — Setup Costs (Istanbul Center 1)</div>
+  <p style="font-size:12px;color:#555;margin:0 0 10px;">One-time setup investment. This is the starting value for the cumulative budget calculation (entered as negative).</p>
+  <table class="setup-tbl" id="kurulumTbl"></table>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION 6: 3 YILLIK PROJEKSİYON -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title">6 — 3-Year Projection Methodology</div>
+
+  <div class="sub-title">Year 1 — Model Data</div>
+  <div class="info">Year 1 figures are taken directly from the 12-month calculation model; no projection or coefficient is applied.</div>
+
+  <div class="sub-title">Year 2-3 Projection Logic</div>
+  <div class="fbox" id="formulProj"></div>
+
+  <div class="sub-title">3-Year Summary Table (Live)</div>
+  <table class="proj-tbl" id="projTablosu">
+    <thead>
+      <tr>
+        <th style="min-width:260px;">Revenue Item</th>
+        <th>Formula / Source</th>
+        <th style="text-align:right;">Year 1 (€K)</th>
+        <th style="text-align:right;">Year 2 (€K)</th>
+        <th style="text-align:right;">Year 3 (€K)</th>
+      </tr>
+    </thead>
+    <tbody id="projTbody"></tbody>
+  </table>
+
+  <div class="note">
+    <strong>SSI calculation:</strong> Y3 SSI revenue = Y3 private channel revenue × 35% (SSI channel share coefficient) × 85% (collection efficiency — discount for average 60–90 day delay). Y2 SSI = Y3 × 25% (approval process + half-year ramp). These coefficients should be validated against operator experience.
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION 7: YENİ MERKEZLER -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-title">7 — New Center Calculation (Izmir / Ankara)</div>
+
+  <div class="sub-title">Trigger Mechanism</div>
+  <div class="fbox" id="formulTetik"></div>
+  <div id="tetikDurumu" class="trigger-box"></div>
+
+  <div class="sub-title">Center Revenue Calculation</div>
+  <div class="fbox" id="formulMerkez"></div>
+
+  <table class="proj-tbl" id="merkezTbl" style="max-width:960px;">
+    <thead>
+      <tr>
+        <th>Center</th>
+        <th>Ramp total (braces/year)</th>
+        <th>Unit net revenue (₺/brace)</th>
+        <th>Gross annual revenue</th>
+        <th>Annual operating cost</th>
+        <th>Net revenue (₺)</th>
+        <th>Net revenue (€K)</th>
+      </tr>
+    </thead>
+    <tbody id="merkezTbody"></tbody>
+  </table>
+
+  <div class="sub-title">Center Setup Cost</div>
+  <table class="proj-tbl" id="merkezKurulumTbl" style="max-width:700px;">
+    <thead><tr><th>Center</th><th>Method</th><th>Formula</th><th style="text-align:right;">Amount (₺)</th><th style="text-align:right;">Amount (€K)</th></tr></thead>
+    <tbody id="merkezKurulumTbody"></tbody>
+  </table>
+</div>
+
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:28px;padding:16px 0;border-top:1px solid #e0e0dc;">
+  <a href="growth.html" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#534AB7;text-decoration:none;padding:9px 20px;border:1.5px solid #534AB7;border-radius:6px;">&#8592; 3-Year Plan</a>
+  <button onclick="window.print()" style="font-size:12px;font-weight:700;padding:9px 20px;border-radius:6px;border:1.5px solid #888;background:#fff;color:#555;cursor:pointer;">&#128424; Print / PDF</button>
+</div>
+
+</div><!-- /page -->
+
+<script src="shared.js"></script>
+<script>
+// ── Yardımcı formatters ────────────────────────────────────────────────────────
+function tf(n) {
+  if (n === undefined || n === null) return '—';
+  if (n === 0) return '₺0';
+  const abs = Math.abs(Math.round(n));
+  return (n < 0 ? '−₺' : '₺') + abs.toLocaleString('tr-TR');
+}
+function tfShort(n) {
+  if (!n) return '—';
+  const abs = Math.abs(Math.round(n));
+  return (n < 0 ? '−₺' : '₺') + abs.toLocaleString('tr-TR');
+}
+function ef(n) {
+  if (!n && n !== 0) return '—';
+  return '€' + Math.round(n).toLocaleString('tr-TR');
+}
+function pf(n) { return (n || 0).toFixed(1) + '%'; }
+
+// ── SECTION 1: Parametreler ───────────────────────────────────────────────────
+function renderParams() {
+  function row(name, code, val, note) {
+    return '<tr><td>' + name + '</td><td><code style="font-size:11px;color:#888;">' + code + '</code></td><td class="val">' + val + '</td><td class="note">' + (note||'') + '</td></tr>';
+  }
+  const royaltyTRY = Math.round((V.royaltyEur||75) * (V.eurKur||50));
+
+  document.getElementById('p_kur').innerHTML = [
+    row('EUR/TRY rate', 'eurKur', '₺' + (V.eurKur||50), 'Used for all EUR↔TRY conversions'),
+    row('Royalty (Osteoid Inc.)', 'royaltyEur', '€' + (V.royaltyEur||75) + '/brace', '₺' + royaltyTRY.toLocaleString('tr-TR') + '/brace (= ' + (V.royaltyEur||75) + ' × ' + (V.eurKur||50) + ')'),
+    row('Channel maintenance fee', 'kanalBakim', (V.kanalBakim||0) + '% (on gross revenue)', 'Sales channel management fee — currently ₺0 (set to zero)'),
+    row('Cutting per unit (EUR)', 'kesimEurPer', '€' + (V.kesimEurPer||50) + '/unit', 'Used for Perforated and S+D braces; Osteoid Inc. cutting revenue'),
+  ].join('');
+
+  const prods = ['stdR','stdRl','delik','sens','sensDelik'];
+  const prodNames = ['Std-No Rep.','Std-Reported','Perf+Rep.','Sensor+Rep.','Sns+Rep+Perf'];
+  const fKeys = ['korseF_stdR','korseF_stdRl','korseF_delik','korseF_sens','korseF_sensDelik'];
+  const mKeys = ['mal_stdR','mal_stdRl','mal_delik','mal_sens','mal_sensDelik'];
+  const dKeys = ['danis_stdR','danis_stdRl','danis_delik','danis_sens','danis_sensDelik'];
+  const b2bFKeys = ['korseFB2B_stdR','korseFB2B_stdRl','korseFB2B_delik','korseFB2B_sens','korseFB2B_sensDelik'];
+
+  document.getElementById('p_fiyat').innerHTML = prods.map((p,i) =>
+    row(prodNames[i], fKeys[i], tf(V[fKeys[i]]), i===0?'Month 1-5 launch product':i>=2?'Month 6+ advanced product':'')
+  ).join('');
+
+  document.getElementById('p_malzeme').innerHTML = prods.map((p,i) =>
+    row(prodNames[i], mKeys[i], tf(V[mKeys[i]]), (i===2||i===4)?'+ €'+(V.kesimEurPer||50)+'/unit cutting cost (Osteoid Inc. revenue)':'')
+  ).join('');
+
+  document.getElementById('p_danis').innerHTML = prods.map((p,i) => {
+    const fiyat = V[fKeys[i]]||0;
+    const pct = V[dKeys[i]]||0;
+    return '<tr><td>'+prodNames[i]+'</td><td><code style="font-size:11px;color:#888;">'+dKeys[i]+'</code></td><td class="val">'+pct+'%</td><td class="note">= ₺'+Math.round(fiyat*pct/100).toLocaleString('tr-TR')+'/unit ('+fiyat.toLocaleString('tr-TR')+' × '+pct+'%)</td></tr>';
+  }).join('');
+
+  document.getElementById('p_sabit').innerHTML = [
+    row('Monthly rent', 'kira', tf(V.kira), 'Monthly rent during operations'),
+    row('Deposit', 'depozito', tf(V.depozito), 'Setup cost; not an operating cost'),
+    row('Electricity', 'elektrik', tf(V.elektrik), ''),
+    row('Internet', 'internet', tf(V.internet), ''),
+    row('Consumables', 'sarf', tf(V.sarf), ''),
+    row('Kitchen', 'mutfak', tf(V.mutfak), ''),
+    row('General expenses', 'genelGider', tf(V.genelGider), 'Miscellaneous small expenses'),
+    row('Advertising (monthly fixed)', 'reklamSabit', tf(V.reklamSabit), 'Fixed monthly; periodic advertising is separate'),
+    row('Withholding tax (quarterly)', 'stopaj', tf(V.stopaj), 'Paid in months 3, 6, 9, 12; ₺0 in other months'),
+  ].join('');
+
+  const sgk = V.sgkCarpan || 1.25;
+  document.getElementById('p_personel').innerHTML = [
+    ['Orthotist (permanent)', 'ortotistM', 'Always active'],
+    ['Intern / Physiotherapist', 'stajyerM', '≥ '+(V.esikStajyer1||16)+' braces/month'],
+    ['Support staff', 'destekM', '≥ '+(V.esikDestek||31)+' braces/month'],
+    ['2nd Intern / Graduate', 'stajyer2M', '≥ '+(V.esikStajyer2||46)+' braces/month'],
+  ].map(([name, key, esik]) => {
+    const net = V[key]||0;
+    const brut = Math.round(net * sgk);
+    return '<tr><td>'+name+'</td><td class="val">'+tf(net)+'</td><td class="val">×'+sgk.toFixed(2)+'</td><td class="val" style="color:#1D9E75;">'+tf(brut)+'</td><td class="note">'+esik+'</td></tr>';
+  }).join('');
+
+  document.getElementById('p_b2b').innerHTML = prods.map((p,i) => {
+    const b2bF = V[b2bFKeys[i]]||0;
+    const kF   = V[fKeys[i]]||0;
+    const diff  = kF - b2bF;
+    return row(prodNames[i], b2bFKeys[i], tf(b2bF), diff>0?'vs Clinic −₺'+diff.toLocaleString('tr-TR'):'');
+  }).join('');
+}
+
+// ── SECTION 2: Birim Marj ────────────────────────────────────────────────────
+function renderUrunMarj() {
+  const prods = [
+    {name:'Std-No Rep.', color:'#888780', fKey:'korseF_stdR', mKey:'mal_stdR', dKey:'danis_stdR'},
+    {name:'Std-Reported',  color:'#D85A30', fKey:'korseF_stdRl', mKey:'mal_stdRl', dKey:'danis_stdRl'},
+    {name:'Perf+Rep.',  color:'#1D9E75', fKey:'korseF_delik', mKey:'mal_delik', dKey:'danis_delik', kesim:true},
+    {name:'Sensor+Rep.', color:'#534AB7', fKey:'korseF_sens', mKey:'mal_sens', dKey:'danis_sens'},
+    {name:'Sns+Rep+Perf', color:'#D4537E', fKey:'korseF_sensDelik', mKey:'mal_sensDelik', dKey:'danis_sensDelik', kesim:true},
+  ];
+  const royaltyTRY = (V.royaltyEur||75) * (V.eurKur||50);
+  const kanalPct   = (V.kanalBakim||0) / 100;
+
+  document.getElementById('kanalPctDisp').textContent = (V.kanalBakim||0) + '%';
+
+  const wrap = document.getElementById('urunMarjWrap');
+  wrap.innerHTML = prods.map(p => {
+    const f = V[p.fKey]||0;
+    const m = V[p.mKey]||0;
+    const d = Math.round(f * (V[p.dKey]||0) / 100);
+    const k = Math.round(f * kanalPct);
+    const kesimTRY = p.kesim ? Math.round((V.kesimEurPer||50) * (V.eurKur||50)) : 0;
+    const net = f - d - k - m - kesimTRY - royaltyTRY;
+    const marj = f > 0 ? Math.round(net / f * 100) : 0;
+    return '<div class="prod-card">' +
+      '<h4 style="color:'+p.color+';">' + p.name + '</h4>' +
+      '<div class="prod-line"><span class="lbl">Sale price</span><span class="val">₺'+f.toLocaleString('tr-TR')+'</span></div>' +
+      '<div class="prod-line deduct"><span class="lbl">− Doctor ('+(V[p.dKey]||0)+'%)</span><span class="val">−₺'+d.toLocaleString('tr-TR')+'</span></div>' +
+      (k>0?'<div class="prod-line deduct"><span class="lbl">− Channel fee</span><span class="val">−₺'+k.toLocaleString('tr-TR')+'</span></div>':'') +
+      '<div class="prod-line deduct"><span class="lbl">− Material</span><span class="val">−₺'+m.toLocaleString('tr-TR')+'</span></div>' +
+      (kesimTRY>0?'<div class="prod-line deduct"><span class="lbl">− Cutting (€'+(V.kesimEurPer||50)+')</span><span class="val">−₺'+kesimTRY.toLocaleString('tr-TR')+'</span></div>':'') +
+      '<div class="prod-line deduct"><span class="lbl">− Royalty (€'+(V.royaltyEur||75)+'×'+V.eurKur+')</span><span class="val">−₺'+Math.round(royaltyTRY).toLocaleString('tr-TR')+'</span></div>' +
+      '<div class="prod-line net"><span class="lbl">= Net revenue/unit</span><span class="val">₺'+Math.round(net).toLocaleString('tr-TR')+'</span></div>' +
+      '<div style="font-size:10px;color:#888;text-align:right;margin-top:3px;">Net margin: '+marj+'%</div>' +
+      '</div>';
+  }).join('');
+
+  // Karşılaştırma tablosu
+  const tbody = document.querySelector('#marjKarsilastirma tbody');
+  tbody.innerHTML = prods.map(p => {
+    const f = V[p.fKey]||0;
+    const m = V[p.mKey]||0;
+    const d = Math.round(f * (V[p.dKey]||0) / 100);
+    const k = Math.round(f * kanalPct);
+    const kesimTRY = p.kesim ? Math.round((V.kesimEurPer||50) * (V.eurKur||50)) : 0;
+    const net = f - d - k - m - kesimTRY - royaltyTRY;
+    const marj = f > 0 ? Math.round(net / f * 100) : 0;
+    return '<tr><td style="font-weight:700;color:'+p.color+';">'+p.name+'</td>' +
+      '<td style="text-align:right;">₺'+f.toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;color:#D85A30;">−₺'+d.toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;color:#D85A30;">−₺'+(m+kesimTRY).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;color:#D85A30;">−₺'+Math.round(royaltyTRY).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;font-weight:700;color:#1D9E75;">₺'+Math.round(net).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;color:#888;">%'+marj+'</td></tr>';
+  }).join('');
+}
+
+// ── SECTION 3: Formüller ──────────────────────────────────────────────────────
+function renderFormulas() {
+  const royTRY = Math.round((V.royaltyEur||75) * (V.eurKur||50));
+  const sgk = (V.sgkCarpan||1.25).toFixed(2);
+  const e1 = V.esikStajyer1||16, e2 = V.esikDestek||31, e3 = V.esikStajyer2||46;
+  const stajBrut = Math.round((V.stajyerM||30000) * (V.sgkCarpan||1.25));
+  const destBrut = Math.round((V.destekM||30000)  * (V.sgkCarpan||1.25));
+  const staj2Brut= Math.round((V.stajyer2M||30000)* (V.sgkCarpan||1.25));
+  const ortoBrut = Math.round((V.ortotistM||60000) * (V.sgkCarpan||1.25));
+
+  document.getElementById('formulGelir').innerHTML =
+    '<span class="c">── REVENUE (per month) ──────────────────────────────────────────────────────</span>\n\n' +
+    '<span class="k">GrossRevenue</span> = Σ [ brace_units[type] × price[type] ]\n' +
+    '<span class="c">             type ∈ { Std-R, Std-Rl, Perf, Sens, Sns+P }</span>\n\n' +
+    '<span class="k">DoctorFee</span>  = Σ [ brace_units[type] × price[type] × doctorPct[type] ]\n' +
+    '<span class="c">            Pct: Std-R='+(V.danis_stdR||10)+'%, Std-Rl='+(V.danis_stdRl||15)+'%, Perf='+(V.danis_delik||30)+'%, Sens='+(V.danis_sens||30)+'%, S+P='+(V.danis_sensDelik||30)+'%</span>\n\n' +
+    '<span class="k">ChannelFee</span> = GrossRevenue × '+(V.kanalBakim||0)+'%\n' +
+    '<span class="c">            Currently: ₺0 (channel maintenance rate = 0)</span>\n\n' +
+    '<span class="k">Material</span>   = Σ [ brace_units[type] × material[type] ]\n' +
+    '<span class="c">            Material (₺): Std-R='+(V.mal_stdR||250)+', Std-Rl='+(V.mal_stdRl||300)+', Perf='+(V.mal_delik||400)+', Sens='+(V.mal_sens||1000)+', S+P='+(V.mal_sensDelik||1250)+'</span>\n\n' +
+    '<span class="k">Royalty</span>    = totalBraces × €'+(V.royaltyEur||75)+' × ₺'+(V.eurKur||50)+' = totalBraces × ₺'+royTRY+'\n\n' +
+    '<span class="r">NetRevenue</span> = GrossRevenue − DoctorFee − ChannelFee − Material − Royalty';
+
+  document.getElementById('formulGider').innerHTML =
+    '<span class="c">── COSTS (per month, recorded as negative values) ───────────────────────────</span>\n\n' +
+    '<span class="k">FixedCost</span>  = rent + electricity + internet + consumables + orthotistGross + kitchen + generalExp\n' +
+    '<span class="c">            = ₺'+tf(V.kira)+' + ₺'+tf(V.elektrik)+' + ₺'+tf(V.internet)+' + ₺'+tf(V.sarf)+' + ₺'+ortoBrut.toLocaleString('tr-TR')+' + ₺'+tf(V.mutfak)+' + ₺'+tf(V.genelGider)+'</span>\n' +
+    '<span class="c">            orthotistGross = ₺'+tf(V.ortotistM)+' (net) × '+sgk+' (SSI) = ₺'+ortoBrut.toLocaleString('tr-TR')+'</span>\n\n' +
+    '<span class="k">StaffExtra</span> = <span class="b">IF</span>(monthlyBraces ≥ '+e1+') → +₺'+stajBrut.toLocaleString('tr-TR')+' intern gross\n' +
+    '             <span class="b">IF</span>(monthlyBraces ≥ '+e2+') → +₺'+destBrut.toLocaleString('tr-TR')+' support staff gross\n' +
+    '             <span class="b">IF</span>(monthlyBraces ≥ '+e3+') → +₺'+staj2Brut.toLocaleString('tr-TR')+' 2nd intern gross\n\n' +
+    '<span class="k">WithholdTax</span> = <span class="b">IF</span>(month ∈ {3,6,9,12}) → ₺'+tf(V.stopaj)+' / 0\n\n' +
+    '<span class="k">Periodic</span>   = congress[month] + advert_fixed\n' +
+    '<span class="c">            congress: variable; advert_fixed: ₺'+tf(V.reklamSabit)+'/month</span>\n\n' +
+    '<span class="k">PrinterExtra</span> = <span class="b">IF</span>(braces > currentPrinterCap) → extraPrinter × €'+(V.printerEurFiyat||10000)+' × ₺'+(V.eurKur||50)+'\n' +
+    '<span class="c">            capacity: '+_autoPrinterAdet()+' printer × 66 braces/month = '+(_autoPrinterAdet()*66)+' braces/month</span>\n\n' +
+    '<span class="d">TotalCost</span>  = −(FixedCost + StaffExtra + WithholdTax + Periodic + PrinterExtra + Kitchen)';
+
+  document.getElementById('formulKumulatif').innerHTML =
+    '<span class="c">── CUMULATIVE & TRIGGERS ────────────────────────────────────────────────────</span>\n\n' +
+    '<span class="k">MonthlyNet</span>   = NetRevenue + TotalCost\n\n' +
+    '<span class="k">Cumulative[m]</span> = Cumulative[m−1] + MonthlyNet[m]\n' +
+    '<span class="c">              Cumulative[M0] = −SetupCost (starting value)</span>\n\n' +
+    '<span class="k">BreakEvenMonth</span> = First month: MonthlyNet ≥ 0\n' +
+    '<span class="k">CumulativePos</span>  = First month: Cumulative ≥ 0\n\n' +
+    '<span class="c">── 2ND CENTER TRIGGER (4-month moving average) ──────────────────────────────</span>\n\n' +
+    '<span class="k">MovingAvg[m]</span>  = AVERAGE(MonthlyNet[m−3], ..., MonthlyNet[m])  (from Month 4)\n\n' +
+    '<span class="k">TriggerMonth</span>  = First month: MovingAvg ≥ 0\n' +
+    '<span class="k">OpeningMonth</span>  = MAX(13, TriggerMonth + 3)  <span class="c">— earliest Year 2 start, 3-month prep</span>\n' +
+    '<span class="k">ActiveMonthsY2</span> = MAX(0, MIN(12, 25 − OpeningMonth))';
+}
+
+// ── SECTION 4: 12 Aylık Tablo ────────────────────────────────────────────────
+function renderMonthlyTable() {
+  const rows = window._lastRows || [];
+  if (!rows.length) return;
+
+  // KPI özet
+  const tKorse = rows.reduce((s,r)=>s+(r.korse||0),0);
+  const tGelir = rows.reduce((s,r)=>s+(r.gelirNet||0),0);
+  const tGider = rows.reduce((s,r)=>s+(r.gider||0),0);
+  const tNet   = rows.reduce((s,r)=>s+(r.net||0),0);
+  const son = rows[11];
+  const basAy = rows.find(r=>r.net>=0);
+  const pozAy = rows.find(r=>r.cumBudget>=0);
+
+  document.getElementById('ozet_kpi').innerHTML = [
+    {l:'Total braces', v: tKorse + ' units', c:'neu'},
+    {l:'Clinic net revenue', v: tfShort(tGelir), c: tGelir>=0?'pos':'neg'},
+    {l:'Total costs', v: tfShort(tGider), c:'neg'},
+    {l:'Annual net', v: tfShort(tNet), c: tNet>=0?'pos':'neg'},
+    {l:'Cumulative year-end', v: tfShort(son.cumBudget), c: son.cumBudget>=0?'pos':'neg'},
+    {l:'Monthly break-even', v: basAy?'Month '+basAy.ay:'Not reached', c: basAy?'pos':'neg'},
+    {l:'Cumulative positive', v: pozAy?'Month '+pozAy.ay:'Not reached', c: pozAy?'pos':'neg'},
+  ].map(k=>'<div class="kpi-box"><div class="klbl">'+k.l+'</div><div class="kval '+k.c+'">'+k.v+'</div></div>').join('');
+
+  // Tablo
+  const tbody = document.getElementById('monthlyTbody');
+  let html = '';
+  rows.forEach(r => {
+    const isBas = basAy && r.ay === basAy.ay;
+    const isPoz = pozAy && r.ay === pozAy.ay;
+    const cls = isPoz ? 'poz' : isBas ? 'bas' : '';
+    const kk = r.k || [r.korse,0,0,0,0];
+    const donPrn = (r.kongre||0) + (r.printerEkMaliyet||0);
+    html += '<tr class="'+cls+'">' +
+      '<td class="lft">Month '+r.ay+(isBas?' ✓':isPoz?' ★':'')+'</td>' +
+      '<td>'+kk[0]+'</td><td>'+kk[1]+'</td><td>'+kk[2]+'</td><td>'+kk[3]+'</td><td>'+kk[4]+'</td>' +
+      '<td style="font-weight:700;">'+r.korse+'</td>' +
+      '<td>'+tfShort(r.gelirBrut)+'</td>' +
+      '<td class="neg">'+tfShort(-r.danis)+'</td>' +
+      '<td class="neg">'+(r.bakim?tfShort(-r.bakim):'—')+'</td>' +
+      '<td class="neg">'+(r.baskiTop?tfShort(-r.baskiTop):'—')+'</td>' +
+      '<td class="neg">'+tfShort(-r.royaltyTop)+'</td>' +
+      '<td class="'+(r.gelirNet>=0?'pos':'neg')+'" style="font-weight:700;">'+tfShort(r.gelirNet)+'</td>' +
+      '<td class="neg">'+tfShort(-r.sabitGider)+'</td>' +
+      '<td class="neg">'+tfShort(-r.reklamS)+'</td>' +
+      '<td class="neg">'+tfShort(-r.mutfakV)+'</td>' +
+      '<td class="neg">'+(r.ayStopaj?tfShort(-r.ayStopaj):'—')+'</td>' +
+      '<td class="neg">'+(donPrn?tfShort(-donPrn):'—')+'</td>' +
+      '<td class="'+(r.net>=0?'pos':'neg')+'" style="font-weight:700;">'+tfShort(r.net)+'</td>' +
+      '<td class="'+(r.cumBudget>=0?'pos':'neg')+'" style="font-weight:700;">'+tfShort(r.cumBudget)+'</td>' +
+      '</tr>';
+  });
+  // Toplam
+  const tBrut   = rows.reduce((s,r)=>s+(r.gelirBrut||0),0);
+  const tDanis  = rows.reduce((s,r)=>s+(r.danis||0),0);
+  const tBakim  = rows.reduce((s,r)=>s+(r.bakim||0),0);
+  const tBaski  = rows.reduce((s,r)=>s+(r.baskiTop||0),0);
+  const tRoyalt = rows.reduce((s,r)=>s+(r.royaltyTop||0),0);
+  const tSabit  = rows.reduce((s,r)=>s+(r.sabitGider||0),0);
+  const tRek    = rows.reduce((s,r)=>s+(r.reklamS||0),0);
+  const tMutfak = rows.reduce((s,r)=>s+(r.mutfakV||0),0);
+  const tStopaj = rows.reduce((s,r)=>s+(r.ayStopaj||0),0);
+  const tDonPrn = rows.reduce((s,r)=>s+(r.kongre||0)+(r.printerEkMaliyet||0),0);
+  const tpK = rows.reduce((s,r)=>{const k=r.k||[0,0,0,0,0];return s.map((v,j)=>v+k[j]);}, [0,0,0,0,0]);
+  html += '<tr class="tot">' +
+    '<td class="lft">Total</td>' +
+    '<td>'+tpK[0]+'</td><td>'+tpK[1]+'</td><td>'+tpK[2]+'</td><td>'+tpK[3]+'</td><td>'+tpK[4]+'</td>' +
+    '<td>'+tKorse+'</td>' +
+    '<td>'+tfShort(tBrut)+'</td>' +
+    '<td class="neg">'+tfShort(-tDanis)+'</td>' +
+    '<td class="neg">'+(tBakim?tfShort(-tBakim):'—')+'</td>' +
+    '<td class="neg">'+(tBaski?tfShort(-tBaski):'—')+'</td>' +
+    '<td class="neg">'+tfShort(-tRoyalt)+'</td>' +
+    '<td class="'+(tGelir>=0?'pos':'neg')+'" style="font-weight:700;">'+tfShort(tGelir)+'</td>' +
+    '<td class="neg">'+tfShort(-tSabit)+'</td>' +
+    '<td class="neg">'+tfShort(-tRek)+'</td>' +
+    '<td class="neg">'+tfShort(-tMutfak)+'</td>' +
+    '<td class="neg">'+(tStopaj?tfShort(-tStopaj):'—')+'</td>' +
+    '<td class="neg">'+(tDonPrn?tfShort(-tDonPrn):'—')+'</td>' +
+    '<td class="'+(tNet>=0?'pos':'neg')+'" style="font-weight:700;">'+tfShort(tNet)+'</td>' +
+    '<td class="'+(son.cumBudget>=0?'pos':'neg')+'" style="font-weight:700;">'+tfShort(son.cumBudget)+'</td>' +
+    '</tr>';
+  tbody.innerHTML = html;
+}
+
+// ── SECTION 5: Kurulum ───────────────────────────────────────────────────────
+function renderKurulum() {
+  const m2 = V.m2||150;
+  const tmR = V.tadilatM2||4750;
+  const dmR = V.dekoM2||2000;
+  const tadTop = m2 * tmR;
+  const dekoTop = m2 * dmR;
+  const prAdet = _autoPrinterAdet();
+  const prTRY  = prAdet * (V.printerEurFiyat||10000) * (V.eurKur||50);
+  const robTRY = V.robotKolAktif ? (V.robotKolEurFiyat||10000) * (V.eurKur||50) : 0;
+  const toplam = (V.kira||0)+(V.depozito||0)+(V.emlakci||0)+tadTop+dekoTop+(V.mobilya||0)+(V.ruhsat||0)+prTRY+robTRY;
+
+  const items = [
+    ['Rent (first month)', 'V.kira', V.kira||0],
+    ['Deposit', 'V.depozito', V.depozito||0],
+    ['Real estate agent fee', 'V.emlakci', V.emlakci||0],
+    ['Renovation', m2+' m² × ₺'+tmR.toLocaleString('tr-TR')+'/m²', tadTop],
+    ['Decoration', m2+' m² × ₺'+dmR.toLocaleString('tr-TR')+'/m²', dekoTop],
+    ['Equipment + Furniture', 'V.mobilya', V.mobilya||0],
+    ['License & permits', 'V.ruhsat', V.ruhsat||0],
+    ['3D Printer', prAdet+' units × €'+(V.printerEurFiyat||10000)+' × ₺'+(V.eurKur||50), prTRY],
+    ['Robot arm', V.robotKolAktif?'€'+(V.robotKolEurFiyat||10000)+' × ₺'+(V.eurKur||50):'Inactive (no perforated/S+P mix)', robTRY],
+  ];
+  const eurK = Math.round(toplam / (V.eurKur||50) / 1000);
+
+  const tbl = document.getElementById('kurulumTbl');
+  tbl.innerHTML = '<thead><tr><th>Item</th><th>Formula</th><th>Amount (₺)</th></tr></thead><tbody>' +
+    items.map(([name, formula, val]) =>
+      '<tr><td>'+name+'</td><td class="formula">'+formula+'</td><td class="result">'+(val?tf(val):'₺0')+'</td></tr>'
+    ).join('') +
+    '</tbody><tfoot><tr class="total"><td colspan="2"><strong>TOTAL SETUP COST</strong></td><td class="result" style="color:#D85A30;">'+tf(-toplam)+'<br><span style="font-size:11px;color:#888;">≈ €'+eurK+'K</span></td></tr></tfoot>';
+}
+
+// ── SECTION 6: 3 Yıllık Projeksiyon ─────────────────────────────────────────
+function renderProjection() {
+  const rows = window._lastRows || [];
+  const eurKur = V.eurKur || 50;
+  const toEur = v => Math.round(v / eurKur / 1000);
+  const lerp = (a,b,t) => Math.round(a + (b-a)*t);
+
+  const y1KorseNet = rows.reduce((s,r)=>s+(r.gelirNet||0), 0);
+  const y1Korse    = rows.reduce((s,r)=>s+(r.korse||0), 0);
+  const y1Gider    = Math.abs(rows.reduce((s,r)=>s+(r.gider||0), 0));
+  const y1GiderEur = toEur(y1Gider);
+
+  const pazarTR    = gv('pazarTR');
+  const pazarIstPct= gv('pazarIstPct') / 100;
+  const pazarIst   = Math.round(pazarTR * pazarIstPct);
+  const hedefPay   = gv('hedefOsteoidPay') / 100;
+  const y5KorseAdet= Math.round(pazarIst * hedefPay);
+
+  const sonR = rows.slice(-3);
+  const sonK = sonR.reduce((s,r)=>s+(r.korse||0),0)||1;
+  const sonN = sonR.reduce((s,r)=>s+(r.gelirNet||0),0);
+  const birimNetEur = sonN / sonK / eurKur;
+  const y5KorseToplam = Math.round(y5KorseAdet * birimNetEur / 1000);
+
+  const y3BrutGelir = y5KorseToplam;
+  const y2GiderEur  = Math.round(y1GiderEur * 1.15);
+  const y3GiderEur  = Math.round(y1GiderEur * 1.25);
+  const y1BrutM1    = toEur(y1KorseNet);
+  const y1NetM1     = Math.max(0, y1BrutM1 - y1GiderEur);
+  const y2NetM1     = Math.max(0, lerp(y1BrutM1, y3BrutGelir, 0.4) - y2GiderEur);
+  const y3NetM1     = Math.max(0, y3BrutGelir - y3GiderEur);
+  const y3SgkNet    = Math.round(y3BrutGelir * 0.35 * 0.85);
+  const y2SgkNet    = Math.round(y3SgkNet * 0.25);
+
+  const b2bY1 = toEur(window._lastGelirB2B || 0);
+  const b2bRow = [b2bY1, Math.round(b2bY1*1.5), Math.round(b2bY1*2.2)];
+
+  const {triggerAy: _trigAy} = calc4AyOrtalama(rows);
+  const _acilisAy = _trigAy ? Math.max(13, _trigAy+3) : 13;
+  const _aktifAy  = Math.max(0, Math.min(12, 25 - _acilisAy));
+
+  const izmirGelirY2  = V.izmirAktif  ? Math.round(getMerkezGelir('izmir')  * _aktifAy / 12) : 0;
+  const ankaraGelirY2 = V.ankaraAktif ? Math.round(getMerkezGelir('ankara') * _aktifAy / 12) : 0;
+  const pazarIzmir  = Math.round(gv('pazarTR') * V.izmirNufusPay / 100);
+  const pazarAnkara = Math.round(gv('pazarTR') * V.ankaraNufusPay / 100);
+  const y1BirimNetEur = toEur(y1KorseNet) / (y1Korse||1) * 1000;
+  const izmirY3Adet   = V.izmirAktif  ? Math.round(pazarIzmir  * gv('izmirHedefPay')  / 100) : 0;
+  const ankaraY3Adet  = V.ankaraAktif ? Math.round(pazarAnkara * gv('ankaraHedefPay') / 100) : 0;
+  const izmirY3Gelir  = Math.round(izmirY3Adet  * y1BirimNetEur / 1000);
+  const ankaraY3Gelir = Math.round(ankaraY3Adet * y1BirimNetEur / 1000);
+
+  const sonBirimNet = Math.round(sonN / sonK);
+
+  document.getElementById('formulProj').innerHTML =
+    '<span class="c">── YEAR 1 ──────────────────────────────────────────────────────────────────</span>\n' +
+    '<span class="k">Y1_C1_Net</span>      = direct from 12-month model → €'+y1NetM1+'K\n' +
+    '<span class="k">Y1_CostEur</span>     = -(Σ monthly costs) / eurRate / 1000 → €'+y1GiderEur+'K\n\n' +
+    '<span class="c">── YEAR 2 ──────────────────────────────────────────────────────────────────</span>\n' +
+    '<span class="k">Y2_GrossC1</span>     = LINEAR(Y1=€'+y1BrutM1+'K → Y3=€'+y3BrutGelir+'K, t=0.4)\n' +
+    '<span class="k">Y2_CostEur</span>     = Y1_Cost × 1.15 (staff + rent increase) = €'+y2GiderEur+'K\n' +
+    '<span class="k">Y2_C1_Net</span>      = MAX(0, Y2_Gross − Y2_Cost) → €'+y2NetM1+'K\n' +
+    '<span class="k">Y2_SSI_Net</span>     = Y3_SSI × 0.25 (ramp-up 25%) → €'+y2SgkNet+'K\n\n' +
+    '<span class="c">── YEAR 3 ──────────────────────────────────────────────────────────────────</span>\n' +
+    '<span class="k">Y3_TargetBraces</span>= MarketIST × '+gv('hedefOsteoidPay')+'% = '+pazarIst.toLocaleString('tr-TR')+' × '+gv('hedefOsteoidPay')+'% = '+y5KorseAdet+' units\n' +
+    '<span class="k">UnitNetEur</span>     = Year-end avg (last 3 months) = ₺'+sonBirimNet.toLocaleString('tr-TR')+'/brace\n' +
+    '<span class="k">Y3_GrossRevenue</span>= '+y5KorseAdet+' × ₺'+sonBirimNet.toLocaleString('tr-TR')+' / '+eurKur+' / 1000 = €'+y3BrutGelir+'K\n' +
+    '<span class="k">Y3_CostEur</span>     = Y1_Cost × 1.25 → €'+y3GiderEur+'K\n' +
+    '<span class="r">Y3_C1_Net</span>      = MAX(0, Y3_Gross − Y3_Cost) → €'+y3NetM1+'K\n' +
+    '<span class="k">Y3_SSI_Net</span>     = Y3_C1_Net × 0.35 × 0.85 → €'+y3SgkNet+'K\n' +
+    '<span class="c">            0.35 = SSI channel share estimate · 0.85 = collection efficiency (60–90 day delay)</span>';
+
+  // Projeksiyon tablosu
+  const fmt = v => v>0 ? '€'+v+'K' : '—';
+  const totals = [
+    y1NetM1 + 0 + 0 + b2bRow[0] + (V.izmirAktif?0:0) + (V.ankaraAktif?0:0),
+    y2NetM1 + y2SgkNet + 0 + b2bRow[1] + izmirGelirY2 + ankaraGelirY2,
+    y3NetM1 + y3SgkNet + 0 + b2bRow[2] + izmirY3Gelir + ankaraY3Gelir,
+  ];
+
+  const trows = [
+    ['Brace — C1 (private channel)', 'Model Y1; growth projection Y2-3', y1NetM1, y2NetM1, y3NetM1],
+    ['Brace — C1 (SSI, Year 2+)', 'Y3 × 0.35 × 0.85; Y2 = Y3 × 0.25', 0, y2SgkNet, y3SgkNet],
+    ...(b2bRow[0]>0||b2bRow[1]>0 ? [['B2B — Istanbul', 'From Y1 model; Y2=×1.5; Y3=×2.2', b2bRow[0], b2bRow[1], b2bRow[2]]] : []),
+    ...(V.izmirAktif ? [['Brace — Izmir', 'getMerkezGelir × activeMonths/12; Y3: pop. share × unitNet', 0, izmirGelirY2, izmirY3Gelir]] : []),
+    ...(V.ankaraAktif ? [['Brace — Ankara', 'getMerkezGelir × activeMonths/12; Y3: pop. share × unitNet', 0, ankaraGelirY2, ankaraY3Gelir]] : []),
+  ];
+
+  document.getElementById('projTbody').innerHTML =
+    trows.map(([name, formula, y1, y2, y3]) =>
+      '<tr><td>'+name+'</td><td class="formula">'+formula+'</td>' +
+      '<td class="result">'+(y1?fmt(y1):'—')+'</td>' +
+      '<td class="result">'+(y2?fmt(y2):'—')+'</td>' +
+      '<td class="result">'+(y3?fmt(y3):'—')+'</td></tr>'
+    ).join('') +
+    '<tr class="grp"><td>Consolidated Total</td><td class="formula">Σ all items</td>' +
+    '<td class="result">€'+totals[0]+'K</td><td class="result">€'+totals[1]+'K</td><td class="result">€'+totals[2]+'K</td></tr>';
+}
+
+// ── SECTION 7: Yeni Merkezler ─────────────────────────────────────────────────
+function renderMerkezler() {
+  const rows = window._lastRows || [];
+  const eurKur = V.eurKur || 50;
+  const {triggerAy: _trigAy} = calc4AyOrtalama(rows);
+  const _acilisAy = _trigAy ? Math.max(13, _trigAy+3) : 13;
+  const _aktifAy  = Math.max(0, Math.min(12, 25-_acilisAy));
+
+  document.getElementById('formulTetik').innerHTML =
+    '<span class="c">── 4-MONTH MOVING AVERAGE TRIGGER ──────────────────────────────────────────</span>\n\n' +
+    '<span class="c">Monthly net cash flow (MonthlyNet) is used. Moving average cannot be calculated for months 1-3.</span>\n\n' +
+    '<span class="k">MA[m]</span>       = AVERAGE(MonthlyNet[m-3], MonthlyNet[m-2], MonthlyNet[m-1], MonthlyNet[m])\n\n' +
+    '<span class="k">TriggerMonth</span> = MIN{ m ≥ 4 : MA[m] ≥ 0 }\n' +
+    '<span class="k">OpeningMonth</span> = MAX(13, TriggerMonth + 3)\n' +
+    '<span class="c">            3-month preparation period; earliest Year 2 start (Month 13)</span>\n\n' +
+    '<span class="k">ActiveMonthsY2</span> = MAX(0, MIN(12, 25 − OpeningMonth))\n' +
+    '<span class="c">            Number of active operating months in Year 2 (Months 13-24)';
+
+  document.getElementById('tetikDurumu').innerHTML =
+    (_trigAy
+      ? '◎ Trigger in current model: <strong>Month '+_trigAy+'</strong> &nbsp;→&nbsp; Opening: <strong>Year 2 Month '+(_acilisAy-12)+'</strong> (Month '+_acilisAy+') &nbsp;→&nbsp; <strong>'+_aktifAy+' months</strong> active in Year 2'
+      : '◎ Trigger not yet firing in current model — default opening: <strong>Year 2 Month 1</strong> → <strong>12 months</strong> active');
+
+  document.getElementById('formulMerkez').innerHTML =
+    '<span class="c">── NEW CENTER NET REVENUE CALCULATION (getMerkezGelir) ─────────────────────</span>\n\n' +
+    '<span class="k">Ramp</span>        = 12-month brace target array (draggable chart)\n' +
+    '<span class="c">            If IST multiplier active: Ramp[m] = IST_brace[m] × multiplier</span>\n\n' +
+    '<span class="k">TotalBraces</span> = Σ Ramp[0..11]\n\n' +
+    '<span class="k">UnitNetTRY</span>  = Year-end mix average: (last 3 months net revenue) / (last 3 months braces)\n' +
+    '<span class="c">            IST model data — reflects year-end product mix weighting</span>\n\n' +
+    '<span class="k">GrossRevenue</span>= TotalBraces × UnitNetTRY\n\n' +
+    '<span class="k">OpCost</span>      = Σ [ monthly fixed cost + threshold-based staff + withholding tax ]\n' +
+    '<span class="c">            IST cost mode: using IST rates. Custom mode: city-specific rates.</span>\n\n' +
+    '<span class="r">NetRevenueEurK</span>= (GrossRevenue − OpCost) / eurRate / 1000';
+
+  const sehirler = [
+    {key:'izmir',  name:'Izmir',  color:'#1D9E75', aktif: V.izmirAktif},
+    {key:'ankara', name:'Ankara', color:'#534AB7', aktif: V.ankaraAktif},
+  ];
+  const sonR = rows.slice(-3);
+  const sonK = sonR.reduce((s,r)=>s+(r.korse||0),0)||1;
+  const sonN = sonR.reduce((s,r)=>s+(r.gelirNet||0),0);
+  const birimNetTRY = Math.round(sonN / sonK);
+
+  document.getElementById('merkezTbody').innerHTML = sehirler.map(s => {
+    if (!s.aktif) return '<tr><td style="color:'+s.color+';font-weight:700;">'+s.name+'</td><td colspan="6" style="color:#aaa;text-align:center;">Inactive — not selected</td></tr>';
+    const rampa   = V[s.key+'Rampa'] || [];
+    const topK    = rampa.reduce((a,v)=>a+v,0);
+    const brutTRY = topK * birimNetTRY;
+    const netEurK = getMerkezGelir(s.key);
+    const isletme = brutTRY - netEurK * (V.eurKur||50) * 1000;
+    return '<tr>' +
+      '<td style="color:'+s.color+';font-weight:700;">'+s.name+'</td>' +
+      '<td style="text-align:right;">'+topK+' units</td>' +
+      '<td style="text-align:right;">₺'+birimNetTRY.toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;">₺'+Math.round(brutTRY).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;color:#D85A30;">₺'+Math.round(isletme).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;font-weight:700;color:#1D9E75;">₺'+Math.round(netEurK*(V.eurKur||50)*1000).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;font-weight:700;color:#1D9E75;">€'+netEurK+'K</td>' +
+      '</tr>';
+  }).join('');
+
+  document.getElementById('merkezKurulumTbody').innerHTML = sehirler.map(s => {
+    if (!s.aktif) return '<tr><td style="color:'+s.color+';font-weight:700;">'+s.name+'</td><td colspan="4" style="color:#aaa;text-align:center;">Inactive</td></tr>';
+    const useIst = V[s.key+'UseIstKurulum'] !== false;
+    const oran   = V[s.key+'KurulumOran'] || 1.0;
+    const top    = getMerkezKurulum(s.key);
+    const eurK   = Math.round(top / (V.eurKur||50) / 1000);
+    const formula = useIst
+      ? 'IST setup × ' + oran.toFixed(2) + ' (multiplier)'
+      : 'Sum of custom item amounts';
+    return '<tr>' +
+      '<td style="color:'+s.color+';font-weight:700;">'+s.name+'</td>' +
+      '<td>'+(useIst?'IST-based':'Custom')+'</td>' +
+      '<td class="formula">'+formula+'</td>' +
+      '<td style="text-align:right;font-weight:700;">₺'+Math.round(top).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;font-weight:700;color:#D85A30;">€'+eurK+'K</td>' +
+      '</tr>';
+  }).join('');
+}
+
+// ── ÇALIŞTIR ──────────────────────────────────────────────────────────────────
+window.addEventListener('load', function() {
+  // shared.js zaten recalc() çalıştırdı, _lastRows dolu olmalı
+  if (!window._lastRows || !window._lastRows.length) recalc();
+
+  renderParams();
+  renderUrunMarj();
+  renderFormulas();
+  renderMonthlyTable();
+  renderKurulum();
+  renderProjection();
+  renderMerkezler();
+});
+</script>
+</body>
+</html>

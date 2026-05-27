@@ -1,0 +1,277 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Osteoid — Brace Ramp</title>
+<link rel="stylesheet" href="style.css">
+<script>window.PAGE_ID='korse';</script>
+
+</head>
+<body>
+<div class="page" style="padding-top:0">
+
+<div id="layout-header"></div>
+
+<div class="group-label">Revenue Model</div>
+
+<div class="section">
+  <div class="section-header open" onclick="tog(this)"><h2>Brace Ramp &amp; Monthly Table</h2><span class="tog">▾</span></div>
+  <div class="section-body" style="display:block;">
+    <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Brace Sales Ramp — drag column tops</div>
+    <div style="position:relative;width:100%;height:220px;cursor:ns-resize;" id="rampWrap">
+      <canvas id="rampCanvas" style="width: 100%; height: 100%; display: block; cursor: default;" width="778" height="220"></canvas>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;margin-bottom:4px;" id="rampBadges"><span style="font-size:11px;font-weight:700;background:#fdf0ea;color:#D85A30;border:1px solid #f0c4a8;border-radius:4px;padding:2px 7px;">Mo1: 10</span><span style="font-size:11px;font-weight:700;background:#fdf0ea;color:#D85A30;border:1px solid #f0c4a8;border-radius:4px;padding:2px 7px;">Mo2: 10</span><span style="font-size:11px;font-weight:700;background:#fdf0ea;color:#D85A30;border:1px solid #f0c4a8;border-radius:4px;padding:2px 7px;">Mo3: 15</span><span style="font-size:11px;font-weight:700;background:#fdf0ea;color:#D85A30;border:1px solid #f0c4a8;border-radius:4px;padding:2px 7px;">Mo4: 20</span><span style="font-size:11px;font-weight:700;background:#fdf0ea;color:#D85A30;border:1px solid #f0c4a8;border-radius:4px;padding:2px 7px;">Mo5: 25</span><span style="font-size:11px;font-weight:700;background:#fdf0ea;color:#D85A30;border:1px solid #f0c4a8;border-radius:4px;padding:2px 7px;">Mo6: 25</span><span style="font-size:11px;font-weight:700;background:#fdf0ea;color:#D85A30;border:1px solid #f0c4a8;border-radius:4px;padding:2px 7px;">Mo7: 30</span><span style="font-size:11px;font-weight:700;background:#fdf0ea;color:#D85A30;border:1px solid #f0c4a8;border-radius:4px;padding:2px 7px;">Mo8: 30</span><span style="font-size:11px;font-weight:700;background:#fdf0ea;color:#D85A30;border:1px solid #f0c4a8;border-radius:4px;padding:2px 7px;">Mo9: 35</span><span style="font-size:11px;font-weight:700;background:#fdf0ea;color:#D85A30;border:1px solid #f0c4a8;border-radius:4px;padding:2px 7px;">Mo10: 40</span><span style="font-size:11px;font-weight:700;background:#fdf0ea;color:#D85A30;border:1px solid #f0c4a8;border-radius:4px;padding:2px 7px;">Mo11: 40</span><span style="font-size:11px;font-weight:700;background:#fdf0ea;color:#D85A30;border:1px solid #f0c4a8;border-radius:4px;padding:2px 7px;">Mo12: 45</span></div>
+    <div class="note-box" style="margin-bottom:0;">Drag the top edge of each column to adjust units. Range: 0–100, integer steps.</div>
+
+    <hr class="divider" style="margin:18px 0 16px;">
+    <div style="font-size:11px;font-weight:700;color:#378ADD;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">
+      B2B Brace Ramp — drag column tops
+      <span style="font-size:10px;font-weight:400;color:#888;text-transform:none;margin-left:6px;">— wholesale / orthosis stores channel</span>
+    </div>
+    <div style="position:relative;width:100%;height:220px;cursor:ns-resize;" id="b2bRampWrap">
+      <canvas id="b2bRampCanvas" style="width:100%;height:100%;display:block;cursor:default;" width="778" height="220"></canvas>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;" id="b2bRampBadges"></div>
+    <div class="kpi-grid" id="kpiGridB2B" style="margin-bottom:10px;">
+      <div class="kpi"><div class="kpi-label">B2B total braces</div><div class="kpi-val neu">0 units</div></div>
+      <div class="kpi"><div class="kpi-label">B2B annual net revenue</div><div class="kpi-val neu">—</div></div>
+      <div class="kpi"><div class="kpi-label">TR market share (B2B)</div><div class="kpi-val neu">0.00%</div></div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;">B2B Sales Table</div>
+      <button onclick="toggleB2BTablo(this)" style="font-size:11px;padding:4px 12px;border-radius:4px;border:0.5px solid #d0d0cc;background:#fff;cursor:pointer;color:#555;">Hide Table</button>
+    </div>
+    <div id="b2bTblWrap"></div>
+    <div class="note-box" style="margin-bottom:0;margin-top:8px;">Doctor/consultant commission does not apply to the B2B channel. B2B prices and product mix → <a href="market.html" style="color:#534AB7;">Market &amp; Product Mix</a> page.</div>
+
+    <hr class="divider" style="margin:18px 0 16px;">
+    <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Brace Sales Ramp</div>
+    <!-- Panel: Korse Rampası (sürükle-bırak) -->
+
+    <hr class="divider" style="margin:20px 0;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+      <div class="legend" style="margin-bottom:0;">
+        <div style="display:flex;align-items:center;gap:5px;font-size:12px;color:#555;"><div class="ldot" style="background:#e8f5ee;border:1px solid #1a7a45;"></div> Monthly break-even ✓</div>
+        <div style="display:flex;align-items:center;gap:5px;font-size:12px;color:#555;"><div class="ldot" style="background:#eeeef8;border:1px solid #534AB7;"></div> Cumulative positive ★</div>
+      </div>
+      <button onclick="toggleTablo(this)" style="font-size:11px;padding:4px 12px;border-radius:4px;border:0.5px solid #d0d0cc;background:#fff;cursor:pointer;color:#555;">Hide Table</button>
+    </div>
+    <div id="tblWrap"><div class="tbl-wrap"><table id="mainTable"><thead><tr>
+    <th>Month</th>
+    <th style="color:#888780;">Std-NR</th><th style="color:#D85A30;">Std-Rep.</th>
+    <th style="color:#1D9E75;">Perf.</th><th style="color:#534AB7;">Sens</th><th style="color:#D4537E;">Sns+Prf</th>
+    <th>Gross Revenue</th><th>Doctor Fee</th><th>Cost</th><th>Royalty</th><th>Net Revenue</th>
+    <th>Fixed</th><th>Intern</th><th>Advert.</th><th>Kitchen</th><th>W.Tax</th><th>Periodic</th><th>Printer</th>
+    <th>Tot.Cost</th><th>Monthly Net</th><th>Cumulative</th>
+  </tr></thead><tbody><tr class="">
+      <td>Month 1</td>
+      <td style="color:#888780;">5</td><td style="color:#D85A30;">5</td>
+      <td style="color:#1D9E75;">—</td><td style="color:#534AB7;">—</td><td style="color:#D4537E;">—</td>
+      <td>₺275.000</td><td class="nc">-₺35.000</td>
+      <td class="nc">-₺2.750</td>
+      <td class="nc">-₺37.500</td>
+      <td class="pc">₺199.750</td>
+      <td class="nc">-₺189.500</td><td class="zc">—</td><td class="nc">-₺20.000</td>
+      <td class="nc">-₺20.000</td>
+      <td class="zc">—</td>
+      <td class="nc">-₺20.000</td>
+      <td class="nc">-₺249.500</td>
+      <td class="nc">-₺49.750</td>
+      <td class="nc">-₺2.152.250</td>
+    </tr><tr class="">
+      <td>Month 2</td>
+      <td style="color:#888780;">5</td><td style="color:#D85A30;">5</td>
+      <td style="color:#1D9E75;">—</td><td style="color:#534AB7;">—</td><td style="color:#D4537E;">—</td>
+      <td>₺275.000</td><td class="nc">-₺35.000</td>
+      <td class="nc">-₺2.750</td>
+      <td class="nc">-₺37.500</td>
+      <td class="pc">₺199.750</td>
+      <td class="nc">-₺189.500</td><td class="zc">—</td><td class="nc">-₺20.000</td>
+      <td class="nc">-₺20.000</td>
+      <td class="zc">—</td>
+      <td class="nc">-₺120.000</td>
+      <td class="nc">-₺349.500</td>
+      <td class="nc">-₺149.750</td>
+      <td class="nc">-₺2.302.000</td>
+    </tr><tr class="">
+      <td>Month 3</td>
+      <td style="color:#888780;">6</td><td style="color:#D85A30;">6</td>
+      <td style="color:#1D9E75;">3</td><td style="color:#534AB7;">—</td><td style="color:#D4537E;">—</td>
+      <td>₺450.000</td><td class="nc">-₺78.000</td>
+      <td class="nc">-₺4.500</td>
+      <td class="nc">-₺56.250</td>
+      <td class="pc">₺311.250</td>
+      <td class="nc">-₺227.000</td><td class="nc">-₺37.500</td><td class="nc">-₺20.000</td>
+      <td class="nc">-₺20.000</td>
+      <td class="nc">-₺60.000</td>
+      <td class="nc">-₺10.000</td>
+      <td class="nc">-₺337.000</td>
+      <td class="nc">-₺25.750</td>
+      <td class="nc">-₺2.327.750</td>
+    </tr><tr class="r-bas">
+      <td>Month 4 ✓</td>
+      <td style="color:#888780;">8</td><td style="color:#D85A30;">8</td>
+      <td style="color:#1D9E75;">4</td><td style="color:#534AB7;">—</td><td style="color:#D4537E;">—</td>
+      <td>₺600.000</td><td class="nc">-₺104.000</td>
+      <td class="nc">-₺6.000</td>
+      <td class="nc">-₺75.000</td>
+      <td class="pc">₺415.000</td>
+      <td class="nc">-₺227.000</td><td class="nc">-₺37.500</td><td class="nc">-₺20.000</td>
+      <td class="nc">-₺20.000</td>
+      <td class="zc">—</td>
+      <td class="nc">-₺135.000</td>
+      <td class="nc">-₺402.000</td>
+      <td class="pc">₺13.000</td>
+      <td class="nc">-₺2.314.750</td>
+    </tr><tr class="">
+      <td>Month 5</td>
+      <td style="color:#888780;">10</td><td style="color:#D85A30;">10</td>
+      <td style="color:#1D9E75;">5</td><td style="color:#534AB7;">—</td><td style="color:#D4537E;">—</td>
+      <td>₺750.000</td><td class="nc">-₺130.000</td>
+      <td class="nc">-₺7.500</td>
+      <td class="nc">-₺93.750</td>
+      <td class="pc">₺518.750</td>
+      <td class="nc">-₺227.000</td><td class="nc">-₺37.500</td><td class="nc">-₺20.000</td>
+      <td class="nc">-₺20.000</td>
+      <td class="zc">—</td>
+      <td class="nc">-₺10.000</td>
+      <td class="nc">-₺277.000</td>
+      <td class="pc">₺241.750</td>
+      <td class="nc">-₺2.073.000</td>
+    </tr><tr class="">
+      <td>Month 6</td>
+      <td style="color:#888780;">10</td><td style="color:#D85A30;">10</td>
+      <td style="color:#1D9E75;">5</td><td style="color:#534AB7;">—</td><td style="color:#D4537E;">—</td>
+      <td>₺750.000</td><td class="nc">-₺130.000</td>
+      <td class="nc">-₺7.500</td>
+      <td class="nc">-₺93.750</td>
+      <td class="pc">₺518.750</td>
+      <td class="nc">-₺227.000</td><td class="nc">-₺37.500</td><td class="nc">-₺20.000</td>
+      <td class="nc">-₺20.000</td>
+      <td class="nc">-₺60.000</td>
+      <td class="nc">-₺145.000</td>
+      <td class="nc">-₺472.000</td>
+      <td class="pc">₺46.750</td>
+      <td class="nc">-₺2.026.250</td>
+    </tr><tr class="">
+      <td>Month 7</td>
+      <td style="color:#888780;">15</td><td style="color:#D85A30;">3</td>
+      <td style="color:#1D9E75;">5</td><td style="color:#534AB7;">5</td><td style="color:#D4537E;">2</td>
+      <td>₺1.045.000</td><td class="nc">-₺225.000</td>
+      <td class="nc">-₺14.150</td>
+      <td class="nc">-₺112.500</td>
+      <td class="pc">₺693.350</td>
+      <td class="nc">-₺264.500</td><td class="nc">-₺37.500</td><td class="nc">-₺20.000</td>
+      <td class="nc">-₺20.000</td>
+      <td class="zc">—</td>
+      <td class="nc">-₺120.000</td>
+      <td class="nc">-₺424.500</td>
+      <td class="pc">₺268.850</td>
+      <td class="nc">-₺1.757.400</td>
+    </tr><tr class="">
+      <td>Month 8</td>
+      <td style="color:#888780;">14</td><td style="color:#D85A30;">3</td>
+      <td style="color:#1D9E75;">5</td><td style="color:#534AB7;">5</td><td style="color:#D4537E;">3</td>
+      <td>₺1.085.000</td><td class="nc">-₺242.000</td>
+      <td class="nc">-₺15.150</td>
+      <td class="nc">-₺112.500</td>
+      <td class="pc">₺715.350</td>
+      <td class="nc">-₺264.500</td><td class="nc">-₺37.500</td><td class="nc">-₺20.000</td>
+      <td class="nc">-₺20.000</td>
+      <td class="zc">—</td>
+      <td class="nc">-₺10.000</td>
+      <td class="nc">-₺314.500</td>
+      <td class="pc">₺400.850</td>
+      <td class="nc">-₺1.356.550</td>
+    </tr><tr class="">
+      <td>Month 9</td>
+      <td style="color:#888780;">16</td><td style="color:#D85A30;">4</td>
+      <td style="color:#1D9E75;">6</td><td style="color:#534AB7;">6</td><td style="color:#D4537E;">3</td>
+      <td>₺1.255.000</td><td class="nc">-₺278.500</td>
+      <td class="nc">-₺17.350</td>
+      <td class="nc">-₺131.250</td>
+      <td class="pc">₺827.900</td>
+      <td class="nc">-₺264.500</td><td class="nc">-₺37.500</td><td class="nc">-₺20.000</td>
+      <td class="nc">-₺20.000</td>
+      <td class="nc">-₺60.000</td>
+      <td class="nc">-₺10.000</td>
+      <td class="nc">-₺374.500</td>
+      <td class="pc">₺453.400</td>
+      <td class="nc">-₺903.150</td>
+    </tr><tr class="">
+      <td>Month 10</td>
+      <td style="color:#888780;">17</td><td style="color:#D85A30;">4</td>
+      <td style="color:#1D9E75;">8</td><td style="color:#534AB7;">7</td><td style="color:#D4537E;">4</td>
+      <td>₺1.475.000</td><td class="nc">-₺339.500</td>
+      <td class="nc">-₺20.650</td>
+      <td class="nc">-₺150.000</td>
+      <td class="pc">₺964.850</td>
+      <td class="nc">-₺264.500</td><td class="nc">-₺37.500</td><td class="nc">-₺20.000</td>
+      <td class="nc">-₺20.000</td>
+      <td class="zc">—</td>
+      <td class="nc">-₺185.000</td>
+      <td class="nc">-₺489.500</td>
+      <td class="pc">₺475.350</td>
+      <td class="nc">-₺427.800</td>
+    </tr><tr class="r-cum">
+      <td>Month 11 ★</td>
+      <td style="color:#888780;">16</td><td style="color:#D85A30;">5</td>
+      <td style="color:#1D9E75;">8</td><td style="color:#534AB7;">7</td><td style="color:#D4537E;">4</td>
+      <td>₺1.480.000</td><td class="nc">-₺341.500</td>
+      <td class="nc">-₺20.700</td>
+      <td class="nc">-₺150.000</td>
+      <td class="pc">₺967.800</td>
+      <td class="nc">-₺264.500</td><td class="nc">-₺37.500</td><td class="nc">-₺20.000</td>
+      <td class="nc">-₺20.000</td>
+      <td class="zc">—</td>
+      <td class="nc">-₺10.000</td>
+      <td class="nc">-₺314.500</td>
+      <td class="pc">₺653.300</td>
+      <td class="pc">₺225.500</td>
+    </tr><tr class="">
+      <td>Month 12</td>
+      <td style="color:#888780;">17</td><td style="color:#D85A30;">5</td>
+      <td style="color:#1D9E75;">9</td><td style="color:#534AB7;">8</td><td style="color:#D4537E;">6</td>
+      <td>₺1.725.000</td><td class="nc">-₺410.000</td>
+      <td class="nc">-₺24.850</td>
+      <td class="nc">-₺168.750</td>
+      <td class="pc">₺1.121.400</td>
+      <td class="nc">-₺264.500</td><td class="nc">-₺37.500</td><td class="nc">-₺20.000</td>
+      <td class="nc">-₺20.000</td>
+      <td class="nc">-₺60.000</td>
+      <td class="nc">-₺205.000</td>
+      <td class="nc">-₺569.500</td>
+      <td class="pc">₺551.900</td>
+      <td class="pc">₺777.400</td>
+    </tr><tr style="background:#f0efe9;font-weight:700;">
+    <td>Total</td>
+    <td style="color:#888780;">139</td><td style="color:#D85A30;">68</td>
+    <td style="color:#1D9E75;">58</td><td style="color:#534AB7;">38</td><td style="color:#D4537E;">22</td>
+    <td>₺11.165.000</td><td class="nc">-₺2.348.500</td>
+    <td class="nc">-₺143.850</td><td class="nc">-₺1.218.750</td>
+    <td class="pc">₺7.453.900</td>
+    <td class="nc">-₺2.874.000</td><td class="nc">-₺375.000</td><td class="nc">-₺240.000</td>
+    <td class="nc">-₺240.000</td><td class="nc">-₺240.000</td><td class="nc">-₺980.000</td>
+    <td class="nc">-₺4.574.000</td>
+    <td class="pc">₺2.879.900</td>
+    <td class="pc">₺777.400</td>
+  </tr></tbody></table></div></div>
+
+  </div>
+  </div>
+</div>
+
+<div style="display:flex;justify-content:space-between;margin-top:28px;padding:16px 0;border-top:1px solid #e0e0dc;">
+  <a href="market.html" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#534AB7;text-decoration:none;padding:9px 20px;border:1.5px solid #534AB7;border-radius:6px;">&#8592; Market &amp; Product Mix</a>
+  <a href="expenses.html" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#fff;text-decoration:none;padding:9px 20px;background:#534AB7;border:1.5px solid #534AB7;border-radius:6px;">Expenses &#8594;</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script src="shared.js"></script>
+<script>
+window.addEventListener('load', function() { recalc(); });
+</script>
+</body>
+</html>

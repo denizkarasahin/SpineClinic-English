@@ -1,0 +1,515 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Osteoid — 3-Year Plan</title>
+<link rel="stylesheet" href="style.css">
+<script>window.PAGE_ID='buyume';</script>
+
+</head>
+<body>
+<div class="page" style="padding-top:0">
+
+<div id="layout-header"></div>
+
+<div class="group-label">3-Year Plan</div>
+
+<div class="section">
+  <div class="section-header" onclick="tog(this)"><h2>3-Year Growth Plan</h2><span class="tog">▸</span></div>
+  <div class="section-body" style="display:block;">
+    <div class="plan-page">
+
+      <div class="page">
+
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-left">
+      <div class="cover-tag">Growth Plan — Investor Summary</div>
+      <h1>Osteoid<br><em>Centers</em></h1>
+      <div class="cover-sub">Starting from Istanbul, scaling with technology infrastructure —<br>custom orthosis clinic chain — 3-year roadmap</div>
+    </div>
+    <div class="cover-meta">
+      <strong>Version</strong> April 2026
+      <strong style="margin-top:8px;">Prepared by</strong> Osteoid Health Technologies Inc.
+      <div class="note-box" style="margin-bottom:16px;border-left:3px solid #534AB7;padding-left:14px;">
+        <b style="color:#534AB7;display:block;margin-bottom:4px;">Why fast scaling is possible?</b>
+        Orthosis and prosthesis centers in Turkey are structurally unable to scale — the process is dependent on human labor, each center must be built from scratch, and quality cannot be standardized. Osteoid's software, 3D manufacturing, and AI technologies remove this constraint: opening a new center is not building a system from scratch, but copying an existing system to a new location. This makes chain expansion genuinely possible in this sector for the first time.
+      </div>
+      <strong style="margin-top:8px;">Scope</strong> Year 1 — Year 3
+      <strong style="margin-top:8px;">Status</strong> Confidential / Investor-only
+    </div>
+  </div>
+
+  <!-- GELİR TABLOSU -->
+  <div class="section">
+    <div class="section-label">Financial Projection</div>
+    <div class="section-title">Consolidated Revenue Forecast</div>
+    <div id="projTableWrap">
+    <table class="rev-table">
+      <thead><tr>
+        <th>Revenue Item</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>Y1→Y3</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>Brace — Center 1 (private channel)</td><td class="val-pos">—</td><td class="val-pos">—</td><td class="val-pos">—</td><td class="val-grow">—</td></tr>
+      </tbody>
+    </table></div>
+    <div style="font-size:11px;color:var(--ink3);margin-top:8px;" id="projTableNote"></div>
+    <div class="chart-wrap" style="margin-top:24px;">
+      <canvas id="revenueChart" style="display:block;height:240px;width:100%;" width="778" height="240"></canvas>
+    </div>
+  </div>
+
+  <!-- TEHLİKE TETİKLEYİCİ -->
+  <div class="section">
+    <div class="section-label">Growth Logic</div>
+    <div class="trigger-box">
+      <div class="trigger-icon">◎</div>
+      <div class="trigger-content">
+        <div class="trigger-title">2nd Center Trigger</div>
+        <div class="trigger-text">When Center 1's 4-month moving average net profit turns positive — the 2nd center setup process begins.</div>
+        <div class="trigger-note" id="triggerNote">—</div>
+      </div>
+    </div>
+    <div class="highlight">
+      Every center uses the same infrastructure: <strong>Osteoid Inc.'s software, machinery, protocols.</strong> Centers 2 and 3 are not repetitions of Center 1 — they are accelerated versions of learned processes. Marginal setup cost decreases, ramp time shortens.
+    </div>
+  </div>
+
+  <!-- 3 YIL ÖZET KARTLARI -->
+  <div class="section">
+    <div class="section-label">Annual Summary</div>
+    <div class="year-grid">
+      <div class="year-card">
+        <div class="year-card-header y1">
+          <span class="year-num">Year 1</span>
+          <span class="year-badge">POC — Istanbul</span>
+        </div>
+        <div class="year-card-body" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+          <div class="year-kpi"><div class="year-kpi-label">Net revenue</div><div class="year-kpi-val pos" id="y1GelirKpi">₺7.453.900</div></div>
+          <div class="year-kpi"><div class="year-kpi-label">Break-even</div><div class="year-kpi-val pos" id="y1BasKpi">Month 4</div></div>
+          <div class="year-kpi"><div class="year-kpi-label">Cumulative +</div><div class="year-kpi-val neu" id="y1CumKpi">Month 11</div></div>
+          <div class="year-kpi"><div class="year-kpi-label">Total braces</div><div class="year-kpi-val" id="y1KorseKpi">325 units</div></div>
+          <div class="year-kpi" style="grid-column:span 2;"><div class="year-kpi-label">2nd Center Trigger</div><div class="year-kpi-val pos" id="y1TriggerKpi" style="font-size:13px;">✓ Triggered at Month 5</div></div>
+        </div>
+      </div>
+
+      <div class="year-card">
+        <div class="year-card-header y2">
+          <span class="year-num">Year 2</span>
+          <span class="year-badge">Expansion</span>
+        </div>
+        <div class="year-card-body">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+            <div class="year-kpi"><div class="year-kpi-label">Consolidated net revenue</div><div class="year-kpi-val pos" id="y2GelirKpi">~€406K</div></div>
+            <div class="year-kpi"><div class="year-kpi-label">Active centers</div><div class="year-kpi-val" id="y2MerkezKpi">Istanbul + Izmir + Ankara</div></div>
+            <div class="year-kpi" id="izmirAcilisKpi" style="display:none;"><div class="year-kpi-label" style="color:#1D9E75;">Izmir opening</div><div class="year-kpi-val neu" id="izmirAcilisTarihi">—</div></div>
+            <div class="year-kpi" id="ankaraAcilisKpi" style="display:none;"><div class="year-kpi-label" style="color:#534AB7;">Ankara opening</div><div class="year-kpi-val neu" id="ankaraAcilisTarihi">—</div></div>
+          </div>
+          <div style="border-top:1px solid #e8e8e4;margin-top:10px;padding-top:10px;">
+            <div style="font-size:10px;color:#888;font-weight:700;text-transform:uppercase;margin-bottom:8px;">New Center Selection</div>
+            <label style="display:flex;align-items:center;gap:8px;margin-bottom:4px;cursor:pointer;padding:8px;background:#f0fdf4;border:1px solid #1D9E7544;border-radius:6px 6px 0 0;">
+              <input type="checkbox" id="izmirToggle" onchange="toggleMerkez('izmir',this.checked)" style="width:14px;height:14px;accent-color:#1D9E75;cursor:pointer;">
+              <span style="font-size:12px;font-weight:700;color:#1D9E75;">Izmir Center</span>
+              <span style="font-size:10px;color:#888;margin-left:auto;">7.1% population share (incl. surroundings)</span>
+            </label>
+            <div id="izmirTriggerInfo" style="display:flex;align-items:center;gap:6px;padding:6px 10px;background:#e8f5ee;border:1px solid #1D9E7544;border-top:none;border-radius:0 0 6px 6px;margin-bottom:8px;font-size:10px;color:#1D9E75;"></div>
+            <div id="izmirRampaWrap" style="padding: 8px; background: rgb(240, 253, 244); border-radius: 6px; margin-bottom: 8px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+                <div style="font-size:10px;color:#1D9E75;font-weight:700;">Izmir — Monthly Brace Ramp</div>
+                <label style="display:flex;align-items:center;gap:4px;cursor:pointer;">
+                  <input type="checkbox" id="izmirIstToggle" onchange="toggleIstRampa('izmir',this.checked)" style="width:12px;height:12px;accent-color:#1D9E75;">
+                  <span style="font-size:10px;color:#555;">Use IST ramp</span>
+                </label>
+              </div>
+              <div id="izmirOranWrap" style="display:none;background:rgba(29,158,117,0.08);border-radius:4px;padding:6px 8px;margin-bottom:6px;">
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <label style="font-size:10px;color:#1D9E75;white-space:nowrap;">IST multiplier</label>
+                  <input type="range" id="s_izmirRampaOran" min="0.1" max="2.0" step="0.05" value="0.4" style="flex:1;accent-color:#1D9E75;" oninput="updMerkezRampaOran('izmir',this.value)">
+                  <span id="izmirRampaOranVal" style="font-size:11px;font-weight:700;color:#1D9E75;min-width:36px;">×0.40</span>
+                </div>
+              </div>
+              <canvas id="izmirRampaChartCanvas" height="80" style="width:100%;height:80px;display:block;margin-bottom:4px;border-radius:3px;"></canvas>
+              <div style="margin-top:8px;padding-top:6px;border-top:1px solid #d0f0e0;">
+                <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
+                  <input type="checkbox" id="izmirIstGiderToggle" checked="" onchange="toggleIstGider('izmir',this.checked)" style="width:12px;height:12px;accent-color:#1D9E75;">
+                  <span style="font-size:10px;color:#555;">Use IST costs</span>
+                  <span id="izmirGiderNotu" style="font-size:10px;color:#1D9E75;margin-left:auto;">IST base</span>
+                </label>
+              <div id="izmirGiderSliders" style="display:none;margin-top:10px;padding:10px;background:rgba(0,0,0,0.03);border-radius:4px;">
+                <div style="font-size:10px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">Cost Variables</div>
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                  <div class="sl-row">
+                    <label style="color:#666;">Monthly Rent (₺)</label>
+                    <div class="sl-controls">
+                      <input type="range" id="s_izmirKira" min="30000" max="300000" step="5000" value="80000" style="accent-color:#1D9E75;" oninput="sv('izmirKira',this.value);buildProjection()">
+                      <span class="sl-val" id="izmirKira" contenteditable="true" onblur="svMerkez('izmirKira','s_izmirKira',this)" style="color:#1D9E75;">80,000</span>
+                    </div>
+                  </div>
+                  <div class="sl-row">
+                    <label style="color:#666;">Orthotist Salary (₺)</label>
+                    <div class="sl-controls">
+                      <input type="range" id="s_izmirOrtotistM" min="30000" max="150000" step="5000" value="55000" style="accent-color:#1D9E75;" oninput="sv('izmirOrtotistM',this.value);buildProjection()">
+                      <span class="sl-val" id="izmirOrtotistM" contenteditable="true" onblur="svMerkez('izmirOrtotistM','s_izmirOrtotistM',this)" style="color:#1D9E75;">55,000</span>
+                    </div>
+                  </div>
+                  <div class="sl-row">
+                    <label style="color:#666;">Intern Salary (₺)</label>
+                    <div class="sl-controls">
+                      <input type="range" id="s_izmirStajyerM" min="10000" max="80000" step="5000" value="25000" style="accent-color:#1D9E75;" oninput="sv('izmirStajyerM',this.value);buildProjection()">
+                      <span class="sl-val" id="izmirStajyerM" contenteditable="true" onblur="svMerkez('izmirStajyerM','s_izmirStajyerM',this)" style="color:#1D9E75;">25,000</span>
+                    </div>
+                  </div>
+                  <div class="sl-row">
+                    <label style="color:#666;">Kitchen/Cleaning (₺)</label>
+                    <div class="sl-controls">
+                      <input type="range" id="s_izmirMutfak" min="5000" max="50000" step="1000" value="18000" style="accent-color:#1D9E75;" oninput="sv('izmirMutfak',this.value);buildProjection()">
+                      <span class="sl-val" id="izmirMutfak" contenteditable="true" onblur="svMerkez('izmirMutfak','s_izmirMutfak',this)" style="color:#1D9E75;">18,000</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(0,0,0,0.07);">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+                    <div style="font-size:10px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:0.5px;">Setup Cost</div>
+                    <label style="display:flex;align-items:center;gap:4px;cursor:pointer;">
+                      <input type="checkbox" id="izmirIstKurulumToggle" checked="" onchange="toggleIstKurulum('izmir',this.checked)" style="width:11px;height:11px;accent-color:#1D9E75;">
+                      <span style="font-size:10px;color:#555;">IST values</span>
+                    </label>
+                  </div>
+                  <div id="izmirKurulumOranWrap" style="display:flex;align-items:center;gap:8px;margin-bottom:6px;padding:5px 8px;background:rgba(29,158,117,0.07);border-radius:4px;">
+                    <label style="font-size:10px;color:#1D9E75;white-space:nowrap;">IST multiplier</label>
+                    <input type="range" id="s_izmirKurulumOran" min="0.5" max="2.0" step="0.05" value="1.0" style="flex:1;accent-color:#1D9E75;" oninput="updMerkezKurulumOran('izmir',this.value)">
+                    <span id="izmirKurulumOranVal" style="font-size:11px;font-weight:700;color:#1D9E75;min-width:36px;">×1.00</span>
+                  </div>
+                  <div id="izmirKurulumSliders" style="display:none;flex-direction:column;gap:6px;">
+                    <div class="sl-row"><label style="color:#666;">Rent (₺)</label><div class="sl-controls"><input type="range" id="s_izmirKurulumKira" min="0" max="500000" step="10000" value="120000" style="accent-color:#1D9E75;" oninput="sv('izmirKurulumKira',this.value);buildProjection()"><span class="sl-val" id="izmirKurulumKira" style="color:#1D9E75;">120.000</span></div></div>
+                    <div class="sl-row"><label style="color:#666;">Deposit (₺)</label><div class="sl-controls"><input type="range" id="s_izmirKurulumDepozito" min="0" max="600000" step="10000" value="200000" style="accent-color:#1D9E75;" oninput="sv('izmirKurulumDepozito',this.value);buildProjection()"><span class="sl-val" id="izmirKurulumDepozito" style="color:#1D9E75;">200.000</span></div></div>
+                    <div class="sl-row"><label style="color:#666;">Renovation ₺/m² (₺)</label><div class="sl-controls"><input type="range" id="s_izmirKurulumTadilat" min="1000" max="10000" step="250" value="4750" style="accent-color:#1D9E75;" oninput="sv('izmirKurulumTadilat',this.value);buildProjection()"><span class="sl-val" id="izmirKurulumTadilat" style="color:#1D9E75;">4.750</span></div></div>
+                    <div class="sl-row"><label style="color:#666;">Decoration ₺/m² (₺)</label><div class="sl-controls"><input type="range" id="s_izmirKurulumDeko" min="500" max="6000" step="250" value="2000" style="accent-color:#1D9E75;" oninput="sv('izmirKurulumDeko',this.value);buildProjection()"><span class="sl-val" id="izmirKurulumDeko" style="color:#1D9E75;">2.000</span></div></div>
+                    <div class="sl-row"><label style="color:#666;">Equipment &amp; Machinery (₺)</label><div class="sl-controls"><input type="range" id="s_izmirKurulumMobilya" min="100000" max="1500000" step="50000" value="600000" style="accent-color:#1D9E75;" oninput="sv('izmirKurulumMobilya',this.value);buildProjection()"><span class="sl-val" id="izmirKurulumMobilya" style="color:#1D9E75;">600.000</span></div></div>
+                  </div>
+                  <div id="izmirKurulumOzet" style="font-size:11px;color:#1D9E75;font-weight:600;margin-top:4px;">IST setup base: <span id="izmirKurulumTop">~€42K</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="note-box" style="margin-bottom:6px;font-size:11px;">⚠ The decision on whether to open the centers simultaneously or sequentially within Year 2 will be based on Istanbul center performance.</div>
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;padding:8px;background:#f0f0ff;border:1px solid #534AB744;border-radius:6px;">
+              <input type="checkbox" id="ankaraToggle" onchange="toggleMerkez('ankara',this.checked)" style="width:14px;height:14px;accent-color:#534AB7;cursor:pointer;">
+              <span style="font-size:12px;font-weight:700;color:#534AB7;">Ankara Center</span>
+              <span style="font-size:10px;color:#888;margin-left:auto;">8.2% population share (incl. surroundings)</span>
+            </label>
+            <div id="ankaraRampaWrap" style="padding: 8px; background: rgb(240, 240, 255); border-radius: 6px; margin-top: 8px;">
+              <div style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #ddddf8;">
+                <div style="font-size:10px;color:#534AB7;font-weight:700;margin-bottom:4px;">Opening Month (Year 2)</div>
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <input type="range" id="s_ankaraAcilisAy" min="1" max="12" step="1" value="3" style="flex:1;accent-color:#534AB7;" oninput="svAnkaraAcilisAy(this.value)">
+                  <span style="font-size:11px;font-weight:700;color:#534AB7;min-width:60px;" id="ankaraAcilisAyVal">Year 2 Month 3</span>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+                <div style="font-size:10px;color:#534AB7;font-weight:700;">Ankara — Monthly Brace Ramp</div>
+                <label style="display:flex;align-items:center;gap:4px;cursor:pointer;">
+                  <input type="checkbox" id="ankaraIstToggle" onchange="toggleIstRampa('ankara',this.checked)" style="width:12px;height:12px;accent-color:#534AB7;">
+                  <span style="font-size:10px;color:#555;">Use IST ramp</span>
+                </label>
+              </div>
+              <div id="ankaraOranWrap" style="display:none;background:rgba(83,74,183,0.07);border-radius:4px;padding:6px 8px;margin-bottom:6px;">
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <label style="font-size:10px;color:#534AB7;white-space:nowrap;">IST multiplier</label>
+                  <input type="range" id="s_ankaraRampaOran" min="0.1" max="2.0" step="0.05" value="0.4" style="flex:1;accent-color:#534AB7;" oninput="updMerkezRampaOran('ankara',this.value)">
+                  <span id="ankaraRampaOranVal" style="font-size:11px;font-weight:700;color:#534AB7;min-width:36px;">×0.40</span>
+                </div>
+              </div>
+              <canvas id="ankaraRampaChartCanvas" height="80" style="width:100%;height:80px;display:block;margin-bottom:4px;border-radius:3px;"></canvas>
+              <div style="margin-top:8px;padding-top:6px;border-top:1px solid #ddddf8;">
+                <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
+                  <input type="checkbox" id="ankaraIstGiderToggle" checked="" onchange="toggleIstGider('ankara',this.checked)" style="width:12px;height:12px;accent-color:#534AB7;">
+                  <span style="font-size:10px;color:#555;">Use IST costs</span>
+                  <span id="ankaraGiderNotu" style="font-size:10px;color:#534AB7;margin-left:auto;">IST base</span>
+                </label>
+              <div id="ankaraGiderSliders" style="display:none;margin-top:10px;padding:10px;background:rgba(0,0,0,0.03);border-radius:4px;">
+                <div style="font-size:10px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">Cost Variables</div>
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                  <div class="sl-row">
+                    <label style="color:#666;">Monthly Rent (₺)</label>
+                    <div class="sl-controls">
+                      <input type="range" id="s_ankaraKira" min="30000" max="300000" step="5000" value="85000" style="accent-color:#534AB7;" oninput="sv('ankaraKira',this.value);buildProjection()">
+                      <span class="sl-val" id="ankaraKira" contenteditable="true" onblur="svMerkez('ankaraKira','s_ankaraKira',this)" style="color:#534AB7;">85,000</span>
+                    </div>
+                  </div>
+                  <div class="sl-row">
+                    <label style="color:#666;">Orthotist Salary (₺)</label>
+                    <div class="sl-controls">
+                      <input type="range" id="s_ankaraOrtotistM" min="30000" max="150000" step="5000" value="55000" style="accent-color:#534AB7;" oninput="sv('ankaraOrtotistM',this.value);buildProjection()">
+                      <span class="sl-val" id="ankaraOrtotistM" contenteditable="true" onblur="svMerkez('ankaraOrtotistM','s_ankaraOrtotistM',this)" style="color:#534AB7;">55,000</span>
+                    </div>
+                  </div>
+                  <div class="sl-row">
+                    <label style="color:#666;">Intern Salary (₺)</label>
+                    <div class="sl-controls">
+                      <input type="range" id="s_ankaraStajyerM" min="10000" max="80000" step="5000" value="25000" style="accent-color:#534AB7;" oninput="sv('ankaraStajyerM',this.value);buildProjection()">
+                      <span class="sl-val" id="ankaraStajyerM" contenteditable="true" onblur="svMerkez('ankaraStajyerM','s_ankaraStajyerM',this)" style="color:#534AB7;">25,000</span>
+                    </div>
+                  </div>
+                  <div class="sl-row">
+                    <label style="color:#666;">Kitchen/Cleaning (₺)</label>
+                    <div class="sl-controls">
+                      <input type="range" id="s_ankaraMutfak" min="5000" max="50000" step="1000" value="18000" style="accent-color:#534AB7;" oninput="sv('ankaraMutfak',this.value);buildProjection()">
+                      <span class="sl-val" id="ankaraMutfak" contenteditable="true" onblur="svMerkez('ankaraMutfak','s_ankaraMutfak',this)" style="color:#534AB7;">18,000</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(0,0,0,0.07);">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+                    <div style="font-size:10px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:0.5px;">Setup Cost</div>
+                    <label style="display:flex;align-items:center;gap:4px;cursor:pointer;">
+                      <input type="checkbox" id="ankaraIstKurulumToggle" checked="" onchange="toggleIstKurulum('ankara',this.checked)" style="width:11px;height:11px;accent-color:#534AB7;">
+                      <span style="font-size:10px;color:#555;">IST values</span>
+                    </label>
+                  </div>
+                  <div id="ankaraKurulumOranWrap" style="display:flex;align-items:center;gap:8px;margin-bottom:6px;padding:5px 8px;background:rgba(83,74,183,0.07);border-radius:4px;">
+                    <label style="font-size:10px;color:#534AB7;white-space:nowrap;">IST multiplier</label>
+                    <input type="range" id="s_ankaraKurulumOran" min="0.5" max="2.0" step="0.05" value="1.0" style="flex:1;accent-color:#534AB7;" oninput="updMerkezKurulumOran('ankara',this.value)">
+                    <span id="ankaraKurulumOranVal" style="font-size:11px;font-weight:700;color:#534AB7;min-width:36px;">×1.00</span>
+                  </div>
+                  <div id="ankaraKurulumSliders" style="display:none;flex-direction:column;gap:6px;">
+                    <div class="sl-row"><label style="color:#666;">Rent (₺)</label><div class="sl-controls"><input type="range" id="s_ankaraKurulumKira" min="0" max="500000" step="10000" value="120000" style="accent-color:#534AB7;" oninput="sv('ankaraKurulumKira',this.value);buildProjection()"><span class="sl-val" id="ankaraKurulumKira" style="color:#534AB7;">120.000</span></div></div>
+                    <div class="sl-row"><label style="color:#666;">Deposit (₺)</label><div class="sl-controls"><input type="range" id="s_ankaraKurulumDepozito" min="0" max="600000" step="10000" value="200000" style="accent-color:#534AB7;" oninput="sv('ankaraKurulumDepozito',this.value);buildProjection()"><span class="sl-val" id="ankaraKurulumDepozito" style="color:#534AB7;">200.000</span></div></div>
+                    <div class="sl-row"><label style="color:#666;">Renovation ₺/m² (₺)</label><div class="sl-controls"><input type="range" id="s_ankaraKurulumTadilat" min="1000" max="10000" step="250" value="4750" style="accent-color:#534AB7;" oninput="sv('ankaraKurulumTadilat',this.value);buildProjection()"><span class="sl-val" id="ankaraKurulumTadilat" style="color:#534AB7;">4.750</span></div></div>
+                    <div class="sl-row"><label style="color:#666;">Decoration ₺/m² (₺)</label><div class="sl-controls"><input type="range" id="s_ankaraKurulumDeko" min="500" max="6000" step="250" value="2000" style="accent-color:#534AB7;" oninput="sv('ankaraKurulumDeko',this.value);buildProjection()"><span class="sl-val" id="ankaraKurulumDeko" style="color:#534AB7;">2.000</span></div></div>
+                    <div class="sl-row"><label style="color:#666;">Equipment &amp; Machinery (₺)</label><div class="sl-controls"><input type="range" id="s_ankaraKurulumMobilya" min="100000" max="1500000" step="50000" value="600000" style="accent-color:#534AB7;" oninput="sv('ankaraKurulumMobilya',this.value);buildProjection()"><span class="sl-val" id="ankaraKurulumMobilya" style="color:#534AB7;">600.000</span></div></div>
+                  </div>
+                  <div id="ankaraKurulumOzet" style="font-size:11px;color:#534AB7;font-weight:600;margin-top:4px;">IST setup base: <span id="ankaraKurulumTop">~€42K</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="year-milestones" style="margin-top:10px;">
+            <li>SSI application &amp; approval</li>
+            <li>Hospital channel pilot</li>
+            <li>DA &amp; KK full ramp</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="year-card">
+        <div class="year-card-header y3">
+          <span class="year-num">Year 3</span>
+          <span class="year-badge">Platform — Target Shares</span>
+        </div>
+        <div class="year-card-body">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px;">
+            <div class="year-kpi"><div class="year-kpi-label">Net revenue (Year 3)</div><div class="year-kpi-val pos" id="y5GelirKpi">~€938K</div></div>
+            <div class="year-kpi"><div class="year-kpi-label">Target market share</div><div class="year-kpi-val neu" id="y5PayKpi">16.0% IST · 17.5% IZM · 20.5% ANK</div></div>
+            <div class="year-kpi"><div class="year-kpi-label">Target brace count</div><div class="year-kpi-val pos" id="y5KorseKpi">1,027 + 373 + 504 units/year</div></div>
+          </div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid #e8e8e4;">
+            <div style="font-size:10px;color:#888;font-weight:700;text-transform:uppercase;margin-bottom:8px;">Year 3 Target Market Shares</div>
+            <div style="font-size:10px;color:#c94f2a;margin-bottom:4px;font-weight:700;">ISTANBUL</div>
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
+              <input type="range" id="s_hedefOsteoidPay" min="1" max="30" step="0.5" value="21.5" style="flex:1;accent-color:#c94f2a;" oninput="sv('hedefOsteoidPay',this.value)">
+              <span class="sl-val" id="hedefOsteoidPay" contenteditable="true" onblur="sv2('hedefOsteoidPay','s_hedefOsteoidPay',this)" style="min-width:40px;font-size:12px;color:#c94f2a;">16</span>
+              <span style="font-size:10px;color:#888;">% IST</span>
+            </div>
+            <div id="izmirHedefWrap" style="">
+              <div style="font-size:10px;color:#1D9E75;margin-bottom:4px;font-weight:700;">IZMIR</div>
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
+                <input type="range" id="s_izmirHedefPay" min="1" max="30" step="0.5" value="3" style="flex:1;accent-color:#1D9E75;" oninput="sv('izmirHedefPay',this.value)">
+                <span class="sl-val" id="izmirHedefPay" contenteditable="true" onblur="sv2('izmirHedefPay','s_izmirHedefPay',this)" style="min-width:40px;font-size:12px;color:#1D9E75;">17,5</span>
+                <span style="font-size:10px;color:#888;">% IZM</span>
+              </div>
+            </div>
+            <div id="ankaraHedefWrap" style="">
+              <div style="font-size:10px;color:#534AB7;margin-bottom:4px;font-weight:700;">ANKARA</div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <input type="range" id="s_ankaraHedefPay" min="1" max="30" step="0.5" value="3" style="flex:1;accent-color:#534AB7;" oninput="sv('ankaraHedefPay',this.value)">
+                <span class="sl-val" id="ankaraHedefPay" contenteditable="true" onblur="sv2('ankaraHedefPay','s_ankaraHedefPay',this)" style="min-width:40px;font-size:12px;color:#534AB7;">20,5</span>
+                <span style="font-size:10px;color:#888;">% ANK</span>
+              </div>
+            </div>
+          </div>
+          <ul class="year-milestones">
+            <li>2 centers at full capacity</li>
+            <li>SSI + private channel mature</li>
+            <li>Hospital royalty established</li>
+            <li>Platform valuation ready</li>
+            <li>3rd center decision</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BÜYÜME MOTORLARı -->
+  <div class="section">
+    <div class="section-label">Growth Engines</div>
+    <div class="section-title">Each Engine Independent — Total Impact Cumulative</div>
+    <div class="motor-grid">
+      <div class="motor-card">
+        <div class="motor-head">
+          <div class="motor-dot" style="background:#2c4a2e;"></div>
+          <div class="motor-name">Scoliosis Brace Chain</div>
+        </div>
+        <div class="motor-desc">From Istanbul POC to 2–3 cities. Doctor referral network is portable, infrastructure is not rebuilt. Each new center reaches profitability faster. In Turkey, orthosis and prosthesis centers are structurally unable to scale — the process is dependent on human labor, quality cannot be standardized. Osteoid's software, 3D manufacturing, and AI technologies remove this constraint: opening a new center is not building a system from scratch, but copying an existing system to a new location.</div>
+        <span class="motor-tag" style="background:#c8d9c9;color:#2c4a2e;">Core engine — Year 1+</span>
+      </div>
+      <div class="motor-card">
+        <div class="motor-head">
+          <div class="motor-dot" style="background:#1e3a5f;"></div>
+          <div class="motor-name">SGK Channel</div>
+        </div>
+        <div class="motor-desc">From Year 2 onward. No commission, cash flow delayed 60–90 days. Does not cannibalize the private channel — different patient segment.</div>
+        <span class="motor-tag" style="background:#b8cce0;color:#1e3a5f;">Volume engine — Year 2+</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ZAMAN ÇİZELGESİ -->
+  <div class="section">
+    <div class="section-label">Implementation Timeline</div>
+    <div class="section-title">Trigger-Based Roadmap</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot y1"></div>
+        <div class="tl-period">Month 1–6 · Year 1</div>
+        <div class="tl-title">Center 1 opening — Istanbul POC</div>
+        <div class="tl-desc">License, team, first doctor activations. Standard brace focused. Intern joins at Month 3. Perforated and sensor brace launch at Month 6.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot y1"></div>
+        <div class="tl-period">Month 7–11 · Year 1</div>
+        <div class="tl-title">Product range expanding, break-even approaching</div>
+        <div class="tl-desc">Sensor + perforated brace entering the mix. Diabetic foot and cranial helmet first cases. Break-even ~Month 9. Cumulative positive ~Month 10–11.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot trigger"></div>
+        <div class="tl-period">Month 9–11 · Trigger</div>
+        <div class="tl-title">4-month moving average net profit → 2nd center signal</div>
+        <div class="tl-desc">4-month moving average filters out patient fluctuations. When trigger fires, Center 2 location and partner process begins.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot y2"></div>
+        <div class="tl-period">Month 13–15 · Early Year 2</div>
+        <div class="tl-title">Center 2 opening — Ankara or Izmir</div>
+        <div class="tl-desc">Faster ramp using Center 1's learned processes. SSI application simultaneous. Local partner brings doctor referral channel.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot y2"></div>
+        <div class="tl-period">Mid Year 2</div>
+        <div class="tl-title">SSI approval</div>
+        <div class="tl-desc">With SSI approval, volume increases at Center 1 and the SSI channel accelerates growth.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot y3"></div>
+        <div class="tl-period">Year 3</div>
+        <div class="tl-title">Platform maturation — 3rd center decision</div>
+        <div class="tl-desc">When both centers reach full capacity, 3rd center evaluation. Platform valuation ready.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RİSK MATRİSİ -->
+  <div class="section">
+    <div class="section-label">Risk &amp; Mitigation</div>
+    <div class="section-title">Critical Risks</div>
+    <div class="risk-grid">
+      <div class="risk-row">
+        <div class="risk-label"><strong style="display:block;color:var(--ink);margin-bottom:3px;">Doctor activation speed</strong>If below expected ramp, break-even shifts</div>
+        <div class="risk-sev">
+          <div class="risk-pip"><span class="pip-fill"></span><span class="pip-fill"></span><span class="pip-fill"></span><span class="pip-empty"></span><span class="pip-empty"></span></div>
+          <div style="font-size:10px;color:var(--ink3);">Medium</div>
+        </div>
+        <div class="risk-mit">Strategic partner investors bring a physician network from the start. BD team active from Month 1.</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label"><strong style="display:block;color:var(--ink);margin-bottom:3px;">FX risk</strong>TRY revenue, EUR reporting</div>
+        <div class="risk-sev">
+          <div class="risk-pip"><span class="pip-fill"></span><span class="pip-fill"></span><span class="pip-empty"></span><span class="pip-empty"></span><span class="pip-empty"></span></div>
+          <div style="font-size:10px;color:var(--ink3);">Low–Medium</div>
+        </div>
+        <div class="risk-mit">Clinic revenue TRY, costs also TRY — real margin preserved. Royalty fixed in EUR, turns into FX advantage. Prices updated against inflation.</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label"><strong style="display:block;color:var(--ink);margin-bottom:3px;">SSI delay risk</strong>60–90 day cash flow impact</div>
+        <div class="risk-sev">
+          <div class="risk-pip"><span class="pip-fill"></span><span class="pip-fill"></span><span class="pip-empty"></span><span class="pip-empty"></span><span class="pip-empty"></span></div>
+          <div style="font-size:10px;color:var(--ink3);">Low–Medium</div>
+        </div>
+        <div class="risk-mit">SSI intentionally excluded in Year 1 — model proven in private channel first. When SSI activates in Year 2, working capital is sufficient as buffer.</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label"><strong style="display:block;color:var(--ink);margin-bottom:3px;">2nd center partnership risk</strong>If local partner fails to meet expectations</div>
+        <div class="risk-sev">
+          <div class="risk-pip"><span class="pip-fill"></span><span class="pip-fill"></span><span class="pip-fill"></span><span class="pip-empty"></span><span class="pip-empty"></span></div>
+          <div style="font-size:10px;color:var(--ink3);">Medium</div>
+        </div>
+        <div class="risk-mit">Partnership agreement includes patient referral obligation and vesting. Osteoid retains operational control. Local partner receives minority equity, does not operate.</div>
+      </div>
+    </div>
+  </div>
+
+
+
+      </div>
+    </div>
+  </div>
+  </div>
+
+<!-- METODOLOJİ -->
+
+</div>
+
+<div style="display:flex;justify-content:space-between;margin-top:28px;padding:16px 0;border-top:1px solid #e0e0dc;">
+  <a href="expenses.html" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#534AB7;text-decoration:none;padding:9px 20px;border:1.5px solid #534AB7;border-radius:6px;">&#8592; Expenses</a>
+  <a href="investor.html" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#fff;text-decoration:none;padding:9px 20px;background:#534AB7;border:1.5px solid #534AB7;border-radius:6px;">Investor &amp; Agreement &#8594;</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script src="shared.js"></script>
+<script>
+window.addEventListener('load', function() {
+  recalc();
+  ['izmir','ankara'].forEach(function(s) {
+    const aktif = V[s+'Aktif'];
+    const cb = document.getElementById(s+'Toggle');
+    if (cb) cb.checked = !!aktif;
+    const rWrap = document.getElementById(s+'RampaWrap');
+    if (rWrap) rWrap.style.display = aktif ? '' : 'none';
+    const hWrap = document.getElementById(s+'HedefWrap');
+    if (hWrap) hWrap.style.display = aktif ? '' : 'none';
+    if (aktif) {
+      const useIst = V[s+'UseIst'];
+      const istCb = document.getElementById(s+'IstToggle');
+      if (istCb) istCb.checked = !!useIst;
+      const oranWrap = document.getElementById(s+'OranWrap');
+      if (useIst && oranWrap) {
+        oranWrap.style.display = '';
+        const oran = V[s+'RampaOran'] || 0.4;
+        const sl = document.getElementById('s_'+s+'RampaOran');
+        if (sl) sl.value = oran;
+        const vl = document.getElementById(s+'RampaOranVal');
+        if (vl) vl.textContent = '×'+parseFloat(oran).toFixed(2);
+      }
+      const giderCb = document.getElementById(s+'IstGiderToggle');
+      if (giderCb) giderCb.checked = V[s+'UseIstGider'] !== false;
+      const kurulumCb = document.getElementById(s+'IstKurulumToggle');
+      if (kurulumCb) kurulumCb.checked = V[s+'UseIstKurulum'] !== false;
+      if (s === 'ankara') {
+        const ay = V.ankaraAcilisAy || 3;
+        const sl = document.getElementById('s_ankaraAcilisAy');
+        if (sl) sl.value = ay;
+        const vl = document.getElementById('ankaraAcilisAyVal');
+        if (vl) vl.textContent = 'Year 2 Month ' + ay;
+      }
+      initMerkezRampaChart(s);
+      renderMerkezRampaChart(s);
+    }
+  });
+});
+</script>
+</body>
+</html>

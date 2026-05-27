@@ -1,0 +1,2999 @@
+--- buyume.html
+—
+▸
+◎
+﻿
+16
+17,5
+20,5
+Ay 4
+Orta
+% ANK
+% İST
+% İZM
+2.000
+4.750
+Ay 11
+Durum
+Y1→Y3
+Yıl 1
+Yıl 2
+Yıl 3
+~€42K
+×0.40
+×1.00
+İZMİR
+18,000
+25,000
+55,000
+80,000
+85,000
+ANKARA
+Kapsam
+~€406K
+~€938K
+120.000
+200.000
+600.000
+Başabaş
+Osteoid
+İST baz
+325 adet
+Versiyon
+İSTANBUL
+Kur riski
+Net gelir
+SGK onayı
+Düşük–Orta
+Ekspansyon
+Hazırlayan
+Merkezleri
+Nisan 2026
+SGK Kanalı
+Yıl 2 Ay 3
+₺7.453.900
+← Giderler
+Kümülatif +
+Yıllık Özet
+İST çarpanı
+Depozito (₺)
+Gelir Kalemi
+Toplam korse
+Yıl 2 ortası
+3 Yıllık Plan
+Yıl 1 — Yıl 3
+İST değerleri
+İzmir Merkezi
+İzmir açılışı
+Ankara Merkezi
+Ankara açılışı
+Ay 1–6 · Yıl 1
+Aylık Kira (₺)
+Büyüme Mantığı
+Kritik Riskler
+POC — İstanbul
+Risk & Azaltma
+Aktif merkezler
+Ay 7–11 · Yıl 1
+Kira bedeli (₺)
+3. merkez kararı
+Büyüme Motorları
+Hedef pazar payı
+Kurulum Maliyeti
+Tadilat ₺/m² (₺)
+Uygulama Takvimi
+İST kurulum baz:
+DA & KK tam rampa
+Hedef korse adeti
+Net gelir (Yıl 3)
+SGK gecikme riski
+Stajyer Maaşı (₺)
+Açılış Ayı (Yıl 2)
+Gider Değişkenleri
+Ortotist Maaşı (₺)
+Yeni Merkez Seçimi
+Dekorasyon ₺/m² (₺)
+Hastane kanal pilot
+Konsolide net gelir
+Mutfak/Temizlik (₺)
+✓ Ay 5de tetiklendi
+Finansal Projeksiyon
+Mobilya & Makina (₺)
+SGK başvurusu & onay
+İST rampasını kullan
+2 merkez tam kapasite
+2. Merkez Tetikleyici
+3 Yıllık Büyüme Planı
+Ay 13–15 · Yıl 2 başı
+Ay 9–11 · Tetikleyici
+Hacim motoru — Yıl 2+
+Hekim aktivasyon hızı
+Skolyoz Korse Zinciri
+SGK + özel kanal olgun
+Yatırımcı & Sözleşme →
+İST giderlerini kullan
+2. Merkez Tetikleyicisi
+Konsolide Gelir Tahmini
+Osteoid — 3 Yıllık Plan
+Platform — Hedef Paylar
+Çekirdek motor — Yıl 1+
+2. merkez ortaklık riski
+Gizli / Yatırımcıya Özel
+Hastane royalty yerleşik
+Platform değerleme hazır
+TRY gelir, EUR raporlama
+window.PAGE_ID='buyume';
+Yıl 3 Hedef Pazar Payları
+İstanbul + İzmir + Ankara
+1.027 + 373 + 504 adet/yıl
+İzmir — Aylık Korse Rampası
+60–90 gün nakit akışı etkisi
+Ankara — Aylık Korse Rampası
+%7,1 nüfus payı (civar dahil)
+%8,2 nüfus payı (civar dahil)
+Korse — Merkez 1 (özel kanal)
+Büyüme Planı — Yatırımcı Özeti
+Tetikleyici Bazlı Yol Haritası
+Merkez 1 açılışı — İstanbul POC
+Neden hızlı zincirleşme mümkün?
+%16.0 İST · %17.5 İZM · %20.5 ANK
+Osteoid Sağlık Teknolojileri A.Ş.
+Her merkez aynı altyapıyı kullanır:
+Yerel ortak beklentiyi karşılamazsa
+Merkez 2 açılışı — Ankara veya İzmir
+Platform olgunlaşması — 3. merkez kararı
+Ürün gamı genişliyor, başabaş yaklaşıyor
+Her Motor Bağımsız — Toplam Etki Kümülatif
+Beklenen rampanın altında kalırsa başabaş kayar
+Osteoid A.Ş.'nin yazılımı, makinası, protokolü.
+İstanbul'dan başlayan, teknoloji altyapısıyla büyüyen
+4 aylık hareketli ortalama net kâr → 2. merkez sinyali
+kişiye özel ortez klinik zinciri — 3 yıllık yol haritası
+SGK onayıyla Merkez 1'de hacim artışı ve SGK kanalı büyümeyi hızlandırıyor.
+Stratejik ortak yatırımcılar hekim ağını baştan getiriyor. BD kadrosu Ay 1'den aktif.
+İki merkez tam kapasiteye ulaştığında 3. merkez değerlendirmesi. Platform değerleme hazır.
+Merkez 1'in 4 aylık hareketli ortalama net kârı pozitife döndüğünde — 2. merkez kurulum sürecine girilir.
+⚠ Yıl 2 içinde merkezlerin eş zamanlı veya sırayla açılması kararı İstanbul merkezi performansına göre alınacaktır.
+Merkez 1'in öğrenilmiş süreçleriyle daha hızlı rampa. Aynı anda SGK başvurusu. Yerel ortak hekim referral kanalı getirir.
+Yıl 2'den itibaren. Komisyon yok, nakit akışı 60–90 gün gecikmeli. Özel kanalı kannibalize etmez — farklı hasta segmenti.
+Ruhsat, ekip, ilk hekim aktivasyonları. Standart korse odaklı. Ay 3'te stajyer. Ay 6'da delikli ve sensörlü korse lansmanı.
+Sensörlü + delikli korse mix'e giriyor. Diyabetik ayak ve kranial kask ilk vakalar. Başabaş ~Ay 9. Kümülatif pozitif ~Ay 10–11.
+4 aylık hareketli ortalama hasta dalgalanmasını filtreler. Tetikleyici gerçekleştiğinde Merkez 2 lokasyon ve ortak süreci başlar.
+Merkez 2 ve 3, Merkez 1'in tekrarı değil — öğrenilmiş süreçlerin hızlandırılmış versiyonu. Marjinal kurulum maliyeti düşer, rampa süresi kısalır.
+Ortaklık sözleşmesinde hasta referral yükümlülüğü ve vesting. Osteoid operasyonel kontrolü elinde tutar. Yerel ortak azınlık hisse alır, işletmez.
+Yıl 1'de SGK kasıtlı olarak dışarıda — önce özel kanalda model kanıtlanıyor. Yıl 2'de SGK devreye girdiğinde çalışma sermayesi tampon için yeterli.
+Klinik gelir TRY, maliyetler de TRY — reel marj korunuyor. Royalty EUR cinsinden sabit, kur avantajına dönüşür. Fiyatlar enflasyona göre güncellenir.
+Türkiye'de ortez-protez merkezleri yapısal olarak ölçeklenememektedir — süreç insan emeğine bağımlı, her merkez sıfırdan kurulmak zorunda, kalite standardize edilemiyor. Osteoid'in yazılım, 3D imalat ve yapay zeka teknolojileri bu kısıtı ortadan kaldırır: merkez açmak bir sistem kurgulamak değil, mevcut bir sistemin yeni bir lokasyona kopyalanmasıdır. Bu, zincirleşmeyi sektörde ilk kez gerçek anlamda mümkün kılıyor.
+İstanbul POC'dan 2–3 şehre. Hekim referral ağı taşınabilir, altyapı tekrar kurulmaz. Her yeni merkez daha hızlı kâra geçer. Türkiye'de ortez-protez merkezleri yapısal olarak ölçeklenemez — süreç insan emeğine bağımlı, kalite standardize edilemiyor. Osteoid'in yazılım, 3D imalat ve yapay zeka teknolojileri bu kısıtı ortadan kaldırır: yeni merkez açmak bir sistemi sıfırdan kurmak değil, mevcut sistemin yeni bir lokasyona kopyalanmasıdır.
+window.addEventListener('load', function() {
+  recalc();
+  ['izmir','ankara'].forEach(function(s) {
+    const aktif = V[s+'Aktif'];
+    const cb = document.getElementById(s+'Toggle');
+    if (cb) cb.checked = !!aktif;
+    const rWrap = document.getElementById(s+'RampaWrap');
+    if (rWrap) rWrap.style.display = aktif ? '' : 'none';
+    const hWrap = document.getElementById(s+'HedefWrap');
+    if (hWrap) hWrap.style.display = aktif ? '' : 'none';
+    if (aktif) {
+      const useIst = V[s+'UseIst'];
+      const istCb = document.getElementById(s+'IstToggle');
+      if (istCb) istCb.checked = !!useIst;
+      const oranWrap = document.getElementById(s+'OranWrap');
+      if (useIst && oranWrap) {
+        oranWrap.style.display = '';
+        const oran = V[s+'RampaOran'] || 0.4;
+        const sl = document.getElementById('s_'+s+'RampaOran');
+        if (sl) sl.value = oran;
+        const vl = document.getElementById(s+'RampaOranVal');
+        if (vl) vl.textContent = '×'+parseFloat(oran).toFixed(2);
+      }
+      const giderCb = document.getElementById(s+'IstGiderToggle');
+      if (giderCb) giderCb.checked = V[s+'UseIstGider'] !== false;
+      const kurulumCb = document.getElementById(s+'IstKurulumToggle');
+      if (kurulumCb) kurulumCb.checked = V[s+'UseIstKurulum'] !== false;
+      if (s === 'ankara') {
+        const ay = V.ankaraAcilisAy || 3;
+        const sl = document.getElementById('s_ankaraAcilisAy');
+        if (sl) sl.value = ay;
+        const vl = document.getElementById('ankaraAcilisAyVal');
+        if (vl) vl.textContent = 'Yıl 2 Ay ' + ay;
+      }
+      initMerkezRampaChart(s);
+      renderMerkezRampaChart(s);
+    }
+  });
+});
+--- donemsel.html
+▸
+﻿
+₺0
+Diğer
+₺100.000
+₺180.000
+₺700.000
+12 Aylık Özet →
+Atölye / Eğitim
+← Sabit Giderler
+Dönemsel Giderler
+Kongre / Sempozyum
+Reklam / Pazarlama
+window.PAGE_ID='donemsel';
+Osteoid — Dönemsel Giderler
+window.addEventListener('load', function() { recalc(); });
+Sütun üst kenarını sürükleyerek ayarla. Her kategori ince sütun olarak yan yana gösterilir.
+--- giderler.html
+)
++
+2
+—
+₺
+−
+▸
+15
+30
+76
++ ₺
+150
+1,25
+₺/ay
+1.500
+2.000
+4.750
+Dahil
+Hariç
+10.000
+20.000
+30.000
+37.500
+50.000
+60.000
+75.000
+120.000
+200.000
+600.000
+Toplam:
+m² × (₺
+Giderler
+adet · ₺
+₺300.000
+₺712.500
+-₺189.500
+1.000.000
+Kapasite:
+② Stajyer
+-₺1.012.500
+-₺2.102.500
+-₺2.649.000
+Ay 1 — sabit
+Depozito (₺)
+Net maaş (₺)
+Brüt maliyet:
+3D Printer (×€
+Aylık kira (₺)
+Sabit Giderler
+Tadilat (₺/m²)
+Toplam Kurulum
+3 Yıllık Plan →
+Kira bedeli (₺)
+← Korse Rampası
+① Uzman Ortezci
+Ofis metrekaresi
+Sabit gider / ay
+~88–132 korse/ay
+④ Destek Elemanı
+Dekorasyon (₺/m²)
+Dönemsel Giderler
+Kurulum Giderleri
+Merkez alanı (m²)
+Sabit gider / yıl
+Emlakçı ücreti (₺)
+Genel giderler (₺)
+Mutfak & yemek (₺)
+Osteoid — Giderler
+Ruhsat & lisans (₺)
+Aylık Sabit Giderler
+Tadilat + Dekorasyon
+③ Yeni Mezun Ortezci
+Ekipman & donanım (₺)
+İnternet / telefon (₺)
+Elektrik / su / gaz (₺)
+Robot Kol — delikli korse
+YMM / Mali Müşavir (₺/ay)
+SGK çarpanı (işveren payı)
+window.PAGE_ID='giderler';
+Stajyer 1 eşiği (≥ X korse/ay)
+Stopaj aylık modele yansıtılıyor.
+Destek elemanı eşiği (≥ X korse/ay)
+Osteoid A.Ş. Ekipman (intercompany)
+Personel Eşikleri (aylık korse / ay)
+Yeni Mezun Ortezci eşiği (≥ X korse/ay)
+Dış hizmet alımı — SGK çarpanı uygulanmaz
+Peşin kira + depozito dahil, aylık kira işletme giderinde
+Şirkete maliyet = net maaş × çarpan — tüm roller için geçerli
+Yeni merkezlerde aylık ortalama korse hacmine göre personel otomatik ölçeklenir.
+Sütun üst kenarını sürükleyerek ayarla. Her kategori ince sütun olarak yan yana gösterilir.
+⚠ 3D Printer ve Robot Kol, Osteoid A.Ş. tarafından intercompany transfer olarak temin edilmektedir.
+Ana yatırım bedeli geri kazanıldığında ekipmanlar piyasa fiyatının %50'si üzerinden Osteoid Merkezleri'ne devredilecektir.
+Net maaş girişi — şirkete maliyet brüt olarak hesaplanır (net × SGK çarpanı). Uzman ortezci her merkezde Ay 1'den itibaren sabit; diğer roller eşik sistemine göre devreye girer.
+const _ALL_GIDER_TABS = ['tab-kurulum', 'tab-sabit', 'tab-donemsel'];
+
+function switchInnerTab(btn, tabId) {
+  _ALL_GIDER_TABS.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  var show = document.getElementById(tabId);
+  if (show) show.style.display = '';
+  document.querySelectorAll('.inner-tab').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  recalc();
+  if (tabId === 'tab-donemsel') {
+    setTimeout(function() { if (window.initDonemCanvas) initDonemCanvas(); }, 30);
+  }
+}
+
+window.addEventListener('load', function() {
+  // Kurulum tab sync
+  var v = V.kira || 120000;
+  var slK = document.getElementById('s_kira');
+  if (slK) slK.value = v;
+  var kk = document.getElementById('kira_k');
+  if (kk) kk.textContent = v.toLocaleString('tr-TR');
+
+  // Sabit tab sync
+  var slAK = document.getElementById('s_aylikKira');
+  if (slAK) slAK.value = v;
+  var kd = document.getElementById('kira');
+  if (kd) kd.textContent = v.toLocaleString('tr-TR');
+
+  [['s_mutfak','mutfak',20000],['s_genelGider','genelGider',10000],['s_ymmM','ymmM',10000]].forEach(function(arr) {
+    var slId = arr[0], key = arr[1], def = arr[2];
+    var val = V[key] || def;
+    var sl = document.getElementById(slId); if (sl) sl.value = val;
+    var dp = document.getElementById(key);  if (dp) dp.textContent = val.toLocaleString('tr-TR');
+  });
+
+  var e1 = document.getElementById('esikLabel1'); if (e1) e1.textContent = V.esikStajyer1 || 15;
+  var e2 = document.getElementById('esikLabel2'); if (e2) e2.textContent = V.esikDestek    || 30;
+  var e3 = document.getElementById('esikLabel3'); if (e3) e3.textContent = V.esikStajyer2  || 76;
+
+  var pt = document.getElementById('printerToggle');
+  if (pt) pt.checked = V.printerAktif !== false;
+  var rkt = document.getElementById('robotKolToggle');
+  if (rkt) rkt.checked = !!V.robotKolAktif;
+
+  recalc();
+});
+--- index.html
+▾
+67%
+-₺50
+Ay 4
+Ay 11
+€24.375
+325 adet
+₺777.400
+Kümülatif
+₺7.453.900
+-₺1.218.750
+-₺2.102.500
+Toplam korse
+12 Aylık Özet
+Aylık başabaş
+Gelir & Gider
+Royalty / yıl
+Gider Dağılımı
+Kurulum gideri
+Net marj / korse
+Yıllık net gelir
+Kümülatif pozitif
+Pazar & Rekabet →
+Kümülatif yıl sonu
+Baskı maliyeti/adet
+Osteoid A.Ş. royalty
+Osteoid — 12 Aylık Özet
+window.PAGE_ID='index';
+window.addEventListener('load', function() { recalc(); });
+--- korse.html
+2
+3
+4
+5
+6
+7
+8
+9
+—
+▾
+﻿
+10
+14
+15
+16
+17
+22
+38
+58
+68
+Ay
+139
+S+D
+Ay 1
+Ay 2
+Ay 3
+Ay 5
+Ay 6
+Ay 7
+Ay 8
+Ay 9
+Sens
+0.00%
+Ay 10
+Ay 12
+Delik
+Sabit
+0 adet
+Ay 4 ✓
+Mutfak
+Reklam
+Stopaj
+Toplam
+-₺2.750
+-₺4.500
+-₺6.000
+-₺7.500
+Ay 11 ★
+Ay1: 10
+Ay2: 10
+Ay3: 15
+Ay4: 20
+Ay5: 25
+Ay6: 25
+Ay7: 30
+Ay8: 30
+Ay9: 35
+Maliyet
+Printer
+Royalty
+Stajyer
+₺13.000
+₺46.750
+-₺10.000
+-₺14.150
+-₺15.150
+-₺17.350
+-₺20.000
+-₺20.650
+-₺20.700
+-₺24.850
+-₺25.750
+-₺35.000
+-₺37.500
+-₺49.750
+-₺56.250
+-₺60.000
+-₺75.000
+-₺78.000
+-₺93.750
+Ay10: 40
+Ay11: 40
+Ay12: 45
+Dönemsel
+sayfası.
+₺199.750
+₺225.500
+₺241.750
+₺268.850
+₺275.000
+₺311.250
+₺400.850
+₺415.000
+₺450.000
+₺453.400
+₺475.350
+₺518.750
+₺551.900
+₺600.000
+₺653.300
+₺693.350
+₺715.350
+₺750.000
+₺777.400
+₺827.900
+₺964.850
+₺967.800
+-₺104.000
+-₺112.500
+-₺120.000
+-₺130.000
+-₺131.250
+-₺135.000
+-₺143.850
+-₺145.000
+-₺149.750
+-₺150.000
+-₺168.750
+-₺185.000
+-₺189.500
+-₺205.000
+-₺225.000
+-₺227.000
+-₺240.000
+-₺242.000
+-₺249.500
+-₺264.500
+-₺277.000
+-₺278.500
+-₺314.500
+-₺337.000
+-₺339.500
+-₺341.500
+-₺349.500
+-₺374.500
+-₺375.000
+-₺402.000
+-₺410.000
+-₺424.500
+-₺427.800
+-₺472.000
+-₺489.500
+-₺569.500
+-₺903.150
+-₺980.000
+Aylık Net
+Kümülatif
+Net Gelir
+Std-Rprsz
+Top.Gider
+Brüt Gelir
+Giderler →
+Std-Rporlu
+₺1.045.000
+₺1.085.000
+₺1.121.400
+₺1.255.000
+₺1.475.000
+₺1.480.000
+₺1.725.000
+₺2.879.900
+₺7.453.900
+-₺1.218.750
+-₺1.356.550
+-₺1.757.400
+-₺2.026.250
+-₺2.073.000
+-₺2.152.250
+-₺2.302.000
+-₺2.314.750
+-₺2.327.750
+-₺2.348.500
+-₺2.874.000
+-₺4.574.000
+Danışmanlık
+₺11.165.000
+Gelir Modeli
+Tabloyu Gizle
+Aylık başabaş ✓
+B2B toplam korse
+Pazar & Ürün Mix
+B2B Satış Tablosu
+← Pazar & Ürün Mix
+Korse Satış Rampası
+Kümülatif pozitif ★
+TR pazar payı (B2B)
+B2B yıllık net gelir
+Osteoid — Korse Rampası
+window.PAGE_ID='korse';
+Korse Rampası & Aylık Tablo
+— toptan / ortez mağazaları kanalı
+B2B Korse Rampası — sütun üstünü sürükle
+Korse Satış Rampası — sütun üstünü sürükle
+window.addEventListener('load', function() { recalc(); });
+Hekim/danışman komisyonu B2B kanalına uygulanmaz. B2B fiyatları ve ürün mix →
+Sütunların üst kenarını sürükleyerek adet ayarla. 0–100 arası, tamsayı adımlı.
+--- kurulum.html
+)
++
+2
+—
+₺
+−
+▸
+﻿
++ ₺
+150
+2.000
+4.750
+Dahil
+Hariç
+10.000
+50.000
+120.000
+200.000
+600.000
+Toplam:
+m² × (₺
+adet · ₺
+₺300.000
+₺712.500
+1.000.000
+Kapasite:
+-₺1.012.500
+-₺2.102.500
+Detay Model
+Depozito (₺)
+3D Printer (×€
+Tadilat (₺/m²)
+Toplam Kurulum
+Kira bedeli (₺)
+← Korse Rampası
+Ofis metrekaresi
+Sabit Giderler →
+~88–132 korse/ay
+Dekorasyon (₺/m²)
+Kurulum Giderleri
+Merkez alanı (m²)
+Emlakçı ücreti (₺)
+Ruhsat & lisans (₺)
+Tadilat + Dekorasyon
+Ekipman & donanım (₺)
+Robot Kol — delikli korse
+window.PAGE_ID='kurulum';
+Osteoid — Kurulum Giderleri
+Stopaj aylık modele yansıtılıyor.
+Osteoid A.Ş. Ekipman (intercompany)
+Peşin kira + depozito dahil, aylık kira işletme giderinde
+⚠ 3D Printer ve Robot Kol, Osteoid A.Ş. tarafından intercompany transfer olarak temin edilmektedir.
+Ana yatırım bedeli geri kazanıldığında ekipmanlar piyasa fiyatının %50'si üzerinden Osteoid Merkezleri'ne devredilecektir.
+window.addEventListener('load', function() {
+  const v = V.kira || 120000;
+  const sl = document.getElementById('s_kira');
+  if (sl) sl.value = v;
+  const disp = document.getElementById('kira');
+  if (disp) disp.textContent = v.toLocaleString('tr-TR');
+
+
+  const pt = document.getElementById('printerToggle');
+  if (pt) pt.checked = V.printerAktif !== false;
+  const rkt = document.getElementById('robotKolToggle');
+  if (rkt) rkt.checked = !!V.robotKolAktif;
+
+  recalc();
+});
+--- metodoloji.html
+—
+•
+€
+▸
+﻿
+15
+30
+50
+75
+76
+Ay
+ℹ️
+⚠️
+%25
+Not
+S+D
+Brüt
+Oran
+Sens
+Ürün
+Delik
+Değer
+Fiyat
+Std-R
+Formül
+Merkez
+Std-Rl
+Yöntem
+−Hekim
+−Kanal
+−Sabit
+Kod adı
+Maliyet
+Malzeme
+Royalty
+−Mutfak
+−Reklam
+−Stopaj
+Açıklama
+Net Gel.
+Net maaş
+Personel
+Pozisyon
+korse/ay
+₺ / adet
+−Malzeme
+−Royalty
+Gelir (₺)
+Gider (₺)
+Parametre
+Tutar (₺)
+mor satır
+B2B Fiyatı
+Hekim payı
+Metodoloji
+Net marj %
+Tutar (€K)
+Yıl 1 (€K)
+Yıl 2 (€K)
+Yıl 3 (€K)
+Brüt gelir:
+SGK çarpanı
+Yeşil satır
+−Dönem/Prnt
+Brüt maliyet
+Gelir Kalemi
+Gider kalemi
+Toplam Korse
+kesim bedeli
+Öngörü notu:
+Aylık Net (₺)
+Her yıl için:
+Kur & Royalty
+Kümülatif (₺)
+Net gelir (₺)
+%0 tam istisna
+Formül Sağlama
+Her korse için
+Net gelir (€K)
+Net gelir/adet
+SGK hesaplama:
+🖨 Yazdır / PDF
+Formül / Kaynak
+Aktifleşme eşiği
+Formül & Sağlama
+Korse Mix (adet)
+Brüt yıllık gelir
+Klinik vs B2B fark
+Model Metodolojisi
+Ürün mix dağılımı:
+€75 × EUR/TRY kuru
+(kanal bakım oranı)
+Ay 10-12 ortalaması
+Gider projeksiyonu:
+Hekim Komisyonu (%)
+Merkez Gelir Hesabı
+Yıl 1 — Gerçek Veri
+= aylık başabaş (✓),
+Osteoid — Metodoloji
+Yıl 1 — Model Verisi
+2. Merkez Tetikleyici
+Karşılaştırma Tablosu
+Merkez Kurulum Gideri
+Personel Eşik Sistemi
+Yıl Sonu Mix Baz Alma
+Yıllık işletme gideri
+Değerleme FAVÖK Hesabı
+← Yatırımcı & Sözleşme
+Tetikleyici Mekanizması
+• Stajyer: aylık ort. ≥
+Sabit Aylık Giderler (₺)
+Yeni merkez net geliri =
+Yıl 2-3 Net Gelir Hesabı
+Ürün Satış Fiyatları (₺)
+Birim net gelir (₺/korse)
+Her korse satışında akış:
+Kanal payı = Brüt gelir ×
+Rampa toplamı (korse/yıl)
+3 Yıl Özet Tablosu (Canlı)
+Gelir Tarafı — Her Ay İçin
+Gider Tarafı — Her Ay İçin
+• Yeni mezun: aylık ort. ≥
+Royalty & Kesim Mekanizması
+Royalty (€/korse — tüm SKU)
+Yıl 2-3 Projeksiyon Mantığı
+İzmir / Ankara Gelir Hesabı
+B2B Ürün Satış Fiyatları (₺)
+Yıl 1 gider tabanından büyür
+window.PAGE_ID='metodoloji';
+Kesim (€/korse — delikli SKU)
+3 — Aylık Hesaplama Formülleri
+Malzeme Maliyetleri (₺ / adet)
+veri güdümlü bir tetikleyiciye
+• Destek elemanı: aylık ort. ≥
+Kümülatif Bütçe & Tetikleyiciler
+Brüt gelir − Yıl 1 işletme gideri
+2 — Ürün Bazında Birim Marj Analizi
+Mevcut parametrelerle tam hesaplama.
+• Kurumlar vergisi: klinik faaliyeti
+6 — 3 Yıllık Projeksiyon Metodolojisi
+— Yıl 3: ×1,25 (büyüme, SGK yönetimi)
+4 — 12 Aylık Hesaplama Tablosu (Canlı)
+— Yıl 2: ×1,15 (kira artışı, pazarlama)
+1 — Temel Parametreler (Giriş Değerleri)
+Net = Brüt korse geliri − İşletme gideri
+5 — Kurulum Giderleri (İstanbul Merkez 1)
+tabi (TGB muafiyeti yalnızca Osteoid A.Ş.)
+7 — Yeni Merkez Hesaplaması (İzmir / Ankara)
+Hedef korse adeti × yıl sonu birim net gelir
+• Uzman ortezci: her merkezde Ay 1'den sabit
+İzmir veya Ankara kararı sabit bir takvime değil,
+Yıl 2-3 birim gelir hesabında yıl ortalaması değil,
+• Personel: eşik sistemine göre otomatik ölçeklenir
+• KDV: ortez-protez teslimi KDV Kanunu 17/4-s kapsamında
+• Reklam: merkezi gider — yeni merkezlere ayrıca yüklenmez
+• Brüt gelir: rampa toplam korse × yıl sonu birim net gelir
+• EV hesabı her zaman FAVÖK üzerinden yapılır, vergi düşülmez
+= kümülatif pozitif (★). Kümülatif başlangıç = −(Kurulum gideri).
+Personel gideri sabit değil, aylık korse hacmine göre ölçeklenir:
+• SGK geliri Yıl 3'te eklenir, %15 gecikme/tahsilat kaybı düşülür
+FAVÖK ≈ Konsolide Yıl 3 net klinik geliri (korse + yeni merkezler)
+Royalty: tüm korseler · Kesim: yalnızca Delikli + Sensörlü+Delikli
+Brüt fiyat → Hekim payı → Kanal payı → Malzeme → Royalty = Net gelir
+• Amortisman modelde ayrı kalem değil — küçük ölçekte makul basitleştirme
+Yeni merkezler için eşik, yıl toplam rampasının 12'ye bölümüyle hesaplanır.
+• Gider: İstanbul Yıl 1 gideri (veya özel gider seçilmişse şehir slider'ları)
+Osteoid A.Ş.'ye ödenir. Her iki tutar klinik gelir hesabında gider olarak düşülür.
+Tek seferlik kurulum yatırımı. Kümülatif bütçe hesabının başlangıç değeridir (negatif olarak girilir).
+Yıl 1 rakamları doğrudan 12 aylık hesaplama modelinden alınır; herhangi bir projeksiyon veya katsayı uygulanmaz.
+tutarında royalty Osteoid A.Ş.'ye akar. Ek olarak, delik içeren SKU'larda (Delikli ve Sensörlü+Delikli) her korse başına
+kullanılır. Gerekçe: ürün mix'i zaman içinde üst ürünlere kayar (sensörlü, delikli); olgunlaşmış mix baz alınmazsa projeksiyon düşük kalır.
+bağlıdır: İstanbul'un 4 aylık hareketli ortalama aylık net kârı pozitife döndüğünde. Finansal disiplin ilkesi — POC kanıtlanmadan ölçekleme yapılmaz.
+Bu bölüm modelin nasıl çalıştığını, hangi varsayımların kullanıldığını ve neden bu yaklaşımların seçildiğini açıklar. Yatırımcıyla sağlıklı bir diyalog için ortak zemin oluşturur.
+Yıl 1 gelir ve gider rakamları modelin korse rampası, ürün mix tablosu ve sabit gider slider'larından anlık hesaplanır. Hiçbir varsayım kullanılmaz — slider değerlerinin doğrudan çıktısıdır.
+Bu projeksiyondaki tüm rakamlar varsayıma dayalıdır. Başabaş ve kümülatif pozitif tarihleri korse rampasına bağlıdır. Rakamlar yatırım kararı için değil, iş modelini anlamak ve sorgulamak için hazırlanmıştır.
+Y3 SGK geliri = Y3 özel kanal geliri × %35 (SGK kanal payı katsayısı) × %85 (tahsilat etkinliği — ortalama 60–90 gün gecikme için iskonto). Y2 SGK = Y3 × %25 (onay süreci + yarıyıl rampa). Bu katsayılar operatör deneyimiyle doğrulanmalıdır.
+Her ay 5 ürün tipine korse adetleri Pazar & Ürün Mix sayfasındaki yüzde dağılımına göre ayrıştırılır. Belirli bir ay için bir ürün henüz aktif değilse (aktifAy eşiği aşılmamışsa) o ürün için sıfır kabul edilir ve toplam yüzde yeniden normalize edilir.
+.sec { margin: 28px 0; }
+.sec-title { font-size: 13px; font-weight: 900; color: #fff; background: #2c3e50; padding: 7px 14px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 14px; display: inline-block; }
+.sub-title { font-size: 12px; font-weight: 800; color: #534AB7; margin: 14px 0 6px; text-transform: uppercase; letter-spacing: 0.3px; }
+.param-tbl { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 18px; }
+.param-tbl th { background: #f0efe9; padding: 7px 10px; text-align: left; font-size: 11px; font-weight: 700; color: #555; border: 1px solid #ddd; }
+.param-tbl td { padding: 6px 10px; border: 1px solid #eee; vertical-align: middle; }
+.param-tbl tr:nth-child(even) td { background: #fafaf8; }
+.param-tbl td.val { font-family: monospace; font-size: 12px; font-weight: 700; background: #f0ede5; color: #8c6d3f; border-radius: 3px; white-space: nowrap; }
+.param-tbl td.note { color: #888; font-size: 11px; }
+.fbox { background: #f5f4ef; border: 1px solid #e2e0d4; border-radius: 6px; padding: 14px 18px; margin: 10px 0; font-family: 'Courier New', monospace; font-size: 12px; line-height: 2; white-space: pre-wrap; }
+.fbox .c { color: #888; } .fbox .r { color: #1D9E75; font-weight: 700; } .fbox .d { color: #D85A30; } .fbox .b { color: #534AB7; } .fbox .k { color: #2c3e50; font-weight: 700; }
+.prod-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 16px; }
+.prod-card { border: 1px solid #e0ddd4; border-radius: 6px; padding: 14px; background: #fff; }
+.prod-card h4 { margin: 0 0 10px; font-size: 12px; font-weight: 800; color: #333; border-bottom: 2px solid currentColor; padding-bottom: 5px; }
+.prod-line { display: flex; justify-content: space-between; font-size: 11px; padding: 3px 0; }
+.prod-line .lbl { color: #666; } .prod-line .val { font-family: monospace; font-weight: 700; }
+.prod-line.deduct .val { color: #D85A30; }
+.prod-line.net { border-top: 1px solid #e0ddd4; padding-top: 5px; margin-top: 3px; font-weight: 800; }
+.prod-line.net .val { color: #1D9E75; font-size: 12px; }
+.mtbl-wrap { overflow-x: auto; margin-bottom: 12px; }
+.mtbl { border-collapse: collapse; font-size: 11px; min-width: 900px; }
+.mtbl th { background: #2c3e50; color: #fff; padding: 6px 8px; text-align: center; font-size: 10px; white-space: nowrap; border: 1px solid #1a2836; }
+.mtbl th.lft { text-align: left; }
+.mtbl td { padding: 5px 8px; border: 1px solid #eee; text-align: right; white-space: nowrap; font-size: 11px; }
+.mtbl td.lft { text-align: left; font-weight: 700; }
+.mtbl td.neg { color: #D85A30; } .mtbl td.pos { color: #1D9E75; } .mtbl td.neu { color: #534AB7; }
+.mtbl tr.bas td { background: #e8f5ee; } .mtbl tr.poz td { background: #eee8ff; } .mtbl tr.tot td { background: #f0efe9; font-weight: 700; border-top: 2px solid #ccc; }
+.setup-tbl { width: 100%; border-collapse: collapse; font-size: 12px; max-width: 600px; }
+.setup-tbl td { padding: 7px 12px; border: 1px solid #eee; }
+.setup-tbl td.formula { font-family: monospace; font-size: 11px; color: #888; }
+.setup-tbl td.result { font-family: monospace; font-weight: 700; text-align: right; }
+.setup-tbl tr.total td { background: #f0efe9; font-weight: 700; border-top: 2px solid #888; }
+.proj-tbl { border-collapse: collapse; font-size: 12px; width: 100%; max-width: 800px; }
+.proj-tbl th { background: #f0efe9; padding: 7px 10px; font-size: 11px; font-weight: 700; border: 1px solid #ddd; text-align: left; }
+.proj-tbl td { padding: 6px 10px; border: 1px solid #eee; }
+.proj-tbl td.formula { font-family: monospace; font-size: 11px; color: #555; }
+.proj-tbl td.result { font-family: monospace; font-weight: 700; text-align: right; color: #1D9E75; }
+.proj-tbl tr.grp td { background: #f5f5f0; font-weight: 700; color: #333; }
+.note { background: #fffbf0; border-left: 3px solid #f5c518; padding: 9px 13px; margin: 10px 0; font-size: 12px; color: #554; border-radius: 0 4px 4px 0; }
+.info { background: #edf4ff; border-left: 3px solid #378ADD; padding: 9px 13px; margin: 10px 0; font-size: 12px; color: #1a4a7a; border-radius: 0 4px 4px 0; }
+.trigger-box { background: #e8f5ee; border: 1px solid #68c48a; border-radius: 6px; padding: 12px 16px; font-size: 12px; margin: 12px 0; }
+.kpi-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 12px 0; }
+.kpi-box { background: #fff; border: 1px solid #e0ddd4; border-radius: 6px; padding: 10px 16px; min-width: 140px; }
+.kpi-box .klbl { font-size: 11px; color: #888; margin-bottom: 3px; }
+.kpi-box .kval { font-size: 16px; font-weight: 900; }
+.kpi-box .kval.pos { color: #1D9E75; } .kpi-box .kval.neg { color: #D85A30; } .kpi-box .kval.neu { color: #534AB7; }
+// ── Formül Sağlama: formatters ────────────────────────────────────────────────
+function tf(n) {
+  if (n === undefined || n === null) return '—';
+  if (n === 0) return '₺0';
+  var abs = Math.abs(Math.round(n));
+  return (n < 0 ? '−₺' : '₺') + abs.toLocaleString('tr-TR');
+}
+function tfShort(n) {
+  if (!n) return '—';
+  var abs = Math.abs(Math.round(n));
+  return (n < 0 ? '−₺' : '₺') + abs.toLocaleString('tr-TR');
+}
+function ef(n) { if (!n && n !== 0) return '—'; return '€' + Math.round(n).toLocaleString('tr-TR'); }
+function pf(n) { return (n || 0).toFixed(1) + '%'; }
+
+function renderParams() {
+  function row(name, code, val, note) {
+    return '<tr><td>' + name + '</td><td><code style="font-size:11px;color:#888;">' + code + '</code></td><td class="val">' + val + '</td><td class="note">' + (note||'') + '</td></tr>';
+  }
+  var royaltyTRY = Math.round((V.royaltyEur||75) * (V.eurKur||50));
+  document.getElementById('p_kur').innerHTML = [
+    row('EUR/TRY kuru','eurKur','₺'+(V.eurKur||50),'Tüm EUR↔TRY dönüşümlerinde kullanılır'),
+    row('Royalty (Osteoid A.Ş.)','royaltyEur','€'+(V.royaltyEur||75)+'/korse','₺'+royaltyTRY.toLocaleString('tr-TR')+'/korse (= '+(V.royaltyEur||75)+' × '+(V.eurKur||50)+')'),
+    row('Kanal bakım payı','kanalBakim',(V.kanalBakim||0)+'% (brüt gelir üzerinden)','Satış kanalı yönetim payı — şu an ₺0 (sıfır ayarlı)'),
+    row('Kesim başına (EUR)','kesimEurPer','€'+(V.kesimEurPer||50)+'/adet','Delikli ve S+D korsede kullanılır; Osteoid A.Ş. kesim geliri'),
+  ].join('');
+
+  var prods = ['stdR','stdRl','delik','sens','sensDelik'];
+  var prodNames = ['Std-Raporsuz','Std-Raporlu','Delikli+Rpl','Sensörlü+Rpl','Sns+Rpl+Dlik'];
+  var fKeys = ['korseF_stdR','korseF_stdRl','korseF_delik','korseF_sens','korseF_sensDelik'];
+  var mKeys = ['mal_stdR','mal_stdRl','mal_delik','mal_sens','mal_sensDelik'];
+  var dKeys = ['danis_stdR','danis_stdRl','danis_delik','danis_sens','danis_sensDelik'];
+  var b2bFKeys = ['korseFB2B_stdR','korseFB2B_stdRl','korseFB2B_delik','korseFB2B_sens','korseFB2B_sensDelik'];
+
+  document.getElementById('p_fiyat').innerHTML = prods.map(function(p,i){ return row(prodNames[i],fKeys[i],tf(V[fKeys[i]]),i===0?'Ay 1-5 başlangıç ürünü':i>=2?'Ay 6+ ileri ürün':''); }).join('');
+  document.getElementById('p_malzeme').innerHTML = prods.map(function(p,i){ return row(prodNames[i],mKeys[i],tf(V[mKeys[i]]),(i===2||i===4)?'+ €'+(V.kesimEurPer||50)+'/adet kesim maliyeti (Osteoid A.Ş. geliri)':''); }).join('');
+  document.getElementById('p_danis').innerHTML = prods.map(function(p,i){
+    var fiyat=V[fKeys[i]]||0, pct=V[dKeys[i]]||0;
+    return '<tr><td>'+prodNames[i]+'</td><td><code style="font-size:11px;color:#888;">'+dKeys[i]+'</code></td><td class="val">%'+pct+'</td><td class="note">= ₺'+Math.round(fiyat*pct/100).toLocaleString('tr-TR')+'/adet ('+fiyat.toLocaleString('tr-TR')+' × '+pct+'%)</td></tr>';
+  }).join('');
+  document.getElementById('p_sabit').innerHTML = [
+    row('Aylık kira','kira',tf(V.kira),'İşletme dönemi aylık kira'),
+    row('Depozito','depozito',tf(V.depozito),'Kurulum gideri; işletme maliyeti değil'),
+    row('Elektrik','elektrik',tf(V.elektrik),''),
+    row('İnternet','internet',tf(V.internet),''),
+    row('Sarf malzeme','sarf',tf(V.sarf),''),
+    row('Mutfak','mutfak',tf(V.mutfak),''),
+    row('Genel gider','genelGider',tf(V.genelGider),'Çeşitli küçük giderler'),
+    row('Reklam (aylık sabit)','reklamSabit',tf(V.reklamSabit),'Her ay sabit; dönemsel reklam bunun dışında'),
+    row('Stopaj (çeyreklik)','stopaj',tf(V.stopaj),'Ay 3, 6, 9, 12\'de ödenir; diğer aylarda ₺0'),
+  ].join('');
+  var sgk = V.sgkCarpan || 1.25;
+  document.getElementById('p_personel').innerHTML = [
+    ['Ortotist (daimi)','ortotistM','Her zaman aktif'],
+    ['Stajyer / Fizyoterapist','stajyerM','≥ '+(V.esikStajyer1||16)+' korse/ay'],
+    ['Destek personel','destekM','≥ '+(V.esikDestek||31)+' korse/ay'],
+    ['2. Stajyer / Yeni mezun','stajyer2M','≥ '+(V.esikStajyer2||46)+' korse/ay'],
+  ].map(function(a){ var net=V[a[1]]||0, brut=Math.round(net*sgk); return '<tr><td>'+a[0]+'</td><td class="val">'+tf(net)+'</td><td class="val">×'+sgk.toFixed(2)+'</td><td class="val" style="color:#1D9E75;">'+tf(brut)+'</td><td class="note">'+a[2]+'</td></tr>'; }).join('');
+  document.getElementById('p_b2b').innerHTML = prods.map(function(p,i){
+    var b2bF=V[b2bFKeys[i]]||0, kF=V[fKeys[i]]||0, diff=kF-b2bF;
+    return row(prodNames[i],b2bFKeys[i],tf(b2bF),diff>0?'Kliniğe göre −₺'+diff.toLocaleString('tr-TR'):'');
+  }).join('');
+}
+
+function renderUrunMarj() {
+  var prods = [
+    {name:'Std-Raporsuz',color:'#888780',fKey:'korseF_stdR',mKey:'mal_stdR',dKey:'danis_stdR'},
+    {name:'Std-Raporlu', color:'#D85A30',fKey:'korseF_stdRl',mKey:'mal_stdRl',dKey:'danis_stdRl'},
+    {name:'Delikli+Rpl', color:'#1D9E75',fKey:'korseF_delik',mKey:'mal_delik',dKey:'danis_delik',kesim:true},
+    {name:'Sensörlü+Rpl',color:'#534AB7',fKey:'korseF_sens',mKey:'mal_sens',dKey:'danis_sens'},
+    {name:'Sns+Rpl+Dlik',color:'#D4537E',fKey:'korseF_sensDelik',mKey:'mal_sensDelik',dKey:'danis_sensDelik',kesim:true},
+  ];
+  var royaltyTRY = (V.royaltyEur||75) * (V.eurKur||50);
+  var kanalPct = (V.kanalBakim||0)/100;
+  document.getElementById('kanalPctDisp').textContent = (V.kanalBakim||0)+'%';
+  var wrap = document.getElementById('urunMarjWrap');
+  wrap.innerHTML = prods.map(function(p){
+    var f=V[p.fKey]||0, m=V[p.mKey]||0;
+    var d=Math.round(f*(V[p.dKey]||0)/100), k=Math.round(f*kanalPct);
+    var kesimTRY=p.kesim?Math.round((V.kesimEurPer||50)*(V.eurKur||50)):0;
+    var net=f-d-k-m-kesimTRY-royaltyTRY, marj=f>0?Math.round(net/f*100):0;
+    return '<div class="prod-card"><h4 style="color:'+p.color+';">'+p.name+'</h4>' +
+      '<div class="prod-line"><span class="lbl">Satış fiyatı</span><span class="val">₺'+f.toLocaleString('tr-TR')+'</span></div>' +
+      '<div class="prod-line deduct"><span class="lbl">− Hekim (%'+(V[p.dKey]||0)+')</span><span class="val">−₺'+d.toLocaleString('tr-TR')+'</span></div>' +
+      (k>0?'<div class="prod-line deduct"><span class="lbl">− Kanal payı</span><span class="val">−₺'+k.toLocaleString('tr-TR')+'</span></div>':'') +
+      '<div class="prod-line deduct"><span class="lbl">− Malzeme</span><span class="val">−₺'+m.toLocaleString('tr-TR')+'</span></div>' +
+      (kesimTRY>0?'<div class="prod-line deduct"><span class="lbl">− Kesim (€'+(V.kesimEurPer||50)+')</span><span class="val">−₺'+kesimTRY.toLocaleString('tr-TR')+'</span></div>':'') +
+      '<div class="prod-line deduct"><span class="lbl">− Royalty (€'+(V.royaltyEur||75)+'×'+V.eurKur+')</span><span class="val">−₺'+Math.round(royaltyTRY).toLocaleString('tr-TR')+'</span></div>' +
+      '<div class="prod-line net"><span class="lbl">= Net gelir/adet</span><span class="val">₺'+Math.round(net).toLocaleString('tr-TR')+'</span></div>' +
+      '<div style="font-size:10px;color:#888;text-align:right;margin-top:3px;">Net marj: %'+marj+'</div></div>';
+  }).join('');
+  var tbody = document.querySelector('#marjKarsilastirma tbody');
+  tbody.innerHTML = prods.map(function(p){
+    var f=V[p.fKey]||0, m=V[p.mKey]||0;
+    var d=Math.round(f*(V[p.dKey]||0)/100), k=Math.round(f*kanalPct);
+    var kesimTRY=p.kesim?Math.round((V.kesimEurPer||50)*(V.eurKur||50)):0;
+    var net=f-d-k-m-kesimTRY-royaltyTRY, marj=f>0?Math.round(net/f*100):0;
+    return '<tr><td style="font-weight:700;color:'+p.color+';">'+p.name+'</td>' +
+      '<td style="text-align:right;">₺'+f.toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;color:#D85A30;">−₺'+d.toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;color:#D85A30;">−₺'+(m+kesimTRY).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;color:#D85A30;">−₺'+Math.round(royaltyTRY).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;font-weight:700;color:#1D9E75;">₺'+Math.round(net).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;color:#888;">%'+marj+'</td></tr>';
+  }).join('');
+}
+
+function renderFormulas() {
+  var royTRY = Math.round((V.royaltyEur||75)*(V.eurKur||50));
+  var sgk = (V.sgkCarpan||1.25).toFixed(2);
+  var e1=V.esikStajyer1||16, e2=V.esikDestek||31, e3=V.esikStajyer2||46;
+  var stajBrut=Math.round((V.stajyerM||30000)*(V.sgkCarpan||1.25));
+  var destBrut=Math.round((V.destekM||30000)*(V.sgkCarpan||1.25));
+  var staj2Brut=Math.round((V.stajyer2M||30000)*(V.sgkCarpan||1.25));
+  var ortoBrut=Math.round((V.ortotistM||60000)*(V.sgkCarpan||1.25));
+
+  document.getElementById('formulGelir').innerHTML =
+    '<span class="c">── GELİR (her ay için) ──────────────────────────────────────────────────────</span>\n\n' +
+    '<span class="k">BrütGelir</span>  = Σ [ korse_adet[tip] × fiyat[tip] ]\n' +
+    '<span class="c">            tip ∈ { Std-R, Std-Rl, Delik, Sens, Sns+D }</span>\n\n' +
+    '<span class="k">HekimPayı</span>  = Σ [ korse_adet[tip] × fiyat[tip] × hekimPct[tip] ]\n' +
+    '<span class="c">            Pct: Std-R='+(V.danis_stdR||10)+'%, Std-Rl='+(V.danis_stdRl||15)+'%, Delik='+(V.danis_delik||30)+'%, Sens='+(V.danis_sens||30)+'%, S+D='+(V.danis_sensDelik||30)+'%</span>\n\n' +
+    '<span class="k">KanalPayı</span>  = BrütGelir × '+(V.kanalBakim||0)+'%\n\n' +
+    '<span class="k">Malzeme</span>    = Σ [ korse_adet[tip] × malzeme[tip] ]\n' +
+    '<span class="c">            Malzeme (₺): Std-R='+(V.mal_stdR||250)+', Std-Rl='+(V.mal_stdRl||300)+', Delik='+(V.mal_delik||400)+', Sens='+(V.mal_sens||1000)+', S+D='+(V.mal_sensDelik||1250)+'</span>\n\n' +
+    '<span class="k">Royalty</span>    = toplamKorse × €'+(V.royaltyEur||75)+' × ₺'+(V.eurKur||50)+' = toplamKorse × ₺'+royTRY+'\n\n' +
+    '<span class="r">NetGelir</span>   = BrütGelir − HekimPayı − KanalPayı − Malzeme − Royalty';
+
+  document.getElementById('formulGider').innerHTML =
+    '<span class="c">── GİDER (her ay için, negatif değer olarak kaydedilir) ─────────────────────</span>\n\n' +
+    '<span class="k">SabitGider</span> = kira + elektrik + internet + sarf + ortotistBrüt + mutfak + genelGider\n' +
+    '<span class="c">            = ₺'+tf(V.kira)+' + ₺'+tf(V.elektrik)+' + ₺'+tf(V.internet)+' + ₺'+tf(V.sarf)+' + ₺'+ortoBrut.toLocaleString('tr-TR')+' + ₺'+tf(V.mutfak)+' + ₺'+tf(V.genelGider)+'</span>\n\n' +
+    '<span class="k">PersonelEk</span> = <span class="b">EĞER</span>(aylıkKorse ≥ '+e1+') → +₺'+stajBrut.toLocaleString('tr-TR')+' stajyer brüt\n' +
+    '             <span class="b">EĞER</span>(aylıkKorse ≥ '+e2+') → +₺'+destBrut.toLocaleString('tr-TR')+' destek personel brüt\n' +
+    '             <span class="b">EĞER</span>(aylıkKorse ≥ '+e3+') → +₺'+staj2Brut.toLocaleString('tr-TR')+' 2. stajyer brüt\n\n' +
+    '<span class="k">Stopaj</span>     = <span class="b">EĞER</span>(ay ∈ {3,6,9,12}) → ₺'+tf(V.stopaj)+' / 0\n\n' +
+    '<span class="k">Dönemsel</span>   = kongre[ay] + reklam_sabit\n' +
+    '<span class="c">            kongre: değişken; reklam_sabit: ₺'+tf(V.reklamSabit)+'/ay</span>\n\n' +
+    '<span class="k">PrinterEk</span>  = <span class="b">EĞER</span>(korse > mevcutPrinterKap) → ekPrinter × €'+(V.printerEurFiyat||10000)+' × ₺'+(V.eurKur||50)+'\n' +
+    '<span class="c">            kapasite: '+_autoPrinterAdet()+' printer × 66 korse/ay = '+(_autoPrinterAdet()*66)+' korse/ay</span>\n\n' +
+    '<span class="d">ToplamGider</span> = −(SabitGider + PersonelEk + Stopaj + Dönemsel + PrinterEk + Mutfak)';
+
+  document.getElementById('formulKumulatif').innerHTML =
+    '<span class="c">── KÜMÜLATİF & TETİKLEYİCİLER ─────────────────────────────────────────────</span>\n\n' +
+    '<span class="k">AylıkNet</span>    = NetGelir + ToplamGider\n\n' +
+    '<span class="k">Kümülatif[ay]</span> = Kümülatif[ay−1] + AylıkNet[ay]\n' +
+    '<span class="c">              Kümülatif[Ay0] = −KurulumGideri (başlangıç)</span>\n\n' +
+    '<span class="k">Başabaş Ayı</span> = İlk ay: AylıkNet ≥ 0\n' +
+    '<span class="k">Kümülatif+</span>  = İlk ay: Kümülatif ≥ 0';
+}
+
+function renderMonthlyTable() {
+  var rows = window._lastRows || [];
+  if (!rows.length) return;
+  var tKorse=rows.reduce(function(s,r){return s+(r.korse||0);},0);
+  var tGelir=rows.reduce(function(s,r){return s+(r.gelirNet||0);},0);
+  var tGider=rows.reduce(function(s,r){return s+(r.gider||0);},0);
+  var tNet=rows.reduce(function(s,r){return s+(r.net||0);},0);
+  var son=rows[11];
+  var basAy=rows.find(function(r){return r.net>=0;});
+  var pozAy=rows.find(function(r){return r.cumBudget>=0;});
+
+  document.getElementById('ozet_kpi').innerHTML = [
+    {l:'Toplam korse',v:tKorse+' adet',c:'neu'},
+    {l:'Klinik net gelir',v:tfShort(tGelir),c:tGelir>=0?'pos':'neg'},
+    {l:'Toplam gider',v:tfShort(tGider),c:'neg'},
+    {l:'Yıllık net',v:tfShort(tNet),c:tNet>=0?'pos':'neg'},
+    {l:'Kümülatif yıl sonu',v:tfShort(son.cumBudget),c:son.cumBudget>=0?'pos':'neg'},
+    {l:'Aylık başabaş',v:basAy?'Ay '+basAy.ay:'Ulaşılamadı',c:basAy?'pos':'neg'},
+    {l:'Kümülatif pozitif',v:pozAy?'Ay '+pozAy.ay:'Ulaşılamadı',c:pozAy?'pos':'neg'},
+  ].map(function(k){return '<div class="kpi-box"><div class="klbl">'+k.l+'</div><div class="kval '+k.c+'">'+k.v+'</div></div>';}).join('');
+
+  var tbody=document.getElementById('monthlyTbody');
+  var html='';
+  rows.forEach(function(r){
+    var isBas=basAy&&r.ay===basAy.ay, isPoz=pozAy&&r.ay===pozAy.ay;
+    var cls=isPoz?'poz':isBas?'bas':'';
+    var kk=r.k||[r.korse,0,0,0,0];
+    var donPrn=(r.kongre||0)+(r.printerEkMaliyet||0);
+    html+='<tr class="'+cls+'">' +
+      '<td class="lft">Ay '+r.ay+(isBas?' ✓':isPoz?' ★':'')+'</td>' +
+      '<td>'+kk[0]+'</td><td>'+kk[1]+'</td><td>'+kk[2]+'</td><td>'+kk[3]+'</td><td>'+kk[4]+'</td>' +
+      '<td style="font-weight:700;">'+r.korse+'</td>' +
+      '<td>'+tfShort(r.gelirBrut)+'</td>' +
+      '<td class="neg">'+tfShort(-r.danis)+'</td>' +
+      '<td class="neg">'+(r.bakim?tfShort(-r.bakim):'—')+'</td>' +
+      '<td class="neg">'+(r.baskiTop?tfShort(-r.baskiTop):'—')+'</td>' +
+      '<td class="neg">'+tfShort(-r.royaltyTop)+'</td>' +
+      '<td class="'+(r.gelirNet>=0?'pos':'neg')+'" style="font-weight:700;">'+tfShort(r.gelirNet)+'</td>' +
+      '<td class="neg">'+tfShort(-r.sabitGider)+'</td>' +
+      '<td class="neg">'+tfShort(-r.reklamS)+'</td>' +
+      '<td class="neg">'+tfShort(-r.mutfakV)+'</td>' +
+      '<td class="neg">'+(r.ayStopaj?tfShort(-r.ayStopaj):'—')+'</td>' +
+      '<td class="neg">'+(donPrn?tfShort(-donPrn):'—')+'</td>' +
+      '<td class="'+(r.net>=0?'pos':'neg')+'" style="font-weight:700;">'+tfShort(r.net)+'</td>' +
+      '<td class="'+(r.cumBudget>=0?'pos':'neg')+'" style="font-weight:700;">'+tfShort(r.cumBudget)+'</td></tr>';
+  });
+  var tBrut=rows.reduce(function(s,r){return s+(r.gelirBrut||0);},0);
+  var tDanis=rows.reduce(function(s,r){return s+(r.danis||0);},0);
+  var tBakim=rows.reduce(function(s,r){return s+(r.bakim||0);},0);
+  var tBaski=rows.reduce(function(s,r){return s+(r.baskiTop||0);},0);
+  var tRoyalt=rows.reduce(function(s,r){return s+(r.royaltyTop||0);},0);
+  var tSabit=rows.reduce(function(s,r){return s+(r.sabitGider||0);},0);
+  var tRek=rows.reduce(function(s,r){return s+(r.reklamS||0);},0);
+  var tMutfak=rows.reduce(function(s,r){return s+(r.mutfakV||0);},0);
+  var tStopaj=rows.reduce(function(s,r){return s+(r.ayStopaj||0);},0);
+  var tDonPrn=rows.reduce(function(s,r){return s+(r.kongre||0)+(r.printerEkMaliyet||0);},0);
+  var tpK=rows.reduce(function(s,r){var k=r.k||[0,0,0,0,0];return s.map(function(v,j){return v+k[j];});}, [0,0,0,0,0]);
+  html+='<tr class="tot"><td class="lft">Toplam</td>' +
+    '<td>'+tpK[0]+'</td><td>'+tpK[1]+'</td><td>'+tpK[2]+'</td><td>'+tpK[3]+'</td><td>'+tpK[4]+'</td>' +
+    '<td>'+tKorse+'</td><td>'+tfShort(tBrut)+'</td>' +
+    '<td class="neg">'+tfShort(-tDanis)+'</td>' +
+    '<td class="neg">'+(tBakim?tfShort(-tBakim):'—')+'</td>' +
+    '<td class="neg">'+(tBaski?tfShort(-tBaski):'—')+'</td>' +
+    '<td class="neg">'+tfShort(-tRoyalt)+'</td>' +
+    '<td class="'+(tGelir>=0?'pos':'neg')+'" style="font-weight:700;">'+tfShort(tGelir)+'</td>' +
+    '<td class="neg">'+tfShort(-tSabit)+'</td>' +
+    '<td class="neg">'+tfShort(-tRek)+'</td>' +
+    '<td class="neg">'+tfShort(-tMutfak)+'</td>' +
+    '<td class="neg">'+(tStopaj?tfShort(-tStopaj):'—')+'</td>' +
+    '<td class="neg">'+(tDonPrn?tfShort(-tDonPrn):'—')+'</td>' +
+    '<td class="'+(tNet>=0?'pos':'neg')+'" style="font-weight:700;">'+tfShort(tNet)+'</td>' +
+    '<td class="'+(son.cumBudget>=0?'pos':'neg')+'" style="font-weight:700;">'+tfShort(son.cumBudget)+'</td></tr>';
+  tbody.innerHTML = html;
+}
+
+function renderKurulum() {
+  var m2=V.m2||150, tmR=V.tadilatM2||4750, dmR=V.dekoM2||2000;
+  var tadTop=m2*tmR, dekoTop=m2*dmR;
+  var prAdet=_autoPrinterAdet();
+  var prTRY=prAdet*(V.printerEurFiyat||10000)*(V.eurKur||50);
+  var robTRY=V.robotKolAktif?(V.robotKolEurFiyat||10000)*(V.eurKur||50):0;
+  var toplam=(V.kira||0)+(V.depozito||0)+(V.emlakci||0)+tadTop+dekoTop+(V.mobilya||0)+(V.ruhsat||0)+prTRY+robTRY;
+  var items=[
+    ['Kira (ilk ay)','V.kira',V.kira||0],
+    ['Depozito','V.depozito',V.depozito||0],
+    ['Emlakçı komisyonu','V.emlakci',V.emlakci||0],
+    ['Tadilat',m2+' m² × ₺'+tmR.toLocaleString('tr-TR')+'/m²',tadTop],
+    ['Dekorasyon',m2+' m² × ₺'+dmR.toLocaleString('tr-TR')+'/m²',dekoTop],
+    ['Mobilya + Ekipman','V.mobilya',V.mobilya||0],
+    ['Ruhsat & izinler','V.ruhsat',V.ruhsat||0],
+    ['3D Printer',prAdet+' adet × €'+(V.printerEurFiyat||10000)+' × ₺'+(V.eurKur||50),prTRY],
+    ['Robot kol',V.robotKolAktif?'€'+(V.robotKolEurFiyat||10000)+' × ₺'+(V.eurKur||50):'Pasif (delikli/S+D mix yoksa)',robTRY],
+  ];
+  var eurK=Math.round(toplam/(V.eurKur||50)/1000);
+  var tbl=document.getElementById('kurulumTbl');
+  tbl.innerHTML='<thead><tr><th>Kalem</th><th>Formül</th><th>Tutar (₺)</th></tr></thead><tbody>'+
+    items.map(function(a){return '<tr><td>'+a[0]+'</td><td class="formula">'+a[1]+'</td><td class="result">'+(a[2]?tf(a[2]):'₺0')+'</td></tr>';}).join('')+
+    '</tbody><tfoot><tr class="total"><td colspan="2"><strong>TOPLAM KURULUMGİDERİ</strong></td><td class="result" style="color:#D85A30;">'+tf(-toplam)+'<br><span style="font-size:11px;color:#888;">≈ €'+eurK+'K</span></td></tr></tfoot>';
+}
+
+function renderProjection() {
+  var rows=window._lastRows||[];
+  var eurKur=V.eurKur||50;
+  var toEur=function(v){return Math.round(v/eurKur/1000);};
+  var lerp=function(a,b,t){return Math.round(a+(b-a)*t);};
+  var y1KorseNet=rows.reduce(function(s,r){return s+(r.gelirNet||0);},0);
+  var y1Korse=rows.reduce(function(s,r){return s+(r.korse||0);},0);
+  var y1Gider=Math.abs(rows.reduce(function(s,r){return s+(r.gider||0);},0));
+  var y1GiderEur=toEur(y1Gider);
+  var pazarTR=gv('pazarTR'), pazarIstPct=gv('pazarIstPct')/100;
+  var pazarIst=Math.round(pazarTR*pazarIstPct);
+  var hedefPay=gv('hedefOsteoidPay')/100;
+  var y5KorseAdet=Math.round(pazarIst*hedefPay);
+  var sonR=rows.slice(-3);
+  var sonK=sonR.reduce(function(s,r){return s+(r.korse||0);},0)||1;
+  var sonN=sonR.reduce(function(s,r){return s+(r.gelirNet||0);},0);
+  var birimNetEur=sonN/sonK/eurKur;
+  var y5KorseToplam=Math.round(y5KorseAdet*birimNetEur/1000);
+  var y3BrutGelir=y5KorseToplam;
+  var y2GiderEur=Math.round(y1GiderEur*1.15), y3GiderEur=Math.round(y1GiderEur*1.25);
+  var y1BrutM1=toEur(y1KorseNet);
+  var y1NetM1=Math.max(0,y1BrutM1-y1GiderEur);
+  var y2NetM1=Math.max(0,lerp(y1BrutM1,y3BrutGelir,0.4)-y2GiderEur);
+  var y3NetM1=Math.max(0,y3BrutGelir-y3GiderEur);
+  var y3SgkNet=Math.round(y3BrutGelir*0.35*0.85), y2SgkNet=Math.round(y3SgkNet*0.25);
+  var b2bY1=toEur(window._lastGelirB2B||0);
+  var b2bRow=[b2bY1,Math.round(b2bY1*1.5),Math.round(b2bY1*2.2)];
+  var trigResult=calc4AyOrtalama(rows);
+  var _trigAy=trigResult.triggerAy;
+  var _acilisAy=_trigAy?Math.max(13,_trigAy+3):13;
+  var _aktifAy=Math.max(0,Math.min(12,25-_acilisAy));
+  var izmirGelirY2=V.izmirAktif?Math.round(getMerkezGelir('izmir')*_aktifAy/12):0;
+  var ankaraGelirY2=V.ankaraAktif?Math.round(getMerkezGelir('ankara')*_aktifAy/12):0;
+  var pazarIzmir=Math.round(gv('pazarTR')*V.izmirNufusPay/100);
+  var pazarAnkara=Math.round(gv('pazarTR')*V.ankaraNufusPay/100);
+  var y1BirimNetEur=toEur(y1KorseNet)/(y1Korse||1)*1000;
+  var izmirY3Adet=V.izmirAktif?Math.round(pazarIzmir*gv('izmirHedefPay')/100):0;
+  var ankaraY3Adet=V.ankaraAktif?Math.round(pazarAnkara*gv('ankaraHedefPay')/100):0;
+  var izmirY3Gelir=Math.round(izmirY3Adet*y1BirimNetEur/1000);
+  var ankaraY3Gelir=Math.round(ankaraY3Adet*y1BirimNetEur/1000);
+  var sonBirimNet=Math.round(sonN/sonK);
+
+  document.getElementById('formulProj').innerHTML =
+    '<span class="c">── YIL 1 ───────────────────────────────────────────────────────────────────</span>\n' +
+    '<span class="k">Yıl1_M1_Net</span>    = 12 aylık modelden direkt → €'+y1NetM1+'K\n' +
+    '<span class="k">Yıl1_GiderEur</span>  = -(Σ aylık gider) / eurKur / 1000 → €'+y1GiderEur+'K\n\n' +
+    '<span class="c">── YIL 2 ───────────────────────────────────────────────────────────────────</span>\n' +
+    '<span class="k">Yıl2_BrutM1</span>    = DOĞRUSAL(Yıl1=€'+y1BrutM1+'K → Yıl3=€'+y3BrutGelir+'K, t=0.4)\n' +
+    '<span class="k">Yıl2_GiderEur</span>  = Yıl1_Gider × 1.15 = €'+y2GiderEur+'K\n' +
+    '<span class="k">Yıl2_M1_Net</span>    = MAKS(0, Yıl2_Brut − Yıl2_Gider) → €'+y2NetM1+'K\n' +
+    '<span class="k">Yıl2_SGK_Net</span>   = Yıl3_SGK × 0.25 → €'+y2SgkNet+'K\n\n' +
+    '<span class="c">── YIL 3 ───────────────────────────────────────────────────────────────────</span>\n' +
+    '<span class="k">Yıl3_Hedef_Korse</span>= PazarIST × %'+gv('hedefOsteoidPay')+' = '+pazarIst.toLocaleString('tr-TR')+' × %'+gv('hedefOsteoidPay')+' = '+y5KorseAdet+' adet\n' +
+    '<span class="k">BirimNetEur</span>     = Yılsonu ortalama (son 3 ay) = ₺'+sonBirimNet.toLocaleString('tr-TR')+'/korse\n' +
+    '<span class="k">Yıl3_BrutGelir</span> = '+y5KorseAdet+' × ₺'+sonBirimNet.toLocaleString('tr-TR')+' / '+eurKur+' / 1000 = €'+y3BrutGelir+'K\n' +
+    '<span class="k">Yıl3_GiderEur</span>  = Yıl1_Gider × 1.25 → €'+y3GiderEur+'K\n' +
+    '<span class="r">Yıl3_M1_Net</span>    = MAKS(0, Yıl3_Brut − Yıl3_Gider) → €'+y3NetM1+'K\n' +
+    '<span class="k">Yıl3_SGK_Net</span>   = Yıl3_M1_Net × 0.35 × 0.85 → €'+y3SgkNet+'K';
+
+  var fmt=function(v){return v>0?'€'+v+'K':'—';};
+  var trows=[
+    ['Korse — M1 (özel kanal)','Model Y1; büyüme projeksiyon Y2-3',y1NetM1,y2NetM1,y3NetM1],
+    ['Korse — M1 (SGK, Yıl 2+)','Y3 × 0.35 × 0.85; Y2 = Y3 × 0.25',0,y2SgkNet,y3SgkNet],
+  ];
+  if(b2bRow[0]>0||b2bRow[1]>0) trows.push(['B2B — İstanbul','Y1 modelden; Y2=×1.5; Y3=×2.2',b2bRow[0],b2bRow[1],b2bRow[2]]);
+  if(V.izmirAktif) trows.push(['Korse — İzmir','getMerkezGelir × aktifAy/12; Y3: nüfus pay × birimNet',0,izmirGelirY2,izmirY3Gelir]);
+  if(V.ankaraAktif) trows.push(['Korse — Ankara','getMerkezGelir × aktifAy/12; Y3: nüfus pay × birimNet',0,ankaraGelirY2,ankaraY3Gelir]);
+  var totals=[
+    y1NetM1+b2bRow[0],
+    y2NetM1+y2SgkNet+b2bRow[1]+izmirGelirY2+ankaraGelirY2,
+    y3NetM1+y3SgkNet+b2bRow[2]+izmirY3Gelir+ankaraY3Gelir,
+  ];
+  document.getElementById('projTbody').innerHTML =
+    trows.map(function(a){return '<tr><td>'+a[0]+'</td><td class="formula">'+a[1]+'</td><td class="result">'+(a[2]?fmt(a[2]):'—')+'</td><td class="result">'+(a[3]?fmt(a[3]):'—')+'</td><td class="result">'+(a[4]?fmt(a[4]):'—')+'</td></tr>';}).join('') +
+    '<tr class="grp"><td>Konsolide Toplam</td><td class="formula">Σ tüm kalemler</td><td class="result">€'+totals[0]+'K</td><td class="result">€'+totals[1]+'K</td><td class="result">€'+totals[2]+'K</td></tr>';
+}
+
+function renderMerkezler() {
+  var rows=window._lastRows||[];
+  var eurKur=V.eurKur||50;
+  var trigResult=calc4AyOrtalama(rows);
+  var _trigAy=trigResult.triggerAy;
+  var _acilisAy=_trigAy?Math.max(13,_trigAy+3):13;
+  var _aktifAy=Math.max(0,Math.min(12,25-_acilisAy));
+
+  document.getElementById('formulTetik').innerHTML =
+    '<span class="c">── 4 AYLIK HAREKETLİ ORTALAMA TETİKLEYİCİSİ ───────────────────────────────</span>\n\n' +
+    '<span class="c">Her ayın net nakit akışı (AylıkNet) kullanılır. Ay 1-3 ortalama hesaplanamaz.</span>\n\n' +
+    '<span class="k">HO[ay]</span> = ORTALAMA(AylıkNet[ay-3], AylıkNet[ay-2], AylıkNet[ay-1], AylıkNet[ay])\n\n' +
+    '<span class="k">TetikAyı</span>  = MIN{ ay ≥ 4 : HO[ay] ≥ 0 }\n' +
+    '<span class="k">AçılışAyı</span> = MAKS(13, TetikAyı + 3)\n' +
+    '<span class="c">           3 ay hazırlık süresi; en erken Yıl 2 başı (Ay 13)</span>\n\n' +
+    '<span class="k">AktifAyYıl2</span> = MAKS(0, MİN(12, 25 − AçılışAyı))\n' +
+    '<span class="c">           Yıl 2\'deki (Ay 13-24) aktif faaliyet ay sayısı</span>';
+
+  document.getElementById('tetikDurumu').innerHTML = (_trigAy
+    ? '◎ Mevcut modelde tetik: <strong>Ay '+_trigAy+'</strong> &nbsp;→&nbsp; Açılış: <strong>Yıl 2 Ay '+(_acilisAy-12)+'</strong> (Ay '+_acilisAy+') &nbsp;→&nbsp; Yıl 2\'de <strong>'+_aktifAy+' ay</strong> aktif'
+    : '◎ Mevcut modelde tetik henüz çalışmıyor — varsayılan açılış: <strong>Yıl 2 Ay 1</strong> → <strong>12 ay</strong> aktif');
+
+  document.getElementById('formulMerkez').innerHTML =
+    '<span class="c">── YENİ MERKEZ NET GELİR HESABI (getMerkezGelir) ──────────────────────────</span>\n\n' +
+    '<span class="k">Rampa</span>       = 12 aylık korse hedefi dizisi (sürüklenebilir grafik)\n\n' +
+    '<span class="k">ToplamKorse</span> = Σ Rampa[0..11]\n\n' +
+    '<span class="k">BirimNetTRY</span> = Yılsonu mix ortalama: (son 3 ay net gelir) / (son 3 ay korse)\n\n' +
+    '<span class="k">BrütGelir</span>   = ToplamKorse × BirimNetTRY\n\n' +
+    '<span class="k">İşletmeGider</span>= Σ [ ay bazlı sabit gider + eşik bazlı personel + stopaj ]\n\n' +
+    '<span class="r">NetGelirEurK</span>= (BrütGelir − İşletmeGider) / eurKur / 1000';
+
+  var sehirler=[{key:'izmir',name:'İzmir',color:'#1D9E75',aktif:V.izmirAktif},{key:'ankara',name:'Ankara',color:'#534AB7',aktif:V.ankaraAktif}];
+  var sonR=rows.slice(-3);
+  var sonK=sonR.reduce(function(s,r){return s+(r.korse||0);},0)||1;
+  var sonN=sonR.reduce(function(s,r){return s+(r.gelirNet||0);},0);
+  var birimNetTRY=Math.round(sonN/sonK);
+
+  document.getElementById('merkezTbody').innerHTML=sehirler.map(function(s){
+    if(!s.aktif) return '<tr><td style="color:'+s.color+';font-weight:700;">'+s.name+'</td><td colspan="6" style="color:#aaa;text-align:center;">Pasif — seçili değil</td></tr>';
+    var rampa=V[s.key+'Rampa']||[];
+    var topK=rampa.reduce(function(a,v){return a+v;},0);
+    var brutTRY=topK*birimNetTRY;
+    var netEurK=getMerkezGelir(s.key);
+    var isletme=brutTRY-netEurK*(V.eurKur||50)*1000;
+    return '<tr><td style="color:'+s.color+';font-weight:700;">'+s.name+'</td>' +
+      '<td style="text-align:right;">'+topK+' adet</td>' +
+      '<td style="text-align:right;">₺'+birimNetTRY.toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;">₺'+Math.round(brutTRY).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;color:#D85A30;">₺'+Math.round(isletme).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;font-weight:700;color:#1D9E75;">₺'+Math.round(netEurK*(V.eurKur||50)*1000).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;font-weight:700;color:#1D9E75;">€'+netEurK+'K</td></tr>';
+  }).join('');
+
+  document.getElementById('merkezKurulumTbody').innerHTML=sehirler.map(function(s){
+    if(!s.aktif) return '<tr><td style="color:'+s.color+';font-weight:700;">'+s.name+'</td><td colspan="4" style="color:#aaa;text-align:center;">Pasif</td></tr>';
+    var useIst=V[s.key+'UseIstKurulum']!==false;
+    var oran=V[s.key+'KurulumOran']||1.0;
+    var top=getMerkezKurulum(s.key);
+    var eurK=Math.round(top/(V.eurKur||50)/1000);
+    var formula=useIst?'İST kurulum × '+oran.toFixed(2)+' (çarpan)':'Özel kalem tutarları toplamı';
+    return '<tr><td style="color:'+s.color+';font-weight:700;">'+s.name+'</td>' +
+      '<td>'+(useIst?'İST bazlı':'Özel')+'</td>' +
+      '<td class="formula">'+formula+'</td>' +
+      '<td style="text-align:right;font-weight:700;">₺'+Math.round(top).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;font-weight:700;color:#D85A30;">€'+eurK+'K</td></tr>';
+  }).join('');
+}
+
+// ── Inner tab switcher ────────────────────────────────────────────────────────
+function switchInnerTab(btn, tabId) {
+  ['tab-metodoloji','tab-saglamasayfasi'].forEach(function(id){
+    var el=document.getElementById(id); if(el) el.style.display='none';
+  });
+  var show=document.getElementById(tabId); if(show) show.style.display='';
+  document.querySelectorAll('.inner-tab').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  recalc();
+  if(tabId==='tab-saglamasayfasi'){
+    if(!window._lastRows||!window._lastRows.length) recalc();
+    renderParams(); renderUrunMarj(); renderFormulas();
+    renderMonthlyTable(); renderKurulum(); renderProjection(); renderMerkezler();
+  }
+}
+
+window.addEventListener('load', function() { recalc(); });
+--- pazar.html
+0
+=
+—
+₺
+▸
+▾
+10
+15
+30
+Ay
+10%
+11%
+12%
+15%
+16%
+17%
+18%
+19%
+20%
+250
+300
+38%
+40%
+400
+43%
+45%
+48%
+50%
+B2B
+100%
+21,4
+Ay 1
+Ay 2
+Ay 3
+Ay 4
+Ay 5
+Ay 6
+Ay 7
+Ay 8
+Ay 9
+0.26%
+1.000
+1.08%
+1.250
+2.500
+4.500
+5.06%
+6.420
+Ay 1+
+Ay 10
+Ay 11
+Ay 12
+Ay 2+
+Ay 3+
+Ay 4+
+Ay 5+
+Ay 6+
+Ay 7+
+Ay 8+
+Ay 9+
+12.000
+15.000
+18.000
+19.500
+22.000
+25.000
+30.000
+35.000
+40.000
+50.000
+65.000
+Ay 10+
+Ay 11+
+Ay 12+
+Klinik
+Toplam
+B2B Mix
+Sns+Rpl
+325 adet
+Aktif Ay
+Dlik+Rpl
+adet/yıl
+B2B pazar
+Sns+Rpl+D
+Std-Rprsz
+6.420 adet
+Klinik Mix
+Std-Rporlu
+30.000 adet
+Maliyet (₺)
+Klinik pazar
+Pazar & Ürün
+Piyasa Özeti
+TR pazar payı
+B2B fiyatı (₺)
+Hekim Payı (%)
+Kanal Payı (%)
+Korse Rampası →
+Pazar Büyüklüğü
+← 12 Aylık Özet
+Net Ciro / Korse
+Pazar & Ürün Mix
+Rekabet & Piyasa
+Delikli + Raporlu
+Klinik fiyatı (₺)
+İstanbul payı (%)
+Mix Görselleştirme
+Sensörlü + Raporlu
+Standart — Raporlu
+Standart — Raporsuz
+İstanbul pazar payı
+Türkiye pazarı (yıl)
+Yıl 1 korse (toplam)
+Ürün Fiyat & Maliyet
+İstanbul pazarı (yıl)
+Rakip Firma Profilleri
+B2B Mix (%) — Tüm Aylar
+Rekabet & Mevcut Piyasa
+window.PAGE_ID='pazar';
+Başabaş pazar payı (İST)
+Klinik Mix (%) — Tüm Aylar
+Osteoid — Pazar & Ürün Mix
+Türkiye yıllık korse (adet)
+Sensörlü + Raporlu + Delikli
+Adölesan İdiyopatik Skolyoz (AIS)
+Yıllık Tahmini Korse Hacmi Karşılaştırması
+Nüfus + civar dahil (TÜİK) · Adreslenebilir:
+Kaynak: Sağlık Bakanlığı verileri · B2B adreslenebilir pazar büyüklüğü
+B2B hekim payı ve kanal bakım oranları Pazar & Ürün Mix sayfasında her SKU için ayrı ayarlanır. Royalty ve baskı maliyeti klinikle aynıdır.
+Her ürünün aktif olduğu ay kart üzerindeki "Aktif Ay" seçiciyle belirlenir. Toplam 100'ü geçerse otomatik normalize edilir. Gri hücre = o ürün henüz aktif değil.
+⚠ Rakip firma verileri kamuya açık kaynaklardan derlenmiş tahmini değerlerdir. Gerçek hacim ve fiyat bilgileri doğrulanmamıştır. Karşılaştırma yatırım kararı için değil, piyasa konumlandırmasını anlamak amacıyla hazırlanmıştır.
+.rakip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+@media (max-width: 700px) { .rakip-grid { grid-template-columns: 1fr; } }
+.rakip-card { background: #fff; border: 1px solid #e0ddd4; border-radius: 8px; padding: 16px; }
+.rakip-card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; }
+.rakip-name { font-size: 13px; font-weight: 900; color: #1a1a1a; }
+.rakip-city { font-size: 10px; font-weight: 700; color: #888; background: #f0efe9; padding: 2px 8px; border-radius: 3px; white-space: nowrap; }
+.rakip-desc { font-size: 11px; color: #555; line-height: 1.6; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #eeeee9; }
+.rakip-sliders { display: flex; flex-direction: column; gap: 8px; }
+.rakip-kpis { display: flex; gap: 8px; margin-top: 10px; }
+.rakip-kpi { flex: 1; background: #f9f8f4; border-radius: 5px; padding: 7px 10px; }
+.rakip-kpi .rkl { font-size: 10px; color: #888; margin-bottom: 2px; }
+.rakip-kpi .rkv { font-size: 13px; font-weight: 800; }
+.piyasa-ozet { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-bottom: 20px; }
+.chart-wrap { position: relative; width: 100%; height: 220px; margin-top: 8px; }
+// ── Rekabet tab data ──
+const RAKIPLER = [
+  { id:'hedefSpine',    ad:'Hedef Spine',             sehir:'İstanbul — Şişli',            renk:'#D85A30',
+    aciklama:'Skolyoz korse ve ortopedik protez-ortez uygulamalarında uzmanlaşmış İstanbul merkezli klinik. Bireysel ölçüme göre korse seçimi, takılması ve periyodik kontroller sunuyor. Postural bozukluk ve skolyoz tedavisine odaklanmış; Osteoid ile doğrudan örtüşen hedef kitle.',
+    dK:480, dB:0, dFK:25000, dFB:20000 },
+  { id:'bilimOrtopedi', ad:'Bilim Ortopedi',           sehir:'Ankara & Hatay',              renk:'#1D9E75',
+    aciklama:'Ankara ve Hatay\'da faaliyet gösteren ortez-protez yapım ve uygulama merkezi. Protez, ortez, ortopedik tabanlık, ayakkabı ve tekerlekli sandalye gibi geniş ürün portföyüne sahip. Hatay şubesinde bilgisayarlı ayak taraması ile kişiselleştirilmiş çözümler sunuyor.',
+    dK:240, dB:0, dFK:18000, dFB:15000 },
+  { id:'nesaOrtopedi',  ad:'Nesa Ortopedi',            sehir:'İstanbul, Tekirdağ, Kocaeli', renk:'#378ADD',
+    aciklama:'1976\'dan beri faaliyet gösteren köklü protez-ortez merkezi. İstanbul (Kadıköy, Şişli), Tekirdağ ve Kocaeli şubeleriyle 10.000\'den fazla hastaya hizmet vermiş. Uluslararası eğitimli personel, skolyoz ürünleri ve CPM cihazları portföyüyle güçlü kurumsal konuma sahip.',
+    dK:600, dB:0, dFK:22000, dFB:18000 },
+  { id:'canErdem',      ad:'Can Erdem Ortez Protez',   sehir:'İstanbul — Avrupa & Anadolu', renk:'#D4537E',
+    aciklama:'2004\'te kurulan, 2021\'de Üsküdar şubesini de açan biyomekanik odaklı klinik. Fizyoterapist ve protez-ortez uzmanı Can Erdem liderliğinde pediatrik ortezlerde (DAFO, AFO, KAFO, Kranyal Helmet) uzmanlaşmış. Bilimsel ve etik yaklaşımı ile öne çıkıyor.',
+    dK:360, dB:0, dFK:28000, dFB:22000 },
+  { id:'proklinik',     ad:'Proklinik',                sehir:'İstanbul (3 şube) & Kıbrıs',  renk:'#EF9F27',
+    aciklama:'Türkiye\'nin en büyük protez-ortez uygulama merkezlerinden biri. 20 yıllık tecrübe, 20.000+ hasta ve 40+ uzman personel. İstanbul\'da 3 şube, Kıbrıs\'ta 1 şubeyle faaliyet gösteriyor. Alt/üst bacak ve kol protezleri, karbon yürüme cihazları ve rehabilitasyon hizmetleri sunuyor.',
+    dK:960, dB:0, dFK:20000, dFB:16000 },
+  { id:'aktifOrtez',    ad:'Aktif Ortez Protez',       sehir:'İstanbul — Fatih (Şehremini)',renk:'#2A9D8F',
+    aciklama:'Fatih/İstanbul\'da Uzm. Fzt. Özgür Aydoğan liderliğinde faaliyet gösteren ortez-protez üretim ve uygulama merkezi. Kişiye özel ortez üretimi ve uygulamasına odaklanmış; fizyoterapi uzmanlığını ortez reçetesiyle birleştiren klinik profili ile bölgede öne çıkıyor.',
+    dK:180, dB:0, dFK:18000, dFB:14000 },
+];
+
+function gRV(r, key, def) { var k = r.id+'_'+key; return V[k] !== undefined ? V[k] : def; }
+function sRV(id, key, val) { V[id+'_'+key] = val; localStorage.setItem('osteoid_V', JSON.stringify(V)); }
+function ffR(n) { return '₺' + Math.round(n).toLocaleString('tr-TR'); }
+
+function _slRow(id, key, label, def, max, step, color) {
+  var val = gRV({id:id}, key, def);
+  var disp = key.indexOf('Fiyat') !== -1 ? val.toLocaleString('tr-TR') : val;
+  return '<div class="sl-row">' +
+    '<label style="color:'+color+';font-size:10px;font-weight:700;">'+label+'</label>' +
+    '<div class="sl-controls">' +
+    '<input type="range" id="s_'+id+'_'+key+'" min="0" max="'+max+'" step="'+step+'" value="'+val+'"' +
+    ' oninput="sRV(\''+id+'\',\''+key+'\',+this.value); document.getElementById(\'v_'+id+'_'+key+'\').textContent='+(key.indexOf('Fiyat')!==-1?'(+this.value).toLocaleString(\'tr-TR\')':'this.value')+'; renderPiyasaKpi(); renderRekabetChart();">' +
+    '<span class="sl-val" id="v_'+id+'_'+key+'" contenteditable="true"' +
+    ' onblur="var v=parseInt(this.textContent.replace(/\\D/g,\'\'))||0; sRV(\''+id+'\',\''+key+'\',v); document.getElementById(\'s_'+id+'_'+key+'\').value=v; this.textContent='+(key.indexOf('Fiyat')!==-1?'v.toLocaleString(\'tr-TR\')':'v')+'; renderPiyasaKpi(); renderRekabetChart();">'+disp+'</span>' +
+    '</div></div>';
+}
+
+function renderRakipGrid() {
+  var el = document.getElementById('rakipGrid');
+  if (!el) return;
+  el.innerHTML = RAKIPLER.map(function(r) {
+    var kK = gRV(r,'KorseK',r.dK), kB = gRV(r,'KorseB',r.dB);
+    var fK = gRV(r,'FiyatK',r.dFK), fB = gRV(r,'FiyatB',r.dFB);
+    var toplam = kK + kB, ciro = kK*fK + kB*fB;
+    return '<div class="rakip-card">' +
+      '<div class="rakip-card-header"><div class="rakip-name" style="color:'+r.renk+';">'+r.ad+'</div><div class="rakip-city">'+r.sehir+'</div></div>' +
+      '<div class="rakip-desc">'+r.aciklama+'</div>' +
+      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 16px;">' +
+        '<div><div style="font-size:10px;font-weight:800;color:#1a7a45;text-transform:uppercase;letter-spacing:0.5px;margin:8px 0 4px;">Klinik</div>' +
+        _slRow(r.id,'KorseK','Yıllık korse (adet)',r.dK,3600,60,'#1a7a45') +
+        _slRow(r.id,'FiyatK','Korse fiyatı (₺)',r.dFK,100000,1000,'#1a7a45') + '</div>' +
+        '<div><div style="font-size:10px;font-weight:800;color:#534AB7;text-transform:uppercase;letter-spacing:0.5px;margin:8px 0 4px;">B2B</div>' +
+        _slRow(r.id,'KorseB','Yıllık korse (adet)',r.dB,3600,60,'#534AB7') +
+        _slRow(r.id,'FiyatB','Korse fiyatı (₺)',r.dFB,100000,1000,'#534AB7') + '</div>' +
+      '</div>' +
+      '<div class="rakip-kpis" style="margin-top:10px;">' +
+        '<div class="rakip-kpi"><div class="rkl">Klinik adet</div><div class="rkv" style="color:#1a7a45;" id="kpi_'+r.id+'_K">'+kK+'</div></div>' +
+        '<div class="rakip-kpi"><div class="rkl">B2B adet</div><div class="rkv" style="color:#534AB7;" id="kpi_'+r.id+'_B">'+kB+'</div></div>' +
+        '<div class="rakip-kpi"><div class="rkl">Toplam adet</div><div class="rkv" style="color:'+r.renk+';" id="kpi_'+r.id+'_T">'+toplam+'</div></div>' +
+        '<div class="rakip-kpi"><div class="rkl">Tahmini ciro</div><div class="rkv" id="kpi_'+r.id+'_C">₺'+Math.round(ciro/1000).toLocaleString('tr-TR')+'K</div></div>' +
+      '</div></div>';
+  }).join('');
+}
+
+function renderPiyasaKpi() {
+  var osteoidK   = (window._lastRows||[]).reduce(function(s,r){return s+(r.korse||0);},0) || 325;
+  var osteoidB2B = ((window._lastRows||[]).length ? V.korseB2B||[] : []).reduce(function(s,v){return s+(+v||0);},0);
+  var osteoidToplam = osteoidK + osteoidB2B;
+  var osteoidFiyat  = V.korseF_stdR || 30000;
+  var rakipToplam = RAKIPLER.reduce(function(s,r){return s+gRV(r,'KorseK',r.dK)+gRV(r,'KorseB',r.dB);},0);
+  var tumToplam   = osteoidToplam + rakipToplam;
+  var osteoidPay  = tumToplam > 0 ? Math.round(osteoidToplam/tumToplam*100) : 0;
+  var rakipKlinikTop = RAKIPLER.reduce(function(s,r){return s+gRV(r,'KorseK',r.dK);},0);
+  var ortFiyat = rakipKlinikTop > 0
+    ? Math.round(RAKIPLER.reduce(function(s,r){return s+gRV(r,'KorseK',r.dK)*gRV(r,'FiyatK',r.dFK);},0)/rakipKlinikTop) : 0;
+
+  RAKIPLER.forEach(function(r) {
+    var kK=gRV(r,'KorseK',r.dK), kB=gRV(r,'KorseB',r.dB);
+    var fK=gRV(r,'FiyatK',r.dFK), fB=gRV(r,'FiyatB',r.dFB);
+    function el(id){ return document.getElementById(id); }
+    if(el('kpi_'+r.id+'_K')) el('kpi_'+r.id+'_K').textContent = kK;
+    if(el('kpi_'+r.id+'_B')) el('kpi_'+r.id+'_B').textContent = kB;
+    if(el('kpi_'+r.id+'_T')) el('kpi_'+r.id+'_T').textContent = kK+kB;
+    if(el('kpi_'+r.id+'_C')) el('kpi_'+r.id+'_C').textContent = '₺'+Math.round((kK*fK+kB*fB)/1000).toLocaleString('tr-TR')+'K';
+  });
+
+  var grid = document.getElementById('piyasaKpiGrid');
+  if (!grid) return;
+  grid.innerHTML = [
+    { label:'Osteoid klinik (yıllık)',  val: osteoidK+' adet',       c:'pos' },
+    { label:'Osteoid B2B (yıllık)',     val: osteoidB2B+' adet',     c:'neu' },
+    { label:'Rakip toplam (yıllık)',    val: rakipToplam+' adet',     c:'neu' },
+    { label:'Osteoid piyasa payı',      val: '%'+osteoidPay,          c: osteoidPay>=10?'pos':'neu' },
+    { label:'Rakip ort. klinik fiyat',  val: ffR(ortFiyat),           c:'neu' },
+    { label:'Osteoid baz fiyat',        val: ffR(osteoidFiyat),       c: osteoidFiyat>=ortFiyat?'pos':'neg' },
+  ].map(function(k){return '<div class="kpi"><div class="kpi-label">'+k.label+'</div><div class="kpi-val '+k.c+'">'+k.val+'</div></div>';}).join('');
+}
+
+var rekabetChartInst = null;
+function renderRekabetChart() {
+  var osteoidK   = (window._lastRows||[]).reduce(function(s,r){return s+(r.korse||0);},0) || 325;
+  var osteoidB2B = (V.korseB2B||[]).reduce(function(s,v){return s+(+v||0);},0);
+  var labels  = ['Osteoid'].concat(RAKIPLER.map(function(r){return r.ad;}));
+  var dataK   = [osteoidK].concat(RAKIPLER.map(function(r){return gRV(r,'KorseK',r.dK);}));
+  var dataB   = [osteoidB2B].concat(RAKIPLER.map(function(r){return gRV(r,'KorseB',r.dB);}));
+  var colors  = ['#534AB7'].concat(RAKIPLER.map(function(r){return r.renk;}));
+  var fiyatK  = [V.korseF_stdR||30000].concat(RAKIPLER.map(function(r){return gRV(r,'FiyatK',r.dFK);}));
+  var fiyatB  = [V.korseFB2B_stdR||24000].concat(RAKIPLER.map(function(r){return gRV(r,'FiyatB',r.dFB);}));
+
+  if (rekabetChartInst) { rekabetChartInst.destroy(); rekabetChartInst = null; }
+  var ctx = document.getElementById('rekabetChart');
+  if (!ctx) return;
+  rekabetChartInst = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [
+        { label:'Klinik (adet)', data:dataK, backgroundColor:colors.map(function(c){return c+'bb';}), borderColor:colors, borderWidth:1.5, borderRadius:3, stack:'s', yAxisID:'y' },
+        { label:'B2B (adet)',    data:dataB, backgroundColor:colors.map(function(c){return c+'55';}), borderColor:colors, borderWidth:1,   borderRadius:3, stack:'s', yAxisID:'y' },
+        { label:'Klinik fiyat (₺)', data:fiyatK, type:'line', borderColor:'#1a7a45', backgroundColor:'transparent', borderWidth:2, pointRadius:4, pointBackgroundColor:colors, tension:0.3, yAxisID:'y2' },
+        { label:'B2B fiyat (₺)',    data:fiyatB, type:'line', borderColor:'#534AB7', backgroundColor:'transparent', borderWidth:2, borderDash:[4,3], pointRadius:4, pointBackgroundColor:colors, tension:0.3, yAxisID:'y2' },
+      ]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      plugins: {
+        legend:{ position:'bottom', labels:{ font:{size:11}, boxWidth:10, padding:8 } },
+        tooltip:{ mode:'index', callbacks:{ label: function(c){ return c.datasetIndex<2 ? c.dataset.label+': '+c.raw+' adet' : c.dataset.label+': ₺'+c.raw.toLocaleString('tr-TR'); } } }
+      },
+      scales: {
+        x:{ stacked:true, grid:{display:false} },
+        y:{ stacked:true, position:'left',  title:{display:true,text:'Yıllık korse',font:{size:10}}, grid:{color:'rgba(0,0,0,0.05)'} },
+        y2:{              position:'right', title:{display:true,text:'Fiyat (₺)',font:{size:10}},    grid:{display:false}, ticks:{callback:function(v){return '₺'+(v/1000).toFixed(0)+'K';}} }
+      }
+    }
+  });
+}
+
+// ── Inner tab switcher ──
+function switchInnerTab(btn, tabId) {
+  ['tab-pazar','tab-rekabet'].forEach(function(id) {
+    var el = document.getElementById(id); if (el) el.style.display = 'none';
+  });
+  var show = document.getElementById(tabId); if (show) show.style.display = '';
+  document.querySelectorAll('.inner-tab').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  recalc();
+  if (tabId === 'tab-rekabet') {
+    renderRakipGrid();
+    renderPiyasaKpi();
+    renderRekabetChart();
+  }
+}
+
+window.addEventListener('load', function() {
+  var kb = V.kanalBakim || 0;
+  ['stdR','stdRl','sens','delik','sensDelik'].forEach(function(k) {
+    var sl = document.getElementById('s_bakim_'+k); if (sl) sl.value = kb;
+    var dp = document.getElementById('bakim_'+k); if (dp) dp.textContent = kb;
+  });
+  var b2bKeys = ['stdR','stdRl','delik','sens','sensDelik'];
+  b2bKeys.forEach(function(k) {
+    var vk = 'korseFB2B_'+k;
+    var val = V[vk] || 0;
+    var sl = document.getElementById('s_'+vk); if (sl) sl.value = val;
+    var dp = document.getElementById(vk); if (dp) dp.textContent = val.toLocaleString('tr-TR');
+  });
+  var korseB2B = V.korseB2B || [];
+  korseB2B.forEach(function(val, i) {
+    var sl = document.querySelector('input[oninput*="svKorseB2B('+i+',"]');
+    if (sl) sl.value = val;
+    var dp = document.getElementById('b2bRamp_'+i);
+    if (dp) dp.textContent = val || 0;
+  });
+  (V.aktifAy || []).forEach(function(val, i) {
+    var sel = document.getElementById('aktifAy_' + i);
+    if (sel) sel.value = val;
+  });
+  buildMixB2BTable();
+  recalc();
+});
+--- rekabet.html
+▾
+Piyasa Özeti
+← 3 Yıllık Plan
+Formül Sağlama →
+Rakip Firma Profilleri
+Rekabet & Mevcut Piyasa
+window.PAGE_ID='rekabet';
+Osteoid — Rekabet & Mevcut Piyasa
+Yıllık Tahmini Korse Hacmi Karşılaştırması
+⚠ Rakip firma verileri kamuya açık kaynaklardan derlenmiş tahmini değerlerdir. Gerçek hacim ve fiyat bilgileri doğrulanmamıştır. Karşılaştırma yatırım kararı için değil, piyasa konumlandırmasını anlamak amacıyla hazırlanmıştır.
+.rakip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+@media (max-width: 700px) { .rakip-grid { grid-template-columns: 1fr; } }
+
+.rakip-card { background: #fff; border: 1px solid #e0ddd4; border-radius: 8px; padding: 16px; }
+.rakip-card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; }
+.rakip-name { font-size: 13px; font-weight: 900; color: #1a1a1a; }
+.rakip-city { font-size: 10px; font-weight: 700; color: #888; background: #f0efe9; padding: 2px 8px; border-radius: 3px; white-space: nowrap; }
+.rakip-desc { font-size: 11px; color: #555; line-height: 1.6; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #eeeee9; }
+.rakip-sliders { display: flex; flex-direction: column; gap: 8px; }
+.rakip-kpis { display: flex; gap: 8px; margin-top: 10px; }
+.rakip-kpi { flex: 1; background: #f9f8f4; border-radius: 5px; padding: 7px 10px; }
+.rakip-kpi .rkl { font-size: 10px; color: #888; margin-bottom: 2px; }
+.rakip-kpi .rkv { font-size: 13px; font-weight: 800; }
+
+.piyasa-ozet { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-bottom: 20px; }
+
+.chart-wrap { position: relative; width: 100%; height: 220px; margin-top: 8px; }
+const RAKIPLER = [
+  {
+    id: 'hedefSpine',    ad: 'Hedef Spine',             sehir: 'İstanbul — Şişli',           renk: '#D85A30',
+    aciklama: 'Skolyoz korse ve ortopedik protez-ortez uygulamalarında uzmanlaşmış İstanbul merkezli klinik. Bireysel ölçüme göre korse seçimi, takılması ve periyodik kontroller sunuyor. Postural bozukluk ve skolyoz tedavisine odaklanmış; Osteoid ile doğrudan örtüşen hedef kitle.',
+    dK: 480, dB: 0,   dFK: 25000, dFB: 20000,
+  },
+  {
+    id: 'bilimOrtopedi', ad: 'Bilim Ortopedi',          sehir: 'Ankara & Hatay',             renk: '#1D9E75',
+    aciklama: 'Ankara ve Hatay\'da faaliyet gösteren ortez-protez yapım ve uygulama merkezi. Protez, ortez, ortopedik tabanlık, ayakkabı ve tekerlekli sandalye gibi geniş ürün portföyüne sahip. Hatay şubesinde bilgisayarlı ayak taraması ile kişiselleştirilmiş çözümler sunuyor.',
+    dK: 240, dB: 0,   dFK: 18000, dFB: 15000,
+  },
+  {
+    id: 'nesaOrtopedi',  ad: 'Nesa Ortopedi',           sehir: 'İstanbul, Tekirdağ, Kocaeli', renk: '#378ADD',
+    aciklama: '1976\'dan beri faaliyet gösteren köklü protez-ortez merkezi. İstanbul (Kadıköy, Şişli), Tekirdağ ve Kocaeli şubeleriyle 10.000\'den fazla hastaya hizmet vermiş. Uluslararası eğitimli personel, skolyoz ürünleri ve CPM cihazları portföyüyle güçlü kurumsal konuma sahip.',
+    dK: 600, dB: 0,   dFK: 22000, dFB: 18000,
+  },
+  {
+    id: 'canErdem',      ad: 'Can Erdem Ortez Protez',  sehir: 'İstanbul — Avrupa & Anadolu', renk: '#D4537E',
+    aciklama: '2004\'te kurulan, 2021\'de Üsküdar şubesini de açan biyomekanik odaklı klinik. Fizyoterapist ve protez-ortez uzmanı Can Erdem liderliğinde pediatrik ortezlerde (DAFO, AFO, KAFO, Kranyal Helmet) uzmanlaşmış. Bilimsel ve etik yaklaşımı ile öne çıkıyor.',
+    dK: 360, dB: 0,   dFK: 28000, dFB: 22000,
+  },
+  {
+    id: 'proklinik',     ad: 'Proklinik',               sehir: 'İstanbul (3 şube) & Kıbrıs',  renk: '#EF9F27',
+    aciklama: 'Türkiye\'nin en büyük protez-ortez uygulama merkezlerinden biri. 20 yıllık tecrübe, 20.000+ hasta ve 40+ uzman personel. İstanbul\'da 3 şube, Kıbrıs\'ta 1 şubeyle faaliyet gösteriyor. Alt/üst bacak ve kol protezleri, karbon yürüme cihazları ve rehabilitasyon hizmetleri sunuyor.',
+    dK: 960, dB: 0,   dFK: 20000, dFB: 16000,
+  },
+  {
+    id: 'aktifOrtez',    ad: 'Aktif Ortez Protez',      sehir: 'İstanbul — Fatih (Şehremini)', renk: '#2A9D8F',
+    aciklama: 'Fatih/İstanbul\'da Uzm. Fzt. Özgür Aydoğan liderliğinde faaliyet gösteren ortez-protez üretim ve uygulama merkezi. Kişiye özel ortez üretimi ve uygulamasına odaklanmış; fizyoterapi uzmanlığını ortez reçetesiyle birleştiren klinik profili ile bölgede öne çıkıyor.',
+    dK: 180, dB: 0,   dFK: 18000, dFB: 14000,
+  },
+];
+
+function gRV(r, key, def) { const k = r.id+'_'+key; return V[k] !== undefined ? V[k] : def; }
+function sRV(id, key, val) { V[id+'_'+key] = val; localStorage.setItem('osteoid_V', JSON.stringify(V)); }
+function ff(n) { return '₺' + Math.round(n).toLocaleString('tr-TR'); }
+
+function _slRow(id, key, label, def, max, step, color) {
+  const val = gRV({id}, key, def);
+  const disp = key.includes('Fiyat') ? val.toLocaleString('tr-TR') : val;
+  return `<div class="sl-row">
+    <label style="color:${color};font-size:10px;font-weight:700;">${label}</label>
+    <div class="sl-controls">
+      <input type="range" id="s_${id}_${key}" min="0" max="${max}" step="${step}" value="${val}"
+        oninput="sRV('${id}','${key}',+this.value); document.getElementById('v_${id}_${key}').textContent=${key.includes('Fiyat') ? '(+this.value).toLocaleString(\'tr-TR\')' : 'this.value'}; renderPiyasaKpi(); renderRekabetChart();">
+      <span class="sl-val" id="v_${id}_${key}" contenteditable="true"
+        onblur="const v=parseInt(this.textContent.replace(/\\D/g,''))||0; sRV('${id}','${key}',v); document.getElementById('s_${id}_${key}').value=v; this.textContent=${key.includes('Fiyat') ? 'v.toLocaleString(\'tr-TR\')' : 'v'}; renderPiyasaKpi(); renderRekabetChart();">${disp}</span>
+    </div>
+  </div>`;
+}
+
+function renderRakipGrid() {
+  document.getElementById('rakipGrid').innerHTML = RAKIPLER.map(r => {
+    const kK = gRV(r,'KorseK',r.dK), kB = gRV(r,'KorseB',r.dB);
+    const fK = gRV(r,'FiyatK',r.dFK), fB = gRV(r,'FiyatB',r.dFB);
+    const toplam = kK + kB;
+    const ciro = kK*fK + kB*fB;
+    return `<div class="rakip-card">
+      <div class="rakip-card-header">
+        <div class="rakip-name" style="color:${r.renk};">${r.ad}</div>
+        <div class="rakip-city">${r.sehir}</div>
+      </div>
+      <div class="rakip-desc">${r.aciklama}</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 16px;">
+        <div>
+          <div style="font-size:10px;font-weight:800;color:#1a7a45;text-transform:uppercase;letter-spacing:0.5px;margin:8px 0 4px;">Klinik</div>
+          ${_slRow(r.id,'KorseK','Yıllık korse (adet)',r.dK,3600,60,'#1a7a45')}
+          ${_slRow(r.id,'FiyatK','Korse fiyatı (₺)',r.dFK,100000,1000,'#1a7a45')}
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:800;color:#534AB7;text-transform:uppercase;letter-spacing:0.5px;margin:8px 0 4px;">B2B</div>
+          ${_slRow(r.id,'KorseB','Yıllık korse (adet)',r.dB,3600,60,'#534AB7')}
+          ${_slRow(r.id,'FiyatB','Korse fiyatı (₺)',r.dFB,100000,1000,'#534AB7')}
+        </div>
+      </div>
+      <div class="rakip-kpis" style="margin-top:10px;">
+        <div class="rakip-kpi"><div class="rkl">Klinik adet</div><div class="rkv" style="color:#1a7a45;" id="kpi_${r.id}_K">${kK}</div></div>
+        <div class="rakip-kpi"><div class="rkl">B2B adet</div><div class="rkv" style="color:#534AB7;" id="kpi_${r.id}_B">${kB}</div></div>
+        <div class="rakip-kpi"><div class="rkl">Toplam adet</div><div class="rkv" style="color:${r.renk};" id="kpi_${r.id}_T">${toplam}</div></div>
+        <div class="rakip-kpi"><div class="rkl">Tahmini ciro</div><div class="rkv" id="kpi_${r.id}_C">₺${Math.round(ciro/1000).toLocaleString('tr-TR')}K</div></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderPiyasaKpi() {
+  const osteoidK  = (window._lastRows||[]).reduce((s,r)=>s+(r.korse||0),0) || 325;
+  const osteoidB2B = ((window._lastRows||[]).length ? V.korseB2B||[] : []).reduce((s,v)=>s+(+v||0),0);
+  const osteoidToplam = osteoidK + osteoidB2B;
+  const osteoidFiyat  = V.korseF_stdR || 30000;
+  const rakipToplam = RAKIPLER.reduce((s,r)=>s+gRV(r,'KorseK',r.dK)+gRV(r,'KorseB',r.dB),0);
+  const tumToplam   = osteoidToplam + rakipToplam;
+  const osteoidPay  = tumToplam > 0 ? Math.round(osteoidToplam/tumToplam*100) : 0;
+  const rakipKlinikTop = RAKIPLER.reduce((s,r)=>s+gRV(r,'KorseK',r.dK),0);
+  const ortFiyat = rakipKlinikTop > 0
+    ? Math.round(RAKIPLER.reduce((s,r)=>s+gRV(r,'KorseK',r.dK)*gRV(r,'FiyatK',r.dFK),0)/rakipKlinikTop) : 0;
+
+  RAKIPLER.forEach(r => {
+    const kK=gRV(r,'KorseK',r.dK), kB=gRV(r,'KorseB',r.dB);
+    const fK=gRV(r,'FiyatK',r.dFK), fB=gRV(r,'FiyatB',r.dFB);
+    const el = id => document.getElementById(id);
+    if(el('kpi_'+r.id+'_K')) el('kpi_'+r.id+'_K').textContent = kK;
+    if(el('kpi_'+r.id+'_B')) el('kpi_'+r.id+'_B').textContent = kB;
+    if(el('kpi_'+r.id+'_T')) el('kpi_'+r.id+'_T').textContent = kK+kB;
+    if(el('kpi_'+r.id+'_C')) el('kpi_'+r.id+'_C').textContent = '₺'+Math.round((kK*fK+kB*fB)/1000).toLocaleString('tr-TR')+'K';
+  });
+
+  document.getElementById('piyasaKpiGrid').innerHTML = [
+    { label:'Osteoid klinik (yıllık)',  val: osteoidK+' adet',       c:'pos' },
+    { label:'Osteoid B2B (yıllık)',     val: osteoidB2B+' adet',     c:'neu' },
+    { label:'Rakip toplam (yıllık)',    val: rakipToplam+' adet',     c:'neu' },
+    { label:'Osteoid piyasa payı',      val: '%'+osteoidPay,          c: osteoidPay>=10?'pos':'neu' },
+    { label:'Rakip ort. klinik fiyat',  val: ff(ortFiyat),            c:'neu' },
+    { label:'Osteoid baz fiyat',        val: ff(osteoidFiyat),        c: osteoidFiyat>=ortFiyat?'pos':'neg' },
+  ].map(k=>`<div class="kpi"><div class="kpi-label">${k.label}</div><div class="kpi-val ${k.c}">${k.val}</div></div>`).join('');
+}
+
+let rekabetChartInst = null;
+function renderRekabetChart() {
+  const osteoidK   = (window._lastRows||[]).reduce((s,r)=>s+(r.korse||0),0) || 325;
+  const osteoidB2B = (V.korseB2B||[]).reduce((s,v)=>s+(+v||0),0);
+  const labels  = ['Osteoid', ...RAKIPLER.map(r=>r.ad)];
+  const dataK   = [osteoidK,   ...RAKIPLER.map(r=>gRV(r,'KorseK',r.dK))];
+  const dataB   = [osteoidB2B, ...RAKIPLER.map(r=>gRV(r,'KorseB',r.dB))];
+  const colors  = ['#534AB7', ...RAKIPLER.map(r=>r.renk)];
+  const fiyatK  = [V.korseF_stdR||30000, ...RAKIPLER.map(r=>gRV(r,'FiyatK',r.dFK))];
+  const fiyatB  = [V.korseFB2B_stdR||24000, ...RAKIPLER.map(r=>gRV(r,'FiyatB',r.dFB))];
+
+  if (rekabetChartInst) { rekabetChartInst.destroy(); rekabetChartInst = null; }
+  const ctx = document.getElementById('rekabetChart');
+  if (!ctx) return;
+  rekabetChartInst = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [
+        { label:'Klinik (adet)', data:dataK, backgroundColor:colors.map(c=>c+'bb'), borderColor:colors, borderWidth:1.5, borderRadius:3, stack:'s', yAxisID:'y' },
+        { label:'B2B (adet)',    data:dataB, backgroundColor:colors.map(c=>c+'55'), borderColor:colors, borderWidth:1,   borderRadius:3, stack:'s', yAxisID:'y' },
+        { label:'Klinik fiyat (₺)', data:fiyatK, type:'line', borderColor:'#1a7a45', backgroundColor:'transparent', borderWidth:2, pointRadius:4, pointBackgroundColor:colors, tension:0.3, yAxisID:'y2' },
+        { label:'B2B fiyat (₺)',    data:fiyatB, type:'line', borderColor:'#534AB7', backgroundColor:'transparent', borderWidth:2, borderDash:[4,3], pointRadius:4, pointBackgroundColor:colors, tension:0.3, yAxisID:'y2' },
+      ]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      plugins: {
+        legend:{ position:'bottom', labels:{ font:{size:11}, boxWidth:10, padding:8 } },
+        tooltip:{ mode:'index', callbacks:{ label: c => c.datasetIndex<2 ? c.dataset.label+': '+c.raw+' adet' : c.dataset.label+': ₺'+c.raw.toLocaleString('tr-TR') } }
+      },
+      scales: {
+        x:{ stacked:true, grid:{display:false} },
+        y:{ stacked:true, position:'left',  title:{display:true,text:'Yıllık korse',font:{size:10}}, grid:{color:'rgba(0,0,0,0.05)'} },
+        y2:{              position:'right', title:{display:true,text:'Fiyat (₺)',font:{size:10}},    grid:{display:false}, ticks:{callback:v=>'₺'+(v/1000).toFixed(0)+'K'} }
+      }
+    }
+  });
+}
+
+window.addEventListener('load', function() {
+  if (!window._lastRows || !window._lastRows.length) recalc();
+  renderRakipGrid();
+  renderPiyasaKpi();
+  renderRekabetChart();
+});
+--- sabit.html
+▸
+﻿
+15
+30
+76
+1,25
+₺/ay
+1.500
+10.000
+20.000
+30.000
+37.500
+60.000
+75.000
+120.000
+-₺189.500
+② Stajyer
+-₺2.649.000
+Ay 1 — sabit
+Net maaş (₺)
+Brüt maliyet:
+Aylık kira (₺)
+① Uzman Ortezci
+Sabit gider / ay
+④ Destek Elemanı
+Sabit gider / yıl
+Genel giderler (₺)
+Mutfak & yemek (₺)
+Dönemsel Giderler →
+← Kurulum Giderleri
+Aylık Sabit Giderler
+③ Yeni Mezun Ortezci
+İnternet / telefon (₺)
+Elektrik / su / gaz (₺)
+window.PAGE_ID='sabit';
+Osteoid — Sabit Giderler
+YMM / Mali Müşavir (₺/ay)
+SGK çarpanı (işveren payı)
+Stajyer 1 eşiği (≥ X korse/ay)
+Destek elemanı eşiği (≥ X korse/ay)
+Personel Eşikleri (aylık korse / ay)
+Yeni Mezun Ortezci eşiği (≥ X korse/ay)
+Dış hizmet alımı — SGK çarpanı uygulanmaz
+Şirkete maliyet = net maaş × çarpan — tüm roller için geçerli
+Yeni merkezlerde aylık ortalama korse hacmine göre personel otomatik ölçeklenir.
+Net maaş girişi — şirkete maliyet brüt olarak hesaplanır (net × SGK çarpanı). Uzman ortezci her merkezde Ay 1'den itibaren sabit; diğer roller eşik sistemine göre devreye girer.
+window.addEventListener('load', function() {
+  const v = V.kira || 120000;
+  const sl = document.getElementById('s_aylikKira');
+  if (sl) sl.value = v;
+  const disp = document.getElementById('kira');
+  if (disp) disp.textContent = v.toLocaleString('tr-TR');
+
+  [['s_mutfak','mutfak',20000],['s_genelGider','genelGider',10000],['s_ymmM','ymmM',10000]].forEach(([slId,key,def])=>{
+    const val = V[key] || def;
+    const sl = document.getElementById(slId); if (sl) sl.value = val;
+    const dp = document.getElementById(key);  if (dp) dp.textContent = val.toLocaleString('tr-TR');
+  });
+
+  var e1 = document.getElementById('esikLabel1'); if (e1) e1.textContent = V.esikStajyer1 || 15;
+  var e2 = document.getElementById('esikLabel2'); if (e2) e2.textContent = V.esikDestek    || 30;
+  var e3 = document.getElementById('esikLabel3'); if (e3) e3.textContent = V.esikStajyer2  || 76;
+
+  recalc();
+});
+--- saglamasayfasi.html
+—
+Ay
+ℹ️
+⚠️
+Not
+S+D
+Brüt
+Oran
+Sens
+Ürün
+Delik
+Değer
+Fiyat
+Std-R
+Formül
+Merkez
+Std-Rl
+Yöntem
+−Hekim
+−Kanal
+−Sabit
+Kod adı
+Maliyet
+Malzeme
+Royalty
+−Mutfak
+−Reklam
+−Stopaj
+Açıklama
+Net Gel.
+Net maaş
+Personel
+Pozisyon
+₺ / adet
+−Malzeme
+−Royalty
+Gelir (₺)
+Gider (₺)
+Parametre
+Tutar (₺)
+mor satır
+B2B Fiyatı
+Hekim payı
+Net marj %
+Tutar (€K)
+Yıl 1 (€K)
+Yıl 2 (€K)
+Yıl 3 (€K)
+SGK çarpanı
+Yeşil satır
+−Dönem/Prnt
+Brüt maliyet
+Gelir Kalemi
+Gider kalemi
+Toplam Korse
+Öngörü notu:
+Aylık Net (₺)
+Kur & Royalty
+Kümülatif (₺)
+Net gelir (₺)
+Net gelir (€K)
+Net gelir/adet
+SGK hesaplama:
+🖨 Yazdır / PDF
+Formül / Kaynak
+← 3 Yıllık Plan
+Aktifleşme eşiği
+Formül & Sağlama
+Korse Mix (adet)
+Brüt yıllık gelir
+Klinik vs B2B fark
+Ürün mix dağılımı:
+(kanal bakım oranı)
+Hekim Komisyonu (%)
+Merkez Gelir Hesabı
+= aylık başabaş (✓),
+Yıl 1 — Model Verisi
+Karşılaştırma Tablosu
+Merkez Kurulum Gideri
+Yıllık işletme gideri
+Tetikleyici Mekanizması
+Sabit Aylık Giderler (₺)
+Ürün Satış Fiyatları (₺)
+Birim net gelir (₺/korse)
+Her korse satışında akış:
+Kanal payı = Brüt gelir ×
+Rampa toplamı (korse/yıl)
+3 Yıl Özet Tablosu (Canlı)
+Gelir Tarafı — Her Ay İçin
+Gider Tarafı — Her Ay İçin
+Yıl 2-3 Projeksiyon Mantığı
+B2B Ürün Satış Fiyatları (₺)
+3 — Aylık Hesaplama Formülleri
+Malzeme Maliyetleri (₺ / adet)
+Kümülatif Bütçe & Tetikleyiciler
+window.PAGE_ID='saglamasayfasi';
+2 — Ürün Bazında Birim Marj Analizi
+Formül Sağlama — Osteoid Merkezleri
+Mevcut parametrelerle tam hesaplama.
+6 — 3 Yıllık Projeksiyon Metodolojisi
+4 — 12 Aylık Hesaplama Tablosu (Canlı)
+1 — Temel Parametreler (Giriş Değerleri)
+5 — Kurulum Giderleri (İstanbul Merkez 1)
+7 — Yeni Merkez Hesaplaması (İzmir / Ankara)
+Brüt fiyat → Hekim payı → Kanal payı → Malzeme → Royalty = Net gelir
+= kümülatif pozitif (★).
+    Kümülatif başlangıç = −(Kurulum gideri).
+Tek seferlik kurulum yatırımı. Kümülatif bütçe hesabının başlangıç değeridir (negatif olarak girilir).
+Yıl 1 rakamları doğrudan 12 aylık hesaplama modelinden alınır; herhangi bir projeksiyon veya katsayı uygulanmaz.
+Bu projeksiyondaki tüm rakamlar varsayıma dayalıdır. Başabaş ve kümülatif pozitif tarihleri korse rampasına bağlıdır. Rakamlar yatırım kararı için değil, iş modelini anlamak ve sorgulamak için hazırlanmıştır.
+Y3 SGK geliri = Y3 özel kanal geliri × %35 (SGK kanal payı katsayısı) × %85 (tahsilat etkinliği — ortalama 60–90 gün gecikme için iskonto). Y2 SGK = Y3 × %25 (onay süreci + yarıyıl rampa). Bu katsayılar operatör deneyimiyle doğrulanmalıdır.
+Her ay 5 ürün tipine korse adetleri Pazar & Ürün Mix sayfasındaki yüzde dağılımına göre ayrıştırılır. Belirli bir ay için bir ürün henüz aktif değilse (aktifAy eşiği aşılmamışsa) o ürün için sıfır kabul edilir ve toplam yüzde yeniden normalize edilir.
+.sec { margin: 28px 0; }
+.sec-title {
+  font-size: 13px; font-weight: 900; color: #fff; background: #2c3e50;
+  padding: 7px 14px; border-radius: 4px; text-transform: uppercase;
+  letter-spacing: 0.6px; margin-bottom: 14px; display: inline-block;
+}
+.sub-title { font-size: 12px; font-weight: 800; color: #534AB7; margin: 14px 0 6px; text-transform: uppercase; letter-spacing: 0.3px; }
+
+/* Parameter table */
+.param-tbl { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 18px; }
+.param-tbl th { background: #f0efe9; padding: 7px 10px; text-align: left; font-size: 11px; font-weight: 700; color: #555; border: 1px solid #ddd; }
+.param-tbl td { padding: 6px 10px; border: 1px solid #eee; vertical-align: middle; }
+.param-tbl tr:nth-child(even) td { background: #fafaf8; }
+.param-tbl td.val { font-family: monospace; font-size: 12px; font-weight: 700; background: #f0ede5; color: #8c6d3f; border-radius: 3px; white-space: nowrap; }
+.param-tbl td.note { color: #888; font-size: 11px; }
+
+/* Formula boxes */
+.fbox {
+  background: #f5f4ef; border: 1px solid #e2e0d4; border-radius: 6px;
+  padding: 14px 18px; margin: 10px 0; font-family: 'Courier New', monospace;
+  font-size: 12px; line-height: 2; white-space: pre-wrap;
+}
+.fbox .c  { color: #888; }
+.fbox .r  { color: #1D9E75; font-weight: 700; }
+.fbox .d  { color: #D85A30; }
+.fbox .b  { color: #534AB7; }
+.fbox .k  { color: #2c3e50; font-weight: 700; }
+
+/* Product margin cards */
+.prod-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 16px; }
+.prod-card { border: 1px solid #e0ddd4; border-radius: 6px; padding: 14px; background: #fff; }
+.prod-card h4 { margin: 0 0 10px; font-size: 12px; font-weight: 800; color: #333; border-bottom: 2px solid currentColor; padding-bottom: 5px; }
+.prod-line { display: flex; justify-content: space-between; font-size: 11px; padding: 3px 0; }
+.prod-line .lbl { color: #666; }
+.prod-line .val { font-family: monospace; font-weight: 700; }
+.prod-line.deduct .val { color: #D85A30; }
+.prod-line.net { border-top: 1px solid #e0ddd4; padding-top: 5px; margin-top: 3px; font-weight: 800; }
+.prod-line.net .val { color: #1D9E75; font-size: 12px; }
+
+/* Monthly table */
+.mtbl-wrap { overflow-x: auto; margin-bottom: 12px; }
+.mtbl { border-collapse: collapse; font-size: 11px; min-width: 900px; }
+.mtbl th { background: #2c3e50; color: #fff; padding: 6px 8px; text-align: center; font-size: 10px; white-space: nowrap; border: 1px solid #1a2836; }
+.mtbl th.lft { text-align: left; }
+.mtbl td { padding: 5px 8px; border: 1px solid #eee; text-align: right; white-space: nowrap; font-size: 11px; }
+.mtbl td.lft { text-align: left; font-weight: 700; }
+.mtbl td.neg { color: #D85A30; }
+.mtbl td.pos { color: #1D9E75; }
+.mtbl td.neu { color: #534AB7; }
+.mtbl tr.bas td { background: #e8f5ee; }
+.mtbl tr.poz td { background: #eee8ff; }
+.mtbl tr.tot td { background: #f0efe9; font-weight: 700; border-top: 2px solid #ccc; }
+
+/* Setup breakdown */
+.setup-tbl { width: 100%; border-collapse: collapse; font-size: 12px; max-width: 600px; }
+.setup-tbl td { padding: 7px 12px; border: 1px solid #eee; }
+.setup-tbl td.formula { font-family: monospace; font-size: 11px; color: #888; }
+.setup-tbl td.result { font-family: monospace; font-weight: 700; text-align: right; }
+.setup-tbl tr.total td { background: #f0efe9; font-weight: 700; border-top: 2px solid #888; }
+
+/* Projection table */
+.proj-tbl { border-collapse: collapse; font-size: 12px; width: 100%; max-width: 800px; }
+.proj-tbl th { background: #f0efe9; padding: 7px 10px; font-size: 11px; font-weight: 700; border: 1px solid #ddd; text-align: left; }
+.proj-tbl td { padding: 6px 10px; border: 1px solid #eee; }
+.proj-tbl td.formula { font-family: monospace; font-size: 11px; color: #555; }
+.proj-tbl td.result { font-family: monospace; font-weight: 700; text-align: right; color: #1D9E75; }
+.proj-tbl tr.grp td { background: #f5f5f0; font-weight: 700; color: #333; }
+
+/* Note box */
+.note { background: #fffbf0; border-left: 3px solid #f5c518; padding: 9px 13px; margin: 10px 0; font-size: 12px; color: #554; border-radius: 0 4px 4px 0; }
+.info { background: #edf4ff; border-left: 3px solid #378ADD; padding: 9px 13px; margin: 10px 0; font-size: 12px; color: #1a4a7a; border-radius: 0 4px 4px 0; }
+
+/* Trigger box */
+.trigger-box { background: #e8f5ee; border: 1px solid #68c48a; border-radius: 6px; padding: 12px 16px; font-size: 12px; margin: 12px 0; }
+
+/* Print button */
+.print-btn {
+  position: fixed; bottom: 24px; right: 24px; background: #534AB7; color: #fff;
+  border: none; padding: 11px 20px; border-radius: 6px; font-size: 13px;
+  font-weight: 700; cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,0.25); z-index: 999;
+}
+
+/* KPI row */
+.kpi-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 12px 0; }
+.kpi-box { background: #fff; border: 1px solid #e0ddd4; border-radius: 6px; padding: 10px 16px; min-width: 140px; }
+.kpi-box .klbl { font-size: 11px; color: #888; margin-bottom: 3px; }
+.kpi-box .kval { font-size: 16px; font-weight: 900; }
+.kpi-box .kval.pos { color: #1D9E75; }
+.kpi-box .kval.neg { color: #D85A30; }
+.kpi-box .kval.neu { color: #534AB7; }
+
+@media print {
+  .nav-wrap { display: none; }
+  .sec { page-break-inside: avoid; }
+  .mtbl-wrap { overflow-x: visible; }
+}
+// ── Yardımcı formatters ────────────────────────────────────────────────────────
+function tf(n) {
+  if (n === undefined || n === null) return '—';
+  if (n === 0) return '₺0';
+  const abs = Math.abs(Math.round(n));
+  return (n < 0 ? '−₺' : '₺') + abs.toLocaleString('tr-TR');
+}
+function tfShort(n) {
+  if (!n) return '—';
+  const abs = Math.abs(Math.round(n));
+  return (n < 0 ? '−₺' : '₺') + abs.toLocaleString('tr-TR');
+}
+function ef(n) {
+  if (!n && n !== 0) return '—';
+  return '€' + Math.round(n).toLocaleString('tr-TR');
+}
+function pf(n) { return (n || 0).toFixed(1) + '%'; }
+
+// ── SECTION 1: Parametreler ───────────────────────────────────────────────────
+function renderParams() {
+  function row(name, code, val, note) {
+    return '<tr><td>' + name + '</td><td><code style="font-size:11px;color:#888;">' + code + '</code></td><td class="val">' + val + '</td><td class="note">' + (note||'') + '</td></tr>';
+  }
+  const royaltyTRY = Math.round((V.royaltyEur||75) * (V.eurKur||50));
+
+  document.getElementById('p_kur').innerHTML = [
+    row('EUR/TRY kuru', 'eurKur', '₺' + (V.eurKur||50), 'Tüm EUR↔TRY dönüşümlerinde kullanılır'),
+    row('Royalty (Osteoid A.Ş.)', 'royaltyEur', '€' + (V.royaltyEur||75) + '/korse', '₺' + royaltyTRY.toLocaleString('tr-TR') + '/korse (= ' + (V.royaltyEur||75) + ' × ' + (V.eurKur||50) + ')'),
+    row('Kanal bakım payı', 'kanalBakim', (V.kanalBakim||0) + '% (brüt gelir üzerinden)', 'Satış kanalı yönetim payı — şu an ₺0 (sıfır ayarlı)'),
+    row('Kesim başına (EUR)', 'kesimEurPer', '€' + (V.kesimEurPer||50) + '/adet', 'Delikli ve S+D korsede kullanılır; Osteoid A.Ş. kesim geliri'),
+  ].join('');
+
+  const prods = ['stdR','stdRl','delik','sens','sensDelik'];
+  const prodNames = ['Std-Raporsuz','Std-Raporlu','Delikli+Rpl','Sensörlü+Rpl','Sns+Rpl+Dlik'];
+  const fKeys = ['korseF_stdR','korseF_stdRl','korseF_delik','korseF_sens','korseF_sensDelik'];
+  const mKeys = ['mal_stdR','mal_stdRl','mal_delik','mal_sens','mal_sensDelik'];
+  const dKeys = ['danis_stdR','danis_stdRl','danis_delik','danis_sens','danis_sensDelik'];
+  const b2bFKeys = ['korseFB2B_stdR','korseFB2B_stdRl','korseFB2B_delik','korseFB2B_sens','korseFB2B_sensDelik'];
+
+  document.getElementById('p_fiyat').innerHTML = prods.map((p,i) =>
+    row(prodNames[i], fKeys[i], tf(V[fKeys[i]]), i===0?'Ay 1-5 başlangıç ürünü':i>=2?'Ay 6+ ileri ürün':'')
+  ).join('');
+
+  document.getElementById('p_malzeme').innerHTML = prods.map((p,i) =>
+    row(prodNames[i], mKeys[i], tf(V[mKeys[i]]), (i===2||i===4)?'+ €'+(V.kesimEurPer||50)+'/adet kesim maliyeti (Osteoid A.Ş. geliri)':'')
+  ).join('');
+
+  document.getElementById('p_danis').innerHTML = prods.map((p,i) => {
+    const fiyat = V[fKeys[i]]||0;
+    const pct = V[dKeys[i]]||0;
+    return '<tr><td>'+prodNames[i]+'</td><td><code style="font-size:11px;color:#888;">'+dKeys[i]+'</code></td><td class="val">%'+pct+'</td><td class="note">= ₺'+Math.round(fiyat*pct/100).toLocaleString('tr-TR')+'/adet ('+fiyat.toLocaleString('tr-TR')+' × '+pct+'%)</td></tr>';
+  }).join('');
+
+  document.getElementById('p_sabit').innerHTML = [
+    row('Aylık kira', 'kira', tf(V.kira), 'İşletme dönemi aylık kira'),
+    row('Depozito', 'depozito', tf(V.depozito), 'Kurulum gideri; işletme maliyeti değil'),
+    row('Elektrik', 'elektrik', tf(V.elektrik), ''),
+    row('İnternet', 'internet', tf(V.internet), ''),
+    row('Sarf malzeme', 'sarf', tf(V.sarf), ''),
+    row('Mutfak', 'mutfak', tf(V.mutfak), ''),
+    row('Genel gider', 'genelGider', tf(V.genelGider), 'Çeşitli küçük giderler'),
+    row('Reklam (aylık sabit)', 'reklamSabit', tf(V.reklamSabit), 'Her ay sabit; dönemsel reklam bunun dışında'),
+    row('Stopaj (çeyreklik)', 'stopaj', tf(V.stopaj), 'Ay 3, 6, 9, 12\'de ödenir; diğer aylarda ₺0'),
+  ].join('');
+
+  const sgk = V.sgkCarpan || 1.25;
+  document.getElementById('p_personel').innerHTML = [
+    ['Ortotist (daimi)', 'ortotistM', 'Her zaman aktif'],
+    ['Stajyer / Fizyoterapist', 'stajyerM', '≥ '+(V.esikStajyer1||16)+' korse/ay'],
+    ['Destek personel', 'destekM', '≥ '+(V.esikDestek||31)+' korse/ay'],
+    ['2. Stajyer / Yeni mezun', 'stajyer2M', '≥ '+(V.esikStajyer2||46)+' korse/ay'],
+  ].map(([name, key, esik]) => {
+    const net = V[key]||0;
+    const brut = Math.round(net * sgk);
+    return '<tr><td>'+name+'</td><td class="val">'+tf(net)+'</td><td class="val">×'+sgk.toFixed(2)+'</td><td class="val" style="color:#1D9E75;">'+tf(brut)+'</td><td class="note">'+esik+'</td></tr>';
+  }).join('');
+
+  document.getElementById('p_b2b').innerHTML = prods.map((p,i) => {
+    const b2bF = V[b2bFKeys[i]]||0;
+    const kF   = V[fKeys[i]]||0;
+    const diff  = kF - b2bF;
+    return row(prodNames[i], b2bFKeys[i], tf(b2bF), diff>0?'Kliniğe göre −₺'+diff.toLocaleString('tr-TR'):'');
+  }).join('');
+}
+
+// ── SECTION 2: Birim Marj ────────────────────────────────────────────────────
+function renderUrunMarj() {
+  const prods = [
+    {name:'Std-Raporsuz', color:'#888780', fKey:'korseF_stdR', mKey:'mal_stdR', dKey:'danis_stdR'},
+    {name:'Std-Raporlu',  color:'#D85A30', fKey:'korseF_stdRl', mKey:'mal_stdRl', dKey:'danis_stdRl'},
+    {name:'Delikli+Rpl',  color:'#1D9E75', fKey:'korseF_delik', mKey:'mal_delik', dKey:'danis_delik', kesim:true},
+    {name:'Sensörlü+Rpl', color:'#534AB7', fKey:'korseF_sens', mKey:'mal_sens', dKey:'danis_sens'},
+    {name:'Sns+Rpl+Dlik', color:'#D4537E', fKey:'korseF_sensDelik', mKey:'mal_sensDelik', dKey:'danis_sensDelik', kesim:true},
+  ];
+  const royaltyTRY = (V.royaltyEur||75) * (V.eurKur||50);
+  const kanalPct   = (V.kanalBakim||0) / 100;
+
+  document.getElementById('kanalPctDisp').textContent = (V.kanalBakim||0) + '%';
+
+  const wrap = document.getElementById('urunMarjWrap');
+  wrap.innerHTML = prods.map(p => {
+    const f = V[p.fKey]||0;
+    const m = V[p.mKey]||0;
+    const d = Math.round(f * (V[p.dKey]||0) / 100);
+    const k = Math.round(f * kanalPct);
+    const kesimTRY = p.kesim ? Math.round((V.kesimEurPer||50) * (V.eurKur||50)) : 0;
+    const net = f - d - k - m - kesimTRY - royaltyTRY;
+    const marj = f > 0 ? Math.round(net / f * 100) : 0;
+    return '<div class="prod-card">' +
+      '<h4 style="color:'+p.color+';">' + p.name + '</h4>' +
+      '<div class="prod-line"><span class="lbl">Satış fiyatı</span><span class="val">₺'+f.toLocaleString('tr-TR')+'</span></div>' +
+      '<div class="prod-line deduct"><span class="lbl">− Hekim (%'+(V[p.dKey]||0)+')</span><span class="val">−₺'+d.toLocaleString('tr-TR')+'</span></div>' +
+      (k>0?'<div class="prod-line deduct"><span class="lbl">− Kanal payı</span><span class="val">−₺'+k.toLocaleString('tr-TR')+'</span></div>':'') +
+      '<div class="prod-line deduct"><span class="lbl">− Malzeme</span><span class="val">−₺'+m.toLocaleString('tr-TR')+'</span></div>' +
+      (kesimTRY>0?'<div class="prod-line deduct"><span class="lbl">− Kesim (€'+(V.kesimEurPer||50)+')</span><span class="val">−₺'+kesimTRY.toLocaleString('tr-TR')+'</span></div>':'') +
+      '<div class="prod-line deduct"><span class="lbl">− Royalty (€'+(V.royaltyEur||75)+'×'+V.eurKur+')</span><span class="val">−₺'+Math.round(royaltyTRY).toLocaleString('tr-TR')+'</span></div>' +
+      '<div class="prod-line net"><span class="lbl">= Net gelir/adet</span><span class="val">₺'+Math.round(net).toLocaleString('tr-TR')+'</span></div>' +
+      '<div style="font-size:10px;color:#888;text-align:right;margin-top:3px;">Net marj: %'+marj+'</div>' +
+      '</div>';
+  }).join('');
+
+  // Karşılaştırma tablosu
+  const tbody = document.querySelector('#marjKarsilastirma tbody');
+  tbody.innerHTML = prods.map(p => {
+    const f = V[p.fKey]||0;
+    const m = V[p.mKey]||0;
+    const d = Math.round(f * (V[p.dKey]||0) / 100);
+    const k = Math.round(f * kanalPct);
+    const kesimTRY = p.kesim ? Math.round((V.kesimEurPer||50) * (V.eurKur||50)) : 0;
+    const net = f - d - k - m - kesimTRY - royaltyTRY;
+    const marj = f > 0 ? Math.round(net / f * 100) : 0;
+    return '<tr><td style="font-weight:700;color:'+p.color+';">'+p.name+'</td>' +
+      '<td style="text-align:right;">₺'+f.toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;color:#D85A30;">−₺'+d.toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;color:#D85A30;">−₺'+(m+kesimTRY).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;color:#D85A30;">−₺'+Math.round(royaltyTRY).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;font-weight:700;color:#1D9E75;">₺'+Math.round(net).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;color:#888;">%'+marj+'</td></tr>';
+  }).join('');
+}
+
+// ── SECTION 3: Formüller ──────────────────────────────────────────────────────
+function renderFormulas() {
+  const royTRY = Math.round((V.royaltyEur||75) * (V.eurKur||50));
+  const sgk = (V.sgkCarpan||1.25).toFixed(2);
+  const e1 = V.esikStajyer1||16, e2 = V.esikDestek||31, e3 = V.esikStajyer2||46;
+  const stajBrut = Math.round((V.stajyerM||30000) * (V.sgkCarpan||1.25));
+  const destBrut = Math.round((V.destekM||30000)  * (V.sgkCarpan||1.25));
+  const staj2Brut= Math.round((V.stajyer2M||30000)* (V.sgkCarpan||1.25));
+  const ortoBrut = Math.round((V.ortotistM||60000) * (V.sgkCarpan||1.25));
+
+  document.getElementById('formulGelir').innerHTML =
+    '<span class="c">── GELİR (her ay için) ──────────────────────────────────────────────────────</span>\n\n' +
+    '<span class="k">BrütGelir</span>  = Σ [ korse_adet[tip] × fiyat[tip] ]\n' +
+    '<span class="c">            tip ∈ { Std-R, Std-Rl, Delik, Sens, Sns+D }</span>\n\n' +
+    '<span class="k">HekimPayı</span>  = Σ [ korse_adet[tip] × fiyat[tip] × hekimPct[tip] ]\n' +
+    '<span class="c">            Pct: Std-R='+(V.danis_stdR||10)+'%, Std-Rl='+(V.danis_stdRl||15)+'%, Delik='+(V.danis_delik||30)+'%, Sens='+(V.danis_sens||30)+'%, S+D='+(V.danis_sensDelik||30)+'%</span>\n\n' +
+    '<span class="k">KanalPayı</span>  = BrütGelir × '+(V.kanalBakim||0)+'%\n' +
+    '<span class="c">            Şu an: ₺0 (kanal bakım oranı = 0)</span>\n\n' +
+    '<span class="k">Malzeme</span>    = Σ [ korse_adet[tip] × malzeme[tip] ]\n' +
+    '<span class="c">            Malzeme (₺): Std-R='+(V.mal_stdR||250)+', Std-Rl='+(V.mal_stdRl||300)+', Delik='+(V.mal_delik||400)+', Sens='+(V.mal_sens||1000)+', S+D='+(V.mal_sensDelik||1250)+'</span>\n\n' +
+    '<span class="k">Royalty</span>    = toplamKorse × €'+(V.royaltyEur||75)+' × ₺'+(V.eurKur||50)+' = toplamKorse × ₺'+royTRY+'\n\n' +
+    '<span class="r">NetGelir</span>   = BrütGelir − HekimPayı − KanalPayı − Malzeme − Royalty';
+
+  document.getElementById('formulGider').innerHTML =
+    '<span class="c">── GİDER (her ay için, negatif değer olarak kaydedilir) ─────────────────────</span>\n\n' +
+    '<span class="k">SabitGider</span> = kira + elektrik + internet + sarf + ortotistBrüt + mutfak + genelGider\n' +
+    '<span class="c">            = ₺'+tf(V.kira)+' + ₺'+tf(V.elektrik)+' + ₺'+tf(V.internet)+' + ₺'+tf(V.sarf)+' + ₺'+ortoBrut.toLocaleString('tr-TR')+' + ₺'+tf(V.mutfak)+' + ₺'+tf(V.genelGider)+'</span>\n' +
+    '<span class="c">            ortotistBrüt = ₺'+tf(V.ortotistM)+' (net) × '+sgk+' (SGK) = ₺'+ortoBrut.toLocaleString('tr-TR')+'</span>\n\n' +
+    '<span class="k">PersonelEk</span> = <span class="b">EĞER</span>(aylıkKorse ≥ '+e1+') → +₺'+stajBrut.toLocaleString('tr-TR')+' stajyer brüt\n' +
+    '             <span class="b">EĞER</span>(aylıkKorse ≥ '+e2+') → +₺'+destBrut.toLocaleString('tr-TR')+' destek personel brüt\n' +
+    '             <span class="b">EĞER</span>(aylıkKorse ≥ '+e3+') → +₺'+staj2Brut.toLocaleString('tr-TR')+' 2. stajyer brüt\n\n' +
+    '<span class="k">Stopaj</span>     = <span class="b">EĞER</span>(ay ∈ {3,6,9,12}) → ₺'+tf(V.stopaj)+' / 0\n\n' +
+    '<span class="k">Dönemsel</span>   = kongre[ay] + reklam_sabit\n' +
+    '<span class="c">            kongre: değişken; reklam_sabit: ₺'+tf(V.reklamSabit)+'/ay</span>\n\n' +
+    '<span class="k">PrinterEk</span>  = <span class="b">EĞER</span>(korse > mevcutPrinterKap) → ekPrinter × €'+(V.printerEurFiyat||10000)+' × ₺'+(V.eurKur||50)+'\n' +
+    '<span class="c">            kapasite: '+_autoPrinterAdet()+' printer × 66 korse/ay = '+(_autoPrinterAdet()*66)+' korse/ay</span>\n\n' +
+    '<span class="d">ToplamGider</span> = −(SabitGider + PersonelEk + Stopaj + Dönemsel + PrinterEk + Mutfak)';
+
+  document.getElementById('formulKumulatif').innerHTML =
+    '<span class="c">── KÜMÜLATİF & TETİKLEYİCİLER ─────────────────────────────────────────────</span>\n\n' +
+    '<span class="k">AylıkNet</span>    = NetGelir + ToplamGider\n\n' +
+    '<span class="k">Kümülatif[ay]</span> = Kümülatif[ay−1] + AylıkNet[ay]\n' +
+    '<span class="c">              Kümülatif[Ay0] = −KurulumGideri (başlangıç)</span>\n\n' +
+    '<span class="k">Başabaş Ayı</span> = İlk ay: AylıkNet ≥ 0\n' +
+    '<span class="k">Kümülatif+</span>  = İlk ay: Kümülatif ≥ 0\n\n' +
+    '<span class="c">── 2. MERKEZ TETİKLEYİCİ (4 aylık hareketli ortalama) ─────────────────────</span>\n\n' +
+    '<span class="k">HareketliOrtalama[ay]</span> = ORTALAMA(AylıkNet[ay−3], ..., AylıkNet[ay])  (Ay 4\'ten itibaren)\n\n' +
+    '<span class="k">TetikAyı</span>    = İlk ay: HareketliOrtalama ≥ 0\n' +
+    '<span class="k">AçılışAyı</span>   = MAKS(13, TetikAyı + 3)  <span class="c">— en erken Yıl 2 başı, 3 ay hazırlık</span>\n' +
+    '<span class="k">AktifAyYıl2</span> = MAKS(0, MİN(12, 25 − AçılışAyı))';
+}
+
+// ── SECTION 4: 12 Aylık Tablo ────────────────────────────────────────────────
+function renderMonthlyTable() {
+  const rows = window._lastRows || [];
+  if (!rows.length) return;
+
+  // KPI özet
+  const tKorse = rows.reduce((s,r)=>s+(r.korse||0),0);
+  const tGelir = rows.reduce((s,r)=>s+(r.gelirNet||0),0);
+  const tGider = rows.reduce((s,r)=>s+(r.gider||0),0);
+  const tNet   = rows.reduce((s,r)=>s+(r.net||0),0);
+  const son = rows[11];
+  const basAy = rows.find(r=>r.net>=0);
+  const pozAy = rows.find(r=>r.cumBudget>=0);
+
+  document.getElementById('ozet_kpi').innerHTML = [
+    {l:'Toplam korse', v: tKorse + ' adet', c:'neu'},
+    {l:'Klinik net gelir', v: tfShort(tGelir), c: tGelir>=0?'pos':'neg'},
+    {l:'Toplam gider', v: tfShort(tGider), c:'neg'},
+    {l:'Yıllık net', v: tfShort(tNet), c: tNet>=0?'pos':'neg'},
+    {l:'Kümülatif yıl sonu', v: tfShort(son.cumBudget), c: son.cumBudget>=0?'pos':'neg'},
+    {l:'Aylık başabaş', v: basAy?'Ay '+basAy.ay:'Ulaşılamadı', c: basAy?'pos':'neg'},
+    {l:'Kümülatif pozitif', v: pozAy?'Ay '+pozAy.ay:'Ulaşılamadı', c: pozAy?'pos':'neg'},
+  ].map(k=>'<div class="kpi-box"><div class="klbl">'+k.l+'</div><div class="kval '+k.c+'">'+k.v+'</div></div>').join('');
+
+  // Tablo
+  const tbody = document.getElementById('monthlyTbody');
+  let html = '';
+  rows.forEach(r => {
+    const isBas = basAy && r.ay === basAy.ay;
+    const isPoz = pozAy && r.ay === pozAy.ay;
+    const cls = isPoz ? 'poz' : isBas ? 'bas' : '';
+    const kk = r.k || [r.korse,0,0,0,0];
+    const donPrn = (r.kongre||0) + (r.printerEkMaliyet||0);
+    html += '<tr class="'+cls+'">' +
+      '<td class="lft">Ay '+r.ay+(isBas?' ✓':isPoz?' ★':'')+'</td>' +
+      '<td>'+kk[0]+'</td><td>'+kk[1]+'</td><td>'+kk[2]+'</td><td>'+kk[3]+'</td><td>'+kk[4]+'</td>' +
+      '<td style="font-weight:700;">'+r.korse+'</td>' +
+      '<td>'+tfShort(r.gelirBrut)+'</td>' +
+      '<td class="neg">'+tfShort(-r.danis)+'</td>' +
+      '<td class="neg">'+(r.bakim?tfShort(-r.bakim):'—')+'</td>' +
+      '<td class="neg">'+(r.baskiTop?tfShort(-r.baskiTop):'—')+'</td>' +
+      '<td class="neg">'+tfShort(-r.royaltyTop)+'</td>' +
+      '<td class="'+(r.gelirNet>=0?'pos':'neg')+'" style="font-weight:700;">'+tfShort(r.gelirNet)+'</td>' +
+      '<td class="neg">'+tfShort(-r.sabitGider)+'</td>' +
+      '<td class="neg">'+tfShort(-r.reklamS)+'</td>' +
+      '<td class="neg">'+tfShort(-r.mutfakV)+'</td>' +
+      '<td class="neg">'+(r.ayStopaj?tfShort(-r.ayStopaj):'—')+'</td>' +
+      '<td class="neg">'+(donPrn?tfShort(-donPrn):'—')+'</td>' +
+      '<td class="'+(r.net>=0?'pos':'neg')+'" style="font-weight:700;">'+tfShort(r.net)+'</td>' +
+      '<td class="'+(r.cumBudget>=0?'pos':'neg')+'" style="font-weight:700;">'+tfShort(r.cumBudget)+'</td>' +
+      '</tr>';
+  });
+  // Toplam
+  const tBrut   = rows.reduce((s,r)=>s+(r.gelirBrut||0),0);
+  const tDanis  = rows.reduce((s,r)=>s+(r.danis||0),0);
+  const tBakim  = rows.reduce((s,r)=>s+(r.bakim||0),0);
+  const tBaski  = rows.reduce((s,r)=>s+(r.baskiTop||0),0);
+  const tRoyalt = rows.reduce((s,r)=>s+(r.royaltyTop||0),0);
+  const tSabit  = rows.reduce((s,r)=>s+(r.sabitGider||0),0);
+  const tRek    = rows.reduce((s,r)=>s+(r.reklamS||0),0);
+  const tMutfak = rows.reduce((s,r)=>s+(r.mutfakV||0),0);
+  const tStopaj = rows.reduce((s,r)=>s+(r.ayStopaj||0),0);
+  const tDonPrn = rows.reduce((s,r)=>s+(r.kongre||0)+(r.printerEkMaliyet||0),0);
+  const tpK = rows.reduce((s,r)=>{const k=r.k||[0,0,0,0,0];return s.map((v,j)=>v+k[j]);}, [0,0,0,0,0]);
+  html += '<tr class="tot">' +
+    '<td class="lft">Toplam</td>' +
+    '<td>'+tpK[0]+'</td><td>'+tpK[1]+'</td><td>'+tpK[2]+'</td><td>'+tpK[3]+'</td><td>'+tpK[4]+'</td>' +
+    '<td>'+tKorse+'</td>' +
+    '<td>'+tfShort(tBrut)+'</td>' +
+    '<td class="neg">'+tfShort(-tDanis)+'</td>' +
+    '<td class="neg">'+(tBakim?tfShort(-tBakim):'—')+'</td>' +
+    '<td class="neg">'+(tBaski?tfShort(-tBaski):'—')+'</td>' +
+    '<td class="neg">'+tfShort(-tRoyalt)+'</td>' +
+    '<td class="'+(tGelir>=0?'pos':'neg')+'" style="font-weight:700;">'+tfShort(tGelir)+'</td>' +
+    '<td class="neg">'+tfShort(-tSabit)+'</td>' +
+    '<td class="neg">'+tfShort(-tRek)+'</td>' +
+    '<td class="neg">'+tfShort(-tMutfak)+'</td>' +
+    '<td class="neg">'+(tStopaj?tfShort(-tStopaj):'—')+'</td>' +
+    '<td class="neg">'+(tDonPrn?tfShort(-tDonPrn):'—')+'</td>' +
+    '<td class="'+(tNet>=0?'pos':'neg')+'" style="font-weight:700;">'+tfShort(tNet)+'</td>' +
+    '<td class="'+(son.cumBudget>=0?'pos':'neg')+'" style="font-weight:700;">'+tfShort(son.cumBudget)+'</td>' +
+    '</tr>';
+  tbody.innerHTML = html;
+}
+
+// ── SECTION 5: Kurulum ───────────────────────────────────────────────────────
+function renderKurulum() {
+  const m2 = V.m2||150;
+  const tmR = V.tadilatM2||4750;
+  const dmR = V.dekoM2||2000;
+  const tadTop = m2 * tmR;
+  const dekoTop = m2 * dmR;
+  const prAdet = _autoPrinterAdet();
+  const prTRY  = prAdet * (V.printerEurFiyat||10000) * (V.eurKur||50);
+  const robTRY = V.robotKolAktif ? (V.robotKolEurFiyat||10000) * (V.eurKur||50) : 0;
+  const toplam = (V.kira||0)+(V.depozito||0)+(V.emlakci||0)+tadTop+dekoTop+(V.mobilya||0)+(V.ruhsat||0)+prTRY+robTRY;
+
+  const items = [
+    ['Kira (ilk ay)', 'V.kira', V.kira||0],
+    ['Depozito', 'V.depozito', V.depozito||0],
+    ['Emlakçı komisyonu', 'V.emlakci', V.emlakci||0],
+    ['Tadilat', m2+' m² × ₺'+tmR.toLocaleString('tr-TR')+'/m²', tadTop],
+    ['Dekorasyon', m2+' m² × ₺'+dmR.toLocaleString('tr-TR')+'/m²', dekoTop],
+    ['Mobilya + Ekipman', 'V.mobilya', V.mobilya||0],
+    ['Ruhsat & izinler', 'V.ruhsat', V.ruhsat||0],
+    ['3D Printer', prAdet+' adet × €'+(V.printerEurFiyat||10000)+' × ₺'+(V.eurKur||50), prTRY],
+    ['Robot kol', V.robotKolAktif?'€'+(V.robotKolEurFiyat||10000)+' × ₺'+(V.eurKur||50):'Pasif (delikli/S+D mix yoksa)', robTRY],
+  ];
+  const eurK = Math.round(toplam / (V.eurKur||50) / 1000);
+
+  const tbl = document.getElementById('kurulumTbl');
+  tbl.innerHTML = '<thead><tr><th>Kalem</th><th>Formül</th><th>Tutar (₺)</th></tr></thead><tbody>' +
+    items.map(([name, formula, val]) =>
+      '<tr><td>'+name+'</td><td class="formula">'+formula+'</td><td class="result">'+(val?tf(val):'₺0')+'</td></tr>'
+    ).join('') +
+    '</tbody><tfoot><tr class="total"><td colspan="2"><strong>TOPLAM KURULUMGİDERİ</strong></td><td class="result" style="color:#D85A30;">'+tf(-toplam)+'<br><span style="font-size:11px;color:#888;">≈ €'+eurK+'K</span></td></tr></tfoot>';
+}
+
+// ── SECTION 6: 3 Yıllık Projeksiyon ─────────────────────────────────────────
+function renderProjection() {
+  const rows = window._lastRows || [];
+  const eurKur = V.eurKur || 50;
+  const toEur = v => Math.round(v / eurKur / 1000);
+  const lerp = (a,b,t) => Math.round(a + (b-a)*t);
+
+  const y1KorseNet = rows.reduce((s,r)=>s+(r.gelirNet||0), 0);
+  const y1Korse    = rows.reduce((s,r)=>s+(r.korse||0), 0);
+  const y1Gider    = Math.abs(rows.reduce((s,r)=>s+(r.gider||0), 0));
+  const y1GiderEur = toEur(y1Gider);
+
+  const pazarTR    = gv('pazarTR');
+  const pazarIstPct= gv('pazarIstPct') / 100;
+  const pazarIst   = Math.round(pazarTR * pazarIstPct);
+  const hedefPay   = gv('hedefOsteoidPay') / 100;
+  const y5KorseAdet= Math.round(pazarIst * hedefPay);
+
+  const sonR = rows.slice(-3);
+  const sonK = sonR.reduce((s,r)=>s+(r.korse||0),0)||1;
+  const sonN = sonR.reduce((s,r)=>s+(r.gelirNet||0),0);
+  const birimNetEur = sonN / sonK / eurKur;
+  const y5KorseToplam = Math.round(y5KorseAdet * birimNetEur / 1000);
+
+  const y3BrutGelir = y5KorseToplam;
+  const y2GiderEur  = Math.round(y1GiderEur * 1.15);
+  const y3GiderEur  = Math.round(y1GiderEur * 1.25);
+  const y1BrutM1    = toEur(y1KorseNet);
+  const y1NetM1     = Math.max(0, y1BrutM1 - y1GiderEur);
+  const y2NetM1     = Math.max(0, lerp(y1BrutM1, y3BrutGelir, 0.4) - y2GiderEur);
+  const y3NetM1     = Math.max(0, y3BrutGelir - y3GiderEur);
+  const y3SgkNet    = Math.round(y3BrutGelir * 0.35 * 0.85);
+  const y2SgkNet    = Math.round(y3SgkNet * 0.25);
+
+  const b2bY1 = toEur(window._lastGelirB2B || 0);
+  const b2bRow = [b2bY1, Math.round(b2bY1*1.5), Math.round(b2bY1*2.2)];
+
+  const {triggerAy: _trigAy} = calc4AyOrtalama(rows);
+  const _acilisAy = _trigAy ? Math.max(13, _trigAy+3) : 13;
+  const _aktifAy  = Math.max(0, Math.min(12, 25 - _acilisAy));
+
+  const izmirGelirY2  = V.izmirAktif  ? Math.round(getMerkezGelir('izmir')  * _aktifAy / 12) : 0;
+  const ankaraGelirY2 = V.ankaraAktif ? Math.round(getMerkezGelir('ankara') * _aktifAy / 12) : 0;
+  const pazarIzmir  = Math.round(gv('pazarTR') * V.izmirNufusPay / 100);
+  const pazarAnkara = Math.round(gv('pazarTR') * V.ankaraNufusPay / 100);
+  const y1BirimNetEur = toEur(y1KorseNet) / (y1Korse||1) * 1000;
+  const izmirY3Adet   = V.izmirAktif  ? Math.round(pazarIzmir  * gv('izmirHedefPay')  / 100) : 0;
+  const ankaraY3Adet  = V.ankaraAktif ? Math.round(pazarAnkara * gv('ankaraHedefPay') / 100) : 0;
+  const izmirY3Gelir  = Math.round(izmirY3Adet  * y1BirimNetEur / 1000);
+  const ankaraY3Gelir = Math.round(ankaraY3Adet * y1BirimNetEur / 1000);
+
+  const sonBirimNet = Math.round(sonN / sonK);
+
+  document.getElementById('formulProj').innerHTML =
+    '<span class="c">── YIL 1 ───────────────────────────────────────────────────────────────────</span>\n' +
+    '<span class="k">Yıl1_M1_Net</span>    = 12 aylık modelden direkt → €'+y1NetM1+'K\n' +
+    '<span class="k">Yıl1_GiderEur</span>  = -(Σ aylık gider) / eurKur / 1000 → €'+y1GiderEur+'K\n\n' +
+    '<span class="c">── YIL 2 ───────────────────────────────────────────────────────────────────</span>\n' +
+    '<span class="k">Yıl2_BrutM1</span>    = DOĞRUSAL(Yıl1=€'+y1BrutM1+'K → Yıl3=€'+y3BrutGelir+'K, t=0.4)\n' +
+    '<span class="k">Yıl2_GiderEur</span>  = Yıl1_Gider × 1.15 (personel + kira artışı) = €'+y2GiderEur+'K\n' +
+    '<span class="k">Yıl2_M1_Net</span>    = MAKS(0, Yıl2_Brut − Yıl2_Gider) → €'+y2NetM1+'K\n' +
+    '<span class="k">Yıl2_SGK_Net</span>   = Yıl3_SGK × 0.25 (ramp-up %25) → €'+y2SgkNet+'K\n\n' +
+    '<span class="c">── YIL 3 ───────────────────────────────────────────────────────────────────</span>\n' +
+    '<span class="k">Yıl3_Hedef_Korse</span>= PazarIST × %'+gv('hedefOsteoidPay')+' = '+pazarIst.toLocaleString('tr-TR')+' × %'+gv('hedefOsteoidPay')+' = '+y5KorseAdet+' adet\n' +
+    '<span class="k">BirimNetEur</span>     = Yılsonu ortalama (son 3 ay) = ₺'+sonBirimNet.toLocaleString('tr-TR')+'/korse\n' +
+    '<span class="k">Yıl3_BrutGelir</span> = '+y5KorseAdet+' × ₺'+sonBirimNet.toLocaleString('tr-TR')+' / '+eurKur+' / 1000 = €'+y3BrutGelir+'K\n' +
+    '<span class="k">Yıl3_GiderEur</span>  = Yıl1_Gider × 1.25 → €'+y3GiderEur+'K\n' +
+    '<span class="r">Yıl3_M1_Net</span>    = MAKS(0, Yıl3_Brut − Yıl3_Gider) → €'+y3NetM1+'K\n' +
+    '<span class="k">Yıl3_SGK_Net</span>   = Yıl3_M1_Net × 0.35 × 0.85 → €'+y3SgkNet+'K\n' +
+    '<span class="c">            0.35 = SGK kanal oranı öngörüsü · 0.85 = tahsilat etkinliği (60–90 gün gecikme)</span>';
+
+  // Projeksiyon tablosu
+  const fmt = v => v>0 ? '€'+v+'K' : '—';
+  const totals = [
+    y1NetM1 + 0 + 0 + b2bRow[0] + (V.izmirAktif?0:0) + (V.ankaraAktif?0:0),
+    y2NetM1 + y2SgkNet + 0 + b2bRow[1] + izmirGelirY2 + ankaraGelirY2,
+    y3NetM1 + y3SgkNet + 0 + b2bRow[2] + izmirY3Gelir + ankaraY3Gelir,
+  ];
+
+  const trows = [
+    ['Korse — M1 (özel kanal)', 'Model Y1; büyüme projeksiyon Y2-3', y1NetM1, y2NetM1, y3NetM1],
+    ['Korse — M1 (SGK, Yıl 2+)', 'Y3 × 0.35 × 0.85; Y2 = Y3 × 0.25', 0, y2SgkNet, y3SgkNet],
+    ...(b2bRow[0]>0||b2bRow[1]>0 ? [['B2B — İstanbul', 'Y1 modelden; Y2=×1.5; Y3=×2.2', b2bRow[0], b2bRow[1], b2bRow[2]]] : []),
+    ...(V.izmirAktif ? [['Korse — İzmir', 'getMerkezGelir × aktifAy/12; Y3: nüfus pay × birimNet', 0, izmirGelirY2, izmirY3Gelir]] : []),
+    ...(V.ankaraAktif ? [['Korse — Ankara', 'getMerkezGelir × aktifAy/12; Y3: nüfus pay × birimNet', 0, ankaraGelirY2, ankaraY3Gelir]] : []),
+  ];
+
+  document.getElementById('projTbody').innerHTML =
+    trows.map(([name, formula, y1, y2, y3]) =>
+      '<tr><td>'+name+'</td><td class="formula">'+formula+'</td>' +
+      '<td class="result">'+(y1?fmt(y1):'—')+'</td>' +
+      '<td class="result">'+(y2?fmt(y2):'—')+'</td>' +
+      '<td class="result">'+(y3?fmt(y3):'—')+'</td></tr>'
+    ).join('') +
+    '<tr class="grp"><td>Konsolide Toplam</td><td class="formula">Σ tüm kalemler</td>' +
+    '<td class="result">€'+totals[0]+'K</td><td class="result">€'+totals[1]+'K</td><td class="result">€'+totals[2]+'K</td></tr>';
+}
+
+// ── SECTION 7: Yeni Merkezler ─────────────────────────────────────────────────
+function renderMerkezler() {
+  const rows = window._lastRows || [];
+  const eurKur = V.eurKur || 50;
+  const {triggerAy: _trigAy} = calc4AyOrtalama(rows);
+  const _acilisAy = _trigAy ? Math.max(13, _trigAy+3) : 13;
+  const _aktifAy  = Math.max(0, Math.min(12, 25-_acilisAy));
+
+  document.getElementById('formulTetik').innerHTML =
+    '<span class="c">── 4 AYLIK HAREKETLİ ORTALAMA TETİKLEYİCİSİ ───────────────────────────────</span>\n\n' +
+    '<span class="c">Her ayın net nakit akışı (AylıkNet) kullanılır. Ay 1-3 ortalama hesaplanamaz.</span>\n\n' +
+    '<span class="k">HO[ay]</span> = ORTALAMA(AylıkNet[ay-3], AylıkNet[ay-2], AylıkNet[ay-1], AylıkNet[ay])\n\n' +
+    '<span class="k">TetikAyı</span>  = MIN{ ay ≥ 4 : HO[ay] ≥ 0 }\n' +
+    '<span class="k">AçılışAyı</span> = MAKS(13, TetikAyı + 3)\n' +
+    '<span class="c">           3 ay hazırlık süresi; en erken Yıl 2 başı (Ay 13)</span>\n\n' +
+    '<span class="k">AktifAyYıl2</span> = MAKS(0, MİN(12, 25 − AçılışAyı))\n' +
+    '<span class="c">           Yıl 2\'deki (Ay 13-24) aktif faaliyet ay sayısı';
+
+  document.getElementById('tetikDurumu').innerHTML =
+    (_trigAy
+      ? '◎ Mevcut modelde tetik: <strong>Ay '+_trigAy+'</strong> &nbsp;→&nbsp; Açılış: <strong>Yıl 2 Ay '+(_acilisAy-12)+'</strong> (Ay '+_acilisAy+') &nbsp;→&nbsp; Yıl 2\'de <strong>'+_aktifAy+' ay</strong> aktif'
+      : '◎ Mevcut modelde tetik henüz çalışmıyor — varsayılan açılış: <strong>Yıl 2 Ay 1</strong> → <strong>12 ay</strong> aktif');
+
+  document.getElementById('formulMerkez').innerHTML =
+    '<span class="c">── YENİ MERKEZ NET GELİR HESABI (getMerkezGelir) ──────────────────────────</span>\n\n' +
+    '<span class="k">Rampa</span>       = 12 aylık korse hedefi dizisi (sürüklenebilir grafik)\n' +
+    '<span class="c">           İST çarpanı aktifse: Rampa[ay] = İST_korse[ay] × çarpan</span>\n\n' +
+    '<span class="k">ToplamKorse</span> = Σ Rampa[0..11]\n\n' +
+    '<span class="k">BirimNetTRY</span> = Yılsonu mix ortalama: (son 3 ay net gelir) / (son 3 ay korse)\n' +
+    '<span class="c">           İST model verisi — yılsonu ürün mix ağırlığını yansıtır</span>\n\n' +
+    '<span class="k">BrütGelir</span>   = ToplamKorse × BirimNetTRY\n\n' +
+    '<span class="k">İşletmeGider</span>= Σ [ ay bazlı sabit gider + eşik bazlı personel + stopaj ]\n' +
+    '<span class="c">           İST gider modu: İST oranlarıyla. Özel mod: şehir özgü oranlar.</span>\n\n' +
+    '<span class="r">NetGelirEurK</span>= (BrütGelir − İşletmeGider) / eurKur / 1000';
+
+  const sehirler = [
+    {key:'izmir',  name:'İzmir',  color:'#1D9E75', aktif: V.izmirAktif},
+    {key:'ankara', name:'Ankara', color:'#534AB7', aktif: V.ankaraAktif},
+  ];
+  const sonR = rows.slice(-3);
+  const sonK = sonR.reduce((s,r)=>s+(r.korse||0),0)||1;
+  const sonN = sonR.reduce((s,r)=>s+(r.gelirNet||0),0);
+  const birimNetTRY = Math.round(sonN / sonK);
+
+  document.getElementById('merkezTbody').innerHTML = sehirler.map(s => {
+    if (!s.aktif) return '<tr><td style="color:'+s.color+';font-weight:700;">'+s.name+'</td><td colspan="6" style="color:#aaa;text-align:center;">Pasif — seçili değil</td></tr>';
+    const rampa   = V[s.key+'Rampa'] || [];
+    const topK    = rampa.reduce((a,v)=>a+v,0);
+    const brutTRY = topK * birimNetTRY;
+    const netEurK = getMerkezGelir(s.key);
+    const isletme = brutTRY - netEurK * (V.eurKur||50) * 1000;
+    return '<tr>' +
+      '<td style="color:'+s.color+';font-weight:700;">'+s.name+'</td>' +
+      '<td style="text-align:right;">'+topK+' adet</td>' +
+      '<td style="text-align:right;">₺'+birimNetTRY.toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;">₺'+Math.round(brutTRY).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;color:#D85A30;">₺'+Math.round(isletme).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;font-weight:700;color:#1D9E75;">₺'+Math.round(netEurK*(V.eurKur||50)*1000).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;font-weight:700;color:#1D9E75;">€'+netEurK+'K</td>' +
+      '</tr>';
+  }).join('');
+
+  document.getElementById('merkezKurulumTbody').innerHTML = sehirler.map(s => {
+    if (!s.aktif) return '<tr><td style="color:'+s.color+';font-weight:700;">'+s.name+'</td><td colspan="4" style="color:#aaa;text-align:center;">Pasif</td></tr>';
+    const useIst = V[s.key+'UseIstKurulum'] !== false;
+    const oran   = V[s.key+'KurulumOran'] || 1.0;
+    const top    = getMerkezKurulum(s.key);
+    const eurK   = Math.round(top / (V.eurKur||50) / 1000);
+    const formula = useIst
+      ? 'İST kurulum × ' + oran.toFixed(2) + ' (çarpan)'
+      : 'Özel kalem tutarları toplamı';
+    return '<tr>' +
+      '<td style="color:'+s.color+';font-weight:700;">'+s.name+'</td>' +
+      '<td>'+(useIst?'İST bazlı':'Özel')+'</td>' +
+      '<td class="formula">'+formula+'</td>' +
+      '<td style="text-align:right;font-weight:700;">₺'+Math.round(top).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;font-weight:700;color:#D85A30;">€'+eurK+'K</td>' +
+      '</tr>';
+  }).join('');
+}
+
+// ── ÇALIŞTIR ──────────────────────────────────────────────────────────────────
+window.addEventListener('load', function() {
+  // shared.js zaten recalc() çalıştırdı, _lastRows dolu olmalı
+  if (!window._lastRows || !window._lastRows.length) recalc();
+
+  renderParams();
+  renderUrunMarj();
+  renderFormulas();
+  renderMonthlyTable();
+  renderKurulum();
+  renderProjection();
+  renderMerkezler();
+});
+--- sozlesme.html
+—
+▾
+%25
+Fesih
+Kaydet
+Temettü
+Gizlilik
+€150.000
+Raporlama
+← Rekabet
+Yatırım Aracı
+Kontrol Yapısı
+Rekabet Yasağı
+Yatırım Tutarı
+Çıkış Opsiyonu
+Sözleşme Süresi
+frontman yapısı
+Formül Sağlama →
+Osteoid — Sözleşme
+Sözleşme & Koşullar
+↗ Google Docs'ta Aç
+Yatırımcı Sözleşmesi
+Harcama Yoluyla Kullanım
+Nakit Talep & Faturalama
+Pay Sahipleri Sözleşmesi
+Hekim Komisyon Sözleşmesi
+Komisyon Oranı & Birikimi
+merkez açık olduğu sürece
+Hisse Devri & Önalım Hakkı
+window.PAGE_ID='sozlesme';
+Teknoloji Tedarik Güvencesi
+Temel Koşullar — Genel Özet
+Pazar sayfasından güncellenir
+Yatırımcı sayfasından güncellenir
+Kanal Payı — Hisse Dönüştürme Hakkı
+Hekimlerin doğrudan hasta yönlendirdiği bir merkeze ortak olması gri alan oluşturduğundan
+kullanılacaktır. Hisseler hekim adına değil, belirlenen tüzel/gerçek kişi üzerinden tutulur.
+Osteoid A.Ş., Osteoid Merkezleri'ne korse tasarım yazılımı, üretim malzemesi ve makina bakım hizmetlerine kesintisiz erişimi
+Hasta verileri KVKK kapsamında korunur. Teknoloji altyapısı, fiyatlama ve iş süreçleri sözleşme süresince ve sonrasında gizli tutulur.
+Haklı nedenle (etik ihlal, KVKK ihlali) anında fesih. Diğer hallerde 30 gün önceden yazılı ihbar; bekleyen komisyon ödemeleri kapatılır.
+⚠ Bu özet taslak niteliğindedir, hukuki bağlayıcılığı yoktur. Madde açıklamaları tıklanarak düzenlenebilir; değişiklikler tarayıcıda saklanır.
+12 ay; her iki tarafın 30 gün önceden yazılı bildirim yapması koşuluyla otomatik yenileme. İlk yıl sonunda koşullar yeniden müzakere edilebilir.
+Müzakereye açık: adi hisse, imtiyazlı hisse veya dönüştürülebilir borç (SAFE). Tercih edilen yapı ve oran yatırımcı profiliyle birlikte belirlenir.
+Taslak pay sahipleri sözleşmesi Google Docs üzerinde hazırlanmaktadır. Bağlantıyı aşağıya yapıştırın — kaydedilir ve her oturumda aynı bağlantı açılır.
+Deniz Karaşahin veya Osteoid Sağlık Teknolojileri A.Ş. çoğunluk kontrolünü (%50+1) her koşulda korur. Yatırımcıya azınlık hisse ve bilgi hakları tanınır.
+Tutar doğrudan nakit ödenmez; şirket hesabında hekimin adına ayrı kalem olarak birikir. Komisyon sözleşmeye bağlanmaz; kullanım talebine göre karşılanır.
+Sözleşme süresince tüm omurga ortezi (spinal ortez) alanındaki rakip klinik yapılarda aktif görev alınamaz. Sözleşmenin feshi halinde rekabet yasağı devre dışı kalır.
+Herhangi bir ortak hissesini devretmek istediğinde önce mevcut ortaklara teklif etmek zorundadır. İçerideki ortaklar 30 gün içinde aynı koşullarla önalım hakkını kullanabilir.
+İkinci merkezin açılış tarihinden itibaren stratejik alıcıya satış veya mevcut ortağa önalım hakkı kullanılabilir. Değerleme yöntemi önceden mutabık kalınan çarpanla belirlenir.
+Sözleşme süresince tüm omurga ortezi (spinal ortez) alanında faaliyet gösteren rakip yapılara yatırım veya katılım yasaktır. Sözleşmenin feshi halinde rekabet yasağı devre dışı kalır.
+Mali disiplin YMM (Yeminli Mali Müşavir) aracılığıyla sağlanır. Aylık gelir/gider raporu, çeyreklik KPI sunumu, yıllık denetim. YMM maliyeti dönemsel giderlerde ayrı kalem olarak izlenir.
+Biriken komisyon; tabip odası tarafından kabul gören kongre kaydı, konaklama, kitap ve yayın gibi mesleki giderler için talep üzerine şirket tarafından doğrudan karşılanır. Harcama belgesi ibrazı zorunludur.
+Nakit ödeme talep edilmesi halinde hekimin bizzat veya önerdiği üçüncü tarafın şirkete fatura kesmesi zorunludur. Fatura KDV dahil düzenlenir; ödeme fatura tarihinden itibaren 15 iş günü içinde gerçekleştirilir.
+taahhüt eder. Teknoloji erişiminin herhangi bir nedenle kesintiye uğraması halinde Osteoid A.Ş. tazminat yükümlülüğü doğar; süre ve tutar taraflarca müzakere edilir. Ayrıca Osteoid A.Ş., merkezin kurulduğu şehirde başka herhangi bir müşteriye merkezin çalışma alanında aynı teknolojiyi sağlamayacağını taahhüt eder.
+Deniz Aktan ve Tunay Şanlı, kanal oluşturulması ve devamlılığının sağlanması karşılığında biriken kanal paylarını, ilerleyen dönemde şirketten indirimli fiyat üzerinden hisse satın almak için kullanma hakkına sahiptir. Dönüşüm koşulları (fiyat indirimi, süre, asgari birikmiş pay tutarı) taraflarca ayrı mutabakat ile belirlenir.
+Firma kümülatif pozitife ulaşana kadar temettü dağıtılmaz. Kümülatif pozitif sonrası yıllık net kâr üzerinden dağıtım kararı yönetim kuruluna aittir. Osteoid A.Ş., tamamlanmış Ar-Ge projelerine istinaden yazılım lisansı veya royalty olarak KDV'siz fatura kesme hakkını saklı tutar; bu ödemeler temettü öncesi gider olarak işlenir.
+.soz-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 800px) { .soz-grid { grid-template-columns: 1fr; } }
+
+.soz-col-title { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #fff; padding: 8px 14px; border-radius: 5px; margin-bottom: 12px; }
+.soz-col-title.yatirimci { background: #534AB7; }
+.soz-col-title.hekim { background: #1a7a45; }
+
+.term-card { background: #f9f8f4; border: 1px solid #e0e0dc; border-radius: 6px; padding: 12px 14px; margin-bottom: 10px; }
+.term-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #888; margin-bottom: 5px; }
+.term-body { font-size: 12px; color: #333; line-height: 1.6; outline: none; border-radius: 3px; }
+.term-body:focus { outline: 1px solid #534AB7; background: #fff; padding: 3px 5px; margin: -3px -5px; }
+
+.gdoc-box { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 12px; }
+.gdoc-input { flex: 1; min-width: 260px; font-size: 12px; padding: 9px 12px; border: 1px solid #d0d0cc; border-radius: 6px; background: #fafaf8; color: #1a1a1a; }
+.gdoc-input:focus { outline: 1px solid #534AB7; }
+.gdoc-btn { font-size: 12px; font-weight: 700; padding: 9px 18px; border-radius: 6px; cursor: pointer; white-space: nowrap; transition: all .15s; }
+.gdoc-btn.primary { border: 1.5px solid #534AB7; background: #534AB7; color: #fff; }
+.gdoc-btn.primary:hover { background: #4239a6; }
+.gdoc-btn.secondary { border: 1.5px solid #534AB7; background: #fff; color: #534AB7; }
+.gdoc-btn.secondary:hover { background: #f4f3ff; }
+const GDOC_KEY = 'osteoid_gdoc';
+
+function saveGdocUrl() {
+  const url = document.getElementById('gdocUrl').value.trim();
+  localStorage.setItem(GDOC_KEY, url);
+  const st = document.getElementById('gdocStatus');
+  st.textContent = url ? '✓ Kaydedildi' : 'URL temizlendi.';
+  st.style.color = url ? '#1a7a45' : '#888';
+}
+
+function openGdoc() {
+  const url = (document.getElementById('gdocUrl').value.trim()) || localStorage.getItem(GDOC_KEY) || '';
+  if (!url) {
+    const st = document.getElementById('gdocStatus');
+    st.textContent = 'Önce bir Google Docs bağlantısı girin ve kaydedin.';
+    st.style.color = '#c0392b';
+    return;
+  }
+  window.open(url, '_blank');
+}
+
+function saveTerm(key, el) {
+  localStorage.setItem('osteoid_term_' + key, el.textContent.trim());
+}
+
+
+window.addEventListener('load', function() {
+  const url = localStorage.getItem(GDOC_KEY) || 'https://docs.google.com/document/d/1A6S8b0mF-fuwrObXXbo11ZzjeAXH3XvB5TcYdH1_aao/edit?usp=sharing';
+  document.getElementById('gdocUrl').value = url;
+  if (url) {
+    const st = document.getElementById('gdocStatus');
+    st.textContent = '✓ Kayıtlı bağlantı yüklendi';
+    st.style.color = '#1a7a45';
+  }
+
+  // Yatırım tutarını V'den oku (yatirimci.html slider'ı)
+  const invest = V.dcfInvest || 150000;
+  const tutarEl = document.getElementById('term_Y_tutar');
+  if (tutarEl) tutarEl.textContent = '€' + Math.round(invest).toLocaleString('tr-TR');
+
+  // Komisyon oranını V'den oku (pazar.html slider'ı)
+  const komisyonEl = document.getElementById('term_H_komisyon');
+  if (komisyonEl) komisyonEl.textContent = '%' + (V.danisPct || 25);
+
+  ['Y_arac','Y_kontrol','Y_temettu','Y_raporlama','Y_onalim','Y_cikis','Y_rekabet','Y_teknoloji',
+   'H_odeme','H_fatura','H_kanal','H_sure','H_gizlilik','H_fesih','H_rekabet'].forEach(function(k) {
+    const saved = localStorage.getItem('osteoid_term_' + k);
+    const el = document.getElementById('term_' + k);
+    if (saved && el) el.textContent = saved;
+  });
+});
+--- yatirimci.html
+8
+—
+▸
+▾
+﻿
+25
+28
+4x
+6x
+9x
+%25
+%67
+Baz
+Not
+Yıl
+2012
+2013
+2023
+3–6x
+5–9x
+7–12x
+8–13x
+Fesih
+Kalem
+Taraf
+Yıl 1
+Yıl 2
+Yıl 3
+Yıl 4
+Yıl 5
+Kaydet
+~8–10x
+Çarpan
+-€0.24M
+150.000
+2022–24
+2023–24
+Dayanak
+Net Kâr
+Senaryo
+Temettü
+~12–14x
+~€0.71M
+~€0.94M
+~€1.41M
+~€5.66M
+~€7.54M
+İyimser
+Gizlilik
+Sözleşme
+Terminal
+~€10.37M
+€150.000
+Baz (6x):
+Raporlama
+Yatırımcı
+① Temettü
+Hisse Payı
+MOIC (DCF)
+Post-Money
+Vergi -%25
++1x ile +3x
+FAVÖK Marjı
+Global ort.
+Muhafazakâr
+Sektör ort.
+Ciro (Yıl 5)
+Ciro hesabı:
+Yatırım İçin
+MOIC (Çarpan)
+Yatırım Aracı
+İyimser (9x):
+EUROSPINE 2026
+EV — DCF Bazlı
+FAVÖK (EBITDA)
+Kontrol Yapısı
+Rekabet Yasağı
+Yatırım Tutarı
+Çarpan etkisi:
+Çıkış Opsiyonu
+İşlem / Şirket
+ABD/Avrupa ort.
+Hesaplanıyor...
+Osteoid Hissesi
+Pre-Money (DCF)
+Sözleşme Süresi
+frontman yapısı
+← 3 Yıllık Plan
+Carlyle → Turkven
+EV — Çarpan Bazlı
+EV/FAVÖK (EBITDA)
+Muhafazakâr (4x):
+Yatırımcı Hissesi
+Yatırım Tutarı (€)
+Çıkış Değeri (DCF)
+Şirket Değeri (EV)
+Osteoid — Yatırımcı
+Sözleşme & Koşullar
+↗ Google Docs'ta Aç
+Acıbadem Hastaneleri
+Yatırımcı Sözleşmesi
+Çarpan Metodolojisi:
+② İkinci Tur Sermaye
+Çıkış Değeri (Çarpan)
+İskonto Oranı — r (%)
+③ Stratejik Satın Alma
+Medical Park Hastaneler
+SRS 2026 Annual Meeting
+Harcama Yoluyla Kullanım
+IHH Healthcare (Malezya)
+Metodoloji & Formüller →
+Nakit Talep & Faturalama
+Pay Sahipleri Sözleşmesi
+Yıl 4–5 Büyüme Oranı (%)
+Hekim Komisyon Sözleşmesi
+Komisyon Oranı & Birikimi
+merkez açık olduğu sürece
+Hisse Devri & Önalım Hakkı
+🎓 Akademik Yayın Altyapısı
+Değer Yaratma Mekanizmaları
+Teknoloji Tedarik Güvencesi
+Temel Koşullar — Genel Özet
+window.PAGE_ID='yatirimci';
+Yatırımcı Getiri Analizi — €
+Pazar sayfasından güncellenir
+Terminal Büyüme Oranı — g (%)
+📊 Hasta Verisi — Değer Çarpanı
+Fizik Tedavi Zinciri (çok lok.)
+Model yüklenince hesaplanacak...
+Medikal Teknoloji + Klinik Hibrit
+Yatırımcı sekmesinden güncellenir
+Türkiye Özel Klinik (tek lokasyon)
+Kanal Payı — Hisse Dönüştürme Hakkı
+Toplam hedef yatırım (tüm hekimler)
+Yıl 5 sonrası sürdürülebilir büyüme
+Türkiye Özel Sağlık M&A Referansları
+Tunay Şanlı, Deniz Karaşahin et al. ·
+Türkiye Özel Klinik Zinciri (2–4 lok.)
+2+ merkez, model kanıtlanmış → %30–40 iskonto
+④ Klinik Kanıt, Hasta Verisi & Akademik Çarpan
+Erken aşama sağlık girişimi, Türkiye risk primi
+— Avrupa'nın önde gelen omurga cerrahisi kongresi
+Osteoid Merkezleri — Değerleme Senaryoları (Yıl 5)
+Tek klinik, erken aşama → %50–60 Türkiye iskontosu
+Yıl 3 → Yıl 4 ve Yıl 4 → Yıl 5 nakit akışı büyümesi
+İndirgenmiş Nakit Akışı (DCF) — Pre-Money Değerleme
+Ref: ABD/Avrupa MSO 8–13x → %50–60 Türkiye iskontosu
+Ref: 8–13x → %30–40 iskonto; 2+ merkez, model kanıtlanmış
+Yatırımcının Değer Kazanımı — Çıkış & Değerleme Çerçevesi
+%75 hisse; Türkiye'nin en büyük hastane zinciri M&A işlemi
+Carlyle 4 yıllık ortaklıktan çıkış; 18 hastane, 9.000+ çalışan
+Kanıtlanmış klinik veri tabanı + hakemli yayın EV/FAVÖK çarpanını
+Metro MSO/Confluent Health; Türkiye'ye %40–60 iskonto uygulanabilir
+Stratejik alıcı (Avrupa/global) + klinik veri tabanı → minimal iskonto
+Gelir <₺50M; fizik tedavi, ortopedi, diyabetik ayak kliniği benchmarkları
+Çoklu lokasyon, sistematik operasyon, ölçeklenebilir model premium çarpan alır
+— Scoliosis Research Society, dünyanın en seçici skolyoz kongresi (~%30 kabul oranı)
+Hekimlerin doğrudan hasta yönlendirdiği bir merkeze ortak olması gri alan oluşturduğundan
+kullanılacaktır. Hisseler hekim adına değil, belirlenen tüzel/gerçek kişi üzerinden tutulur.
+Stratejik Avrupa/global alıcı + klinik veri tabanı + SRS/EUROSPINE yayınları → minimal iskonto
+Klinik operasyon + teknoloji altyapısı + hakemli yayın; yazılım ARR varlığı çarpanı yukarı taşır
+Aynı çalışma EUROSPINE 2026'ya da kabul edildi · çok merkezli validasyon, YZ destekli klinik karar desteği
+Osteoid A.Ş., Osteoid Merkezleri'ne korse tasarım yazılımı, üretim malzemesi ve makina bakım hizmetlerine kesintisiz erişimi
+"AI-Assisted Bone Age Estimation: Multicenter Validation and Comparison Across Idiopathic Scoliosis Groups and Healthy Controls"
+Hasta verileri KVKK kapsamında korunur. Teknoloji altyapısı, fiyatlama ve iş süreçleri sözleşme süresince ve sonrasında gizli tutulur.
+Haklı nedenle (etik ihlal, KVKK ihlali) anında fesih. Diğer hallerde 30 gün önceden yazılı ihbar; bekleyen komisyon ödemeleri kapatılır.
+Not: Hasta verisi değerlemesi KVKK/GDPR uyumuna ve veri tabanı yapısına bağlıdır. Bu satır taahhüt içermez, stratejik potansiyeli gösterir.
+⚠ Bu özet taslak niteliğindedir, hukuki bağlayıcılığı yoktur. Madde açıklamaları tıklanarak düzenlenebilir; değişiklikler tarayıcıda saklanır.
+12 ay; her iki tarafın 30 gün önceden yazılı bildirim yapması koşuluyla otomatik yenileme. İlk yıl sonunda koşullar yeniden müzakere edilebilir.
+Müzakereye açık: adi hisse, imtiyazlı hisse veya dönüştürülebilir borç (SAFE). Tercih edilen yapı ve oran yatırımcı profiliyle birlikte belirlenir.
+Taslak pay sahipleri sözleşmesi Google Docs üzerinde hazırlanmaktadır. Bağlantıyı aşağıya yapıştırın — kaydedilir ve her oturumda aynı bağlantı açılır.
+Deniz Karaşahin veya Osteoid Sağlık Teknolojileri A.Ş. çoğunluk kontrolünü (%50+1) her koşulda korur. Yatırımcıya azınlık hisse ve bilgi hakları tanınır.
+Tutar doğrudan nakit ödenmez; şirket hesabında hekimin adına ayrı kalem olarak birikir. Komisyon sözleşmeye bağlanmaz; kullanım talebine göre karşılanır.
+Sözleşme süresince tüm omurga ortezi (spinal ortez) alanındaki rakip klinik yapılarda aktif görev alınamaz. Sözleşmenin feshi halinde rekabet yasağı devre dışı kalır.
+Herhangi bir ortak hissesini devretmek istediğinde önce mevcut ortaklara teklif etmek zorundadır. İçerideki ortaklar 30 gün içinde aynı koşullarla önalım hakkını kullanabilir.
+İkinci merkezin açılış tarihinden itibaren stratejik alıcıya satış veya mevcut ortağa önalım hakkı kullanılabilir. Değerleme yöntemi önceden mutabık kalınan çarpanla belirlenir.
+Sözleşme süresince tüm omurga ortezi (spinal ortez) alanında faaliyet gösteren rakip yapılara yatırım veya katılım yasaktır. Sözleşmenin feshi halinde rekabet yasağı devre dışı kalır.
+Bu bölüm yatırımcıya "paramın nasıl değer kazandığını" göstermek için hazırlanmıştır. Kesin değerleme rakamları müzakereye tabidir; aşağıdaki çarpanlar piyasa referansı niteliğindedir.
+Mali disiplin YMM (Yeminli Mali Müşavir) aracılığıyla sağlanır. Aylık gelir/gider raporu, çeyreklik KPI sunumu, yıllık denetim. YMM maliyeti dönemsel giderlerde ayrı kalem olarak izlenir.
+yukarı taşıyabilir — özellikle Avrupa dağıtım partneri veya medikal cihaz şirketi alıcısı söz konusu olduğunda. Osteoid'in KIMedix üzerinden kurulu Avrupa köprüsü bu olasılığı somut kılar.
+Merkez kâra geçtikten sonra yıllık temettü dağıtımı. Royalty giderleri çıktıktan sonra kalan net kâr hisse oranında bölüşülür. Yıl 1 kümülatif pozitif ~Ay 11, ardından her yıl büyüyen temettü akışı.
+Sağlık grubu veya PE fonu tarafından klinik zinciri satın alınması. Türkiye'de özel sağlık M&A aktif — özellikle kanıtlanmış teknoloji altyapısına sahip, ölçeklenebilir klinik modeller ilgi çekiyor.
+EV = Yıl 5 FAVÖK × EV/FAVÖK çarpanı. Referans nokta: ABD/Avrupa fizik tedavi zinciri (MSO) çarpanları 8–13x (Metro MSO, Confluent Health vb.). Türkiye pazarı için likidite ve risk iskontosu uygulanır:
+Biriken komisyon; tabip odası tarafından kabul gören kongre kaydı, konaklama, kitap ve yayın gibi mesleki giderler için talep üzerine şirket tarafından doğrudan karşılanır. Harcama belgesi ibrazı zorunludur.
+Nakit ödeme talep edilmesi halinde hekimin bizzat veya önerdiği üçüncü tarafın şirkete fatura kesmesi zorunludur. Fatura KDV dahil düzenlenir; ödeme fatura tarihinden itibaren 15 iş günü içinde gerçekleştirilir.
+Osteoid'in klinik iddiası sözde değil, ölçülmüş ve eş gözden geçirmeden geçmiş veriye dayanıyor. Bu, benzer klinik modeller arasında nadir rastlanan bir konumlanma — ve stratejik alıcı için bağımsız bir değer unsuru.
+2. ve 3. merkez açılırken yeni yatırımcılar girebilir. İlk turun düşük değerlemesinden giren yatırımcı, büyüme kanıtlandıktan sonra daha yüksek değerlemeyle dilüte edilir — bu sizi korur ve değer artışını somutlaştırır.
+İskonto oranı (r) erken aşama Türkiye sağlık girişimi için risk primini yansıtır. Terminal değer Gordon büyüme modeli ile hesaplanır: TV = FCF₅ × (1+g) / (r−g). Pre-money = NPV(Yıl 1–5 FCF) + PV(Terminal Değer). Yatırımcı hissesi = Yatırım Tutarı / Post-Money.
+MOIC (Multiple on Invested Capital) = Çıkış değeri / Yatırım tutarı. Çarpan bazlı EV: Yıl 3 FAVÖK × senaryo çarpanı (4x/6x/9x). DCF bazlı EV: 5 yıllık indirgenen nakit akışı + terminal değer. Çıkış değeri = EV × hisse payı. Pre-money yatırım tutarı slider'ından güncellenir.
+Sensörlü korseden biriken longitudinal hasta verisi (uyum oranı, korse etkinliği, tedavi sonucu) stratejik alıcılar için bağımsız bir değer unsuru oluşturur. Avrupa pazarında bu ölçekte gerçek dünya klinik verisi bulunmuyor. Akademik yayın altyapısı veri kalitesini ve metodolojisini dışarıya kanıtlıyor.
+taahhüt eder. Teknoloji erişiminin herhangi bir nedenle kesintiye uğraması halinde Osteoid A.Ş. tazminat yükümlülüğü doğar; süre ve tutar taraflarca müzakere edilir. Ayrıca Osteoid A.Ş., merkezin kurulduğu şehirde başka herhangi bir müşteriye merkezin çalışma alanında aynı teknolojiyi sağlamayacağını taahhüt eder.
+Deniz Aktan ve Tunay Şanlı, kanal oluşturulması ve devamlılığının sağlanması karşılığında biriken kanal paylarını, ilerleyen dönemde şirketten indirimli fiyat üzerinden hisse satın almak için kullanma hakkına sahiptir. Dönüşüm koşulları (fiyat indirimi, süre, asgari birikmiş pay tutarı) taraflarca ayrı mutabakat ile belirlenir.
+Firma kümülatif pozitife ulaşana kadar temettü dağıtılmaz. Kümülatif pozitif sonrası yıllık net kâr üzerinden dağıtım kararı yönetim kuruluna aittir. Osteoid A.Ş., tamamlanmış Ar-Ge projelerine istinaden yazılım lisansı veya royalty olarak KDV'siz fatura kesme hakkını saklı tutar; bu ödemeler temettü öncesi gider olarak işlenir.
+Ciro = (Yıl 5 FAVÖK + olgunluk dönemi yıllık opex) / ürün brüt marjı. Bu formül, FAVÖK'ün opex indirildikten sonraki kâr olduğu gerçeğinden hareket eder: FAVÖK = Ciro × marj − opex → Ciro = (FAVÖK + opex) / marj. Ürün brüt marjı (hekim komisyonu ve malzeme sonrası, opex öncesi) Yıl 1 verilerinden türetilir ve büyüme ile sabit kabul edilir.
+FAVÖK (EBITDA) = Vergi, faiz ve amortisman öncesi kâr. Bu modelde faiz ve amortisman kalemi olmadığından FAVÖK ≈ işletme kârı (FVÖK). KDV: ortez-protez teslimi KDV Kanunu 17/4-s kapsamında %0 (tam istisna). Kurumlar vergisi: klinik faaliyetinden elde edilen kâr üzeri %25; satış istisnası yoktur (TGB muafiyeti yalnızca Osteoid A.Ş.'ye aittir). EV her zaman FAVÖK üzerinden hesaplanır — yukarıdaki rakamlar hisse değeri değil toplam işletme değeridir. Hisse değeriniz = EV × hisse oranınız. Çarpanlara ek olarak aktif merkez sayısı arttıkça çarpan otomatik olarak +1x (2. merkez) veya +2x (3. merkez) yukarı taşınır.
+.soz-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 800px) { .soz-grid { grid-template-columns: 1fr; } }
+.soz-col-title { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #fff; padding: 8px 14px; border-radius: 5px; margin-bottom: 12px; }
+.soz-col-title.yatirimci { background: #534AB7; }
+.soz-col-title.hekim { background: #1a7a45; }
+.term-card { background: #f9f8f4; border: 1px solid #e0e0dc; border-radius: 6px; padding: 12px 14px; margin-bottom: 10px; }
+.term-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #888; margin-bottom: 5px; }
+.term-body { font-size: 12px; color: #333; line-height: 1.6; outline: none; border-radius: 3px; }
+.term-body:focus { outline: 1px solid #534AB7; background: #fff; padding: 3px 5px; margin: -3px -5px; }
+.gdoc-box { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 12px; }
+.gdoc-input { flex: 1; min-width: 260px; font-size: 12px; padding: 9px 12px; border: 1px solid #d0d0cc; border-radius: 6px; background: #fafaf8; color: #1a1a1a; }
+.gdoc-input:focus { outline: 1px solid #534AB7; }
+.gdoc-btn { font-size: 12px; font-weight: 700; padding: 9px 18px; border-radius: 6px; cursor: pointer; white-space: nowrap; transition: all .15s; }
+.gdoc-btn.primary { border: 1.5px solid #534AB7; background: #534AB7; color: #fff; }
+.gdoc-btn.primary:hover { background: #4239a6; }
+.gdoc-btn.secondary { border: 1.5px solid #534AB7; background: #fff; color: #534AB7; }
+.gdoc-btn.secondary:hover { background: #f4f3ff; }
+const GDOC_KEY = 'osteoid_gdoc';
+
+function saveGdocUrl() {
+  var url = document.getElementById('gdocUrl').value.trim();
+  localStorage.setItem(GDOC_KEY, url);
+  var st = document.getElementById('gdocStatus');
+  st.textContent = url ? '✓ Kaydedildi' : 'URL temizlendi.';
+  st.style.color = url ? '#1a7a45' : '#888';
+}
+
+function openGdoc() {
+  var url = (document.getElementById('gdocUrl').value.trim()) || localStorage.getItem(GDOC_KEY) || '';
+  if (!url) {
+    var st = document.getElementById('gdocStatus');
+    st.textContent = 'Önce bir Google Docs bağlantısı girin ve kaydedin.';
+    st.style.color = '#c0392b';
+    return;
+  }
+  window.open(url, '_blank');
+}
+
+function saveTerm(key, el) {
+  localStorage.setItem('osteoid_term_' + key, el.textContent.trim());
+}
+
+function switchInnerTab(btn, tabId) {
+  ['tab-yatirimci','tab-sozlesme'].forEach(function(id) {
+    var el = document.getElementById(id); if (el) el.style.display = 'none';
+  });
+  var show = document.getElementById(tabId); if (show) show.style.display = '';
+  document.querySelectorAll('.inner-tab').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  recalc();
+}
+
+window.addEventListener('load', function() {
+  recalc();
+
+  var url = localStorage.getItem(GDOC_KEY) || 'https://docs.google.com/document/d/1A6S8b0mF-fuwrObXXbo11ZzjeAXH3XvB5TcYdH1_aao/edit?usp=sharing';
+  var gdocEl = document.getElementById('gdocUrl');
+  if (gdocEl) gdocEl.value = url;
+  if (url) {
+    var st = document.getElementById('gdocStatus');
+    if (st) { st.textContent = '✓ Kayıtlı bağlantı yüklendi'; st.style.color = '#1a7a45'; }
+  }
+
+  var invest = V.dcfInvest || 150000;
+  var tutarEl = document.getElementById('term_Y_tutar');
+  if (tutarEl) tutarEl.textContent = '€' + Math.round(invest).toLocaleString('tr-TR');
+
+  var komisyonEl = document.getElementById('term_H_komisyon');
+  if (komisyonEl) komisyonEl.textContent = '%' + (V.danisPct || 25);
+
+  ['Y_arac','Y_kontrol','Y_temettu','Y_raporlama','Y_onalim','Y_cikis','Y_rekabet','Y_teknoloji',
+   'H_odeme','H_fatura','H_kanal','H_sure','H_gizlilik','H_fesih','H_rekabet'].forEach(function(k) {
+    var saved = localStorage.getItem('osteoid_term_' + k);
+    var el = document.getElementById('term_' + k);
+    if (saved && el) el.textContent = saved;
+  });
+});

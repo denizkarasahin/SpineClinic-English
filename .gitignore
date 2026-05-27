@@ -1,0 +1,17 @@
+.claude/*
+
+# Snapshots (generated exports, not source)
+snapshot*.html
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor directories
+.vscode/
+.idea/
+
+# Temp / logs
+*.log
+*.tmp
