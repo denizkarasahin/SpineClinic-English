@@ -55,7 +55,7 @@
             <input type="range" id="s_tadilatM2" min="500" max="20000" step="250" value="4750" oninput="sv('tadilatM2',this.value)">
             <span class="sl-val" id="tadilatM2" contenteditable="true" onblur="sv2('tadilatM2','s_tadilatM2',this)">4.750</span>
           </div>
-          <span class="sl-note">Total: <b id="tadilatTop">₺712.500</b></span>
+          <span class="sl-note">Total: <b id="tadilatTop">—</b></span>
         </div>
         <div class="sl-row">
           <label>Decoration (₺/m²)</label>
@@ -63,7 +63,7 @@
             <input type="range" id="s_dekoM2" min="500" max="10000" step="250" value="2000" oninput="sv('dekoM2',this.value)">
             <span class="sl-val" id="dekoM2" contenteditable="true" onblur="sv2('dekoM2','s_dekoM2',this)">2.000</span>
           </div>
-          <span class="sl-note">Total: <b id="dekoTop">₺300.000</b></span>
+          <span class="sl-note">Total: <b id="dekoTop">—</b></span>
         </div>
         <div class="sl-row">
           <label>Equipment &amp; hardware (₺)</label>
@@ -93,7 +93,7 @@
             <button onclick="svPrinterAdet(-1)" style="width:24px;height:24px;border-radius:4px;border:1px solid #534AB7;background:#f4f3ff;color:#534AB7;font-size:16px;font-weight:700;cursor:pointer;line-height:1;padding:0;">−</button>
             <span id="printerAdet" style="font-size:20px;font-weight:700;color:#534AB7;line-height:1;min-width:18px;text-align:center;">2</span>
             <button onclick="svPrinterAdet(+1)" style="width:24px;height:24px;border-radius:4px;border:1px solid #534AB7;background:#f4f3ff;color:#534AB7;font-size:16px;font-weight:700;cursor:pointer;line-height:1;padding:0;">+</button>
-            <span style="font-size:11px;color:#888;">units · ₺<span id="printerTRY">1.000.000</span></span>
+            <span style="font-size:11px;color:#888;">units · <span id="printerTRY">€25,000</span></span>
           </div>
           <span class="sl-note">Capacity: <span id="printerKapasite">~88–132 braces/month</span></span>
           <div style="font-size:11px;color:#888;margin-top:3px;" id="printerAutoInfo">—</div>
@@ -107,7 +107,7 @@
             </label>
           </label>
           <div style="font-size:11px;color:#888;margin-top:4px;padding-left:2px;" id="robotKolInfo">—</div>
-          <span class="sl-note">₺<span id="robotKolTRY">—</span></span>
+          <span class="sl-note"><span id="robotKolTRY">—</span></span>
         </div>
 
         <div class="note-box" style="margin-top:12px;border-left:3px solid #534AB7;background:#f4f3ff;color:#534AB7;">
@@ -118,12 +118,12 @@
       <div>
         <div class="kpi" style="margin-bottom:10px;">
           <div class="kpi-label">Total Setup Cost</div>
-          <div class="kpi-val neg" id="kurulumTop">-₺2.102.500</div>
+          <div class="kpi-val neg" id="kurulumTop">—</div>
           <div style="font-size:11px;color:#888;margin-top:4px;">First month rent + deposit included; monthly rent is in operating costs</div>
         </div>
         <div class="kpi" style="margin-bottom:10px;">
           <div class="kpi-label">Renovation + Decoration</div>
-          <div class="kpi-val neg" id="tadilatDekoTop">-₺1.012.500</div>
+          <div class="kpi-val neg" id="tadilatDekoTop">—</div>
           <div style="font-size:11px;color:#888;margin-top:4px;"><span id="m2d">150</span> m² × (₺<span id="tm2d">4.750</span> + ₺<span id="dm2d">2.000</span>)</div>
         </div>
         <div style="position:relative;width:100%;height:180px;margin-top:4px;">

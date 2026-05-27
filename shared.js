@@ -74,12 +74,13 @@ function sv2(key, slId, el) {
 }
 
 function gv(k) { return V[k] || 0; }
-function ff(n) { if(n===0) return '—'; return (n<0?'-₺':'₺')+Math.abs(n).toLocaleString('tr-TR'); }
-function feEur(tryVal) {
-  if (tryVal === 0) return '—';
-  const eur = Math.round(Math.abs(tryVal) / (V.eurKur || 50));
-  return (tryVal < 0 ? '-€' : '€') + eur.toLocaleString('en-US');
+function ffTRY(n) { if(n===0) return '—'; return (n<0?'-₺':'₺')+Math.abs(n).toLocaleString('tr-TR'); }
+function ff(n) {
+  if(n===0) return '—';
+  const eur = Math.round(Math.abs(n) / (V.eurKur || 50));
+  return (n<0?'-€':'€') + eur.toLocaleString('en-US');
 }
+function feEur(tryVal) { return ff(tryVal); }
 function cls(n) { return n>0?'pc':n<0?'nc':'zc'; }
 
 const SCEN = {
@@ -732,8 +733,8 @@ function initDonemCanvas() {
       ctx.lineWidth = 1;
       ctx.beginPath(); ctx.moveTo(PAD_L, y); ctx.lineTo(PAD_L+W, y); ctx.stroke();
       ctx.fillStyle = '#aaa';
-      const label = f===0?'0': f===1 ? (maxVal/1000).toFixed(0)+'K' : ((maxVal*f)/1000).toFixed(0)+'K';
-      ctx.fillText('₺'+label, PAD_L-4, y+3);
+      const label = f===0?'0': f===1 ? Math.round(maxVal/(V.eurKur||50)/1000)+'K' : Math.round((maxVal*f)/(V.eurKur||50)/1000)+'K';
+      ctx.fillText('€'+label, PAD_L-4, y+3);
     });
 
     // bars
@@ -786,7 +787,7 @@ function initDonemCanvas() {
         const total = V.donemsel[c.key].reduce((a,b)=>a+b,0);
         return `<span style="display:flex;align-items:center;gap:5px;font-size:11px;color:#444;">
           <span style="width:10px;height:10px;border-radius:2px;background:${c.color};flex-shrink:0;"></span>
-          ${c.label} <b style="color:#222">₺${total.toLocaleString('tr-TR')}</b>
+          ${c.label} <b style="color:#222">€${Math.round(total/(V.eurKur||50)).toLocaleString('en-US')}</b>
         </span>`;
       }).join('');
     }
@@ -885,12 +886,12 @@ function renderGiderDagilim(rows) {
       plugins:{
         legend:{ position:'bottom', labels:{ font:{size:10}, boxWidth:8, padding:6,
           generateLabels: chart => chart.data.labels.map((l,i)=>({
-            text: l+' — ₺'+(chart.data.datasets[0].data[i]/1000).toFixed(0)+'K',
+            text: l+' — €'+Math.round(chart.data.datasets[0].data[i]/(V.eurKur||50)/1000)+'K',
             fillStyle: chart.data.datasets[0].backgroundColor[i],
             strokeStyle:'#fff', lineWidth:1, index:i
           }))
         }},
-        tooltip:{ callbacks:{ label: c=>' ₺'+c.raw.toLocaleString('tr-TR') } }
+        tooltip:{ callbacks:{ label: c=>' €'+Math.round(c.raw/(V.eurKur||50)).toLocaleString('en-US') } }
       }
     }
   });
@@ -932,12 +933,12 @@ function renderGiderDagilim(rows) {
       plugins:{
         legend:{ position:'bottom', labels:{ font:{size:10}, boxWidth:8, padding:6,
           generateLabels: chart => chart.data.labels.map((l,i)=>({
-            text: l+' — ₺'+(chart.data.datasets[0].data[i]/1000).toFixed(0)+'K',
+            text: l+' — €'+Math.round(chart.data.datasets[0].data[i]/(V.eurKur||50)/1000)+'K',
             fillStyle: chart.data.datasets[0].backgroundColor[i],
             strokeStyle:'#fff', lineWidth:1, index:i
           }))
         }},
-        tooltip:{ callbacks:{ label: c=>' ₺'+c.raw.toLocaleString('tr-TR') } }
+        tooltip:{ callbacks:{ label: c=>' €'+Math.round(c.raw/(V.eurKur||50)).toLocaleString('en-US') } }
       }
     }
   });
@@ -972,11 +973,11 @@ function renderGiderDagilim(rows) {
       responsive:true, maintainAspectRatio:false,
       plugins:{
         legend:{ position:'bottom', labels:{ font:{size:11}, boxWidth:10, padding:10 } },
-        tooltip:{ mode:'index', callbacks:{ label: c=>c.dataset.label+': ₺'+c.raw.toLocaleString('tr-TR') } }
+        tooltip:{ mode:'index', callbacks:{ label: c=>c.dataset.label+': €'+Math.round(c.raw/(V.eurKur||50)).toLocaleString('en-US') } }
       },
       scales:{
         x:{ stacked:true, grid:{display:false} },
-        y:{ stacked:true, ticks:{ callback: v=>'₺'+(v/1000).toFixed(0)+'K' }, grid:{color:'rgba(0,0,0,0.05)'} }
+        y:{ stacked:true, ticks:{ callback: v=>'€'+(Math.round(v/(V.eurKur||50)/1000))+'K' }, grid:{color:'rgba(0,0,0,0.05)'} }
       }
     }
   });
@@ -1029,7 +1030,7 @@ function renderKurulumDonut(kira, depozito, emlakci, tadilatTop, dekoTopV, mobil
   ctx.fillStyle='#1a1a1a'; ctx.font='bold 11px Arial'; ctx.textAlign='center';
   ctx.fillText('Total', cx, cy-6);
   ctx.font='bold 13px Arial';
-  ctx.fillText('₺'+(total/1000).toFixed(0)+'K', cx, cy+10);
+  ctx.fillText('€'+Math.round(total/(V.eurKur||50)/1000)+'K', cx, cy+10);
 
   // legend right side
   const legX = W*0.76, legY0 = H/2 - (data.length*14)/2;
@@ -1089,7 +1090,7 @@ function renderSabitBar(aylikKira, elektrik, internet, sarf, ortoBrut, stajyerBr
           labels: { font: { size: 11 }, boxWidth: 12, padding: 8,
             generateLabels: function(chart) {
               return chart.data.labels.map((lbl, i) => ({
-                text: lbl + '  ₺' + (items[i].val/1000).toFixed(0) + 'K  (' + Math.round(items[i].val/total*100) + '%)',
+                text: lbl + '  €' + Math.round(items[i].val/(V.eurKur||50)/1000) + 'K  (' + Math.round(items[i].val/total*100) + '%)',
                 fillStyle: items[i].color,
                 strokeStyle: '#fff',
                 lineWidth: 1,
@@ -1103,7 +1104,7 @@ function renderSabitBar(aylikKira, elektrik, internet, sarf, ortoBrut, stajyerBr
           callbacks: {
             label: function(ctx) {
               const v = ctx.parsed;
-              return ' ₺' + v.toLocaleString('tr-TR') + '  (' + Math.round(v/total*100) + '%)';
+              return ' €' + Math.round(v/(V.eurKur||50)).toLocaleString('en-US') + '  (' + Math.round(v/total*100) + '%)';
             }
           }
         },
@@ -1161,11 +1162,11 @@ function renderTblChart(rows) {
         responsive:true, maintainAspectRatio:false,
         plugins: {
           legend:{ position:'bottom', labels:{ font:{size:11}, boxWidth:10, padding:10 } },
-          tooltip:{ mode:'index', callbacks:{ label: c => c.dataset.label+': ₺'+Math.abs(c.raw).toLocaleString('tr-TR') } }
+          tooltip:{ mode:'index', callbacks:{ label: c => c.dataset.label+': €'+Math.round(Math.abs(c.raw)/(V.eurKur||50)).toLocaleString('en-US') } }
         },
         scales: {
           x:{ grid:{display:false} },
-          y:{ ticks:{ callback: v=>'₺'+(v/1000).toFixed(0)+'K' }, grid:{color:'rgba(0,0,0,0.05)'} }
+          y:{ ticks:{ callback: v=>'€'+(Math.round(v/(V.eurKur||50)/1000))+'K' }, grid:{color:'rgba(0,0,0,0.05)'} }
         }
       }
     });
@@ -1190,11 +1191,11 @@ function renderTblChart(rows) {
         responsive:true, maintainAspectRatio:false,
         plugins:{
           legend:{ position:'bottom', labels:{ font:{size:11}, boxWidth:10, padding:8 } },
-          tooltip:{ mode:'index', callbacks:{ label: c=>c.dataset.label+': ₺'+c.raw.toLocaleString('tr-TR') } }
+          tooltip:{ mode:'index', callbacks:{ label: c=>c.dataset.label+': €'+Math.round(c.raw/(V.eurKur||50)).toLocaleString('en-US') } }
         },
         scales:{
           x:{ stacked:true, grid:{display:false} },
-          y:{ stacked:true, ticks:{ callback: v=>'₺'+(v/1000).toFixed(0)+'K' }, grid:{color:'rgba(0,0,0,0.05)'} }
+          y:{ stacked:true, ticks:{ callback: v=>'€'+(Math.round(v/(V.eurKur||50)/1000))+'K' }, grid:{color:'rgba(0,0,0,0.05)'} }
         }
       }
     });
@@ -1230,7 +1231,7 @@ function renderTblChart(rows) {
           { type:'bar',  label:'Monthly Net', data: rows.map(r=>Math.round(r.net/1000)),
             backgroundColor: rows.map(r=>r.net>=0?'rgba(26,122,69,0.6)':'rgba(192,57,43,0.5)'),
             borderColor:     rows.map(r=>r.net>=0?'#1a7a45':'#c0392b'), borderWidth:1, yAxisID:'y', order:2 },
-          { type:'line', label:'Cumulative (₺K)', data: rows.map(r=>Math.round(r.cumBudget/1000)),
+          { type:'line', label:'Cumulative (€K)', data: rows.map(r=>Math.round(r.cumBudget/1000)),
             borderColor:'#534AB7', backgroundColor:'rgba(83,74,183,0.08)', borderWidth:2.5,
             pointRadius: rows.map(r => r.ay===basabasAy||r.ay===pozAy ? 7 : 3),
             pointBackgroundColor: rows.map(r=>r.cumBudget>=0?'#1a7a45':'#c0392b'),
@@ -1241,13 +1242,13 @@ function renderTblChart(rows) {
         responsive:true, maintainAspectRatio:false,
         plugins:{
           legend:{ position:'bottom', labels:{ font:{size:11}, boxWidth:10, padding:10 } },
-          tooltip:{ mode:'index', callbacks:{ label: c=>c.dataset.label+': ₺'+Math.abs(c.raw).toLocaleString('tr-TR')+'K' } },
+          tooltip:{ mode:'index', callbacks:{ label: c=>c.dataset.label+': €'+Math.round(Math.abs(c.raw)/(V.eurKur||50)).toLocaleString('en-US')+'K' } },
           annotation: {}
         },
         scales:{
           x:{ grid:{display:false} },
-          y:{ position:'left', ticks:{ callback: v=>'₺'+v+'K' }, grid:{color:'rgba(0,0,0,0.05)'}, title:{display:true,text:'Monthly Net (₺K)',font:{size:10}} },
-          y2:{ position:'right', ticks:{ callback: v=>'₺'+v+'K' }, grid:{display:false}, title:{display:true,text:'Cumulative (₺K)',font:{size:10}} }
+          y:{ position:'left', ticks:{ callback: v=>'€'+v+'K' }, grid:{color:'rgba(0,0,0,0.05)'}, title:{display:true,text:'Monthly Net (€K)',font:{size:10}} },
+          y2:{ position:'right', ticks:{ callback: v=>'€'+v+'K' }, grid:{display:false}, title:{display:true,text:'Cumulative (€K)',font:{size:10}} }
         }
       }
     });
@@ -1267,14 +1268,14 @@ function renderMain(rows) {
     data:{
       labels:rows.map(r=>'Month '+r.ay),
       datasets:[
-        { type:'bar', label:'Monthly Net (₺K)', data:nv, backgroundColor:nv.map(v=>v>=0?'rgba(26,122,69,0.7)':'rgba(192,57,43,0.7)'), borderColor:nv.map(v=>v>=0?'#1a7a45':'#c0392b'), borderWidth:1, yAxisID:'y', borderRadius:3 },
-        { type:'line', label:'Cumulative (₺K)', data:cv, borderColor:'#534AB7', backgroundColor:'rgba(83,74,183,0.07)', borderWidth:2, pointRadius:4, pointBackgroundColor:cv.map(v=>v>=0?'#1a7a45':'#c0392b'), tension:0.3, fill:true, yAxisID:'y2' }
+        { type:'bar', label:'Monthly Net (€K)', data:nv, backgroundColor:nv.map(v=>v>=0?'rgba(26,122,69,0.7)':'rgba(192,57,43,0.7)'), borderColor:nv.map(v=>v>=0?'#1a7a45':'#c0392b'), borderWidth:1, yAxisID:'y', borderRadius:3 },
+        { type:'line', label:'Cumulative (€K)', data:cv, borderColor:'#534AB7', backgroundColor:'rgba(83,74,183,0.07)', borderWidth:2, pointRadius:4, pointBackgroundColor:cv.map(v=>v>=0?'#1a7a45':'#c0392b'), tension:0.3, fill:true, yAxisID:'y2' }
       ]
     },
     options:{
       responsive:true, maintainAspectRatio:false,
-      plugins:{ legend:{display:false}, tooltip:{callbacks:{label:c=>c.dataset.label+': ₺'+Math.abs(c.raw).toLocaleString('tr-TR')+'K'}} },
-      scales:{ y:{position:'left',title:{display:true,text:'Monthly Net (₺K)'},grid:{color:'rgba(0,0,0,0.05)'}}, y2:{position:'right',title:{display:true,text:'Cumulative (₺K)'},grid:{display:false}} }
+      plugins:{ legend:{display:false}, tooltip:{callbacks:{label:c=>c.dataset.label+': €'+Math.round(Math.abs(c.raw)/(V.eurKur||50)).toLocaleString('en-US')+'K'}} },
+      scales:{ y:{position:'left',title:{display:true,text:'Monthly Net (€K)'},grid:{color:'rgba(0,0,0,0.05)'}}, y2:{position:'right',title:{display:true,text:'Cumulative (€K)'},grid:{display:false}} }
     }
   });
 }
@@ -1635,7 +1636,7 @@ function initSensitivityInputs() {
     const maxV  = Math.round(baz * item.maxR / item.step) * item.step;
     V['_sen_min_'+item.key] = minV;
     V['_sen_max_'+item.key] = maxV;
-    const fmtV  = v => item.unit === '₺' ? '₺'+v.toLocaleString('tr-TR') : v.toLocaleString('tr-TR');
+    const fmtV  = v => item.unit === '₺' ? '€'+Math.round(v/(V.eurKur||50)).toLocaleString('en-US') : v.toLocaleString('tr-TR');
     return `
     <div style="background:#fafaf8;border:1px solid #e0e0dc;border-radius:6px;padding:12px 14px;">
       <div style="font-size:11px;font-weight:700;color:#333;margin-bottom:8px;">${item.label}</div>
@@ -1644,14 +1645,14 @@ function initSensitivityInputs() {
         <span style="font-size:10px;color:#888;min-width:26px;">Min</span>
         <input type="range" min="${Math.round(baz*0.2/item.step)*item.step}" max="${baz}" step="${item.step}" value="${minV}"
           style="flex:1;accent-color:#c0392b;"
-          oninput="V['_sen_min_${item.key}']=parseInt(this.value);document.getElementById('smn_${item.key}').textContent='${item.unit === '₺' ? '₺' : ''}'+parseInt(this.value).toLocaleString('tr-TR');runSensitivity();">
+          oninput="V['_sen_min_${item.key}']=parseInt(this.value);document.getElementById('smn_${item.key}').textContent='${item.unit === '₺' ? '€' : ''}'+${item.unit === '₺' ? 'Math.round(parseInt(this.value)/(V.eurKur||50)).toLocaleString(\'en-US\')' : 'parseInt(this.value).toLocaleString(\'tr-TR\')'};runSensitivity();">
         <span id="smn_${item.key}" style="min-width:64px;font-size:11px;font-weight:700;color:#c0392b;text-align:right;">${fmtV(minV)}</span>
       </div>
       <div style="display:flex;align-items:center;gap:6px;">
         <span style="font-size:10px;color:#888;min-width:26px;">Max</span>
         <input type="range" min="${baz}" max="${Math.round(baz*3.5/item.step)*item.step}" step="${item.step}" value="${maxV}"
           style="flex:1;accent-color:#1a7a45;"
-          oninput="V['_sen_max_${item.key}']=parseInt(this.value);document.getElementById('smx_${item.key}').textContent='${item.unit === '₺' ? '₺' : ''}'+parseInt(this.value).toLocaleString('tr-TR');runSensitivity();">
+          oninput="V['_sen_max_${item.key}']=parseInt(this.value);document.getElementById('smx_${item.key}').textContent='${item.unit === '₺' ? '€' : ''}'+${item.unit === '₺' ? 'Math.round(parseInt(this.value)/(V.eurKur||50)).toLocaleString(\'en-US\')' : 'parseInt(this.value).toLocaleString(\'tr-TR\')'};runSensitivity();">
         <span id="smx_${item.key}" style="min-width:64px;font-size:11px;font-weight:700;color:#1a7a45;text-align:right;">${fmtV(maxV)}</span>
       </div>
     </div>`;
@@ -1747,7 +1748,7 @@ function runSensitivity() {
 
   const isAy = senMetric==='bas'||senMetric==='cum';
   const fmt  = v => isAy ? 'Month '+(v>=13?'≥13':v) : ff(Math.round(v));
-  const metricLabel = senMetric==='gelir'?'Year 1 Net Revenue (₺K)':senMetric==='bas'?'Break-Even Month':'Cumulative Positive Month';
+  const metricLabel = senMetric==='gelir'?'Year 1 Net Revenue (€K)':senMetric==='bas'?'Break-Even Month':'Cumulative Positive Month';
 
   // For time metrics: lower is better (invert colors)
   const minColor = isAy ? 'rgba(26,122,69,0.75)'   : 'rgba(192,57,43,0.75)';
@@ -1787,7 +1788,7 @@ function runSensitivity() {
   // Table
   const tbody = document.getElementById('senTableBody');
   if(!tbody) return;
-  const fmtV = (item,v) => item.unit==='₺' ? '₺'+Math.round(v).toLocaleString('tr-TR') : Math.round(v).toLocaleString('tr-TR');
+  const fmtV = (item,v) => item.unit==='₺' ? '€'+Math.round(v/(V.eurKur||50)).toLocaleString('en-US') : Math.round(v).toLocaleString('tr-TR');
   tbody.innerHTML = results.map(r => {
     const bazFmt = fmt(bazResult);
     const minFmt = fmt(r.minR);
@@ -2046,7 +2047,7 @@ function updateMerkezGiderNotu(sehir) {
   const yillik = rows.reduce(function(s, r) { return s + (r.sabitGider || 0); }, 0);
   if (yillik > 0) {
     const ay = Math.round(yillik / 12).toLocaleString('tr-TR');
-    notu.textContent = 'IST base — ₺' + ay + '/month';
+    notu.textContent = 'IST base — €' + Math.round(parseInt(ay.replace(/\./g,''))/(V.eurKur||50)) + '/month';
   } else {
     notu.textContent = 'IST base';
   }
@@ -2278,8 +2279,8 @@ function recalc() {
 
   const m2=gv('m2'), tm2=gv('tadilatM2'), dm2=gv('dekoM2');
   const tadilatTop=m2*tm2, dekoTopV=m2*dm2;
-  document.getElementById('tadilatTop').textContent='₺'+tadilatTop.toLocaleString('tr-TR');
-  document.getElementById('dekoTop').textContent='₺'+dekoTopV.toLocaleString('tr-TR');
+  document.getElementById('tadilatTop').textContent='€'+Math.round(tadilatTop/(V.eurKur||50)).toLocaleString('en-US');
+  document.getElementById('dekoTop').textContent='€'+Math.round(dekoTopV/(V.eurKur||50)).toLocaleString('en-US');
   document.getElementById('tadilatDekoTop').textContent=ff(-(tadilatTop+dekoTopV));
   document.getElementById('m2d').textContent=m2;
   document.getElementById('tm2d').textContent=tm2.toLocaleString('tr-TR');
@@ -2411,15 +2412,15 @@ function recalc() {
   const _bakimTL = rows.reduce((s,r)=>s+(r.bakim||0),0);
   document.getElementById('kpiGrid').innerHTML=[
     {label:'Total braces',              val:tKorse+' units',                            sub:'',                 c:'neu'},
-    {label:'Clinic net revenue (year)', val:feEur(tGelir),                              sub:ff(tGelir),         c:tGelir>=0?'pos':'neg'},
-    {label:'B2B net revenue (year)',    val:feEur(tGelirB2B),                           sub:ff(tGelirB2B),      c:tGelirB2B>0?'pos':'neu'},
-    {label:'Cumulative year-end',       val:feEur(rows[11].cumBudget),                  sub:ff(rows[11].cumBudget), c:rows[11].cumBudget>=0?'pos':'neg'},
+    {label:'Clinic net revenue (year)', val:feEur(tGelir),                              sub:ffTRY(tGelir),         c:tGelir>=0?'pos':'neg'},
+    {label:'B2B net revenue (year)',    val:feEur(tGelirB2B),                           sub:ffTRY(tGelirB2B),      c:tGelirB2B>0?'pos':'neu'},
+    {label:'Cumulative year-end',       val:feEur(rows[11].cumBudget),                  sub:ffTRY(rows[11].cumBudget), c:rows[11].cumBudget>=0?'pos':'neg'},
     {label:'Monthly break-even',        val:basAy?'Month '+basAy:'Not reached',         sub:'',                 c:basAy?'pos':'neg'},
     {label:'Cumulative positive',       val:pozAyLabel,                                 sub:'',                 c:pozAyClass},
-    {label:'Setup cost',                val:feEur(kurulumTop),                          sub:ff(kurulumTop),     c:'neg'},
-    {label:'Total doctor fee',          val:feEur(-_danisTL),                           sub:ff(-_danisTL),      c:'neg'},
-    {label:'Total channel share',       val:feEur(-_bakimTL),                           sub:ff(-_bakimTL),      c:'neg'},
-    {label:'Royalty / year',            val:'-€'+Math.round(_royTL/(V.eurKur||50)).toLocaleString('en-US'), sub:ff(-_royTL), c:'neg'},
+    {label:'Setup cost',                val:feEur(kurulumTop),                          sub:ffTRY(kurulumTop),     c:'neg'},
+    {label:'Total doctor fee',          val:feEur(-_danisTL),                           sub:ffTRY(-_danisTL),      c:'neg'},
+    {label:'Total channel share',       val:feEur(-_bakimTL),                           sub:ffTRY(-_bakimTL),      c:'neg'},
+    {label:'Royalty / year',            val:'-€'+Math.round(_royTL/(V.eurKur||50)).toLocaleString('en-US'), sub:ffTRY(-_royTL), c:'neg'},
     {label:'Osteoid Inc. royalty',      val:'€'+Math.round(_royTL/(V.eurKur||50)).toLocaleString('en-US'),  sub:'',          c:'neu'},
     {label:'Cutting / Osteoid Inc.',    val:'€'+Math.round(_ksmTL/(V.eurKur||50)).toLocaleString('en-US'),  sub:'',          c:'neu'},
     {label:'Net margin / brace',        val:brütMarj+'%',                               sub:'',                 c:'neu'},
@@ -2877,7 +2878,7 @@ function _refreshPrinterDisplay() {
   const printerTag = document.getElementById('printerAktifTag');
   if (printerTag) { printerTag.textContent = printerAktif ? 'Included' : 'Excluded'; printerTag.style.color = printerAktif ? '#534AB7' : '#888'; }
   document.getElementById('printerAdet').textContent = adet;
-  document.getElementById('printerTRY').textContent = printerAktif ? Math.round(eur*(V.eurKur||50)).toLocaleString('tr-TR') : '—';
+  document.getElementById('printerTRY').textContent = printerAktif ? '€'+Math.round(eur).toLocaleString('en-US') : '—';
   document.getElementById('printerKapasite').textContent = '~'+kapMin+'–'+kapMax+' braces/month';
   document.getElementById('printerEurDisp').textContent = (V.printerEurFiyat||25000).toLocaleString('tr-TR');
   var info = document.getElementById('printerAutoInfo');
@@ -2903,7 +2904,7 @@ function svRobotKol() {
   const tag = document.getElementById('robotKolTag');
   if (tag) { tag.textContent = aktif ? 'Included' : 'Excluded'; tag.style.color = aktif ? '#1a7a45' : '#888'; }
   const tryEl = document.getElementById('robotKolTRY');
-  if (tryEl) tryEl.textContent = aktif ? ((V.robotKolEurFiyat||30000)*(V.eurKur||50)).toLocaleString('tr-TR') : '—';
+  if (tryEl) tryEl.textContent = aktif ? '€'+(V.robotKolEurFiyat||30000).toLocaleString('en-US') : '—';
   const infoEl = document.getElementById('robotKolInfo');
   if (infoEl) {
     const dLabel = (delikAy !== undefined && delikAy < 12) ? 'Month '+(delikAy+1)+'+' : 'Inactive';
@@ -2939,7 +2940,7 @@ function svRobotKolFiyat(val) {
   const disp = document.getElementById('robotKolFiyatVal');
   if (disp) disp.textContent = val.toLocaleString('tr-TR');
   const tryEl = document.getElementById('robotKolTRY');
-  if (tryEl && V.robotKolAktif) tryEl.textContent = (val*(V.eurKur||50)).toLocaleString('tr-TR');
+  if (tryEl && V.robotKolAktif) tryEl.textContent = '€'+val.toLocaleString('en-US');
   const lbl = document.getElementById('robotKolEurDisp');
   if (lbl) lbl.textContent = val.toLocaleString('tr-TR');
   recalc();
@@ -2958,7 +2959,7 @@ function updateKapasiteUyari(rows) {
     el.style.display = 'block';
     const ayListesi = tetikAylari.map(r => {
       const adet = Math.round(r.printerEkMaliyet / ((V.printerEurFiyat||25000) * (V.eurKur||50)));
-      return 'Month ' + r.ay + ': +' + adet + ' printer (₺' + r.printerEkMaliyet.toLocaleString('tr-TR') + ')';
+      return 'Month ' + r.ay + ': +' + adet + ' printer (€' + Math.round(r.printerEkMaliyet/(V.eurKur||50)).toLocaleString('en-US') + ')';
     }).join(' · ');
     txt.textContent = 'Automatic printer purchase triggered — ' + ayListesi;
     el.style.background = '#e8f5ee';
