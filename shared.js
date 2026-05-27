@@ -75,6 +75,11 @@ function sv2(key, slId, el) {
 
 function gv(k) { return V[k] || 0; }
 function ff(n) { if(n===0) return '—'; return (n<0?'-₺':'₺')+Math.abs(n).toLocaleString('tr-TR'); }
+function feEur(tryVal) {
+  if (tryVal === 0) return '—';
+  const eur = Math.round(Math.abs(tryVal) / (V.eurKur || 50));
+  return (tryVal < 0 ? '-€' : '€') + eur.toLocaleString('en-US');
+}
 function cls(n) { return n>0?'pc':n<0?'nc':'zc'; }
 
 const SCEN = {
@@ -2400,21 +2405,25 @@ function recalc() {
       pozAyLabel = 'Not reached'; pozAyClass = 'neg';
     }
   }
+  const _royTL = rows.reduce((s,r)=>s+(r.royaltyTop||0),0);
+  const _ksmTL = rows.reduce((s,r)=>s+(r.kesimTop||0),0);
+  const _danisTL = rows.reduce((s,r)=>s+(r.danis||0),0);
+  const _bakimTL = rows.reduce((s,r)=>s+(r.bakim||0),0);
   document.getElementById('kpiGrid').innerHTML=[
-    {label:'Total braces',           val:tKorse+' units',                           c:'neu'},
-    {label:'Clinic net revenue (year)', val:ff(tGelir),                             c:tGelir>=0?'pos':'neg'},
-    {label:'B2B net revenue (year)',    val:ff(tGelirB2B),                          c:tGelirB2B>0?'pos':'neu'},
-    {label:'Cumulative year-end',    val:ff(rows[11].cumBudget),                    c:rows[11].cumBudget>=0?'pos':'neg'},
-    {label:'Monthly break-even',     val:basAy?'Month '+basAy:'Not reached',        c:basAy?'pos':'neg'},
-    {label:'Cumulative positive',    val:pozAyLabel,                                c:pozAyClass},
-    {label:'Setup cost',             val:ff(kurulumTop),                            c:'neg'},
-    {label:'Total doctor fee',       val:ff(-rows.reduce((s,r)=>s+(r.danis||0),0)), c:'neg'},
-    {label:'Total channel share',    val:ff(-rows.reduce((s,r)=>s+(r.bakim||0),0)), c:'neg'},
-    {label:'Royalty / year',         val:ff(-rows.reduce((s,r)=>s+(r.royaltyTop||0),0)),  c:'neg'},
-    {label:'Osteoid Inc. royalty',   val:'€'+Math.round(rows.reduce((s,r)=>s+(r.royaltyTop||0),0)/(V.eurKur||50)).toLocaleString('tr-TR'), c:'neu'},
-    {label:'Cutting / Osteoid Inc.', val:'€'+Math.round(rows.reduce((s,r)=>s+(r.kesimTop||0),0)/(V.eurKur||50)).toLocaleString('tr-TR'), c:'neu'},
-    {label:'Net margin / brace',     val:brütMarj+'%',                              c:'neu'},
-  ].map(k=>`<div class="kpi"><div class="kpi-label">${k.label}</div><div class="kpi-val ${k.c}">${k.val}</div></div>`).join('');
+    {label:'Total braces',              val:tKorse+' units',                            sub:'',                 c:'neu'},
+    {label:'Clinic net revenue (year)', val:feEur(tGelir),                              sub:ff(tGelir),         c:tGelir>=0?'pos':'neg'},
+    {label:'B2B net revenue (year)',    val:feEur(tGelirB2B),                           sub:ff(tGelirB2B),      c:tGelirB2B>0?'pos':'neu'},
+    {label:'Cumulative year-end',       val:feEur(rows[11].cumBudget),                  sub:ff(rows[11].cumBudget), c:rows[11].cumBudget>=0?'pos':'neg'},
+    {label:'Monthly break-even',        val:basAy?'Month '+basAy:'Not reached',         sub:'',                 c:basAy?'pos':'neg'},
+    {label:'Cumulative positive',       val:pozAyLabel,                                 sub:'',                 c:pozAyClass},
+    {label:'Setup cost',                val:feEur(kurulumTop),                          sub:ff(kurulumTop),     c:'neg'},
+    {label:'Total doctor fee',          val:feEur(-_danisTL),                           sub:ff(-_danisTL),      c:'neg'},
+    {label:'Total channel share',       val:feEur(-_bakimTL),                           sub:ff(-_bakimTL),      c:'neg'},
+    {label:'Royalty / year',            val:'-€'+Math.round(_royTL/(V.eurKur||50)).toLocaleString('en-US'), sub:ff(-_royTL), c:'neg'},
+    {label:'Osteoid Inc. royalty',      val:'€'+Math.round(_royTL/(V.eurKur||50)).toLocaleString('en-US'),  sub:'',          c:'neu'},
+    {label:'Cutting / Osteoid Inc.',    val:'€'+Math.round(_ksmTL/(V.eurKur||50)).toLocaleString('en-US'),  sub:'',          c:'neu'},
+    {label:'Net margin / brace',        val:brütMarj+'%',                               sub:'',                 c:'neu'},
+  ].map(k=>`<div class="kpi"><div class="kpi-label">${k.label}</div><div class="kpi-val ${k.c}">${k.val}</div>${k.sub?`<div style="font-size:10px;color:#aaa;margin-top:2px;line-height:1.2;">${k.sub}</div>`:''}</div>`).join('');
 
   const th=`<thead><tr>
     <th>Month</th>
@@ -3154,11 +3163,17 @@ function initLayout() {
     <div style="display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.5px;background:#534AB7;color:#fff;padding:3px 10px;border-radius:3px;margin-bottom:10px;">This model has been prepared for Osteoid Centers Ltd.</div>
     <div class="inv-title">Osteoid Centers<br>Istanbul — Center 1</div>
     <div class="inv-sub">Custom orthosis clinic chain · 3D printing infrastructure · Technology-driven production<br>
-    All values are dynamic — change via slider or text input, model updates instantly.</div>
+    All values are dynamic — change via slider or text input, model updates instantly.<br>
+    <span style="font-size:10px;color:#b0b0c0;margin-top:4px;display:inline-block;">All financial figures shown in <strong style="color:#a89ff7;">EUR (€)</strong> · TRY amounts shown below in grey · Rate updates live</span></div>
   </div>
   <div class="inv-header-right">
     <div class="inv-badge">Confidential — Investor Only</div>
-    <div class="inv-meta">
+    <div id="eurRateWidget" style="margin-top:10px;padding:10px 14px;background:#1a1a2e;border:1px solid #3a3a5c;border-radius:6px;text-align:right;">
+      <div style="font-size:9px;color:#8888aa;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Live Exchange Rate</div>
+      <div id="eurRateVal" style="font-size:16px;font-weight:700;color:#a89ff7;letter-spacing:0.5px;">1 EUR = ₺${(V.eurKur||50).toFixed(2)}</div>
+      <div id="eurRateTime" style="font-size:10px;color:#666;margin-top:3px;">⏳ Fetching live rate…</div>
+    </div>
+    <div class="inv-meta" style="margin-top:10px;">
       <span>Date</span> April 2026<br>
       <span>Status</span> Pre-revenue<br>
       <span>Location</span> Istanbul<br>
@@ -3176,4 +3191,53 @@ function initLayout() {
 ${navLinks}
 </div></div>`;
 }
+
+// ── Live EUR/TRY Rate ─────────────────────────────────────────────────────────
+function _updateRateWidget(rate, date, fromCache) {
+  const valEl  = document.getElementById('eurRateVal');
+  const timeEl = document.getElementById('eurRateTime');
+  if (valEl) valEl.textContent = '1 EUR = ₺' + rate.toFixed(2);
+  if (timeEl) {
+    if (date) {
+      const t = date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+      const d = date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short' });
+      timeEl.textContent = (fromCache ? '⏱ ' : '● ') + d + ' ' + t + (fromCache ? ' (cached)' : ' · live');
+      timeEl.style.color = fromCache ? '#666' : '#4CAF50';
+    } else {
+      timeEl.textContent = 'Using manual rate';
+      timeEl.style.color = '#666';
+    }
+  }
+}
+
+function _applyEurRate(rate, date, fromCache) {
+  V.eurKur = Math.round(rate * 100) / 100;
+  try { localStorage.setItem('osteoid_V', JSON.stringify(V)); } catch(e) {}
+  _updateRateWidget(V.eurKur, date, fromCache);
+  if (typeof recalc === 'function') recalc();
+}
+
+function fetchEurRate() {
+  // Use cache if fresh (< 1 hour)
+  try {
+    const cached = localStorage.getItem('eur_try_cache');
+    if (cached) {
+      const { rate, ts } = JSON.parse(cached);
+      if (Date.now() - ts < 3600000) { _applyEurRate(rate, new Date(ts), true); return; }
+    }
+  } catch(e) {}
+  fetch('https://api.frankfurter.app/latest?from=EUR&to=TRY')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      const rate = data && data.rates && data.rates.TRY;
+      if (rate && rate > 0) {
+        try { localStorage.setItem('eur_try_cache', JSON.stringify({ rate: rate, ts: Date.now() })); } catch(e) {}
+        _applyEurRate(rate, new Date(), false);
+      }
+    })
+    .catch(function() { _updateRateWidget(V.eurKur || 50, null, false); });
+}
+
 initLayout();
+fetchEurRate();
+setInterval(fetchEurRate, 30 * 60 * 1000); // refresh every 30 min
