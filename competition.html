@@ -149,7 +149,7 @@ function renderRakipGrid() {
         <div class="rakip-kpi"><div class="rkl">Clinic units</div><div class="rkv" style="color:#1a7a45;" id="kpi_${r.id}_K">${kK}</div></div>
         <div class="rakip-kpi"><div class="rkl">B2B units</div><div class="rkv" style="color:#534AB7;" id="kpi_${r.id}_B">${kB}</div></div>
         <div class="rakip-kpi"><div class="rkl">Total units</div><div class="rkv" style="color:${r.renk};" id="kpi_${r.id}_T">${toplam}</div></div>
-        <div class="rakip-kpi"><div class="rkl">Est. revenue</div><div class="rkv" id="kpi_${r.id}_C">₺${Math.round(ciro/1000).toLocaleString('tr-TR')}K</div></div>
+        <div class="rakip-kpi"><div class="rkl">Est. revenue</div><div class="rkv" id="kpi_${r.id}_C">€${(ciro/(V.eurKur||50)/1000000).toFixed(2)}M</div></div>
       </div>
     </div>`;
   }).join('');
@@ -174,7 +174,7 @@ function renderPiyasaKpi() {
     if(el('kpi_'+r.id+'_K')) el('kpi_'+r.id+'_K').textContent = kK;
     if(el('kpi_'+r.id+'_B')) el('kpi_'+r.id+'_B').textContent = kB;
     if(el('kpi_'+r.id+'_T')) el('kpi_'+r.id+'_T').textContent = kK+kB;
-    if(el('kpi_'+r.id+'_C')) el('kpi_'+r.id+'_C').textContent = '₺'+Math.round((kK*fK+kB*fB)/1000).toLocaleString('tr-TR')+'K';
+    if(el('kpi_'+r.id+'_C')) el('kpi_'+r.id+'_C').textContent = '€'+((kK*fK+kB*fB)/(V.eurKur||50)/1000000).toFixed(2)+'M';
   });
 
   document.getElementById('piyasaKpiGrid').innerHTML = [
