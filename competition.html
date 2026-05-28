@@ -105,7 +105,7 @@ const RAKIPLER = [
 
 function gRV(r, key, def) { const k = r.id+'_'+key; return V[k] !== undefined ? V[k] : def; }
 function sRV(id, key, val) { V[id+'_'+key] = val; localStorage.setItem('osteoid_V', JSON.stringify(V)); }
-function ff(n) { return '₺' + Math.round(n).toLocaleString('tr-TR'); }
+
 
 function _slRow(id, key, label, def, max, step, color) {
   const val = gRV({id}, key, def);
