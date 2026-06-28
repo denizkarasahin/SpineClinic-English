@@ -13,7 +13,7 @@ document.getElementById = function(id) {
   };
 };
 
-const V = {"korseF":37800,"danisPct":25,"malzeme":50,"reklamSabit":20000,"mutfak":27000,"genelGider":10000,"ymmM":23000,"stopaj":60000,"royaltyEur":75,"eurKur":50,"kira":130000,"depozito":240000,"emlakci":120000,"m2":360,"tadilatM2":5000,"dekoM2":4250,"mobilya":600000,"ruhsat":50000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":60000,"sgkCarpan":1.25,"stajyerM":30000,"stajyerAy":2,"destekM":30000,"stajyer2M":40000,"destekAy":3,"stajyer2Ay":4,"korse":[10,10,15,20,25,25,30,30,35,40,40,45],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":27000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":1600,"mal_sens":2075,"mal_sensDelik":1250,"danis_stdR":10,"danis_stdRl":20,"danis_delik":30,"danis_sens":30,"danis_sensDelik":30,"kanalBakim":5,"pazarTR":30000,"pazarIstPct":21.4,"hedefOsteoidPay":20,"esikStajyer1":15,"esikDestek":30,"esikStajyer2":76,"izmirAktif":true,"izmirHedefPay":20,"izmirUseIst":true,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[10,10,15,20,25,25,30,30,35,40,40,45],"ankaraAktif":true,"ankaraHedefPay":20,"ankaraUseIst":true,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[10,10,15,20,25,25,30,30,35,40,40,45],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"printerAdet":2,"printerEurFiyat":25000,"robotKolAktif":false,"robotKolEurFiyat":30000,"kesimEurPer":50,"dcfRate":40,"dcfGrowth":15,"dcfGrowth45":20,"dcfInvest":325000,"kongre":[30000,130000,20000,20000,20000,180000,105000,20000,120000,20000,20000,190000],"donemsel":{"reklam":[20000,20000,10000,10000,10000,20000,20000,10000,10000,10000,10000,30000],"kongre":[0,0,0,0,0,150000,75000,0,0,0,0,150000],"atolye":[0,100000,0,0,0,0,0,0,80000,0,0,0],"ymm":[10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000],"diger":[0,0,0,0,0,0,0,0,20000,0,0,0]},"korseFB2B_stdR":10000,"korseFB2B_stdRl":12000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[15,15,25,25,40,40,50,50,60,65,65,75],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":70000,"_sen_max_kira":260000,"_sen_min_tadilatM2":2500,"_sen_max_tadilatM2":12500,"_sen_min_dekoM2":2250,"_sen_max_dekoM2":10750,"_sen_min_ortotistM":35000,"_sen_max_ortotistM":110000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":60000,"_sen_min_reklamSabit":5000,"_sen_max_reklamSabit":60000,"_sen_min_eurKur":30,"_sen_max_eurKur":90,"printerAktif":false,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000};
+const V = {"korseF":37800,"danisPct":25,"malzeme":50,"reklamSabit":20000,"mutfak":27000,"genelGider":10000,"ymmM":23000,"stopaj":60000,"royaltyEur":75,"eurKur":50,"kira":170000,"depozito":310000,"emlakci":170000,"m2":360,"tadilatM2":7000,"dekoM2":4500,"mobilya":300000,"ruhsat":50000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":60000,"sgkCarpan":1.25,"stajyerM":30000,"stajyerAy":2,"destekM":30000,"stajyer2M":30000,"destekAy":3,"stajyer2Ay":4,"korse":[10,10,15,20,25,25,30,35,35,45,45,50],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":27000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":1600,"mal_sens":2075,"mal_sensDelik":1250,"danis_stdR":10,"danis_stdRl":20,"danis_delik":30,"danis_sens":30,"danis_sensDelik":30,"kanalBakim":5,"pazarTR":30000,"pazarIstPct":25,"hedefOsteoidPay":25,"esikStajyer1":15,"esikDestek":30,"esikStajyer2":76,"izmirAktif":true,"izmirHedefPay":25,"izmirUseIst":true,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":true,"ankaraHedefPay":25,"ankaraUseIst":true,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":false,"robotKolEurFiyat":30000,"kesimEurPer":50,"dcfRate":40,"dcfGrowth":15,"dcfGrowth45":30,"dcfInvest":220000,"kongre":[190000,190000,65000,190000,25000,150000,80000,180000,80000,30000,80000,190000],"donemsel":{"reklam":[30000,30000,25000,30000,15000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,150000,0,150000,0,0,0,150000,0,0,0,150000],"atolye":[120000,0,0,0,0,120000,0,0,0,0,0,0],"ymm":[10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":10000,"korseFB2B_stdRl":12000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[15,15,25,25,40,40,50,50,60,60,70,70],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":90000,"_sen_max_kira":340000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":2250,"_sen_max_dekoM2":11250,"_sen_min_ortotistM":35000,"_sen_max_ortotistM":110000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":60000,"_sen_min_reklamSabit":5000,"_sen_max_reklamSabit":60000,"_sen_min_eurKur":30,"_sen_max_eurKur":90,"printerAktif":false,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.85,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.85};
 // Restore state from localStorage if available
 (function() {
   try {
@@ -1684,7 +1684,7 @@ function calcMetric(overrides) {
   const m2=gv('m2'), tm2=gv('tadilatM2'), dm2=gv('dekoM2');
   const tadilatTop=m2*tm2, dekoTopV=m2*dm2;
   V.printerAdet = _autoPrinterAdet();
-  const printerMaliyet = (V.printerAktif !== false) ? V.printerAdet * (V.printerEurFiyat||25000) * (V.eurKur||50) : 0;
+  const printerMaliyet = (V.printerAktif !== false) ? V.printerAdet * (V.printerEurFiyat||35000) * (V.eurKur||50) : 0;
   const robotKolMaliyet = V.robotKolAktif ? (V.robotKolEurFiyat||30000) * (V.eurKur||50) : 0;
   const kurulumTop = -(gv('kira')+gv('depozito')+gv('emlakci')+tadilatTop+dekoTopV+gv('mobilya')+gv('ruhsat')+printerMaliyet+robotKolMaliyet);
 
@@ -2008,7 +2008,7 @@ function getMerkezKurulum(sehir) {
   const m2 = gv('m2');
   if (useIst) {
     const oran = V[sehir+'KurulumOran'] || 1.0;
-    const _pM = (V.printerAktif !== false) ? _autoPrinterAdet()*(V.printerEurFiyat||25000)*(V.eurKur||50) : 0;
+    const _pM = (V.printerAktif !== false) ? _autoPrinterAdet()*(V.printerEurFiyat||35000)*(V.eurKur||50) : 0;
     const _rM = V.robotKolAktif ? (V.robotKolEurFiyat||30000)*(V.eurKur||50) : 0;
     return (gv('kira') + gv('depozito') + gv('emlakci') + m2*gv('tadilatM2') + m2*gv('dekoM2') + gv('mobilya') + gv('ruhsat') + _pM + _rM) * oran;
   } else {
@@ -2263,6 +2263,8 @@ function recalc() {
       if (elCiro) {
         const ciro = fiyat - hekimTL - kanalTL - mal - royaltyTRY;
         elCiro.textContent = ciro.toLocaleString('tr-TR');
+        const elEur = document.getElementById('ciroEur_' + k);
+        if (elEur) elEur.textContent = Math.round(ciro / (V.eurKur || 50)).toLocaleString('en-US');
       }
       if (elCiroB2B) {
         const fB2B = gv('korseFB2B_' + k);
@@ -2271,8 +2273,12 @@ function recalc() {
         const kesimTRY = (k === 'delik' || k === 'sensDelik') ? gv('kesimEurPer') * (V.eurKur || 50) : 0;
         const ciroB2B = fB2B - hekimB2B - kanalB2B - mal - kesimTRY - royaltyTRY;
         elCiroB2B.textContent = ciroB2B.toLocaleString('tr-TR');
+        const elB2BEur = document.getElementById('ciroB2BEur_' + k);
+        if (elB2BEur) elB2BEur.textContent = Math.round(ciroB2B / (V.eurKur || 50)).toLocaleString('en-US');
       }
     }
+    const elFiyatEur = document.getElementById('eurFiyat_' + k);
+    if (elFiyatEur) elFiyatEur.textContent = Math.round(fiyat / (V.eurKur || 50)).toLocaleString('en-US');
   });
 
 
@@ -2288,7 +2294,7 @@ function recalc() {
 
   _refreshPrinterDisplay();
   svRobotKol();
-  const printerMaliyetK = (V.printerAktif !== false) ? V.printerAdet * (V.printerEurFiyat||25000) * (V.eurKur||50) : 0;
+  const printerMaliyetK = (V.printerAktif !== false) ? V.printerAdet * (V.printerEurFiyat||35000) * (V.eurKur||50) : 0;
   const robotKolMaliyetK = V.robotKolAktif ? (V.robotKolEurFiyat||30000) * (V.eurKur||50) : 0;
   const kurulumTop=-(gv('kira')+gv('depozito')+gv('emlakci')+tadilatTop+dekoTopV+gv('mobilya')+gv('ruhsat')+printerMaliyetK+robotKolMaliyetK);
   document.getElementById('kurulumTop').textContent=ff(kurulumTop);
@@ -2299,7 +2305,7 @@ function recalc() {
 
   // Printer kapasite takibi
   const printerKapAyMax = 66;  // günde 3 korse × 22 iş günü
-  const printerBirimMaliyet = (V.printerEurFiyat||25000) * (V.eurKur||50);
+  const printerBirimMaliyet = (V.printerEurFiyat||35000) * (V.eurKur||50);
   let aktifPrinterSayisi = V.printerAdet || 2;  // başlangıç printer sayısı (min 2)
   const printerTetikAylari = [];  // hangi aylarda printer alındı
 
@@ -2866,7 +2872,7 @@ function _refreshPrinterDisplay() {
   const autoAdet = _autoPrinterAdet();
   const adet = (V.printerAdetManual !== undefined) ? V.printerAdetManual : autoAdet;
   V.printerAdet = adet;
-  const eur = adet * (V.printerEurFiyat||25000);
+  const eur = adet * (V.printerEurFiyat||35000);
   const kapMin = adet * 44, kapMax = adet * 66;
   const korse    = (V.korse    || []).map(Number);
   const korseB2B = (V.korseB2B || []).map(Number);
@@ -2880,7 +2886,7 @@ function _refreshPrinterDisplay() {
   document.getElementById('printerAdet').textContent = adet;
   document.getElementById('printerTRY').textContent = printerAktif ? '€'+Math.round(eur).toLocaleString('en-US') : '—';
   document.getElementById('printerKapasite').textContent = '~'+kapMin+'–'+kapMax+' braces/month';
-  document.getElementById('printerEurDisp').textContent = (V.printerEurFiyat||25000).toLocaleString('tr-TR');
+  document.getElementById('printerEurDisp').textContent = (V.printerEurFiyat||35000).toLocaleString('tr-TR');
   var info = document.getElementById('printerAutoInfo');
   if (info) info.textContent = '';
 }
@@ -2958,7 +2964,7 @@ function updateKapasiteUyari(rows) {
   if (tetikAylari.length > 0) {
     el.style.display = 'block';
     const ayListesi = tetikAylari.map(r => {
-      const adet = Math.round(r.printerEkMaliyet / ((V.printerEurFiyat||25000) * (V.eurKur||50)));
+      const adet = Math.round(r.printerEkMaliyet / ((V.printerEurFiyat||35000) * (V.eurKur||50)));
       return 'Month ' + r.ay + ': +' + adet + ' printer (€' + Math.round(r.printerEkMaliyet/(V.eurKur||50)).toLocaleString('en-US') + ')';
     }).join(' · ');
     txt.textContent = 'Automatic printer purchase triggered — ' + ayListesi;
@@ -3151,6 +3157,7 @@ function initLayout() {
     ['expenses.html','giderler','Expenses'],
     ['growth.html','buyume','3-Year Plan'],
     ['investor.html','yatirimci','Investor &amp; Agreement'],
+    ['captable.html','captable','Cap Table'],
     ['methodology.html','metodoloji','Methodology &amp; Validation']
   ];
   const navLinks = pages.map(([href,id,label]) =>
