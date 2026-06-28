@@ -64,10 +64,10 @@
       <div class="sl-row">
         <label>Machinery Contributed (€K)</label>
         <div class="sl-controls">
-          <input type="range" id="sl_mach" min="0" max="200" step="5" oninput="ctSet('mach',this.value)">
-          <span class="sl-val" id="sv_mach">€50K</span>
+          <input type="range" id="sl_mach" min="0" max="200" step="2.5" oninput="ctSet('mach',this.value)">
+          <span class="sl-val" id="sv_mach">€17.5K</span>
         </div>
-        <span class="sl-note">3D printers, cutting robot — contributed at depreciated value</span>
+        <span class="sl-note">3D printer contributed at 50% of market price (€35K printer → €17.5K contribution)</span>
       </div>
       <div class="sl-row">
         <label>City Exclusivity Value (€K)</label>
@@ -98,18 +98,18 @@
       <div class="sl-row">
         <label>Sweat Equity Value (€K)</label>
         <div class="sl-controls">
-          <input type="range" id="sl_sweat" min="0" max="300" step="5" oninput="ctSet('sweat',this.value)">
-          <span class="sl-val" id="sv_sweat">€50K</span>
+          <input type="range" id="sl_sweat" min="0" max="1000" step="10" oninput="ctSet('sweat',this.value)">
+          <span class="sl-val" id="sv_sweat">€500K</span>
         </div>
         <span class="sl-note">Clinical operations, production, patient management — vested over time</span>
       </div>
       <div class="sl-row">
         <label>Vested Fraction Today (%)</label>
         <div class="sl-controls">
-          <input type="range" id="sl_vestFrac" min="0" max="100" step="5" oninput="ctSet('vestFrac',this.value)">
-          <span class="sl-val" id="sv_vestFrac">25%</span>
+          <input type="range" id="sl_vestFrac" min="5" max="10" step="1" oninput="ctSet('vestFrac',this.value)">
+          <span class="sl-val" id="sv_vestFrac">7%</span>
         </div>
-        <span class="sl-note">Fraction of sweat equity already earned (e.g. 25% = 1-yr cliff on a 4-yr vest)</span>
+        <span class="sl-note">Fraction of sweat equity already earned</span>
       </div>
     </div>
     <div class="ct-check-row">
@@ -117,17 +117,7 @@
     </div>
 
     <!-- Investor -->
-    <div class="party-header" style="color:#1a7a45;">Investor — Cash <span style="font-weight:400;font-size:9px;background:#dff2e8;color:#1a7a45;border-radius:3px;padding:2px 6px;margin-left:6px;letter-spacing:0.5px;">PASSIVE</span></div>
-    <div class="sl-grid">
-      <div class="sl-row">
-        <label>Cash Investment (€K)</label>
-        <div class="sl-controls">
-          <input type="range" id="sl_cash" min="10" max="500" step="5" oninput="ctSet('cash',this.value)">
-          <span class="sl-val" id="sv_cash">€150K</span>
-        </div>
-        <span class="sl-note">Passive financial investor — provides capital only; no operational role or board seat unless separately agreed</span>
-      </div>
-    </div>
+    <div class="note-box" style="margin-top:12px;">Investor cash is set on the <strong>Investor &amp; Agreement</strong> page and flows into this model automatically.</div>
   </div>
 </div>
 
@@ -384,16 +374,16 @@
 // ── Cap Table State ──────────────────────────────────────────────────────────
 var CT = {};
 var CT_DEFAULTS = {
-  ip: 200, mach: 50, excl: 100,
-  channel: 80, sweat: 50, cash: 150,
+  ip: 200, mach: 17.5, excl: 100,
+  channel: 80, sweat: 500, cash: 150,
   royaltyPV: 73, royaltyOffset: 100,
   commPV: 150, commOffset: 70,
-  vestFrac: 25, vestedToday: true,
+  vestFrac: 7, vestedToday: true,
   r2cash: 100, r2pre: 2000,
   evBase: 7500,
   dcfRef: 1000,
   taxToggle: true,
-  _ctVersion: 2
+  _ctVersion: 3
 };
 
 function ctLoad() {
