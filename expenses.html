@@ -195,6 +195,23 @@
         <span class="sl-note">External service — SSI multiplier does not apply</span>
       </div>
 
+      <!-- Operator -->
+      <div style="padding:10px;background:#eaf4fb;border:1px solid #2980B944;border-radius:6px;margin-bottom:8px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+          <span style="font-size:11px;font-weight:700;color:#2980B9;">⑤ Operator</span>
+          <span style="font-size:10px;color:#888;background:#d6eaf8;padding:2px 8px;border-radius:10px;">Month 1 — fixed</span>
+        </div>
+        <div style="font-size:10px;color:#5d8aa8;margin-bottom:6px;">Scales the business: satellite clinics, partnerships, physician acquisition</div>
+        <div class="sl-row" style="margin-bottom:4px;">
+          <label style="font-size:11px;">Net salary (₺)</label>
+          <div class="sl-controls">
+            <input type="range" id="s_operatorM" min="100000" max="250000" step="5000" value="175000" oninput="sv('operatorM',this.value)">
+            <span class="sl-val" id="operatorM" contenteditable="true" onblur="sv2('operatorM','s_operatorM',this)">175.000</span>
+          </div>
+        </div>
+        <div style="font-size:11px;color:#2980B9;">Gross cost: <b id="brutOperator">218.750</b> ₺/mo</div>
+      </div>
+
       <div style="font-size:10px;color:#888;margin-bottom:8px;">Net salary entry — company cost is calculated as gross (net × SSI multiplier). Expert orthotist is fixed from Month 1 at each center; other roles are activated by the threshold system.</div>
 
       <div class="sl-row" style="margin-bottom:12px;">
@@ -360,7 +377,7 @@ window.addEventListener('load', function() {
   var kd = document.getElementById('kira');
   if (kd) kd.textContent = v.toLocaleString('tr-TR');
 
-  [['s_mutfak','mutfak',20000],['s_genelGider','genelGider',10000],['s_ymmM','ymmM',10000]].forEach(function(arr) {
+  [['s_mutfak','mutfak',20000],['s_genelGider','genelGider',10000],['s_ymmM','ymmM',10000],['s_operatorM','operatorM',175000]].forEach(function(arr) {
     var slId = arr[0], key = arr[1], def = arr[2];
     var val = V[key] || def;
     var sl = document.getElementById(slId); if (sl) sl.value = val;
