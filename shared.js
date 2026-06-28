@@ -1576,14 +1576,16 @@ function updatePinnedKpi(rows, tGelir, basAy, pozAy, tKorse) {
     if (cls) el.className = 'kpi-bar-val ' + cls;
   };
   set('pkpi_gelir',  ff(tGelir),                         tGelir>=0?'pos':'neg');
+  const _tahminCum = !pozAy ? _tahminPozAy(rows) : null;
+  const _cumLabel  = pozAy ? 'Month '+pozAy : (_tahminCum ? '~Month '+_tahminCum : '>Month 24');
   set('pkpi_bas',    basAy ? 'Month '+basAy : 'Not reached', basAy?'pos':'neg');
-  set('pkpi_cum',    pozAy ? 'Month '+pozAy : 'Not reached', pozAy?'neu':'neg');
+  set('pkpi_cum',    _cumLabel, pozAy?'neu':'neg');
   set('pkpi_korse',  tKorse+' units',                      '');
   // Yıl 1 kartı KPI'ları
   const _s = (id,v,c) => { const e=document.getElementById(id); if(e){e.textContent=v; if(c)e.className='year-kpi-val '+c;} };
   _s('y1GelirKpi', ff(tGelir), tGelir>=0?'pos':'neg');
   _s('y1BasKpi',   basAy?'Month '+basAy:'Not reached', basAy?'pos':'neg');
-  _s('y1CumKpi',   pozAy?'Month '+pozAy:'Not reached', pozAy?'neu':'neg');
+  _s('y1CumKpi',   _cumLabel, pozAy?'neu':'neg');
   _s('y1KorseKpi', tKorse+' units', '');
   const {triggerAy:_tAy} = calc4AyOrtalama(rows);
   const _aktifSehir = V.izmirAktif ? 'Izmir' : V.ankaraAktif ? 'Ankara' : '2nd center';
