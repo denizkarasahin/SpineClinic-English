@@ -2609,23 +2609,27 @@ let projChartInst = null;
 initDynamic();
 recalc();
 
-function renderSummary3yr(totals, sgkRow, izmirRow, ankaraRow, b2bRow) {
+function renderSummary3yr(totals, sgkRow, izmirRow, ankaraRow, b2bRow, y1KorseNet) {
   const el = document.getElementById('summaryOutcomes3yr');
   if (!el) return;
+  const eurKur = V.eurKur || 50;
   const activeCount = 1 + (V.izmirAktif ? 1 : 0) + (V.ankaraAktif ? 1 : 0);
-  const growth = totals[0] > 0 ? Math.round((totals[2] / totals[0] - 1) * 100) : null;
   const c2Name = V.izmirAktif ? 'Izmir' : V.ankaraAktif ? 'Ankara' : null;
   const hasSgk = (sgkRow[1] || 0) > 0 || (sgkRow[2] || 0) > 0;
   const fmtK = v => v > 0 ? '~€' + v + 'K' : '—';
+  // Year 1: use same source as 12-month KPI grid (gelirNet before fixed costs)
+  const y1Eur = y1KorseNet > 0 ? '€' + Math.round(y1KorseNet / eurKur).toLocaleString('en-US') : '—';
+  const growth = (y1KorseNet > 0 && totals[2] > 0)
+    ? Math.round((totals[2] / Math.round(y1KorseNet / eurKur / 1000) - 1) * 100) : null;
 
   const kpis = [
-    { label: 'Year 1 net revenue',     val: fmtK(totals[0]), c: totals[0] > 0 ? 'pos' : 'neg', sub: 'Istanbul Flagship' },
-    { label: 'Year 2 net revenue',     val: fmtK(totals[1]), c: totals[1] > 0 ? 'pos' : 'neg', sub: c2Name ? c2Name + ' + SSI begins' : 'private only' },
-    { label: 'Year 3 net revenue',     val: fmtK(totals[2]), c: totals[2] > 0 ? 'pos' : 'neg', sub: activeCount + ' center' + (activeCount > 1 ? 's' : '') },
-    { label: 'Revenue growth Y1 → Y3', val: growth !== null ? '+' + growth + '%' : '—', c: 'pos', sub: '' },
-    { label: 'Active centers (Y3)',    val: String(activeCount), c: 'neu', sub: '' },
-    { label: '2nd center',             val: c2Name || 'Not planned', c: 'neu', sub: '' },
-    { label: 'SSI / public channel',   val: hasSgk ? 'Year 2 ramp-up' : 'Not modelled', c: 'neu', sub: '' },
+    { label: 'Clinic net revenue (year)', val: y1Eur,           c: y1KorseNet > 0 ? 'pos' : 'neg', sub: 'Year 1 · Istanbul Flagship' },
+    { label: 'Year 2 net revenue',        val: fmtK(totals[1]), c: totals[1] > 0 ? 'pos' : 'neg',  sub: c2Name ? c2Name + ' + SSI begins' : 'private only' },
+    { label: 'Year 3 net revenue',        val: fmtK(totals[2]), c: totals[2] > 0 ? 'pos' : 'neg',  sub: activeCount + ' center' + (activeCount > 1 ? 's' : '') },
+    { label: 'Revenue growth Y1 → Y3',   val: growth !== null ? '+' + growth + '%' : '—', c: 'pos', sub: '' },
+    { label: 'Active centers (Y3)',       val: String(activeCount), c: 'neu', sub: '' },
+    { label: '2nd center',               val: c2Name || 'Not planned', c: 'neu', sub: '' },
+    { label: 'SSI / public channel',     val: hasSgk ? 'Year 2 ramp-up' : 'Not modelled', c: 'neu', sub: '' },
   ];
 
   el.innerHTML = `<div class="kpi-grid" style="margin-bottom:10px;">` +
@@ -2779,7 +2783,7 @@ function buildProjection() {
 
   // Yıl 2 KPI güncelle
   window._lastTotals = totals;
-  renderSummary3yr(totals, korseM1SGK, izmirRow, ankaraRow, b2bRow);
+  renderSummary3yr(totals, korseM1SGK, izmirRow, ankaraRow, b2bRow, y1KorseNet);
   if (typeof renderDcf === 'function') { renderDcf(); renderGetiriTable(); }
   const y2k = document.getElementById('y2GelirKpi');
   if (y2k) y2k.textContent = '~€' + totals[1] + 'K';
