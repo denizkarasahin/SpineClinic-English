@@ -2540,7 +2540,7 @@ function recalc() {
     <td class="zc">—</td>
   </tr>`;
   const tb = '<tbody>' + tb_rows + topRow + (rowsB2B.length ? b2bSep + b2b_rows + b2bTopRow : '') + '</tbody>';
-  document.getElementById('mainTable').innerHTML=th+tb;
+  const _mt = document.getElementById('mainTable'); if (_mt) _mt.innerHTML=th+tb;
 
   renderRamp();
   if(window._redrawDonem) window._redrawDonem();
@@ -2616,45 +2616,21 @@ function renderSummary3yr(totals, sgkRow, izmirRow, ankaraRow, b2bRow) {
   const growth = totals[0] > 0 ? Math.round((totals[2] / totals[0] - 1) * 100) : null;
   const c2Name = V.izmirAktif ? 'Izmir' : V.ankaraAktif ? 'Ankara' : null;
   const hasSgk = (sgkRow[1] || 0) > 0 || (sgkRow[2] || 0) > 0;
+  const fmtK = v => v > 0 ? '~€' + v + 'K' : '—';
 
-  el.innerHTML = `
-    <div style="display:flex;gap:8px;margin-bottom:16px;align-items:stretch;">
-      <div style="flex:1;text-align:center;padding:14px 10px;background:#f8f8f4;border-radius:6px;border:1px solid #e0e0dc;">
-        <div style="font-size:9px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px;">Year 1</div>
-        <div style="font-size:22px;font-weight:800;color:#2c4a2e;">~€${totals[0]}K</div>
-        <div style="font-size:10px;color:#aaa;margin-top:4px;">Istanbul Flagship</div>
-      </div>
-      <div style="display:flex;align-items:center;font-size:18px;color:#ccc;padding:0 2px;">→</div>
-      <div style="flex:1;text-align:center;padding:14px 10px;background:#f4f8f6;border-radius:6px;border:1px solid #c8ede2;">
-        <div style="font-size:9px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px;">Year 2</div>
-        <div style="font-size:22px;font-weight:800;color:#1D9E75;">~€${totals[1]}K</div>
-        <div style="font-size:10px;color:#aaa;margin-top:4px;">${c2Name ? c2Name + ' opens' : '1 center'} · ${hasSgk ? 'SSI begins' : 'private only'}</div>
-      </div>
-      <div style="display:flex;align-items:center;font-size:18px;color:#ccc;padding:0 2px;">→</div>
-      <div style="flex:1;text-align:center;padding:14px 10px;background:#f4f3ff;border-radius:6px;border:1.5px solid #534AB7;">
-        <div style="font-size:9px;font-weight:700;color:#534AB7;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px;">Year 3</div>
-        <div style="font-size:24px;font-weight:800;color:#534AB7;">~€${totals[2]}K</div>
-        <div style="font-size:10px;color:#aaa;margin-top:4px;">${activeCount} center${activeCount > 1 ? 's' : ''} · ${hasSgk ? 'SSI active' : 'private only'}</div>
-      </div>
-    </div>
-    <div class="kpi-grid" style="margin-bottom:10px;">
-      <div class="kpi">
-        <div class="kpi-label">Active centers (Y3)</div>
-        <div class="kpi-val pos">${activeCount}</div>
-      </div>
-      ${growth !== null ? `<div class="kpi"><div class="kpi-label">Revenue growth Y1→Y3</div><div class="kpi-val pos">+${growth}%</div></div>` : ''}
-      <div class="kpi">
-        <div class="kpi-label">2nd center</div>
-        <div class="kpi-val neu">${c2Name || 'Not planned'}</div>
-      </div>
-      <div class="kpi">
-        <div class="kpi-label">SSI / public channel</div>
-        <div class="kpi-val neu">${hasSgk ? 'Year 2 ramp-up' : 'Not modelled'}</div>
-      </div>
-    </div>
-    <div style="font-size:10px;color:#aaa;text-align:right;">
-      ⚠ Projection based on Year 1 model · <a href="growth.html" style="color:#534AB7;text-decoration:none;font-weight:700;">Full 3-Year Plan →</a>
-    </div>`;
+  const kpis = [
+    { label: 'Year 1 net revenue',     val: fmtK(totals[0]), c: totals[0] > 0 ? 'pos' : 'neg', sub: 'Istanbul Flagship' },
+    { label: 'Year 2 net revenue',     val: fmtK(totals[1]), c: totals[1] > 0 ? 'pos' : 'neg', sub: c2Name ? c2Name + ' + SSI begins' : 'private only' },
+    { label: 'Year 3 net revenue',     val: fmtK(totals[2]), c: totals[2] > 0 ? 'pos' : 'neg', sub: activeCount + ' center' + (activeCount > 1 ? 's' : '') },
+    { label: 'Revenue growth Y1 → Y3', val: growth !== null ? '+' + growth + '%' : '—', c: 'pos', sub: '' },
+    { label: 'Active centers (Y3)',    val: String(activeCount), c: 'neu', sub: '' },
+    { label: '2nd center',             val: c2Name || 'Not planned', c: 'neu', sub: '' },
+    { label: 'SSI / public channel',   val: hasSgk ? 'Year 2 ramp-up' : 'Not modelled', c: 'neu', sub: '' },
+  ];
+
+  el.innerHTML = `<div class="kpi-grid" style="margin-bottom:10px;">` +
+    kpis.map(k => `<div class="kpi"><div class="kpi-label">${k.label}</div><div class="kpi-val ${k.c}">${k.val}</div>${k.sub ? `<div style="font-size:10px;color:#aaa;margin-top:2px;">${k.sub}</div>` : ''}</div>`).join('') +
+    `</div><div style="font-size:10px;color:#aaa;text-align:right;">⚠ Projection based on Year 1 model · <a href="growth.html" style="color:#534AB7;text-decoration:none;font-weight:700;">Full 3-Year Plan →</a></div>`;
 }
 
 // 5 Yıllık Projeksiyon — dinamik
