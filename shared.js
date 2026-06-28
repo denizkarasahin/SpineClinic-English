@@ -3186,10 +3186,24 @@ function initLayout() {
   </div>
   <div class="inv-header-right">
     <div class="inv-badge">Confidential — Investor Only</div>
-    <div id="eurRateWidget" style="margin-top:10px;padding:10px 14px;background:#1a1a2e;border:1px solid #3a3a5c;border-radius:6px;text-align:right;">
-      <div style="font-size:9px;color:#8888aa;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Live Exchange Rate</div>
-      <div id="eurRateVal" style="font-size:16px;font-weight:700;color:#a89ff7;letter-spacing:0.5px;">1 EUR = ₺${(V.eurKur||50).toFixed(2)}</div>
-      <div id="eurRateTime" style="font-size:10px;color:#666;margin-top:3px;">⏳ Fetching live rate…</div>
+    <div id="eurRateWidget" style="margin-top:10px;padding:10px 14px;background:#1a1a2e;border:1px solid #3a3a5c;border-radius:6px;">
+      <div style="font-size:9px;color:#8888aa;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">EUR / TRY Rate</div>
+      <div style="display:flex;align-items:center;justify-content:flex-end;gap:6px;margin-bottom:4px;">
+        <span style="font-size:12px;color:#a89ff7;white-space:nowrap;">1 EUR = ₺</span>
+        <input id="eurRateInput" type="number" step="0.5" min="1" value="${(V.eurKur||50).toFixed(2)}"
+          style="width:68px;font-size:15px;font-weight:700;color:#a89ff7;background:#0d0d1a;border:1px solid #4a4a6c;border-radius:4px;padding:3px 6px;text-align:right;">
+      </div>
+      <div id="eurRateTime" style="font-size:10px;color:#666;margin-bottom:8px;text-align:right;">Model rate · ₺${(V.eurKur||50).toFixed(2)}</div>
+      <div style="display:flex;gap:6px;justify-content:flex-end;">
+        <button id="eurCheckBtn" onclick="checkLiveEurRate()"
+          style="font-size:11px;font-weight:600;padding:5px 10px;border-radius:4px;border:1px solid #4a4a6c;background:#1a1a2e;color:#a89ff7;cursor:pointer;">
+          &#128225; Check Rate
+        </button>
+        <button onclick="applyEurRateFromInput()"
+          style="font-size:11px;font-weight:700;padding:5px 12px;border-radius:4px;border:none;background:#534AB7;color:#fff;cursor:pointer;">
+          &#10003; Apply
+        </button>
+      </div>
     </div>
     <div class="inv-meta" style="margin-top:10px;">
       <span>Date</span> April 2026<br>
@@ -3212,9 +3226,9 @@ ${navLinks}
 
 // ── Live EUR/TRY Rate ─────────────────────────────────────────────────────────
 function _updateRateWidget(rate, date, fromCache) {
-  const valEl  = document.getElementById('eurRateVal');
-  const timeEl = document.getElementById('eurRateTime');
-  if (valEl) valEl.textContent = '1 EUR = ₺' + rate.toFixed(2);
+  const inputEl = document.getElementById('eurRateInput');
+  const timeEl  = document.getElementById('eurRateTime');
+  if (inputEl) inputEl.value = rate.toFixed(2);
   if (timeEl) {
     if (date) {
       const t = date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
@@ -3222,7 +3236,7 @@ function _updateRateWidget(rate, date, fromCache) {
       timeEl.textContent = (fromCache ? '⏱ ' : '● ') + d + ' ' + t + (fromCache ? ' (cached)' : ' · live');
       timeEl.style.color = fromCache ? '#666' : '#4CAF50';
     } else {
-      timeEl.textContent = 'Using manual rate';
+      timeEl.textContent = 'Model rate · ₺' + rate.toFixed(2);
       timeEl.style.color = '#666';
     }
   }
@@ -3254,6 +3268,52 @@ function fetchEurRate() {
       }
     })
     .catch(function() { _updateRateWidget(V.eurKur || 50, null, false); });
+}
+
+function checkLiveEurRate() {
+  const btn    = document.getElementById('eurCheckBtn');
+  const timeEl = document.getElementById('eurRateTime');
+  if (btn) { btn.textContent = '⧖ Checking…'; btn.disabled = true; }
+  fetch('https://api.frankfurter.app/latest?from=EUR&to=TRY')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      const rate = data && data.rates && data.rates.TRY;
+      if (rate && rate > 0) {
+        try { localStorage.setItem('eur_try_cache', JSON.stringify({ rate: rate, ts: Date.now() })); } catch(e) {}
+        const inputEl = document.getElementById('eurRateInput');
+        if (inputEl) inputEl.value = rate.toFixed(2);
+        if (timeEl) {
+          const now = new Date();
+          const t = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+          const d = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short' });
+          timeEl.textContent = '● ' + d + ' ' + t + ' · live — press Apply to use';
+          timeEl.style.color = '#f0b030';
+        }
+      } else {
+        if (timeEl) { timeEl.textContent = '⚠ Could not fetch — check connection'; timeEl.style.color = '#e74c3c'; }
+      }
+      if (btn) { btn.innerHTML = '&#128225; Check Rate'; btn.disabled = false; }
+    })
+    .catch(function() {
+      if (timeEl) { timeEl.textContent = '⚠ Could not fetch — check connection'; timeEl.style.color = '#e74c3c'; }
+      if (btn) { btn.innerHTML = '&#128225; Check Rate'; btn.disabled = false; }
+    });
+}
+
+function applyEurRateFromInput() {
+  const inputEl = document.getElementById('eurRateInput');
+  if (!inputEl) return;
+  const rate = parseFloat(inputEl.value);
+  if (!rate || rate <= 0) return;
+  _applyEurRate(rate, null, false);
+  const timeEl = document.getElementById('eurRateTime');
+  if (timeEl) {
+    timeEl.textContent = '✓ Applied ₺' + rate.toFixed(2) + ' — all figures updated';
+    timeEl.style.color = '#4CAF50';
+    setTimeout(function() {
+      if (timeEl) { timeEl.textContent = 'Model rate · ₺' + rate.toFixed(2); timeEl.style.color = '#666'; }
+    }, 3000);
+  }
 }
 
 initLayout();
