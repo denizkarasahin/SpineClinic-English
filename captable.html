@@ -65,9 +65,9 @@
         <label>Machinery Contributed (€K)</label>
         <div class="sl-controls">
           <input type="range" id="sl_mach" min="0" max="200" step="2.5" oninput="ctSet('mach',this.value)">
-          <span class="sl-val" id="sv_mach">€17.5K</span>
+          <span class="sl-val" id="sv_mach">€35K</span>
         </div>
-        <span class="sl-note">3D printer contributed at 50% of market price (€35K printer → €17.5K contribution)</span>
+        <span class="sl-note">3D printer contributed at 50% of market price (€70K market → €35K contribution)</span>
       </div>
       <div class="sl-row">
         <label>City Exclusivity Value (€K)</label>
@@ -374,7 +374,7 @@
 // ── Cap Table State ──────────────────────────────────────────────────────────
 var CT = {};
 var CT_DEFAULTS = {
-  ip: 200, mach: 17.5, excl: 100,
+  ip: 200, mach: 35, excl: 100,
   channel: 80, sweat: 500, cash: 150,
   royaltyPV: 73, royaltyOffset: 100,
   commPV: 150, commOffset: 70,
@@ -383,7 +383,7 @@ var CT_DEFAULTS = {
   evBase: 7500,
   dcfRef: 1000,
   taxToggle: true,
-  _ctVersion: 3
+  _ctVersion: 4
 };
 
 function ctLoad() {
