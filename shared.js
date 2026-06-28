@@ -2616,7 +2616,7 @@ function renderSummary3yr(totals, sgkRow, izmirRow, ankaraRow, b2bRow, y1KorseNe
   const activeCount = 1 + (V.izmirAktif ? 1 : 0) + (V.ankaraAktif ? 1 : 0);
   const c2Name = V.izmirAktif ? 'Izmir' : V.ankaraAktif ? 'Ankara' : null;
   const hasSgk = (sgkRow[1] || 0) > 0 || (sgkRow[2] || 0) > 0;
-  const fmtK = v => v > 0 ? '~€' + v + 'K' : '—';
+  const fmtK = v => v > 0 ? '~€' + (v * 1000).toLocaleString('en-US') : '—';
   // Year 1: use same source as 12-month KPI grid (gelirNet before fixed costs)
   const y1Eur = y1KorseNet > 0 ? '€' + Math.round(y1KorseNet / eurKur).toLocaleString('en-US') : '—';
   const growth = (y1KorseNet > 0 && totals[2] > 0)
