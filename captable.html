@@ -80,7 +80,7 @@
     </div>
 
     <!-- Doctors -->
-    <div class="party-header" style="color:#c94f2a;">Doctors — Referral Channel</div>
+    <div class="party-header" style="color:#c94f2a;">Doctors — Referral Channel <span style="font-weight:400;font-size:9px;background:#fde8df;color:#c94f2a;border-radius:3px;padding:2px 6px;margin-left:6px;letter-spacing:0.5px;">PASSIVE</span></div>
     <div class="sl-grid">
       <div class="sl-row">
         <label>Referral Channel Value (€K)</label>
@@ -88,7 +88,7 @@
           <input type="range" id="sl_channel" min="0" max="400" step="5" oninput="ctSet('channel',this.value)">
           <span class="sl-val" id="sv_channel">€80K</span>
         </div>
-        <span class="sl-note">Patient pipeline — the primary growth driver in this model; doctors hold channel as frontman structure</span>
+        <span class="sl-note">Passive contributor — refers patients through existing network; does not participate in operations or management</span>
       </div>
     </div>
 
@@ -117,7 +117,7 @@
     </div>
 
     <!-- Investor -->
-    <div class="party-header" style="color:#1a7a45;">Investor — Cash</div>
+    <div class="party-header" style="color:#1a7a45;">Investor — Cash <span style="font-weight:400;font-size:9px;background:#dff2e8;color:#1a7a45;border-radius:3px;padding:2px 6px;margin-left:6px;letter-spacing:0.5px;">PASSIVE</span></div>
     <div class="sl-grid">
       <div class="sl-row">
         <label>Cash Investment (€K)</label>
@@ -125,7 +125,7 @@
           <input type="range" id="sl_cash" min="10" max="500" step="5" oninput="ctSet('cash',this.value)">
           <span class="sl-val" id="sv_cash">€150K</span>
         </div>
-        <span class="sl-note">Total Round 1 investment — the only cash contribution; sets post-money denominator</span>
+        <span class="sl-note">Passive financial investor — provides capital only; no operational role or board seat unless separately agreed</span>
       </div>
     </div>
   </div>
@@ -557,9 +557,9 @@ function ctRecalc() {
   var parties = [
     { name: 'Osteoid (IP · Machinery · Exclusivity)', short: 'Osteoid',
       net: netOsteoid, eff: effO, pct: pO, color: '#534AB7' },
-    { name: 'Investor (Cash)',                         short: 'Investor',
+    { name: 'Investor (Passive — Cash)',               short: 'Investor',
       net: netInvestor, eff: effI, pct: pI, color: '#1a7a45' },
-    { name: 'Doctors (Referral Channel)',              short: 'Doctors',
+    { name: 'Doctors (Passive — Referral Channel)',    short: 'Doctors',
       net: netDoctors, eff: effD, pct: pD, color: '#c94f2a' },
     { name: 'Orthotist / Operators (Sweat Equity)',   short: 'Orthotist',
       net: netOrtho, eff: effR, pct: pR, color: '#BA7517' }
