@@ -3249,55 +3249,69 @@ function _applyEurRate(rate, date, fromCache) {
   if (typeof recalc === 'function') recalc();
 }
 
+// Tries multiple public EUR/TRY APIs in order; calls onSuccess(rate) or onFail()
+var _EUR_APIS = [
+  { url: 'https://api.exchangerate-api.com/v4/latest/EUR',
+    extract: function(d) { return d && d.rates && d.rates.TRY; } },
+  { url: 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/eur.json',
+    extract: function(d) { return d && d.eur && d.eur.try; } },
+  { url: 'https://api.frankfurter.app/latest?from=EUR&to=TRY',
+    extract: function(d) { return d && d.rates && d.rates.TRY; } }
+];
+
+function _fetchEurTryLive(onSuccess, onFail) {
+  var apis = _EUR_APIS;
+  function tryIdx(i) {
+    if (i >= apis.length) { onFail(); return; }
+    fetch(apis[i].url)
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        var rate = apis[i].extract(data);
+        if (rate && rate > 0) { onSuccess(rate); }
+        else { tryIdx(i + 1); }
+      })
+      .catch(function() { tryIdx(i + 1); });
+  }
+  tryIdx(0);
+}
+
 function fetchEurRate() {
   // Use cache if fresh (< 1 hour)
   try {
-    const cached = localStorage.getItem('eur_try_cache');
+    var cached = localStorage.getItem('eur_try_cache');
     if (cached) {
-      const { rate, ts } = JSON.parse(cached);
-      if (Date.now() - ts < 3600000) { _applyEurRate(rate, new Date(ts), true); return; }
+      var _c = JSON.parse(cached);
+      if (Date.now() - _c.ts < 3600000) { _applyEurRate(_c.rate, new Date(_c.ts), true); return; }
     }
   } catch(e) {}
-  fetch('https://api.frankfurter.app/latest?from=EUR&to=TRY')
-    .then(function(r) { return r.json(); })
-    .then(function(data) {
-      const rate = data && data.rates && data.rates.TRY;
-      if (rate && rate > 0) {
-        try { localStorage.setItem('eur_try_cache', JSON.stringify({ rate: rate, ts: Date.now() })); } catch(e) {}
-        _applyEurRate(rate, new Date(), false);
-      }
-    })
-    .catch(function() { _updateRateWidget(V.eurKur || 50, null, false); });
+  _fetchEurTryLive(function(rate) {
+    try { localStorage.setItem('eur_try_cache', JSON.stringify({ rate: rate, ts: Date.now() })); } catch(e) {}
+    _applyEurRate(rate, new Date(), false);
+  }, function() {
+    _updateRateWidget(V.eurKur || 50, null, false);
+  });
 }
 
 function checkLiveEurRate() {
-  const btn    = document.getElementById('eurCheckBtn');
-  const timeEl = document.getElementById('eurRateTime');
+  var btn    = document.getElementById('eurCheckBtn');
+  var timeEl = document.getElementById('eurRateTime');
   if (btn) { btn.textContent = '⧖ Checking…'; btn.disabled = true; }
-  fetch('https://api.frankfurter.app/latest?from=EUR&to=TRY')
-    .then(function(r) { return r.json(); })
-    .then(function(data) {
-      const rate = data && data.rates && data.rates.TRY;
-      if (rate && rate > 0) {
-        try { localStorage.setItem('eur_try_cache', JSON.stringify({ rate: rate, ts: Date.now() })); } catch(e) {}
-        const inputEl = document.getElementById('eurRateInput');
-        if (inputEl) inputEl.value = rate.toFixed(2);
-        if (timeEl) {
-          const now = new Date();
-          const t = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
-          const d = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short' });
-          timeEl.textContent = '● ' + d + ' ' + t + ' · live — press Apply to use';
-          timeEl.style.color = '#f0b030';
-        }
-      } else {
-        if (timeEl) { timeEl.textContent = '⚠ Could not fetch — check connection'; timeEl.style.color = '#e74c3c'; }
-      }
-      if (btn) { btn.innerHTML = '&#128225; Check Rate'; btn.disabled = false; }
-    })
-    .catch(function() {
-      if (timeEl) { timeEl.textContent = '⚠ Could not fetch — check connection'; timeEl.style.color = '#e74c3c'; }
-      if (btn) { btn.innerHTML = '&#128225; Check Rate'; btn.disabled = false; }
-    });
+  _fetchEurTryLive(function(rate) {
+    try { localStorage.setItem('eur_try_cache', JSON.stringify({ rate: rate, ts: Date.now() })); } catch(e) {}
+    var inputEl = document.getElementById('eurRateInput');
+    if (inputEl) inputEl.value = rate.toFixed(2);
+    if (timeEl) {
+      var now = new Date();
+      var t = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+      var d = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short' });
+      timeEl.textContent = '● ' + d + ' ' + t + ' · live — press Apply to use';
+      timeEl.style.color = '#f0b030';
+    }
+    if (btn) { btn.innerHTML = '&#128225; Check Rate'; btn.disabled = false; }
+  }, function() {
+    if (timeEl) { timeEl.textContent = '⚠ All rate sources failed — enter manually'; timeEl.style.color = '#e74c3c'; }
+    if (btn) { btn.innerHTML = '&#128225; Check Rate'; btn.disabled = false; }
+  });
 }
 
 function applyEurRateFromInput() {
