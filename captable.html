@@ -392,14 +392,28 @@ var CT_DEFAULTS = {
   r2cash: 100, r2pre: 2000,
   evBase: 7500,
   dcfRef: 1000,
-  taxToggle: true
+  taxToggle: true,
+  _ctVersion: 2
 };
 
 function ctLoad() {
   CT = Object.assign({}, CT_DEFAULTS);
+  // Pull live values from V so cap table stays in sync with other pages
+  if (typeof V !== 'undefined') {
+    if (V.dcfInvest) CT.cash = Math.round(V.dcfInvest / 1000); // V is in €, CT cash is in €K
+  }
   try {
     var saved = localStorage.getItem('osteoid_CT');
-    if (saved) { Object.assign(CT, JSON.parse(saved)); }
+    if (saved) {
+      var parsed = JSON.parse(saved);
+      if (parsed._ctVersion === CT_DEFAULTS._ctVersion) {
+        Object.assign(CT, parsed);
+      } else {
+        localStorage.removeItem('osteoid_CT');
+        // Re-apply live V values after cache clear
+        if (typeof V !== 'undefined' && V.dcfInvest) CT.cash = Math.round(V.dcfInvest / 1000);
+      }
+    }
   } catch(e) {}
 }
 function ctSave() {
