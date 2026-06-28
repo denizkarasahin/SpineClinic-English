@@ -2609,6 +2609,54 @@ let projChartInst = null;
 initDynamic();
 recalc();
 
+function renderSummary3yr(totals, sgkRow, izmirRow, ankaraRow, b2bRow) {
+  const el = document.getElementById('summaryOutcomes3yr');
+  if (!el) return;
+  const activeCount = 1 + (V.izmirAktif ? 1 : 0) + (V.ankaraAktif ? 1 : 0);
+  const growth = totals[0] > 0 ? Math.round((totals[2] / totals[0] - 1) * 100) : null;
+  const c2Name = V.izmirAktif ? 'Izmir' : V.ankaraAktif ? 'Ankara' : null;
+  const hasSgk = (sgkRow[1] || 0) > 0 || (sgkRow[2] || 0) > 0;
+
+  el.innerHTML = `
+    <div style="display:flex;gap:8px;margin-bottom:16px;align-items:stretch;">
+      <div style="flex:1;text-align:center;padding:14px 10px;background:#f8f8f4;border-radius:6px;border:1px solid #e0e0dc;">
+        <div style="font-size:9px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px;">Year 1</div>
+        <div style="font-size:22px;font-weight:800;color:#2c4a2e;">~€${totals[0]}K</div>
+        <div style="font-size:10px;color:#aaa;margin-top:4px;">Istanbul Flagship</div>
+      </div>
+      <div style="display:flex;align-items:center;font-size:18px;color:#ccc;padding:0 2px;">→</div>
+      <div style="flex:1;text-align:center;padding:14px 10px;background:#f4f8f6;border-radius:6px;border:1px solid #c8ede2;">
+        <div style="font-size:9px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px;">Year 2</div>
+        <div style="font-size:22px;font-weight:800;color:#1D9E75;">~€${totals[1]}K</div>
+        <div style="font-size:10px;color:#aaa;margin-top:4px;">${c2Name ? c2Name + ' opens' : '1 center'} · ${hasSgk ? 'SSI begins' : 'private only'}</div>
+      </div>
+      <div style="display:flex;align-items:center;font-size:18px;color:#ccc;padding:0 2px;">→</div>
+      <div style="flex:1;text-align:center;padding:14px 10px;background:#f4f3ff;border-radius:6px;border:1.5px solid #534AB7;">
+        <div style="font-size:9px;font-weight:700;color:#534AB7;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px;">Year 3</div>
+        <div style="font-size:24px;font-weight:800;color:#534AB7;">~€${totals[2]}K</div>
+        <div style="font-size:10px;color:#aaa;margin-top:4px;">${activeCount} center${activeCount > 1 ? 's' : ''} · ${hasSgk ? 'SSI active' : 'private only'}</div>
+      </div>
+    </div>
+    <div class="kpi-grid" style="margin-bottom:10px;">
+      <div class="kpi">
+        <div class="kpi-label">Active centers (Y3)</div>
+        <div class="kpi-val pos">${activeCount}</div>
+      </div>
+      ${growth !== null ? `<div class="kpi"><div class="kpi-label">Revenue growth Y1→Y3</div><div class="kpi-val pos">+${growth}%</div></div>` : ''}
+      <div class="kpi">
+        <div class="kpi-label">2nd center</div>
+        <div class="kpi-val neu">${c2Name || 'Not planned'}</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">SSI / public channel</div>
+        <div class="kpi-val neu">${hasSgk ? 'Year 2 ramp-up' : 'Not modelled'}</div>
+      </div>
+    </div>
+    <div style="font-size:10px;color:#aaa;text-align:right;">
+      ⚠ Projection based on Year 1 model · <a href="growth.html" style="color:#534AB7;text-decoration:none;font-weight:700;">Full 3-Year Plan →</a>
+    </div>`;
+}
+
 // 5 Yıllık Projeksiyon — dinamik
 function buildProjection() {
   // Yıl 1 verileri recalc rows'tan
@@ -2755,6 +2803,7 @@ function buildProjection() {
 
   // Yıl 2 KPI güncelle
   window._lastTotals = totals;
+  renderSummary3yr(totals, korseM1SGK, izmirRow, ankaraRow, b2bRow);
   if (typeof renderDcf === 'function') { renderDcf(); renderGetiriTable(); }
   const y2k = document.getElementById('y2GelirKpi');
   if (y2k) y2k.textContent = '~€' + totals[1] + 'K';
@@ -3162,7 +3211,7 @@ function renderGetiriTable() {
 function initLayout() {
   const pid = window.PAGE_ID || '';
   const pages = [
-    ['index.html','index','12-Month Summary'],
+    ['index.html','index','Summary'],
     ['market.html','pazar','Market &amp; Competition'],
     ['korse.html','korse','Brace Ramp'],
     ['expenses.html','giderler','Expenses'],
