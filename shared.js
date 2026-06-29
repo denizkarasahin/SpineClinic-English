@@ -13,7 +13,7 @@ document.getElementById = function(id) {
   };
 };
 
-const V = {"korseF":37800,"danisPct":25,"malzeme":50,"reklamSabit":20000,"mutfak":30000,"genelGider":10000,"ymmM":23000,"stopaj":60000,"royaltyEur":0,"eurKur":53.07,"kira":250000,"depozito":250000,"emlakci":500000,"m2":360,"tadilatM2":7000,"dekoM2":6750,"mobilya":300000,"ruhsat":100000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":140000,"sgkCarpan":1.6,"stajyerM":30000,"stajyerAy":2,"destekM":30000,"stajyer2M":30000,"destekAy":3,"stajyer2Ay":4,"korse":[10,10,15,20,25,25,30,35,35,45,45,50],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":27000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":1600,"mal_sens":2075,"mal_sensDelik":1250,"danis_stdR":10,"danis_stdRl":20,"danis_delik":30,"danis_sens":30,"danis_sensDelik":30,"kanalBakim":5,"pazarTR":40000,"pazarIstPct":19,"hedefOsteoidPay":25,"esikStajyer1":15,"esikDestek":30,"esikStajyer2":76,"izmirAktif":true,"izmirHedefPay":25,"izmirUseIst":true,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":true,"ankaraHedefPay":25,"ankaraUseIst":true,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":true,"robotKolEurFiyat":30000,"kesimEurPer":0,"dcfRate":26,"dcfGrowth":18,"dcfGrowth45":45,"dcfInvest":2530000,"kongre":[190000,270000,75000,265000,40000,150000,80000,255000,80000,30000,80000,265000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,225000,0,225000,0,0,0,225000,0,0,0,225000],"atolye":[120000,0,0,0,0,120000,0,0,0,0,0,0],"ymm":[10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":10000,"korseFB2B_stdRl":12000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[0,0,0,0,0,0,0,0,0,0,0,0],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":130000,"_sen_max_kira":500000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":3500,"_sen_max_dekoM2":17000,"_sen_min_ortotistM":85000,"_sen_max_ortotistM":250000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":60000,"_sen_min_reklamSabit":5000,"_sen_max_reklamSabit":60000,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.65,"operatorM":200000,"_version":7};
+const V = {"korseF":37800,"danisPct":25,"malzeme":50,"reklamSabit":20000,"mutfak":30000,"genelGider":10000,"ymmM":23000,"stopaj":60000,"royaltyEur":0,"eurKur":53.07,"kira":250000,"depozito":250000,"emlakci":500000,"m2":360,"tadilatM2":7000,"dekoM2":6750,"mobilya":300000,"ruhsat":100000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":140000,"sgkCarpan":1.6,"stajyerM":30000,"stajyerAy":2,"destekM":30000,"stajyer2M":30000,"destekAy":3,"stajyer2Ay":4,"korse":[10,10,15,20,25,25,30,35,35,45,45,50],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":27000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":1600,"mal_sens":2075,"mal_sensDelik":1250,"danis_stdR":10,"danis_stdRl":20,"danis_delik":30,"danis_sens":30,"danis_sensDelik":30,"kanalBakim":5,"pazarTR":40000,"pazarIstPct":19,"hedefOsteoidPay":25,"esikStajyer1":15,"esikDestek":30,"esikStajyer2":76,"izmirAktif":true,"izmirHedefPay":25,"izmirUseIst":true,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":true,"ankaraHedefPay":25,"ankaraUseIst":true,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":true,"robotKolEurFiyat":30000,"kesimEurPer":0,"dcfRate":26,"dcfGrowth":18,"dcfGrowth45":45,"dcfExitMult":10,"dcfInvest":2530000,"kongre":[190000,270000,75000,265000,40000,150000,80000,255000,80000,30000,80000,265000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,225000,0,225000,0,0,0,225000,0,0,0,225000],"atolye":[120000,0,0,0,0,120000,0,0,0,0,0,0],"ymm":[10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":10000,"korseFB2B_stdRl":12000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[0,0,0,0,0,0,0,0,0,0,0,0],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":130000,"_sen_max_kira":500000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":3500,"_sen_max_dekoM2":17000,"_sen_min_ortotistM":85000,"_sen_max_ortotistM":250000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":60000,"_sen_min_reklamSabit":5000,"_sen_max_reklamSabit":60000,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.65,"operatorM":200000,"_version":8};
 // Restore state from localStorage if available; clear cache on version mismatch
 (function() {
   try {
@@ -351,6 +351,10 @@ function initDynamic() {
     if (sl) sl.value = V[k];
     if (sp) sp.textContent = V[k];
   });
+  const _exitSl = document.getElementById('s_dcfExitMult');
+  const _exitSp = document.getElementById('dcfExitMult');
+  if (_exitSl) _exitSl.value = V.dcfExitMult || 10;
+  if (_exitSp) _exitSp.textContent = (V.dcfExitMult || 10) + '×';
   const inv = document.getElementById('dcfInvestDisp');
   if (inv) inv.textContent = '€' + (V.dcfInvest||150000).toLocaleString('tr-TR');
   const invSl = document.getElementById('s_dcfInvest');
@@ -3193,9 +3197,10 @@ function updateKapasiteUyari(rows) {
 function svDcf(key, val) {
   val = parseFloat(val);
   V[key] = val;
-  if (key === 'dcfRate')    { const e = document.getElementById('dcfRate');    if(e) e.textContent = val; }
-  if (key === 'dcfGrowth')  { const e = document.getElementById('dcfGrowth');  if(e) e.textContent = val; }
-  if (key === 'dcfGrowth45'){ const e = document.getElementById('dcfGrowth45');if(e) e.textContent = val; }
+  if (key === 'dcfRate')     { const e = document.getElementById('dcfRate');     if(e) e.textContent = val; }
+  if (key === 'dcfGrowth')   { const e = document.getElementById('dcfGrowth');   if(e) e.textContent = val; }
+  if (key === 'dcfGrowth45') { const e = document.getElementById('dcfGrowth45'); if(e) e.textContent = val; }
+  if (key === 'dcfExitMult') { const e = document.getElementById('dcfExitMult'); if(e) e.textContent = val + '×'; }
   if (key === 'dcfInvest')  {
     const e = document.getElementById('dcfInvestDisp');
     if(e) e.textContent = '€' + Math.round(val).toLocaleString('tr-TR');
@@ -3209,15 +3214,10 @@ function renderDcf() {
   const t = window._lastTotals || [];
   if (!t || t.length < 5) return;
 
-  const r      = (V.dcfRate   || 28) / 100;
-  const gRaw   = (V.dcfGrowth || 8)  / 100;
-  const gEff   = Math.min(gRaw, r - 0.01); // cap: g must be < r (Gordon model requires r > g)
-  const invest = V.dcfInvest || 150000;
-  const eurKur = V.eurKur || 50;
-
-  // Show/hide g≥r warning
-  const _gWarn = document.getElementById('dcfGrowthWarn');
-  if (_gWarn) _gWarn.style.display = gRaw >= r ? '' : 'none';
+  const r          = (V.dcfRate    || 28) / 100;
+  const exitMult   = V.dcfExitMult || 10;
+  const invest     = V.dcfInvest   || 150000;
+  const eurKur     = V.eurKur      || 50;
 
   // FCF: Year 1 from monthly model rows; Years 2–5 direct from 5-year projection
   const rows = window._lastRows || [];
@@ -3227,8 +3227,8 @@ function renderDcf() {
 
   const fcf = [y1fcf, t[1]||0, t[2]||0, t[3]||0, t[4]||0];
 
-  // Terminal değer — Gordon büyüme modeli: TV = FCF5 × (1+gEff) / (r−gEff)
-  const tv = fcf[4] > 0 ? Math.round(fcf[4] * (1 + gEff) / (r - gEff)) : 0;
+  // Terminal değer — EV/EBITDA exit multiple: TV = Year5_EBITDA × multiple (€K)
+  const tv = fcf[4] > 0 ? Math.round(fcf[4] * exitMult) : 0;
 
   // PV hesabı
   const pv  = fcf.map((cf, i) => cf / Math.pow(1 + r, i + 1));
@@ -3262,7 +3262,7 @@ function renderDcf() {
   tbody.innerHTML =
     '<tr><td>Free Cash Flow (€M)</td>'
     + fcf.map(v => fmtE(v)).join('')
-    + '<td style="color:#888;font-size:11px;">TV: €'+(tv/1000).toFixed(2)+'M</td></tr>'
+    + '<td style="color:#888;font-size:11px;">TV '+exitMult+'× EBITDA: €'+(tv/1000).toFixed(2)+'M</td></tr>'
     + '<tr><td style="color:#888;font-size:11px;">Discount factor (1/(1+r)ⁿ)</td>'
     + fcf.map((_,i)=>'<td style="color:#888;font-size:11px;">'+(1/Math.pow(1+r,i+1)).toFixed(3)+'</td>').join('')
     + '<td style="color:#888;font-size:11px;">'+(1/Math.pow(1+r,5)).toFixed(3)+'</td></tr>'
@@ -3285,15 +3285,15 @@ function renderGetiriTable() {
   const eurKur    = V.eurKur || 50;
 
   // Pre-money (DCF) — same logic as renderDcf
-  const r    = (V.dcfRate   || 28) / 100;
-  const gEff = Math.min((V.dcfGrowth || 8) / 100, r - 0.01); // cap: g < r
+  const r        = (V.dcfRate    || 28) / 100;
+  const exitMult = V.dcfExitMult || 10;
   const rows = window._lastRows || [];
   const y1fcf = rows.length > 0
     ? Math.round(rows.reduce((s,r)=>s+(r.net||0),0) / eurKur / 1000)
     : (t[0] || 0);
   // Years 2–5 direct from 5-year projection (no growth-factor extrapolation)
   const fcf = [y1fcf, t[1]||0, t[2]||0, t[3]||0, t[4]||0];
-  const tv   = fcf[4] > 0 ? Math.round(fcf[4]*(1+gEff)/(r-gEff)) : 0;
+  const tv   = fcf[4] > 0 ? Math.round(fcf[4] * exitMult) : 0;
   const pv   = fcf.map((cf,i)=>cf/Math.pow(1+r,i+1));
   const pvTv = tv/Math.pow(1+r,5);
   const npv  = pv.reduce((s,v)=>s+v,0)+pvTv;  // €K
