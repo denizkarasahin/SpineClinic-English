@@ -185,7 +185,7 @@
             <input type="range" id="s_dcfInvest" min="5000" max="5000000" step="5000" value="150000" oninput="svDcf('dcfInvest',this.value)">
             <span class="sl-val" id="dcfInvestDisp" style="min-width:70px;">€150.000</span>
           </div>
-          <span class="sl-note">Total target investment (all doctors)</span>
+          <span class="sl-note">Per-investor ticket size (your individual check)</span>
         </div>
       </div>
 
@@ -284,22 +284,42 @@
           <thead>
             <tr>
               <th style="text-align:left;">Scenario</th>
-              <th>Pre-Money (DCF)</th>
-              <th>Equity Stake</th>
-              <th>EV — Multiple-Based</th>
-              <th>Exit Value (Multiple)</th>
-              <th>MOIC (Multiple)</th>
-              <th>EV — DCF-Based</th>
-              <th>Exit Value (DCF)</th>
-              <th>MOIC (DCF)</th>
+              <th>Enterprise Value</th>
+              <th>Your Stake</th>
+              <th>Your Payout</th>
+              <th>MOIC</th>
+              <th>IRR (5yr ann.)</th>
             </tr>
           </thead>
           <tbody id="getiriTableBody">
-            <tr><td colspan="9" style="text-align:center;color:#aaa;font-size:11px;">Calculating...</td></tr>
+            <tr><td colspan="6" style="text-align:center;color:#aaa;font-size:11px;">Calculating...</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="note-box" style="margin-bottom:16px;">MOIC (Multiple on Invested Capital) = Exit value / Investment amount. Multiple-based EV: Year 5 EBITDA × scenario multiple (4x/6x/9x). DCF-based EV: 5-year discounted cash flow + terminal value. Exit value = EV × equity stake. Pre-money updates from the investment amount slider.</div>
+      <div class="note-box" style="margin-bottom:16px;">
+        <b>MOIC</b> = Your payout ÷ your ticket. <b>IRR</b> = annualized return over 5 years (simple: MOIC^(1/5)−1). <b>Enterprise Value</b> = Year 5 EBITDA × exit multiple. Your payout = EV × your equity stake. Equity stake = your ticket ÷ post-money valuation. The "For 3× MOIC" row shows the EV and exit multiple required to triple your investment — use it as a target benchmark. <b>Color guide:</b> green = IRR ≥ 25% / MOIC ≥ 3×, yellow = IRR ≥ 15% / MOIC ≥ 2×, red = below.
+      </div>
+
+      <!-- MOIC Sensitivity mini-table -->
+      <div style="margin-top:18px;">
+        <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">MOIC Sensitivity — Year 5 Exit Multiple Sweep</div>
+        <div class="tbl-wrap" style="margin-bottom:10px;">
+          <table id="moicSensTable" style="min-width:340px;">
+            <thead>
+              <tr>
+                <th>Exit Multiple</th>
+                <th>Enterprise Value</th>
+                <th>MOIC</th>
+                <th>IRR (5yr)</th>
+              </tr>
+            </thead>
+            <tbody id="moicSensBody">
+              <tr><td colspan="4" style="text-align:center;color:#aaa;font-size:11px;">Calculating...</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note-box" style="font-size:11px;">MOIC and IRR above are for your ticket size (slider above). Physician partners also earn operating profit share during Years 1–5 — this is additional return not captured here. For a doctor-partner investing €150K who also earns clinic dividends, total economic return is materially higher than equity exit alone.</div>
+      </div>
     </div>
 
     <div class="note-box">EBITDA = Earnings Before Interest, Taxes, Depreciation and Amortization. Since there are no interest or depreciation items in this model, EBITDA ≈ operating profit (EBIT). VAT: orthosis-prosthesis delivery is exempt under VAT Law 17/4-s at 0% (full exemption). Corporate tax: 25% on profit from clinic operations; no sales exemption (Technology Development Zone exemption belongs solely to Osteoid Inc.). EV is always calculated on EBITDA — the figures above are total enterprise value, not equity value. Your equity value = EV × your ownership percentage. In addition to multiples, the multiple automatically increases by +1x (2nd center) or +2x (3rd center) as the number of active centers grows.</div>
