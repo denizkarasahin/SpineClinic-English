@@ -48,7 +48,7 @@
 
       <div class="sl-grid">
         <div class="sl-row">
-          <label>Turkey annual braces (units) <span style="font-size:10px;font-weight:600;color:#378ADD;background:#EDF4FF;padding:1px 6px;border-radius:3px;margin-left:4px;">B2B market</span></label>
+          <label>Turkey annual braces (units) <span style="font-size:10px;font-weight:600;color:#378ADD;background:#EDF4FF;padding:1px 6px;border-radius:3px;margin-left:4px;">B2C market</span></label>
           <div class="sl-controls">
             <input type="range" id="s_pazarTR" min="10000" max="60000" step="1000" value="25000" oninput="sv('pazarTR',this.value)">
             <span class="sl-val" id="pazarTR" contenteditable="true" onblur="sv2('pazarTR','s_pazarTR',this)">30.000</span>
@@ -86,6 +86,7 @@
             <input type="range" id="s_korseF_stdR" min="20000" max="60000" step="500" value="25000" style="flex:1;accent-color:#888780;" oninput="sv('korseF_stdR',this.value)">
             <span class="sl-val" id="korseF_stdR" contenteditable="true" onblur="sv2('korseF_stdR','s_korseF_stdR',this)" style="min-width:60px;font-size:12px;">25.000</span>
           </div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;padding-left:2px;">≈ €<span id="eurFiyat_stdR">—</span></div>
         </div>
         <div style="margin-bottom:8px;">
           <label style="font-size:10px;color:#888780;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">B2B price (₺)</label>
@@ -124,8 +125,8 @@
         <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(136,135,128,0.2);">
           <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:4px;">Net Revenue / Brace</label>
           <div style="display:flex;gap:14px;">
-            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">Clinic</div><div style="font-size:13px;font-weight:700;color:#888780;"><span id="ciroTL_stdR">—</span> ₺</div></div>
-            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">B2B</div><div style="font-size:13px;font-weight:700;color:#888780;"><span id="ciroB2BTL_stdR">—</span> ₺</div></div>
+            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">Clinic</div><div style="font-size:13px;font-weight:700;color:#888780;"><span id="ciroTL_stdR">—</span> ₺</div><div style="font-size:10px;color:#aaa;margin-top:1px;">€<span id="ciroEur_stdR">—</span></div></div>
+            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">B2B</div><div style="font-size:13px;font-weight:700;color:#888780;"><span id="ciroB2BTL_stdR">—</span> ₺</div><div style="font-size:10px;color:#aaa;margin-top:1px;">€<span id="ciroB2BEur_stdR">—</span></div></div>
           </div>
         </div>
       </div>
@@ -141,6 +142,7 @@
             <input type="range" id="s_korseF_stdRl" min="20000" max="60000" step="500" value="30000" style="flex:1;accent-color:#D85A30;" oninput="sv('korseF_stdRl',this.value)">
             <span class="sl-val" id="korseF_stdRl" contenteditable="true" onblur="sv2('korseF_stdRl','s_korseF_stdRl',this)" style="min-width:60px;font-size:12px;">30.000</span>
           </div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;padding-left:2px;">≈ €<span id="eurFiyat_stdRl">—</span></div>
         </div>
         <div style="margin-bottom:8px;">
           <label style="font-size:10px;color:#D85A30;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">B2B price (₺)</label>
@@ -179,8 +181,8 @@
         <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(216,90,48,0.2);">
           <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:4px;">Net Revenue / Brace</label>
           <div style="display:flex;gap:14px;">
-            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">Clinic</div><div style="font-size:13px;font-weight:700;color:#D85A30;"><span id="ciroTL_stdRl">—</span> ₺</div></div>
-            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">B2B</div><div style="font-size:13px;font-weight:700;color:#D85A30;"><span id="ciroB2BTL_stdRl">—</span> ₺</div></div>
+            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">Clinic</div><div style="font-size:13px;font-weight:700;color:#D85A30;"><span id="ciroTL_stdRl">—</span> ₺</div><div style="font-size:10px;color:#aaa;margin-top:1px;">€<span id="ciroEur_stdRl">—</span></div></div>
+            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">B2B</div><div style="font-size:13px;font-weight:700;color:#D85A30;"><span id="ciroB2BTL_stdRl">—</span> ₺</div><div style="font-size:10px;color:#aaa;margin-top:1px;">€<span id="ciroB2BEur_stdRl">—</span></div></div>
           </div>
         </div>
       </div>
@@ -196,6 +198,7 @@
             <input type="range" id="s_korseF_sens" min="20000" max="80000" step="500" value="40000" style="flex:1;accent-color:#534AB7;" oninput="sv('korseF_sens',this.value)">
             <span class="sl-val" id="korseF_sens" contenteditable="true" onblur="sv2('korseF_sens','s_korseF_sens',this)" style="min-width:60px;font-size:12px;">40.000</span>
           </div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;padding-left:2px;">≈ €<span id="eurFiyat_sens">—</span></div>
         </div>
         <div style="margin-bottom:8px;">
           <label style="font-size:10px;color:#534AB7;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">B2B price (₺)</label>
@@ -234,8 +237,8 @@
         <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(83,74,183,0.2);">
           <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:4px;">Net Revenue / Brace</label>
           <div style="display:flex;gap:14px;">
-            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">Clinic</div><div style="font-size:13px;font-weight:700;color:#534AB7;"><span id="ciroTL_sens">—</span> ₺</div></div>
-            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">B2B</div><div style="font-size:13px;font-weight:700;color:#534AB7;"><span id="ciroB2BTL_sens">—</span> ₺</div></div>
+            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">Clinic</div><div style="font-size:13px;font-weight:700;color:#534AB7;"><span id="ciroTL_sens">—</span> ₺</div><div style="font-size:10px;color:#aaa;margin-top:1px;">€<span id="ciroEur_sens">—</span></div></div>
+            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">B2B</div><div style="font-size:13px;font-weight:700;color:#534AB7;"><span id="ciroB2BTL_sens">—</span> ₺</div><div style="font-size:10px;color:#aaa;margin-top:1px;">€<span id="ciroB2BEur_sens">—</span></div></div>
           </div>
         </div>
       </div>
@@ -251,6 +254,7 @@
             <input type="range" id="s_korseF_delik" min="20000" max="60000" step="500" value="50000" style="flex:1;accent-color:#1D9E75;" oninput="sv('korseF_delik',this.value)">
             <span class="sl-val" id="korseF_delik" contenteditable="true" onblur="sv2('korseF_delik','s_korseF_delik',this)" style="min-width:60px;font-size:12px;">50.000</span>
           </div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;padding-left:2px;">≈ €<span id="eurFiyat_delik">—</span></div>
         </div>
         <div style="margin-bottom:8px;">
           <label style="font-size:10px;color:#1D9E75;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">B2B price (₺)</label>
@@ -289,8 +293,8 @@
         <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(29,158,117,0.2);">
           <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:4px;">Net Revenue / Brace</label>
           <div style="display:flex;gap:14px;">
-            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">Clinic</div><div style="font-size:13px;font-weight:700;color:#1D9E75;"><span id="ciroTL_delik">—</span> ₺</div></div>
-            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">B2B</div><div style="font-size:13px;font-weight:700;color:#1D9E75;"><span id="ciroB2BTL_delik">—</span> ₺</div></div>
+            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">Clinic</div><div style="font-size:13px;font-weight:700;color:#1D9E75;"><span id="ciroTL_delik">—</span> ₺</div><div style="font-size:10px;color:#aaa;margin-top:1px;">€<span id="ciroEur_delik">—</span></div></div>
+            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">B2B</div><div style="font-size:13px;font-weight:700;color:#1D9E75;"><span id="ciroB2BTL_delik">—</span> ₺</div><div style="font-size:10px;color:#aaa;margin-top:1px;">€<span id="ciroB2BEur_delik">—</span></div></div>
           </div>
         </div>
       </div>
@@ -306,6 +310,7 @@
             <input type="range" id="s_korseF_sensDelik" min="20000" max="80000" step="500" value="65000" style="flex:1;accent-color:#D4537E;" oninput="sv('korseF_sensDelik',this.value)">
             <span class="sl-val" id="korseF_sensDelik" contenteditable="true" onblur="sv2('korseF_sensDelik','s_korseF_sensDelik',this)" style="min-width:60px;font-size:12px;">65.000</span>
           </div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;padding-left:2px;">≈ €<span id="eurFiyat_sensDelik">—</span></div>
         </div>
         <div style="margin-bottom:8px;">
           <label style="font-size:10px;color:#D4537E;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">B2B price (₺)</label>
@@ -344,8 +349,8 @@
         <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(212,83,126,0.2);">
           <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:4px;">Net Revenue / Brace</label>
           <div style="display:flex;gap:14px;">
-            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">Clinic</div><div style="font-size:13px;font-weight:700;color:#D4537E;"><span id="ciroTL_sensDelik">—</span> ₺</div></div>
-            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">B2B</div><div style="font-size:13px;font-weight:700;color:#D4537E;"><span id="ciroB2BTL_sensDelik">—</span> ₺</div></div>
+            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">Clinic</div><div style="font-size:13px;font-weight:700;color:#D4537E;"><span id="ciroTL_sensDelik">—</span> ₺</div><div style="font-size:10px;color:#aaa;margin-top:1px;">€<span id="ciroEur_sensDelik">—</span></div></div>
+            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">B2B</div><div style="font-size:13px;font-weight:700;color:#D4537E;"><span id="ciroB2BTL_sensDelik">—</span> ₺</div><div style="font-size:10px;color:#aaa;margin-top:1px;">€<span id="ciroB2BEur_sensDelik">—</span></div></div>
           </div>
         </div>
       </div>
