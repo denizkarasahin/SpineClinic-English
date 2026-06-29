@@ -3210,9 +3210,14 @@ function renderDcf() {
   if (!t || t.length < 5) return;
 
   const r      = (V.dcfRate   || 28) / 100;
-  const g      = (V.dcfGrowth || 8)  / 100;
+  const gRaw   = (V.dcfGrowth || 8)  / 100;
+  const gEff   = Math.min(gRaw, r - 0.01); // cap: g must be < r (Gordon model requires r > g)
   const invest = V.dcfInvest || 150000;
   const eurKur = V.eurKur || 50;
+
+  // Show/hide g≥r warning
+  const _gWarn = document.getElementById('dcfGrowthWarn');
+  if (_gWarn) _gWarn.style.display = gRaw >= r ? '' : 'none';
 
   // FCF: Year 1 from monthly model rows; Years 2–5 direct from 5-year projection
   const rows = window._lastRows || [];
@@ -3222,8 +3227,8 @@ function renderDcf() {
 
   const fcf = [y1fcf, t[1]||0, t[2]||0, t[3]||0, t[4]||0];
 
-  // Terminal değer — Gordon büyüme modeli: TV = FCF5 × (1+g) / (r−g)
-  const tv = (r > g && fcf[4] > 0) ? Math.round(fcf[4] * (1 + g) / (r - g)) : 0;
+  // Terminal değer — Gordon büyüme modeli: TV = FCF5 × (1+gEff) / (r−gEff)
+  const tv = fcf[4] > 0 ? Math.round(fcf[4] * (1 + gEff) / (r - gEff)) : 0;
 
   // PV hesabı
   const pv  = fcf.map((cf, i) => cf / Math.pow(1 + r, i + 1));
@@ -3281,14 +3286,14 @@ function renderGetiriTable() {
 
   // Pre-money (DCF) — same logic as renderDcf
   const r    = (V.dcfRate   || 28) / 100;
-  const g    = (V.dcfGrowth || 8)  / 100;
+  const gEff = Math.min((V.dcfGrowth || 8) / 100, r - 0.01); // cap: g < r
   const rows = window._lastRows || [];
   const y1fcf = rows.length > 0
     ? Math.round(rows.reduce((s,r)=>s+(r.net||0),0) / eurKur / 1000)
     : (t[0] || 0);
   // Years 2–5 direct from 5-year projection (no growth-factor extrapolation)
   const fcf = [y1fcf, t[1]||0, t[2]||0, t[3]||0, t[4]||0];
-  const tv   = (r>g && fcf[4]>0) ? Math.round(fcf[4]*(1+g)/(r-g)) : 0;
+  const tv   = fcf[4] > 0 ? Math.round(fcf[4]*(1+gEff)/(r-gEff)) : 0;
   const pv   = fcf.map((cf,i)=>cf/Math.pow(1+r,i+1));
   const pvTv = tv/Math.pow(1+r,5);
   const npv  = pv.reduce((s,v)=>s+v,0)+pvTv;  // €K
