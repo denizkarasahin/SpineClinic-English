@@ -2889,11 +2889,6 @@ function buildProjection() {
   if (_izmirAcilisEl && V.izmirAktif) _izmirAcilisEl.textContent = _acilisLabel(_acilisAy);
   if (_ankaraAcilisEl && V.ankaraAktif) _ankaraAcilisEl.textContent = _acilisLabel(_ankaraAcilisAy);
 
-  // İzmir ve Ankara gelir satırları — tetik gecikmesi oranında ölçeklenir
-  // Clamp to 0: a new center running a startup ramp may show net-negative in partial Year 2
-  const izmirGelirY2  = V.izmirAktif  ? Math.max(0, Math.round(getMerkezGelir('izmir')  * _aktifAyYil2 / 12)) : 0;
-  const ankaraGelirY2 = V.ankaraAktif ? Math.max(0, Math.round(getMerkezGelir('ankara') * _ankaraAktifAyYil2 / 12)) : 0;
-
   // Büyüme Mantığı tetik notu
   const _trigNote = document.getElementById('triggerNote');
   if (_trigNote) {
@@ -2917,7 +2912,7 @@ function buildProjection() {
     }
   }
 
-  // Yıl 5 hedef gelirleri
+  // Yıl 5 hedef gelirleri (gross brace revenue at target market share)
   const pazarIzmir  = Math.round(gv('pazarTR') * V.izmirNufusPay / 100);
   const pazarAnkara = Math.round(gv('pazarTR') * V.ankaraNufusPay / 100);
   const y1BirimNetEur = toEur(y1KorseNet) / (y1Korse||1) * 1000; // €/adet
@@ -2927,13 +2922,18 @@ function buildProjection() {
   const izmirY5Gelir  = Math.round(izmirY5Adet  * y1BirimNetEur / 1000);
   const ankaraY5Gelir = Math.round(ankaraY5Adet * y1BirimNetEur / 1000);
 
-  // New centers: 5-year ramp — Y2 partial, Y3 50%, Y4 80%, Y5 full capacity
-  const izmirY3Net  = V.izmirAktif  ? Math.max(0, Math.round(izmirY5Gelir  * 0.5) - y3GiderEur) : 0;
-  const izmirY4Net  = V.izmirAktif  ? Math.max(0, Math.round(izmirY5Gelir  * 0.8) - y4GiderEur) : 0;
-  const ankaraY3Net = V.ankaraAktif ? Math.max(0, Math.round(ankaraY5Gelir * 0.5) - y3GiderEur) : 0;
-  const ankaraY4Net = V.ankaraAktif ? Math.max(0, Math.round(ankaraY5Gelir * 0.8) - y4GiderEur) : 0;
-  const izmirRow  = [0, izmirGelirY2,  izmirY3Net,  izmirY4Net,  V.izmirAktif  ? Math.max(0, izmirY5Gelir  - y5GiderEur) : 0];
-  const ankaraRow = [0, ankaraGelirY2, ankaraY3Net, ankaraY4Net, V.ankaraAktif ? Math.max(0, ankaraY5Gelir - y5GiderEur) : 0];
+  // Full-capacity net at Y5 (gross minus operating cost base)
+  const izmirFullNet  = V.izmirAktif  ? Math.max(0, izmirY5Gelir  - y5GiderEur) : 0;
+  const ankaraFullNet = V.ankaraAktif ? Math.max(0, ankaraY5Gelir - y5GiderEur) : 0;
+  // New centers: 5-year ramp — interpolate from full-capacity net to avoid cost-base distortion
+  const izmirGelirY2  = V.izmirAktif  ? Math.round(izmirFullNet  * 0.25 * _aktifAyYil2  / 12) : 0;
+  const ankaraGelirY2 = V.ankaraAktif ? Math.round(ankaraFullNet * 0.25 * _ankaraAktifAyYil2 / 12) : 0;
+  const izmirY3Net  = Math.round(izmirFullNet  * 0.50);
+  const izmirY4Net  = Math.round(izmirFullNet  * 0.80);
+  const ankaraY3Net = Math.round(ankaraFullNet * 0.50);
+  const ankaraY4Net = Math.round(ankaraFullNet * 0.80);
+  const izmirRow  = [0, izmirGelirY2,  izmirY3Net,  izmirY4Net,  izmirFullNet];
+  const ankaraRow = [0, ankaraGelirY2, ankaraY3Net, ankaraY4Net, ankaraFullNet];
 
   // B2B: yalnızca İstanbul Merkez 1
   const b2bY1 = toEur(window._lastGelirB2B || 0);
