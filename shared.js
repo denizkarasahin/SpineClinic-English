@@ -2609,32 +2609,126 @@ let projChartInst = null;
 initDynamic();
 recalc();
 
-function renderSummary3yr(totals, sgkRow, izmirRow, ankaraRow, b2bRow, y1KorseNet) {
+function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet) {
   const el = document.getElementById('summaryOutcomes3yr');
   if (!el) return;
   const eurKur = V.eurKur || 50;
-  const activeCount = 1 + (V.izmirAktif ? 1 : 0) + (V.ankaraAktif ? 1 : 0);
-  const c2Name = V.izmirAktif ? 'Izmir' : V.ankaraAktif ? 'Ankara' : null;
-  const hasSgk = (sgkRow[1] || 0) > 0 || (sgkRow[2] || 0) > 0;
-  const fmtK = v => v > 0 ? '~€' + (v * 1000).toLocaleString('en-US') : '—';
-  // Year 1: use same source as 12-month KPI grid (gelirNet before fixed costs)
-  const y1Eur = y1KorseNet > 0 ? '€' + Math.round(y1KorseNet / eurKur).toLocaleString('en-US') : '—';
-  const growth = (y1KorseNet > 0 && totals[2] > 0)
-    ? Math.round((totals[2] / Math.round(y1KorseNet / eurKur / 1000) - 1) * 100) : null;
 
-  const kpis = [
-    { label: 'Clinic net revenue (year)', val: y1Eur,           c: y1KorseNet > 0 ? 'pos' : 'neg', sub: 'Year 1 · Istanbul Flagship' },
-    { label: 'Year 2 net revenue',        val: fmtK(totals[1]), c: totals[1] > 0 ? 'pos' : 'neg',  sub: c2Name ? c2Name + ' + SSI begins' : 'private only' },
-    { label: 'Year 3 net revenue',        val: fmtK(totals[2]), c: totals[2] > 0 ? 'pos' : 'neg',  sub: activeCount + ' center' + (activeCount > 1 ? 's' : '') },
-    { label: 'Revenue growth Y1 → Y3',   val: growth !== null ? '+' + growth + '%' : '—', c: 'pos', sub: '' },
-    { label: 'Active centers (Y3)',       val: String(activeCount), c: 'neu', sub: '' },
-    { label: '2nd center',               val: c2Name || 'Not planned', c: 'neu', sub: '' },
-    { label: 'SSI / public channel',     val: hasSgk ? 'Year 2 ramp-up' : 'Not modelled', c: 'neu', sub: '' },
-  ];
+  // Market size per city (from V)
+  const pazarTR     = V.pazarTR || 30000;
+  const istAdet     = Math.round(pazarTR * (V.pazarIstPct   || 18.3) / 100 * (V.hedefOsteoidPay || 20) / 100);
+  const izmirAdet   = V.izmirAktif  ? Math.round(pazarTR * (V.izmirNufusPay  || 7.1) / 100 * (V.izmirHedefPay  || 21)   / 100) : 0;
+  const ankaraAdet  = V.ankaraAktif ? Math.round(pazarTR * (V.ankaraNufusPay || 8.2) / 100 * (V.ankaraHedefPay || 20.5) / 100) : 0;
 
-  el.innerHTML = `<div class="kpi-grid" style="margin-bottom:10px;">` +
-    kpis.map(k => `<div class="kpi"><div class="kpi-label">${k.label}</div><div class="kpi-val ${k.c}">${k.val}</div>${k.sub ? `<div style="font-size:10px;color:#aaa;margin-top:2px;">${k.sub}</div>` : ''}</div>`).join('') +
-    `</div><div style="font-size:10px;color:#aaa;text-align:right;">⚠ Projection based on Year 1 model · <a href="growth.html" style="color:#534AB7;text-decoration:none;font-weight:700;">Full 3-Year Plan →</a></div>`;
+  // Revenue at full market penetration — per center (all in €K)
+  const izmirNet  = izmirRow[2]  || 0;
+  const ankaraNet = ankaraRow[2] || 0;
+  const istNet    = Math.max(0, (totals[2] || 0) - izmirNet - ankaraNet); // includes b2b
+  const totalNet  = totals[2]    || 0;
+
+  // Year 1 Istanbul (model-driven, shown as-is)
+  const y1Eur    = y1KorseNet > 0 ? Math.round(y1KorseNet / eurKur) : 0;
+  const y1Braces = (V.korse || []).reduce((s, v) => s + v, 0);
+  const y1PctOfTarget = istAdet > 0 ? Math.round(y1Braces / istAdet * 100) : 0;
+
+  const fmtEur  = v => v > 0 ? '€' + v.toLocaleString('en-US') : '—';
+  const fmtKEur = v => v > 0 ? '~€' + (v * 1000).toLocaleString('en-US') : '—';
+  const fmtN    = v => v > 0 ? v.toLocaleString('en-US') + ' units/yr' : '—';
+
+  const clinicCard = (name, badge, color, adet, payPct, net, note) => `
+    <div style="border:1px solid ${color}44;border-left:3px solid ${color};border-radius:6px;padding:12px 16px;margin-bottom:8px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+        <div style="font-size:12px;font-weight:700;color:#ddd;">${name}</div>
+        <div style="font-size:10px;font-weight:700;color:${color};background:${color}22;padding:2px 8px;border-radius:10px;">${badge}</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+        <div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Annual net revenue</div>
+          <div style="font-size:18px;font-weight:700;color:${color};">${fmtKEur(net)}</div>
+        </div>
+        <div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Target volume</div>
+          <div style="font-size:14px;font-weight:600;color:#bbb;">${fmtN(adet)}</div>
+        </div>
+        <div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Market share target</div>
+          <div style="font-size:14px;font-weight:600;color:#bbb;">${payPct}%</div>
+        </div>
+      </div>
+      ${note ? `<div style="font-size:10px;color:#777;margin-top:8px;padding-top:8px;border-top:1px solid #2a2a3e;">${note}</div>` : ''}
+    </div>`;
+
+  let html = '';
+
+  // ── Year 1 baseline card (model-driven) ──
+  html += `
+    <div style="border:2px solid #534AB7;border-radius:6px;padding:12px 16px;margin-bottom:16px;background:#0f0f1f;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+        <div style="font-size:12px;font-weight:700;color:#ddd;">Istanbul Flagship — Year 1</div>
+        <div style="font-size:10px;font-weight:700;color:#534AB7;background:#534AB722;padding:2px 8px;border-radius:10px;">✓ Monthly model — verified</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+        <div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Net revenue (year)</div>
+          <div style="font-size:22px;font-weight:700;color:#534AB7;">${fmtEur(y1Eur)}</div>
+        </div>
+        <div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Braces Year 1</div>
+          <div style="font-size:14px;font-weight:600;color:#bbb;">${y1Braces.toLocaleString('en-US')} units</div>
+        </div>
+        <div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Progress to target</div>
+          <div style="font-size:14px;font-weight:600;color:#bbb;">${y1PctOfTarget}% of capacity</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="font-size:10px;font-weight:700;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">At full market penetration — per clinic</div>`;
+
+  // ── Per-center cards ──
+  html += clinicCard(
+    'Istanbul Flagship',
+    'IST · ' + (V.hedefOsteoidPay || 20).toFixed(0) + '% market share',
+    '#534AB7', istAdet,
+    (V.hedefOsteoidPay || 20).toFixed(1),
+    istNet,
+    'Includes B2B channel · Net after operating costs'
+  );
+
+  if (V.izmirAktif) {
+    html += clinicCard(
+      'Izmir Center',
+      'IZM · ' + (V.izmirHedefPay || 21).toFixed(0) + '% market share',
+      '#1D9E75', izmirAdet,
+      (V.izmirHedefPay || 21).toFixed(1),
+      izmirNet,
+      'Opens Year 2 · Net after operating costs at full capacity'
+    );
+  }
+
+  if (V.ankaraAktif) {
+    html += clinicCard(
+      'Ankara Center',
+      'ANK · ' + (V.ankaraHedefPay || 20.5).toFixed(0) + '% market share',
+      '#E8963C', ankaraAdet,
+      (V.ankaraHedefPay || 20.5).toFixed(1),
+      ankaraNet,
+      'Opens Year 2 · Net after operating costs at full capacity'
+    );
+  }
+
+  // ── Total ──
+  html += `
+    <div style="border:2px solid #534AB7;border-radius:6px;padding:14px 16px;margin-top:4px;display:flex;align-items:center;justify-content:space-between;">
+      <div>
+        <div style="font-size:11px;font-weight:700;color:#aaa;">Combined — all active centers at capacity</div>
+        <div style="font-size:10px;color:#555;margin-top:3px;">Timeline depends on doctor acquisition pace · <a href="growth.html" style="color:#534AB7;text-decoration:none;font-weight:700;">Full Growth Model →</a></div>
+      </div>
+      <div style="font-size:26px;font-weight:700;color:#534AB7;">${fmtKEur(totalNet)}</div>
+    </div>
+    <div style="font-size:10px;color:#555;margin-top:10px;">⚠ These are capacity targets — not year-bound projections. Actual timing depends on doctor onboarding pace. Year 1 Istanbul figure is a bottom-up monthly model.</div>`;
+
+  el.innerHTML = html;
 }
 
 // 5 Yıllık Projeksiyon — dinamik
@@ -2695,12 +2789,7 @@ function buildProjection() {
   const y2NetM1  = Math.max(0, lerp(y1BrutM1, y3BrutGelir, 0.4) - y2GiderEur);
   const y3NetM1  = Math.max(0, y3BrutGelir - y3GiderEur);
 
-  // ── Kanal dağılımı: SGK Yıl 2 ortasından başlar, Yıl 3 olgunlaşır ──
-  const y3SgkNet = Math.round(y3BrutGelir * 0.35 * 0.85); // %35 SGK kanal payı × %85 tahsilat
-  const y2SgkNet = Math.round(y3SgkNet * 0.25); // Yıl 2: SGK onay + yarıyıl rampa → %25
   const korseM1    = [y1NetM1, y2NetM1, y3NetM1];
-  // SGK: Yıl 2 ortasından itibaren gelir, Yıl 3 tam kapasite
-  const korseM1SGK = [0, y2SgkNet, y3SgkNet];
   // korseM2: 2. merkez İzmir/Ankara satırlarında ayrıca gösterilir
   const korseM2    = [0, 0, 0];
 
@@ -2735,8 +2824,9 @@ function buildProjection() {
   if (_ankaraAcilisEl && V.ankaraAktif) _ankaraAcilisEl.textContent = _acilisLabel(_ankaraAcilisAy);
 
   // İzmir ve Ankara gelir satırları — tetik gecikmesi oranında ölçeklenir
-  const izmirGelirY2  = V.izmirAktif  ? Math.round(getMerkezGelir('izmir')  * _aktifAyYil2 / 12) : 0;
-  const ankaraGelirY2 = V.ankaraAktif ? Math.round(getMerkezGelir('ankara') * _ankaraAktifAyYil2 / 12) : 0;
+  // Clamp to 0: a new center running a startup ramp may show net-negative in partial Year 2
+  const izmirGelirY2  = V.izmirAktif  ? Math.max(0, Math.round(getMerkezGelir('izmir')  * _aktifAyYil2 / 12)) : 0;
+  const ankaraGelirY2 = V.ankaraAktif ? Math.max(0, Math.round(getMerkezGelir('ankara') * _ankaraAktifAyYil2 / 12)) : 0;
 
   // Büyüme Mantığı tetik notu
   const _trigNote = document.getElementById('triggerNote');
@@ -2771,19 +2861,20 @@ function buildProjection() {
   const izmirY5Gelir  = Math.round(izmirY5Adet  * y1BirimNetEur / 1000);
   const ankaraY5Gelir = Math.round(ankaraY5Adet * y1BirimNetEur / 1000);
 
-  // Yıl 2-4 interpolasyon
-  const izmirRow  = [0, izmirGelirY2,  izmirY5Gelir];
-  const ankaraRow = [0, ankaraGelirY2, ankaraY5Gelir];
+  // Yıl 3 yeni merkezler: Y5 pazar payı hedef brüt geliri eksi Y3 işletme giderleri
+  // (Istanbul Y3 hesabıyla tutarlı: y3BrutGelir - y3GiderEur)
+  const izmirRow  = [0, izmirGelirY2,  V.izmirAktif  ? Math.max(0, izmirY5Gelir  - y3GiderEur) : 0];
+  const ankaraRow = [0, ankaraGelirY2, V.ankaraAktif ? Math.max(0, ankaraY5Gelir - y3GiderEur) : 0];
 
   // B2B: yalnızca İstanbul Merkez 1 — İzmir ve Ankara'da B2B yok
   const b2bY1 = toEur(window._lastGelirB2B || 0);
   const b2bRow = [b2bY1, Math.round(b2bY1 * 1.5), Math.round(b2bY1 * 2.2)];
 
-  const totals = [0,1,2].map(i => korseM1[i]+korseM1SGK[i]+korseM2[i]+izmirRow[i]+ankaraRow[i]+b2bRow[i]);
+  const totals = [0,1,2].map(i => korseM1[i]+korseM2[i]+izmirRow[i]+ankaraRow[i]+b2bRow[i]);
 
   // Yıl 2 KPI güncelle
   window._lastTotals = totals;
-  renderSummary3yr(totals, korseM1SGK, izmirRow, ankaraRow, b2bRow, y1KorseNet);
+  renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet);
   if (typeof renderDcf === 'function') { renderDcf(); renderGetiriTable(); }
   const y2k = document.getElementById('y2GelirKpi');
   if (y2k) y2k.textContent = '~€' + totals[1] + 'K';
@@ -2802,8 +2893,8 @@ function buildProjection() {
   const y1DanisOran   = y1KorseNet > 0 ? y1Danis / y1KorseNet : 0.25;
   const y1BakimOran   = y1KorseNet > 0 ? y1Bakim / y1KorseNet : 0.05;
   const y2M1PreOpex   = lerp(y1BrutM1, y3BrutGelir, 0.4);
-  const y2TotalPreOpexNet = y2M1PreOpex + (korseM1SGK[1]||0) + (izmirRow[1]||0) + (ankaraRow[1]||0) + (b2bRow[1]||0);
-  const y3TotalPreOpexNet = y3BrutGelir + (korseM1SGK[2]||0) + (izmirRow[2]||0) + (ankaraRow[2]||0) + (b2bRow[2]||0);
+  const y2TotalPreOpexNet = y2M1PreOpex + (izmirRow[1]||0) + (ankaraRow[1]||0) + (b2bRow[1]||0);
+  const y3TotalPreOpexNet = y3BrutGelir + (izmirRow[2]||0) + (ankaraRow[2]||0) + (b2bRow[2]||0);
   const y2HekimPayiEurK = Math.round(y2TotalPreOpexNet * y1DanisOran);
   const y3HekimPayiEurK = Math.round(y3TotalPreOpexNet * y1DanisOran);
   const y2KanalPayiEurK = Math.round(y2TotalPreOpexNet * y1BakimOran);
@@ -2821,7 +2912,6 @@ function buildProjection() {
       </tr></thead>
       <tbody>
         <tr><td>Brace — Center 1 (private channel)</td>${fmt(korseM1[0])}${fmt(korseM1[1])}${fmt(korseM1[2])}${grow(korseM1[0],korseM1[2])}</tr>
-        <tr><td>Brace — Center 1 (SSI, Year 2+)</td>${fmt(0)}${fmt(korseM1SGK[1])}${fmt(korseM1SGK[2])}${grow(korseM1SGK[1],korseM1SGK[2])}</tr>
         <tr><td>Brace — Center 2 (Year 2+)</td>${fmt(0)}${fmt(korseM2[1])}${fmt(korseM2[2])}${grow(korseM2[1],korseM2[2])}</tr>
         ${b2bRow[0] > 0 || b2bRow[1] > 0 ? `<tr><td style="color:#378ADD;">B2B — Center 1 (Istanbul)</td>${fmt(b2bRow[0])}${fmt(b2bRow[1])}${fmt(b2bRow[2])}${grow(b2bRow[0],b2bRow[2])}</tr>` : ''}
         ${V.izmirAktif  ? `<tr><td style="color:#1D9E75;">Brace — Izmir Center</td>${fmt(izmirRow[0])}${fmt(izmirRow[1])}${fmt(izmirRow[2])}${grow(izmirRow[1],izmirRow[2])}</tr>` : ''}
@@ -2863,7 +2953,6 @@ function buildProjection() {
       labels: ['Year 1','Year 2','Year 3'],
       datasets: [
         { label:'Brace C1 (private)', data:korseM1, backgroundColor:'rgba(44,74,46,0.85)', borderColor:'#2c4a2e', borderWidth:1, borderRadius:3 },
-        { label:'Brace C1 (SSI)',  data:korseM1SGK, backgroundColor:'rgba(44,74,46,0.4)', borderColor:'#2c4a2e', borderWidth:1, borderRadius:3 },
         ...(V.izmirAktif  ? [{ label:'Izmir',  data:izmirRow,  backgroundColor:'rgba(29,158,117,0.7)', borderColor:'#1D9E75', borderWidth:1, borderRadius:3 }] : []),
         ...(V.ankaraAktif ? [{ label:'Ankara', data:ankaraRow, backgroundColor:'rgba(83,74,183,0.7)',  borderColor:'#534AB7', borderWidth:1, borderRadius:3 }] : []),
       ]
