@@ -2624,7 +2624,8 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
   const istNet    = Math.max(0, (totals[2] || 0) - (izmirRow[2]||0) - (ankaraRow[2]||0)); // includes b2b, net
   const izmirGross  = izmirY5Gelir  || 0;  // gross at market target
   const ankaraGross = ankaraY5Gelir || 0;
-  const totalNet  = totals[2] || 0;
+  // Total = sum of exactly what's shown in each card
+  const totalNet  = istNet + (V.izmirAktif ? izmirGross : 0) + (V.ankaraAktif ? ankaraGross : 0);
 
   // Year 1 Istanbul (model-driven, shown as-is)
   const y1Eur    = y1KorseNet > 0 ? Math.round(y1KorseNet / eurKur) : 0;
