@@ -180,14 +180,6 @@
           <span class="sl-note">Sustainable growth beyond Year 5</span>
         </div>
         <div class="sl-row">
-          <label style="font-size:10px;">Year 4–5 Growth Rate (%)</label>
-          <div class="sl-controls">
-            <input type="range" id="s_dcfGrowth45" min="5" max="60" step="5" value="25" oninput="svDcf('dcfGrowth45',this.value)">
-            <span class="sl-val" id="dcfGrowth45" style="min-width:40px;">25</span>
-          </div>
-          <span class="sl-note">Cash flow growth from Year 3→4 and Year 4→5</span>
-        </div>
-        <div class="sl-row">
           <label style="font-size:10px;">Investment Amount (€)</label>
           <div class="sl-controls">
             <input type="range" id="s_dcfInvest" min="5000" max="5000000" step="5000" value="150000" oninput="svDcf('dcfInvest',this.value)">
@@ -219,7 +211,7 @@
           </tbody>
         </table>
       </div>
-      <div class="note-box" id="dcfNote">Discount rate (r) reflects the risk premium for an early-stage Turkey healthcare venture. Terminal value is calculated using the Gordon Growth Model: TV = FCF₅ × (1+g) / (r−g). Pre-money = NPV(Year 1–5 FCF) + PV(Terminal Value). Investor stake = Investment Amount / Post-Money.</div>
+      <div class="note-box" id="dcfNote">Free Cash Flow Years 1–5 are taken directly from the 5-year projection model (same data as the Multi-Year Plan page). Terminal value uses the Gordon Growth Model: TV = FCF₅ × (1+g) / (r−g). Pre-money = NPV(FCF₁₋₅) + PV(Terminal Value). Investor stake = Investment / Post-Money. Discount rate (r) reflects the risk premium for an early-stage Turkey healthcare venture.</div>
     </div>
 
     <!-- Osteoid için değerleme senaryosu -->

@@ -2140,12 +2140,9 @@ function toggleIstRampa(sehir, useIst) {
 
 function updateValuationTable(rows, tNet) {
   const eurKur = V.eurKur || 50;
-  const g45 = (V.dcfGrowth45 || 25) / 100;
-
-  // Yıl 3 bazından Yıl 5'e DCF büyüme oranıyla projeksiyon
+  // Year 5 EBITDA — direct from 5-year projection (totals[4])
   const t3 = window._lastTotals || [];
-  const y3Favok = t3[2] || 0; // €K
-  const y5Favok = Math.round(y3Favok * Math.pow(1 + g45, 2)); // €K
+  const y5Favok = t3[4] || t3[2] || 0; // €K
 
   // Y1 model verisi
   const y1BrutGelir = rows.reduce((s,r) => s + (r.gelirBrut||0), 0);
@@ -3209,27 +3206,20 @@ function svDcf(key, val) {
 
 function renderDcf() {
   const t = window._lastTotals || [];
-  if (!t || t.length < 3) return;
+  if (!t || t.length < 5) return;
 
-  const r      = (V.dcfRate     || 28) / 100;
-  const g      = (V.dcfGrowth   || 8)  / 100;
-  const g45    = (V.dcfGrowth45 || 25) / 100;
+  const r      = (V.dcfRate   || 28) / 100;
+  const g      = (V.dcfGrowth || 8)  / 100;
   const invest = V.dcfInvest || 150000;
   const eurKur = V.eurKur || 50;
 
-  // FCF: Yıl 1 gerçek model (aylık net toplamı), Yıl 2-3 buildProjection'dan, Yıl 4-5 büyüme
+  // FCF: Year 1 from monthly model rows; Years 2–5 direct from 5-year projection
   const rows = window._lastRows || [];
   const y1fcf = rows.length > 0
     ? Math.round(rows.reduce((s,r)=>s+(r.net||0),0) / eurKur / 1000)
     : (t[0] || 0);
 
-  const fcf = [
-    y1fcf,
-    t[1] || 0,
-    t[2] || 0,
-    Math.round((t[2]||0) * (1 + g45)),
-    Math.round((t[2]||0) * Math.pow(1 + g45, 2)),
-  ];
+  const fcf = [y1fcf, t[1]||0, t[2]||0, t[3]||0, t[4]||0];
 
   // Terminal değer — Gordon büyüme modeli: TV = FCF5 × (1+g) / (r−g)
   const tv = (r > g && fcf[4] > 0) ? Math.round(fcf[4] * (1 + g) / (r - g)) : 0;
@@ -3283,24 +3273,20 @@ function renderDcf() {
 // ── YATIRIMCI GETİRİ ANALİZİ ─────────────────────────────────────────────────
 function renderGetiriTable() {
   const t = window._lastTotals || [];
-  if (!t || t.length < 3) return;
+  if (!t || t.length < 5) return;
 
   const invest    = V.dcfInvest || 150000;
   const eurKur    = V.eurKur || 50;
 
-  // Pre-money (DCF) — aynı renderDcf mantığı
-  const r    = (V.dcfRate     || 28) / 100;
-  const g    = (V.dcfGrowth   || 8)  / 100;
-  const g45  = (V.dcfGrowth45 || 25) / 100;
+  // Pre-money (DCF) — same logic as renderDcf
+  const r    = (V.dcfRate   || 28) / 100;
+  const g    = (V.dcfGrowth || 8)  / 100;
   const rows = window._lastRows || [];
   const y1fcf = rows.length > 0
     ? Math.round(rows.reduce((s,r)=>s+(r.net||0),0) / eurKur / 1000)
     : (t[0] || 0);
-  const fcf = [
-    y1fcf, t[1]||0, t[2]||0,
-    Math.round((t[2]||0)*(1+g45)),
-    Math.round((t[2]||0)*Math.pow(1+g45,2)),
-  ];
+  // Years 2–5 direct from 5-year projection (no growth-factor extrapolation)
+  const fcf = [y1fcf, t[1]||0, t[2]||0, t[3]||0, t[4]||0];
   const tv   = (r>g && fcf[4]>0) ? Math.round(fcf[4]*(1+g)/(r-g)) : 0;
   const pv   = fcf.map((cf,i)=>cf/Math.pow(1+r,i+1));
   const pvTv = tv/Math.pow(1+r,5);
@@ -3309,11 +3295,11 @@ function renderGetiriTable() {
   const postmoney_eur = premoney_eur + invest;
   const hisse_pct = postmoney_eur > 0 ? invest / postmoney_eur : 0;
 
-  // DCF bazlı EV (€) — yıl 5 nakit akışı çarpan ile terminal
-  const dcf_ev_eur = Math.round(npv * 1000);  // pre-money = DCF EV
+  // DCF-based EV
+  const dcf_ev_eur = Math.round(npv * 1000);
 
-  // Çarpan bazlı EV: Yıl 3 FAVÖK × çarpan (€K → €)
-  const y3favok_eur = (t[2] || 0) * 1000;  // €
+  // Multiple-based EV: Year 5 EBITDA × multiple (€K → €)
+  const y3favok_eur = (t[4] || 0) * 1000;  // Year 5 EBITDA (€)
 
   // updateValuationTable'daki çarpanlar (aktif merkez sayısına göre)
   const aktifMerkez = 1 + (V.izmirAktif?1:0) + (V.ankaraAktif?1:0);
