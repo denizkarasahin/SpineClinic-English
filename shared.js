@@ -3284,7 +3284,7 @@ function initLayout() {
     ['market.html','pazar','Market &amp; Competition'],
     ['korse.html','korse','Brace Ramp'],
     ['expenses.html','giderler','Expenses'],
-    ['growth.html','buyume','3-Year Plan'],
+    ['growth.html','buyume','Multi-Year Plan'],
     ['investor.html','yatirimci','Investor &amp; Agreement'],
     ['captable.html','captable','Cap Table'],
     ['methodology.html','metodoloji','Methodology &amp; Validation']
