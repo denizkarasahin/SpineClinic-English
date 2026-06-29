@@ -2684,7 +2684,10 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
       </div>
     </div>
 
-    <div style="font-size:10px;font-weight:700;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">At full market penetration — per clinic</div>`;
+    <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px;">
+      <div style="font-size:10px;font-weight:700;color:#666;text-transform:uppercase;letter-spacing:1px;">At full market penetration — per clinic</div>
+      <div style="font-size:10px;color:#888;">We are expecting roughly 3 years to achieve market potential.</div>
+    </div>`;
 
   // ── Per-center cards ──
   html += clinicCard(
