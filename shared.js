@@ -2609,22 +2609,22 @@ let projChartInst = null;
 initDynamic();
 recalc();
 
-function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet) {
+function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmirY5Gelir, ankaraY5Gelir, izmirY5Adet, ankaraY5Adet) {
   const el = document.getElementById('summaryOutcomes3yr');
   if (!el) return;
   const eurKur = V.eurKur || 50;
 
-  // Market size per city (from V)
+  // Market size per city (from V) — for display only
   const pazarTR     = V.pazarTR || 30000;
   const istAdet     = Math.round(pazarTR * (V.pazarIstPct   || 18.3) / 100 * (V.hedefOsteoidPay || 20) / 100);
-  const izmirAdet   = V.izmirAktif  ? Math.round(pazarTR * (V.izmirNufusPay  || 7.1) / 100 * (V.izmirHedefPay  || 21)   / 100) : 0;
-  const ankaraAdet  = V.ankaraAktif ? Math.round(pazarTR * (V.ankaraNufusPay || 8.2) / 100 * (V.ankaraHedefPay || 20.5) / 100) : 0;
 
   // Revenue at full market penetration — per center (all in €K)
-  const izmirNet  = izmirRow[2]  || 0;
-  const ankaraNet = ankaraRow[2] || 0;
-  const istNet    = Math.max(0, (totals[2] || 0) - izmirNet - ankaraNet); // includes b2b
-  const totalNet  = totals[2]    || 0;
+  // Istanbul: net from model (gross minus costs)
+  // Izmir/Ankara: gross at market target — shows the revenue potential before operating costs
+  const istNet    = Math.max(0, (totals[2] || 0) - (izmirRow[2]||0) - (ankaraRow[2]||0)); // includes b2b, net
+  const izmirGross  = izmirY5Gelir  || 0;  // gross at market target
+  const ankaraGross = ankaraY5Gelir || 0;
+  const totalNet  = totals[2] || 0;
 
   // Year 1 Istanbul (model-driven, shown as-is)
   const y1Eur    = y1KorseNet > 0 ? Math.round(y1KorseNet / eurKur) : 0;
@@ -2699,10 +2699,10 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet) {
     html += clinicCard(
       'Izmir Center',
       'IZM · ' + (V.izmirHedefPay || 21).toFixed(0) + '% market share',
-      '#1D9E75', izmirAdet,
+      '#1D9E75', izmirY5Adet || 0,
       (V.izmirHedefPay || 21).toFixed(1),
-      izmirNet,
-      'Opens Year 2 · Net after operating costs at full capacity'
+      izmirGross,
+      'Annual brace revenue at market target · Operating costs similar to Istanbul'
     );
   }
 
@@ -2710,10 +2710,10 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet) {
     html += clinicCard(
       'Ankara Center',
       'ANK · ' + (V.ankaraHedefPay || 20.5).toFixed(0) + '% market share',
-      '#E8963C', ankaraAdet,
+      '#E8963C', ankaraY5Adet || 0,
       (V.ankaraHedefPay || 20.5).toFixed(1),
-      ankaraNet,
-      'Opens Year 2 · Net after operating costs at full capacity'
+      ankaraGross,
+      'Annual brace revenue at market target · Operating costs similar to Istanbul'
     );
   }
 
@@ -2874,7 +2874,7 @@ function buildProjection() {
 
   // Yıl 2 KPI güncelle
   window._lastTotals = totals;
-  renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet);
+  renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmirY5Gelir, ankaraY5Gelir, izmirY5Adet, ankaraY5Adet);
   if (typeof renderDcf === 'function') { renderDcf(); renderGetiriTable(); }
   const y2k = document.getElementById('y2GelirKpi');
   if (y2k) y2k.textContent = '~€' + totals[1] + 'K';
