@@ -2789,7 +2789,7 @@ function renderInvestorRoadmap(el, totals, korseM1, izmirRow, ankaraRow, b2bRow)
       <tr style="font-weight:700;border-top:2px solid #e0e0dc;"><td>Consolidated Total</td>${fmtCell(totals[0])}${fmtCell(totals[1])}${fmtCell(totals[2])}${fmtCell(totals[3])}${fmtCell(totals[4])}${growCell(totals[0],totals[4])}</tr>
     </tbody>
   </table></div>
-  <div style="font-size:10px;color:#888;">⚠ Years 2–5 are growth-factor projections (40 / 65 / 85 / 100% of capacity target). Year 1 from bottom-up monthly model. &nbsp;<a href="growth.html" style="color:#534AB7;font-weight:700;">Full Multi-Year Model →</a></div>`;
+  <div style="font-size:10px;color:#888;">⚠ Istanbul Y1 = gross brace revenue (before fixed operating costs — startup costs covered by raised capital). Y2–Y5 = net after all operating costs. New-center years use capacity-ramp interpolation from full-market net. &nbsp;<a href="growth.html" style="color:#534AB7;font-weight:700;">Full Multi-Year Model →</a></div>`;
 
   el.innerHTML = html;
 }
@@ -2856,7 +2856,8 @@ function buildProjection() {
   const y4NetM1  = Math.max(0, lerp(y1BrutM1, y3BrutGelir, 0.85) - y4GiderEur);
   const y5NetM1  = Math.max(0, y3BrutGelir - y5GiderEur);
 
-  const korseM1    = [y1NetM1, y2NetM1, y3NetM1, y4NetM1, y5NetM1];
+  // Y1: show gross brace revenue (before fixed opex) — opex gap is covered by raised capital in ramp year
+  const korseM1    = [y1BrutM1, y2NetM1, y3NetM1, y4NetM1, y5NetM1];
   const korseM2    = [0, 0, 0, 0, 0];
 
 
@@ -3005,7 +3006,7 @@ function buildProjection() {
   }
 
   const noteEl = document.getElementById('projTableNote');
-  if (noteEl) noteEl.textContent = 'All figures are net revenue projections (€K). Year 1 from monthly model; Years 2–5 are growth-factor projections (40% / 65% / 85% / 100% of capacity target). Not final figures.';
+  if (noteEl) noteEl.textContent = 'Istanbul Y1 = gross brace revenue before fixed operating costs (startup ramp year; opex gap covered by raised capital). Y2–Y5 = net after all costs at projected capacity. New centers interpolated from full-market net. Figures in €K. Not final.';
 
   // Yıl 5 kartı KPI'ları güncelle
   const y5g = document.getElementById('y5GelirKpi');
