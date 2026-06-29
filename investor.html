@@ -172,7 +172,7 @@
           <span class="sl-note">Revenue-generating healthcare venture — typical range 15–30%</span>
         </div>
         <div class="sl-row">
-          <label style="font-size:10px;">Exit EBITDA Multiple (×)</label>
+          <label style="font-size:10px;">Base Exit Multiple (×) — used for DCF terminal value &amp; Base scenario</label>
           <div class="sl-controls">
             <input type="range" id="s_dcfExitMult" min="4" max="20" step="0.5" value="10" oninput="svDcf('dcfExitMult',this.value)">
             <span class="sl-val" id="dcfExitMult" style="min-width:40px;">10×</span>
@@ -267,13 +267,12 @@
       </table>
     </div>
     <div class="note-box" style="margin-bottom:24px;font-size:11px;line-height:1.7;">
-      <b>Multiple Methodology:</b> EV = Year 5 EBITDA × EV/EBITDA multiple. Reference: US/Europe physical therapy chain (MSO) multiples 8–13x (Metro MSO, Confluent Health, etc.). Liquidity and risk discount applied for the Turkey market:
+      <b>Multiple Methodology:</b> EV = Year 5 EBITDA × EV/EBITDA multiple. The <b>Base Exit Multiple slider</b> drives all three calculations simultaneously — DCF terminal value, DCF pre-money, and the Base scenario exit EV all use the same multiple so there is one consistent Year-5 enterprise value. Conservative = Base−2×, Optimistic = Base+3×. Reference: US/Europe physical therapy chain (MSO) multiples 8–13× (Metro MSO, Confluent Health, etc.); Turkey market discount applied:
       <ul style="margin:6px 0 0 16px;padding:0;">
-        <li><b>Conservative (4x):</b> Single clinic, early stage → 50–60% Turkey discount</li>
-        <li><b>Base (6x):</b> 2+ centers, model proven → 30–40% discount</li>
-        <li><b>Optimistic (9x):</b> Strategic Europe/global acquirer + clinical database + SRS/EUROSPINE publications → minimal discount</li>
+        <li><b>Conservative (Base−2×):</b> Single clinic or early stage → 40–60% Turkey/liquidity discount</li>
+        <li><b>Base (slider value):</b> Multi-center, model proven → moderate Turkey discount</li>
+        <li><b>Optimistic (Base+3×):</b> Strategic European/global acquirer + clinical database + SRS/EUROSPINE publications → premium</li>
       </ul>
-      <b>Revenue calculation:</b> Revenue = (Year 5 EBITDA + maturity-period annual opex) / product gross margin. This formula works from the fact that EBITDA is profit after deducting opex: EBITDA = Revenue × margin − opex → Revenue = (EBITDA + opex) / margin. Product gross margin (after doctor commission and materials, before opex) is derived from Year 1 data and assumed constant with growth.
     </div>
     <!-- YATIRIMCİ GETİRİ ANALİZİ -->
     <div style="margin-top:24px;">

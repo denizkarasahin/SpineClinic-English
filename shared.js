@@ -3317,12 +3317,12 @@ function renderGetiriTable() {
   // Year 5 EBITDA (€)
   const y5ebitda_eur = (t[4] || 0) * 1000;
 
-  const aktifMerkez = 1 + (V.izmirAktif?1:0) + (V.ankaraAktif?1:0);
-  const multAdj = aktifMerkez === 1 ? 0 : aktifMerkez === 2 ? 1 : 2;
+  // Scenarios offset from the same exitMult used for the DCF terminal value
+  // so DCF pre-money and Base exit EV share one consistent Year-5 multiple
   const senaryolar = [
-    { id:'c', label:'Conservative', mult: 4 + multAdj, rowClass:'' },
-    { id:'b', label:'Base',         mult: 6 + multAdj, rowClass:'' },
-    { id:'o', label:'Optimistic',   mult: 9 + multAdj, rowClass:'r-bas' },
+    { id:'c', label:'Conservative', mult: Math.max(2, exitMult - 2), rowClass:'' },
+    { id:'b', label:'Base',         mult: exitMult,                  rowClass:'' },
+    { id:'o', label:'Optimistic',   mult: exitMult + 3,              rowClass:'r-bas' },
   ];
 
   const lbl = document.getElementById('gtr_invest_lbl');
