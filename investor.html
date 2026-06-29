@@ -166,10 +166,10 @@
         <div class="sl-row">
           <label style="font-size:10px;">Discount Rate — r (%)</label>
           <div class="sl-controls">
-            <input type="range" id="s_dcfRate" min="15" max="80" step="1" value="28" oninput="svDcf('dcfRate',this.value)">
-            <span class="sl-val" id="dcfRate" style="min-width:40px;">28</span>
+            <input type="range" id="s_dcfRate" min="10" max="60" step="1" value="20" oninput="svDcf('dcfRate',this.value)">
+            <span class="sl-val" id="dcfRate" style="min-width:40px;">20</span>
           </div>
-          <span class="sl-note">Early-stage healthcare venture, Turkey risk premium</span>
+          <span class="sl-note">Revenue-generating healthcare venture — typical range 15–30%</span>
         </div>
         <div class="sl-row">
           <label style="font-size:10px;">Exit EBITDA Multiple (×)</label>
@@ -191,11 +191,11 @@
 
       <!-- DCF Sonuç Kartları -->
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;margin-bottom:16px;" id="dcfKpiGrid">
-        <div class="kpi"><div class="kpi-label">Pre-Money (DCF)</div><div class="kpi-val neu" id="dcf_premoney">—</div></div>
+        <div class="kpi"><div class="kpi-label">Exit Value — Year 5</div><div class="kpi-val pos" id="dcf_exitValue" title="Year 5 EBITDA × Exit Multiple (undiscounted)">—</div></div>
+        <div class="kpi"><div class="kpi-label">Pre-Money (DCF)</div><div class="kpi-val neu" id="dcf_premoney" title="Present value of exit + cash flows, discounted at r">—</div></div>
         <div class="kpi"><div class="kpi-label">Post-Money</div><div class="kpi-val neu" id="dcf_postmoney">—</div></div>
         <div class="kpi"><div class="kpi-label">Investor Stake</div><div class="kpi-val pos" id="dcf_yatirimci_hisse">—</div></div>
         <div class="kpi"><div class="kpi-label">Osteoid Stake</div><div class="kpi-val neu" id="dcf_osteoid_hisse">—</div></div>
-
       </div>
 
       <!-- DCF Nakit Akışı Tablosu -->
