@@ -2622,10 +2622,10 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
   // Istanbul: net from model (gross minus costs)
   // Izmir/Ankara: gross at market target — shows the revenue potential before operating costs
   const istNet    = Math.max(0, (totals[2] || 0) - (izmirRow[2]||0) - (ankaraRow[2]||0)); // includes b2b, net
-  const izmirGross  = izmirY5Gelir  || 0;  // gross at market target
+  const izmirGross  = izmirY5Gelir  || 0;  // gross brace revenue at market target
   const ankaraGross = ankaraY5Gelir || 0;
-  // Total = sum of exactly what's shown in each card
-  const totalNet  = istNet + (V.izmirAktif ? izmirGross : 0) + (V.ankaraAktif ? ankaraGross : 0);
+  // Combined total = net consolidated (matches Multi-Year Plan page)
+  const totalNet  = totals[2] || 0;
 
   // Year 1 Istanbul (model-driven, shown as-is)
   const y1Eur    = y1KorseNet > 0 ? Math.round(y1KorseNet / eurKur) : 0;
@@ -2636,7 +2636,7 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
   const fmtKEur = v => v > 0 ? '~€' + (v * 1000).toLocaleString('en-US') : '—';
   const fmtN    = v => v > 0 ? v.toLocaleString('en-US') + ' units/yr' : '—';
 
-  const clinicCard = (name, badge, color, adet, payPct, net, note) => `
+  const clinicCard = (name, badge, color, adet, payPct, net, note, revLabel) => `
     <div style="border:1px solid ${color}44;border-left:3px solid ${color};border-radius:6px;padding:12px 16px;margin-bottom:8px;">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
         <div style="font-size:12px;font-weight:700;color:#ddd;">${name}</div>
@@ -2644,7 +2644,7 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
         <div>
-          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Annual net revenue</div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">${revLabel || 'Annual net revenue'}</div>
           <div style="font-size:18px;font-weight:700;color:${color};">${fmtKEur(net)}</div>
         </div>
         <div>
@@ -2706,7 +2706,8 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
       '#1D9E75', izmirY5Adet || 0,
       (V.izmirHedefPay || 21).toFixed(1),
       izmirGross,
-      'Annual brace revenue at market target · Operating costs similar to Istanbul'
+      'Gross brace revenue at market target · Operating costs ~€125K/yr (est.)',
+      'Annual gross revenue'
     );
   }
 
@@ -2717,7 +2718,8 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
       '#E8963C', ankaraY5Adet || 0,
       (V.ankaraHedefPay || 20.5).toFixed(1),
       ankaraGross,
-      'Annual brace revenue at market target · Operating costs similar to Istanbul'
+      'Gross brace revenue at market target · Operating costs ~€125K/yr (est.)',
+      'Annual gross revenue'
     );
   }
 
@@ -2725,12 +2727,12 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
   html += `
     <div style="border:2px solid #534AB7;border-radius:6px;padding:14px 16px;margin-top:4px;display:flex;align-items:center;justify-content:space-between;">
       <div>
-        <div style="font-size:11px;font-weight:700;color:#aaa;">Combined — all active centers at capacity</div>
-        <div style="font-size:10px;color:#555;margin-top:3px;">Timeline depends on doctor acquisition pace · <a href="growth.html" style="color:#534AB7;text-decoration:none;font-weight:700;">Full Growth Model →</a></div>
+        <div style="font-size:11px;font-weight:700;color:#aaa;">Combined — net consolidated (all active centers)</div>
+        <div style="font-size:10px;color:#555;margin-top:3px;">After operating costs for all centers · <a href="growth.html" style="color:#534AB7;text-decoration:none;font-weight:700;">Full Growth Model →</a></div>
       </div>
       <div style="font-size:26px;font-weight:700;color:#534AB7;">${fmtKEur(totalNet)}</div>
     </div>
-    <div style="font-size:10px;color:#555;margin-top:10px;">⚠ These are capacity targets — not year-bound projections. Actual timing depends on doctor onboarding pace. Year 1 Istanbul figure is a bottom-up monthly model.</div>`;
+    <div style="font-size:10px;color:#555;margin-top:10px;">⚠ These are capacity targets — not year-bound projections. Istanbul shows net after costs; Izmir/Ankara show gross brace revenue (operating costs ~€125K/yr each, similar to Istanbul). Combined total is fully net-consolidated and matches the Multi-Year Plan page.</div>`;
 
   el.innerHTML = html;
 }
