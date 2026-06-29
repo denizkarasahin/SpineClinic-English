@@ -2621,11 +2621,12 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
   // Revenue at full market penetration — per center (all in €K)
   // Istanbul: net from model (gross minus costs)
   // Izmir/Ankara: gross at market target — shows the revenue potential before operating costs
-  const istNet    = Math.max(0, (totals[2] || 0) - (izmirRow[2]||0) - (ankaraRow[2]||0)); // includes b2b, net
+  const _n = totals.length - 1; // last year index (4 for 5-year model)
+  const istNet    = Math.max(0, (totals[_n] || 0) - (izmirRow[_n]||0) - (ankaraRow[_n]||0)); // includes b2b, net
   const izmirGross  = izmirY5Gelir  || 0;  // gross brace revenue at market target
   const ankaraGross = ankaraY5Gelir || 0;
   // Combined total = net consolidated (matches Multi-Year Plan page)
-  const totalNet  = totals[2] || 0;
+  const totalNet  = totals[_n] || 0;
 
   // Year 1 Istanbul (model-driven, shown as-is)
   const y1Eur    = y1KorseNet > 0 ? Math.round(y1KorseNet / eurKur) : 0;
@@ -2785,19 +2786,22 @@ function buildProjection() {
   const y3BrutGelir = y5KorseToplam; // €K (gider henüz düşülmedi)
 
   // ── Gider projeksiyonu: Yıl 1 bazından ölçek ekonomisiyle ──
-  // Yıl 2: +%15, Yıl 3: +%25 (personel, kira artışı)
+  // Yıl 2: +%15, Yıl 3: +%18, Yıl 4: +%22, Yıl 5: +%25 (personel, kira artışı)
   const y2GiderEur = Math.round(y1GiderEur * 1.15);
-  const y3GiderEur = Math.round(y1GiderEur * 1.25);
+  const y3GiderEur = Math.round(y1GiderEur * 1.18);
+  const y4GiderEur = Math.round(y1GiderEur * 1.22);
+  const y5GiderEur = Math.round(y1GiderEur * 1.25); // full-capacity cost (used for new centers too)
 
   // ── Net korse geliri = Brüt − İşletme gideri (tutarlı her yıl) ──
   const y1BrutM1 = toEur(y1KorseNet);
-  const y1NetM1  = Math.max(0, y1BrutM1 - y1GiderEur);    // Yıl 1: recalc ile tutarlı
-  const y2NetM1  = Math.max(0, lerp(y1BrutM1, y3BrutGelir, 0.4) - y2GiderEur);
-  const y3NetM1  = Math.max(0, y3BrutGelir - y3GiderEur);
+  const y1NetM1  = Math.max(0, y1BrutM1 - y1GiderEur);
+  const y2NetM1  = Math.max(0, lerp(y1BrutM1, y3BrutGelir, 0.40) - y2GiderEur);
+  const y3NetM1  = Math.max(0, lerp(y1BrutM1, y3BrutGelir, 0.65) - y3GiderEur);
+  const y4NetM1  = Math.max(0, lerp(y1BrutM1, y3BrutGelir, 0.85) - y4GiderEur);
+  const y5NetM1  = Math.max(0, y3BrutGelir - y5GiderEur);
 
-  const korseM1    = [y1NetM1, y2NetM1, y3NetM1];
-  // korseM2: 2. merkez İzmir/Ankara satırlarında ayrıca gösterilir
-  const korseM2    = [0, 0, 0];
+  const korseM1    = [y1NetM1, y2NetM1, y3NetM1, y4NetM1, y5NetM1];
+  const korseM2    = [0, 0, 0, 0, 0];
 
 
   // Tetik ayına göre 2. merkez açılış zamanlaması
@@ -2867,16 +2871,19 @@ function buildProjection() {
   const izmirY5Gelir  = Math.round(izmirY5Adet  * y1BirimNetEur / 1000);
   const ankaraY5Gelir = Math.round(ankaraY5Adet * y1BirimNetEur / 1000);
 
-  // Yıl 3 yeni merkezler: Y5 pazar payı hedef brüt geliri eksi Y3 işletme giderleri
-  // (Istanbul Y3 hesabıyla tutarlı: y3BrutGelir - y3GiderEur)
-  const izmirRow  = [0, izmirGelirY2,  V.izmirAktif  ? Math.max(0, izmirY5Gelir  - y3GiderEur) : 0];
-  const ankaraRow = [0, ankaraGelirY2, V.ankaraAktif ? Math.max(0, ankaraY5Gelir - y3GiderEur) : 0];
+  // New centers: 5-year ramp — Y2 partial, Y3 50%, Y4 80%, Y5 full capacity
+  const izmirY3Net  = V.izmirAktif  ? Math.max(0, Math.round(izmirY5Gelir  * 0.5) - y3GiderEur) : 0;
+  const izmirY4Net  = V.izmirAktif  ? Math.max(0, Math.round(izmirY5Gelir  * 0.8) - y4GiderEur) : 0;
+  const ankaraY3Net = V.ankaraAktif ? Math.max(0, Math.round(ankaraY5Gelir * 0.5) - y3GiderEur) : 0;
+  const ankaraY4Net = V.ankaraAktif ? Math.max(0, Math.round(ankaraY5Gelir * 0.8) - y4GiderEur) : 0;
+  const izmirRow  = [0, izmirGelirY2,  izmirY3Net,  izmirY4Net,  V.izmirAktif  ? Math.max(0, izmirY5Gelir  - y5GiderEur) : 0];
+  const ankaraRow = [0, ankaraGelirY2, ankaraY3Net, ankaraY4Net, V.ankaraAktif ? Math.max(0, ankaraY5Gelir - y5GiderEur) : 0];
 
-  // B2B: yalnızca İstanbul Merkez 1 — İzmir ve Ankara'da B2B yok
+  // B2B: yalnızca İstanbul Merkez 1
   const b2bY1 = toEur(window._lastGelirB2B || 0);
-  const b2bRow = [b2bY1, Math.round(b2bY1 * 1.5), Math.round(b2bY1 * 2.2)];
+  const b2bRow = [b2bY1, Math.round(b2bY1*1.5), Math.round(b2bY1*1.8), Math.round(b2bY1*2.0), Math.round(b2bY1*2.2)];
 
-  const totals = [0,1,2].map(i => korseM1[i]+korseM2[i]+izmirRow[i]+ankaraRow[i]+b2bRow[i]);
+  const totals = [0,1,2,3,4].map(i => korseM1[i]+korseM2[i]+izmirRow[i]+ankaraRow[i]+b2bRow[i]);
 
   // Yıl 2 KPI güncelle
   window._lastTotals = totals;
@@ -2898,47 +2905,55 @@ function buildProjection() {
   const y1BakimEurK   = toEur(y1Bakim);
   const y1DanisOran   = y1KorseNet > 0 ? y1Danis / y1KorseNet : 0.25;
   const y1BakimOran   = y1KorseNet > 0 ? y1Bakim / y1KorseNet : 0.05;
-  const y2M1PreOpex   = lerp(y1BrutM1, y3BrutGelir, 0.4);
+  const y2M1PreOpex = lerp(y1BrutM1, y3BrutGelir, 0.40);
+  const y3M1PreOpex = lerp(y1BrutM1, y3BrutGelir, 0.65);
+  const y4M1PreOpex = lerp(y1BrutM1, y3BrutGelir, 0.85);
   const y2TotalPreOpexNet = y2M1PreOpex + (izmirRow[1]||0) + (ankaraRow[1]||0) + (b2bRow[1]||0);
-  const y3TotalPreOpexNet = y3BrutGelir + (izmirRow[2]||0) + (ankaraRow[2]||0) + (b2bRow[2]||0);
+  const y3TotalPreOpexNet = y3M1PreOpex + (izmirRow[2]||0) + (ankaraRow[2]||0) + (b2bRow[2]||0);
+  const y4TotalPreOpexNet = y4M1PreOpex + (izmirRow[3]||0) + (ankaraRow[3]||0) + (b2bRow[3]||0);
+  const y5TotalPreOpexNet = y3BrutGelir  + (izmirRow[4]||0) + (ankaraRow[4]||0) + (b2bRow[4]||0);
   const y2HekimPayiEurK = Math.round(y2TotalPreOpexNet * y1DanisOran);
   const y3HekimPayiEurK = Math.round(y3TotalPreOpexNet * y1DanisOran);
+  const y4HekimPayiEurK = Math.round(y4TotalPreOpexNet * y1DanisOran);
+  const y5HekimPayiEurK = Math.round(y5TotalPreOpexNet * y1DanisOran);
   const y2KanalPayiEurK = Math.round(y2TotalPreOpexNet * y1BakimOran);
   const y3KanalPayiEurK = Math.round(y3TotalPreOpexNet * y1BakimOran);
+  const y4KanalPayiEurK = Math.round(y4TotalPreOpexNet * y1BakimOran);
+  const y5KanalPayiEurK = Math.round(y5TotalPreOpexNet * y1BakimOran);
 
   // Tablo güncelle
   const wrap = document.getElementById('projTableWrap');
   if (wrap) {
     const fmt = v => v > 0 ? `<td class="val-pos">~€${v}K</td>` : '<td style="color:#aaa;">—</td>';
-    const grow = (v1, v5) => v1 > 0 ? `<td class="val-grow">+${Math.round((v5/v1-1)*100)}%</td>` : '<td style="color:#aaa;">—</td>';
+    const grow = (v1, vN) => v1 > 0 ? `<td class="val-grow">+${Math.round((vN/v1-1)*100)}%</td>` : '<td style="color:#aaa;">—</td>';
     wrap.innerHTML = `
     <table class="rev-table">
       <thead><tr>
-        <th>Revenue Item</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>Y1→Y3</th>
+        <th>Revenue Item</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>Year 4</th><th>Year 5</th><th>Y1→Y5</th>
       </tr></thead>
       <tbody>
-        <tr><td>Brace — Center 1 (private channel)</td>${fmt(korseM1[0])}${fmt(korseM1[1])}${fmt(korseM1[2])}${grow(korseM1[0],korseM1[2])}</tr>
-        <tr><td>Brace — Center 2 (Year 2+)</td>${fmt(0)}${fmt(korseM2[1])}${fmt(korseM2[2])}${grow(korseM2[1],korseM2[2])}</tr>
-        ${b2bRow[0] > 0 || b2bRow[1] > 0 ? `<tr><td style="color:#378ADD;">B2B — Center 1 (Istanbul)</td>${fmt(b2bRow[0])}${fmt(b2bRow[1])}${fmt(b2bRow[2])}${grow(b2bRow[0],b2bRow[2])}</tr>` : ''}
-        ${V.izmirAktif  ? `<tr><td style="color:#1D9E75;">Brace — Izmir Center</td>${fmt(izmirRow[0])}${fmt(izmirRow[1])}${fmt(izmirRow[2])}${grow(izmirRow[1],izmirRow[2])}</tr>` : ''}
-        ${V.ankaraAktif ? `<tr><td style="color:#534AB7;">Brace — Ankara Center</td>${fmt(ankaraRow[0])}${fmt(ankaraRow[1])}${fmt(ankaraRow[2])}${grow(ankaraRow[1],ankaraRow[2])}</tr>` : ''}
+        <tr><td>Brace — Center 1 (private channel)</td>${fmt(korseM1[0])}${fmt(korseM1[1])}${fmt(korseM1[2])}${fmt(korseM1[3])}${fmt(korseM1[4])}${grow(korseM1[0],korseM1[4])}</tr>
+        <tr><td>Brace — Center 2 (Year 2+)</td>${fmt(0)}${fmt(korseM2[1])}${fmt(korseM2[2])}${fmt(korseM2[3])}${fmt(korseM2[4])}${grow(korseM2[1],korseM2[4])}</tr>
+        ${b2bRow[0] > 0 || b2bRow[1] > 0 ? `<tr><td style="color:#378ADD;">B2B — Center 1 (Istanbul)</td>${fmt(b2bRow[0])}${fmt(b2bRow[1])}${fmt(b2bRow[2])}${fmt(b2bRow[3])}${fmt(b2bRow[4])}${grow(b2bRow[0],b2bRow[4])}</tr>` : ''}
+        ${V.izmirAktif  ? `<tr><td style="color:#1D9E75;">Brace — Izmir Center</td>${fmt(izmirRow[0])}${fmt(izmirRow[1])}${fmt(izmirRow[2])}${fmt(izmirRow[3])}${fmt(izmirRow[4])}${grow(izmirRow[1],izmirRow[4])}</tr>` : ''}
+        ${V.ankaraAktif ? `<tr><td style="color:#534AB7;">Brace — Ankara Center</td>${fmt(ankaraRow[0])}${fmt(ankaraRow[1])}${fmt(ankaraRow[2])}${fmt(ankaraRow[3])}${fmt(ankaraRow[4])}${grow(ankaraRow[1],ankaraRow[4])}</tr>` : ''}
 
-        <tr class="total"><td>Consolidated Total (Clinic + B2B)</td>${fmt(totals[0])}${fmt(totals[1])}${fmt(totals[2])}${grow(totals[0],totals[2])}</tr>
-        <tr style="background:#fff7f5;"><td style="color:#c94f2a;font-size:11px;">↳ Doctor Commission <span style="font-weight:400;opacity:0.65;">(Y1 ratio fixed · projection)</span></td><td style="color:#c94f2a;font-size:11px;">~€${y1DanisEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y2HekimPayiEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y3HekimPayiEurK}K</td><td style="color:#aaa;font-size:11px;">—</td></tr>
-        <tr style="background:#fff7f5;"><td style="color:#c94f2a;font-size:11px;">↳ Channel Maintenance Share <span style="font-weight:400;opacity:0.65;">(Y1 ratio fixed · projection)</span></td><td style="color:#c94f2a;font-size:11px;">~€${y1BakimEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y2KanalPayiEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y3KanalPayiEurK}K</td><td style="color:#aaa;font-size:11px;">—</td></tr>
-        <tr style="background:#f0efe9;"><td style="font-size:11px;color:#888;">Year 5 target brace count (IST share: %${y5PayPct})</td><td colspan="3" style="text-align:center;color:#888;font-size:11px;">${y5KorseAdet.toLocaleString('tr-TR')} units/year</td></tr>
+        <tr class="total"><td>Consolidated Total (Clinic + B2B)</td>${fmt(totals[0])}${fmt(totals[1])}${fmt(totals[2])}${fmt(totals[3])}${fmt(totals[4])}${grow(totals[0],totals[4])}</tr>
+        <tr style="background:#fff7f5;"><td style="color:#c94f2a;font-size:11px;">↳ Doctor Commission <span style="font-weight:400;opacity:0.65;">(Y1 ratio fixed · projection)</span></td><td style="color:#c94f2a;font-size:11px;">~€${y1DanisEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y2HekimPayiEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y3HekimPayiEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y4HekimPayiEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y5HekimPayiEurK}K</td><td style="color:#aaa;font-size:11px;">—</td></tr>
+        <tr style="background:#fff7f5;"><td style="color:#c94f2a;font-size:11px;">↳ Channel Maintenance Share <span style="font-weight:400;opacity:0.65;">(Y1 ratio fixed · projection)</span></td><td style="color:#c94f2a;font-size:11px;">~€${y1BakimEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y2KanalPayiEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y3KanalPayiEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y4KanalPayiEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y5KanalPayiEurK}K</td><td style="color:#aaa;font-size:11px;">—</td></tr>
+        <tr style="background:#f0efe9;"><td style="font-size:11px;color:#888;">Year 5 target brace count (IST share: %${y5PayPct})</td><td colspan="5" style="text-align:center;color:#888;font-size:11px;">${y5KorseAdet.toLocaleString('tr-TR')} units/year</td></tr>
       </tbody>
     </table>`;
   }
 
   const noteEl = document.getElementById('projTableNote');
-  if (noteEl) noteEl.textContent = 'All figures are net revenue projections (€K). Year 1 data from model; Year 2-3 growth-factor projections. Not final figures.';
+  if (noteEl) noteEl.textContent = 'All figures are net revenue projections (€K). Year 1 from monthly model; Years 2–5 are growth-factor projections (40% / 65% / 85% / 100% of capacity target). Not final figures.';
 
   // Yıl 5 kartı KPI'ları güncelle
   const y5g = document.getElementById('y5GelirKpi');
   const y5p = document.getElementById('y5PayKpi');
   const y5k = document.getElementById('y5KorseKpi');
-  if (y5g) y5g.textContent = '~€' + totals[2] + 'K';
+  if (y5g) y5g.textContent = '~€' + totals[4] + 'K';
   const y5PayLabel = '%' + y5PayPct + ' IST'
     + (V.izmirAktif  ? ' · %' + gv('izmirHedefPay').toFixed(1)  + ' IZM' : '')
     + (V.ankaraAktif ? ' · %' + gv('ankaraHedefPay').toFixed(1) + ' ANK' : '');
@@ -2956,9 +2971,10 @@ function buildProjection() {
   projChartInst = new Chart(ctxRev.getContext('2d'), {
     type: 'bar',
     data: {
-      labels: ['Year 1','Year 2','Year 3'],
+      labels: ['Year 1','Year 2','Year 3','Year 4','Year 5'],
       datasets: [
         { label:'Brace C1 (private)', data:korseM1, backgroundColor:'rgba(44,74,46,0.85)', borderColor:'#2c4a2e', borderWidth:1, borderRadius:3 },
+        ...(b2bRow[0] > 0 || b2bRow[1] > 0 ? [{ label:'B2B C1', data:b2bRow, backgroundColor:'rgba(55,138,221,0.7)', borderColor:'#378ADD', borderWidth:1, borderRadius:3 }] : []),
         ...(V.izmirAktif  ? [{ label:'Izmir',  data:izmirRow,  backgroundColor:'rgba(29,158,117,0.7)', borderColor:'#1D9E75', borderWidth:1, borderRadius:3 }] : []),
         ...(V.ankaraAktif ? [{ label:'Ankara', data:ankaraRow, backgroundColor:'rgba(83,74,183,0.7)',  borderColor:'#534AB7', borderWidth:1, borderRadius:3 }] : []),
       ]
