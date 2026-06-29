@@ -2738,6 +2738,65 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
   el.innerHTML = html;
 }
 
+function renderInvestorRoadmap(el, totals, korseM1, izmirRow, ankaraRow, b2bRow) {
+  const fmtK = v => v > 0 ? '~€' + v + 'K' : '—';
+  const fmtCell = v => v > 0
+    ? `<td style="text-align:right;color:#1a7a45;font-weight:600;">~€${v}K</td>`
+    : `<td style="text-align:right;color:#bbb;">—</td>`;
+  const growCell = (v1, vN) => v1 > 0
+    ? `<td style="text-align:right;color:#534AB7;font-weight:700;">+${Math.round((vN/v1-1)*100)}%</td>`
+    : `<td style="color:#bbb;">—</td>`;
+
+  const c2text = V.izmirAktif && V.ankaraAktif ? 'Izmir + Ankara open'
+               : V.izmirAktif  ? 'Izmir center opens'
+               : V.ankaraAktif ? 'Ankara center opens'
+               : 'Istanbul scales';
+  const cCount = 1 + (V.izmirAktif ? 1 : 0) + (V.ankaraAktif ? 1 : 0);
+
+  const years = [
+    { label:'Year 1', badge:'✓ Monthly model', color:'#534AB7',
+      body:'Istanbul Flagship · Break-even ~Month 4 · Cumulative positive ~Month 11' },
+    { label:'Year 2', badge:'Expansion', color:'#1D9E75',
+      body:'Istanbul 40% capacity · ' + c2text },
+    { label:'Year 3', badge:'65% capacity', color:'#BA7517',
+      body: cCount + ' active center' + (cCount>1?'s':'') + ' · 65% of market target' },
+    { label:'Year 4', badge:'85% capacity', color:'#c94f2a',
+      body: cCount + ' active center' + (cCount>1?'s':'') + ' · 85% of market target' },
+    { label:'Year 5', badge:'Full penetration', color:'#2c4a2e',
+      body:'Market penetration target reached · ' + cCount + ' center' + (cCount>1?'s':'') + ' at capacity' },
+  ];
+
+  let html = `<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:20px;">`;
+  years.forEach((y, i) => {
+    const v = totals[i];
+    html += `
+      <div style="border:${i===4?'2px':'1px'} solid ${y.color}${i===4?'':'55'};border-radius:6px;padding:12px 10px;background:${i===4?y.color+'0a':'#fff'};">
+        <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:${y.color};margin-bottom:3px;">${y.label}</div>
+        <div style="font-size:9px;font-weight:700;background:${y.color}20;color:${y.color};padding:1px 6px;border-radius:8px;display:inline-block;margin-bottom:7px;">${y.badge}</div>
+        <div style="font-size:20px;font-weight:700;color:${y.color};margin-bottom:5px;">${fmtK(v)}</div>
+        <div style="font-size:10px;color:#666;line-height:1.4;">${y.body}</div>
+      </div>`;
+  });
+  html += `</div>`;
+
+  html += `<div class="tbl-wrap" style="margin-bottom:8px;"><table>
+    <thead><tr>
+      <th style="text-align:left;">Revenue stream</th>
+      <th>Y1</th><th>Y2</th><th>Y3</th><th>Y4</th><th>Y5</th><th>Y1→Y5</th>
+    </tr></thead>
+    <tbody>
+      <tr><td>Istanbul C1 (private)</td>${fmtCell(korseM1[0])}${fmtCell(korseM1[1])}${fmtCell(korseM1[2])}${fmtCell(korseM1[3])}${fmtCell(korseM1[4])}${growCell(korseM1[0],korseM1[4])}</tr>
+      ${b2bRow[0]>0||b2bRow[1]>0 ? `<tr><td style="color:#378ADD;">B2B — Istanbul</td>${fmtCell(b2bRow[0])}${fmtCell(b2bRow[1])}${fmtCell(b2bRow[2])}${fmtCell(b2bRow[3])}${fmtCell(b2bRow[4])}${growCell(b2bRow[0],b2bRow[4])}</tr>` : ''}
+      ${V.izmirAktif  ? `<tr><td style="color:#1D9E75;">Izmir Center</td>${fmtCell(izmirRow[0])}${fmtCell(izmirRow[1])}${fmtCell(izmirRow[2])}${fmtCell(izmirRow[3])}${fmtCell(izmirRow[4])}${growCell(izmirRow[1],izmirRow[4])}</tr>` : ''}
+      ${V.ankaraAktif ? `<tr><td style="color:#534AB7;">Ankara Center</td>${fmtCell(ankaraRow[0])}${fmtCell(ankaraRow[1])}${fmtCell(ankaraRow[2])}${fmtCell(ankaraRow[3])}${fmtCell(ankaraRow[4])}${growCell(ankaraRow[1],ankaraRow[4])}</tr>` : ''}
+      <tr style="font-weight:700;border-top:2px solid #e0e0dc;"><td>Consolidated Total</td>${fmtCell(totals[0])}${fmtCell(totals[1])}${fmtCell(totals[2])}${fmtCell(totals[3])}${fmtCell(totals[4])}${growCell(totals[0],totals[4])}</tr>
+    </tbody>
+  </table></div>
+  <div style="font-size:10px;color:#888;">⚠ Years 2–5 are growth-factor projections (40 / 65 / 85 / 100% of capacity target). Year 1 from bottom-up monthly model. &nbsp;<a href="growth.html" style="color:#534AB7;font-weight:700;">Full Multi-Year Model →</a></div>`;
+
+  el.innerHTML = html;
+}
+
 // 5 Yıllık Projeksiyon — dinamik
 function buildProjection() {
   // Yıl 1 verileri recalc rows'tan
@@ -2888,6 +2947,8 @@ function buildProjection() {
   // Yıl 2 KPI güncelle
   window._lastTotals = totals;
   renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmirY5Gelir, ankaraY5Gelir, izmirY5Adet, ankaraY5Adet);
+  const _roadmapEl = document.getElementById('investorRoadmap');
+  if (_roadmapEl) renderInvestorRoadmap(_roadmapEl, totals, korseM1, izmirRow, ankaraRow, b2bRow);
   if (typeof renderDcf === 'function') { renderDcf(); renderGetiriTable(); }
   const y2k = document.getElementById('y2GelirKpi');
   if (y2k) y2k.textContent = '~€' + totals[1] + 'K';
