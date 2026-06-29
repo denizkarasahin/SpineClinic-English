@@ -2925,16 +2925,15 @@ function buildProjection() {
   const izmirY5Gelir  = Math.round(izmirY5Adet  * y1BirimNetEur / 1000);
   const ankaraY5Gelir = Math.round(ankaraY5Adet * y1BirimNetEur / 1000);
 
-  // Center-specific Y5 opex — own rent/staff params + shared overhead defaults
-  // Using Istanbul shared overhead items (elektrik, internet, genelGider, ymmM, reklamSabit)
-  // plus estimated withholding (~23% of salary base) for each center
+  // Center-specific Y5 opex — clinic-direct costs only (no HQ overhead)
+  // ymmM, reklamSabit, genelGider are Istanbul/HQ costs; Izmir/Ankara don't carry them
   const izmirMonthlyTRY  = (V.izmirKira||80000)  + (V.izmirOrtotistM||55000)  + (V.izmirStajyerM||25000)
     + (V.izmirMutfak||18000)  + (V.izmirSarf||3000)
-    + (V.elektrik||16500) + (V.internet||1500) + (V.genelGider||10000) + (V.ymmM||23000) + (V.reklamSabit||20000)
+    + (V.elektrik||16500) + (V.internet||1500)
     + Math.round(((V.izmirOrtotistM||55000)  + (V.izmirStajyerM||25000))  * 0.23);
   const ankaraMonthlyTRY = (V.ankaraKira||85000) + (V.ankaraOrtotistM||55000) + (V.ankaraStajyerM||25000)
     + (V.ankaraMutfak||18000) + (V.ankaraSarf||3000)
-    + (V.elektrik||16500) + (V.internet||1500) + (V.genelGider||10000) + (V.ymmM||23000) + (V.reklamSabit||20000)
+    + (V.elektrik||16500) + (V.internet||1500)
     + Math.round(((V.ankaraOrtotistM||55000) + (V.ankaraStajyerM||25000)) * 0.23);
   const izmirY5GiderEur  = Math.round(toEur(izmirMonthlyTRY  * 12) * 1.25);
   const ankaraY5GiderEur = Math.round(toEur(ankaraMonthlyTRY * 12) * 1.25);
