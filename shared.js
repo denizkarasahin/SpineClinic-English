@@ -380,6 +380,11 @@ function initDynamic() {
     var key = sp.id;
     if (V[key] !== undefined && !Array.isArray(V[key])) sp.textContent = numFmt(key, V[key]);
   });
+  // KurulumOranVal spans: not in V by that key name, so general loop misses them
+  ['izmir','ankara'].forEach(function(s) {
+    const vl = document.getElementById(s+'KurulumOranVal');
+    if (vl) vl.textContent = '×' + parseFloat(V[s+'KurulumOran'] || 1.0).toFixed(2);
+  });
 }
 
 // ── DRAGGABLE RAMP CANVAS ─────────────────────────────────────────────────────
@@ -1984,8 +1989,9 @@ function _updateKurulumOzet(sehir) {
   const top = getMerkezKurulum(sehir);
   const eurKur = V.eurKur || 50;
   const useIst = V[sehir+'UseIstKurulum'] !== false;
-  ozet.innerHTML = (useIst ? 'IST setup base: ' : 'Custom setup: ')
-    + '<span id="'+sehir+'KurulumTop">~€' + Math.round(top/eurKur/1000) + 'K</span>';
+  const oran   = V[sehir+'KurulumOran'] || 1.0;
+  const label  = useIst ? 'IST ×' + parseFloat(oran).toFixed(2) + ': ' : 'Custom: ';
+  ozet.innerHTML = label + '<span id="'+sehir+'KurulumTop">~€' + Math.round(top/eurKur/1000) + 'K</span>';
 }
 
 function toggleIstKurulum(sehir, useIst) {
@@ -2965,14 +2971,8 @@ function buildProjection() {
   if (typeof renderDcf === 'function') { renderDcf(); renderGetiriTable(); }
   const y2k = document.getElementById('y2GelirKpi');
   if (y2k) y2k.textContent = '~€' + totals[1] + 'K';
-  // Kurulum özet güncelle
-  ['izmir','ankara'].forEach(function(s) {
-    const el = document.getElementById(s+'KurulumTop');
-    if (el) {
-      const top = getMerkezKurulum(s);
-      el.textContent = '~€' + Math.round(top/(V.eurKur||50)/1000) + 'K';
-    }
-  });
+  // Kurulum özet güncelle — full label+value rebuild for consistency
+  ['izmir','ankara'].forEach(_updateKurulumOzet);
 
   // Hekim ve kanal payı tahmini: Y1 oranı sabit varsayım
   const y1DanisEurK   = toEur(y1Danis);
@@ -3474,6 +3474,7 @@ function _applyEurRate(rate, date, fromCache) {
   try { localStorage.setItem('osteoid_V', JSON.stringify(V)); } catch(e) {}
   _updateRateWidget(V.eurKur, date, fromCache);
   if (typeof recalc === 'function') recalc();
+  if (typeof buildProjection === 'function') buildProjection();
 }
 
 // Tries multiple public EUR/TRY APIs in order; calls onSuccess(rate) or onFail()
