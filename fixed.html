@@ -83,11 +83,11 @@
         <div class="sl-row" style="margin-bottom:4px;">
           <label style="font-size:11px;">Net salary (₺)</label>
           <div class="sl-controls">
-            <input type="range" id="s_operatorM" min="100000" max="250000" step="5000" value="175000" oninput="sv('operatorM',this.value)">
-            <span class="sl-val" id="operatorM" contenteditable="true" onblur="sv2('operatorM','s_operatorM',this)">175.000</span>
+            <input type="range" id="s_operatorM" min="100000" max="350000" step="5000" value="200000" oninput="sv('operatorM',this.value)">
+            <span class="sl-val" id="operatorM" contenteditable="true" onblur="sv2('operatorM','s_operatorM',this)">200.000</span>
           </div>
         </div>
-        <div style="font-size:11px;color:#2980B9;">Gross cost: <b id="brutOperator">218.750</b> ₺/month</div>
+        <div style="font-size:11px;color:#2980B9;">Gross cost: <b id="brutOperator">—</b> ₺/month</div>
       </div>
 
       <!-- 1. Uzman Ortezci -->
@@ -103,7 +103,7 @@
             <span class="sl-val" id="ortotistM" contenteditable="true" onblur="sv2('ortotistM','s_ortotistM',this)">60.000</span>
           </div>
         </div>
-        <div style="font-size:11px;color:#8a5c1a;">Gross cost: <b id="brutOrtotist">75.000</b> ₺/month</div>
+        <div style="font-size:11px;color:#8a5c1a;">Gross cost: <b id="brutOrtotist">—</b> ₺/month</div>
       </div>
       <div style="margin-bottom:10px;padding:10px;background:#f5f4ee;border-radius:6px;border:1px solid #e0e0dc;">
         <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Staff Thresholds (monthly braces / month)</div>
@@ -143,7 +143,7 @@
             <span class="sl-val" id="stajyerM" contenteditable="true" onblur="sv2('stajyerM','s_stajyerM',this)">30.000</span>
           </div>
         </div>
-        <div style="font-size:11px;color:#1D9E75;">Gross cost: <b id="brutStajyer">37.500</b> ₺/month</div>
+        <div style="font-size:11px;color:#1D9E75;">Gross cost: <b id="brutStajyer">—</b> ₺/month</div>
       </div>
 
       <!-- 3. Yeni Mezun (eşik 2) -->
@@ -159,7 +159,7 @@
             <span class="sl-val" id="stajyer2M" contenteditable="true" onblur="sv2('stajyer2M','s_stajyer2M',this)">30.000</span>
           </div>
         </div>
-        <div style="font-size:11px;color:#8a5c1a;">Gross cost: <b id="brutYeniMezun">37.500</b> ₺/month</div>
+        <div style="font-size:11px;color:#8a5c1a;">Gross cost: <b id="brutYeniMezun">—</b> ₺/month</div>
       </div>
 
       <!-- 4. Destek Elemanı (eşik 3) -->
@@ -175,12 +175,12 @@
             <span class="sl-val" id="destekM" contenteditable="true" onblur="sv2('destekM','s_destekM',this)">30.000</span>
           </div>
         </div>
-        <div style="font-size:11px;color:#534AB7;">Gross cost: <b id="brutDestek">37.500</b> ₺/month</div>
+        <div style="font-size:11px;color:#534AB7;">Gross cost: <b id="brutDestek">—</b> ₺/month</div>
       </div>
     </div>
     <div class="kpi-grid" style="margin-bottom:12px;">
-      <div class="kpi"><div class="kpi-label">Fixed cost / month</div><div class="kpi-val neg" id="sabitAylik">-₺189.500</div></div>
-      <div class="kpi"><div class="kpi-label">Fixed cost / year</div><div class="kpi-val neg" id="sabitYillik">-₺2.649.000</div></div>
+      <div class="kpi"><div class="kpi-label">Fixed cost / month</div><div class="kpi-val neg" id="sabitAylik">—</div></div>
+      <div class="kpi"><div class="kpi-label">Fixed cost / year</div><div class="kpi-val neg" id="sabitYillik">—</div></div>
     </div>
     <div style="position:relative;width:100%;height:240px;">
       <canvas id="sabitBar" style="display:block;"></canvas>
@@ -200,13 +200,13 @@
 <script src="shared.js"></script>
 <script>
 window.addEventListener('load', function() {
-  const v = V.kira || 120000;
+  const v = V.kira || 250000;
   const sl = document.getElementById('s_aylikKira');
   if (sl) sl.value = v;
   const disp = document.getElementById('kira');
   if (disp) disp.textContent = v.toLocaleString('tr-TR');
 
-  [['s_mutfak','mutfak',20000],['s_genelGider','genelGider',10000],['s_ymmM','ymmM',10000],['s_operatorM','operatorM',175000]].forEach(([slId,key,def])=>{
+  [['s_mutfak','mutfak',30000],['s_genelGider','genelGider',10000],['s_ymmM','ymmM',10000],['s_operatorM','operatorM',200000]].forEach(([slId,key,def])=>{
     const val = V[key] || def;
     const sl = document.getElementById(slId); if (sl) sl.value = val;
     const dp = document.getElementById(key);  if (dp) dp.textContent = val.toLocaleString('tr-TR');

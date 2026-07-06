@@ -1,8 +1,18 @@
-// Null-safe getElementById — recalc() calls this across all pages; missing elements are silently ignored
+// Null-safe getElementById — recalc() calls this across all pages, and most
+// pages only have a subset of all ids (by design, since shared.js is one
+// script for many page layouts). Missing ids return a no-op stand-in so
+// callers don't crash, but each missing id is warned once so a genuine typo
+// or broken binding is still visible in devtools — expect many warnings for
+// ids that simply belong to other pages, that's normal, not a bug.
 const _origGetById = document.getElementById.bind(document);
+const _warnedMissingIds = new Set();
 document.getElementById = function(id) {
   const el = _origGetById(id);
   if (el) return el;
+  if (!_warnedMissingIds.has(id)) {
+    _warnedMissingIds.add(id);
+    console.warn('getElementById: no element with id "' + id + '" on this page — returning a no-op stand-in');
+  }
   return {
     textContent: '', value: '', innerHTML: '', checked: false,
     style: new Proxy({}, { get: () => '', set: () => true }),
@@ -13,7 +23,7 @@ document.getElementById = function(id) {
   };
 };
 
-const V = {"korseF":37800,"danisPct":25,"malzeme":50,"reklamSabit":20000,"mutfak":30000,"genelGider":10000,"ymmM":23000,"stopaj":60000,"royaltyEur":0,"eurKur":53.07,"kira":250000,"depozito":250000,"emlakci":500000,"m2":360,"tadilatM2":7000,"dekoM2":6750,"mobilya":300000,"ruhsat":100000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":140000,"sgkCarpan":1.6,"stajyerM":30000,"stajyerAy":2,"destekM":30000,"stajyer2M":30000,"destekAy":3,"stajyer2Ay":4,"korse":[10,10,15,20,25,25,30,35,35,45,45,50],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":27000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":1600,"mal_sens":2075,"mal_sensDelik":1250,"danis_stdR":10,"danis_stdRl":20,"danis_delik":30,"danis_sens":30,"danis_sensDelik":30,"kanalBakim":5,"pazarTR":40000,"pazarIstPct":19,"hedefOsteoidPay":25,"esikStajyer1":15,"esikDestek":30,"esikStajyer2":76,"izmirAktif":true,"izmirHedefPay":25,"izmirUseIst":true,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":true,"ankaraHedefPay":25,"ankaraUseIst":true,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":true,"robotKolEurFiyat":30000,"kesimEurPer":0,"dcfRate":20,"dcfGrowth":18,"dcfGrowth45":45,"dcfExitMult":10,"dcfInvest":150000,"kongre":[190000,270000,75000,265000,40000,150000,80000,255000,80000,30000,80000,265000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,225000,0,225000,0,0,0,225000,0,0,0,225000],"atolye":[120000,0,0,0,0,120000,0,0,0,0,0,0],"ymm":[10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":10000,"korseFB2B_stdRl":12000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[0,0,0,0,0,0,0,0,0,0,0,0],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":130000,"_sen_max_kira":500000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":3500,"_sen_max_dekoM2":17000,"_sen_min_ortotistM":85000,"_sen_max_ortotistM":250000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":60000,"_sen_min_reklamSabit":5000,"_sen_max_reklamSabit":60000,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.65,"operatorM":200000,"_version":10};
+const V = {"korseF":37800,"danisPct":25,"malzeme":50,"reklamCarpan":1.0,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":75,"eurKur":53.07,"kira":250000,"depozito":250000,"emlakci":500000,"m2":360,"tadilatM2":7000,"dekoM2":6750,"mobilya":300000,"ruhsat":100000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":140000,"sgkCarpan":1.6,"stajyerM":30000,"destekM":30000,"stajyer2M":30000,"korse":[10,10,15,20,25,25,30,35,35,45,45,50],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":27000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":1600,"mal_sens":2075,"mal_sensDelik":1250,"danis_stdR":10,"danis_stdRl":20,"danis_delik":30,"danis_sens":30,"danis_sensDelik":30,"kanalBakim":5,"pazarTR":40000,"pazarIstPct":19,"hedefOsteoidPay":25,"esikStajyer1":15,"esikDestek":30,"esikStajyer2":76,"izmirAktif":true,"izmirHedefPay":25,"izmirUseIst":true,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":true,"ankaraHedefPay":25,"ankaraUseIst":true,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":true,"robotKolEurFiyat":30000,"ekipmanOsteoidden":true,"kesimEurPer":0,"dcfRate":20,"dcfGrowth":18,"dcfGrowth45":45,"dcfExitMult":10,"dcfInvest":150000,"kongre":[190000,270000,75000,265000,40000,150000,80000,255000,80000,30000,80000,265000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,225000,0,225000,0,0,0,225000,0,0,0,225000],"atolye":[120000,0,0,0,0,120000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":10000,"korseFB2B_stdRl":12000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[0,0,0,0,0,0,0,0,0,0,0,0],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":130000,"_sen_max_kira":500000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":3500,"_sen_max_dekoM2":17000,"_sen_min_ortotistM":85000,"_sen_max_ortotistM":250000,"_sen_min_operatorM":120000,"_sen_max_operatorM":320000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":60000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3.0,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.65,"operatorM":200000,"_version":11};
 // Restore state from localStorage if available; clear cache on version mismatch
 (function() {
   try {
@@ -77,35 +87,62 @@ function sv2(key, slId, el) {
   localStorage.setItem('osteoid_V', JSON.stringify(V));
 }
 
-function gv(k) { return V[k] || 0; }
+function gv(k) { return V[k] ?? 0; }
 function ffTRY(n) { if(n===0) return '—'; return (n<0?'-₺':'₺')+Math.abs(n).toLocaleString('tr-TR'); }
 function ff(n) {
   if(n===0) return '—';
-  const eur = Math.round(Math.abs(n) / (V.eurKur || 50));
+  const eur = Math.round(Math.abs(n) / (V.eurKur ?? 50));
   return (n<0?'-€':'€') + eur.toLocaleString('en-US');
 }
 function feEur(tryVal) { return ff(tryVal); }
 function cls(n) { return n>0?'pc':n<0?'nc':'zc'; }
 
 const SCEN = {
-  baz:     { korseF:37800, danisPct:25, malzeme:50, reklamSabit:20000, mutfak:20000, stopaj:60000, korse:[5,10,15,20,25,25,30,30,35,35,40,45], kongre:[0,100000,0,200000,0,500000,100000,0,0,350000,0,350000] },
-  iyimser: { korseF:37800, danisPct:25, malzeme:50, reklamSabit:15000, mutfak:18000, stopaj:60000, korse:[8,14,20,26,30,32,36,38,42,44,48,55], kongre:[0,50000,0,100000,0,300000,100000,0,0,200000,0,200000] },
-  kotu:    { korseF:30000, danisPct:25, malzeme:50, reklamSabit:25000, mutfak:22000, stopaj:60000, korse:[3,7,10,14,18,20,22,25,28,28,33,38], kongre:[0,100000,0,200000,0,500000,100000,0,0,350000,0,350000] }
+  // royaltyEur carries its own assumption per scenario — the royalty
+  // structure isn't final, so each named case states what it's betting on
+  // (baz: the €75 reference; iyimser: none yet agreed, €0 is a real state
+  // not a placeholder; kotu: a worse-than-baseline rate stacked on weaker volume).
+  baz:     { korseF:37800, danisPct:25, malzeme:50, mutfak:20000, stopaj:60000, royaltyEur:75,  korse:[5,10,15,20,25,25,30,30,35,35,40,45], kongre:[0,100000,0,200000,0,500000,100000,0,0,350000,0,350000] },
+  iyimser: { korseF:37800, danisPct:25, malzeme:50, mutfak:18000, stopaj:60000, royaltyEur:0,   korse:[8,14,20,26,30,32,36,38,42,44,48,55], kongre:[0,50000,0,100000,0,300000,100000,0,0,200000,0,200000] },
+  kotu:    { korseF:30000, danisPct:25, malzeme:50, mutfak:22000, stopaj:60000, royaltyEur:100, korse:[3,7,10,14,18,20,22,25,28,28,33,38], kongre:[0,100000,0,200000,0,500000,100000,0,0,350000,0,350000] },
+  // Setup-cost scenarios — two named points on the same live sliders, not a
+  // hardcoded override. Neither is "the truth"; pick one as a starting point
+  // and keep adjusting the sliders from there.
+  leanSetup:     { kira:150000, depozito:150000, emlakci:80000, m2:200, tadilatM2:4000, dekoM2:2000, mobilya:400000, ruhsat:90000, ekipmanOsteoidden:true },
+  fullSelfOwned: { kira:250000, depozito:250000, emlakci:500000, m2:360, tadilatM2:7000, dekoM2:6750, mobilya:300000, ruhsat:100000, ekipmanOsteoidden:false },
 };
+
+// Every slider key a scenario preset is allowed to touch. loadScen() only
+// applies keys actually present on the chosen scenario object, so a setup
+// scenario leaves revenue assumptions untouched and vice versa.
+const SCEN_SLIDER_KEYS = ['korseF','danisPct','malzeme','mutfak','stopaj','royaltyEur',
+  'kira','depozito','emlakci','m2','tadilatM2','dekoM2','mobilya','ruhsat'];
 
 function loadScen(key, btn) {
   document.querySelectorAll('.sb').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   const s = SCEN[key];
-  ['korseF','danisPct','malzeme','reklamSabit','mutfak','stopaj'].forEach(k => {
-    V[k]=s[k];
-    document.getElementById(k).textContent=numFmt(k,s[k]);
-    const sl=document.getElementById('s_'+k); if(sl) sl.value=s[k];
+  SCEN_SLIDER_KEYS.forEach(k => {
+    if (s[k] === undefined) return;
+    V[k] = s[k];
+    document.getElementById(k).textContent = numFmt(k, s[k]);
+    const sl = document.getElementById('s_'+k); if (sl) sl.value = s[k];
+    if (k === 'kira') {
+      // expenses.html's Setup tab uses a separate span id to avoid colliding
+      // with the Fixed Costs tab's own "kira" span on the same page; both
+      // tabs' sliders drive the same V.kira and need to be kept in sync.
+      const kk = document.getElementById('kira_k'); if (kk) kk.textContent = numFmt('kira', s[k]);
+      const slA = document.getElementById('s_aylikKira'); if (slA) slA.value = s[k];
+    }
   });
-  s.korse.forEach((v,i)=>{ V.korse[i]=v; });
+  if (s.ekipmanOsteoidden !== undefined) {
+    V.ekipmanOsteoidden = s.ekipmanOsteoidden;
+    _refreshEkipmanOsteoidden();
+  }
+  if (s.korse) s.korse.forEach((v,i)=>{ V.korse[i]=v; });
   if (window._redrawRamp) window._redrawRamp();
   // sync donemsel from kongre shorthand
-  if(s.kongre) s.kongre.forEach((v,i)=>{ V.kongre[i]=v; });
+  if (s.kongre) s.kongre.forEach((v,i)=>{ V.kongre[i]=v; });
   if (window._redrawDonem) window._redrawDonem();
   localStorage.setItem('osteoid_V', JSON.stringify(V));
   recalc();
@@ -344,6 +381,7 @@ function renderPazarChartB2B(rowsB2B) {
 function initDynamic() {
   _refreshPrinterDisplay();
   svRobotKol();
+  _refreshEkipmanOsteoidden();
   // Init DCF sliders
   ['dcfRate','dcfGrowth','dcfGrowth45'].forEach(function(k) {
     const sl = document.getElementById('s_'+k);
@@ -360,9 +398,9 @@ function initDynamic() {
   const invSl = document.getElementById('s_dcfInvest');
   if (invSl) invSl.value = V.dcfInvest||150000;
   const kDisp = document.getElementById('kesimEurPerDisp');
-  if (kDisp) kDisp.textContent = V.kesimEurPer||50;
+  if (kDisp) kDisp.textContent = V.kesimEurPer ?? 50;
   const rSlider = document.getElementById('s_royaltyEur');
-  if (rSlider) rSlider.value = V.royaltyEur||75;
+  if (rSlider) rSlider.value = V.royaltyEur ?? 75;
   // product sliders init from V
   initRampCanvas();
   initB2BRampCanvas();
@@ -746,7 +784,7 @@ function initDonemCanvas() {
       ctx.lineWidth = 1;
       ctx.beginPath(); ctx.moveTo(PAD_L, y); ctx.lineTo(PAD_L+W, y); ctx.stroke();
       ctx.fillStyle = '#aaa';
-      const label = f===0?'0': f===1 ? Math.round(maxVal/(V.eurKur||50)/1000)+'K' : Math.round((maxVal*f)/(V.eurKur||50)/1000)+'K';
+      const label = f===0?'0': f===1 ? Math.round(maxVal/(V.eurKur ?? 50)/1000)+'K' : Math.round((maxVal*f)/(V.eurKur ?? 50)/1000)+'K';
       ctx.fillText('€'+label, PAD_L-4, y+3);
     });
 
@@ -800,7 +838,7 @@ function initDonemCanvas() {
         const total = V.donemsel[c.key].reduce((a,b)=>a+b,0);
         return `<span style="display:flex;align-items:center;gap:5px;font-size:11px;color:#444;">
           <span style="width:10px;height:10px;border-radius:2px;background:${c.color};flex-shrink:0;"></span>
-          ${c.label} <b style="color:#222">€${Math.round(total/(V.eurKur||50)).toLocaleString('en-US')}</b>
+          ${c.label} <b style="color:#222">€${Math.round(total/(V.eurKur ?? 50)).toLocaleString('en-US')}</b>
         </span>`;
       }).join('');
     }
@@ -899,12 +937,12 @@ function renderGiderDagilim(rows) {
       plugins:{
         legend:{ position:'bottom', labels:{ font:{size:10}, boxWidth:8, padding:6,
           generateLabels: chart => chart.data.labels.map((l,i)=>({
-            text: l+' — €'+Math.round(chart.data.datasets[0].data[i]/(V.eurKur||50)/1000)+'K',
+            text: l+' — €'+Math.round(chart.data.datasets[0].data[i]/(V.eurKur ?? 50)/1000)+'K',
             fillStyle: chart.data.datasets[0].backgroundColor[i],
             strokeStyle:'#fff', lineWidth:1, index:i
           }))
         }},
-        tooltip:{ callbacks:{ label: c=>' €'+Math.round(c.raw/(V.eurKur||50)).toLocaleString('en-US') } }
+        tooltip:{ callbacks:{ label: c=>' €'+Math.round(c.raw/(V.eurKur ?? 50)).toLocaleString('en-US') } }
       }
     }
   });
@@ -946,12 +984,12 @@ function renderGiderDagilim(rows) {
       plugins:{
         legend:{ position:'bottom', labels:{ font:{size:10}, boxWidth:8, padding:6,
           generateLabels: chart => chart.data.labels.map((l,i)=>({
-            text: l+' — €'+Math.round(chart.data.datasets[0].data[i]/(V.eurKur||50)/1000)+'K',
+            text: l+' — €'+Math.round(chart.data.datasets[0].data[i]/(V.eurKur ?? 50)/1000)+'K',
             fillStyle: chart.data.datasets[0].backgroundColor[i],
             strokeStyle:'#fff', lineWidth:1, index:i
           }))
         }},
-        tooltip:{ callbacks:{ label: c=>' €'+Math.round(c.raw/(V.eurKur||50)).toLocaleString('en-US') } }
+        tooltip:{ callbacks:{ label: c=>' €'+Math.round(c.raw/(V.eurKur ?? 50)).toLocaleString('en-US') } }
       }
     }
   });
@@ -986,11 +1024,11 @@ function renderGiderDagilim(rows) {
       responsive:true, maintainAspectRatio:false,
       plugins:{
         legend:{ position:'bottom', labels:{ font:{size:11}, boxWidth:10, padding:10 } },
-        tooltip:{ mode:'index', callbacks:{ label: c=>c.dataset.label+': €'+Math.round(c.raw/(V.eurKur||50)).toLocaleString('en-US') } }
+        tooltip:{ mode:'index', callbacks:{ label: c=>c.dataset.label+': €'+Math.round(c.raw/(V.eurKur ?? 50)).toLocaleString('en-US') } }
       },
       scales:{
         x:{ stacked:true, grid:{display:false} },
-        y:{ stacked:true, ticks:{ callback: v=>'€'+(Math.round(v/(V.eurKur||50)/1000))+'K' }, grid:{color:'rgba(0,0,0,0.05)'} }
+        y:{ stacked:true, ticks:{ callback: v=>'€'+(Math.round(v/(V.eurKur ?? 50)/1000))+'K' }, grid:{color:'rgba(0,0,0,0.05)'} }
       }
     }
   });
@@ -1043,7 +1081,7 @@ function renderKurulumDonut(kira, depozito, emlakci, tadilatTop, dekoTopV, mobil
   ctx.fillStyle='#1a1a1a'; ctx.font='bold 11px Arial'; ctx.textAlign='center';
   ctx.fillText('Total', cx, cy-6);
   ctx.font='bold 13px Arial';
-  ctx.fillText('€'+Math.round(total/(V.eurKur||50)/1000)+'K', cx, cy+10);
+  ctx.fillText('€'+Math.round(total/(V.eurKur ?? 50)/1000)+'K', cx, cy+10);
 
   // legend right side
   const legX = W*0.76, legY0 = H/2 - (data.length*14)/2;
@@ -1104,7 +1142,7 @@ function renderSabitBar(aylikKira, elektrik, internet, sarf, ortoBrut, operatorB
           labels: { font: { size: 11 }, boxWidth: 12, padding: 8,
             generateLabels: function(chart) {
               return chart.data.labels.map((lbl, i) => ({
-                text: lbl + '  €' + Math.round(items[i].val/(V.eurKur||50)/1000) + 'K  (' + Math.round(items[i].val/total*100) + '%)',
+                text: lbl + '  €' + Math.round(items[i].val/(V.eurKur ?? 50)/1000) + 'K  (' + Math.round(items[i].val/total*100) + '%)',
                 fillStyle: items[i].color,
                 strokeStyle: '#fff',
                 lineWidth: 1,
@@ -1118,7 +1156,7 @@ function renderSabitBar(aylikKira, elektrik, internet, sarf, ortoBrut, operatorB
           callbacks: {
             label: function(ctx) {
               const v = ctx.parsed;
-              return ' €' + Math.round(v/(V.eurKur||50)).toLocaleString('en-US') + '  (' + Math.round(v/total*100) + '%)';
+              return ' €' + Math.round(v/(V.eurKur ?? 50)).toLocaleString('en-US') + '  (' + Math.round(v/total*100) + '%)';
             }
           }
         },
@@ -1176,11 +1214,11 @@ function renderTblChart(rows) {
         responsive:true, maintainAspectRatio:false,
         plugins: {
           legend:{ position:'bottom', labels:{ font:{size:11}, boxWidth:10, padding:10 } },
-          tooltip:{ mode:'index', callbacks:{ label: c => c.dataset.label+': €'+Math.round(Math.abs(c.raw)/(V.eurKur||50)).toLocaleString('en-US') } }
+          tooltip:{ mode:'index', callbacks:{ label: c => c.dataset.label+': €'+Math.round(Math.abs(c.raw)/(V.eurKur ?? 50)).toLocaleString('en-US') } }
         },
         scales: {
           x:{ grid:{display:false} },
-          y:{ ticks:{ callback: v=>'€'+(Math.round(v/(V.eurKur||50)/1000))+'K' }, grid:{color:'rgba(0,0,0,0.05)'} }
+          y:{ ticks:{ callback: v=>'€'+(Math.round(v/(V.eurKur ?? 50)/1000))+'K' }, grid:{color:'rgba(0,0,0,0.05)'} }
         }
       }
     });
@@ -1205,11 +1243,11 @@ function renderTblChart(rows) {
         responsive:true, maintainAspectRatio:false,
         plugins:{
           legend:{ position:'bottom', labels:{ font:{size:11}, boxWidth:10, padding:8 } },
-          tooltip:{ mode:'index', callbacks:{ label: c=>c.dataset.label+': €'+Math.round(c.raw/(V.eurKur||50)).toLocaleString('en-US') } }
+          tooltip:{ mode:'index', callbacks:{ label: c=>c.dataset.label+': €'+Math.round(c.raw/(V.eurKur ?? 50)).toLocaleString('en-US') } }
         },
         scales:{
           x:{ stacked:true, grid:{display:false} },
-          y:{ stacked:true, ticks:{ callback: v=>'€'+(Math.round(v/(V.eurKur||50)/1000))+'K' }, grid:{color:'rgba(0,0,0,0.05)'} }
+          y:{ stacked:true, ticks:{ callback: v=>'€'+(Math.round(v/(V.eurKur ?? 50)/1000))+'K' }, grid:{color:'rgba(0,0,0,0.05)'} }
         }
       }
     });
@@ -1256,7 +1294,7 @@ function renderTblChart(rows) {
         responsive:true, maintainAspectRatio:false,
         plugins:{
           legend:{ position:'bottom', labels:{ font:{size:11}, boxWidth:10, padding:10 } },
-          tooltip:{ mode:'index', callbacks:{ label: c=>c.dataset.label+': €'+Math.round(Math.abs(c.raw)/(V.eurKur||50)).toLocaleString('en-US')+'K' } },
+          tooltip:{ mode:'index', callbacks:{ label: c=>c.dataset.label+': €'+Math.round(Math.abs(c.raw)/(V.eurKur ?? 50)).toLocaleString('en-US')+'K' } },
           annotation: {}
         },
         scales:{
@@ -1288,7 +1326,7 @@ function renderMain(rows) {
     },
     options:{
       responsive:true, maintainAspectRatio:false,
-      plugins:{ legend:{display:false}, tooltip:{callbacks:{label:c=>c.dataset.label+': €'+Math.round(Math.abs(c.raw)/(V.eurKur||50)).toLocaleString('en-US')+'K'}} },
+      plugins:{ legend:{display:false}, tooltip:{callbacks:{label:c=>c.dataset.label+': €'+Math.round(Math.abs(c.raw)/(V.eurKur ?? 50)).toLocaleString('en-US')+'K'}} },
       scales:{ y:{position:'left',title:{display:true,text:'Monthly Net (€K)'},grid:{color:'rgba(0,0,0,0.05)'}}, y2:{position:'right',title:{display:true,text:'Cumulative (€K)'},grid:{display:false}} }
     }
   });
@@ -1397,14 +1435,6 @@ function renderPazarChart(rows) {
 }
 
 
-
-function updStajyerAy(val) {
-  V.stajyerAy = parseInt(val);
-  const lbl = document.getElementById('stajyerAktifLabel');
-  if (lbl) lbl.textContent = 'From Month ' + (V.stajyerAy+1);
-  recalc();
-  localStorage.setItem('osteoid_V', JSON.stringify(V));
-}
 
 function setGrafTab(tab, btn) {
   ['rampa','netcum','gider','dagilim'].forEach(t => {
@@ -1600,7 +1630,7 @@ function updatePinnedKpi(rows, tGelir, basAy, pozAy, tKorse) {
   const _aktifSehir = V.izmirAktif ? 'Izmir' : V.ankaraAktif ? 'Ankara' : '2nd center';
   _s('y1TriggerKpi', _tAy?'✓ Triggered Month '+_tAy+' — '+_aktifSehir+' signal':'Not triggered yet', _tAy?'pos':'neg');
   const royTL = rows.reduce((s,r)=>s+(r.royaltyTop||0),0);
-  const royEur= Math.round(royTL/(V.eurKur||50));
+  const royEur= Math.round(royTL/(V.eurKur ?? 50));
   set('pkpi_royalty','€'+royEur.toLocaleString('tr-TR'), 'neg');
 
   // trigger
@@ -1624,9 +1654,14 @@ const SEN_ITEMS = [
   { key:'tadilatM2',  label:'Renovation (₺/m²)',       unit:'₺',  step:500,   minR:0.5, maxR:2.5  },
   { key:'dekoM2',     label:'Decoration (₺/m²)',       unit:'₺',  step:250,   minR:0.5, maxR:2.5  },
   { key:'ortotistM',  label:'Orthotist Salary (net)',  unit:'₺',  step:5000,  minR:0.6, maxR:1.8  },
+  { key:'operatorM',  label:'Operator Salary (net)',   unit:'₺',  step:5000,  minR:0.6, maxR:1.6  },
   { key:'stajyerM',   label:'Intern Salary (net)',     unit:'₺',  step:2000,  minR:0.5, maxR:2.0  },
-  { key:'reklamSabit',label:'Advertising / Marketing', unit:'₺',  step:5000,  minR:0.3, maxR:3.0  },
+  { key:'reklamCarpan',label:'Advertising Multiplier',  unit:'',   step:0.25, minR:0.25,maxR:3.0  },
   { key:'eurKur',     label:'EUR/TRY Rate',            unit:'',   step:5,     minR:0.6, maxR:1.8  },
+  // Absolute range, not ratio-based: royaltyEur=0 is a legitimate scenario
+  // value, and scaling a 0 baseline by any ratio would collapse min/max to
+  // a single point right when testing "what if a royalty is added" matters most.
+  { key:'royaltyEur', label:'Royalty (€/brace)',        unit:'',   step:5,     absMin:0, absMax:150 },
 ];
 
 let senMetric = 'gelir';
@@ -1647,99 +1682,186 @@ function initSensitivityInputs() {
   const wrap = document.getElementById('senInputs');
   if (!wrap) return;
   wrap.innerHTML = SEN_ITEMS.map(item => {
-    const baz   = V[item.key] || 0;
-    const minV  = Math.round(baz * item.minR / item.step) * item.step;
-    const maxV  = Math.round(baz * item.maxR / item.step) * item.step;
+    const baz   = V[item.key] ?? 0;
+    // Absolute-range items (e.g. royaltyEur, where 0 is a legitimate baseline
+    // and ratio scaling would collapse min/max to a single point) use fixed
+    // bounds instead of baz-relative ones.
+    const isAbs = item.absMin !== undefined;
+    const minV  = isAbs ? (V['_sen_min_'+item.key] ?? item.absMin) : Math.round(baz * item.minR / item.step) * item.step;
+    const maxV  = isAbs ? (V['_sen_max_'+item.key] ?? item.absMax) : Math.round(baz * item.maxR / item.step) * item.step;
+    const minSlBounds = isAbs ? [item.absMin, item.absMax] : [Math.round(baz*0.2/item.step)*item.step, baz];
+    const maxSlBounds = isAbs ? [item.absMin, item.absMax] : [baz, Math.round(baz*3.5/item.step)*item.step];
     V['_sen_min_'+item.key] = minV;
     V['_sen_max_'+item.key] = maxV;
-    const fmtV  = v => item.unit === '₺' ? '€'+Math.round(v/(V.eurKur||50)).toLocaleString('en-US') : v.toLocaleString('tr-TR');
+    const fmtV  = v => item.unit === '₺' ? '€'+Math.round(v/(V.eurKur ?? 50)).toLocaleString('en-US') : v.toLocaleString('tr-TR');
     return `
     <div style="background:#fafaf8;border:1px solid #e0e0dc;border-radius:6px;padding:12px 14px;">
       <div style="font-size:11px;font-weight:700;color:#333;margin-bottom:8px;">${item.label}</div>
       <div style="font-size:10px;color:#888;margin-bottom:4px;">Base: <b style="color:#534AB7;">${fmtV(baz)}</b></div>
       <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;">
         <span style="font-size:10px;color:#888;min-width:26px;">Min</span>
-        <input type="range" min="${Math.round(baz*0.2/item.step)*item.step}" max="${baz}" step="${item.step}" value="${minV}"
+        <input type="range" min="${minSlBounds[0]}" max="${minSlBounds[1]}" step="${item.step}" value="${minV}"
           style="flex:1;accent-color:#c0392b;"
-          oninput="V['_sen_min_${item.key}']=parseInt(this.value);document.getElementById('smn_${item.key}').textContent='${item.unit === '₺' ? '€' : ''}'+${item.unit === '₺' ? 'Math.round(parseInt(this.value)/(V.eurKur||50)).toLocaleString(\'en-US\')' : 'parseInt(this.value).toLocaleString(\'tr-TR\')'};runSensitivity();">
+          oninput="V['_sen_min_${item.key}']=parseInt(this.value);document.getElementById('smn_${item.key}').textContent='${item.unit === '₺' ? '€' : ''}'+${item.unit === '₺' ? 'Math.round(parseInt(this.value)/(V.eurKur ?? 50)).toLocaleString(\'en-US\')' : 'parseInt(this.value).toLocaleString(\'tr-TR\')'};runSensitivity();">
         <span id="smn_${item.key}" style="min-width:64px;font-size:11px;font-weight:700;color:#c0392b;text-align:right;">${fmtV(minV)}</span>
       </div>
       <div style="display:flex;align-items:center;gap:6px;">
         <span style="font-size:10px;color:#888;min-width:26px;">Max</span>
-        <input type="range" min="${baz}" max="${Math.round(baz*3.5/item.step)*item.step}" step="${item.step}" value="${maxV}"
+        <input type="range" min="${maxSlBounds[0]}" max="${maxSlBounds[1]}" step="${item.step}" value="${maxV}"
           style="flex:1;accent-color:#1a7a45;"
-          oninput="V['_sen_max_${item.key}']=parseInt(this.value);document.getElementById('smx_${item.key}').textContent='${item.unit === '₺' ? '€' : ''}'+${item.unit === '₺' ? 'Math.round(parseInt(this.value)/(V.eurKur||50)).toLocaleString(\'en-US\')' : 'parseInt(this.value).toLocaleString(\'tr-TR\')'};runSensitivity();">
+          oninput="V['_sen_max_${item.key}']=parseInt(this.value);document.getElementById('smx_${item.key}').textContent='${item.unit === '₺' ? '€' : ''}'+${item.unit === '₺' ? 'Math.round(parseInt(this.value)/(V.eurKur ?? 50)).toLocaleString(\'en-US\')' : 'parseInt(this.value).toLocaleString(\'tr-TR\')'};runSensitivity();">
         <span id="smx_${item.key}" style="min-width:64px;font-size:11px;font-weight:700;color:#1a7a45;text-align:right;">${fmtV(maxV)}</span>
       </div>
     </div>`;
   }).join('');
 }
 
+// Pure Year-1 (Istanbul HQ clinic) monthly P&L engine. Shared by recalc()
+// (live dashboard) and calcMetric() (sensitivity what-if) so the two views
+// can never diverge again. Reads Vlike only — never mutates it.
+function computeYear1(Vlike) {
+  const gv1 = k => Vlike[k] ?? 0;
+  const eurKur = Vlike.eurKur ?? 50;
+
+  const royaltyTRY = gv1('royaltyEur') * eurKur;
+  const mutfakV = gv1('mutfak'), stopajV = gv1('stopaj');
+  const genelGiderV = gv1('genelGider');
+  const aylikKira = gv1('kira'), elektrik = gv1('elektrik'), internet = gv1('internet');
+  const sarf = gv1('sarf'), sgkC = gv1('sgkCarpan');
+  const ortoBrut = gv1('ortotistM') * sgkC;
+  const operatorBrut = gv1('operatorM') * sgkC;
+  const ymmM = gv1('ymmM');
+  const kesimEurPer = gv1('kesimEurPer');
+
+  const m2 = gv1('m2'), tm2 = gv1('tadilatM2'), dm2 = gv1('dekoM2');
+  const tadilatTop = m2*tm2, dekoTopV = m2*dm2;
+
+  const printerEurFiyat = Vlike.printerEurFiyat || 35000;
+  const printerAktif = Vlike.printerAktif !== false;
+  const robotKolAktif = !!Vlike.robotKolAktif;
+  const robotKolEurFiyat = Vlike.robotKolEurFiyat || 30000;
+  // Scenario switch, not a fact: true = Osteoid A.Ş. supplies printers/robot
+  // arm as an intercompany transfer (clinic bears none of that capex or its
+  // mid-year top-up cost); false = the clinic buys and owns the equipment.
+  const ekipmanOsteoidden = Vlike.ekipmanOsteoidden !== false;
+
+  const korseArr = Vlike.korse || [];
+  const maxKorse = korseArr.length ? Math.max(...korseArr.map(Number)) : 0;
+  // Auto printer count (mirrors _autoPrinterAdet), derived locally so this
+  // function never has to write V.printerAdet as a side effect.
+  const autoPrinterAdet = Math.max(2, Math.ceil(maxKorse / 66));
+  const startPrinterAdet = Vlike.printerAdetManual !== undefined ? Vlike.printerAdetManual : autoPrinterAdet;
+
+  const printerMaliyet = (printerAktif && !ekipmanOsteoidden) ? startPrinterAdet * printerEurFiyat * eurKur : 0;
+  const robotKolMaliyet = (robotKolAktif && !ekipmanOsteoidden) ? robotKolEurFiyat * eurKur : 0;
+  const kurulumTop = -(gv1('kira')+gv1('depozito')+gv1('emlakci')+tadilatTop+dekoTopV+gv1('mobilya')+gv1('ruhsat')+printerMaliyet+robotKolMaliyet);
+
+  const fStdR=gv1('korseF_stdR'), mStdR=gv1('mal_stdR');
+  const fStdRl=gv1('korseF_stdRl'), mStdRl=gv1('mal_stdRl');
+  const fDelik=gv1('korseF_delik'), mDelik=gv1('mal_delik');
+  const fSens=gv1('korseF_sens'), mSens=gv1('mal_sens');
+  const fSD=gv1('korseF_sensDelik'), mSD=gv1('mal_sensDelik');
+  const dP = {
+    stdR: gv1('danis_stdR')/100, stdRl: gv1('danis_stdRl')/100,
+    delik: gv1('danis_delik')/100, sens: gv1('danis_sens')/100, sensDelik: gv1('danis_sensDelik')/100,
+  };
+  const kanalBakimR = gv1('kanalBakim')/100;
+  const _e1 = Vlike.esikStajyer1 ?? 15, _e2 = Vlike.esikDestek ?? 30, _e3 = Vlike.esikStajyer2 ?? 76;
+  const stajBrut = gv1('stajyerM')*sgkC, destekBrut = gv1('destekM')*sgkC, staj2Brut = gv1('stajyer2M')*sgkC;
+
+  const printerKapAyMax = 66;  // günde 3 korse × 22 iş günü
+  const printerBirimMaliyet = printerEurFiyat * eurKur;
+  let aktifPrinterSayisi = startPrinterAdet;
+  const printerTetikAylari = [];
+
+  const mixArr = Vlike.mix || [];
+  const aktifAyArr = Vlike.aktifAy || [];
+  const kongreArr = Vlike.kongre || [];
+  const donemsel = Vlike.donemsel || {};
+  const reklamArr = donemsel.reklam || [];
+  const ymmArr = donemsel.ymm || [];
+  // donemsel.reklam (the draggable Periodic Costs chart) is the sole
+  // advertising input — reklamCarpan is a sensitivity multiplier on it, not
+  // a second budget. Default 1.0 = no scaling.
+  const reklamCarpan = Vlike.reklamCarpan ?? 1.0;
+
+  let cumBudget=kurulumTop, rows=[], tGelir=0, tGider=0, tNet=0, tKorse=0, cumKorse=0;
+  let basAy=null, pozAy=null;
+
+  for (let i=0; i<12; i++) {
+    const korse = korseArr[i]||0;
+    const reklamRaw = reklamArr[i]||0;
+    const reklamS = reklamRaw * reklamCarpan;
+    const ymmDon = ymmArr[i]||0;
+    // Netting uses the raw dragged value, since V.kongre was summed from raw
+    // donemsel values (see the drag-chart sync) — only the P&L-facing reklamS
+    // term above is scaled by the multiplier.
+    const kongre = Math.max(0, (kongreArr[i]||0)-reklamRaw-ymmDon);
+
+    const rawMx = (mixArr[i] || [100,0,0,0,0]).map((v,pi) => i < (aktifAyArr[pi]||0) ? 0 : v);
+    const tot = rawMx.reduce((s,v)=>s+v,0) || 100;
+    const k = rawMx.map(v => Math.round(korse*v/tot));
+    // Largest-remainder rounding: leftover/excess from per-bucket rounding
+    // goes to whichever already-launched product has the biggest share this
+    // month — never to a product whose aktifAy hasn't started yet.
+    let biggestIdx = 0;
+    for (let pi = 1; pi < rawMx.length; pi++) { if (rawMx[pi] > rawMx[biggestIdx]) biggestIdx = pi; }
+    k[biggestIdx] = Math.max(0, k[biggestIdx] + (korse - k.reduce((s,v)=>s+v,0)));
+
+    const gelirBrut = k[0]*fStdR + k[1]*fStdRl + k[2]*fDelik + k[3]*fSens + k[4]*fSD;
+    const danis     = k[0]*fStdR*dP.stdR + k[1]*fStdRl*dP.stdRl + k[2]*fDelik*dP.delik + k[3]*fSens*dP.sens + k[4]*fSD*dP.sensDelik;
+    const bakim     = gelirBrut * kanalBakimR;
+    const kesimTRY  = kesimEurPer * eurKur;
+    const kesimTop  = (k[2]+k[4]) * kesimTRY;
+    // Cutting fee (kesim) is a real cost the clinic pays Osteoid Inc. for
+    // delik/sensDelik perforation — subtracted here like royaltyTop, and
+    // "Cutting / Osteoid Inc." KPI now reflects money actually deducted.
+    const baskiTop  = k[0]*mStdR + k[1]*mStdRl + k[2]*(mDelik+kesimTRY) + k[3]*mSens + k[4]*(mSD+kesimTRY);
+    const royaltyTop = korse * royaltyTRY;
+    const gelirNet  = gelirBrut - danis - bakim - baskiTop - royaltyTop;
+
+    // Printer tetikleyici — bu ayın korsesi mevcut kapasite aşıyorsa ek printer al.
+    // Capacity/timing is still tracked even when Osteoid A.Ş. supplies the
+    // equipment (ekipmanOsteoidden) — only the cost hitting the clinic P&L is zeroed.
+    const gerekliPrinter = Math.ceil(korse / printerKapAyMax);
+    let printerEkMaliyet = 0;
+    if (gerekliPrinter > aktifPrinterSayisi) {
+      const yeniPrinter = gerekliPrinter - aktifPrinterSayisi;
+      printerEkMaliyet = ekipmanOsteoidden ? 0 : yeniPrinter * printerBirimMaliyet;
+      aktifPrinterSayisi = gerekliPrinter;
+      printerTetikAylari.push({ ay: i+1, adet: yeniPrinter, maliyet: printerEkMaliyet });
+    }
+
+    const ayStopaj = (i===2||i===5||i===8||i===11) ? stopajV : 0;
+    const ayStajyer = korse >= _e1 ? stajBrut   : 0;
+    const ayDestek  = korse >= _e2 ? destekBrut : 0;
+    const ayStaj2   = korse >= _e3 ? staj2Brut  : 0;
+
+    const sabitGider = aylikKira + (elektrik+internet+sarf) + ortoBrut + operatorBrut + ymmM + ayStajyer + ayDestek + ayStaj2 + genelGiderV;
+    const gider = -(sabitGider + reklamS + mutfakV + ayStopaj + kongre + printerEkMaliyet);
+    const net = gelirNet + gider;
+    cumBudget += net;
+    if (basAy===null && net>=0) basAy = i+1;
+    if (pozAy===null && cumBudget>=0) pozAy = i+1;
+
+    rows.push({ay:i+1, korse, k, gelirBrut, danis, bakim, baskiTop, royaltyTop, kesimTop, gelirNet, sabitGider, ayStajyer, reklamS, mutfakV, ayStopaj, kongre, printerEkMaliyet, gider, net, cumBudget});
+    cumKorse += korse;
+    tGelir += gelirNet; tGider += gider; tNet += net; tKorse += korse;
+  }
+
+  return {
+    rows, tGelir, tGider, tNet, tKorse, cumKorse, basAy, pozAy, cumBudget,
+    kurulumTop, tadilatTop, dekoTopV, printerMaliyet, robotKolMaliyet, printerTetikAylari,
+    fStdR, fStdRl, fDelik, fSens, fSD, mStdR, mStdRl, mDelik, mSens, mSD,
+  };
+}
+
 function calcMetric(overrides) {
-  // Temporarily override V values, run mini-recalc, restore
+  // Temporarily override V values, run the shared Year-1 engine, restore.
   const saved = {};
   Object.entries(overrides).forEach(([k,v]) => { saved[k]=V[k]; V[k]=v; });
 
-  const danisPct   = gv('danisPct')/100;
-  const reklamS    = gv('reklamSabit');
-  const mutfakV    = gv('mutfak');
-  const genelGiderV= gv('genelGider');
-  const stopajV    = gv('stopaj');
-  const aylikKira  = gv('kira');
-  const elektrik   = gv('elektrik');
-  const internet   = gv('internet');
-  const sarf       = gv('sarf');
-  const ortoBrut   = gv('ortotistM') * gv('sgkCarpan');
-  const operatorBrut = gv('operatorM') * gv('sgkCarpan');
-  const stajyerBrut= gv('stajyerM')  * gv('sgkCarpan');
-  const royaltyTRY = gv('royaltyEur') * (V.eurKur||50);
-  const fStdR=gv('korseF_stdR'), mStdR=gv('mal_stdR');
-  const fStdRl=gv('korseF_stdRl'), mStdRl=gv('mal_stdRl');
-  const fDelik=gv('korseF_delik'), mDelik=gv('mal_delik');
-  const fSens=gv('korseF_sens'), mSens=gv('mal_sens');
-  const fSD=gv('korseF_sensDelik'), mSD=gv('mal_sensDelik');
-  const m2=gv('m2'), tm2=gv('tadilatM2'), dm2=gv('dekoM2');
-  const tadilatTop=m2*tm2, dekoTopV=m2*dm2;
-  V.printerAdet = _autoPrinterAdet();
-  const printerMaliyet = (V.printerAktif !== false) ? V.printerAdet * (V.printerEurFiyat||35000) * (V.eurKur||50) : 0;
-  const robotKolMaliyet = V.robotKolAktif ? (V.robotKolEurFiyat||30000) * (V.eurKur||50) : 0;
-  const kurulumTop = -(gv('kira')+gv('depozito')+gv('emlakci')+tadilatTop+dekoTopV+gv('mobilya')+gv('ruhsat')+printerMaliyet+robotKolMaliyet);
-
-  let cumBudget=kurulumTop, tGelir=0, basAy=null, pozAy=null, cumKorse=0;
-
-  for(let i=0;i<12;i++){
-    const korse=V.korse[i]||0, kongre=V.kongre[i]||0, isAy1=i===0;
-    const rawMx=(V.mix[i]||[100,0,0,0,0]).map((v,pi)=>i<(V.aktifAy[pi]||0)?0:v);
-    const tot=rawMx.reduce((s,v)=>s+v,0)||100;
-    const k=rawMx.map(v=>Math.round(korse*v/tot));
-    k[4]=Math.max(0,korse-k[0]-k[1]-k[2]-k[3]);
-    const gelirBrut=k[0]*fStdR+k[1]*fStdRl+k[2]*fDelik+k[3]*fSens+k[4]*fSD;
-    const dP2={stdR:gv('danis_stdR')/100,stdRl:gv('danis_stdRl')/100,delik:gv('danis_delik')/100,sens:gv('danis_sens')/100,sensDelik:gv('danis_sensDelik')/100};
-    const danis=k[0]*fStdR*dP2.stdR+k[1]*fStdRl*dP2.stdRl+k[2]*fDelik*dP2.delik+k[3]*fSens*dP2.sens+k[4]*fSD*dP2.sensDelik;
-    const kanalBakimR2=gv('kanalBakim')/100;
-    const bakim=gelirBrut*kanalBakimR2;
-    const kesimTRY = gv('kesimEurPer') * (V.eurKur||50);
-    const baskiTop=k[0]*mStdR+k[1]*mStdRl+k[2]*(mDelik+kesimTRY)+k[3]*mSens+k[4]*(mSD+kesimTRY);
-    const royaltyTop=korse*royaltyTRY;
-    const gelirNet=gelirBrut-danis-bakim-baskiTop-royaltyTop;
-    const ayKira=aylikKira;
-    const ayStopaj=(i===2||i===5||i===8||i===11)?stopajV:0;
-    // Eşik bazlı personel — o ayın korse adediyle karşılaştır (recalc ile tutarlı)
-    const _es1=V.esikStajyer1||16, _es2=V.esikDestek||31, _es3=V.esikStajyer2||46;
-    const stajBrut   = gv('stajyerM')  * gv('sgkCarpan');
-    const destekBrut2= gv('destekM')   * gv('sgkCarpan');
-    const staj2Brut  = gv('stajyer2M') * gv('sgkCarpan');
-    const ayStajyer  = korse >= _es1 ? stajBrut    : 0;
-    const ayDestek   = korse >= _es2 ? destekBrut2 : 0;
-    const ayStaj2    = korse >= _es3 ? staj2Brut   : 0;
-    const sabitGider=ayKira+(elektrik+internet+sarf)+ortoBrut+operatorBrut+ayStajyer+ayDestek+ayStaj2+genelGiderV;
-    const gider=-(sabitGider+reklamS+mutfakV+ayStopaj+kongre);
-    const net=gelirNet+gider;
-    cumBudget+=net;
-    tGelir+=gelirNet;
-    if(basAy===null&&net>=0) basAy=i+1;
-    if(pozAy===null&&cumBudget>=0) pozAy=i+1;
-  }
+  const { tGelir, basAy, pozAy } = computeYear1(V);
 
   // Restore
   Object.entries(saved).forEach(([k,v]) => { V[k]=v; });
@@ -1805,7 +1927,7 @@ function runSensitivity() {
   // Table
   const tbody = document.getElementById('senTableBody');
   if(!tbody) return;
-  const fmtV = (item,v) => item.unit==='₺' ? '€'+Math.round(v/(V.eurKur||50)).toLocaleString('en-US') : Math.round(v).toLocaleString('tr-TR');
+  const fmtV = (item,v) => item.unit==='₺' ? '€'+Math.round(v/(V.eurKur ?? 50)).toLocaleString('en-US') : Math.round(v).toLocaleString('tr-TR');
   tbody.innerHTML = results.map(r => {
     const bazFmt = fmt(bazResult);
     const minFmt = fmt(r.minR);
@@ -1987,7 +2109,7 @@ function _updateKurulumOzet(sehir) {
   const ozet = document.getElementById(sehir+'KurulumOzet');
   if (!ozet) return;
   const top = getMerkezKurulum(sehir);
-  const eurKur = V.eurKur || 50;
+  const eurKur = V.eurKur ?? 50;
   const useIst = V[sehir+'UseIstKurulum'] !== false;
   const oran   = V[sehir+'KurulumOran'] || 1.0;
   const label  = useIst ? 'IST ×' + parseFloat(oran).toFixed(2) + ': ' : 'Custom: ';
@@ -2026,8 +2148,9 @@ function getMerkezKurulum(sehir) {
   const m2 = gv('m2');
   if (useIst) {
     const oran = V[sehir+'KurulumOran'] || 1.0;
-    const _pM = (V.printerAktif !== false) ? _autoPrinterAdet()*(V.printerEurFiyat||35000)*(V.eurKur||50) : 0;
-    const _rM = V.robotKolAktif ? (V.robotKolEurFiyat||30000)*(V.eurKur||50) : 0;
+    const _ekipmanOsteoidden = V.ekipmanOsteoidden !== false;
+    const _pM = (V.printerAktif !== false && !_ekipmanOsteoidden) ? _autoPrinterAdet()*(V.printerEurFiyat||35000)*(V.eurKur ?? 50) : 0;
+    const _rM = (V.robotKolAktif && !_ekipmanOsteoidden) ? (V.robotKolEurFiyat||30000)*(V.eurKur ?? 50) : 0;
     return (gv('kira') + gv('depozito') + gv('emlakci') + m2*gv('tadilatM2') + m2*gv('dekoM2') + gv('mobilya') + gv('ruhsat') + _pM + _rM) * oran;
   } else {
     const kira     = V[sehir+'KurulumKira']     || gv('kira');
@@ -2065,7 +2188,7 @@ function updateMerkezGiderNotu(sehir) {
   const yillik = rows.reduce(function(s, r) { return s + (r.sabitGider || 0); }, 0);
   if (yillik > 0) {
     const ay = Math.round(yillik / 12).toLocaleString('tr-TR');
-    notu.textContent = 'IST base — €' + Math.round(parseInt(ay.replace(/\./g,''))/(V.eurKur||50)) + '/month';
+    notu.textContent = 'IST base — €' + Math.round(parseInt(ay.replace(/\./g,''))/(V.eurKur ?? 50)) + '/month';
   } else {
     notu.textContent = 'IST base';
   }
@@ -2083,7 +2206,7 @@ function toggleIstGider(sehir, useIst) {
 
 function getMerkezGelir(sehir) {
   const rows = window._lastRows || [];
-  const eurKur = V.eurKur || 50;
+  const eurKur = V.eurKur ?? 50;
   const y1Korse = rows.reduce((s,r)=>s+(r.korse||0),0) || 1;
   const y1KorseNet = rows.reduce((s,r)=>s+(r.gelirNet||0),0);
   // Yıl sonu mix baz al — üst ürün ağırlığını yansıtır
@@ -2106,9 +2229,9 @@ function getMerkezGelir(sehir) {
   const _stajyerBrut = (useIstGider ? gv('stajyerM')  : (V[sehir+'StajyerM'] || gv('stajyerM')))  * gv('sgkCarpan');
   const _mutfakV     = useIstGider ? gv('mutfak')        : (V[sehir+'Mutfak']    || gv('mutfak'));
   const _stopajV     = gv('stopaj');
-  const _esik1 = V.esikStajyer1 || 16;
-  const _esikD = V.esikDestek   || 31;
-  const _esik2 = V.esikStajyer2 || 46;
+  const _esik1 = V.esikStajyer1 ?? 15;
+  const _esikD = V.esikDestek   ?? 30;
+  const _esik2 = V.esikStajyer2 ?? 76;
   const _destekBrut  = gv('destekM')   * gv('sgkCarpan');
   const _staj2Brut   = gv('stajyer2M') * gv('sgkCarpan');
 
@@ -2149,7 +2272,7 @@ function toggleIstRampa(sehir, useIst) {
 
 
 function updateValuationTable(rows, tNet) {
-  const eurKur = V.eurKur || 50;
+  const eurKur = V.eurKur ?? 50;
   // Year 5 EBITDA — direct from 5-year projection (totals[4])
   const t3 = window._lastTotals || [];
   const y5Favok = t3[4] || t3[2] || 0; // €K
@@ -2208,27 +2331,10 @@ function updateValuationTable(rows, tNet) {
 }
 
 
-function updDestekAy(val) {
-  V.destekAy = parseInt(val);
-  const lbl = document.getElementById('destekAktifLabel');
-  if (lbl) lbl.textContent = 'From Month '+(parseInt(val)+1);
-  recalc();
-  localStorage.setItem('osteoid_V', JSON.stringify(V));
-}
-
-function updStajyer2Ay(val) {
-  V.stajyer2Ay = parseInt(val);
-  const lbl = document.getElementById('stajyer2AktifLabel');
-  if (lbl) lbl.textContent = 'From Month '+(parseInt(val)+1);
-  recalc();
-  localStorage.setItem('osteoid_V', JSON.stringify(V));
-}
-
-
 function recalc() {
   const korseF=gv('korseF'), danisPct=gv('danisPct')/100, malzeme=gv('malzeme');
-  const royaltyTRY = gv('royaltyEur') * (V.eurKur||50);  // €royalty → ₺
-  const reklamS=gv('reklamSabit'), mutfakV=gv('mutfak'), stopajV=gv('stopaj');
+  const royaltyTRY = gv('royaltyEur') * (V.eurKur ?? 50);  // €royalty → ₺
+  const mutfakV=gv('mutfak'), stopajV=gv('stopaj');
   const genelGiderV=gv('genelGider');
   const aylikKira=gv('kira'), elektrik=gv('elektrik'), internet=gv('internet');
   const sarf=gv('sarf'), ortotistM=gv('ortotistM'), sgkC=gv('sgkCarpan');
@@ -2238,7 +2344,6 @@ function recalc() {
   const ymmM = gv('ymmM');
   const sabitBase=aylikKira+elektrik+internet+sarf+ortoBrut+operatorBrut+mutfakV+genelGiderV+ymmM;  // ilk ay baz
   document.getElementById('sabitAylik').textContent=ff(-sabitBase);
-  document.getElementById('sabitYillik').textContent=ff(-(sabitBase*gv('stajyerAy') + (sabitBase+stajyerBrut)*(12-gv('stajyerAy'))));
   const destekBrutBar = gv('destekM') * gv('sgkCarpan');
   renderSabitBar(aylikKira, elektrik+internet, internet, sarf, ortoBrut, operatorBrut, stajyerBrut, destekBrutBar, mutfakV, genelGiderV, ymmM);
 
@@ -2268,42 +2373,49 @@ function recalc() {
   _danisPairs.forEach(([k, fiyat]) => {
     const hekimTL = Math.round(fiyat * gv('danis_' + k) / 100);
     const kanalTL = Math.round(fiyat * gv('kanalBakim') / 100);
-    const el = document.getElementById('danisТL_' + k);
+    const el = document.getElementById('danisTL_' + k);
     if (el) el.textContent = hekimTL.toLocaleString('tr-TR');
-    const el2 = document.getElementById('bakimТL_' + k);
+    const el2 = document.getElementById('bakimTL_' + k);
     if (el2) el2.textContent = kanalTL.toLocaleString('tr-TR');
     const elCiro = document.getElementById('ciroTL_' + k);
     const elCiroB2B = document.getElementById('ciroB2BTL_' + k);
     if (elCiro || elCiroB2B) {
-      const royaltyTRY = gv('royaltyEur') * (V.eurKur || 50);
+      const royaltyTRY = gv('royaltyEur') * (V.eurKur ?? 50);
       const mal = gv('mal_' + k);
       if (elCiro) {
         const ciro = fiyat - hekimTL - kanalTL - mal - royaltyTRY;
         elCiro.textContent = ciro.toLocaleString('tr-TR');
         const elEur = document.getElementById('ciroEur_' + k);
-        if (elEur) elEur.textContent = Math.round(ciro / (V.eurKur || 50)).toLocaleString('en-US');
+        if (elEur) elEur.textContent = Math.round(ciro / (V.eurKur ?? 50)).toLocaleString('en-US');
       }
       if (elCiroB2B) {
         const fB2B = gv('korseFB2B_' + k);
         const hekimB2B = Math.round(fB2B * gv('danis_' + k) / 100);
         const kanalB2B = Math.round(fB2B * gv('kanalBakim') / 100);
-        const kesimTRY = (k === 'delik' || k === 'sensDelik') ? gv('kesimEurPer') * (V.eurKur || 50) : 0;
+        const kesimTRY = (k === 'delik' || k === 'sensDelik') ? gv('kesimEurPer') * (V.eurKur ?? 50) : 0;
         const ciroB2B = fB2B - hekimB2B - kanalB2B - mal - kesimTRY - royaltyTRY;
         elCiroB2B.textContent = ciroB2B.toLocaleString('tr-TR');
         const elB2BEur = document.getElementById('ciroB2BEur_' + k);
-        if (elB2BEur) elB2BEur.textContent = Math.round(ciroB2B / (V.eurKur || 50)).toLocaleString('en-US');
+        if (elB2BEur) elB2BEur.textContent = Math.round(ciroB2B / (V.eurKur ?? 50)).toLocaleString('en-US');
       }
     }
     const elFiyatEur = document.getElementById('eurFiyat_' + k);
-    if (elFiyatEur) elFiyatEur.textContent = Math.round(fiyat / (V.eurKur || 50)).toLocaleString('en-US');
+    if (elFiyatEur) elFiyatEur.textContent = Math.round(fiyat / (V.eurKur ?? 50)).toLocaleString('en-US');
   });
 
 
 
+  const Y1 = computeYear1(V);
+  const { tadilatTop, dekoTopV, kurulumTop, printerMaliyet, robotKolMaliyet,
+          rows, tGelir, tGider, tNet, tKorse, cumKorse, basAy, pozAy,
+          fStdR, fStdRl, fDelik, fSens, fSD, mStdR, mStdRl, mDelik, mSens, mSD } = Y1;
+
+  // Same 12 monthly sabitGider values the P&L uses — not a separate estimate.
+  document.getElementById('sabitYillik').textContent=ff(-rows.reduce((s,r)=>s+(r.sabitGider||0),0));
+
   const m2=gv('m2'), tm2=gv('tadilatM2'), dm2=gv('dekoM2');
-  const tadilatTop=m2*tm2, dekoTopV=m2*dm2;
-  document.getElementById('tadilatTop').textContent='€'+Math.round(tadilatTop/(V.eurKur||50)).toLocaleString('en-US');
-  document.getElementById('dekoTop').textContent='€'+Math.round(dekoTopV/(V.eurKur||50)).toLocaleString('en-US');
+  document.getElementById('tadilatTop').textContent='€'+Math.round(tadilatTop/(V.eurKur ?? 50)).toLocaleString('en-US');
+  document.getElementById('dekoTop').textContent='€'+Math.round(dekoTopV/(V.eurKur ?? 50)).toLocaleString('en-US');
   document.getElementById('tadilatDekoTop').textContent=ff(-(tadilatTop+dekoTopV));
   document.getElementById('m2d').textContent=m2;
   document.getElementById('tm2d').textContent=tm2.toLocaleString('tr-TR');
@@ -2311,88 +2423,14 @@ function recalc() {
 
   _refreshPrinterDisplay();
   svRobotKol();
-  const printerMaliyetK = (V.printerAktif !== false) ? V.printerAdet * (V.printerEurFiyat||35000) * (V.eurKur||50) : 0;
-  const robotKolMaliyetK = V.robotKolAktif ? (V.robotKolEurFiyat||30000) * (V.eurKur||50) : 0;
-  const kurulumTop=-(gv('kira')+gv('depozito')+gv('emlakci')+tadilatTop+dekoTopV+gv('mobilya')+gv('ruhsat')+printerMaliyetK+robotKolMaliyetK);
+  _refreshEkipmanOsteoidden();
   document.getElementById('kurulumTop').textContent=ff(kurulumTop);
-  renderKurulumDonut(gv('kira'),gv('depozito'),gv('emlakci'),tadilatTop,dekoTopV,gv('mobilya')+printerMaliyetK+robotKolMaliyetK,gv('ruhsat'));
-
-  let cumBudget=kurulumTop, rows=[], tGelir=0, tGider=0, tNet=0, tKorse=0, cumKorse=0;
-  let basAy=null, pozAy=null;
-
-  // Printer kapasite takibi
-  const printerKapAyMax = 66;  // günde 3 korse × 22 iş günü
-  const printerBirimMaliyet = (V.printerEurFiyat||35000) * (V.eurKur||50);
-  let aktifPrinterSayisi = V.printerAdet || 2;  // başlangıç printer sayısı (min 2)
-  const printerTetikAylari = [];  // hangi aylarda printer alındı
-
-  // ürün fiyatları
-  const fStdR  = gv('korseF_stdR'),  mStdR  = gv('mal_stdR');
-  const fStdRl = gv('korseF_stdRl'), mStdRl = gv('mal_stdRl');
-  const fDelik = gv('korseF_delik'), mDelik = gv('mal_delik');
-  const fSens  = gv('korseF_sens'),  mSens  = gv('mal_sens');
-  const fSD    = gv('korseF_sensDelik'), mSD = gv('mal_sensDelik');
-  // hekim payı — ürün başına
-  const dP = {
-    stdR:      gv('danis_stdR')     / 100,
-    stdRl:     gv('danis_stdRl')    / 100,
-    delik:     gv('danis_delik')    / 100,
-    sens:      gv('danis_sens')     / 100,
-    sensDelik: gv('danis_sensDelik')/ 100,
-  };
-  const kanalBakimR = gv('kanalBakim') / 100;
-
-  for(let i=0;i<12;i++){
-    const korse=V.korse[i]||0, korseB2B=V.korseB2B[i]||0, kongre=V.kongre[i]||0, isAy1=i===0;
-    const korseToplam = korse; // printer kapasitesi ve personel eşiği klinik korse ile belirlenir; B2B mevcut kapasitede üretilir
-    const rawMx = (V.mix[i] || [100,0,0,0,0]).map((v,pi) => i < (V.aktifAy[pi]||0) ? 0 : v);
-    const tot = rawMx.reduce((s,v)=>s+v,0) || 100;
-    const k = rawMx.map(v => Math.round(korse * v / tot));
-    k[4] = Math.max(0, korse - k[0] - k[1] - k[2] - k[3]);
-    if(k.reduce((s,v)=>s+v,0) > korse) { k[0] = Math.max(0, korse - k[1]-k[2]-k[3]-k[4]); }
-    // gelir
-    const gelirBrut = k[0]*fStdR + k[1]*fStdRl + k[2]*fDelik + k[3]*fSens + k[4]*fSD;
-    const danis     = k[0]*fStdR*dP.stdR + k[1]*fStdRl*dP.stdRl + k[2]*fDelik*dP.delik + k[3]*fSens*dP.sens + k[4]*fSD*dP.sensDelik;
-    const bakim     = gelirBrut * kanalBakimR;
-    const baskiTop  = k[0]*mStdR + k[1]*mStdRl + k[2]*mDelik + k[3]*mSens + k[4]*mSD;
-    const royaltyTop = korse * royaltyTRY;
-    const gelirNet  = gelirBrut - danis - bakim - baskiTop - royaltyTop;
-    // gider
-    // Printer tetikleyici — bu ayın korsesi mevcut kapasite aşıyorsa ek printer al
-    const gerekliPrinter = Math.ceil(korseToplam / printerKapAyMax);
-    let printerEkMaliyet = 0;
-    if (gerekliPrinter > aktifPrinterSayisi) {
-      const yeniPrinter = gerekliPrinter - aktifPrinterSayisi;
-      printerEkMaliyet = yeniPrinter * printerBirimMaliyet;
-      aktifPrinterSayisi = gerekliPrinter;
-      printerTetikAylari.push({ ay: i+1, adet: yeniPrinter, maliyet: printerEkMaliyet });
-    }
-    const ayKira      = aylikKira;
-    const ayStopaj    = (i===2||i===5||i===8||i===11) ? stopajV : 0;
-    // Eşik bazlı personel — o aya kadarki aylık ortalama korse
-    const _e1 = V.esikStajyer1||16, _e2 = V.esikDestek||31, _e3 = V.esikStajyer2||46;
-    const stajyerBrut2 = gv('stajyerM')  * gv('sgkCarpan');
-    const destekBrut3  = gv('destekM')   * gv('sgkCarpan');
-    const staj2Brut2   = gv('stajyer2M') * gv('sgkCarpan');
-    const ayStajyer    = korse >= _e1 ? stajyerBrut2 : 0;
-    const ayDestek2    = korse >= _e2 ? destekBrut3  : 0;
-    const ayStaj22     = korse >= _e3 ? staj2Brut2   : 0;
-    const sabitGider  = ayKira + (elektrik+internet+sarf) + ortoBrut + ayStajyer + ayDestek2 + ayStaj22 + genelGiderV;
-    const gider       = -(sabitGider + reklamS + mutfakV + ayStopaj + kongre + printerEkMaliyet);
-    const net = gelirNet + gider;
-    cumBudget += net;
-    if(basAy===null&&net>=0) basAy=i+1;
-    if(pozAy===null&&cumBudget>=0) pozAy=i+1;
-    const kesimTop = (k[2]+k[4]) * gv('kesimEurPer') * (V.eurKur||50);
-    rows.push({ay:i+1, korse, k, gelirBrut, danis, bakim, baskiTop, royaltyTop, kesimTop, gelirNet, sabitGider, ayStajyer, reklamS, mutfakV, ayStopaj, kongre, printerEkMaliyet, gider, net, cumBudget});
-    cumKorse+=korse;
-    tGelir+=gelirNet; tGider+=gider; tNet+=net; tKorse+=korse;
-  }
+  renderKurulumDonut(gv('kira'),gv('depozito'),gv('emlakci'),tadilatTop,dekoTopV,gv('mobilya')+printerMaliyet+robotKolMaliyet,gv('ruhsat'));
 
   // ── B2B Gelir ──────────────────────────────────────────────────────────────
   const fB2R = gv('korseFB2B_stdR'), fB2Rl = gv('korseFB2B_stdRl');
   const fB2D = gv('korseFB2B_delik'), fB2S = gv('korseFB2B_sens'), fB2SD = gv('korseFB2B_sensDelik');
-  const kesimTRYb2 = gv('kesimEurPer') * (V.eurKur||50);
+  const kesimTRYb2 = gv('kesimEurPer') * (V.eurKur ?? 50);
   let tGelirB2B = 0;
   const rowsB2B = [];
   if (!V.korseB2B) V.korseB2B = [0,0,0,0,0,0,0,0,0,0,0,0];
@@ -2402,7 +2440,11 @@ function recalc() {
     const rawB2 = V.mixB2B[i2].map((v,pi) => i2 < (V.aktifAy[pi]||0) ? 0 : v);
     const totB2 = rawB2.reduce((s,v)=>s+v,0) || 100;
     const kB2u = rawB2.map(v => Math.round(kB2 * v / totB2));
-    kB2u[4] = Math.max(0, kB2 - kB2u[0] - kB2u[1] - kB2u[2] - kB2u[3]);
+    // Same largest-remainder fix as the clinic loop — never dump rounding
+    // residue onto a product whose aktifAy hasn't started yet.
+    let biggestIdxB2 = 0;
+    for (let pi = 1; pi < rawB2.length; pi++) { if (rawB2[pi] > rawB2[biggestIdxB2]) biggestIdxB2 = pi; }
+    kB2u[biggestIdxB2] = Math.max(0, kB2u[biggestIdxB2] + (kB2 - kB2u.reduce((s,v)=>s+v,0)));
     const brutB2 = kB2u[0]*fB2R + kB2u[1]*fB2Rl + kB2u[2]*fB2D + kB2u[3]*fB2S + kB2u[4]*fB2SD;
     const dPB2 = {stdR:gv('danis_stdR')/100, stdRl:gv('danis_stdRl')/100, delik:gv('danis_delik')/100, sens:gv('danis_sens')/100, sensDelik:gv('danis_sensDelik')/100};
     const danisB2 = kB2u[0]*fB2R*dPB2.stdR + kB2u[1]*fB2Rl*dPB2.stdRl + kB2u[2]*fB2D*dPB2.delik + kB2u[3]*fB2S*dPB2.sens + kB2u[4]*fB2SD*dPB2.sensDelik;
@@ -2444,9 +2486,9 @@ function recalc() {
     {label:'Setup cost',                val:feEur(kurulumTop),                          sub:ffTRY(kurulumTop),     c:'neg'},
     {label:'Total doctor fee',          val:feEur(-_danisTL),                           sub:ffTRY(-_danisTL),      c:'neg'},
     {label:'Total channel share',       val:feEur(-_bakimTL),                           sub:ffTRY(-_bakimTL),      c:'neg'},
-    {label:'Royalty / year',            val:'-€'+Math.round(_royTL/(V.eurKur||50)).toLocaleString('en-US'), sub:ffTRY(-_royTL), c:'neg'},
-    {label:'Osteoid Inc. royalty',      val:'€'+Math.round(_royTL/(V.eurKur||50)).toLocaleString('en-US'),  sub:'',          c:'neu'},
-    {label:'Cutting / Osteoid Inc.',    val:'€'+Math.round(_ksmTL/(V.eurKur||50)).toLocaleString('en-US'),  sub:'',          c:'neu'},
+    {label:'Royalty / year',            val: gv('royaltyEur')===0 ? '— (not applied)' : '-€'+Math.round(_royTL/(V.eurKur ?? 50)).toLocaleString('en-US'), sub: gv('royaltyEur')===0 ? '' : ffTRY(-_royTL), c: gv('royaltyEur')===0 ? 'neu' : 'neg'},
+    {label:'Osteoid Inc. royalty',      val:'€'+Math.round(_royTL/(V.eurKur ?? 50)).toLocaleString('en-US'),  sub:'',          c:'neu'},
+    {label:'Cutting / Osteoid Inc.',    val:'€'+Math.round(_ksmTL/(V.eurKur ?? 50)).toLocaleString('en-US'),  sub:'',          c:'neu'},
     {label:'Net margin / brace',        val:brütMarj+'%',                               sub:'',                 c:'neu'},
   ].map(k=>`<div class="kpi"><div class="kpi-label">${k.label}</div><div class="kpi-val ${k.c}">${k.val}</div>${k.sub?`<div style="font-size:10px;color:#aaa;margin-top:2px;line-height:1.2;">${k.sub}</div>`:''}</div>`).join('');
 
@@ -2619,7 +2661,7 @@ recalc();
 function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmirY5Gelir, ankaraY5Gelir, izmirY5Adet, ankaraY5Adet) {
   const el = document.getElementById('summaryOutcomes3yr');
   if (!el) return;
-  const eurKur = V.eurKur || 50;
+  const eurKur = V.eurKur ?? 50;
 
   // Market size per city (from V) — for display only
   const pazarTR     = V.pazarTR || 30000;
@@ -2806,7 +2848,7 @@ function renderInvestorRoadmap(el, totals, korseM1, izmirRow, ankaraRow, b2bRow)
 function buildProjection() {
   // Yıl 1 verileri recalc rows'tan
   const rows = window._lastRows || [];
-  const eurKur = V.eurKur || 50;
+  const eurKur = V.eurKur ?? 50;
   const toEur  = v => Math.round(v / eurKur / 1000); // ₺ → €K
 
   // Yıl 1: model verisi
@@ -2932,7 +2974,7 @@ function buildProjection() {
   const ankaraY5Gelir = Math.round(ankaraY5Adet * y1BirimNetEur / 1000);
 
   // Center-specific Y5 opex — clinic-direct costs only (no HQ overhead)
-  // ymmM, reklamSabit, genelGider are Istanbul/HQ costs; Izmir/Ankara don't carry them
+  // ymmM, donemsel.reklam advertising, genelGider are Istanbul/HQ costs; Izmir/Ankara don't carry them
   const izmirMonthlyTRY  = (V.izmirKira||80000)  + (V.izmirOrtotistM||55000)  + (V.izmirStajyerM||25000)
     + (V.izmirMutfak||18000)  + (V.izmirSarf||3000)
     + (V.elektrik||16500) + (V.internet||1500)
@@ -3107,7 +3149,14 @@ function _refreshPrinterDisplay() {
   const printerCb = document.getElementById('printerToggle');
   if (printerCb) printerCb.checked = printerAktif;
   const printerTag = document.getElementById('printerAktifTag');
-  if (printerTag) { printerTag.textContent = printerAktif ? 'Included' : 'Excluded'; printerTag.style.color = printerAktif ? '#534AB7' : '#888'; }
+  if (printerTag) {
+    // Same treatment as robotKolTag — "Included" alone doesn't say who bears
+    // the printer capex, so fold in ekipmanOsteoidden too.
+    const ekipmanOsteoidden = V.ekipmanOsteoidden !== false;
+    if (!printerAktif) { printerTag.textContent = 'Excluded'; printerTag.style.color = '#888'; }
+    else if (ekipmanOsteoidden) { printerTag.textContent = 'Included (Osteoid-owned)'; printerTag.style.color = '#534AB7'; }
+    else { printerTag.textContent = 'Included (Clinic-owned)'; printerTag.style.color = '#c94f2a'; }
+  }
   document.getElementById('printerAdet').textContent = adet;
   document.getElementById('printerTRY').textContent = printerAktif ? '€'+Math.round(eur).toLocaleString('en-US') : '—';
   document.getElementById('printerKapasite').textContent = '~'+kapMin+'–'+kapMax+' braces/month';
@@ -3133,7 +3182,15 @@ function svRobotKol() {
   const cb = document.getElementById('robotKolToggle');
   if (cb) cb.checked = aktif;
   const tag = document.getElementById('robotKolTag');
-  if (tag) { tag.textContent = aktif ? 'Included' : 'Excluded'; tag.style.color = aktif ? '#1a7a45' : '#888'; }
+  if (tag) {
+    // Tag reflects both whether the robot arm is used at all (robotKolAktif)
+    // and, if so, who bears its capex (ekipmanOsteoidden) — "Included" alone
+    // would be ambiguous about which side pays.
+    const ekipmanOsteoidden = V.ekipmanOsteoidden !== false;
+    if (!aktif) { tag.textContent = 'Excluded'; tag.style.color = '#888'; }
+    else if (ekipmanOsteoidden) { tag.textContent = 'Included (Osteoid-owned)'; tag.style.color = '#534AB7'; }
+    else { tag.textContent = 'Included (Clinic-owned)'; tag.style.color = '#c94f2a'; }
+  }
   const tryEl = document.getElementById('robotKolTRY');
   if (tryEl) tryEl.textContent = aktif ? '€'+(V.robotKolEurFiyat||30000).toLocaleString('en-US') : '—';
   const infoEl = document.getElementById('robotKolInfo');
@@ -3149,10 +3206,25 @@ function svRobotKolToggle(checked) {
   recalc();
   localStorage.setItem('osteoid_V', JSON.stringify(V));
 }
+// Scenario switch: who owns the printers/robot arm — Osteoid A.Ş. (intercompany,
+// no clinic capex) or the clinic itself (full purchase, counted in setup cost).
+function _refreshEkipmanOsteoidden() {
+  if (V.ekipmanOsteoidden === undefined) V.ekipmanOsteoidden = true;
+  const aktif = V.ekipmanOsteoidden;
+  const cb = document.getElementById('ekipmanOsteoiddenToggle');
+  if (cb) cb.checked = aktif;
+  const tag = document.getElementById('ekipmanOsteoiddenTag');
+  if (tag) { tag.textContent = aktif ? 'Osteoid A.Ş. owns it' : 'Clinic buys it'; tag.style.color = aktif ? '#534AB7' : '#c94f2a'; }
+}
+function svEkipmanOsteoidden(checked) {
+  V.ekipmanOsteoidden = checked;
+  _refreshEkipmanOsteoidden();
+  recalc();
+  localStorage.setItem('osteoid_V', JSON.stringify(V));
+}
 function svPrinterToggle(checked) {
   V.printerAktif = checked;
-  const tag = document.getElementById('printerAktifTag');
-  if (tag) { tag.textContent = checked ? 'Included' : 'Excluded'; tag.style.color = checked ? '#534AB7' : '#888'; }
+  _refreshPrinterDisplay(); // keeps the Included/Excluded + ownership tag logic in one place, same pattern as svRobotKolToggle/svRobotKol
   recalc();
   localStorage.setItem('osteoid_V', JSON.stringify(V));
 }
@@ -3189,8 +3261,8 @@ function updateKapasiteUyari(rows) {
   if (tetikAylari.length > 0) {
     el.style.display = 'block';
     const ayListesi = tetikAylari.map(r => {
-      const adet = Math.round(r.printerEkMaliyet / ((V.printerEurFiyat||35000) * (V.eurKur||50)));
-      return 'Month ' + r.ay + ': +' + adet + ' printer (€' + Math.round(r.printerEkMaliyet/(V.eurKur||50)).toLocaleString('en-US') + ')';
+      const adet = Math.round(r.printerEkMaliyet / ((V.printerEurFiyat||35000) * (V.eurKur ?? 50)));
+      return 'Month ' + r.ay + ': +' + adet + ' printer (€' + Math.round(r.printerEkMaliyet/(V.eurKur ?? 50)).toLocaleString('en-US') + ')';
     }).join(' · ');
     txt.textContent = 'Automatic printer purchase triggered — ' + ayListesi;
     el.style.background = '#e8f5ee';
@@ -3228,7 +3300,7 @@ function renderDcf() {
   const r          = (V.dcfRate    || 28) / 100;
   const exitMult   = V.dcfExitMult || 10;
   const invest     = V.dcfInvest   || 150000;
-  const eurKur     = V.eurKur      || 50;
+  const eurKur     = V.eurKur ?? 50;
 
   // FCF: Year 1 from monthly model rows; Years 2–5 direct from 5-year projection
   const rows = window._lastRows || [];
@@ -3295,7 +3367,7 @@ function renderGetiriTable() {
   if (!t || t.length < 5) return;
 
   const invest    = V.dcfInvest || 150000;
-  const eurKur    = V.eurKur || 50;
+  const eurKur    = V.eurKur ?? 50;
 
   // Pre-money (DCF) — same logic as renderDcf
   const r        = (V.dcfRate    || 28) / 100;
@@ -3417,10 +3489,10 @@ function initLayout() {
       <div style="font-size:9px;color:#8888aa;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">EUR / TRY Rate</div>
       <div style="display:flex;align-items:center;justify-content:flex-end;gap:6px;margin-bottom:4px;">
         <span style="font-size:12px;color:#a89ff7;white-space:nowrap;">1 EUR = ₺</span>
-        <input id="eurRateInput" type="number" step="0.5" min="1" value="${(V.eurKur||50).toFixed(2)}"
+        <input id="eurRateInput" type="number" step="0.5" min="1" value="${(V.eurKur ?? 50).toFixed(2)}"
           style="width:68px;font-size:15px;font-weight:700;color:#a89ff7;background:#0d0d1a;border:1px solid #4a4a6c;border-radius:4px;padding:3px 6px;text-align:right;">
       </div>
-      <div id="eurRateTime" style="font-size:10px;color:#666;margin-bottom:8px;text-align:right;">Model rate · ₺${(V.eurKur||50).toFixed(2)}</div>
+      <div id="eurRateTime" style="font-size:10px;color:#666;margin-bottom:8px;text-align:right;">Model rate · ₺${(V.eurKur ?? 50).toFixed(2)}</div>
       <div style="display:flex;gap:6px;justify-content:flex-end;">
         <button id="eurCheckBtn" onclick="checkLiveEurRate()"
           style="font-size:11px;font-weight:600;padding:5px 10px;border-radius:4px;border:1px solid #4a4a6c;background:#1a1a2e;color:#a89ff7;cursor:pointer;">
@@ -3516,7 +3588,7 @@ function fetchEurRate() {
     try { localStorage.setItem('eur_try_cache', JSON.stringify({ rate: rate, ts: Date.now() })); } catch(e) {}
     _applyEurRate(rate, new Date(), false);
   }, function() {
-    _updateRateWidget(V.eurKur || 50, null, false);
+    _updateRateWidget(V.eurKur ?? 50, null, false);
   });
 }
 

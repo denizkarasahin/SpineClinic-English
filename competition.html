@@ -156,10 +156,10 @@ function renderRakipGrid() {
 }
 
 function renderPiyasaKpi() {
-  const osteoidK  = (window._lastRows||[]).reduce((s,r)=>s+(r.korse||0),0) || 325;
+  const osteoidK  = (window._lastRows||[]).reduce((s,r)=>s+(r.korse||0),0) || (V.korse||[]).reduce((a,b)=>a+b,0);
   const osteoidB2B = ((window._lastRows||[]).length ? V.korseB2B||[] : []).reduce((s,v)=>s+(+v||0),0);
   const osteoidToplam = osteoidK + osteoidB2B;
-  const osteoidFiyat  = V.korseF_stdR || 30000;
+  const osteoidFiyat  = V.korseF_stdR || 27000;
   const rakipToplam = RAKIPLER.reduce((s,r)=>s+gRV(r,'KorseK',r.dK)+gRV(r,'KorseB',r.dB),0);
   const tumToplam   = osteoidToplam + rakipToplam;
   const osteoidPay  = tumToplam > 0 ? Math.round(osteoidToplam/tumToplam*100) : 0;
@@ -189,14 +189,14 @@ function renderPiyasaKpi() {
 
 let rekabetChartInst = null;
 function renderRekabetChart() {
-  const osteoidK   = (window._lastRows||[]).reduce((s,r)=>s+(r.korse||0),0) || 325;
+  const osteoidK   = (window._lastRows||[]).reduce((s,r)=>s+(r.korse||0),0) || (V.korse||[]).reduce((a,b)=>a+b,0);
   const osteoidB2B = (V.korseB2B||[]).reduce((s,v)=>s+(+v||0),0);
   const labels  = ['Osteoid', ...RAKIPLER.map(r=>r.ad)];
   const dataK   = [osteoidK,   ...RAKIPLER.map(r=>gRV(r,'KorseK',r.dK))];
   const dataB   = [osteoidB2B, ...RAKIPLER.map(r=>gRV(r,'KorseB',r.dB))];
   const colors  = ['#534AB7', ...RAKIPLER.map(r=>r.renk)];
-  const fiyatK  = [V.korseF_stdR||30000, ...RAKIPLER.map(r=>gRV(r,'FiyatK',r.dFK))];
-  const fiyatB  = [V.korseFB2B_stdR||24000, ...RAKIPLER.map(r=>gRV(r,'FiyatB',r.dFB))];
+  const fiyatK  = [V.korseF_stdR||27000, ...RAKIPLER.map(r=>gRV(r,'FiyatK',r.dFK))];
+  const fiyatB  = [V.korseFB2B_stdR||10000, ...RAKIPLER.map(r=>gRV(r,'FiyatB',r.dFB))];
 
   if (rekabetChartInst) { rekabetChartInst.destroy(); rekabetChartInst = null; }
   const ctx = document.getElementById('rekabetChart');

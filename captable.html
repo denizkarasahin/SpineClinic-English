@@ -118,7 +118,7 @@
 <div class="section">
   <div class="section-header open" onclick="tog(this)"><h2>Offsets — Royalty &amp; Commission Double-Count Correction</h2><span class="tog">▾</span></div>
   <div class="section-body" style="display:block;">
-    <div class="note-box" style="margin-bottom:16px;">Osteoid extracts €75/brace royalty + €50/brace cutting fee from the clinic in perpetuity. Doctors extract 25% commission. These are separate cash streams already captured in the financial model. Without an offset, a party would receive both equity <em>and</em> a cash stream based on the same underlying profit — double-dipping. The offset reduces their equity claim by the PV of what they already receive in cash.</div>
+    <div class="note-box" style="margin-bottom:16px;">In the active scenario, Osteoid may extract a per-brace royalty (default €75/brace — €0 is a valid scenario state, see the Royalty slider) plus a €50/brace cutting fee from the clinic in perpetuity. Doctors extract 25% commission. These are separate cash streams already captured in the financial model. Without an offset, a party would receive both equity <em>and</em> a cash stream based on the same underlying profit — double-dipping. The offset reduces their equity claim by the PV of what they already receive in cash.</div>
     <div class="sl-grid">
       <div class="sl-row">
         <label>Royalty + Cutting Fee PV over Plan (€K)</label>
@@ -126,7 +126,7 @@
           <input type="range" id="sl_royaltyPV" min="0" max="500" step="5" oninput="ctSet('royaltyPV',this.value)">
           <span class="sl-val" id="sv_royaltyPV">€73K</span>
         </div>
-        <span class="sl-note">PV of (€75 + €50) × annual braces × plan years — reference: Year 1 ≈ €43K at 345 braces</span>
+        <span class="sl-note">PV of (royalty + €50 cutting fee) × annual braces × plan years — reference at the €75 default royalty: Year 1 ≈ €43K at 345 braces; €0 if the scenario carries no royalty</span>
       </div>
       <div class="sl-row">
         <label>Royalty Offset Applied to Osteoid (%)</label>

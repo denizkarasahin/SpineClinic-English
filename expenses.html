@@ -26,6 +26,12 @@
 <div class="section">
   <div class="section-header" onclick="tog(this)"><h2>Setup Costs</h2><span class="tog">▸</span></div>
   <div class="section-body">
+    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:14px;">
+      <span style="font-size:11px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:0.3px;">Setup scenario:</span>
+      <button class="sb" onclick="loadScen('leanSetup',this)">Lean setup (~€39K)</button>
+      <button class="sb" onclick="loadScen('fullSelfOwned',this)">Full self-owned (~€219K)</button>
+      <span style="font-size:11px;color:#aaa;">Presets move every slider below — neither is "correct," pick a starting point and keep adjusting.</span>
+    </div>
     <div class="two-col">
       <div class="sl-grid" style="grid-template-columns:1fr 1fr;">
         <div class="sl-row">
@@ -63,7 +69,7 @@
             <input type="range" id="s_tadilatM2" min="500" max="20000" step="250" value="4750" oninput="sv('tadilatM2',this.value)">
             <span class="sl-val" id="tadilatM2" contenteditable="true" onblur="sv2('tadilatM2','s_tadilatM2',this)">4.750</span>
           </div>
-          <span class="sl-note">Total: <b id="tadilatTop">₺712.500</b></span>
+          <span class="sl-note">Total: <b id="tadilatTop">—</b></span>
         </div>
         <div class="sl-row">
           <label>Decoration (₺/m²)</label>
@@ -71,7 +77,7 @@
             <input type="range" id="s_dekoM2" min="500" max="10000" step="250" value="2000" oninput="sv('dekoM2',this.value)">
             <span class="sl-val" id="dekoM2" contenteditable="true" onblur="sv2('dekoM2','s_dekoM2',this)">2.000</span>
           </div>
-          <span class="sl-note">Total: <b id="dekoTop">₺300.000</b></span>
+          <span class="sl-note">Total: <b id="dekoTop">—</b></span>
         </div>
         <div class="sl-row">
           <label>Equipment &amp; hardware (₺)</label>
@@ -89,21 +95,31 @@
         </div>
         <hr style="border:none;border-top:1px solid #e8e8e4;margin:12px 0;grid-column:1/-1;">
         <div style="font-size:10px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;grid-column:1/-1;">Osteoid A.Ş. Equipment (intercompany)</div>
+        <div class="sl-row" style="margin-bottom:8px;grid-column:1/-1;">
+          <label style="display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer;">
+            <span>Equipment ownership (printers &amp; robot arm)</span>
+            <label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer;font-weight:400;">
+              <input type="checkbox" id="ekipmanOsteoiddenToggle" checked onchange="svEkipmanOsteoidden(this.checked)" style="width:14px;height:14px;accent-color:#534AB7;cursor:pointer;">
+              <span id="ekipmanOsteoiddenTag" style="font-size:11px;font-weight:700;color:#534AB7;">Osteoid A.Ş. owns it</span>
+            </label>
+          </label>
+          <span class="sl-note">When on, Osteoid A.Ş. supplies this equipment and the clinic's setup cost excludes it entirely; when off, the clinic purchases it and the capex below counts toward setup cost.</span>
+        </div>
         <div class="sl-row">
           <label style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
             <span>3D Printer (×€<span id="printerEurDisp">35.000</span>)</span>
             <label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer;font-weight:400;">
               <input type="checkbox" id="printerToggle" checked onchange="svPrinterToggle(this.checked)" style="width:14px;height:14px;accent-color:#534AB7;cursor:pointer;">
-              <span id="printerAktifTag" style="font-size:11px;font-weight:700;color:#534AB7;">Included</span>
+              <span id="printerAktifTag" style="font-size:11px;font-weight:700;color:#534AB7;">—</span>
             </label>
           </label>
           <div style="display:flex;align-items:center;gap:6px;margin-top:3px;">
             <button onclick="svPrinterAdet(-1)" style="width:24px;height:24px;border-radius:4px;border:1px solid #534AB7;background:#f4f3ff;color:#534AB7;font-size:16px;font-weight:700;cursor:pointer;line-height:1;padding:0;">−</button>
             <span id="printerAdet" style="font-size:20px;font-weight:700;color:#534AB7;line-height:1;min-width:18px;text-align:center;">2</span>
             <button onclick="svPrinterAdet(+1)" style="width:24px;height:24px;border-radius:4px;border:1px solid #534AB7;background:#f4f3ff;color:#534AB7;font-size:16px;font-weight:700;cursor:pointer;line-height:1;padding:0;">+</button>
-            <span style="font-size:11px;color:#888;">units · ₺<span id="printerTRY">1.000.000</span></span>
+            <span style="font-size:11px;color:#888;">units · <span id="printerTRY">—</span></span>
           </div>
-          <span class="sl-note">Capacity: <span id="printerKapasite">~88–132 braces/mo</span></span>
+          <span class="sl-note">Capacity: <span id="printerKapasite">—</span></span>
           <div style="font-size:11px;color:#888;margin-top:3px;" id="printerAutoInfo">—</div>
         </div>
         <div class="sl-row" style="margin-top:8px;">
@@ -111,26 +127,26 @@
             <span>Robot Arm — perforated brace</span>
             <label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer;font-weight:400;">
               <input type="checkbox" id="robotKolToggle" onchange="svRobotKolToggle(this.checked)" style="width:14px;height:14px;accent-color:#534AB7;cursor:pointer;">
-              <span id="robotKolTag" style="font-size:11px;font-weight:700;color:#888;">Excluded</span>
+              <span id="robotKolTag" style="font-size:11px;font-weight:700;color:#888;">—</span>
             </label>
           </label>
           <div style="font-size:11px;color:#888;margin-top:4px;padding-left:2px;" id="robotKolInfo">—</div>
-          <span class="sl-note">₺<span id="robotKolTRY">—</span></span>
+          <span class="sl-note"><span id="robotKolTRY">—</span></span>
         </div>
         <div class="note-box" style="margin-top:12px;border-left:3px solid #534AB7;background:#f4f3ff;color:#534AB7;grid-column:1/-1;">
-          ⚠ The 3D Printer and Robot Arm are supplied by Osteoid A.Ş. as an intercompany transfer. <strong>Once the initial investment is recovered, the equipment will be transferred to Osteoid Centers at 50% of market price.</strong>
+          ⚠ With "Equipment ownership" on above, the 3D Printer and Robot Arm are supplied by Osteoid A.Ş. as an intercompany transfer. <strong>Once the initial investment is recovered, the equipment will be transferred to Osteoid Centers at 50% of market price.</strong> Turn it off to model the clinic purchasing this equipment itself.
         </div>
       </div>
       <div>
         <div class="kpi" style="margin-bottom:10px;">
           <div class="kpi-label">Total Setup</div>
-          <div class="kpi-val neg" id="kurulumTop">-₺2.102.500</div>
+          <div class="kpi-val neg" id="kurulumTop">—</div>
           <div style="font-size:11px;color:#888;margin-top:4px;">Upfront rent + deposit included; monthly rent in operating expenses</div>
         </div>
         <div class="kpi" style="margin-bottom:10px;">
           <div class="kpi-label">Renovation + Decoration</div>
-          <div class="kpi-val neg" id="tadilatDekoTop">-₺1.012.500</div>
-          <div style="font-size:11px;color:#888;margin-top:4px;"><span id="m2d">150</span> m² × (₺<span id="tm2d">4.750</span> + ₺<span id="dm2d">2.000</span>)</div>
+          <div class="kpi-val neg" id="tadilatDekoTop">—</div>
+          <div style="font-size:11px;color:#888;margin-top:4px;"><span id="m2d">—</span> m² × (₺<span id="tm2d">—</span> + ₺<span id="dm2d">—</span>)</div>
         </div>
         <div style="position:relative;width:100%;height:180px;margin-top:4px;">
           <canvas id="kurulumDonut" style="width:100%;height:100%;display:block;" width="1682" height="180"></canvas>
@@ -213,11 +229,11 @@
         <div class="sl-row" style="margin-bottom:4px;">
           <label style="font-size:11px;">Net salary (₺)</label>
           <div class="sl-controls">
-            <input type="range" id="s_operatorM" min="100000" max="250000" step="5000" value="175000" oninput="sv('operatorM',this.value)">
-            <span class="sl-val" id="operatorM" contenteditable="true" onblur="sv2('operatorM','s_operatorM',this)">175.000</span>
+            <input type="range" id="s_operatorM" min="100000" max="350000" step="5000" value="200000" oninput="sv('operatorM',this.value)">
+            <span class="sl-val" id="operatorM" contenteditable="true" onblur="sv2('operatorM','s_operatorM',this)">200.000</span>
           </div>
         </div>
-        <div style="font-size:11px;color:#2980B9;">Gross cost: <b id="brutOperator">218.750</b> ₺/mo</div>
+        <div style="font-size:11px;color:#2980B9;">Gross cost: <b id="brutOperator">—</b> ₺/mo</div>
       </div>
 
       <div style="padding:10px;background:#fdf8f2;border:1px solid #e8d8b0;border-radius:6px;margin-bottom:8px;">
@@ -232,7 +248,7 @@
             <span class="sl-val" id="ortotistM" contenteditable="true" onblur="sv2('ortotistM','s_ortotistM',this)">60.000</span>
           </div>
         </div>
-        <div style="font-size:11px;color:#8a5c1a;">Gross cost: <b id="brutOrtotist">75.000</b> ₺/mo</div>
+        <div style="font-size:11px;color:#8a5c1a;">Gross cost: <b id="brutOrtotist">—</b> ₺/mo</div>
       </div>
 
       <div style="margin-bottom:10px;padding:10px;background:#f5f4ee;border-radius:6px;border:1px solid #e0e0dc;">
@@ -273,7 +289,7 @@
             <span class="sl-val" id="stajyerM" contenteditable="true" onblur="sv2('stajyerM','s_stajyerM',this)">30.000</span>
           </div>
         </div>
-        <div style="font-size:11px;color:#1D9E75;">Gross cost: <b id="brutStajyer">37.500</b> ₺/mo</div>
+        <div style="font-size:11px;color:#1D9E75;">Gross cost: <b id="brutStajyer">—</b> ₺/mo</div>
       </div>
 
       <div style="padding:10px;background:#fdf8f2;border:1px solid #e8d8b0;border-radius:6px;margin-bottom:8px;">
@@ -288,7 +304,7 @@
             <span class="sl-val" id="stajyer2M" contenteditable="true" onblur="sv2('stajyer2M','s_stajyer2M',this)">30.000</span>
           </div>
         </div>
-        <div style="font-size:11px;color:#8a5c1a;">Gross cost: <b id="brutYeniMezun">37.500</b> ₺/mo</div>
+        <div style="font-size:11px;color:#8a5c1a;">Gross cost: <b id="brutYeniMezun">—</b> ₺/mo</div>
       </div>
 
       <div style="padding:10px;background:#f0f0ff;border:1px solid #534AB744;border-radius:6px;margin-bottom:8px;">
@@ -303,12 +319,12 @@
             <span class="sl-val" id="destekM" contenteditable="true" onblur="sv2('destekM','s_destekM',this)">30.000</span>
           </div>
         </div>
-        <div style="font-size:11px;color:#534AB7;">Gross cost: <b id="brutDestek">37.500</b> ₺/mo</div>
+        <div style="font-size:11px;color:#534AB7;">Gross cost: <b id="brutDestek">—</b> ₺/mo</div>
       </div>
     </div>
     <div class="kpi-grid" style="margin-bottom:12px;">
-      <div class="kpi"><div class="kpi-label">Fixed costs / month</div><div class="kpi-val neg" id="sabitAylik">-₺189.500</div></div>
-      <div class="kpi"><div class="kpi-label">Fixed costs / year</div><div class="kpi-val neg" id="sabitYillik">-₺2.649.000</div></div>
+      <div class="kpi"><div class="kpi-label">Fixed costs / month</div><div class="kpi-val neg" id="sabitAylik">—</div></div>
+      <div class="kpi"><div class="kpi-label">Fixed costs / year</div><div class="kpi-val neg" id="sabitYillik">—</div></div>
     </div>
     <div style="position:relative;width:100%;height:240px;">
       <canvas id="sabitBar" style="display:block;"></canvas>
@@ -362,7 +378,7 @@ function switchInnerTab(btn, tabId) {
 
 window.addEventListener('load', function() {
   // Kurulum tab sync
-  var v = V.kira || 120000;
+  var v = V.kira || 250000;
   var slK = document.getElementById('s_kira');
   if (slK) slK.value = v;
   var kk = document.getElementById('kira_k');
@@ -374,7 +390,7 @@ window.addEventListener('load', function() {
   var kd = document.getElementById('kira');
   if (kd) kd.textContent = v.toLocaleString('tr-TR');
 
-  [['s_mutfak','mutfak',20000],['s_genelGider','genelGider',10000],['s_ymmM','ymmM',10000],['s_operatorM','operatorM',175000]].forEach(function(arr) {
+  [['s_mutfak','mutfak',20000],['s_genelGider','genelGider',10000],['s_ymmM','ymmM',10000],['s_operatorM','operatorM',200000]].forEach(function(arr) {
     var slId = arr[0], key = arr[1], def = arr[2];
     var val = V[key] || def;
     var sl = document.getElementById(slId); if (sl) sl.value = val;

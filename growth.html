@@ -87,11 +87,11 @@
           <span class="year-badge">Flagship — Istanbul</span>
         </div>
         <div class="year-card-body" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
-          <div class="year-kpi"><div class="year-kpi-label">Net revenue</div><div class="year-kpi-val pos" id="y1GelirKpi">₺7.453.900</div></div>
-          <div class="year-kpi"><div class="year-kpi-label">Break-even</div><div class="year-kpi-val pos" id="y1BasKpi">Month 4</div></div>
-          <div class="year-kpi"><div class="year-kpi-label">Cumulative +</div><div class="year-kpi-val neu" id="y1CumKpi">Month 11</div></div>
-          <div class="year-kpi"><div class="year-kpi-label">Total braces</div><div class="year-kpi-val" id="y1KorseKpi">325 units</div></div>
-          <div class="year-kpi" style="grid-column:span 2;"><div class="year-kpi-label">2nd Center Trigger</div><div class="year-kpi-val pos" id="y1TriggerKpi" style="font-size:13px;">✓ Triggered at Month 5</div></div>
+          <div class="year-kpi"><div class="year-kpi-label">Net revenue</div><div class="year-kpi-val pos" id="y1GelirKpi">—</div></div>
+          <div class="year-kpi"><div class="year-kpi-label">Break-even</div><div class="year-kpi-val pos" id="y1BasKpi">—</div></div>
+          <div class="year-kpi"><div class="year-kpi-label">Cumulative +</div><div class="year-kpi-val neu" id="y1CumKpi">—</div></div>
+          <div class="year-kpi"><div class="year-kpi-label">Total braces</div><div class="year-kpi-val" id="y1KorseKpi">—</div></div>
+          <div class="year-kpi" style="grid-column:span 2;"><div class="year-kpi-label">2nd Center Trigger</div><div class="year-kpi-val pos" id="y1TriggerKpi" style="font-size:13px;">—</div></div>
         </div>
       </div>
 
@@ -102,8 +102,8 @@
         </div>
         <div class="year-card-body">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
-            <div class="year-kpi"><div class="year-kpi-label">Consolidated net revenue</div><div class="year-kpi-val pos" id="y2GelirKpi">~€406K</div></div>
-            <div class="year-kpi"><div class="year-kpi-label">Active centers</div><div class="year-kpi-val" id="y2MerkezKpi">Istanbul + Izmir + Ankara</div></div>
+            <div class="year-kpi"><div class="year-kpi-label">Consolidated net revenue</div><div class="year-kpi-val pos" id="y2GelirKpi">—</div></div>
+            <div class="year-kpi"><div class="year-kpi-label">Active centers</div><div class="year-kpi-val" id="y2MerkezKpi">—</div></div>
             <div class="year-kpi" id="izmirAcilisKpi" style="display:none;"><div class="year-kpi-label" style="color:#1D9E75;">Izmir opening</div><div class="year-kpi-val neu" id="izmirAcilisTarihi">—</div></div>
             <div class="year-kpi" id="ankaraAcilisKpi" style="display:none;"><div class="year-kpi-label" style="color:#534AB7;">Ankara opening</div><div class="year-kpi-val neu" id="ankaraAcilisTarihi">—</div></div>
           </div>
@@ -190,7 +190,7 @@
                     <div class="sl-row"><label style="color:#666;">Decoration ₺/m² (₺)</label><div class="sl-controls"><input type="range" id="s_izmirKurulumDeko" min="500" max="6000" step="250" value="2000" style="accent-color:#1D9E75;" oninput="sv('izmirKurulumDeko',this.value);buildProjection()"><span class="sl-val" id="izmirKurulumDeko" style="color:#1D9E75;">2.000</span></div></div>
                     <div class="sl-row"><label style="color:#666;">Equipment &amp; Machinery (₺)</label><div class="sl-controls"><input type="range" id="s_izmirKurulumMobilya" min="100000" max="1500000" step="50000" value="600000" style="accent-color:#1D9E75;" oninput="sv('izmirKurulumMobilya',this.value);buildProjection()"><span class="sl-val" id="izmirKurulumMobilya" style="color:#1D9E75;">600.000</span></div></div>
                   </div>
-                  <div id="izmirKurulumOzet" style="font-size:11px;color:#1D9E75;font-weight:600;margin-top:4px;">IST setup base: <span id="izmirKurulumTop">~€42K</span></div>
+                  <div id="izmirKurulumOzet" style="font-size:11px;color:#1D9E75;font-weight:600;margin-top:4px;">—</div>
                 </div>
               </div>
             </div>
@@ -282,7 +282,7 @@
                     <div class="sl-row"><label style="color:#666;">Decoration ₺/m² (₺)</label><div class="sl-controls"><input type="range" id="s_ankaraKurulumDeko" min="500" max="6000" step="250" value="2000" style="accent-color:#534AB7;" oninput="sv('ankaraKurulumDeko',this.value);buildProjection()"><span class="sl-val" id="ankaraKurulumDeko" style="color:#534AB7;">2.000</span></div></div>
                     <div class="sl-row"><label style="color:#666;">Equipment &amp; Machinery (₺)</label><div class="sl-controls"><input type="range" id="s_ankaraKurulumMobilya" min="100000" max="1500000" step="50000" value="600000" style="accent-color:#534AB7;" oninput="sv('ankaraKurulumMobilya',this.value);buildProjection()"><span class="sl-val" id="ankaraKurulumMobilya" style="color:#534AB7;">600.000</span></div></div>
                   </div>
-                  <div id="ankaraKurulumOzet" style="font-size:11px;color:#534AB7;font-weight:600;margin-top:4px;">IST setup base: <span id="ankaraKurulumTop">~€42K</span></div>
+                  <div id="ankaraKurulumOzet" style="font-size:11px;color:#534AB7;font-weight:600;margin-top:4px;">—</div>
                 </div>
               </div>
             </div>
@@ -301,22 +301,22 @@
         </div>
         <div class="year-card-body">
           <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px;">
-            <div class="year-kpi"><div class="year-kpi-label">Net consolidated at capacity</div><div class="year-kpi-val pos" id="y5GelirKpi">~€938K</div></div>
-            <div class="year-kpi"><div class="year-kpi-label">Target market share</div><div class="year-kpi-val neu" id="y5PayKpi">16.0% IST · 17.5% IZM · 20.5% ANK</div></div>
-            <div class="year-kpi"><div class="year-kpi-label">Target brace count</div><div class="year-kpi-val pos" id="y5KorseKpi">1,027 + 373 + 504 units/year</div></div>
+            <div class="year-kpi"><div class="year-kpi-label">Net consolidated at capacity</div><div class="year-kpi-val pos" id="y5GelirKpi">—</div></div>
+            <div class="year-kpi"><div class="year-kpi-label">Target market share</div><div class="year-kpi-val neu" id="y5PayKpi">—</div></div>
+            <div class="year-kpi"><div class="year-kpi-label">Target brace count</div><div class="year-kpi-val pos" id="y5KorseKpi">—</div></div>
           </div>
           <div style="margin-top:12px;padding-top:10px;border-top:1px solid #e8e8e4;">
             <div style="font-size:10px;color:#888;font-weight:700;text-transform:uppercase;margin-bottom:8px;">Year 5 Target Market Shares</div>
             <div style="font-size:10px;color:#c94f2a;margin-bottom:4px;font-weight:700;">ISTANBUL</div>
             <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
-              <input type="range" id="s_hedefOsteoidPay" min="1" max="50" step="0.5" value="21.5" style="flex:1;accent-color:#c94f2a;" oninput="sv('hedefOsteoidPay',this.value)">
+              <input type="range" id="s_hedefOsteoidPay" min="1" max="100" step="0.5" value="21.5" style="flex:1;accent-color:#c94f2a;" oninput="sv('hedefOsteoidPay',this.value)">
               <span class="sl-val" id="hedefOsteoidPay" contenteditable="true" onblur="sv2('hedefOsteoidPay','s_hedefOsteoidPay',this)" style="min-width:40px;font-size:12px;color:#c94f2a;">16</span>
               <span style="font-size:10px;color:#888;">% IST</span>
             </div>
             <div id="izmirHedefWrap" style="">
               <div style="font-size:10px;color:#1D9E75;margin-bottom:4px;font-weight:700;">IZMIR</div>
               <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
-                <input type="range" id="s_izmirHedefPay" min="1" max="50" step="0.5" value="3" style="flex:1;accent-color:#1D9E75;" oninput="sv('izmirHedefPay',this.value)">
+                <input type="range" id="s_izmirHedefPay" min="1" max="100" step="0.5" value="3" style="flex:1;accent-color:#1D9E75;" oninput="sv('izmirHedefPay',this.value)">
                 <span class="sl-val" id="izmirHedefPay" contenteditable="true" onblur="sv2('izmirHedefPay','s_izmirHedefPay',this)" style="min-width:40px;font-size:12px;color:#1D9E75;">17,5</span>
                 <span style="font-size:10px;color:#888;">% IZM</span>
               </div>
@@ -324,7 +324,7 @@
             <div id="ankaraHedefWrap" style="">
               <div style="font-size:10px;color:#534AB7;margin-bottom:4px;font-weight:700;">ANKARA</div>
               <div style="display:flex;align-items:center;gap:6px;">
-                <input type="range" id="s_ankaraHedefPay" min="1" max="50" step="0.5" value="3" style="flex:1;accent-color:#534AB7;" oninput="sv('ankaraHedefPay',this.value)">
+                <input type="range" id="s_ankaraHedefPay" min="1" max="100" step="0.5" value="3" style="flex:1;accent-color:#534AB7;" oninput="sv('ankaraHedefPay',this.value)">
                 <span class="sl-val" id="ankaraHedefPay" contenteditable="true" onblur="sv2('ankaraHedefPay','s_ankaraHedefPay',this)" style="min-width:40px;font-size:12px;color:#534AB7;">20,5</span>
                 <span style="font-size:10px;color:#888;">% ANK</span>
               </div>
@@ -415,7 +415,7 @@
           <div class="risk-pip"><span class="pip-fill"></span><span class="pip-fill"></span><span class="pip-empty"></span><span class="pip-empty"></span><span class="pip-empty"></span></div>
           <div style="font-size:10px;color:var(--ink3);">Low–Medium</div>
         </div>
-        <div class="risk-mit">Clinic revenue TRY, costs also TRY — real margin preserved. Royalty fixed in EUR, turns into FX advantage. Prices updated against inflation.</div>
+        <div class="risk-mit">Clinic revenue TRY, costs also TRY — real margin preserved. If a royalty applies in the active scenario, it's EUR-denominated and adds FX upside. Prices updated against inflation.</div>
       </div>
       <div class="risk-row">
         <div class="risk-label"><strong style="display:block;color:var(--ink);margin-bottom:3px;">2nd center partnership risk</strong>If local partner fails to meet expectations</div>
