@@ -230,8 +230,16 @@
           </div>
           <span class="sl-note">Osteoid parent in-kind — value of exclusive rights within the center's city</span>
         </div>
+        <div class="sl-row">
+          <label style="font-size:10px;">Working Capital Buffer (€)</label>
+          <div class="sl-controls">
+            <input type="range" id="s_workingCapBufferEur" min="0" max="300000" step="10000" value="0" oninput="sv('workingCapBufferEur',this.value)">
+            <span class="sl-val" id="workingCapBufferEur" style="min-width:70px;">0</span>
+          </div>
+          <span class="sl-note">Extra cash reserve on top of the model-derived working capital below — a safety margin, not a re-estimate of the trough</span>
+        </div>
       </div>
-      <div class="note-box" style="margin-bottom:16px;">Clinic cash (setup cost + working capital) is read directly from the model above — it is not typed here, and it moves whenever a P&amp;L slider, the brace ramp, or the equipment-ownership toggle changes. Machinery is counted once: it appears under "Osteoid parent in-kind" only when equipment is Osteoid-owned; otherwise its cost is already inside clinic setup. <b>Total Investment</b> below is the sum used everywhere else on this page (DCF, growth table, cap table, agreement).</div>
+      <div class="note-box" style="margin-bottom:16px;">Setup cost and working capital are read directly from the model above — they are not typed, and they move whenever a P&amp;L slider, the brace ramp, or the equipment-ownership toggle changes. The Working Capital Buffer above is the one exception: it's an additional investor-contributed reserve on top of that derived figure, not a re-estimate of it. Machinery is counted once: it appears under "Osteoid parent in-kind" only when equipment is Osteoid-owned; otherwise its cost is already inside clinic setup. <b>Total Investment</b> below is the sum used everywhere else on this page (DCF, growth table, cap table, agreement).</div>
 
       <!-- DCF Sonuç Kartları -->
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;margin-bottom:16px;" id="dcfKpiGrid">
