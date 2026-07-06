@@ -23,7 +23,7 @@ document.getElementById = function(id) {
   };
 };
 
-const V = {"korseF":37800,"malzeme":50,"reklamCarpan":1.0,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.56,"kira":200000,"depozito":400000,"emlakci":400000,"m2":300,"tadilatM2":7000,"dekoM2":6750,"mobilya":300000,"ruhsat":100000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":20000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[10,10,15,20,25,25,30,35,35,45,45,50],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":30000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":1600,"mal_sens":2075,"mal_sensDelik":1250,"feeSci_stdR":10,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdR":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdR":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":40000,"pazarIstPct":19,"hedefOsteoidPay":40,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":false,"izmirHedefPay":25,"izmirUseIst":false,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":false,"ankaraHedefPay":25,"ankaraUseIst":false,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":false,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":30,"dcfGrowth":18,"dcfGrowth45":45,"dcfExitMult":10,"dcfInvest":1505000,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":12500,"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":100000,"_sen_max_kira":400000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":3500,"_sen_max_dekoM2":17000,"_sen_min_ortotistM":10000,"_sen_max_ortotistM":35000,"_sen_min_operatorM":60000,"_sen_max_operatorM":160000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3.0,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.65,"operatorM":100000,"_version":15};
+const V = {"korseF":37800,"malzeme":50,"reklamCarpan":1.0,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.56,"kira":200000,"depozito":400000,"emlakci":400000,"m2":300,"tadilatM2":7000,"dekoM2":6750,"mobilya":300000,"ruhsat":100000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":20000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[10,10,15,20,25,25,30,35,35,45,45,50],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":30000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":1600,"mal_sens":2075,"mal_sensDelik":1250,"feeSci_stdR":10,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdR":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdR":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":40000,"pazarIstPct":19,"hedefOsteoidPay":40,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":false,"izmirHedefPay":25,"izmirUseIst":false,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":false,"ankaraHedefPay":25,"ankaraUseIst":false,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":false,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":30,"dcfGrowth":18,"dcfGrowth45":45,"dcfExitMult":10,"dcfInvest":1505000,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":12500,"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":100000,"_sen_max_kira":400000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":3500,"_sen_max_dekoM2":17000,"_sen_min_ortotistM":10000,"_sen_max_ortotistM":35000,"_sen_min_operatorM":60000,"_sen_max_operatorM":160000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3.0,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.65,"operatorM":100000,"ipLisansEur":1100000,"sehirEksklusifEur":206415,"kvOrani":25,"vergiDahil":true,"_version":17};
 // Restore state from localStorage if available; clear cache on version mismatch
 (function() {
   try {
@@ -371,6 +371,11 @@ function initDynamic() {
   _refreshPrinterDisplay();
   svRobotKol();
   _refreshEkipmanOsteoidden();
+  _refreshVergiDahil();
+  const _kvSl = document.getElementById('s_kvOrani');
+  const _kvSp = document.getElementById('kvOrani');
+  if (_kvSl) _kvSl.value = V.kvOrani ?? 25;
+  if (_kvSp) _kvSp.textContent = V.kvOrani ?? 25;
   // Init DCF sliders
   ['dcfRate','dcfGrowth','dcfGrowth45'].forEach(function(k) {
     const sl = document.getElementById('s_'+k);
@@ -382,10 +387,14 @@ function initDynamic() {
   const _exitSp = document.getElementById('dcfExitMult');
   if (_exitSl) _exitSl.value = V.dcfExitMult || 10;
   if (_exitSp) _exitSp.textContent = (V.dcfExitMult || 10) + '×';
-  const inv = document.getElementById('dcfInvestDisp');
-  if (inv) inv.textContent = '€' + (V.dcfInvest||150000).toLocaleString('tr-TR');
-  const invSl = document.getElementById('s_dcfInvest');
-  if (invSl) invSl.value = V.dcfInvest||150000;
+  // dcfInvestDisp is no longer a typed slider — it's kept in sync by
+  // renderInvestBreakdown() (called from recalc()) since it's a derived total.
+  ['ipLisansEur','sehirEksklusifEur'].forEach(function(k) {
+    const sl = document.getElementById('s_'+k);
+    const sp = document.getElementById(k);
+    if (sl) sl.value = V[k];
+    if (sp) sp.textContent = (V[k]||0).toLocaleString('tr-TR');
+  });
   const kDisp = document.getElementById('kesimEurPerDisp');
   if (kDisp) kDisp.textContent = V.kesimEurPer ?? 50;
   const rSlider = document.getElementById('s_royaltyEur');
@@ -2471,6 +2480,7 @@ function recalc() {
   _refreshEkipmanOsteoidden();
   document.getElementById('kurulumTop').textContent=ff(kurulumTop);
   renderKurulumDonut(gv('kira'),gv('depozito'),gv('emlakci'),tadilatTop,dekoTopV,gv('mobilya')+printerMaliyet+robotKolMaliyet,gv('ruhsat'));
+  window._lastInvestBreakdown = renderInvestBreakdown(kurulumTop, rows);
 
   // ── B2B Gelir ──────────────────────────────────────────────────────────────
   const fB2R = gv('korseFB2B_stdR'), fB2Rl = gv('korseFB2B_stdRl');
@@ -2838,7 +2848,7 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
   el.innerHTML = html;
 }
 
-function renderInvestorRoadmap(el, totals, korseM1, izmirRow, ankaraRow, b2bRow) {
+function renderInvestorRoadmap(el, totals, korseM1, izmirRow, ankaraRow, b2bRow, fcfData) {
   const fmtK = v => v > 0 ? '~€' + v + 'K' : '—';
   const fmtCell = v => v > 0
     ? `<td style="text-align:right;color:#1a7a45;font-weight:600;">~€${v}K</td>`
@@ -2846,6 +2856,11 @@ function renderInvestorRoadmap(el, totals, korseM1, izmirRow, ankaraRow, b2bRow)
   const growCell = (v1, vN) => v1 > 0
     ? `<td style="text-align:right;color:#534AB7;font-weight:700;">+${Math.round((vN/v1-1)*100)}%</td>`
     : `<td style="color:#bbb;">—</td>`;
+  const fmtSignedCell = v => {
+    const color = v > 0 ? '#1a7a45' : v < 0 ? '#c0392b' : '#888';
+    const sign = v > 0 ? '+' : '';
+    return `<td style="text-align:right;color:${color};font-weight:600;">${sign}€${v}K</td>`;
+  };
 
   const c2text = V.izmirAktif && V.ankaraAktif ? 'Izmir + Ankara open'
                : V.izmirAktif  ? 'Izmir center opens'
@@ -2890,11 +2905,63 @@ function renderInvestorRoadmap(el, totals, korseM1, izmirRow, ankaraRow, b2bRow)
       ${V.izmirAktif  ? `<tr><td style="color:#1D9E75;">Izmir Center</td>${fmtCell(izmirRow[0])}${fmtCell(izmirRow[1])}${fmtCell(izmirRow[2])}${fmtCell(izmirRow[3])}${fmtCell(izmirRow[4])}${growCell(izmirRow[1],izmirRow[4])}</tr>` : ''}
       ${V.ankaraAktif ? `<tr><td style="color:#534AB7;">Ankara Center</td>${fmtCell(ankaraRow[0])}${fmtCell(ankaraRow[1])}${fmtCell(ankaraRow[2])}${fmtCell(ankaraRow[3])}${fmtCell(ankaraRow[4])}${growCell(ankaraRow[1],ankaraRow[4])}</tr>` : ''}
       <tr style="font-weight:700;border-top:2px solid #e0e0dc;"><td>Consolidated Total</td>${fmtCell(totals[0])}${fmtCell(totals[1])}${fmtCell(totals[2])}${fmtCell(totals[3])}${fmtCell(totals[4])}${growCell(totals[0],totals[4])}</tr>
+      ${fcfData ? `<tr style="border-top:1px solid #e0e0dc;"><td>${fcfData.vergiDahil?'Free cash flow (after tax)':'Free cash flow (pre-tax)'}</td>${fcfData.taxedFcf.map(fmtSignedCell).join('')}${growCell(fcfData.taxedFcf[0], fcfData.taxedFcf[4])}</tr>` : ''}
+      ${fcfData && fcfData.vergiDahil ? `<tr><td style="font-size:10px;color:#999;">↳ Loss carryforward balance (year-end)</td>${fcfData.carryEnd.map(c=>`<td style="text-align:right;font-size:10px;color:#999;">${c>0?'€'+c+'K':'—'}</td>`).join('')}<td></td></tr>` : ''}
     </tbody>
   </table></div>
-  <div style="font-size:10px;color:#888;">⚠ Istanbul Y1 = gross brace revenue (before fixed operating costs — startup costs covered by raised capital). Y2–Y5 = net after all operating costs. New-center years use capacity-ramp interpolation from full-market net. &nbsp;<a href="growth.html" style="color:#534AB7;font-weight:700;">Full Multi-Year Model →</a></div>`;
+  <div style="font-size:10px;color:#888;">⚠ Istanbul Y1 = gross brace revenue (before fixed operating costs — startup costs covered by raised capital). Y2–Y5 = net after all operating costs. New-center years use capacity-ramp interpolation from full-market net.${fcfData ? ' Free cash flow = consolidated pre-tax total (Y1 from the monthly model net of clinic-paid printer capex, Y2-5 from this projection)'+(fcfData.vergiDahil?', taxed at '+fcfData.kvOraniPct+'% corporate tax (KV) with 5-year loss carryforward. Orthosis sales are VAT-exempt (KDV Kanunu 17/4-s) — no VAT is modeled.':' — corporate tax is currently switched off.') : ''} &nbsp;<a href="growth.html" style="color:#534AB7;font-weight:700;">Full Multi-Year Model →</a></div>`;
 
   el.innerHTML = html;
+}
+
+// Y1 FCF comes straight from the monthly engine (already nets out any
+// clinic-paid mid-year printer top-up via printerEkMaliyet — never subtract
+// it a second time here). Y2-5 come from the same consolidated projection
+// totals used everywhere else on this page. Corporate tax (KV) is applied to
+// positive annual pre-tax profit with a 5-year loss carryforward; a single
+// running balance is enough since this model only spans 5 years, so no
+// carryforward vintage can age past its legal 5-year window before the
+// projection ends. No VAT logic — orthosis sales are VAT-exempt in full
+// under KDV Kanunu 17/4-s, so no VAT line ever applies to any revenue here.
+function computeFcfStream() {
+  const totals = window._lastTotals || [];
+  if (totals.length < 5) return null;
+  const rows = window._lastRows || [];
+  const eurKur = V.eurKur ?? 50;
+  const y1fcf = rows.length > 0
+    ? Math.round(rows.reduce((s,r)=>s+(r.net||0),0) / eurKur / 1000)
+    : (totals[0] ?? 0);
+  const pretaxFcf = [y1fcf, totals[1] ?? 0, totals[2] ?? 0, totals[3] ?? 0, totals[4] ?? 0];
+
+  const vergiDahil = V.vergiDahil !== false;
+  const kvOraniPct = V.kvOrani ?? 25;
+  const kvRate = kvOraniPct / 100;
+
+  let carry = 0;
+  const taxedFcf = [], taxPaid = [], carryEnd = [];
+  for (let i = 0; i < 5; i++) {
+    const pretax = pretaxFcf[i];
+    if (!vergiDahil) { taxedFcf.push(pretax); taxPaid.push(0); carryEnd.push(0); continue; }
+    if (pretax <= 0) {
+      carry += -pretax;
+      taxedFcf.push(pretax);
+      taxPaid.push(0);
+    } else {
+      const offset = Math.min(carry, pretax);
+      const taxable = pretax - offset;
+      const tax = Math.round(taxable * kvRate);
+      carry -= offset;
+      taxedFcf.push(pretax - tax);
+      taxPaid.push(tax);
+    }
+    carryEnd.push(carry);
+  }
+
+  const cum = [];
+  let running = 0;
+  for (let i = 0; i < 5; i++) { running += taxedFcf[i]; cum.push(running); }
+
+  return { pretaxFcf, taxedFcf, taxPaid, carryEnd, vergiDahil, kvOraniPct, cum };
 }
 
 // 5 Yıllık Projeksiyon — dinamik
@@ -3073,9 +3140,10 @@ function buildProjection() {
 
   // Yıl 2 KPI güncelle
   window._lastTotals = totals;
+  window._lastFcf = computeFcfStream();
   renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmirY5Gelir, ankaraY5Gelir, izmirY5Adet, ankaraY5Adet);
   const _roadmapEl = document.getElementById('investorRoadmap');
-  if (_roadmapEl) renderInvestorRoadmap(_roadmapEl, totals, korseM1, izmirRow, ankaraRow, b2bRow);
+  if (_roadmapEl) renderInvestorRoadmap(_roadmapEl, totals, korseM1, izmirRow, ankaraRow, b2bRow, window._lastFcf);
   if (typeof renderDcf === 'function') { renderDcf(); renderGetiriTable(); }
   const _aktifCenterLabel = ['Istanbul'].concat(V.izmirAktif?['Izmir']:[]).concat(V.ankaraAktif?['Ankara']:[]).join(' + ');
   ['y2','y3','y4'].forEach((yid, idx) => {
@@ -3447,6 +3515,23 @@ function svEkipmanOsteoidden(checked) {
   recalc();
   localStorage.setItem('osteoid_V', JSON.stringify(V));
 }
+// Corporate tax (KV) toggle — Klinik Ltd. is subject to 25% KV by default (no
+// VAT logic anywhere: orthosis sales are fully VAT-exempt under KDV Kanunu
+// 17/4-s, so there's nothing to model on that side).
+function _refreshVergiDahil() {
+  if (V.vergiDahil === undefined) V.vergiDahil = true;
+  const aktif = V.vergiDahil;
+  const cb = document.getElementById('vergiDahilToggle');
+  if (cb) cb.checked = aktif;
+  const tag = document.getElementById('vergiDahilTag');
+  if (tag) { tag.textContent = aktif ? 'Applied (with loss carryforward)' : 'Not applied (pre-tax)'; tag.style.color = aktif ? '#534AB7' : '#c94f2a'; }
+}
+function svVergiDahil(checked) {
+  V.vergiDahil = checked;
+  _refreshVergiDahil();
+  recalc();
+  localStorage.setItem('osteoid_V', JSON.stringify(V));
+}
 function svPrinterToggle(checked) {
   V.printerAktif = checked;
   _refreshPrinterDisplay(); // keeps the Included/Excluded + ownership tag logic in one place, same pattern as svRobotKolToggle/svRobotKol
@@ -3501,6 +3586,115 @@ function updateKapasiteUyari(rows) {
 }
 
 
+// ── YATIRIM DÖKÜMÜ (Clinic cash + Osteoid parent in-kind) ───────────────────
+// V.dcfInvest is fully derived here — never typed directly. Two pockets:
+//  (1) Clinic cash = setup capex + working capital (the deepest Year-1 cash
+//      trough beyond setup, i.e. operating burn before break-even). Both are
+//      read straight off computeYear1()'s own monthly cumBudget line, so this
+//      never drifts from the real P&L.
+//  (2) Osteoid parent in-kind = machinery (only when ekipmanOsteoidden=true —
+//      when false, its cost already lives inside clinic setup above, so it's
+//      never counted twice) + IP/design-library license + city exclusivity.
+// Identity: clinicCash === -trough === setupCash + workingCapital, by
+// construction (workingCapital is defined as kurulumTop - trough).
+function renderInvestBreakdown(kurulumTop, rows) {
+  const eurK = V.eurKur ?? 50;
+  const troughTRY = Math.min(kurulumTop, ...rows.map(r => r.cumBudget));
+  const setupCashTRY = -kurulumTop;
+  const workingCapTRY = kurulumTop - troughTRY;          // >= 0
+  const clinicCashTRY = setupCashTRY + workingCapTRY;    // === -troughTRY
+  const clinicCashEur = clinicCashTRY / eurK;
+
+  const ekipmanOsteoidden = V.ekipmanOsteoidden !== false;
+  const printerAdet = V.printerAdetManual !== undefined ? V.printerAdetManual : _autoPrinterAdet();
+  const machineryEur = printerAdet * (V.printerEurFiyat || 35000) + (V.robotKolAktif ? (V.robotKolEurFiyat || 30000) : 0);
+  const machineryParentEur = ekipmanOsteoidden ? machineryEur : 0;
+  const ipLisansEur = gv('ipLisansEur');
+  const sehirEksklusifEur = gv('sehirEksklusifEur');
+  const parentInKindEur = machineryParentEur + ipLisansEur + sehirEksklusifEur;
+
+  const totalInvestEur = clinicCashEur + parentInKindEur;
+  V.dcfInvest = Math.round(totalInvestEur); // derived — kept only for snapshot/backward-compat reads
+
+  const tbody = document.getElementById('investBreakdownBody');
+  if (tbody) {
+    const line = (label, eur, cls) =>
+      '<tr class="' + (cls||'') + '"><td style="text-align:left;">' + label + '</td>'
+      + '<td>₺' + Math.round(eur*eurK).toLocaleString('tr-TR') + '</td>'
+      + '<td>€' + Math.round(eur).toLocaleString('en-US') + '</td></tr>';
+    tbody.innerHTML =
+      '<tr><td colspan="3" style="text-align:left;font-weight:700;color:#555;font-size:10px;text-transform:uppercase;">Clinic cash (from model)</td></tr>'
+      + line('Setup cost (capex)', setupCashTRY/eurK)
+      + line('Working capital (Y1 burn beyond setup)', workingCapTRY/eurK)
+      + line('Clinic cash — subtotal', clinicCashEur, 'r-bas')
+      + '<tr><td colspan="3" style="text-align:left;font-weight:700;color:#555;font-size:10px;text-transform:uppercase;padding-top:8px;">Osteoid parent — in-kind</td></tr>'
+      + line('Machinery (3D printer + robot arm)' + (ekipmanOsteoidden ? '' : ' — inside clinic setup above'), machineryParentEur)
+      + line('IP / design-library license', ipLisansEur)
+      + line('City exclusivity', sehirEksklusifEur)
+      + line('Parent in-kind — subtotal', parentInKindEur, 'r-bas')
+      + line('TOTAL INVESTMENT', totalInvestEur, 'r-cum');
+  }
+  const dcfDisp = document.getElementById('dcfInvestDisp');
+  if (dcfDisp) dcfDisp.textContent = '€' + Math.round(totalInvestEur).toLocaleString('tr-TR');
+
+  return { clinicCashEur, parentInKindEur, totalInvestEur };
+}
+
+// Fractional-year simple payback: interpolates linearly within whichever year
+// the cumulative FCF line crosses denomK (€K). Returns null if never recovered
+// within the array's horizon (rendered as "not within Nyr").
+function _calcPayback(cumArr, denomK) {
+  if (denomK <= 0) return 0;
+  let prev = 0;
+  for (let i = 0; i < cumArr.length; i++) {
+    if (cumArr[i] >= denomK) {
+      const gain = cumArr[i] - prev;
+      const frac = gain > 0 ? (denomK - prev) / gain : 0;
+      return i + frac;
+    }
+    prev = cumArr[i];
+  }
+  return null;
+}
+
+// Cash-on-cash return — two views of the same after-tax FCF stream (fcfData.cum,
+// €K) against the two denominators already computed by renderInvestBreakdown().
+// Both denominators are consumed as-is from window._lastInvestBreakdown — never
+// recomputed here — so machinery is never double-counted regardless of the
+// ekipmanOsteoidden toggle (it already sits inside clinicCashEur when the
+// clinic owns it, and inside totalInvestEur's parent-in-kind slice otherwise).
+function renderCashReturn(fcfData) {
+  const inv = window._lastInvestBreakdown;
+  const tbody = document.getElementById('cashReturnBody');
+  if (!inv || !tbody) return;
+
+  const cumFcfK = fcfData.cum[4];
+  const cum = fcfData.cum;
+  const clinicCashK = inv.clinicCashEur / 1000;
+  const totalInvestK = inv.totalInvestEur / 1000;
+
+  const fmtEurK = k => '€' + Math.round(k).toLocaleString('en-US') + 'K';
+  const fmtMult = m => (m===null || m===undefined) ? '—' : m.toFixed(2) + '×';
+  const fmtYrs  = y => y === null ? 'Not within 5yr' : y.toFixed(1) + ' yr';
+
+  const rows = [
+    { label:'Return on cash invested', sub:'external investor\'s cash-on-cash view', denomK: clinicCashK },
+    { label:'Return on total capital (incl. in-kind)', sub:'includes Osteoid A.Ş.\'s in-kind contribution', denomK: totalInvestK },
+  ];
+
+  tbody.innerHTML = rows.map(r => {
+    const mult = r.denomK > 0 ? cumFcfK / r.denomK : null;
+    const payback = _calcPayback(cum, r.denomK);
+    return `<tr>
+      <td style="text-align:left;">${r.label}<br><span style="font-size:10px;color:#888;">${r.sub}</span></td>
+      <td>${fmtEurK(r.denomK)}</td>
+      <td>${fmtEurK(cumFcfK)}</td>
+      <td class="${mult!==null && mult>=1 ? 'pc' : 'nc'}">${fmtMult(mult)}</td>
+      <td>${fmtYrs(payback)}</td>
+    </tr>`;
+  }).join('');
+}
+
 // ── DCF DEĞERLEMESİ ──────────────────────────────────────────────────────────
 function svDcf(key, val) {
   val = parseFloat(val);
@@ -3509,31 +3703,22 @@ function svDcf(key, val) {
   if (key === 'dcfGrowth')   { const e = document.getElementById('dcfGrowth');   if(e) e.textContent = val; }
   if (key === 'dcfGrowth45') { const e = document.getElementById('dcfGrowth45'); if(e) e.textContent = val; }
   if (key === 'dcfExitMult') { const e = document.getElementById('dcfExitMult'); if(e) e.textContent = val + '×'; }
-  if (key === 'dcfInvest')  {
-    const e = document.getElementById('dcfInvestDisp');
-    if(e) e.textContent = '€' + Math.round(val).toLocaleString('tr-TR');
-  }
   renderDcf();
   renderGetiriTable();
   localStorage.setItem('osteoid_V', JSON.stringify(V));
 }
 
 function renderDcf() {
-  const t = window._lastTotals || [];
-  if (!t || t.length < 5) return;
+  const fcfData = window._lastFcf;
+  if (!fcfData) return;
 
-  const r          = (V.dcfRate    || 28) / 100;
-  const exitMult   = V.dcfExitMult || 10;
-  const invest     = V.dcfInvest   || 150000;
-  const eurKur     = V.eurKur ?? 50;
+  const r          = (V.dcfRate ?? 28) / 100;
+  const exitMult   = V.dcfExitMult ?? 10;
+  const invest     = V.dcfInvest ?? 150000;
 
-  // FCF: Year 1 from monthly model rows; Years 2–5 direct from 5-year projection
-  const rows = window._lastRows || [];
-  const y1fcf = rows.length > 0
-    ? Math.round(rows.reduce((s,r)=>s+(r.net||0),0) / eurKur / 1000)
-    : (t[0] || 0);
-
-  const fcf = [y1fcf, t[1]||0, t[2]||0, t[3]||0, t[4]||0];
+  // Same taxed FCF stream shown in the investor projection table (buildProjection
+  // → computeFcfStream) — DCF and the displayed FCF row can never diverge.
+  const fcf = fcfData.taxedFcf;
 
   // Terminal değer — EV/EBITDA exit multiple: TV = Year5_EBITDA × multiple (€K)
   const tv = fcf[4] > 0 ? Math.round(fcf[4] * exitMult) : 0;
@@ -3561,6 +3746,12 @@ function renderDcf() {
   set('dcf_yatirimci_hisse', fmtPct(yatirimci_pct));
   set('dcf_osteoid_hisse',   fmtPct(osteoid_pct));
 
+  const cumFcf = fcfData.cum[4];
+  const cumEl = document.getElementById('kpi_cumFcf');
+  if (cumEl) cumEl.textContent = (cumFcf>=0?'€':'-€') + Math.abs(cumFcf).toLocaleString('en-US') + 'K';
+
+  renderCashReturn(fcfData);
+
   // Tablo
   const tbody = document.getElementById('dcfTableBody');
   if (!tbody) return;
@@ -3570,7 +3761,7 @@ function renderDcf() {
     return '<td class="'+cls+'">€'+(Math.abs(v)/1000).toFixed(2)+'M</td>';
   };
   tbody.innerHTML =
-    '<tr><td>Free Cash Flow (€M)</td>'
+    '<tr><td>Free Cash Flow'+(fcfData.vergiDahil?' (after tax, €M)':' (pre-tax, €M)')+'</td>'
     + fcf.map(v => fmtE(v)).join('')
     + '<td style="color:#888;font-size:11px;">TV '+exitMult+'× EBITDA: €'+(tv/1000).toFixed(2)+'M</td></tr>'
     + '<tr><td style="color:#888;font-size:11px;">Discount factor (1/(1+r)ⁿ)</td>'
@@ -3589,19 +3780,15 @@ function renderDcf() {
 // ── YATIRIMCI GETİRİ ANALİZİ ─────────────────────────────────────────────────
 function renderGetiriTable() {
   const t = window._lastTotals || [];
-  if (!t || t.length < 5) return;
+  const fcfData = window._lastFcf;
+  if (!t || t.length < 5 || !fcfData) return;
 
-  const invest    = V.dcfInvest || 150000;
-  const eurKur    = V.eurKur ?? 50;
+  const invest    = V.dcfInvest ?? 150000;
 
-  // Pre-money (DCF) — same logic as renderDcf
-  const r        = (V.dcfRate    || 28) / 100;
-  const exitMult = V.dcfExitMult || 10;
-  const rows = window._lastRows || [];
-  const y1fcf = rows.length > 0
-    ? Math.round(rows.reduce((s,r)=>s+(r.net||0),0) / eurKur / 1000)
-    : (t[0] || 0);
-  const fcf = [y1fcf, t[1]||0, t[2]||0, t[3]||0, t[4]||0];
+  // Pre-money (DCF) — same taxed FCF stream as renderDcf, so the two never diverge
+  const r        = (V.dcfRate    ?? 28) / 100;
+  const exitMult = V.dcfExitMult ?? 10;
+  const fcf  = fcfData.taxedFcf;
   const tv   = fcf[4] > 0 ? Math.round(fcf[4] * exitMult) : 0;
   const pv   = fcf.map((cf,i)=>cf/Math.pow(1+r,i+1));
   const pvTv = tv/Math.pow(1+r,5);
@@ -3610,8 +3797,10 @@ function renderGetiriTable() {
   const postmoney_eur = premoney_eur + invest;
   const hisse_pct = postmoney_eur > 0 ? invest / postmoney_eur : 0;
 
-  // Year 5 EBITDA (€)
-  const y5ebitda_eur = (t[4] || 0) * 1000;
+  // Year 5 EBITDA (€) — pre-tax, since EV/EBITDA multiples are conventionally
+  // applied to EBITDA, not after-tax cash flow (kept separate from the taxed
+  // FCF stream used for the DCF NPV above).
+  const y5ebitda_eur = (t[4] ?? 0) * 1000;
 
   // Scenarios offset from the same exitMult used for the DCF terminal value
   // so DCF pre-money and Base exit EV share one consistent Year-5 multiple

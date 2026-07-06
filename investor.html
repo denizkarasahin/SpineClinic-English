@@ -180,22 +180,68 @@
           <span class="sl-note">EV/EBITDA at exit — typical healthcare clinic 6–12×</span>
         </div>
         <div class="sl-row">
-          <label style="font-size:10px;">Investment Amount (€)</label>
+          <label style="font-size:10px;">Corporate Tax — KV (%)</label>
           <div class="sl-controls">
-            <input type="range" id="s_dcfInvest" min="5000" max="5000000" step="5000" value="150000" oninput="svDcf('dcfInvest',this.value)">
-            <span class="sl-val" id="dcfInvestDisp" style="min-width:70px;">€150.000</span>
+            <input type="range" id="s_kvOrani" min="0" max="30" step="1" value="25" oninput="sv('kvOrani',this.value)">
+            <span class="sl-val" id="kvOrani" style="min-width:40px;">25</span>
           </div>
-          <span class="sl-note">Per-investor ticket size (your individual check)</span>
+          <span class="sl-note">Klinik Ltd. rate — no TGB exemption (that belongs solely to Osteoid A.Ş.)</span>
+        </div>
+        <div class="sl-row">
+          <label style="display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer;">
+            <span style="font-size:10px;">Apply corporate tax to FCF</span>
+            <label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer;font-weight:400;">
+              <input type="checkbox" id="vergiDahilToggle" checked onchange="svVergiDahil(this.checked)" style="width:14px;height:14px;accent-color:#534AB7;cursor:pointer;">
+              <span id="vergiDahilTag" style="font-size:11px;font-weight:700;color:#534AB7;">Applied (with loss carryforward)</span>
+            </label>
+          </label>
+          <span class="sl-note">When on, KV is charged on positive annual profit with a 5-year loss carryforward; no VAT is modeled anywhere — orthosis sales are VAT-exempt (KDV Kanunu 17/4-s)</span>
         </div>
       </div>
+
+      <!-- Yatırım Dökümü (Investment Breakdown) — fully derived, nothing typed here -->
+      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Investment Breakdown <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— clinic cash from the live model + Osteoid parent in-kind</span></div>
+      <div class="tbl-wrap" style="margin-bottom:12px;">
+        <table id="investBreakdownTable">
+          <thead><tr>
+            <th style="text-align:left;">Item</th>
+            <th>₺ (TRY)</th>
+            <th>€ (EUR)</th>
+          </tr></thead>
+          <tbody id="investBreakdownBody">
+            <tr><td colspan="3" style="text-align:center;color:#aaa;font-size:11px;">Will be calculated once the model loads...</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:16px;">
+        <div class="sl-row">
+          <label style="font-size:10px;">IP / Design-Library License (€)</label>
+          <div class="sl-controls">
+            <input type="range" id="s_ipLisansEur" min="0" max="2000000" step="25000" value="1100000" oninput="sv('ipLisansEur',this.value)">
+            <span class="sl-val" id="ipLisansEur" style="min-width:70px;">1.100.000</span>
+          </div>
+          <span class="sl-note">Osteoid parent in-kind — value of the Turnkey/Bracesys design library license</span>
+        </div>
+        <div class="sl-row">
+          <label style="font-size:10px;">City Exclusivity (€)</label>
+          <div class="sl-controls">
+            <input type="range" id="s_sehirEksklusifEur" min="0" max="500000" step="10000" value="206415" oninput="sv('sehirEksklusifEur',this.value)">
+            <span class="sl-val" id="sehirEksklusifEur" style="min-width:70px;">206.415</span>
+          </div>
+          <span class="sl-note">Osteoid parent in-kind — value of exclusive rights within the center's city</span>
+        </div>
+      </div>
+      <div class="note-box" style="margin-bottom:16px;">Clinic cash (setup cost + working capital) is read directly from the model above — it is not typed here, and it moves whenever a P&amp;L slider, the brace ramp, or the equipment-ownership toggle changes. Machinery is counted once: it appears under "Osteoid parent in-kind" only when equipment is Osteoid-owned; otherwise its cost is already inside clinic setup. <b>Total Investment</b> below is the sum used everywhere else on this page (DCF, growth table, cap table, agreement).</div>
 
       <!-- DCF Sonuç Kartları -->
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;margin-bottom:16px;" id="dcfKpiGrid">
         <div class="kpi"><div class="kpi-label">Exit Value — Year 5</div><div class="kpi-val pos" id="dcf_exitValue" title="Year 5 EBITDA × Exit Multiple (undiscounted)">—</div></div>
         <div class="kpi"><div class="kpi-label">Pre-Money (DCF)</div><div class="kpi-val neu" id="dcf_premoney" title="Present value of exit + cash flows, discounted at r">—</div></div>
         <div class="kpi"><div class="kpi-label">Post-Money</div><div class="kpi-val neu" id="dcf_postmoney">—</div></div>
+        <div class="kpi"><div class="kpi-label">Total Investment</div><div class="kpi-val neu" id="dcfInvestDisp">—</div></div>
         <div class="kpi"><div class="kpi-label">Investor Stake</div><div class="kpi-val pos" id="dcf_yatirimci_hisse">—</div></div>
         <div class="kpi"><div class="kpi-label">Osteoid Stake</div><div class="kpi-val neu" id="dcf_osteoid_hisse">—</div></div>
+        <div class="kpi"><div class="kpi-label">Cumulative Free Cash (5yr)</div><div class="kpi-val neu" id="kpi_cumFcf" title="Sum of Y1-Y5 free cash flow, taxed per the toggle above">—</div></div>
       </div>
 
       <!-- DCF Nakit Akışı Tablosu -->
@@ -211,7 +257,25 @@
           </tbody>
         </table>
       </div>
-      <div class="note-box" id="dcfNote">Free Cash Flow Years 1–5 are taken directly from the 5-year projection model (same data as the Multi-Year Plan page). Terminal value uses the Gordon Growth Model: TV = FCF₅ × (1+g) / (r−g). Pre-money = NPV(FCF₁₋₅) + PV(Terminal Value). Investor stake = Investment / Post-Money. Discount rate (r) reflects the risk premium for an early-stage Turkey healthcare venture.</div>
+      <div class="note-box" id="dcfNote">Free Cash Flow Years 1–5 are taken directly from the 5-year projection model (same data as the Multi-Year Plan page), taxed per the Corporate Tax toggle above (25% KV by default, with 5-year loss carryforward — no VAT is modeled, orthosis sales are VAT-exempt under KDV Kanunu 17/4-s). Terminal value uses the Gordon Growth Model: TV = FCF₅ × (1+g) / (r−g). Pre-money = NPV(FCF₁₋₅) + PV(Terminal Value). Investor stake = Investment / Post-Money. Discount rate (r) reflects the risk premium for an early-stage Turkey healthcare venture.</div>
+
+      <!-- Cash-on-Cash Return — same after-tax FCF stream, two denominators -->
+      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin:16px 0 8px;">Cash-on-Cash Return <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— cumulative after-tax free cash flow ÷ capital invested</span></div>
+      <div class="tbl-wrap" style="margin-bottom:10px;">
+        <table id="cashReturnTable">
+          <thead><tr>
+            <th style="text-align:left;">Basis</th>
+            <th>Capital invested</th>
+            <th>Cumulative FCF (5yr)</th>
+            <th>Multiple</th>
+            <th>Simple payback</th>
+          </tr></thead>
+          <tbody id="cashReturnBody">
+            <tr><td colspan="5" style="text-align:center;color:#aaa;font-size:11px;">Will be calculated once the model loads...</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note-box" style="margin-bottom:16px;"><b>Return on cash invested</b> is the external investor's cash-on-cash view — capital that actually leaves an investor's pocket (clinic setup cost + working capital, read live from the breakdown table above). <b>Return on total capital</b> additionally counts Osteoid A.Ş.'s in-kind contribution (machinery when Osteoid-owned, IP/design-library license, city exclusivity) as invested capital, so it's always ≤ the cash-only return. Both use the same after-tax free cash flow stream as the DCF table above, and both react live to the equipment-ownership toggle, the in-kind sliders, the corporate tax toggle, and any P&amp;L slider that moves the Year-1 cash trough.</div>
     </div>
 
     <!-- Osteoid için değerleme senaryosu -->
@@ -317,7 +381,7 @@
             </tbody>
           </table>
         </div>
-        <div class="note-box" style="font-size:11px;">MOIC and IRR above are for your ticket size (slider above). Physician partners also earn operating profit share during Years 1–5 — this is additional return not captured here. For a doctor-partner investing €150K who also earns clinic dividends, total economic return is materially higher than equity exit alone.</div>
+        <div class="note-box" style="font-size:11px;">MOIC and IRR above are computed for the full Total Investment amount shown in the breakdown table above. Physician partners also earn operating profit share during Years 1–5 — this is additional return not captured here. Total economic return for a doctor-partner who also earns clinic dividends is materially higher than equity exit alone.</div>
       </div>
     </div>
 
