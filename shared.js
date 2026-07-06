@@ -3057,6 +3057,108 @@ function buildProjection() {
   const y4KanalPayiEurK = Math.round(y4TotalPreOpexNet * y1BakimOran);
   const y5KanalPayiEurK = Math.round(y5TotalPreOpexNet * y1BakimOran);
 
+  // ── Annual Financial Detail — Istanbul (same metrics as the 12-Month Summary,
+  // one column per year). Years 2-5 have no monthly/per-product granularity in
+  // this projection, so several rows fall back to a Year-1 ratio/mix held
+  // constant — same approximation style already used for Doctor Commission /
+  // Channel Share above. Every approximated row is labeled, not asserted as fact.
+  const _y1Model = computeYear1(V);
+  const istGrossY = [y1BrutM1, y2M1PreOpex, y3M1PreOpex, y4M1PreOpex, y3BrutGelir]; // pre-fixed-opex, €K
+  const istNetY   = korseM1; // Year1 = pre-opex (see projTableNote); Years 2-5 = post-opex net, €K
+
+  // Cumulative year-end — Istanbul clinic only, same definition as the 12-Month Summary's "Cumulative year-end"
+  const istCumY = [toEur(rows[11].cumBudget)];
+  for (let i=1;i<5;i++) istCumY.push(istCumY[i-1] + istNetY[i]);
+
+  // Break-even / cumulative-positive are monthly concepts only meaningful inside Year 1's
+  // actual monthly model — Years 2-5 show year-level status instead of a month number.
+  const _basAyRow = rows.find(r=>r.net>=0);
+  const _pozAyRow = rows.find(r=>r.cumBudget>=0);
+  const istBasAyLabels = [_basAyRow?('Month '+_basAyRow.ay):'Not reached in Y1', '—','—','—','—'];
+  let istPozAyLabels;
+  if (_pozAyRow) {
+    istPozAyLabels = ['Month '+_pozAyRow.ay, 'Already positive', 'Already positive', 'Already positive', 'Already positive'];
+  } else {
+    const _tahmin = _tahminPozAy(rows);
+    istPozAyLabels = [_tahmin ? ('~Month '+_tahmin+' (estimated)') : 'Not reached in Y1'];
+    for (let i=1;i<5;i++) {
+      if (istCumY[i] >= 0 && istCumY[i-1] < 0) istPozAyLabels.push('Reached this year');
+      else if (istCumY[i] >= 0) istPozAyLabels.push('Already positive');
+      else istPozAyLabels.push('Not yet');
+    }
+  }
+
+  const istInvestY = [V.dcfInvest ? Math.round(V.dcfInvest/1000) : null, null, null, null, null];
+  const istSetupY  = [toEur(_y1Model.kurulumTop), 0, 0, 0, 0];
+  const istDoctorFeeY = istGrossY.map(g => Math.round(g * y1DanisOran));
+  const istChannelY   = istGrossY.map(g => Math.round(g * y1BakimOran));
+  const istRoyaltyY   = korseCountIst.map(k => Math.round(k * gv('royaltyEur') * (V.eurKur??50) / 1000));
+
+  // Cutting fee (Perf/S+P braces only) — Year 1's actual last-3-month product mix held
+  // constant; this projection has no per-product mix at all beyond Year 1.
+  const _sonK = lastRows.reduce((s,r) => { const k=r.k||[0,0,0,0,0]; return s.map((v,j)=>v+k[j]); }, [0,0,0,0,0]);
+  const _sonKesimPct = sonKorse > 0 ? (_sonK[2]+_sonK[4]) / sonKorse : 0;
+  const istCuttingY = korseCountIst.map(k => Math.round(k * _sonKesimPct * gv('kesimEurPer') * (V.eurKur??50) / 1000));
+
+  // Margin: Year 1 = brace-level margin (net ÷ list price, matches 12-Month Summary exactly);
+  // Years 2-5 = operating margin (post-opex net ÷ pre-opex gross) — a different basis, since
+  // list-price data doesn't exist beyond Year 1 here. The two are not directly comparable.
+  const _y1TBrut = rows.reduce((s,r)=>s+(r.gelirBrut||0),0);
+  const _y1BraceMarj = _y1TBrut > 0 ? Math.round(y1KorseNet/_y1TBrut*100) : 0;
+  const istMarginY = [_y1BraceMarj].concat(istNetY.slice(1).map((n,idx) => istGrossY[idx+1] > 0 ? Math.round(n/istGrossY[idx+1]*100) : null));
+
+  renderAnnualDetailTable('istAnnualDetailWrap', 'Istanbul', {
+    braces: korseCountIst, netRevenue: istNetY, cumEnd: istCumY,
+    basAyLabels: istBasAyLabels, pozAyLabels: istPozAyLabels,
+    invest: istInvestY, setup: istSetupY,
+    doctorFee: istDoctorFeeY, channelShare: istChannelY,
+    royalty: istRoyaltyY, cuttingFee: istCuttingY, margin: istMarginY,
+  });
+
+  // ── Same Annual Financial Detail metrics for Izmir / Ankara. These centers have
+  // no monthly model at all (they're ramped from a single full-capacity target),
+  // so "Monthly break-even" never applies, and doctor fee/channel/cutting-fee %
+  // borrow Istanbul's Year-1 ratios — a second layer of approximation on top of
+  // the one Istanbul's own Y2-5 columns already carry. Setup cost lands entirely
+  // in the opening year (Year 2 in this model), not spread out.
+  function _centerAnnualCfg(sehir, korseCountArr, netRevArr, y5GrossGelir, aktifAyYil2) {
+    const aktif = !!V[sehir+'Aktif'];
+    const grossY = aktif
+      ? [0, Math.round(y5GrossGelir * 0.25 * aktifAyYil2 / 12), Math.round(y5GrossGelir*0.50), Math.round(y5GrossGelir*0.80), y5GrossGelir]
+      : [0,0,0,0,0];
+    const setupEurK = aktif ? toEur(getMerkezKurulum(sehir)) : 0;
+    const setupY = [0, setupEurK, 0, 0, 0];
+    const cumY = [0];
+    for (let i=1;i<5;i++) cumY.push(cumY[i-1] + netRevArr[i] - (i===1 ? setupEurK : 0));
+    const pozAyLabels = ['—'];
+    for (let i=1;i<5;i++) {
+      if (!aktif) { pozAyLabels.push('Not opened'); continue; }
+      pozAyLabels.push(cumY[i] >= 0 ? (i===1 || cumY[i-1] < 0 ? 'Reached this year' : 'Already positive') : 'Not yet');
+    }
+    const doctorFeeY = grossY.map(g => Math.round(g * y1DanisOran));
+    const channelY   = grossY.map(g => Math.round(g * y1BakimOran));
+    const royaltyY   = korseCountArr.map(k => Math.round(k * gv('royaltyEur') * (V.eurKur??50) / 1000));
+    const cuttingY   = korseCountArr.map(k => Math.round(k * _sonKesimPct * gv('kesimEurPer') * (V.eurKur??50) / 1000));
+    const marginY    = netRevArr.map((n,i) => grossY[i] > 0 ? Math.round(n/grossY[i]*100) : null);
+    return {
+      braces: korseCountArr, netRevenue: netRevArr, cumEnd: cumY,
+      basAyLabels: ['—','—','—','—','—'], pozAyLabels,
+      invest: [null,null,null,null,null], setup: setupY,
+      doctorFee: doctorFeeY, channelShare: channelY,
+      royalty: royaltyY, cuttingFee: cuttingY, margin: marginY,
+    };
+  }
+  const izmirDetailEl = document.getElementById('izmirAnnualDetailSection');
+  if (izmirDetailEl) izmirDetailEl.style.display = V.izmirAktif ? '' : 'none';
+  if (V.izmirAktif) {
+    renderAnnualDetailTable('izmirAnnualDetailWrap', 'Izmir', _centerAnnualCfg('izmir', korseCountIzmir, izmirRow, izmirY5Gelir, _aktifAyYil2));
+  }
+  const ankaraDetailEl = document.getElementById('ankaraAnnualDetailSection');
+  if (ankaraDetailEl) ankaraDetailEl.style.display = V.ankaraAktif ? '' : 'none';
+  if (V.ankaraAktif) {
+    renderAnnualDetailTable('ankaraAnnualDetailWrap', 'Ankara', _centerAnnualCfg('ankara', korseCountAnkara, ankaraRow, ankaraY5Gelir, _ankaraAktifAyYil2));
+  }
+
   // Tablo güncelle
   const wrap = document.getElementById('projTableWrap');
   if (wrap) {
@@ -3127,6 +3229,45 @@ function buildProjection() {
       }
     }
   });
+}
+
+// Renders a per-year "Annual Financial Detail" table for one center, mirroring
+// the 12-Month Summary's own KPI set (shared.js:kpiGrid) so the two pages tell
+// a consistent story instead of independently-labeled numbers. cfg values are
+// €K unless noted; null renders as "—". Reused for Istanbul, Izmir, Ankara.
+function renderAnnualDetailTable(elId, sehirLabel, cfg) {
+  const el = document.getElementById(elId);
+  if (!el) return;
+  const fmtEurK = v => (v===null||v===undefined) ? '<td style="color:#aaa;">—</td>' : (v>=0 ? `<td class="val-pos">€${v}K</td>` : `<td style="color:#c94f2a;">-€${Math.abs(v)}K</td>`);
+  // "Not applicable this year" (setup cost outside the opening year) uses "—"; a real
+  // computed zero (e.g. channel share when kanalBakim=0) shows "€0K" — the two aren't the same.
+  const fmtCost = v => (!v) ? '<td style="color:#aaa;">—</td>' : `<td style="color:#c94f2a;">-€${Math.abs(v)}K</td>`;
+  const fmtCostOrZero = v => (v===null||v===undefined) ? '<td style="color:#aaa;">—</td>' : (v===0 ? '<td>€0K</td>' : `<td style="color:#c94f2a;">-€${Math.abs(v)}K</td>`);
+  const fmtRoyalty = v => (!v) ? '<td style="color:#aaa;">— (not applied)</td>' : `<td style="color:#c94f2a;">-€${Math.abs(v)}K</td>`;
+  const fmtRoyaltyPos = v => (v===null||v===undefined) ? '<td style="color:#aaa;">—</td>' : `<td>€${v}K</td>`;
+  const fmtUnits = v => `<td>${Math.round(v).toLocaleString('tr-TR')} units</td>`;
+  const fmtPct = v => (v===null||v===undefined) ? '<td style="color:#aaa;">—</td>' : `<td>${v}%</td>`;
+  const fmtText = v => `<td style="font-size:11px;">${v}</td>`;
+  const row = (label, cells, note, cls) => `<tr${cls?` class="${cls}"`:''}><td>${label}${note?` <span style="font-weight:400;opacity:0.6;font-size:10px;">${note}</span>`:''}</td>${cells.join('')}</tr>`;
+  el.innerHTML = `
+  <table class="rev-table">
+    <thead><tr><th>${sehirLabel} — Metric</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>Year 4</th><th>Year 5</th></tr></thead>
+    <tbody>
+      ${row('Total braces', cfg.braces.map(fmtUnits))}
+      ${row('Clinic net revenue (year)', cfg.netRevenue.map(fmtEurK))}
+      ${row('Cumulative year-end', cfg.cumEnd.map(fmtEurK), null, 'total')}
+      ${row('Monthly break-even', cfg.basAyLabels.map(fmtText))}
+      ${row('Cumulative positive', cfg.pozAyLabels.map(fmtText))}
+      ${row('Total investment', cfg.invest.map(fmtEurK))}
+      ${row('Setup cost', cfg.setup.map(fmtCost))}
+      ${row('Total doctor fee', cfg.doctorFee.map(fmtCostOrZero), '(Y1 ratio fixed · projection)')}
+      ${row('Total channel share', cfg.channelShare.map(fmtCostOrZero), '(Y1 ratio fixed · projection)')}
+      ${row('Royalty / year', cfg.royalty.map(fmtRoyalty))}
+      ${row('Osteoid A.Ş. royalty', cfg.royalty.map(fmtRoyaltyPos))}
+      ${row('Cutting / Osteoid A.Ş.', cfg.cuttingFee.map(fmtRoyaltyPos), '(Y1 product mix % fixed · projection)')}
+      ${row('Net margin', cfg.margin.map(fmtPct), '(Y1: brace-level · Y2-5: operating margin — not directly comparable)')}
+    </tbody>
+  </table>`;
 }
 // ── PRINTER & ROBOT KOL ───────────────────────────────────────────────────────
 function _autoPrinterAdet() {
