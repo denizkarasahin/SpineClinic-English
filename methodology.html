@@ -183,8 +183,8 @@
   <table class="param-tbl"><thead><tr><th>Product</th><th>Code</th><th>Price</th><th>Note</th></tr></thead><tbody id="p_fiyat"></tbody></table>
   <div class="sub-title">Material Costs (₺ / units)</div>
   <table class="param-tbl"><thead><tr><th>Product</th><th>Code</th><th>Cost</th><th>Note</th></tr></thead><tbody id="p_malzeme"></tbody></table>
-  <div class="sub-title">Doctor Commission (%)</div>
-  <table class="param-tbl"><thead><tr><th>Product</th><th>Code</th><th>Rate</th><th>₺ / units</th></tr></thead><tbody id="p_danis"></tbody></table>
+  <div class="sub-title">Referral Fees (%)</div>
+  <table class="param-tbl"><thead><tr><th>Fee</th><th>Code</th><th>Rate</th><th>Note</th></tr></thead><tbody id="p_danis"></tbody></table>
   <div class="sub-title">Fixed Monthly Costs (₺)</div>
   <table class="param-tbl"><thead><tr><th>Cost item</th><th>Code</th><th>Value</th><th>Note</th></tr></thead><tbody id="p_sabit"></tbody></table>
   <div class="sub-title">Personnel</div>
@@ -195,10 +195,10 @@
 
 <div class="sec">
   <div class="sec-title">2 — Per-Product Unit Margin Analysis</div>
-  <p style="font-size:12px;color:#555;margin:0 0 12px;">Flow for each brace sale: <strong>Gross price → Doctor fee → Channel fee → Material → Royalty = Net revenue</strong><br>Channel fee = Gross revenue × <span id="kanalPctDisp">—</span> (channel maintenance rate)</p>
+  <p style="font-size:12px;color:#555;margin:0 0 12px;">Flow for each brace sale: <strong>Gross price → Scientific Study Fee → Education Fee → Library Fee → Material → Royalty = Net revenue</strong><br>Each fee = Gross revenue × its own flat rate (<span id="kanalPctDisp">—</span> combined)</p>
   <div class="prod-grid" id="urunMarjWrap"></div>
   <div class="sub-title">Comparison Table</div>
-  <table class="param-tbl" id="marjKarsilastirma"><thead><tr><th>Product</th><th>Price</th><th>Doctor fee</th><th>Material</th><th>Royalty</th><th>Net revenue/units</th><th>Net margin %</th></tr></thead><tbody></tbody></table>
+  <table class="param-tbl" id="marjKarsilastirma"><thead><tr><th>Product</th><th>Price</th><th>Fees (Sci+Edu+Lib)</th><th>Material</th><th>Royalty</th><th>Net revenue/units</th><th>Net margin %</th></tr></thead><tbody></tbody></table>
 </div>
 
 <div class="sec">
@@ -223,14 +223,14 @@
           <th class="lft" rowspan="2">Month</th>
           <th colspan="5">Brace Mix (units)</th>
           <th rowspan="2">Total Braces</th>
-          <th colspan="5">Revenue (₺)</th>
+          <th colspan="6">Revenue (₺)</th>
           <th colspan="6">Cost (₺)</th>
           <th rowspan="2">Monthly Net (₺)</th>
           <th rowspan="2">Cumulative (₺)</th>
         </tr>
         <tr>
           <th style="color:#aaa;">Std-R</th><th style="color:#D85A30;">Std-Rl</th><th style="color:#1D9E75;">Perf.</th><th style="color:#534AB7;">Sens</th><th style="color:#D4537E;">S+D</th>
-          <th>Gross</th><th>−Doctor</th><th>−Channel</th><th>−Material</th><th>−Royalty</th><th>Net Rev.</th>
+          <th>Gross</th><th>−Sci</th><th>−Edu</th><th>−Lib</th><th>−Material</th><th>−Royalty</th><th>Net Rev.</th>
           <th>−Fixed</th><th>−Advert.</th><th>−Kitchen</th><th>−W.Tax</th><th>−Period/Prnt</th>
         </tr>
       </thead>
@@ -314,7 +314,6 @@ function renderParams() {
   document.getElementById('p_kur').innerHTML = [
     row('EUR/TRY rate','eurKur','₺'+(V.eurKur||53.56),'Used in all EUR↔TRY conversions'),
     row('Royalty (Osteoid A.Ş.)','royaltyEur','€'+(V.royaltyEur??0)+'/brace',(V.royaltyEur??0)===0?'Not applied in this scenario':'₺'+royaltyTRY.toLocaleString('tr-TR')+'/brace (= '+(V.royaltyEur??0)+' × '+(V.eurKur||53.56)+')'),
-    row('Channel maintenance fee','kanalBakim',(V.kanalBakim||0)+'% (on gross revenue)','Sales channel management fee — adjustable scenario parameter, current default '+(V.kanalBakim||0)+'%'),
     row('Cutting fee (EUR)','kesimEurPer','€'+(V.kesimEurPer??0)+'/unit','Used for Perforated and S+P braces; Osteoid A.Ş. cutting revenue'),
   ].join('');
 
@@ -322,15 +321,15 @@ function renderParams() {
   var prodNames = ['Std-No Rep.','Std-Reported','Perf+Rep.','Sensor+Rep.','Sns+Rep+Perf'];
   var fKeys = ['korseF_stdR','korseF_stdRl','korseF_delik','korseF_sens','korseF_sensDelik'];
   var mKeys = ['mal_stdR','mal_stdRl','mal_delik','mal_sens','mal_sensDelik'];
-  var dKeys = ['danis_stdR','danis_stdRl','danis_delik','danis_sens','danis_sensDelik'];
   var b2bFKeys = ['korseFB2B_stdR','korseFB2B_stdRl','korseFB2B_delik','korseFB2B_sens','korseFB2B_sensDelik'];
 
   document.getElementById('p_fiyat').innerHTML = prods.map(function(p,i){ return row(prodNames[i],fKeys[i],tf(V[fKeys[i]]),i===0?'Month 1-5 starter product':i>=2?'Month 6+ advanced product':''); }).join('');
   document.getElementById('p_malzeme').innerHTML = prods.map(function(p,i){ return row(prodNames[i],mKeys[i],tf(V[mKeys[i]]),(i===2||i===4)?'+ €'+(V.kesimEurPer??0)+'/unit cutting cost (Osteoid A.Ş. revenue)':''); }).join('');
-  document.getElementById('p_danis').innerHTML = prods.map(function(p,i){
-    var fiyat=V[fKeys[i]]||0, pct=V[dKeys[i]]||0;
-    return '<tr><td>'+prodNames[i]+'</td><td><code style="font-size:11px;color:#888;">'+dKeys[i]+'</code></td><td class="val">'+pct+'%</td><td class="note">= ₺'+Math.round(fiyat*pct/100).toLocaleString('tr-TR')+'/unit ('+fiyat.toLocaleString('tr-TR')+' × '+pct+'%)</td></tr>';
-  }).join('');
+  document.getElementById('p_danis').innerHTML = [
+    row('Scientific Study Fee','feeScientific',(V.feeScientific??10)+'% (on gross revenue)','Flat rate, same across every product and B2B'),
+    row('Education Fee','feeEducation',(V.feeEducation??10)+'% (on gross revenue)','Flat rate, same across every product and B2B'),
+    row('Library Fee','feeLibrary',(V.feeLibrary??10)+'% (on gross revenue)','Flat rate, same across every product and B2B'),
+  ].join('');
   document.getElementById('p_sabit').innerHTML = [
     row('Monthly rent','kira',tf(V.kira),'Monthly rent during operations'),
     row('Deposit','depozito',tf(V.depozito),'Setup cost; not an operating cost'),
@@ -357,25 +356,27 @@ function renderParams() {
 
 function renderUrunMarj() {
   var prods = [
-    {name:'Std-No Rep.', color:'#888780',fKey:'korseF_stdR',mKey:'mal_stdR',dKey:'danis_stdR'},
-    {name:'Std-Reported',color:'#D85A30',fKey:'korseF_stdRl',mKey:'mal_stdRl',dKey:'danis_stdRl'},
-    {name:'Perf+Rep.',   color:'#1D9E75',fKey:'korseF_delik',mKey:'mal_delik',dKey:'danis_delik',kesim:true},
-    {name:'Sensor+Rep.', color:'#534AB7',fKey:'korseF_sens',mKey:'mal_sens',dKey:'danis_sens'},
-    {name:'Sns+Rep+Perf',color:'#D4537E',fKey:'korseF_sensDelik',mKey:'mal_sensDelik',dKey:'danis_sensDelik',kesim:true},
+    {name:'Std-No Rep.', color:'#888780',fKey:'korseF_stdR',mKey:'mal_stdR'},
+    {name:'Std-Reported',color:'#D85A30',fKey:'korseF_stdRl',mKey:'mal_stdRl'},
+    {name:'Perf+Rep.',   color:'#1D9E75',fKey:'korseF_delik',mKey:'mal_delik',kesim:true},
+    {name:'Sensor+Rep.', color:'#534AB7',fKey:'korseF_sens',mKey:'mal_sens'},
+    {name:'Sns+Rep+Perf',color:'#D4537E',fKey:'korseF_sensDelik',mKey:'mal_sensDelik',kesim:true},
   ];
   var royaltyTRY = (V.royaltyEur??0) * (V.eurKur||53.56);
-  var kanalPct = (V.kanalBakim||0)/100;
-  document.getElementById('kanalPctDisp').textContent = (V.kanalBakim||0)+'%';
+  var sciPct = (V.feeScientific??10)/100, eduPct = (V.feeEducation??10)/100, libPct = (V.feeLibrary??10)/100;
+  var feePctTotal = (V.feeScientific??10) + (V.feeEducation??10) + (V.feeLibrary??10);
+  document.getElementById('kanalPctDisp').textContent = feePctTotal+'%';
   var wrap = document.getElementById('urunMarjWrap');
   wrap.innerHTML = prods.map(function(p){
     var f=V[p.fKey]||0, m=V[p.mKey]||0;
-    var d=Math.round(f*(V[p.dKey]||0)/100), k=Math.round(f*kanalPct);
+    var sci=Math.round(f*sciPct), edu=Math.round(f*eduPct), lib=Math.round(f*libPct);
     var kesimTRY=p.kesim?Math.round((V.kesimEurPer??0)*(V.eurKur||53.56)):0;
-    var net=f-d-k-m-kesimTRY-royaltyTRY, marj=f>0?Math.round(net/f*100):0;
+    var net=f-sci-edu-lib-m-kesimTRY-royaltyTRY, marj=f>0?Math.round(net/f*100):0;
     return '<div class="prod-card"><h4 style="color:'+p.color+';">'+p.name+'</h4>' +
       '<div class="prod-line"><span class="lbl">Sale price</span><span class="val">₺'+f.toLocaleString('tr-TR')+'</span></div>' +
-      '<div class="prod-line deduct"><span class="lbl">− Doctor ('+(V[p.dKey]||0)+'%)</span><span class="val">−₺'+d.toLocaleString('tr-TR')+'</span></div>' +
-      (k>0?'<div class="prod-line deduct"><span class="lbl">− Channel fee</span><span class="val">−₺'+k.toLocaleString('tr-TR')+'</span></div>':'') +
+      '<div class="prod-line deduct"><span class="lbl">− Scientific Study ('+(V.feeScientific??10)+'%)</span><span class="val">−₺'+sci.toLocaleString('tr-TR')+'</span></div>' +
+      '<div class="prod-line deduct"><span class="lbl">− Education ('+(V.feeEducation??10)+'%)</span><span class="val">−₺'+edu.toLocaleString('tr-TR')+'</span></div>' +
+      '<div class="prod-line deduct"><span class="lbl">− Library ('+(V.feeLibrary??10)+'%)</span><span class="val">−₺'+lib.toLocaleString('tr-TR')+'</span></div>' +
       '<div class="prod-line deduct"><span class="lbl">− Material</span><span class="val">−₺'+m.toLocaleString('tr-TR')+'</span></div>' +
       (kesimTRY>0?'<div class="prod-line deduct"><span class="lbl">− Cutting (€'+(V.kesimEurPer??0)+')</span><span class="val">−₺'+kesimTRY.toLocaleString('tr-TR')+'</span></div>':'') +
       (royaltyTRY>0?'<div class="prod-line deduct"><span class="lbl">− Royalty (€'+(V.royaltyEur??0)+'×'+V.eurKur+')</span><span class="val">−₺'+Math.round(royaltyTRY).toLocaleString('tr-TR')+'</span></div>':'') +
@@ -385,12 +386,12 @@ function renderUrunMarj() {
   var tbody = document.querySelector('#marjKarsilastirma tbody');
   tbody.innerHTML = prods.map(function(p){
     var f=V[p.fKey]||0, m=V[p.mKey]||0;
-    var d=Math.round(f*(V[p.dKey]||0)/100), k=Math.round(f*kanalPct);
+    var sci=Math.round(f*sciPct), edu=Math.round(f*eduPct), lib=Math.round(f*libPct);
     var kesimTRY=p.kesim?Math.round((V.kesimEurPer??0)*(V.eurKur||53.56)):0;
-    var net=f-d-k-m-kesimTRY-royaltyTRY, marj=f>0?Math.round(net/f*100):0;
+    var net=f-sci-edu-lib-m-kesimTRY-royaltyTRY, marj=f>0?Math.round(net/f*100):0;
     return '<tr><td style="font-weight:700;color:'+p.color+';">'+p.name+'</td>' +
       '<td style="text-align:right;">₺'+f.toLocaleString('tr-TR')+'</td>' +
-      '<td style="text-align:right;color:#D85A30;">−₺'+d.toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;color:#D85A30;">−₺'+(sci+edu+lib).toLocaleString('tr-TR')+'</td>' +
       '<td style="text-align:right;color:#D85A30;">−₺'+(m+kesimTRY).toLocaleString('tr-TR')+'</td>' +
       '<td style="text-align:right;color:#D85A30;">−₺'+Math.round(royaltyTRY).toLocaleString('tr-TR')+'</td>' +
       '<td style="text-align:right;font-weight:700;color:#1D9E75;">₺'+Math.round(net).toLocaleString('tr-TR')+'</td>' +
@@ -412,13 +413,14 @@ function renderFormulas() {
     '<span class="c">── REVENUE (per month) ──────────────────────────────────────────────────────</span>\n\n' +
     '<span class="k">GrossRevenue</span>  = Σ [ brace_qty[type] × price[type] ]\n' +
     '<span class="c">              type ∈ { Std-R, Std-Rl, Perf, Sens, Sns+P }</span>\n\n' +
-    '<span class="k">DoctorFee</span>     = Σ [ brace_qty[type] × price[type] × doctorPct[type] ]\n' +
-    '<span class="c">              Pct: Std-R='+(V.danis_stdR||30)+'%, Std-Rl='+(V.danis_stdRl||30)+'%, Perf='+(V.danis_delik||30)+'%, Sens='+(V.danis_sens||30)+'%, S+P='+(V.danis_sensDelik||30)+'%</span>\n\n' +
-    '<span class="k">ChannelFee</span>    = GrossRevenue × '+(V.kanalBakim||0)+'%\n\n' +
+    '<span class="k">SciFee</span>        = GrossRevenue × '+(V.feeScientific??10)+'%\n' +
+    '<span class="k">EduFee</span>        = GrossRevenue × '+(V.feeEducation??10)+'%\n' +
+    '<span class="k">LibFee</span>        = GrossRevenue × '+(V.feeLibrary??10)+'%\n' +
+    '<span class="c">              Flat rate on gross revenue, same across every product and B2B — replaces the old per-product doctor fee and the channel maintenance fee (removed).</span>\n\n' +
     '<span class="k">Material</span>      = Σ [ brace_qty[type] × material[type] ]\n' +
     '<span class="c">              Material (₺): Std-R='+(V.mal_stdR||500)+', Std-Rl='+(V.mal_stdRl||600)+', Perf='+(V.mal_delik||1600)+', Sens='+(V.mal_sens||2075)+', S+P='+(V.mal_sensDelik||1250)+'</span>\n\n' +
     '<span class="k">Royalty</span>       = totalBraces × €'+(V.royaltyEur??0)+' × ₺'+(V.eurKur||53.56)+' = totalBraces × ₺'+royTRY+(royTRY===0?' (not applied in this scenario)':'')+'\n\n' +
-    '<span class="r">NetRevenue</span>    = GrossRevenue − DoctorFee − ChannelFee − Material − Royalty';
+    '<span class="r">NetRevenue</span>    = GrossRevenue − SciFee − EduFee − LibFee − Material − Royalty';
 
   document.getElementById('formulGider').innerHTML =
     '<span class="c">── COSTS (per month, recorded as negative values) ───────────────────────────</span>\n\n' +
@@ -479,8 +481,9 @@ function renderMonthlyTable() {
       '<td>'+kk[0]+'</td><td>'+kk[1]+'</td><td>'+kk[2]+'</td><td>'+kk[3]+'</td><td>'+kk[4]+'</td>' +
       '<td style="font-weight:700;">'+r.korse+'</td>' +
       '<td>'+tfShort(r.gelirBrut)+'</td>' +
-      '<td class="neg">'+tfShort(-r.danis)+'</td>' +
-      '<td class="neg">'+(r.bakim?tfShort(-r.bakim):'—')+'</td>' +
+      '<td class="neg">'+tfShort(-r.feeSci)+'</td>' +
+      '<td class="neg">'+tfShort(-r.feeEdu)+'</td>' +
+      '<td class="neg">'+tfShort(-r.feeLib)+'</td>' +
       '<td class="neg">'+(r.baskiTop?tfShort(-r.baskiTop):'—')+'</td>' +
       '<td class="neg">'+tfShort(-r.royaltyTop)+'</td>' +
       '<td class="'+(r.gelirNet>=0?'pos':'neg')+'" style="font-weight:700;">'+tfShort(r.gelirNet)+'</td>' +
@@ -493,8 +496,9 @@ function renderMonthlyTable() {
       '<td class="'+(r.cumBudget>=0?'pos':'neg')+'" style="font-weight:700;">'+tfShort(r.cumBudget)+'</td></tr>';
   });
   var tBrut=rows.reduce(function(s,r){return s+(r.gelirBrut||0);},0);
-  var tDanis=rows.reduce(function(s,r){return s+(r.danis||0);},0);
-  var tBakim=rows.reduce(function(s,r){return s+(r.bakim||0);},0);
+  var tSci=rows.reduce(function(s,r){return s+(r.feeSci||0);},0);
+  var tEdu=rows.reduce(function(s,r){return s+(r.feeEdu||0);},0);
+  var tLib=rows.reduce(function(s,r){return s+(r.feeLib||0);},0);
   var tBaski=rows.reduce(function(s,r){return s+(r.baskiTop||0);},0);
   var tRoyalt=rows.reduce(function(s,r){return s+(r.royaltyTop||0);},0);
   var tSabit=rows.reduce(function(s,r){return s+(r.sabitGider||0);},0);
@@ -506,8 +510,9 @@ function renderMonthlyTable() {
   html+='<tr class="tot"><td class="lft">Total</td>' +
     '<td>'+tpK[0]+'</td><td>'+tpK[1]+'</td><td>'+tpK[2]+'</td><td>'+tpK[3]+'</td><td>'+tpK[4]+'</td>' +
     '<td>'+tKorse+'</td><td>'+tfShort(tBrut)+'</td>' +
-    '<td class="neg">'+tfShort(-tDanis)+'</td>' +
-    '<td class="neg">'+(tBakim?tfShort(-tBakim):'—')+'</td>' +
+    '<td class="neg">'+tfShort(-tSci)+'</td>' +
+    '<td class="neg">'+tfShort(-tEdu)+'</td>' +
+    '<td class="neg">'+tfShort(-tLib)+'</td>' +
     '<td class="neg">'+(tBaski?tfShort(-tBaski):'—')+'</td>' +
     '<td class="neg">'+tfShort(-tRoyalt)+'</td>' +
     '<td class="'+(tGelir>=0?'pos':'neg')+'" style="font-weight:700;">'+tfShort(tGelir)+'</td>' +

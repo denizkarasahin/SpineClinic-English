@@ -71,6 +71,35 @@
 
     <hr class="divider">
 
+    <!-- Referans ücretleri — bilimsel çalışma / eğitim / kütüphane -->
+    <div style="margin-bottom:18px;padding:12px;background:#fafaf8;border:1px solid #e0e0dc;border-radius:6px;">
+      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:4px;">Referral Fees</div>
+      <div style="font-size:11px;color:#888;margin-bottom:10px;">Flat rate on gross revenue, applied identically across every product and B2B — replaces the old per-product doctor fee and the channel maintenance fee (removed).</div>
+      <div class="sl-grid">
+        <div class="sl-row">
+          <label>Scientific Study Fee (%)</label>
+          <div class="sl-controls">
+            <input type="range" id="s_feeScientific" min="0" max="30" step="1" value="10" oninput="sv('feeScientific',this.value)">
+            <span class="sl-val" id="feeScientific" contenteditable="true" onblur="sv2('feeScientific','s_feeScientific',this)">10</span>
+          </div>
+        </div>
+        <div class="sl-row">
+          <label>Education Fee (%)</label>
+          <div class="sl-controls">
+            <input type="range" id="s_feeEducation" min="0" max="30" step="1" value="10" oninput="sv('feeEducation',this.value)">
+            <span class="sl-val" id="feeEducation" contenteditable="true" onblur="sv2('feeEducation','s_feeEducation',this)">10</span>
+          </div>
+        </div>
+        <div class="sl-row">
+          <label>Library Fee (%)</label>
+          <div class="sl-controls">
+            <input type="range" id="s_feeLibrary" min="0" max="30" step="1" value="10" oninput="sv('feeLibrary',this.value)">
+            <span class="sl-val" id="feeLibrary" contenteditable="true" onblur="sv2('feeLibrary','s_feeLibrary',this)">10</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Ürün fiyat & maliyet -->
     <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">Product Price &amp; Cost</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:12px;">
@@ -103,23 +132,9 @@
           </div>
         </div>
         <div style="margin-top:8px;">
-          <label style="font-size:10px;color:#888780;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Doctor Fee (%)</label>
-          <div style="display:flex;align-items:center;gap:6px;">
-            <input type="range" id="s_danis_stdR" min="0" max="50" step="1" value="10" style="flex:1;accent-color:#888780;" oninput="sv('danis_stdR',this.value)">
-            <span class="sl-val" id="danis_stdR" contenteditable="true" onblur="sv2('danis_stdR','s_danis_stdR',this)" style="min-width:60px;font-size:12px;color:#888780;">10</span>
-          </div>
-          <div style="font-size:11px;color:#888780;font-weight:600;margin-top:3px;">
-            = <span id="danisTL_stdR">—</span> ₺
-          </div>
-        </div>
-        <div style="margin-top:8px;">
-          <label style="font-size:10px;color:#888780;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Channel Fee (%)</label>
-          <div style="display:flex;align-items:center;gap:6px;">
-            <input type="range" id="s_bakim_stdR" min="0" max="50" step="1" value="5" style="flex:1;accent-color:#888780;" oninput="svKanalBakim(this.value)">
-            <span class="sl-val" id="bakim_stdR" contenteditable="true" onblur="var raw=(this.textContent||'').replace(/\./g,'').replace(',','.');var v=parseFloat(raw);if(!isNaN(v))svKanalBakim(v);else this.textContent=V.kanalBakim||0;" style="min-width:60px;font-size:12px;color:#888780;">5</span>
-          </div>
-          <div style="font-size:11px;color:#888780;font-weight:600;margin-top:3px;">
-            = <span id="bakimTL_stdR">—</span> ₺
+          <label style="font-size:10px;color:#888780;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Referral Fees (global rate below)</label>
+          <div style="font-size:11px;color:#888780;font-weight:600;line-height:1.6;">
+            Sci: <span id="sciTL_stdR">—</span> ₺ · Edu: <span id="eduTL_stdR">—</span> ₺ · Lib: <span id="libTL_stdR">—</span> ₺
           </div>
         </div>
         <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(136,135,128,0.2);">
@@ -159,23 +174,9 @@
           </div>
         </div>
         <div style="margin-top:8px;">
-          <label style="font-size:10px;color:#D85A30;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Doctor Fee (%)</label>
-          <div style="display:flex;align-items:center;gap:6px;">
-            <input type="range" id="s_danis_stdRl" min="0" max="50" step="1" value="15" style="flex:1;accent-color:#D85A30;" oninput="sv('danis_stdRl',this.value)">
-            <span class="sl-val" id="danis_stdRl" contenteditable="true" onblur="sv2('danis_stdRl','s_danis_stdRl',this)" style="min-width:60px;font-size:12px;color:#D85A30;">15</span>
-          </div>
-          <div style="font-size:11px;color:#D85A30;font-weight:600;margin-top:3px;">
-            = <span id="danisTL_stdRl">—</span> ₺
-          </div>
-        </div>
-        <div style="margin-top:8px;">
-          <label style="font-size:10px;color:#D85A30;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Channel Fee (%)</label>
-          <div style="display:flex;align-items:center;gap:6px;">
-            <input type="range" id="s_bakim_stdRl" min="0" max="50" step="1" value="5" style="flex:1;accent-color:#D85A30;" oninput="svKanalBakim(this.value)">
-            <span class="sl-val" id="bakim_stdRl" contenteditable="true" onblur="var raw=(this.textContent||'').replace(/\./g,'').replace(',','.');var v=parseFloat(raw);if(!isNaN(v))svKanalBakim(v);else this.textContent=V.kanalBakim||0;" style="min-width:60px;font-size:12px;color:#D85A30;">5</span>
-          </div>
-          <div style="font-size:11px;color:#D85A30;font-weight:600;margin-top:3px;">
-            = <span id="bakimTL_stdRl">—</span> ₺
+          <label style="font-size:10px;color:#D85A30;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Referral Fees (global rate below)</label>
+          <div style="font-size:11px;color:#D85A30;font-weight:600;line-height:1.6;">
+            Sci: <span id="sciTL_stdRl">—</span> ₺ · Edu: <span id="eduTL_stdRl">—</span> ₺ · Lib: <span id="libTL_stdRl">—</span> ₺
           </div>
         </div>
         <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(216,90,48,0.2);">
@@ -215,23 +216,9 @@
           </div>
         </div>
         <div style="margin-top:8px;">
-          <label style="font-size:10px;color:#534AB7;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Doctor Fee (%)</label>
-          <div style="display:flex;align-items:center;gap:6px;">
-            <input type="range" id="s_danis_sens" min="0" max="50" step="1" value="30" style="flex:1;accent-color:#534AB7;" oninput="sv('danis_sens',this.value)">
-            <span class="sl-val" id="danis_sens" contenteditable="true" onblur="sv2('danis_sens','s_danis_sens',this)" style="min-width:60px;font-size:12px;color:#534AB7;">30</span>
-          </div>
-          <div style="font-size:11px;color:#534AB7;font-weight:600;margin-top:3px;">
-            = <span id="danisTL_sens">—</span> ₺
-          </div>
-        </div>
-        <div style="margin-top:8px;">
-          <label style="font-size:10px;color:#534AB7;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Channel Fee (%)</label>
-          <div style="display:flex;align-items:center;gap:6px;">
-            <input type="range" id="s_bakim_sens" min="0" max="50" step="1" value="5" style="flex:1;accent-color:#534AB7;" oninput="svKanalBakim(this.value)">
-            <span class="sl-val" id="bakim_sens" contenteditable="true" onblur="var raw=(this.textContent||'').replace(/\./g,'').replace(',','.');var v=parseFloat(raw);if(!isNaN(v))svKanalBakim(v);else this.textContent=V.kanalBakim||0;" style="min-width:60px;font-size:12px;color:#534AB7;">5</span>
-          </div>
-          <div style="font-size:11px;color:#534AB7;font-weight:600;margin-top:3px;">
-            = <span id="bakimTL_sens">—</span> ₺
+          <label style="font-size:10px;color:#534AB7;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Referral Fees (global rate below)</label>
+          <div style="font-size:11px;color:#534AB7;font-weight:600;line-height:1.6;">
+            Sci: <span id="sciTL_sens">—</span> ₺ · Edu: <span id="eduTL_sens">—</span> ₺ · Lib: <span id="libTL_sens">—</span> ₺
           </div>
         </div>
         <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(83,74,183,0.2);">
@@ -271,23 +258,9 @@
           </div>
         </div>
         <div style="margin-top:8px;">
-          <label style="font-size:10px;color:#1D9E75;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Doctor Fee (%)</label>
-          <div style="display:flex;align-items:center;gap:6px;">
-            <input type="range" id="s_danis_delik" min="0" max="50" step="1" value="30" style="flex:1;accent-color:#1D9E75;" oninput="sv('danis_delik',this.value)">
-            <span class="sl-val" id="danis_delik" contenteditable="true" onblur="sv2('danis_delik','s_danis_delik',this)" style="min-width:60px;font-size:12px;color:#1D9E75;">30</span>
-          </div>
-          <div style="font-size:11px;color:#1D9E75;font-weight:600;margin-top:3px;">
-            = <span id="danisTL_delik">—</span> ₺
-          </div>
-        </div>
-        <div style="margin-top:8px;">
-          <label style="font-size:10px;color:#1D9E75;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Channel Fee (%)</label>
-          <div style="display:flex;align-items:center;gap:6px;">
-            <input type="range" id="s_bakim_delik" min="0" max="50" step="1" value="5" style="flex:1;accent-color:#1D9E75;" oninput="svKanalBakim(this.value)">
-            <span class="sl-val" id="bakim_delik" contenteditable="true" onblur="var raw=(this.textContent||'').replace(/\./g,'').replace(',','.');var v=parseFloat(raw);if(!isNaN(v))svKanalBakim(v);else this.textContent=V.kanalBakim||0;" style="min-width:60px;font-size:12px;color:#1D9E75;">5</span>
-          </div>
-          <div style="font-size:11px;color:#1D9E75;font-weight:600;margin-top:3px;">
-            = <span id="bakimTL_delik">—</span> ₺
+          <label style="font-size:10px;color:#1D9E75;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Referral Fees (global rate below)</label>
+          <div style="font-size:11px;color:#1D9E75;font-weight:600;line-height:1.6;">
+            Sci: <span id="sciTL_delik">—</span> ₺ · Edu: <span id="eduTL_delik">—</span> ₺ · Lib: <span id="libTL_delik">—</span> ₺
           </div>
         </div>
         <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(29,158,117,0.2);">
@@ -327,23 +300,9 @@
           </div>
         </div>
         <div style="margin-top:8px;">
-          <label style="font-size:10px;color:#D4537E;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Doctor Fee (%)</label>
-          <div style="display:flex;align-items:center;gap:6px;">
-            <input type="range" id="s_danis_sensDelik" min="0" max="50" step="1" value="30" style="flex:1;accent-color:#D4537E;" oninput="sv('danis_sensDelik',this.value)">
-            <span class="sl-val" id="danis_sensDelik" contenteditable="true" onblur="sv2('danis_sensDelik','s_danis_sensDelik',this)" style="min-width:60px;font-size:12px;color:#D4537E;">30</span>
-          </div>
-          <div style="font-size:11px;color:#D4537E;font-weight:600;margin-top:3px;">
-            = <span id="danisTL_sensDelik">—</span> ₺
-          </div>
-        </div>
-        <div style="margin-top:8px;">
-          <label style="font-size:10px;color:#D4537E;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Channel Fee (%)</label>
-          <div style="display:flex;align-items:center;gap:6px;">
-            <input type="range" id="s_bakim_sensDelik" min="0" max="50" step="1" value="5" style="flex:1;accent-color:#D4537E;" oninput="svKanalBakim(this.value)">
-            <span class="sl-val" id="bakim_sensDelik" contenteditable="true" onblur="var raw=(this.textContent||'').replace(/\./g,'').replace(',','.');var v=parseFloat(raw);if(!isNaN(v))svKanalBakim(v);else this.textContent=V.kanalBakim||0;" style="min-width:60px;font-size:12px;color:#D4537E;">5</span>
-          </div>
-          <div style="font-size:11px;color:#D4537E;font-weight:600;margin-top:3px;">
-            = <span id="bakimTL_sensDelik">—</span> ₺
+          <label style="font-size:10px;color:#D4537E;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Referral Fees (global rate below)</label>
+          <div style="font-size:11px;color:#D4537E;font-weight:600;line-height:1.6;">
+            Sci: <span id="sciTL_sensDelik">—</span> ₺ · Edu: <span id="eduTL_sensDelik">—</span> ₺ · Lib: <span id="libTL_sensDelik">—</span> ₺
           </div>
         </div>
         <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(212,83,126,0.2);">
@@ -366,7 +325,7 @@
     <!-- B2B Mix -->
     <div style="font-size:11px;font-weight:700;color:#378ADD;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">B2B Mix (%) — All Months</div>
     <div id="mixB2BTableWrap"></div>
-    <div class="note-box" style="margin-top:8px;">B2B doctor fee and channel rates are set per SKU on the Market &amp; Product Mix page. Royalty and printing cost are the same as clinic.</div>
+    <div class="note-box" style="margin-top:8px;">B2B uses the same global Referral Fees (Scientific/Education/Library) and royalty rate as the clinic channel — only price and printing cost differ per SKU.</div>
 
     <hr class="divider">
     <!-- Mix görselleştirme — iki grafik yan yana -->
@@ -586,11 +545,6 @@ function switchInnerTab(btn, tabId) {
 }
 
 window.addEventListener('load', function() {
-  var kb = V.kanalBakim || 0;
-  ['stdR','stdRl','sens','delik','sensDelik'].forEach(function(k) {
-    var sl = document.getElementById('s_bakim_'+k); if (sl) sl.value = kb;
-    var dp = document.getElementById('bakim_'+k); if (dp) dp.textContent = kb;
-  });
   var b2bKeys = ['stdR','stdRl','delik','sens','sensDelik'];
   b2bKeys.forEach(function(k) {
     var vk = 'korseFB2B_'+k;

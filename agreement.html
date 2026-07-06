@@ -212,9 +212,9 @@ window.addEventListener('load', function() {
   const tutarEl = document.getElementById('term_Y_tutar');
   if (tutarEl) tutarEl.textContent = '€' + Math.round(invest).toLocaleString('tr-TR');
 
-  // Read commission rate from V (market.html slider)
+  // Read commission rate from V (Scientific Study + Education + Library fees, market.html sliders)
   const komisyonEl = document.getElementById('term_H_komisyon');
-  if (komisyonEl) komisyonEl.textContent = '%' + (V.danisPct || 25);
+  if (komisyonEl) komisyonEl.textContent = '%' + ((V.feeScientific??10) + (V.feeEducation??10) + (V.feeLibrary??10));
 
   ['Y_arac','Y_kontrol','Y_temettu','Y_raporlama','Y_onalim','Y_cikis','Y_rekabet','Y_teknoloji',
    'H_odeme','H_fatura','H_kanal','H_sure','H_gizlilik','H_fesih','H_rekabet'].forEach(function(k) {

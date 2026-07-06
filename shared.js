@@ -23,7 +23,7 @@ document.getElementById = function(id) {
   };
 };
 
-const V = {"korseF":37800,"danisPct":25,"malzeme":50,"reklamCarpan":1.0,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.56,"kira":200000,"depozito":400000,"emlakci":400000,"m2":300,"tadilatM2":7000,"dekoM2":6750,"mobilya":300000,"ruhsat":100000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":100000,"sgkCarpan":1.6,"stajyerM":30000,"destekM":30000,"stajyer2M":30000,"korse":[10,10,15,20,25,25,30,35,35,45,45,50],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":27000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":1600,"mal_sens":2075,"mal_sensDelik":1250,"danis_stdR":30,"danis_stdRl":30,"danis_delik":30,"danis_sens":30,"danis_sensDelik":30,"kanalBakim":0,"pazarTR":40000,"pazarIstPct":19,"hedefOsteoidPay":40,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":false,"izmirHedefPay":25,"izmirUseIst":false,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":false,"ankaraHedefPay":25,"ankaraUseIst":false,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":false,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":30,"dcfGrowth":18,"dcfGrowth45":45,"dcfExitMult":10,"dcfInvest":1945000,"kongre":[180000,235000,65000,230000,30000,140000,70000,220000,70000,20000,70000,230000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,200000,0,200000,0,0,0,200000,0,0,0,200000],"atolye":[120000,0,0,0,0,120000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":10000,"korseFB2B_stdRl":12000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":100000,"_sen_max_kira":400000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":3500,"_sen_max_dekoM2":17000,"_sen_min_ortotistM":60000,"_sen_max_ortotistM":180000,"_sen_min_operatorM":90000,"_sen_max_operatorM":240000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":60000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3.0,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.65,"operatorM":150000,"_version":12};
+const V = {"korseF":37800,"malzeme":50,"reklamCarpan":1.0,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.56,"kira":200000,"depozito":400000,"emlakci":400000,"m2":300,"tadilatM2":7000,"dekoM2":6750,"mobilya":300000,"ruhsat":100000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":100000,"sgkCarpan":1.6,"stajyerM":30000,"destekM":30000,"stajyer2M":30000,"korse":[10,10,15,20,25,25,30,35,35,45,45,50],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":27000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":1600,"mal_sens":2075,"mal_sensDelik":1250,"feeScientific":10,"feeEducation":10,"feeLibrary":10,"pazarTR":40000,"pazarIstPct":19,"hedefOsteoidPay":40,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":false,"izmirHedefPay":25,"izmirUseIst":false,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":false,"ankaraHedefPay":25,"ankaraUseIst":false,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":false,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":30,"dcfGrowth":18,"dcfGrowth45":45,"dcfExitMult":10,"dcfInvest":1945000,"kongre":[180000,235000,65000,230000,30000,140000,70000,220000,70000,20000,70000,230000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,200000,0,200000,0,0,0,200000,0,0,0,200000],"atolye":[120000,0,0,0,0,120000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":10000,"korseFB2B_stdRl":12000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":100000,"_sen_max_kira":400000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":3500,"_sen_max_dekoM2":17000,"_sen_min_ortotistM":60000,"_sen_max_ortotistM":180000,"_sen_min_operatorM":90000,"_sen_max_operatorM":240000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":60000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3.0,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.65,"operatorM":150000,"_version":13};
 // Restore state from localStorage if available; clear cache on version mismatch
 (function() {
   try {
@@ -40,7 +40,6 @@ const V = {"korseF":37800,"danisPct":25,"malzeme":50,"reklamCarpan":1.0,"mutfak"
 })();
 function numFmt(key, val) {
   val = parseFloat(val);
-  if (key==='danisPct'||key==='daDanisPct'||key==='kkDanisPct') return String(val);
   if (key==='sgkCarpan') return val.toFixed(2).replace('.',',');
   if (key==='m2') return String(val);
   if (key==='pazarIstPct') return val.toFixed(1).replace('.',',');
@@ -59,19 +58,6 @@ function sv(key, val) {
   recalc();
   localStorage.setItem('osteoid_V', JSON.stringify(V));
 }
-
-function svKanalBakim(val) {
-  val = parseFloat(val);
-  if (isNaN(val)) return;
-  V.kanalBakim = val;
-  ['stdR','stdRl','sens','delik','sensDelik'].forEach(function(k) {
-    var sl = document.getElementById('s_bakim_'+k); if (sl) sl.value = val;
-    var dp = document.getElementById('bakim_'+k); if (dp) dp.textContent = val;
-  });
-  recalc();
-  localStorage.setItem('osteoid_V', JSON.stringify(V));
-}
-
 
 function sv2(key, slId, el) {
   const raw = (el.textContent||'').replace(/\./g,'').replace(',','.');
@@ -102,9 +88,9 @@ const SCEN = {
   // structure isn't final, so each named case states what it's betting on
   // (baz: the €75 reference; iyimser: none yet agreed, €0 is a real state
   // not a placeholder; kotu: a worse-than-baseline rate stacked on weaker volume).
-  baz:     { korseF:37800, danisPct:25, malzeme:50, mutfak:20000, stopaj:60000, royaltyEur:75,  korse:[5,10,15,20,25,25,30,30,35,35,40,45], kongre:[0,100000,0,200000,0,500000,100000,0,0,350000,0,350000] },
-  iyimser: { korseF:37800, danisPct:25, malzeme:50, mutfak:18000, stopaj:60000, royaltyEur:0,   korse:[8,14,20,26,30,32,36,38,42,44,48,55], kongre:[0,50000,0,100000,0,300000,100000,0,0,200000,0,200000] },
-  kotu:    { korseF:30000, danisPct:25, malzeme:50, mutfak:22000, stopaj:60000, royaltyEur:100, korse:[3,7,10,14,18,20,22,25,28,28,33,38], kongre:[0,100000,0,200000,0,500000,100000,0,0,350000,0,350000] },
+  baz:     { korseF:37800, malzeme:50, mutfak:20000, stopaj:60000, royaltyEur:75,  korse:[5,10,15,20,25,25,30,30,35,35,40,45], kongre:[0,100000,0,200000,0,500000,100000,0,0,350000,0,350000] },
+  iyimser: { korseF:37800, malzeme:50, mutfak:18000, stopaj:60000, royaltyEur:0,   korse:[8,14,20,26,30,32,36,38,42,44,48,55], kongre:[0,50000,0,100000,0,300000,100000,0,0,200000,0,200000] },
+  kotu:    { korseF:30000, malzeme:50, mutfak:22000, stopaj:60000, royaltyEur:100, korse:[3,7,10,14,18,20,22,25,28,28,33,38], kongre:[0,100000,0,200000,0,500000,100000,0,0,350000,0,350000] },
   // Setup-cost scenarios — two named points on the same live sliders, not a
   // hardcoded override. Neither is "the truth"; pick one as a starting point
   // and keep adjusting the sliders from there.
@@ -115,7 +101,7 @@ const SCEN = {
 // Every slider key a scenario preset is allowed to touch. loadScen() only
 // applies keys actually present on the chosen scenario object, so a setup
 // scenario leaves revenue assumptions untouched and vice versa.
-const SCEN_SLIDER_KEYS = ['korseF','danisPct','malzeme','mutfak','stopaj','royaltyEur',
+const SCEN_SLIDER_KEYS = ['korseF','malzeme','mutfak','stopaj','royaltyEur',
   'kira','depozito','emlakci','m2','tadilatM2','dekoM2','mobilya','ruhsat'];
 
 function loadScen(key, btn) {
@@ -336,8 +322,9 @@ function renderPazarChartB2B(rowsB2B) {
   const b2bTbl = document.getElementById('b2bTblWrap');
   if (b2bTbl) {
     const tBrutB2B  = rowsB2B.reduce((s,r)=>s+(r.gelirBrut||0),0);
-    const tDanisB2B = rowsB2B.reduce((s,r)=>s+(r.danisB2B||0),0);
-    const tBakimB2B = rowsB2B.reduce((s,r)=>s+(r.bakimB2B||0),0);
+    const tSciB2B = rowsB2B.reduce((s,r)=>s+(r.feeSciB2B||0),0);
+    const tEduB2B = rowsB2B.reduce((s,r)=>s+(r.feeEduB2B||0),0);
+    const tLibB2B = rowsB2B.reduce((s,r)=>s+(r.feeLibB2B||0),0);
     const tBaskiB2B = rowsB2B.reduce((s,r)=>s+(r.baskiTop||0),0);
     const tRoyB2B   = rowsB2B.reduce((s,r)=>s+(r.royaltyTop||0),0);
     const tpK2 = rowsB2B.reduce((s,r)=>{const k=r.k||[0,0,0,0,0];return s.map((v,j)=>v+k[j]);},[0,0,0,0,0]);
@@ -345,7 +332,7 @@ function renderPazarChartB2B(rowsB2B) {
       <th>Month</th>
       <th style="color:#888780;">Std-NR</th><th style="color:#D85A30;">Std-Rep.</th>
       <th style="color:#1D9E75;">Perf.</th><th style="color:#534AB7;">Sens</th><th style="color:#D4537E;">Sns+Prf</th>
-      <th>Total</th><th>Gross Revenue</th><th>Doctor Fee</th><th>Channel Share</th><th>Cost</th><th>Royalty</th><th>Net Revenue</th>
+      <th>Total</th><th>Gross Revenue</th><th>Sci. Study Fee</th><th>Education Fee</th><th>Library Fee</th><th>Cost</th><th>Royalty</th><th>Net Revenue</th>
     </tr></thead>`;
     const tb2_rows = rowsB2B.map(r => {
       const kk = r.k || [0,0,0,0,0];
@@ -355,8 +342,9 @@ function renderPazarChartB2B(rowsB2B) {
         <td style="color:#1D9E75;">${kk[2]||'—'}</td><td style="color:#534AB7;">${kk[3]||'—'}</td><td style="color:#D4537E;">${kk[4]||'—'}</td>
         <td><b>${r.korse||'—'}</b></td>
         <td>${r.korse?ff(r.gelirBrut):'—'}</td>
-        <td class="${r.danisB2B?'nc':'zc'}">${r.danisB2B?ff(-r.danisB2B):'—'}</td>
-        <td class="${r.bakimB2B?'nc':'zc'}">${r.bakimB2B?ff(-r.bakimB2B):'—'}</td>
+        <td class="${r.feeSciB2B?'nc':'zc'}">${r.feeSciB2B?ff(-r.feeSciB2B):'—'}</td>
+        <td class="${r.feeEduB2B?'nc':'zc'}">${r.feeEduB2B?ff(-r.feeEduB2B):'—'}</td>
+        <td class="${r.feeLibB2B?'nc':'zc'}">${r.feeLibB2B?ff(-r.feeLibB2B):'—'}</td>
         <td class="${r.baskiTop?'nc':'zc'}">${r.baskiTop?ff(-r.baskiTop):'—'}</td>
         <td class="${r.royaltyTop?'nc':'zc'}">${r.royaltyTop?ff(-r.royaltyTop):'—'}</td>
         <td class="${cls(r.gelirNet)}">${r.korse?ff(r.gelirNet):'—'}</td>
@@ -368,8 +356,9 @@ function renderPazarChartB2B(rowsB2B) {
       <td style="color:#1D9E75;">${tpK2[2]}</td><td style="color:#534AB7;">${tpK2[3]}</td><td style="color:#D4537E;">${tpK2[4]}</td>
       <td><b>${tKorseB2B}</b></td>
       <td>${ff(tBrutB2B)}</td>
-      <td class="${tDanisB2B?'nc':'zc'}">${tDanisB2B?ff(-tDanisB2B):'—'}</td>
-      <td class="${tBakimB2B?'nc':'zc'}">${tBakimB2B?ff(-tBakimB2B):'—'}</td>
+      <td class="${tSciB2B?'nc':'zc'}">${tSciB2B?ff(-tSciB2B):'—'}</td>
+      <td class="${tEduB2B?'nc':'zc'}">${tEduB2B?ff(-tEduB2B):'—'}</td>
+      <td class="${tLibB2B?'nc':'zc'}">${tLibB2B?ff(-tLibB2B):'—'}</td>
       <td class="nc">${ff(-tBaskiB2B)}</td><td class="nc">${ff(-tRoyB2B)}</td>
       <td class="${cls(tGelirB2B)}">${ff(tGelirB2B)}</td>
     </tr>`;
@@ -957,7 +946,9 @@ function renderGiderDagilim(rows) {
   const totalStopaj  = rows.reduce((s,r)=>s+r.ayStopaj,0);
   const totalKongre  = Object.keys(V.donemsel).reduce((s,k)=>s+V.donemsel[k].reduce((a,b)=>a+b,0),0);
   const totalBaski   = rows.reduce((s,r)=>s+r.baskiTop,0);
-  const totalDanis   = rows.reduce((s,r)=>s+r.danis,0);
+  const totalSci     = rows.reduce((s,r)=>s+r.feeSci,0);
+  const totalEdu     = rows.reduce((s,r)=>s+r.feeEdu,0);
+  const totalLib     = rows.reduce((s,r)=>s+r.feeLib,0);
 
   const oData = [
     { label:'Rent',                val: totalKira,      color:'#534AB7' },
@@ -968,7 +959,9 @@ function renderGiderDagilim(rows) {
     { label:'Withholding Tax',     val: totalStopaj,    color:'#9FE1CB' },
     { label:'Periodic Costs',      val: totalKongre,    color:'#F0997B' },
     { label:'Brace Print',         val: totalBaski,     color:'#AFA9EC' },
-    { label:'Doctor Commission',   val: totalDanis,     color:'#D4537E' },
+    { label:'Scientific Study Fee',val: totalSci,       color:'#D4537E' },
+    { label:'Education Fee',       val: totalEdu,       color:'#E37FA0' },
+    { label:'Library Fee',         val: totalLib,       color:'#F0A8C0' },
   ].filter(d=>d.val>0);
 
   if (oPie) oPie.destroy();
@@ -1007,7 +1000,9 @@ function renderGiderDagilim(rows) {
     { label:'Withholding',      data: rows.map(r=>r.ayStopaj),                                          bg:'#9FE1CB' },
     { label:'Periodic',         data: rows.map(r=>r.kongre),                                            bg:'#F0997B' },
     { label:'Print',            data: rows.map(r=>r.baskiTop),                                          bg:'#AFA9EC' },
-    { label:'Doctor Fee',       data: rows.map(r=>Math.round(r.danis)),                                 bg:'#D4537E' },
+    { label:'Sci. Study Fee',   data: rows.map(r=>Math.round(r.feeSci)),                                bg:'#D4537E' },
+    { label:'Education Fee',    data: rows.map(r=>Math.round(r.feeEdu)),                                bg:'#E37FA0' },
+    { label:'Library Fee',      data: rows.map(r=>Math.round(r.feeLib)),                                bg:'#F0A8C0' },
   ];
 
   if (sBar) sBar.destroy();
@@ -1206,7 +1201,7 @@ function renderTblChart(rows) {
         datasets: [
           { type:'bar', label:'Gross Revenue', data: rows.map(r=>r.gelirBrut), backgroundColor:'rgba(26,122,69,0.55)', borderColor:'#1a7a45', borderWidth:1, order:2, yAxisID:'y' },
           { type:'bar', label:'Total Costs', data: rows.map(r=>Math.abs(r.gider)), backgroundColor:'rgba(192,57,43,0.55)', borderColor:'#c0392b', borderWidth:1, order:2, yAxisID:'y' },
-          { type:'bar', label:'Doctor Commission', data: rows.map(r=>Math.round(r.danis)), backgroundColor:'rgba(212,83,126,0.6)', borderColor:'#D4537E', borderWidth:1, order:2, yAxisID:'y' },
+          { type:'bar', label:'Fees (Sci+Edu+Lib)', data: rows.map(r=>Math.round(r.feeSci+r.feeEdu+r.feeLib)), backgroundColor:'rgba(212,83,126,0.6)', borderColor:'#D4537E', borderWidth:1, order:2, yAxisID:'y' },
           { type:'line', label:'Monthly Net', data: rows.map(r=>r.net), borderColor:'#534AB7', backgroundColor:'rgba(83,74,183,0.07)', borderWidth:2.5, pointRadius:4, pointBackgroundColor: rows.map(r=>r.net>=0?'#1a7a45':'#c0392b'), tension:0.3, fill:false, order:1, yAxisID:'y' },
         ]
       },
@@ -1234,7 +1229,9 @@ function renderTblChart(rows) {
       { label:'Withholding',    data: rows.map(r=>r.ayStopaj),                                        color:'#9FE1CB' },
       { label:'Periodic',       data: rows.map(r=>r.kongre),                                          color:'#F0997B' },
       { label:'Print Cost',     data: rows.map(r=>r.baskiTop),                                        color:'#AFA9EC' },
-      { label:'Doctor Fee',     data: rows.map(r=>Math.round(r.danis)),                               color:'#D4537E' },
+      { label:'Sci. Study Fee', data: rows.map(r=>Math.round(r.feeSci)),                              color:'#D4537E' },
+      { label:'Education Fee',  data: rows.map(r=>Math.round(r.feeEdu)),                              color:'#E37FA0' },
+      { label:'Library Fee',    data: rows.map(r=>Math.round(r.feeLib)),                              color:'#F0A8C0' },
     ];
     tblChartInst = new Chart(ctx, {
       type:'bar',
@@ -1761,11 +1758,11 @@ function computeYear1(Vlike) {
   const fDelik=gv1('korseF_delik'), mDelik=gv1('mal_delik');
   const fSens=gv1('korseF_sens'), mSens=gv1('mal_sens');
   const fSD=gv1('korseF_sensDelik'), mSD=gv1('mal_sensDelik');
-  const dP = {
-    stdR: gv1('danis_stdR')/100, stdRl: gv1('danis_stdRl')/100,
-    delik: gv1('danis_delik')/100, sens: gv1('danis_sens')/100, sensDelik: gv1('danis_sensDelik')/100,
-  };
-  const kanalBakimR = gv1('kanalBakim')/100;
+  // Doctor referral commission is split into 3 separately-named, independently
+  // adjustable fees (Scientific Study / Education / Library), each a flat rate
+  // on gross revenue — replacing both the old per-product doctor-fee % and the
+  // separate channel-maintenance fee (removed entirely, folded into this set).
+  const feeSciR = gv1('feeScientific')/100, feeEduR = gv1('feeEducation')/100, feeLibR = gv1('feeLibrary')/100;
   const _e1 = Vlike.esikStajyer1 ?? 15, _e2 = Vlike.esikDestek ?? 30, _e3 = Vlike.esikStajyer2 ?? 76;
   const stajBrut = gv1('stajyerM')*sgkC, destekBrut = gv1('destekM')*sgkC, staj2Brut = gv1('stajyer2M')*sgkC;
 
@@ -1809,8 +1806,9 @@ function computeYear1(Vlike) {
     k[biggestIdx] = Math.max(0, k[biggestIdx] + (korse - k.reduce((s,v)=>s+v,0)));
 
     const gelirBrut = k[0]*fStdR + k[1]*fStdRl + k[2]*fDelik + k[3]*fSens + k[4]*fSD;
-    const danis     = k[0]*fStdR*dP.stdR + k[1]*fStdRl*dP.stdRl + k[2]*fDelik*dP.delik + k[3]*fSens*dP.sens + k[4]*fSD*dP.sensDelik;
-    const bakim     = gelirBrut * kanalBakimR;
+    const feeSci    = gelirBrut * feeSciR;
+    const feeEdu    = gelirBrut * feeEduR;
+    const feeLib    = gelirBrut * feeLibR;
     const kesimTRY  = kesimEurPer * eurKur;
     const kesimTop  = (k[2]+k[4]) * kesimTRY;
     // Cutting fee (kesim) is a real cost the clinic pays Osteoid Inc. for
@@ -1818,7 +1816,7 @@ function computeYear1(Vlike) {
     // "Cutting / Osteoid Inc." KPI now reflects money actually deducted.
     const baskiTop  = k[0]*mStdR + k[1]*mStdRl + k[2]*(mDelik+kesimTRY) + k[3]*mSens + k[4]*(mSD+kesimTRY);
     const royaltyTop = korse * royaltyTRY;
-    const gelirNet  = gelirBrut - danis - bakim - baskiTop - royaltyTop;
+    const gelirNet  = gelirBrut - feeSci - feeEdu - feeLib - baskiTop - royaltyTop;
 
     // Printer tetikleyici — bu ayın korsesi mevcut kapasite aşıyorsa ek printer al.
     // Capacity/timing is still tracked even when Osteoid A.Ş. supplies the
@@ -1844,7 +1842,7 @@ function computeYear1(Vlike) {
     if (basAy===null && net>=0) basAy = i+1;
     if (pozAy===null && cumBudget>=0) pozAy = i+1;
 
-    rows.push({ay:i+1, korse, k, gelirBrut, danis, bakim, baskiTop, royaltyTop, kesimTop, gelirNet, sabitGider, ayStajyer, ayDestek, ayStaj2, reklamS, mutfakV, ayStopaj, kongre, printerEkMaliyet, gider, net, cumBudget});
+    rows.push({ay:i+1, korse, k, gelirBrut, feeSci, feeEdu, feeLib, baskiTop, royaltyTop, kesimTop, gelirNet, sabitGider, ayStajyer, ayDestek, ayStaj2, reklamS, mutfakV, ayStopaj, kongre, printerEkMaliyet, gider, net, cumBudget});
     cumKorse += korse;
     tGelir += gelirNet; tGider += gider; tNet += net; tKorse += korse;
   }
@@ -2332,7 +2330,6 @@ function updateValuationTable(rows, tNet) {
 
 
 function recalc() {
-  const korseF=gv('korseF'), danisPct=gv('danisPct')/100, malzeme=gv('malzeme');
   const royaltyTRY = gv('royaltyEur') * (V.eurKur ?? 50);  // €royalty → ₺
   const mutfakV=gv('mutfak'), stopajV=gv('stopaj');
   const genelGiderV=gv('genelGider');
@@ -2404,29 +2401,33 @@ function recalc() {
     ['sensDelik', gv('korseF_sensDelik')],
   ];
   _danisPairs.forEach(([k, fiyat]) => {
-    const hekimTL = Math.round(fiyat * gv('danis_' + k) / 100);
-    const kanalTL = Math.round(fiyat * gv('kanalBakim') / 100);
-    const el = document.getElementById('danisTL_' + k);
-    if (el) el.textContent = hekimTL.toLocaleString('tr-TR');
-    const el2 = document.getElementById('bakimTL_' + k);
-    if (el2) el2.textContent = kanalTL.toLocaleString('tr-TR');
+    const sciTL = Math.round(fiyat * gv('feeScientific') / 100);
+    const eduTL = Math.round(fiyat * gv('feeEducation') / 100);
+    const libTL = Math.round(fiyat * gv('feeLibrary') / 100);
+    const elSci = document.getElementById('sciTL_' + k);
+    if (elSci) elSci.textContent = sciTL.toLocaleString('tr-TR');
+    const elEdu = document.getElementById('eduTL_' + k);
+    if (elEdu) elEdu.textContent = eduTL.toLocaleString('tr-TR');
+    const elLib = document.getElementById('libTL_' + k);
+    if (elLib) elLib.textContent = libTL.toLocaleString('tr-TR');
     const elCiro = document.getElementById('ciroTL_' + k);
     const elCiroB2B = document.getElementById('ciroB2BTL_' + k);
     if (elCiro || elCiroB2B) {
       const royaltyTRY = gv('royaltyEur') * (V.eurKur ?? 50);
       const mal = gv('mal_' + k);
       if (elCiro) {
-        const ciro = fiyat - hekimTL - kanalTL - mal - royaltyTRY;
+        const ciro = fiyat - sciTL - eduTL - libTL - mal - royaltyTRY;
         elCiro.textContent = ciro.toLocaleString('tr-TR');
         const elEur = document.getElementById('ciroEur_' + k);
         if (elEur) elEur.textContent = Math.round(ciro / (V.eurKur ?? 50)).toLocaleString('en-US');
       }
       if (elCiroB2B) {
         const fB2B = gv('korseFB2B_' + k);
-        const hekimB2B = Math.round(fB2B * gv('danis_' + k) / 100);
-        const kanalB2B = Math.round(fB2B * gv('kanalBakim') / 100);
+        const sciB2B = Math.round(fB2B * gv('feeScientific') / 100);
+        const eduB2B = Math.round(fB2B * gv('feeEducation') / 100);
+        const libB2B = Math.round(fB2B * gv('feeLibrary') / 100);
         const kesimTRY = (k === 'delik' || k === 'sensDelik') ? gv('kesimEurPer') * (V.eurKur ?? 50) : 0;
-        const ciroB2B = fB2B - hekimB2B - kanalB2B - mal - kesimTRY - royaltyTRY;
+        const ciroB2B = fB2B - sciB2B - eduB2B - libB2B - mal - kesimTRY - royaltyTRY;
         elCiroB2B.textContent = ciroB2B.toLocaleString('tr-TR');
         const elB2BEur = document.getElementById('ciroB2BEur_' + k);
         if (elB2BEur) elB2BEur.textContent = Math.round(ciroB2B / (V.eurKur ?? 50)).toLocaleString('en-US');
@@ -2479,14 +2480,14 @@ function recalc() {
     for (let pi = 1; pi < rawB2.length; pi++) { if (rawB2[pi] > rawB2[biggestIdxB2]) biggestIdxB2 = pi; }
     kB2u[biggestIdxB2] = Math.max(0, kB2u[biggestIdxB2] + (kB2 - kB2u.reduce((s,v)=>s+v,0)));
     const brutB2 = kB2u[0]*fB2R + kB2u[1]*fB2Rl + kB2u[2]*fB2D + kB2u[3]*fB2S + kB2u[4]*fB2SD;
-    const dPB2 = {stdR:gv('danis_stdR')/100, stdRl:gv('danis_stdRl')/100, delik:gv('danis_delik')/100, sens:gv('danis_sens')/100, sensDelik:gv('danis_sensDelik')/100};
-    const danisB2 = kB2u[0]*fB2R*dPB2.stdR + kB2u[1]*fB2Rl*dPB2.stdRl + kB2u[2]*fB2D*dPB2.delik + kB2u[3]*fB2S*dPB2.sens + kB2u[4]*fB2SD*dPB2.sensDelik;
-    const bakimB2 = brutB2 * (gv('kanalBakim')/100);
+    const feeSciB2 = brutB2 * (gv('feeScientific')/100);
+    const feeEduB2 = brutB2 * (gv('feeEducation')/100);
+    const feeLibB2 = brutB2 * (gv('feeLibrary')/100);
     const baskiB2 = kB2u[0]*mStdR + kB2u[1]*mStdRl + kB2u[2]*(mDelik+kesimTRYb2) + kB2u[3]*mSens + kB2u[4]*(mSD+kesimTRYb2);
     const royB2 = kB2 * royaltyTRY;
-    const netB2 = brutB2 - danisB2 - bakimB2 - baskiB2 - royB2;
+    const netB2 = brutB2 - feeSciB2 - feeEduB2 - feeLibB2 - baskiB2 - royB2;
     tGelirB2B += netB2;
-    rowsB2B.push({ ay: i2+1, korse: kB2, k: kB2u, gelirBrut: brutB2, danisB2B: danisB2, bakimB2B: bakimB2, baskiTop: baskiB2, royaltyTop: royB2, gelirNet: netB2 });
+    rowsB2B.push({ ay: i2+1, korse: kB2, k: kB2u, gelirBrut: brutB2, feeSciB2B: feeSciB2, feeEduB2B: feeEduB2, feeLibB2B: feeLibB2, baskiTop: baskiB2, royaltyTop: royB2, gelirNet: netB2 });
   }
 
   // Net marj: gerçek yıllık brüt gelir vs net gelir oranı (ağırlıklı)
@@ -2506,8 +2507,9 @@ function recalc() {
   }
   const _royTL = rows.reduce((s,r)=>s+(r.royaltyTop||0),0);
   const _ksmTL = rows.reduce((s,r)=>s+(r.kesimTop||0),0);
-  const _danisTL = rows.reduce((s,r)=>s+(r.danis||0),0);
-  const _bakimTL = rows.reduce((s,r)=>s+(r.bakim||0),0);
+  const _sciTL = rows.reduce((s,r)=>s+(r.feeSci||0),0);
+  const _eduTL = rows.reduce((s,r)=>s+(r.feeEdu||0),0);
+  const _libTL = rows.reduce((s,r)=>s+(r.feeLib||0),0);
   document.getElementById('kpiGrid').innerHTML=[
     {label:'Total braces',              val:tKorse+' units',                            sub:'',                 c:'neu'},
     {label:'Clinic net revenue (year)', val:feEur(tGelir),                              sub:ffTRY(tGelir),         c:tGelir>=0?'pos':'neg'},
@@ -2517,8 +2519,9 @@ function recalc() {
     {label:'Cumulative positive',       val:pozAyLabel,                                 sub:'',                 c:pozAyClass},
     {label:'Total investment',           val:'€'+(V.dcfInvest||150000).toLocaleString('en-US'), sub:'',           c:'neg'},
     {label:'Setup cost',                val:feEur(kurulumTop),                          sub:ffTRY(kurulumTop),     c:'neg'},
-    {label:'Total doctor fee',          val:feEur(-_danisTL),                           sub:ffTRY(-_danisTL),      c:'neg'},
-    {label:'Total channel share',       val:feEur(-_bakimTL),                           sub:ffTRY(-_bakimTL),      c:'neg'},
+    {label:'Scientific study fee',      val:feEur(-_sciTL),                             sub:ffTRY(-_sciTL),        c:'neg'},
+    {label:'Education fee',             val:feEur(-_eduTL),                             sub:ffTRY(-_eduTL),        c:'neg'},
+    {label:'Library fee',               val:feEur(-_libTL),                             sub:ffTRY(-_libTL),        c:'neg'},
     {label:'Royalty / year',            val: gv('royaltyEur')===0 ? '— (not applied)' : '-€'+Math.round(_royTL/(V.eurKur ?? 50)).toLocaleString('en-US'), sub: gv('royaltyEur')===0 ? '' : ffTRY(-_royTL), c: gv('royaltyEur')===0 ? 'neu' : 'neg'},
     {label:'Osteoid Inc. royalty',      val:'€'+Math.round(_royTL/(V.eurKur ?? 50)).toLocaleString('en-US'),  sub:'',          c:'neu'},
     {label:'Cutting / Osteoid Inc.',    val:'€'+Math.round(_ksmTL/(V.eurKur ?? 50)).toLocaleString('en-US'),  sub:'',          c:'neu'},
@@ -2529,7 +2532,7 @@ function recalc() {
     <th>Month</th>
     <th style="color:#888780;">Std-NR</th><th style="color:#D85A30;">Std-Rep.</th>
     <th style="color:#1D9E75;">Perf.</th><th style="color:#534AB7;">Sens</th><th style="color:#D4537E;">Sns+Prf</th>
-    <th>Gross Rev.</th><th>Doctor Fee</th><th>Channel Share</th><th>Cost</th><th>Royalty</th><th>Net Revenue</th>
+    <th>Gross Rev.</th><th>Sci. Study Fee</th><th>Education Fee</th><th>Library Fee</th><th>Cost</th><th>Royalty</th><th>Net Revenue</th>
     <th>Fixed</th><th>Intern</th><th>Advertising</th><th>Kitchen</th><th>Withholding</th><th>Periodic</th><th>Printer</th>
     <th>Tot.Cost</th><th>Monthly Net</th><th>Cumulative</th>
   </tr></thead>`;
@@ -2540,8 +2543,9 @@ function recalc() {
       <td>Month ${r.ay}${isBas?' ✓':''}${isPoz?' ★':''}</td>
       <td style="color:#888780;">${kk[0]||'—'}</td><td style="color:#D85A30;">${kk[1]||'—'}</td>
       <td style="color:#1D9E75;">${kk[2]||'—'}</td><td style="color:#534AB7;">${kk[3]||'—'}</td><td style="color:#D4537E;">${kk[4]||'—'}</td>
-      <td>${ff(r.gelirBrut)}</td><td class="nc">${ff(-r.danis)}</td>
-      <td class="${r.bakim?'nc':'zc'}">${r.bakim?ff(-r.bakim):'—'}</td>
+      <td>${ff(r.gelirBrut)}</td><td class="nc">${ff(-r.feeSci)}</td>
+      <td class="nc">${ff(-r.feeEdu)}</td>
+      <td class="nc">${ff(-r.feeLib)}</td>
       <td class="${r.baskiTop?'nc':'zc'}">${r.baskiTop?ff(-r.baskiTop):'—'}</td>
       <td class="nc">${ff(-r.royaltyTop)}</td>
       <td class="${cls(r.gelirNet)}">${ff(r.gelirNet)}</td>
@@ -2555,8 +2559,9 @@ function recalc() {
     </tr>`;
   }).join('');
   // Toplam satırı — tüm sütunlar
-  const tDanis     = rows.reduce((s,r)=>s+(r.danis||0),0);
-  const tBakim     = rows.reduce((s,r)=>s+(r.bakim||0),0);
+  const tSci       = rows.reduce((s,r)=>s+(r.feeSci||0),0);
+  const tEdu       = rows.reduce((s,r)=>s+(r.feeEdu||0),0);
+  const tLib       = rows.reduce((s,r)=>s+(r.feeLib||0),0);
   const tBaski     = rows.reduce((s,r)=>s+(r.baskiTop||0),0);
   const tRoyalty   = rows.reduce((s,r)=>s+(r.royaltyTop||0),0);
   const tSabit     = rows.reduce((s,r)=>s+(r.sabitGider||0),0);
@@ -2571,8 +2576,9 @@ function recalc() {
     <td>Total</td>
     <td style="color:#888780;">${tpKk[0]}</td><td style="color:#D85A30;">${tpKk[1]}</td>
     <td style="color:#1D9E75;">${tpKk[2]}</td><td style="color:#534AB7;">${tpKk[3]}</td><td style="color:#D4537E;">${tpKk[4]}</td>
-    <td>${ff(tBrut)}</td><td class="nc">${ff(-tDanis)}</td>
-    <td class="${tBakim?'nc':'zc'}">${tBakim?ff(-tBakim):'—'}</td>
+    <td>${ff(tBrut)}</td><td class="nc">${ff(-tSci)}</td>
+    <td class="nc">${ff(-tEdu)}</td>
+    <td class="nc">${ff(-tLib)}</td>
     <td class="nc">${ff(-tBaski)}</td><td class="nc">${ff(-tRoyalty)}</td>
     <td class="${cls(tGelir)}">${ff(tGelir)}</td>
     <td class="nc">${ff(-tSabit)}</td><td class="nc">${ff(-tStajyer)}</td><td class="nc">${ff(-tReklam)}</td>
@@ -2583,7 +2589,7 @@ function recalc() {
   </tr>`;
   // B2B bölümü
   const b2bSep = `<tr style="background:#1a1a1a;color:#fff;font-size:10px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;">
-    <td colspan="22" style="padding:5px 8px;">B2B Channel</td></tr>`;
+    <td colspan="23" style="padding:5px 8px;">B2B Channel</td></tr>`;
   const b2b_rows = rowsB2B.map(r => {
     const kk = r.k || [r.korse,0,0,0,0];
     return `<tr style="background:#f7f6ff;">
@@ -2591,20 +2597,22 @@ function recalc() {
       <td style="color:#888780;">${kk[0]||'—'}</td><td style="color:#D85A30;">${kk[1]||'—'}</td>
       <td style="color:#1D9E75;">${kk[2]||'—'}</td><td style="color:#534AB7;">${kk[3]||'—'}</td><td style="color:#D4537E;">${kk[4]||'—'}</td>
       <td>${ff(r.gelirBrut)}</td>
-      <td class="nc">${ff(-r.danisB2B)}</td>
-      <td class="${r.bakimB2B?'nc':'zc'}">${r.bakimB2B?ff(-r.bakimB2B):'—'}</td>
+      <td class="nc">${ff(-r.feeSciB2B)}</td>
+      <td class="nc">${ff(-r.feeEduB2B)}</td>
+      <td class="nc">${ff(-r.feeLibB2B)}</td>
       <td class="${r.baskiTop?'nc':'zc'}">${r.baskiTop?ff(-r.baskiTop):'—'}</td>
       <td class="nc">${ff(-r.royaltyTop)}</td>
       <td class="${cls(r.gelirNet)}">${ff(r.gelirNet)}</td>
-      <td class="zc" colspan="9">—</td>
+      <td class="zc" colspan="8">—</td>
       <td class="${cls(r.gelirNet)}">${ff(r.gelirNet)}</td>
       <td class="zc">—</td>
     </tr>`;
   }).join('');
   const b2bKk = rowsB2B.reduce((s,r)=>{const k=r.k||[0,0,0,0,0];return s.map((v,j)=>v+k[j]);},[0,0,0,0,0]);
   const b2bBrut  = rowsB2B.reduce((s,r)=>s+(r.gelirBrut||0),0);
-  const b2bDanis = rowsB2B.reduce((s,r)=>s+(r.danisB2B||0),0);
-  const b2bBakim = rowsB2B.reduce((s,r)=>s+(r.bakimB2B||0),0);
+  const b2bSci = rowsB2B.reduce((s,r)=>s+(r.feeSciB2B||0),0);
+  const b2bEdu = rowsB2B.reduce((s,r)=>s+(r.feeEduB2B||0),0);
+  const b2bLib = rowsB2B.reduce((s,r)=>s+(r.feeLibB2B||0),0);
   const b2bBaski = rowsB2B.reduce((s,r)=>s+(r.baskiTop||0),0);
   const b2bRoy   = rowsB2B.reduce((s,r)=>s+(r.royaltyTop||0),0);
   const b2bTopRow = `<tr style="background:#e8e6ff;font-weight:700;">
@@ -2612,12 +2620,13 @@ function recalc() {
     <td style="color:#888780;">${b2bKk[0]}</td><td style="color:#D85A30;">${b2bKk[1]}</td>
     <td style="color:#1D9E75;">${b2bKk[2]}</td><td style="color:#534AB7;">${b2bKk[3]}</td><td style="color:#D4537E;">${b2bKk[4]}</td>
     <td>${ff(b2bBrut)}</td>
-    <td class="nc">${ff(-b2bDanis)}</td>
-    <td class="${b2bBakim?'nc':'zc'}">${b2bBakim?ff(-b2bBakim):'—'}</td>
+    <td class="nc">${ff(-b2bSci)}</td>
+    <td class="nc">${ff(-b2bEdu)}</td>
+    <td class="nc">${ff(-b2bLib)}</td>
     <td class="nc">${ff(-b2bBaski)}</td>
     <td class="nc">${ff(-b2bRoy)}</td>
     <td class="${cls(tGelirB2B)}">${ff(tGelirB2B)}</td>
-    <td class="zc" colspan="9">—</td>
+    <td class="zc" colspan="8">—</td>
     <td class="${cls(tGelirB2B)}">${ff(tGelirB2B)}</td>
     <td class="zc">—</td>
   </tr>`;
@@ -2887,8 +2896,9 @@ function buildProjection() {
   // Yıl 1: model verisi
   const y1KorseNet = rows.reduce((s,r) => s + (r.gelirNet||0), 0);
   const y1Korse    = rows.reduce((s,r) => s + (r.korse||0), 0);
-  const y1Danis    = rows.reduce((s,r) => s + (r.danis||0), 0); // hekim komisyonu ₺
-  const y1Bakim    = rows.reduce((s,r) => s + (r.bakim||0), 0); // kanal bakım payı ₺
+  const y1Sci      = rows.reduce((s,r) => s + (r.feeSci||0), 0); // bilimsel çalışma bedeli ₺
+  const y1Edu      = rows.reduce((s,r) => s + (r.feeEdu||0), 0); // eğitim bedeli ₺
+  const y1Lib      = rows.reduce((s,r) => s + (r.feeLib||0), 0); // kütüphane bedeli ₺
 
   // Pazar verisi
   const pazarTR    = gv('pazarTR');
@@ -3069,11 +3079,13 @@ function buildProjection() {
   // Kurulum özet güncelle — full label+value rebuild for consistency
   ['izmir','ankara'].forEach(_updateKurulumOzet);
 
-  // Hekim ve kanal payı tahmini: Y1 oranı sabit varsayım
-  const y1DanisEurK   = toEur(y1Danis);
-  const y1BakimEurK   = toEur(y1Bakim);
-  const y1DanisOran   = y1KorseNet > 0 ? y1Danis / y1KorseNet : 0.25;
-  const y1BakimOran   = y1KorseNet > 0 ? y1Bakim / y1KorseNet : 0.05;
+  // Bilimsel çalışma / eğitim / kütüphane bedeli tahmini: Y1 oranı sabit varsayım
+  const y1SciEurK   = toEur(y1Sci);
+  const y1EduEurK   = toEur(y1Edu);
+  const y1LibEurK   = toEur(y1Lib);
+  const y1SciOran   = y1KorseNet > 0 ? y1Sci / y1KorseNet : 0.10;
+  const y1EduOran   = y1KorseNet > 0 ? y1Edu / y1KorseNet : 0.10;
+  const y1LibOran   = y1KorseNet > 0 ? y1Lib / y1KorseNet : 0.10;
   const y2M1PreOpex = lerp(y1BrutM1, y3BrutGelir, 0.40);
   const y3M1PreOpex = lerp(y1BrutM1, y3BrutGelir, 0.65);
   const y4M1PreOpex = lerp(y1BrutM1, y3BrutGelir, 0.85);
@@ -3081,20 +3093,24 @@ function buildProjection() {
   const y3TotalPreOpexNet = y3M1PreOpex + (izmirRow[2]||0) + (ankaraRow[2]||0) + (b2bRow[2]||0);
   const y4TotalPreOpexNet = y4M1PreOpex + (izmirRow[3]||0) + (ankaraRow[3]||0) + (b2bRow[3]||0);
   const y5TotalPreOpexNet = y3BrutGelir  + (izmirRow[4]||0) + (ankaraRow[4]||0) + (b2bRow[4]||0);
-  const y2HekimPayiEurK = Math.round(y2TotalPreOpexNet * y1DanisOran);
-  const y3HekimPayiEurK = Math.round(y3TotalPreOpexNet * y1DanisOran);
-  const y4HekimPayiEurK = Math.round(y4TotalPreOpexNet * y1DanisOran);
-  const y5HekimPayiEurK = Math.round(y5TotalPreOpexNet * y1DanisOran);
-  const y2KanalPayiEurK = Math.round(y2TotalPreOpexNet * y1BakimOran);
-  const y3KanalPayiEurK = Math.round(y3TotalPreOpexNet * y1BakimOran);
-  const y4KanalPayiEurK = Math.round(y4TotalPreOpexNet * y1BakimOran);
-  const y5KanalPayiEurK = Math.round(y5TotalPreOpexNet * y1BakimOran);
+  const y2SciEurK = Math.round(y2TotalPreOpexNet * y1SciOran);
+  const y3SciEurK = Math.round(y3TotalPreOpexNet * y1SciOran);
+  const y4SciEurK = Math.round(y4TotalPreOpexNet * y1SciOran);
+  const y5SciEurK = Math.round(y5TotalPreOpexNet * y1SciOran);
+  const y2EduEurK = Math.round(y2TotalPreOpexNet * y1EduOran);
+  const y3EduEurK = Math.round(y3TotalPreOpexNet * y1EduOran);
+  const y4EduEurK = Math.round(y4TotalPreOpexNet * y1EduOran);
+  const y5EduEurK = Math.round(y5TotalPreOpexNet * y1EduOran);
+  const y2LibEurK = Math.round(y2TotalPreOpexNet * y1LibOran);
+  const y3LibEurK = Math.round(y3TotalPreOpexNet * y1LibOran);
+  const y4LibEurK = Math.round(y4TotalPreOpexNet * y1LibOran);
+  const y5LibEurK = Math.round(y5TotalPreOpexNet * y1LibOran);
 
   // ── Annual Financial Detail — Istanbul (same metrics as the 12-Month Summary,
   // one column per year). Years 2-5 have no monthly/per-product granularity in
   // this projection, so several rows fall back to a Year-1 ratio/mix held
-  // constant — same approximation style already used for Doctor Commission /
-  // Channel Share above. Every approximated row is labeled, not asserted as fact.
+  // constant — same approximation style already used for the Scientific Study /
+  // Education / Library fee rows above. Every approximated row is labeled, not asserted as fact.
   const _y1Model = computeYear1(V);
   const istGrossY = [y1BrutM1, y2M1PreOpex, y3M1PreOpex, y4M1PreOpex, y3BrutGelir]; // pre-fixed-opex, €K
   const istNetY   = korseM1; // Year1 = pre-opex (see projTableNote); Years 2-5 = post-opex net, €K
@@ -3123,8 +3139,9 @@ function buildProjection() {
 
   const istInvestY = [V.dcfInvest ? Math.round(V.dcfInvest/1000) : null, null, null, null, null];
   const istSetupY  = [toEur(_y1Model.kurulumTop), 0, 0, 0, 0];
-  const istDoctorFeeY = istGrossY.map(g => Math.round(g * y1DanisOran));
-  const istChannelY   = istGrossY.map(g => Math.round(g * y1BakimOran));
+  const istSciY = istGrossY.map(g => Math.round(g * y1SciOran));
+  const istEduY = istGrossY.map(g => Math.round(g * y1EduOran));
+  const istLibY = istGrossY.map(g => Math.round(g * y1LibOran));
   const istRoyaltyY   = korseCountIst.map(k => Math.round(k * gv('royaltyEur') * (V.eurKur??50) / 1000));
 
   // Cutting fee (Perf/S+P braces only) — Year 1's actual last-3-month product mix held
@@ -3144,7 +3161,7 @@ function buildProjection() {
     braces: korseCountIst, netRevenue: istNetY, cumEnd: istCumY,
     basAyLabels: istBasAyLabels, pozAyLabels: istPozAyLabels,
     invest: istInvestY, setup: istSetupY,
-    doctorFee: istDoctorFeeY, channelShare: istChannelY,
+    sciFee: istSciY, eduFee: istEduY, libFee: istLibY,
     royalty: istRoyaltyY, cuttingFee: istCuttingY, margin: istMarginY,
   });
 
@@ -3168,8 +3185,9 @@ function buildProjection() {
       if (!aktif) { pozAyLabels.push('Not opened'); continue; }
       pozAyLabels.push(cumY[i] >= 0 ? (i===1 || cumY[i-1] < 0 ? 'Reached this year' : 'Already positive') : 'Not yet');
     }
-    const doctorFeeY = grossY.map(g => Math.round(g * y1DanisOran));
-    const channelY   = grossY.map(g => Math.round(g * y1BakimOran));
+    const sciY = grossY.map(g => Math.round(g * y1SciOran));
+    const eduY = grossY.map(g => Math.round(g * y1EduOran));
+    const libY = grossY.map(g => Math.round(g * y1LibOran));
     const royaltyY   = korseCountArr.map(k => Math.round(k * gv('royaltyEur') * (V.eurKur??50) / 1000));
     const cuttingY   = korseCountArr.map(k => Math.round(k * _sonKesimPct * gv('kesimEurPer') * (V.eurKur??50) / 1000));
     const marginY    = netRevArr.map((n,i) => grossY[i] > 0 ? Math.round(n/grossY[i]*100) : null);
@@ -3177,7 +3195,7 @@ function buildProjection() {
       braces: korseCountArr, netRevenue: netRevArr, cumEnd: cumY,
       basAyLabels: ['—','—','—','—','—'], pozAyLabels,
       invest: [null,null,null,null,null], setup: setupY,
-      doctorFee: doctorFeeY, channelShare: channelY,
+      sciFee: sciY, eduFee: eduY, libFee: libY,
       royalty: royaltyY, cuttingFee: cuttingY, margin: marginY,
     };
   }
@@ -3210,8 +3228,9 @@ function buildProjection() {
         ${V.ankaraAktif ? `<tr><td style="color:#534AB7;">Brace — Ankara Center</td>${fmt(ankaraRow[0])}${fmt(ankaraRow[1])}${fmt(ankaraRow[2])}${fmt(ankaraRow[3])}${fmt(ankaraRow[4])}${grow(ankaraRow[1],ankaraRow[4])}</tr>` : ''}
 
         <tr class="total"><td>Consolidated Total (Clinic + B2B)</td>${fmt(totals[0])}${fmt(totals[1])}${fmt(totals[2])}${fmt(totals[3])}${fmt(totals[4])}${grow(totals[0],totals[4])}</tr>
-        <tr style="background:#fff7f5;"><td style="color:#c94f2a;font-size:11px;">↳ Doctor Commission <span style="font-weight:400;opacity:0.65;">(Y1 ratio fixed · projection)</span></td><td style="color:#c94f2a;font-size:11px;">~€${y1DanisEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y2HekimPayiEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y3HekimPayiEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y4HekimPayiEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y5HekimPayiEurK}K</td><td style="color:#aaa;font-size:11px;">—</td></tr>
-        <tr style="background:#fff7f5;"><td style="color:#c94f2a;font-size:11px;">↳ Channel Maintenance Share <span style="font-weight:400;opacity:0.65;">(Y1 ratio fixed · projection)</span></td><td style="color:#c94f2a;font-size:11px;">~€${y1BakimEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y2KanalPayiEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y3KanalPayiEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y4KanalPayiEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y5KanalPayiEurK}K</td><td style="color:#aaa;font-size:11px;">—</td></tr>
+        <tr style="background:#fff7f5;"><td style="color:#c94f2a;font-size:11px;">↳ Scientific Study Fee <span style="font-weight:400;opacity:0.65;">(Y1 ratio fixed · projection)</span></td><td style="color:#c94f2a;font-size:11px;">~€${y1SciEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y2SciEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y3SciEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y4SciEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y5SciEurK}K</td><td style="color:#aaa;font-size:11px;">—</td></tr>
+        <tr style="background:#fff7f5;"><td style="color:#c94f2a;font-size:11px;">↳ Education Fee <span style="font-weight:400;opacity:0.65;">(Y1 ratio fixed · projection)</span></td><td style="color:#c94f2a;font-size:11px;">~€${y1EduEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y2EduEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y3EduEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y4EduEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y5EduEurK}K</td><td style="color:#aaa;font-size:11px;">—</td></tr>
+        <tr style="background:#fff7f5;"><td style="color:#c94f2a;font-size:11px;">↳ Library Fee <span style="font-weight:400;opacity:0.65;">(Y1 ratio fixed · projection)</span></td><td style="color:#c94f2a;font-size:11px;">~€${y1LibEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y2LibEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y3LibEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y4LibEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y5LibEurK}K</td><td style="color:#aaa;font-size:11px;">—</td></tr>
         <tr style="background:#f0efe9;"><td style="font-size:11px;color:#888;">Year 5 target brace count (IST share: %${y5PayPct})</td><td colspan="5" style="text-align:center;color:#888;font-size:11px;">${y5KorseAdet.toLocaleString('tr-TR')} units/year</td></tr>
       </tbody>
     </table>`;
@@ -3273,7 +3292,7 @@ function renderAnnualDetailTable(elId, sehirLabel, cfg) {
   if (!el) return;
   const fmtEurK = v => (v===null||v===undefined) ? '<td style="color:#aaa;">—</td>' : (v>=0 ? `<td class="val-pos">€${v}K</td>` : `<td style="color:#c94f2a;">-€${Math.abs(v)}K</td>`);
   // "Not applicable this year" (setup cost outside the opening year) uses "—"; a real
-  // computed zero (e.g. channel share when kanalBakim=0) shows "€0K" — the two aren't the same.
+  // computed zero fee shows "€0K" — the two aren't the same.
   const fmtCost = v => (!v) ? '<td style="color:#aaa;">—</td>' : `<td style="color:#c94f2a;">-€${Math.abs(v)}K</td>`;
   const fmtCostOrZero = v => (v===null||v===undefined) ? '<td style="color:#aaa;">—</td>' : (v===0 ? '<td>€0K</td>' : `<td style="color:#c94f2a;">-€${Math.abs(v)}K</td>`);
   const fmtRoyalty = v => (!v) ? '<td style="color:#aaa;">— (not applied)</td>' : `<td style="color:#c94f2a;">-€${Math.abs(v)}K</td>`;
@@ -3293,8 +3312,9 @@ function renderAnnualDetailTable(elId, sehirLabel, cfg) {
       ${row('Cumulative positive', cfg.pozAyLabels.map(fmtText))}
       ${row('Total investment', cfg.invest.map(fmtEurK))}
       ${row('Setup cost', cfg.setup.map(fmtCost))}
-      ${row('Total doctor fee', cfg.doctorFee.map(fmtCostOrZero), '(Y1 ratio fixed · projection)')}
-      ${row('Total channel share', cfg.channelShare.map(fmtCostOrZero), '(Y1 ratio fixed · projection)')}
+      ${row('Scientific study fee', cfg.sciFee.map(fmtCostOrZero), '(Y1 ratio fixed · projection)')}
+      ${row('Education fee', cfg.eduFee.map(fmtCostOrZero), '(Y1 ratio fixed · projection)')}
+      ${row('Library fee', cfg.libFee.map(fmtCostOrZero), '(Y1 ratio fixed · projection)')}
       ${row('Royalty / year', cfg.royalty.map(fmtRoyalty))}
       ${row('Osteoid A.Ş. royalty', cfg.royalty.map(fmtRoyaltyPos))}
       ${row('Cutting / Osteoid A.Ş.', cfg.cuttingFee.map(fmtRoyaltyPos), '(Y1 product mix % fixed · projection)')}
