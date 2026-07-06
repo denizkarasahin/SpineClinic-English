@@ -310,11 +310,11 @@ function renderParams() {
   function row(name, code, val, note) {
     return '<tr><td>' + name + '</td><td><code style="font-size:11px;color:#888;">' + code + '</code></td><td class="val">' + val + '</td><td class="note">' + (note||'') + '</td></tr>';
   }
-  var royaltyTRY = Math.round((V.royaltyEur??75) * (V.eurKur||53.07));
+  var royaltyTRY = Math.round((V.royaltyEur??0) * (V.eurKur||53.56));
   document.getElementById('p_kur').innerHTML = [
-    row('EUR/TRY rate','eurKur','₺'+(V.eurKur||53.07),'Used in all EUR↔TRY conversions'),
-    row('Royalty (Osteoid A.Ş.)','royaltyEur','€'+(V.royaltyEur??75)+'/brace',(V.royaltyEur??75)===0?'Not applied in this scenario':'₺'+royaltyTRY.toLocaleString('tr-TR')+'/brace (= '+(V.royaltyEur??75)+' × '+(V.eurKur||53.07)+')'),
-    row('Channel maintenance fee','kanalBakim',(V.kanalBakim||5)+'% (on gross revenue)','Sales channel management fee — adjustable scenario parameter, default 5%'),
+    row('EUR/TRY rate','eurKur','₺'+(V.eurKur||53.56),'Used in all EUR↔TRY conversions'),
+    row('Royalty (Osteoid A.Ş.)','royaltyEur','€'+(V.royaltyEur??0)+'/brace',(V.royaltyEur??0)===0?'Not applied in this scenario':'₺'+royaltyTRY.toLocaleString('tr-TR')+'/brace (= '+(V.royaltyEur??0)+' × '+(V.eurKur||53.56)+')'),
+    row('Channel maintenance fee','kanalBakim',(V.kanalBakim||0)+'% (on gross revenue)','Sales channel management fee — adjustable scenario parameter, current default '+(V.kanalBakim||0)+'%'),
     row('Cutting fee (EUR)','kesimEurPer','€'+(V.kesimEurPer??0)+'/unit','Used for Perforated and S+P braces; Osteoid A.Ş. cutting revenue'),
   ].join('');
 
@@ -345,9 +345,9 @@ function renderParams() {
   document.getElementById('p_personel').innerHTML = [
     ['Operator','operatorM','Always active — from Month 1'],
     ['Orthotist (permanent)','ortotistM','Always active'],
-    ['Intern / Physiotherapist','stajyerM','≥ '+(V.esikStajyer1??15)+' braces/mo'],
-    ['Support staff','destekM','≥ '+(V.esikDestek??30)+' braces/mo'],
-    ['2nd Intern / Graduate','stajyer2M','≥ '+(V.esikStajyer2??76)+' braces/mo'],
+    ['Intern / Physiotherapist','stajyerM','≥ '+(V.esikStajyer1??21)+' braces/mo'],
+    ['Support staff','destekM','≥ '+(V.esikDestek??40)+' braces/mo'],
+    ['2nd Intern / Graduate','stajyer2M','≥ '+(V.esikStajyer2??90)+' braces/mo'],
   ].map(function(a){ var net=V[a[1]]||0, brut=Math.round(net*sgk); return '<tr><td>'+a[0]+'</td><td class="val">'+tf(net)+'</td><td class="val">×'+sgk.toFixed(2)+'</td><td class="val" style="color:#1D9E75;">'+tf(brut)+'</td><td class="note">'+a[2]+'</td></tr>'; }).join('');
   document.getElementById('p_b2b').innerHTML = prods.map(function(p,i){
     var b2bF=V[b2bFKeys[i]]||0, kF=V[fKeys[i]]||0, diff=kF-b2bF;
@@ -363,14 +363,14 @@ function renderUrunMarj() {
     {name:'Sensor+Rep.', color:'#534AB7',fKey:'korseF_sens',mKey:'mal_sens',dKey:'danis_sens'},
     {name:'Sns+Rep+Perf',color:'#D4537E',fKey:'korseF_sensDelik',mKey:'mal_sensDelik',dKey:'danis_sensDelik',kesim:true},
   ];
-  var royaltyTRY = (V.royaltyEur??75) * (V.eurKur||53.07);
-  var kanalPct = (V.kanalBakim||5)/100;
-  document.getElementById('kanalPctDisp').textContent = (V.kanalBakim||5)+'%';
+  var royaltyTRY = (V.royaltyEur??0) * (V.eurKur||53.56);
+  var kanalPct = (V.kanalBakim||0)/100;
+  document.getElementById('kanalPctDisp').textContent = (V.kanalBakim||0)+'%';
   var wrap = document.getElementById('urunMarjWrap');
   wrap.innerHTML = prods.map(function(p){
     var f=V[p.fKey]||0, m=V[p.mKey]||0;
     var d=Math.round(f*(V[p.dKey]||0)/100), k=Math.round(f*kanalPct);
-    var kesimTRY=p.kesim?Math.round((V.kesimEurPer??0)*(V.eurKur||53.07)):0;
+    var kesimTRY=p.kesim?Math.round((V.kesimEurPer??0)*(V.eurKur||53.56)):0;
     var net=f-d-k-m-kesimTRY-royaltyTRY, marj=f>0?Math.round(net/f*100):0;
     return '<div class="prod-card"><h4 style="color:'+p.color+';">'+p.name+'</h4>' +
       '<div class="prod-line"><span class="lbl">Sale price</span><span class="val">₺'+f.toLocaleString('tr-TR')+'</span></div>' +
@@ -378,7 +378,7 @@ function renderUrunMarj() {
       (k>0?'<div class="prod-line deduct"><span class="lbl">− Channel fee</span><span class="val">−₺'+k.toLocaleString('tr-TR')+'</span></div>':'') +
       '<div class="prod-line deduct"><span class="lbl">− Material</span><span class="val">−₺'+m.toLocaleString('tr-TR')+'</span></div>' +
       (kesimTRY>0?'<div class="prod-line deduct"><span class="lbl">− Cutting (€'+(V.kesimEurPer??0)+')</span><span class="val">−₺'+kesimTRY.toLocaleString('tr-TR')+'</span></div>':'') +
-      (royaltyTRY>0?'<div class="prod-line deduct"><span class="lbl">− Royalty (€'+(V.royaltyEur??75)+'×'+V.eurKur+')</span><span class="val">−₺'+Math.round(royaltyTRY).toLocaleString('tr-TR')+'</span></div>':'') +
+      (royaltyTRY>0?'<div class="prod-line deduct"><span class="lbl">− Royalty (€'+(V.royaltyEur??0)+'×'+V.eurKur+')</span><span class="val">−₺'+Math.round(royaltyTRY).toLocaleString('tr-TR')+'</span></div>':'') +
       '<div class="prod-line net"><span class="lbl">= Net revenue/unit</span><span class="val">₺'+Math.round(net).toLocaleString('tr-TR')+'</span></div>' +
       '<div style="font-size:10px;color:#888;text-align:right;margin-top:3px;">Net margin: '+marj+'%</div></div>';
   }).join('');
@@ -386,7 +386,7 @@ function renderUrunMarj() {
   tbody.innerHTML = prods.map(function(p){
     var f=V[p.fKey]||0, m=V[p.mKey]||0;
     var d=Math.round(f*(V[p.dKey]||0)/100), k=Math.round(f*kanalPct);
-    var kesimTRY=p.kesim?Math.round((V.kesimEurPer??0)*(V.eurKur||53.07)):0;
+    var kesimTRY=p.kesim?Math.round((V.kesimEurPer??0)*(V.eurKur||53.56)):0;
     var net=f-d-k-m-kesimTRY-royaltyTRY, marj=f>0?Math.round(net/f*100):0;
     return '<tr><td style="font-weight:700;color:'+p.color+';">'+p.name+'</td>' +
       '<td style="text-align:right;">₺'+f.toLocaleString('tr-TR')+'</td>' +
@@ -399,25 +399,25 @@ function renderUrunMarj() {
 }
 
 function renderFormulas() {
-  var royTRY = Math.round((V.royaltyEur??75)*(V.eurKur||53.07));
+  var royTRY = Math.round((V.royaltyEur??0)*(V.eurKur||53.56));
   var sgk = (V.sgkCarpan||1.6).toFixed(2);
-  var e1=V.esikStajyer1??15, e2=V.esikDestek??30, e3=V.esikStajyer2??76;
+  var e1=V.esikStajyer1??21, e2=V.esikDestek??40, e3=V.esikStajyer2??90;
   var stajBrut=Math.round((V.stajyerM||30000)*(V.sgkCarpan||1.6));
   var destBrut=Math.round((V.destekM||30000)*(V.sgkCarpan||1.6));
   var staj2Brut=Math.round((V.stajyer2M||30000)*(V.sgkCarpan||1.6));
-  var ortoBrut=Math.round((V.ortotistM||140000)*(V.sgkCarpan||1.6));
-  var operatorBrut=Math.round((V.operatorM||200000)*(V.sgkCarpan||1.6));
+  var ortoBrut=Math.round((V.ortotistM||100000)*(V.sgkCarpan||1.6));
+  var operatorBrut=Math.round((V.operatorM||150000)*(V.sgkCarpan||1.6));
 
   document.getElementById('formulGelir').innerHTML =
     '<span class="c">── REVENUE (per month) ──────────────────────────────────────────────────────</span>\n\n' +
     '<span class="k">GrossRevenue</span>  = Σ [ brace_qty[type] × price[type] ]\n' +
     '<span class="c">              type ∈ { Std-R, Std-Rl, Perf, Sens, Sns+P }</span>\n\n' +
     '<span class="k">DoctorFee</span>     = Σ [ brace_qty[type] × price[type] × doctorPct[type] ]\n' +
-    '<span class="c">              Pct: Std-R='+(V.danis_stdR||10)+'%, Std-Rl='+(V.danis_stdRl||20)+'%, Perf='+(V.danis_delik||30)+'%, Sens='+(V.danis_sens||30)+'%, S+P='+(V.danis_sensDelik||30)+'%</span>\n\n' +
-    '<span class="k">ChannelFee</span>    = GrossRevenue × '+(V.kanalBakim||5)+'%\n\n' +
+    '<span class="c">              Pct: Std-R='+(V.danis_stdR||30)+'%, Std-Rl='+(V.danis_stdRl||30)+'%, Perf='+(V.danis_delik||30)+'%, Sens='+(V.danis_sens||30)+'%, S+P='+(V.danis_sensDelik||30)+'%</span>\n\n' +
+    '<span class="k">ChannelFee</span>    = GrossRevenue × '+(V.kanalBakim||0)+'%\n\n' +
     '<span class="k">Material</span>      = Σ [ brace_qty[type] × material[type] ]\n' +
     '<span class="c">              Material (₺): Std-R='+(V.mal_stdR||500)+', Std-Rl='+(V.mal_stdRl||600)+', Perf='+(V.mal_delik||1600)+', Sens='+(V.mal_sens||2075)+', S+P='+(V.mal_sensDelik||1250)+'</span>\n\n' +
-    '<span class="k">Royalty</span>       = totalBraces × €'+(V.royaltyEur??75)+' × ₺'+(V.eurKur||53.07)+' = totalBraces × ₺'+royTRY+(royTRY===0?' (not applied in this scenario)':'')+'\n\n' +
+    '<span class="k">Royalty</span>       = totalBraces × €'+(V.royaltyEur??0)+' × ₺'+(V.eurKur||53.56)+' = totalBraces × ₺'+royTRY+(royTRY===0?' (not applied in this scenario)':'')+'\n\n' +
     '<span class="r">NetRevenue</span>    = GrossRevenue − DoctorFee − ChannelFee − Material − Royalty';
 
   document.getElementById('formulGider').innerHTML =
@@ -433,7 +433,7 @@ function renderFormulas() {
     '<span class="c">            donemsel.reklam (the draggable Periodic Costs chart) is the only advertising input;\n            reklamCarpan='+((V.reklamCarpan??1).toFixed(2))+' is a sensitivity multiplier on it, not a second budget (1.00 = no scaling)</span>\n\n' +
     '<span class="k">Periodic</span>    = congress[month] + workshop[month] + other[month]\n' +
     '<span class="c">            variable, dragged on the Periodic Costs chart; advertising and YMM are pulled out into their own lines</span>\n\n' +
-    '<span class="k">PrinterAdd</span>  = <span class="b">IF</span>(braces > currentPrinterCap) → extraPrinter × €'+(V.printerEurFiyat||35000)+' × ₺'+(V.eurKur||53.07)+'\n' +
+    '<span class="k">PrinterAdd</span>  = <span class="b">IF</span>(braces > currentPrinterCap) → extraPrinter × €'+(V.printerEurFiyat||35000)+' × ₺'+(V.eurKur||53.56)+'\n' +
     '<span class="c">            capacity: '+_autoPrinterAdet()+' printer × 66 braces/mo = '+(_autoPrinterAdet()*66)+' braces/mo</span>\n\n' +
     '<span class="d">TotalCosts</span>  = −(FixedCosts + StaffAdd + W.Tax + Advertising + Periodic + PrinterAdd + Kitchen)';
 
@@ -522,12 +522,12 @@ function renderMonthlyTable() {
 }
 
 function renderKurulum() {
-  var m2=V.m2||360, tmR=V.tadilatM2||7000, dmR=V.dekoM2||6750;
+  var m2=V.m2||300, tmR=V.tadilatM2||7000, dmR=V.dekoM2||6750;
   var tadTop=m2*tmR, dekoTop=m2*dmR;
   var prAdet=_autoPrinterAdet();
   var ekipmanOsteoidden=V.ekipmanOsteoidden!==false;
-  var prTRY=(!ekipmanOsteoidden)?prAdet*(V.printerEurFiyat||35000)*(V.eurKur||53.07):0;
-  var robTRY=(V.robotKolAktif && !ekipmanOsteoidden)?(V.robotKolEurFiyat||30000)*(V.eurKur||53.07):0;
+  var prTRY=(!ekipmanOsteoidden)?prAdet*(V.printerEurFiyat||35000)*(V.eurKur||53.56):0;
+  var robTRY=(V.robotKolAktif && !ekipmanOsteoidden)?(V.robotKolEurFiyat||30000)*(V.eurKur||53.56):0;
   var toplam=(V.kira||0)+(V.depozito||0)+(V.emlakci||0)+tadTop+dekoTop+(V.mobilya||0)+(V.ruhsat||0)+prTRY+robTRY;
   var items=[
     ['Rent (1st month)','V.kira',V.kira||0],
@@ -537,10 +537,10 @@ function renderKurulum() {
     ['Decoration',m2+' m² × ₺'+dmR.toLocaleString('tr-TR')+'/m²',dekoTop],
     ['Furniture + Equipment','V.mobilya',V.mobilya||0],
     ['Permit & licenses','V.ruhsat',V.ruhsat||0],
-    ['3D Printer',ekipmanOsteoidden?'Supplied by Osteoid A.Ş. — excluded from clinic setup cost':prAdet+' units × €'+(V.printerEurFiyat||35000)+' × ₺'+(V.eurKur||53.07),prTRY],
-    ['Robot arm',!V.robotKolAktif?'Inactive (no perf/S+P mix)':(ekipmanOsteoidden?'Supplied by Osteoid A.Ş. — excluded from clinic setup cost':'€'+(V.robotKolEurFiyat||30000)+' × ₺'+(V.eurKur||53.07)),robTRY],
+    ['3D Printer',ekipmanOsteoidden?'Supplied by Osteoid A.Ş. — excluded from clinic setup cost':prAdet+' units × €'+(V.printerEurFiyat||35000)+' × ₺'+(V.eurKur||53.56),prTRY],
+    ['Robot arm',!V.robotKolAktif?'Inactive (no perf/S+P mix)':(ekipmanOsteoidden?'Supplied by Osteoid A.Ş. — excluded from clinic setup cost':'€'+(V.robotKolEurFiyat||30000)+' × ₺'+(V.eurKur||53.56)),robTRY],
   ];
-  var eurK=Math.round(toplam/(V.eurKur||53.07)/1000);
+  var eurK=Math.round(toplam/(V.eurKur||53.56)/1000);
   var tbl=document.getElementById('kurulumTbl');
   tbl.innerHTML='<thead><tr><th>Item</th><th>Formula</th><th>Amount (₺)</th></tr></thead><tbody>'+
     items.map(function(a){return '<tr><td>'+a[0]+'</td><td class="formula">'+a[1]+'</td><td class="result">'+(a[2]?tf(a[2]):'₺0')+'</td></tr>';}).join('')+
@@ -549,7 +549,7 @@ function renderKurulum() {
 
 function renderProjection() {
   var rows=window._lastRows||[];
-  var eurKur=V.eurKur||53.07;
+  var eurKur=V.eurKur||53.56;
   var toEur=function(v){return Math.round(v/eurKur/1000);};
   var lerp=function(a,b,t){return Math.round(a+(b-a)*t);};
   var y1KorseNet=rows.reduce(function(s,r){return s+(r.gelirNet||0);},0);
@@ -626,7 +626,7 @@ function renderProjection() {
 
 function renderMerkezler() {
   var rows=window._lastRows||[];
-  var eurKur=V.eurKur||53.07;
+  var eurKur=V.eurKur||53.56;
   var trigResult=calc4AyOrtalama(rows);
   var _trigAy=trigResult.triggerAy;
   var _acilisAy=_trigAy?Math.max(13,_trigAy+3):13;
@@ -667,13 +667,13 @@ function renderMerkezler() {
     var topK=rampa.reduce(function(a,v){return a+v;},0);
     var brutTRY=topK*birimNetTRY;
     var netEurK=getMerkezGelir(s.key);
-    var isletme=brutTRY-netEurK*(V.eurKur||53.07)*1000;
+    var isletme=brutTRY-netEurK*(V.eurKur||53.56)*1000;
     return '<tr><td style="color:'+s.color+';font-weight:700;">'+s.name+'</td>' +
       '<td style="text-align:right;">'+topK+' units</td>' +
       '<td style="text-align:right;">₺'+birimNetTRY.toLocaleString('tr-TR')+'</td>' +
       '<td style="text-align:right;">₺'+Math.round(brutTRY).toLocaleString('tr-TR')+'</td>' +
       '<td style="text-align:right;color:#D85A30;">₺'+Math.round(isletme).toLocaleString('tr-TR')+'</td>' +
-      '<td style="text-align:right;font-weight:700;color:#1D9E75;">₺'+Math.round(netEurK*(V.eurKur||53.07)*1000).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;font-weight:700;color:#1D9E75;">₺'+Math.round(netEurK*(V.eurKur||53.56)*1000).toLocaleString('tr-TR')+'</td>' +
       '<td style="text-align:right;font-weight:700;color:#1D9E75;">€'+netEurK+'K</td></tr>';
   }).join('');
 
@@ -682,7 +682,7 @@ function renderMerkezler() {
     var useIst=V[s.key+'UseIstKurulum']!==false;
     var oran=V[s.key+'KurulumOran']||1.0;
     var top=getMerkezKurulum(s.key);
-    var eurK=Math.round(top/(V.eurKur||53.07)/1000);
+    var eurK=Math.round(top/(V.eurKur||53.56)/1000);
     var formula=useIst?'IST setup × '+oran.toFixed(2)+' (multiplier)':'Sum of custom line items';
     return '<tr><td style="color:'+s.color+';font-weight:700;">'+s.name+'</td>' +
       '<td>'+(useIst?'IST-based':'Custom')+'</td>' +

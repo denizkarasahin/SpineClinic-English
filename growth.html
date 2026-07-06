@@ -80,6 +80,7 @@
   <!-- 3 YIL ÖZET KARTLARI -->
   <div class="section">
     <div class="section-label">Annual Summary</div>
+    <div style="font-size:11px;color:var(--ink3);margin-bottom:10px;">"Total braces" = clinic private channel (Istanbul + Izmir + Ankara) only. B2B wholesale volume is tracked separately (see Brace Ramp page) and isn't folded into this count.</div>
     <div class="year-grid">
       <div class="year-card">
         <div class="year-card-header y1">
@@ -103,12 +104,14 @@
         <div class="year-card-body">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
             <div class="year-kpi"><div class="year-kpi-label">Consolidated net revenue</div><div class="year-kpi-val pos" id="y2GelirKpi">—</div></div>
+            <div class="year-kpi"><div class="year-kpi-label">Total braces</div><div class="year-kpi-val" id="y2KorseKpi">—</div></div>
             <div class="year-kpi"><div class="year-kpi-label">Active centers</div><div class="year-kpi-val" id="y2MerkezKpi">—</div></div>
             <div class="year-kpi" id="izmirAcilisKpi" style="display:none;"><div class="year-kpi-label" style="color:#1D9E75;">Izmir opening</div><div class="year-kpi-val neu" id="izmirAcilisTarihi">—</div></div>
             <div class="year-kpi" id="ankaraAcilisKpi" style="display:none;"><div class="year-kpi-label" style="color:#534AB7;">Ankara opening</div><div class="year-kpi-val neu" id="ankaraAcilisTarihi">—</div></div>
           </div>
           <div style="border-top:1px solid #e8e8e4;margin-top:10px;padding-top:10px;">
             <div style="font-size:10px;color:#888;font-weight:700;text-transform:uppercase;margin-bottom:8px;">New Center Selection</div>
+            <div class="note-box" style="margin-bottom:8px;font-size:11px;">⚠ Izmir/Ankara opex below (rent, orthotist, intern, kitchen, utilities) excludes HQ-shared costs — advertising, CPA/financial advisor, general admin. These centers are modeled as if they benefit from those centrally-run functions for free; no cost-sharing allocation is charged to them. Their net figures are optimistic to that extent — a scenario simplification, not a claim that shared overhead is actually free.</div>
             <label style="display:flex;align-items:center;gap:8px;margin-bottom:4px;cursor:pointer;padding:8px;background:#f0fdf4;border:1px solid #1D9E7544;border-radius:6px 6px 0 0;">
               <input type="checkbox" id="izmirToggle" onchange="toggleMerkez('izmir',this.checked)" style="width:14px;height:14px;accent-color:#1D9E75;cursor:pointer;">
               <span style="font-size:12px;font-weight:700;color:#1D9E75;">Izmir Center</span>
@@ -291,6 +294,34 @@
             <li>Hospital channel pilot</li>
             <li>DA &amp; KK full ramp</li>
           </ul>
+        </div>
+      </div>
+
+      <div class="year-card">
+        <div class="year-card-header y3">
+          <span class="year-num">Year 3</span>
+          <span class="year-badge">Ramp-up</span>
+        </div>
+        <div class="year-card-body">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div class="year-kpi"><div class="year-kpi-label">Consolidated net revenue</div><div class="year-kpi-val pos" id="y3GelirKpi">—</div></div>
+            <div class="year-kpi"><div class="year-kpi-label">Total braces</div><div class="year-kpi-val" id="y3KorseKpi">—</div></div>
+            <div class="year-kpi" style="grid-column:span 2;"><div class="year-kpi-label">Active centers</div><div class="year-kpi-val" id="y3MerkezKpi">—</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="year-card">
+        <div class="year-card-header y1">
+          <span class="year-num">Year 4</span>
+          <span class="year-badge">Approaching target</span>
+        </div>
+        <div class="year-card-body">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div class="year-kpi"><div class="year-kpi-label">Consolidated net revenue</div><div class="year-kpi-val pos" id="y4GelirKpi">—</div></div>
+            <div class="year-kpi"><div class="year-kpi-label">Total braces</div><div class="year-kpi-val" id="y4KorseKpi">—</div></div>
+            <div class="year-kpi" style="grid-column:span 2;"><div class="year-kpi-label">Active centers</div><div class="year-kpi-val" id="y4MerkezKpi">—</div></div>
+          </div>
         </div>
       </div>
 

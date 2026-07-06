@@ -355,12 +355,12 @@ function renderParams() {
   function row(name, code, val, note) {
     return '<tr><td>' + name + '</td><td><code style="font-size:11px;color:#888;">' + code + '</code></td><td class="val">' + val + '</td><td class="note">' + (note||'') + '</td></tr>';
   }
-  const royaltyTRY = Math.round((V.royaltyEur??75) * (V.eurKur||53.07));
+  const royaltyTRY = Math.round((V.royaltyEur??0) * (V.eurKur||53.56));
 
   document.getElementById('p_kur').innerHTML = [
-    row('EUR/TRY rate', 'eurKur', '₺' + (V.eurKur||53.07), 'Used for all EUR↔TRY conversions'),
-    row('Royalty (Osteoid Inc.)', 'royaltyEur', '€' + (V.royaltyEur??75) + '/brace', (V.royaltyEur??75)===0?'Not applied in this scenario':'₺' + royaltyTRY.toLocaleString('tr-TR') + '/brace (= ' + (V.royaltyEur??75) + ' × ' + (V.eurKur||53.07) + ')'),
-    row('Channel maintenance fee', 'kanalBakim', (V.kanalBakim||5) + '% (on gross revenue)', 'Sales channel management fee — adjustable scenario parameter, default 5%'),
+    row('EUR/TRY rate', 'eurKur', '₺' + (V.eurKur||53.56), 'Used for all EUR↔TRY conversions'),
+    row('Royalty (Osteoid Inc.)', 'royaltyEur', '€' + (V.royaltyEur??0) + '/brace', (V.royaltyEur??0)===0?'Not applied in this scenario':'₺' + royaltyTRY.toLocaleString('tr-TR') + '/brace (= ' + (V.royaltyEur??0) + ' × ' + (V.eurKur||53.56) + ')'),
+    row('Channel maintenance fee', 'kanalBakim', (V.kanalBakim||0) + '% (on gross revenue)', 'Sales channel management fee — adjustable scenario parameter, current default ' + (V.kanalBakim||0) + '%'),
     row('Cutting per unit (EUR)', 'kesimEurPer', '€' + (V.kesimEurPer??0) + '/unit', 'Used for Perforated and S+D braces; Osteoid Inc. cutting revenue'),
   ].join('');
 
@@ -400,9 +400,9 @@ function renderParams() {
   document.getElementById('p_personel').innerHTML = [
     ['Operator', 'operatorM', 'Always active — from Month 1'],
     ['Orthotist (permanent)', 'ortotistM', 'Always active'],
-    ['Intern / Physiotherapist', 'stajyerM', '≥ '+(V.esikStajyer1??15)+' braces/month'],
-    ['Support staff', 'destekM', '≥ '+(V.esikDestek??30)+' braces/month'],
-    ['2nd Intern / Graduate', 'stajyer2M', '≥ '+(V.esikStajyer2??76)+' braces/month'],
+    ['Intern / Physiotherapist', 'stajyerM', '≥ '+(V.esikStajyer1??21)+' braces/month'],
+    ['Support staff', 'destekM', '≥ '+(V.esikDestek??40)+' braces/month'],
+    ['2nd Intern / Graduate', 'stajyer2M', '≥ '+(V.esikStajyer2??90)+' braces/month'],
   ].map(([name, key, esik]) => {
     const net = V[key]||0;
     const brut = Math.round(net * sgk);
@@ -426,10 +426,10 @@ function renderUrunMarj() {
     {name:'Sensor+Rep.', color:'#534AB7', fKey:'korseF_sens', mKey:'mal_sens', dKey:'danis_sens'},
     {name:'Sns+Rep+Perf', color:'#D4537E', fKey:'korseF_sensDelik', mKey:'mal_sensDelik', dKey:'danis_sensDelik', kesim:true},
   ];
-  const royaltyTRY = (V.royaltyEur??75) * (V.eurKur||53.07);
-  const kanalPct   = (V.kanalBakim||5) / 100;
+  const royaltyTRY = (V.royaltyEur??0) * (V.eurKur||53.56);
+  const kanalPct   = (V.kanalBakim||0) / 100;
 
-  document.getElementById('kanalPctDisp').textContent = (V.kanalBakim||5) + '%';
+  document.getElementById('kanalPctDisp').textContent = (V.kanalBakim||0) + '%';
 
   const wrap = document.getElementById('urunMarjWrap');
   wrap.innerHTML = prods.map(p => {
@@ -437,7 +437,7 @@ function renderUrunMarj() {
     const m = V[p.mKey]||0;
     const d = Math.round(f * (V[p.dKey]||0) / 100);
     const k = Math.round(f * kanalPct);
-    const kesimTRY = p.kesim ? Math.round((V.kesimEurPer??0) * (V.eurKur||53.07)) : 0;
+    const kesimTRY = p.kesim ? Math.round((V.kesimEurPer??0) * (V.eurKur||53.56)) : 0;
     const net = f - d - k - m - kesimTRY - royaltyTRY;
     const marj = f > 0 ? Math.round(net / f * 100) : 0;
     return '<div class="prod-card">' +
@@ -447,7 +447,7 @@ function renderUrunMarj() {
       (k>0?'<div class="prod-line deduct"><span class="lbl">− Channel fee</span><span class="val">−₺'+k.toLocaleString('tr-TR')+'</span></div>':'') +
       '<div class="prod-line deduct"><span class="lbl">− Material</span><span class="val">−₺'+m.toLocaleString('tr-TR')+'</span></div>' +
       (kesimTRY>0?'<div class="prod-line deduct"><span class="lbl">− Cutting (€'+(V.kesimEurPer??0)+')</span><span class="val">−₺'+kesimTRY.toLocaleString('tr-TR')+'</span></div>':'') +
-      (royaltyTRY>0?'<div class="prod-line deduct"><span class="lbl">− Royalty (€'+(V.royaltyEur??75)+'×'+V.eurKur+')</span><span class="val">−₺'+Math.round(royaltyTRY).toLocaleString('tr-TR')+'</span></div>':'') +
+      (royaltyTRY>0?'<div class="prod-line deduct"><span class="lbl">− Royalty (€'+(V.royaltyEur??0)+'×'+V.eurKur+')</span><span class="val">−₺'+Math.round(royaltyTRY).toLocaleString('tr-TR')+'</span></div>':'') +
       '<div class="prod-line net"><span class="lbl">= Net revenue/unit</span><span class="val">₺'+Math.round(net).toLocaleString('tr-TR')+'</span></div>' +
       '<div style="font-size:10px;color:#888;text-align:right;margin-top:3px;">Net margin: '+marj+'%</div>' +
       '</div>';
@@ -460,7 +460,7 @@ function renderUrunMarj() {
     const m = V[p.mKey]||0;
     const d = Math.round(f * (V[p.dKey]||0) / 100);
     const k = Math.round(f * kanalPct);
-    const kesimTRY = p.kesim ? Math.round((V.kesimEurPer??0) * (V.eurKur||53.07)) : 0;
+    const kesimTRY = p.kesim ? Math.round((V.kesimEurPer??0) * (V.eurKur||53.56)) : 0;
     const net = f - d - k - m - kesimTRY - royaltyTRY;
     const marj = f > 0 ? Math.round(net / f * 100) : 0;
     return '<tr><td style="font-weight:700;color:'+p.color+';">'+p.name+'</td>' +
@@ -475,26 +475,26 @@ function renderUrunMarj() {
 
 // ── SECTION 3: Formüller ──────────────────────────────────────────────────────
 function renderFormulas() {
-  const royTRY = Math.round((V.royaltyEur??75) * (V.eurKur||53.07));
+  const royTRY = Math.round((V.royaltyEur??0) * (V.eurKur||53.56));
   const sgk = (V.sgkCarpan||1.6).toFixed(2);
-  const e1 = V.esikStajyer1??15, e2 = V.esikDestek??30, e3 = V.esikStajyer2??76;
+  const e1 = V.esikStajyer1??21, e2 = V.esikDestek??40, e3 = V.esikStajyer2??90;
   const stajBrut = Math.round((V.stajyerM||30000) * (V.sgkCarpan||1.6));
   const destBrut = Math.round((V.destekM||30000)  * (V.sgkCarpan||1.6));
   const staj2Brut= Math.round((V.stajyer2M||30000)* (V.sgkCarpan||1.6));
-  const ortoBrut = Math.round((V.ortotistM||140000) * (V.sgkCarpan||1.6));
-  const operatorBrut = Math.round((V.operatorM||200000) * (V.sgkCarpan||1.6));
+  const ortoBrut = Math.round((V.ortotistM||100000) * (V.sgkCarpan||1.6));
+  const operatorBrut = Math.round((V.operatorM||150000) * (V.sgkCarpan||1.6));
 
   document.getElementById('formulGelir').innerHTML =
     '<span class="c">── REVENUE (per month) ──────────────────────────────────────────────────────</span>\n\n' +
     '<span class="k">GrossRevenue</span> = Σ [ brace_units[type] × price[type] ]\n' +
     '<span class="c">             type ∈ { Std-R, Std-Rl, Perf, Sens, Sns+P }</span>\n\n' +
     '<span class="k">DoctorFee</span>  = Σ [ brace_units[type] × price[type] × doctorPct[type] ]\n' +
-    '<span class="c">            Pct: Std-R='+(V.danis_stdR||10)+'%, Std-Rl='+(V.danis_stdRl||20)+'%, Perf='+(V.danis_delik||30)+'%, Sens='+(V.danis_sens||30)+'%, S+P='+(V.danis_sensDelik||30)+'%</span>\n\n' +
-    '<span class="k">ChannelFee</span> = GrossRevenue × '+(V.kanalBakim||5)+'%\n' +
-    '<span class="c">            Adjustable scenario parameter, default '+(V.kanalBakim||5)+'%</span>\n\n' +
+    '<span class="c">            Pct: Std-R='+(V.danis_stdR||30)+'%, Std-Rl='+(V.danis_stdRl||30)+'%, Perf='+(V.danis_delik||30)+'%, Sens='+(V.danis_sens||30)+'%, S+P='+(V.danis_sensDelik||30)+'%</span>\n\n' +
+    '<span class="k">ChannelFee</span> = GrossRevenue × '+(V.kanalBakim||0)+'%\n' +
+    '<span class="c">            Adjustable scenario parameter, default '+(V.kanalBakim||0)+'%</span>\n\n' +
     '<span class="k">Material</span>   = Σ [ brace_units[type] × material[type] ]\n' +
     '<span class="c">            Material (₺): Std-R='+(V.mal_stdR||500)+', Std-Rl='+(V.mal_stdRl||600)+', Perf='+(V.mal_delik||1600)+', Sens='+(V.mal_sens||2075)+', S+P='+(V.mal_sensDelik||1250)+'</span>\n\n' +
-    '<span class="k">Royalty</span>    = totalBraces × €'+(V.royaltyEur??75)+' × ₺'+(V.eurKur||53.07)+' = totalBraces × ₺'+royTRY+(royTRY===0?' (not applied in this scenario)':'')+'\n\n' +
+    '<span class="k">Royalty</span>    = totalBraces × €'+(V.royaltyEur??0)+' × ₺'+(V.eurKur||53.56)+' = totalBraces × ₺'+royTRY+(royTRY===0?' (not applied in this scenario)':'')+'\n\n' +
     '<span class="r">NetRevenue</span> = GrossRevenue − DoctorFee − ChannelFee − Material − Royalty';
 
   document.getElementById('formulGider').innerHTML =
@@ -511,7 +511,7 @@ function renderFormulas() {
     '<span class="c">            donemsel.reklam (the draggable Periodic Costs chart) is the only advertising input;\n            reklamCarpan='+((V.reklamCarpan??1).toFixed(2))+' is a sensitivity multiplier on it, not a second budget (1.00 = no scaling)</span>\n\n' +
     '<span class="k">Periodic</span>   = congress[month] + workshop[month] + other[month]\n' +
     '<span class="c">            variable, dragged on the Periodic Costs chart; advertising and YMM are pulled out into their own lines</span>\n\n' +
-    '<span class="k">PrinterExtra</span> = <span class="b">IF</span>(braces > currentPrinterCap) → extraPrinter × €'+(V.printerEurFiyat||35000)+' × ₺'+(V.eurKur||53.07)+'\n' +
+    '<span class="k">PrinterExtra</span> = <span class="b">IF</span>(braces > currentPrinterCap) → extraPrinter × €'+(V.printerEurFiyat||35000)+' × ₺'+(V.eurKur||53.56)+'\n' +
     '<span class="c">            capacity: '+_autoPrinterAdet()+' printer × 66 braces/month = '+(_autoPrinterAdet()*66)+' braces/month</span>\n\n' +
     '<span class="d">TotalCost</span>  = −(FixedCost + StaffExtra + WithholdTax + Advertising + Periodic + PrinterExtra + Kitchen)';
 
@@ -616,15 +616,15 @@ function renderMonthlyTable() {
 
 // ── SECTION 5: Kurulum ───────────────────────────────────────────────────────
 function renderKurulum() {
-  const m2 = V.m2||360;
+  const m2 = V.m2||300;
   const tmR = V.tadilatM2||7000;
   const dmR = V.dekoM2||6750;
   const tadTop = m2 * tmR;
   const dekoTop = m2 * dmR;
   const prAdet = _autoPrinterAdet();
   const ekipmanOsteoidden = V.ekipmanOsteoidden !== false;
-  const prTRY  = (!ekipmanOsteoidden) ? prAdet * (V.printerEurFiyat||35000) * (V.eurKur||53.07) : 0;
-  const robTRY = (V.robotKolAktif && !ekipmanOsteoidden) ? (V.robotKolEurFiyat||30000) * (V.eurKur||53.07) : 0;
+  const prTRY  = (!ekipmanOsteoidden) ? prAdet * (V.printerEurFiyat||35000) * (V.eurKur||53.56) : 0;
+  const robTRY = (V.robotKolAktif && !ekipmanOsteoidden) ? (V.robotKolEurFiyat||30000) * (V.eurKur||53.56) : 0;
   const toplam = (V.kira||0)+(V.depozito||0)+(V.emlakci||0)+tadTop+dekoTop+(V.mobilya||0)+(V.ruhsat||0)+prTRY+robTRY;
 
   const items = [
@@ -635,10 +635,10 @@ function renderKurulum() {
     ['Decoration', m2+' m² × ₺'+dmR.toLocaleString('tr-TR')+'/m²', dekoTop],
     ['Equipment + Furniture', 'V.mobilya', V.mobilya||0],
     ['License & permits', 'V.ruhsat', V.ruhsat||0],
-    ['3D Printer', ekipmanOsteoidden?'Supplied by Osteoid A.Ş. — excluded from clinic setup cost':prAdet+' units × €'+(V.printerEurFiyat||35000)+' × ₺'+(V.eurKur||53.07), prTRY],
-    ['Robot arm', !V.robotKolAktif?'Inactive (no perforated/S+P mix)':(ekipmanOsteoidden?'Supplied by Osteoid A.Ş. — excluded from clinic setup cost':'€'+(V.robotKolEurFiyat||30000)+' × ₺'+(V.eurKur||53.07)), robTRY],
+    ['3D Printer', ekipmanOsteoidden?'Supplied by Osteoid A.Ş. — excluded from clinic setup cost':prAdet+' units × €'+(V.printerEurFiyat||35000)+' × ₺'+(V.eurKur||53.56), prTRY],
+    ['Robot arm', !V.robotKolAktif?'Inactive (no perforated/S+P mix)':(ekipmanOsteoidden?'Supplied by Osteoid A.Ş. — excluded from clinic setup cost':'€'+(V.robotKolEurFiyat||30000)+' × ₺'+(V.eurKur||53.56)), robTRY],
   ];
-  const eurK = Math.round(toplam / (V.eurKur||53.07) / 1000);
+  const eurK = Math.round(toplam / (V.eurKur||53.56) / 1000);
 
   const tbl = document.getElementById('kurulumTbl');
   tbl.innerHTML = '<thead><tr><th>Item</th><th>Formula</th><th>Amount (₺)</th></tr></thead><tbody>' +
@@ -651,7 +651,7 @@ function renderKurulum() {
 // ── SECTION 6: 3 Yıllık Projeksiyon ─────────────────────────────────────────
 function renderProjection() {
   const rows = window._lastRows || [];
-  const eurKur = V.eurKur || 53.07;
+  const eurKur = V.eurKur || 53.56;
   const toEur = v => Math.round(v / eurKur / 1000);
   const lerp = (a,b,t) => Math.round(a + (b-a)*t);
 
@@ -749,7 +749,7 @@ function renderProjection() {
 // ── SECTION 7: Yeni Merkezler ─────────────────────────────────────────────────
 function renderMerkezler() {
   const rows = window._lastRows || [];
-  const eurKur = V.eurKur || 53.07;
+  const eurKur = V.eurKur || 53.56;
   const {triggerAy: _trigAy} = calc4AyOrtalama(rows);
   const _acilisAy = _trigAy ? Math.max(13, _trigAy+3) : 13;
   const _aktifAy  = Math.max(0, Math.min(12, 25-_acilisAy));
@@ -796,14 +796,14 @@ function renderMerkezler() {
     const topK    = rampa.reduce((a,v)=>a+v,0);
     const brutTRY = topK * birimNetTRY;
     const netEurK = getMerkezGelir(s.key);
-    const isletme = brutTRY - netEurK * (V.eurKur||53.07) * 1000;
+    const isletme = brutTRY - netEurK * (V.eurKur||53.56) * 1000;
     return '<tr>' +
       '<td style="color:'+s.color+';font-weight:700;">'+s.name+'</td>' +
       '<td style="text-align:right;">'+topK+' units</td>' +
       '<td style="text-align:right;">₺'+birimNetTRY.toLocaleString('tr-TR')+'</td>' +
       '<td style="text-align:right;">₺'+Math.round(brutTRY).toLocaleString('tr-TR')+'</td>' +
       '<td style="text-align:right;color:#D85A30;">₺'+Math.round(isletme).toLocaleString('tr-TR')+'</td>' +
-      '<td style="text-align:right;font-weight:700;color:#1D9E75;">₺'+Math.round(netEurK*(V.eurKur||53.07)*1000).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;font-weight:700;color:#1D9E75;">₺'+Math.round(netEurK*(V.eurKur||53.56)*1000).toLocaleString('tr-TR')+'</td>' +
       '<td style="text-align:right;font-weight:700;color:#1D9E75;">€'+netEurK+'K</td>' +
       '</tr>';
   }).join('');
@@ -813,7 +813,7 @@ function renderMerkezler() {
     const useIst = V[s.key+'UseIstKurulum'] !== false;
     const oran   = V[s.key+'KurulumOran'] || 1.0;
     const top    = getMerkezKurulum(s.key);
-    const eurK   = Math.round(top / (V.eurKur||53.07) / 1000);
+    const eurK   = Math.round(top / (V.eurKur||53.56) / 1000);
     const formula = useIst
       ? 'IST setup × ' + oran.toFixed(2) + ' (multiplier)'
       : 'Sum of custom item amounts';

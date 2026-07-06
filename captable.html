@@ -367,16 +367,16 @@
 // ── Cap Table State ──────────────────────────────────────────────────────────
 var CT = {};
 var CT_DEFAULTS = {
-  ip: 200, mach: 35, excl: 100,
-  channel: 80, sweat: 440, cash: 2530,
-  royaltyPV: 73, royaltyOffset: 100,
+  ip: 250, mach: 35, excl: 100,
+  channel: 80, sweat: 0, cash: 2530,
+  royaltyPV: 0, royaltyOffset: 0,
   commPV: 150, commOffset: 70,
-  vestFrac: 7, vestedToday: true,
+  vestFrac: 5, vestedToday: true,
   r2cash: 100, r2pre: 2000,
   evBase: 7500,
   dcfRef: 1000,
   taxToggle: true,
-  _ctVersion: 5
+  _ctVersion: 6
 };
 
 function ctLoad() {
