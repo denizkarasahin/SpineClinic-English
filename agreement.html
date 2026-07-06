@@ -212,9 +212,14 @@ window.addEventListener('load', function() {
   const tutarEl = document.getElementById('term_Y_tutar');
   if (tutarEl) tutarEl.textContent = '€' + Math.round(invest).toLocaleString('tr-TR');
 
-  // Read commission rate from V (Scientific Study + Education + Library fees, market.html sliders)
+  // Read commission rate from V — Scientific Study + Education + Library fees are set per
+  // product on market.html; show the average combined rate across the 5 products here.
   const komisyonEl = document.getElementById('term_H_komisyon');
-  if (komisyonEl) komisyonEl.textContent = '%' + ((V.feeScientific??10) + (V.feeEducation??10) + (V.feeLibrary??10));
+  if (komisyonEl) {
+    const _komProds = ['stdR','stdRl','delik','sens','sensDelik'];
+    const _komAvg = _komProds.reduce(function(s,p){ return s + (V['feeSci_'+p]??10) + (V['feeEdu_'+p]??10) + (V['feeLib_'+p]??10); }, 0) / _komProds.length;
+    komisyonEl.textContent = '%' + Math.round(_komAvg * 10) / 10 + ' (avg. across products)';
+  }
 
   ['Y_arac','Y_kontrol','Y_temettu','Y_raporlama','Y_onalim','Y_cikis','Y_rekabet','Y_teknoloji',
    'H_odeme','H_fatura','H_kanal','H_sure','H_gizlilik','H_fesih','H_rekabet'].forEach(function(k) {

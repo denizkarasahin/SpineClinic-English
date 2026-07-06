@@ -71,35 +71,6 @@
 
     <hr class="divider">
 
-    <!-- Referans ücretleri — bilimsel çalışma / eğitim / kütüphane -->
-    <div style="margin-bottom:18px;padding:12px;background:#fafaf8;border:1px solid #e0e0dc;border-radius:6px;">
-      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:4px;">Referral Fees</div>
-      <div style="font-size:11px;color:#888;margin-bottom:10px;">Flat rate on gross revenue, applied identically across every product and B2B — replaces the old per-product doctor fee and the channel maintenance fee (removed).</div>
-      <div class="sl-grid">
-        <div class="sl-row">
-          <label>Scientific Study Fee (%)</label>
-          <div class="sl-controls">
-            <input type="range" id="s_feeScientific" min="0" max="30" step="1" value="10" oninput="sv('feeScientific',this.value)">
-            <span class="sl-val" id="feeScientific" contenteditable="true" onblur="sv2('feeScientific','s_feeScientific',this)">10</span>
-          </div>
-        </div>
-        <div class="sl-row">
-          <label>Education Fee (%)</label>
-          <div class="sl-controls">
-            <input type="range" id="s_feeEducation" min="0" max="30" step="1" value="10" oninput="sv('feeEducation',this.value)">
-            <span class="sl-val" id="feeEducation" contenteditable="true" onblur="sv2('feeEducation','s_feeEducation',this)">10</span>
-          </div>
-        </div>
-        <div class="sl-row">
-          <label>Library Fee (%)</label>
-          <div class="sl-controls">
-            <input type="range" id="s_feeLibrary" min="0" max="30" step="1" value="10" oninput="sv('feeLibrary',this.value)">
-            <span class="sl-val" id="feeLibrary" contenteditable="true" onblur="sv2('feeLibrary','s_feeLibrary',this)">10</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- Ürün fiyat & maliyet -->
     <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">Product Price &amp; Cost</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:12px;">
@@ -132,10 +103,28 @@
           </div>
         </div>
         <div style="margin-top:8px;">
-          <label style="font-size:10px;color:#888780;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Referral Fees (global rate below)</label>
-          <div style="font-size:11px;color:#888780;font-weight:600;line-height:1.6;">
-            Sci: <span id="sciTL_stdR">—</span> ₺ · Edu: <span id="eduTL_stdR">—</span> ₺ · Lib: <span id="libTL_stdR">—</span> ₺
+          <label style="font-size:10px;color:#888780;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Scientific Study Fee (%)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_feeSci_stdR" min="0" max="30" step="1" value="10" style="flex:1;accent-color:#888780;" oninput="sv('feeSci_stdR',this.value)">
+            <span class="sl-val" id="feeSci_stdR" contenteditable="true" onblur="sv2('feeSci_stdR','s_feeSci_stdR',this)" style="min-width:60px;font-size:12px;color:#888780;">10</span>
           </div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;">= ₺<span id="sciTL_stdR">—</span></div>
+        </div>
+        <div style="margin-top:8px;">
+          <label style="font-size:10px;color:#888780;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Education Fee (%)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_feeEdu_stdR" min="0" max="30" step="1" value="10" style="flex:1;accent-color:#888780;" oninput="sv('feeEdu_stdR',this.value)">
+            <span class="sl-val" id="feeEdu_stdR" contenteditable="true" onblur="sv2('feeEdu_stdR','s_feeEdu_stdR',this)" style="min-width:60px;font-size:12px;color:#888780;">10</span>
+          </div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;">= ₺<span id="eduTL_stdR">—</span></div>
+        </div>
+        <div style="margin-top:8px;">
+          <label style="font-size:10px;color:#888780;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Library Fee (%)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_feeLib_stdR" min="0" max="30" step="1" value="10" style="flex:1;accent-color:#888780;" oninput="sv('feeLib_stdR',this.value)">
+            <span class="sl-val" id="feeLib_stdR" contenteditable="true" onblur="sv2('feeLib_stdR','s_feeLib_stdR',this)" style="min-width:60px;font-size:12px;color:#888780;">10</span>
+          </div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;">= ₺<span id="libTL_stdR">—</span></div>
         </div>
         <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(136,135,128,0.2);">
           <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:4px;">Net Revenue / Brace</label>
@@ -174,10 +163,28 @@
           </div>
         </div>
         <div style="margin-top:8px;">
-          <label style="font-size:10px;color:#D85A30;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Referral Fees (global rate below)</label>
-          <div style="font-size:11px;color:#D85A30;font-weight:600;line-height:1.6;">
-            Sci: <span id="sciTL_stdRl">—</span> ₺ · Edu: <span id="eduTL_stdRl">—</span> ₺ · Lib: <span id="libTL_stdRl">—</span> ₺
+          <label style="font-size:10px;color:#D85A30;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Scientific Study Fee (%)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_feeSci_stdRl" min="0" max="30" step="1" value="10" style="flex:1;accent-color:#D85A30;" oninput="sv('feeSci_stdRl',this.value)">
+            <span class="sl-val" id="feeSci_stdRl" contenteditable="true" onblur="sv2('feeSci_stdRl','s_feeSci_stdRl',this)" style="min-width:60px;font-size:12px;color:#D85A30;">10</span>
           </div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;">= ₺<span id="sciTL_stdRl">—</span></div>
+        </div>
+        <div style="margin-top:8px;">
+          <label style="font-size:10px;color:#D85A30;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Education Fee (%)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_feeEdu_stdRl" min="0" max="30" step="1" value="10" style="flex:1;accent-color:#D85A30;" oninput="sv('feeEdu_stdRl',this.value)">
+            <span class="sl-val" id="feeEdu_stdRl" contenteditable="true" onblur="sv2('feeEdu_stdRl','s_feeEdu_stdRl',this)" style="min-width:60px;font-size:12px;color:#D85A30;">10</span>
+          </div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;">= ₺<span id="eduTL_stdRl">—</span></div>
+        </div>
+        <div style="margin-top:8px;">
+          <label style="font-size:10px;color:#D85A30;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Library Fee (%)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_feeLib_stdRl" min="0" max="30" step="1" value="10" style="flex:1;accent-color:#D85A30;" oninput="sv('feeLib_stdRl',this.value)">
+            <span class="sl-val" id="feeLib_stdRl" contenteditable="true" onblur="sv2('feeLib_stdRl','s_feeLib_stdRl',this)" style="min-width:60px;font-size:12px;color:#D85A30;">10</span>
+          </div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;">= ₺<span id="libTL_stdRl">—</span></div>
         </div>
         <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(216,90,48,0.2);">
           <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:4px;">Net Revenue / Brace</label>
@@ -216,10 +223,28 @@
           </div>
         </div>
         <div style="margin-top:8px;">
-          <label style="font-size:10px;color:#534AB7;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Referral Fees (global rate below)</label>
-          <div style="font-size:11px;color:#534AB7;font-weight:600;line-height:1.6;">
-            Sci: <span id="sciTL_sens">—</span> ₺ · Edu: <span id="eduTL_sens">—</span> ₺ · Lib: <span id="libTL_sens">—</span> ₺
+          <label style="font-size:10px;color:#534AB7;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Scientific Study Fee (%)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_feeSci_sens" min="0" max="30" step="1" value="10" style="flex:1;accent-color:#534AB7;" oninput="sv('feeSci_sens',this.value)">
+            <span class="sl-val" id="feeSci_sens" contenteditable="true" onblur="sv2('feeSci_sens','s_feeSci_sens',this)" style="min-width:60px;font-size:12px;color:#534AB7;">10</span>
           </div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;">= ₺<span id="sciTL_sens">—</span></div>
+        </div>
+        <div style="margin-top:8px;">
+          <label style="font-size:10px;color:#534AB7;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Education Fee (%)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_feeEdu_sens" min="0" max="30" step="1" value="10" style="flex:1;accent-color:#534AB7;" oninput="sv('feeEdu_sens',this.value)">
+            <span class="sl-val" id="feeEdu_sens" contenteditable="true" onblur="sv2('feeEdu_sens','s_feeEdu_sens',this)" style="min-width:60px;font-size:12px;color:#534AB7;">10</span>
+          </div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;">= ₺<span id="eduTL_sens">—</span></div>
+        </div>
+        <div style="margin-top:8px;">
+          <label style="font-size:10px;color:#534AB7;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Library Fee (%)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_feeLib_sens" min="0" max="30" step="1" value="10" style="flex:1;accent-color:#534AB7;" oninput="sv('feeLib_sens',this.value)">
+            <span class="sl-val" id="feeLib_sens" contenteditable="true" onblur="sv2('feeLib_sens','s_feeLib_sens',this)" style="min-width:60px;font-size:12px;color:#534AB7;">10</span>
+          </div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;">= ₺<span id="libTL_sens">—</span></div>
         </div>
         <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(83,74,183,0.2);">
           <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:4px;">Net Revenue / Brace</label>
@@ -258,10 +283,28 @@
           </div>
         </div>
         <div style="margin-top:8px;">
-          <label style="font-size:10px;color:#1D9E75;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Referral Fees (global rate below)</label>
-          <div style="font-size:11px;color:#1D9E75;font-weight:600;line-height:1.6;">
-            Sci: <span id="sciTL_delik">—</span> ₺ · Edu: <span id="eduTL_delik">—</span> ₺ · Lib: <span id="libTL_delik">—</span> ₺
+          <label style="font-size:10px;color:#1D9E75;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Scientific Study Fee (%)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_feeSci_delik" min="0" max="30" step="1" value="10" style="flex:1;accent-color:#1D9E75;" oninput="sv('feeSci_delik',this.value)">
+            <span class="sl-val" id="feeSci_delik" contenteditable="true" onblur="sv2('feeSci_delik','s_feeSci_delik',this)" style="min-width:60px;font-size:12px;color:#1D9E75;">10</span>
           </div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;">= ₺<span id="sciTL_delik">—</span></div>
+        </div>
+        <div style="margin-top:8px;">
+          <label style="font-size:10px;color:#1D9E75;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Education Fee (%)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_feeEdu_delik" min="0" max="30" step="1" value="10" style="flex:1;accent-color:#1D9E75;" oninput="sv('feeEdu_delik',this.value)">
+            <span class="sl-val" id="feeEdu_delik" contenteditable="true" onblur="sv2('feeEdu_delik','s_feeEdu_delik',this)" style="min-width:60px;font-size:12px;color:#1D9E75;">10</span>
+          </div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;">= ₺<span id="eduTL_delik">—</span></div>
+        </div>
+        <div style="margin-top:8px;">
+          <label style="font-size:10px;color:#1D9E75;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Library Fee (%)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_feeLib_delik" min="0" max="30" step="1" value="10" style="flex:1;accent-color:#1D9E75;" oninput="sv('feeLib_delik',this.value)">
+            <span class="sl-val" id="feeLib_delik" contenteditable="true" onblur="sv2('feeLib_delik','s_feeLib_delik',this)" style="min-width:60px;font-size:12px;color:#1D9E75;">10</span>
+          </div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;">= ₺<span id="libTL_delik">—</span></div>
         </div>
         <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(29,158,117,0.2);">
           <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:4px;">Net Revenue / Brace</label>
@@ -300,10 +343,28 @@
           </div>
         </div>
         <div style="margin-top:8px;">
-          <label style="font-size:10px;color:#D4537E;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Referral Fees (global rate below)</label>
-          <div style="font-size:11px;color:#D4537E;font-weight:600;line-height:1.6;">
-            Sci: <span id="sciTL_sensDelik">—</span> ₺ · Edu: <span id="eduTL_sensDelik">—</span> ₺ · Lib: <span id="libTL_sensDelik">—</span> ₺
+          <label style="font-size:10px;color:#D4537E;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Scientific Study Fee (%)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_feeSci_sensDelik" min="0" max="30" step="1" value="10" style="flex:1;accent-color:#D4537E;" oninput="sv('feeSci_sensDelik',this.value)">
+            <span class="sl-val" id="feeSci_sensDelik" contenteditable="true" onblur="sv2('feeSci_sensDelik','s_feeSci_sensDelik',this)" style="min-width:60px;font-size:12px;color:#D4537E;">10</span>
           </div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;">= ₺<span id="sciTL_sensDelik">—</span></div>
+        </div>
+        <div style="margin-top:8px;">
+          <label style="font-size:10px;color:#D4537E;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Education Fee (%)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_feeEdu_sensDelik" min="0" max="30" step="1" value="10" style="flex:1;accent-color:#D4537E;" oninput="sv('feeEdu_sensDelik',this.value)">
+            <span class="sl-val" id="feeEdu_sensDelik" contenteditable="true" onblur="sv2('feeEdu_sensDelik','s_feeEdu_sensDelik',this)" style="min-width:60px;font-size:12px;color:#D4537E;">10</span>
+          </div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;">= ₺<span id="eduTL_sensDelik">—</span></div>
+        </div>
+        <div style="margin-top:8px;">
+          <label style="font-size:10px;color:#D4537E;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Library Fee (%)</label>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <input type="range" id="s_feeLib_sensDelik" min="0" max="30" step="1" value="10" style="flex:1;accent-color:#D4537E;" oninput="sv('feeLib_sensDelik',this.value)">
+            <span class="sl-val" id="feeLib_sensDelik" contenteditable="true" onblur="sv2('feeLib_sensDelik','s_feeLib_sensDelik',this)" style="min-width:60px;font-size:12px;color:#D4537E;">10</span>
+          </div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;">= ₺<span id="libTL_sensDelik">—</span></div>
         </div>
         <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(212,83,126,0.2);">
           <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:4px;">Net Revenue / Brace</label>
@@ -325,7 +386,7 @@
     <!-- B2B Mix -->
     <div style="font-size:11px;font-weight:700;color:#378ADD;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">B2B Mix (%) — All Months</div>
     <div id="mixB2BTableWrap"></div>
-    <div class="note-box" style="margin-top:8px;">B2B uses the same global Referral Fees (Scientific/Education/Library) and royalty rate as the clinic channel — only price and printing cost differ per SKU.</div>
+    <div class="note-box" style="margin-top:8px;">B2B uses the same per-product Referral Fee rates (Scientific/Education/Library) and royalty rate set on each product's card above — only price and printing cost differ per SKU.</div>
 
     <hr class="divider">
     <!-- Mix görselleştirme — iki grafik yan yana -->
