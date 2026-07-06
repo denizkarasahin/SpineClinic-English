@@ -478,11 +478,11 @@ function renderFormulas() {
   const royTRY = Math.round((V.royaltyEur??0) * (V.eurKur||53.56));
   const sgk = (V.sgkCarpan||1.6).toFixed(2);
   const e1 = V.esikStajyer1??21, e2 = V.esikDestek??40, e3 = V.esikStajyer2??90;
-  const stajBrut = Math.round((V.stajyerM||30000) * (V.sgkCarpan||1.6));
+  const stajBrut = Math.round((V.stajyerM||31000) * (V.sgkCarpan||1.6));
   const destBrut = Math.round((V.destekM||30000)  * (V.sgkCarpan||1.6));
   const staj2Brut= Math.round((V.stajyer2M||30000)* (V.sgkCarpan||1.6));
-  const ortoBrut = Math.round((V.ortotistM||100000) * (V.sgkCarpan||1.6));
-  const operatorBrut = Math.round((V.operatorM||150000) * (V.sgkCarpan||1.6));
+  const ortoBrut = Math.round((V.ortotistM||20000) * (V.sgkCarpan||1.6));
+  const operatorBrut = Math.round((V.operatorM||100000) * (V.sgkCarpan||1.6));
 
   document.getElementById('formulGelir').innerHTML =
     '<span class="c">── REVENUE (per month) ──────────────────────────────────────────────────────</span>\n\n' +
