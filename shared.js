@@ -1098,7 +1098,7 @@ function renderKurulumDonut(kira, depozito, emlakci, tadilatTop, dekoTopV, mobil
 
 // ── SABİT GİDER PASTA ────────────────────────────────────────────────────────
 let sabitPieInst = null;
-function renderSabitBar(aylikKira, elektrik, internet, sarf, ortoBrut, operatorBrut, stajyerBrut, destekBrutBar, mutfak, genelGider, ymmM) {
+function renderSabitBar(aylikKira, elektrik, internet, sarf, ortoBrut, operatorBrut, stajyerBrut, destekBrutBar, mutfak, genelGider, ymmM, staj2Brut) {
   stajyerBrut = stajyerBrut || 0;
   const canvas = _origGetById('sabitBar');
   if (!canvas) return;
@@ -1109,7 +1109,7 @@ function renderSabitBar(aylikKira, elektrik, internet, sarf, ortoBrut, operatorB
     { label:'Orthotist (gross)',   val:ortoBrut,           color:'#D85A30' },
     { label:'Intern (gross)',      val:stajyerBrut,        color:'#EF9F27' },
     { label:'Support Staff (gross)', val:(destekBrutBar||0), color:'#F0A070' },
-    { label:'2nd Intern (gross)',  val:gv('stajyer2M')*gv('sgkCarpan'), color:'#FFBE7A' },
+    { label:'2nd Intern (gross)',  val:(staj2Brut||0),     color:'#FFBE7A' },
     { label:'Electricity/Water',   val:elektrik,           color:'#1D9E75' },
     { label:'Internet/Phone',      val:internet,           color:'#888780' },
     { label:'Kitchen',             val:(mutfak||0),        color:'#BA7517' },
@@ -1844,7 +1844,7 @@ function computeYear1(Vlike) {
     if (basAy===null && net>=0) basAy = i+1;
     if (pozAy===null && cumBudget>=0) pozAy = i+1;
 
-    rows.push({ay:i+1, korse, k, gelirBrut, danis, bakim, baskiTop, royaltyTop, kesimTop, gelirNet, sabitGider, ayStajyer, reklamS, mutfakV, ayStopaj, kongre, printerEkMaliyet, gider, net, cumBudget});
+    rows.push({ay:i+1, korse, k, gelirBrut, danis, bakim, baskiTop, royaltyTop, kesimTop, gelirNet, sabitGider, ayStajyer, ayDestek, ayStaj2, reklamS, mutfakV, ayStopaj, kongre, printerEkMaliyet, gider, net, cumBudget});
     cumKorse += korse;
     tGelir += gelirNet; tGider += gider; tNet += net; tKorse += korse;
   }
@@ -2340,26 +2340,59 @@ function recalc() {
   const sarf=gv('sarf'), ortotistM=gv('ortotistM'), sgkC=gv('sgkCarpan');
   const ortoBrut=ortotistM*sgkC;
   const operatorBrut = gv('operatorM') * sgkC;
-  const stajyerBrut = gv('stajyerM') * sgkC;
   const ymmM = gv('ymmM');
-  const sabitBase=aylikKira+elektrik+internet+sarf+ortoBrut+operatorBrut+mutfakV+genelGiderV+ymmM;  // ilk ay baz
-  document.getElementById('sabitAylik').textContent=ff(-sabitBase);
-  const destekBrutBar = gv('destekM') * gv('sgkCarpan');
-  renderSabitBar(aylikKira, elektrik+internet, internet, sarf, ortoBrut, operatorBrut, stajyerBrut, destekBrutBar, mutfakV, genelGiderV, ymmM);
 
-  // Brüt maliyet göstergeleri
+  // Intern / Support Staff / Junior Orthotist only draw a salary once monthly brace
+  // volume clears their threshold (esikStajyer1/esikDestek/esikStajyer2) — computeYear1
+  // already gates this correctly for the P&L; this reference run is so the Fixed Costs
+  // display (indicator boxes, bar chart, monthly KPI) shows the SAME gated reality
+  // instead of always showing the full salary as if these roles were active every month.
+  // Reference point = Month 12 (the ramp's most mature month) — "what would I be
+  // paying right now, at the end of Year 1."
+  const _refRow = computeYear1(V).rows[11];
+  const _refKorse = V.korse ? V.korse[V.korse.length-1] : 0;
+  const _esik1 = V.esikStajyer1 ?? 15, _esikD = V.esikDestek ?? 30, _esik2 = V.esikStajyer2 ?? 76;
+  const stajyerBrut = _refRow.ayStajyer;
+  const destekBrutBar = _refRow.ayDestek;
+  const staj2Brut = _refRow.ayStaj2;
+  const sabitBase = aylikKira+elektrik+internet+sarf+ortoBrut+operatorBrut+mutfakV+genelGiderV+ymmM+stajyerBrut+destekBrutBar+staj2Brut; // Month 12 reference
+  document.getElementById('sabitAylik').textContent=ff(-sabitBase);
+  renderSabitBar(aylikKira, elektrik+internet, internet, sarf, ortoBrut, operatorBrut, stajyerBrut, destekBrutBar, mutfakV, genelGiderV, ymmM, staj2Brut);
+
+  // Brüt maliyet göstergeleri — Operator/Expert Orthotist are always active (Month 1,
+  // no threshold); Intern/Junior Orthotist/Support Staff show "Not active yet" below
+  // their threshold instead of a full gross salary they aren't actually drawing.
   const _sgkC = gv('sgkCarpan');
-  const brutPairs = [
+  const brutPairsFixed = [
     ['brutOperator',  gv('operatorM')],
     ['brutOrtotist',  gv('ortotistM')],
-    ['brutYeniMezun', gv('stajyer2M')],
-    ['brutStajyer',   gv('stajyerM')],
-    ['brutDestek',    gv('destekM')],
-
   ];
-  brutPairs.forEach(([id, net]) => {
+  brutPairsFixed.forEach(([id, net]) => {
     const el = document.getElementById(id);
     if (el) el.textContent = Math.round(net * _sgkC).toLocaleString('tr-TR');
+  });
+  const brutPairsGated = [
+    ['brutStajyer',   gv('stajyerM'),  _refKorse >= _esik1, _esik1],
+    ['brutYeniMezun', gv('stajyer2M'), _refKorse >= _esik2, _esik2],
+    ['brutDestek',    gv('destekM'),   _refKorse >= _esikD, _esikD],
+  ];
+  brutPairsGated.forEach(([id, net, aktif, esik]) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (aktif) {
+      el.textContent = Math.round(net * _sgkC).toLocaleString('tr-TR');
+      el.style.color = '';
+    } else {
+      el.textContent = 'Not active yet (needs ≥' + esik + '/mo, currently ' + _refKorse + ')';
+      el.style.color = '#c94f2a';
+    }
+  });
+  // Threshold badges next to each role's title — same active/inactive signal at a glance
+  [['esikLabel1', _refKorse >= _esik1], ['esikLabel2', _refKorse >= _esikD], ['esikLabel3', _refKorse >= _esik2]].forEach(([id, aktif]) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.style.background = aktif ? '#e8f8f0' : '#f5e0d8';
+    el.style.color = aktif ? '#1D9E75' : '#c94f2a';
   });
 
   // Hekim payı ₺ gösterimi
