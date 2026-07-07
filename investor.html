@@ -36,14 +36,14 @@
     <div class="note-box" style="margin-bottom:12px;">Return comes from two mechanisms: annual dividends after cumulative positive, and a strategic exit — see comps below.</div>
 
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:6px;" id="dcfKpiGrid">
-      <div class="kpi"><div class="kpi-label">Pre-Money</div><div class="kpi-val pos" id="dcf_premoney_final" title="max(DCF Value, Asset Floor) — used for Post-Money and everywhere else on this page">—</div></div>
-      <div class="kpi"><div class="kpi-label">Post-Money</div><div class="kpi-val neu" id="dcf_postmoney">—</div></div>
-      <div class="kpi"><div class="kpi-label">Total Investment</div><div class="kpi-val neu" id="dcfInvestDisp">—</div></div>
-      <div class="kpi"><div class="kpi-label">Investor Stake</div><div class="kpi-val pos" id="dcf_yatirimci_hisse">—</div></div>
-      <div class="kpi"><div class="kpi-label">Exit Value — Year 5</div><div class="kpi-val pos" id="dcf_exitValue" title="Year 5 EBITDA × Exit Multiple (undiscounted)">—</div></div>
-      <div class="kpi"><div class="kpi-label">Cumulative Free Cash (5yr)</div><div class="kpi-val neu" id="kpi_cumFcf" title="Sum of Y1-Y5 free cash flow, taxed per the toggle above">—</div></div>
+      <div class="kpi"><div class="kpi-label">Modeled Value (DCF)</div><div class="kpi-val neu" id="dcf_premoney" title="Present value of exit + cash flows, discounted at r — before the negotiation discount">—</div></div>
+      <div class="kpi"><div class="kpi-label">Deal Pre-Money (after discount)</div><div class="kpi-val pos" id="dcf_premoney_final" title="max(Modeled Value × (1 − negotiation discount), Asset Floor)">—</div></div>
+      <div class="kpi"><div class="kpi-label">Post-Money</div><div class="kpi-val neu" id="dcf_postmoney" title="Deal Pre-Money + actual new cash raised (Investor + Doctor-Investor) — never Osteoid's in-kind">—</div></div>
+      <div class="kpi"><div class="kpi-label">Investor Ticket</div><div class="kpi-val neu" id="dcf_investor_ticket" title="Lead Investor's actual cash — clinic setup + working capital, from the Investment Breakdown">—</div></div>
+      <div class="kpi"><div class="kpi-label">Investor Stake</div><div class="kpi-val pos" id="dcf_yatirimci_hisse" title="Investor Ticket ÷ Post-Money — a priced round, not the Contribution Register">—</div></div>
+      <div class="kpi"><div class="kpi-label">Implied Investor MOIC at Exit</div><div class="kpi-val pos" id="dcf_investor_moic_exit" title="Exit Value (Year 5 EBITDA × Exit Multiple) × Investor Stake ÷ Investor Ticket">—</div></div>
     </div>
-    <div style="font-size:11px;color:#888;margin:2px 0 8px;">DCF <span id="dcf_premoney"></span> · Asset floor <span id="dcf_assetFloor"></span> — higher of the two applies</div>
+    <div style="font-size:11px;color:#888;margin:2px 0 8px;">Asset floor (Osteoid in-kind) <span id="dcf_assetFloor"></span> — Deal Pre-Money is never priced below this</div>
     <div id="dcf_floor_chip" style="display:none;font-size:11px;font-weight:700;color:#8a6d1a;background:#fff8e8;border:1px solid #f0d080;border-radius:4px;padding:8px 12px;margin-bottom:16px;">⚠ DCF is below the value of contributed assets — check whether the discount rate reflects the de-risked profile.</div>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
@@ -68,6 +68,14 @@
           <span class="sl-val" id="dcfExitMult" style="min-width:40px;">10×</span>
         </div>
         <span class="sl-note">EV/EBITDA at exit — typical healthcare clinic 6–12×; a proven platform with de-risked technology and market fit commands the higher end of that range, not the low end reserved for unproven concepts. The satellite management-fee stream is valued separately, at its own (typically richer) multiple, when the sum-of-parts toggle is on (see Deal Structure &amp; Assumptions below).</span>
+      </div>
+      <div class="sl-row">
+        <label style="font-size:10px;">Negotiation discount to modeled value (%)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_dcfNegotiationDiscount" min="0" max="90" step="5" value="70" oninput="sv('dcfNegotiationDiscount',this.value)">
+          <span class="sl-val" id="dcfNegotiationDiscount" style="min-width:40px;">70</span>
+        </div>
+        <span class="sl-note">The modeled DCF value is the anchor; this discount is the negotiated concession for single-site execution risk (not yet a proven multi-year, multi-center track record at this specific venue).</span>
       </div>
     </div>
 
@@ -422,11 +430,20 @@
         </div>
       </div>
 
-      <!-- Ownership Register — single source of ownership % for this page (and the Return Analysis above); adjustable directly via the sliders underneath -->
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;margin-bottom:8px;">
-        <div class="kpi"><div class="kpi-label">Osteoid Stake</div><div class="kpi-val neu" id="dcf_osteoid_hisse">—</div></div>
+      <!-- Additional detail — dropped from the hero grid when it was cut down to the 6 priced-round KPIs -->
+      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Additional Detail</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;margin-bottom:16px;">
+        <div class="kpi"><div class="kpi-label">Exit Value — Year 5</div><div class="kpi-val neu" id="dcf_exitValue" title="Year 5 EBITDA × Exit Multiple (undiscounted)">—</div></div>
+        <div class="kpi"><div class="kpi-label">Cumulative Free Cash (5yr)</div><div class="kpi-val neu" id="kpi_cumFcf" title="Sum of Y1-Y5 free cash flow, taxed per the toggle above">—</div></div>
+        <div class="kpi"><div class="kpi-label">Total Investment (blended)</div><div class="kpi-val neu" id="dcfInvestDisp" title="Investor + Doctor-Investor cash plus Osteoid's in-kind — the old blended figure, no longer what Post-Money uses">—</div></div>
+        <div class="kpi"><div class="kpi-label">Osteoid Stake</div><div class="kpi-val neu" id="dcf_osteoid_hisse" title="100% − Investor − Doctor-Investor − Sweat, from the priced round above">—</div></div>
       </div>
-      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Ownership Register <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— derives the ownership split from what each party actually brings to the table; adjust the terms below</span></div>
+
+      <!-- Ownership Register — the Contribution Register's weighted split. No longer
+           drives Investor/Osteoid Stake in the hero above (that's the priced round:
+           cash ÷ post-money); this table and its sliders still feed captable.html and
+           the Sci/Edu/Library referral-fee mechanics elsewhere on the page. -->
+      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Ownership Register <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— the Contribution Register's weighted split (shared with the Cap Table page); the priced-round stake above is computed independently, see the Deal Pre-Money note</span></div>
       <div class="tbl-wrap" style="margin-bottom:8px;">
         <table id="ownershipMirrorTable">
           <thead><tr>
@@ -440,7 +457,7 @@
           </tbody>
         </table>
       </div>
-      <div id="warn_control" style="display:none;font-size:11px;font-weight:700;color:#c0392b;background:#fef0f0;border:1px solid #e8b4b4;border-radius:4px;padding:8px 12px;margin-bottom:16px;">⚠ Control Risk: Osteoid equity falls below 50%+1. The shareholders agreement guarantees Osteoid/founder majority control at all times. Reduce non-Osteoid weights or increase Osteoid's contribution/weight.</div>
+      <div id="warn_control" style="display:none;font-size:11px;font-weight:700;color:#c0392b;background:#fef0f0;border:1px solid #e8b4b4;border-radius:4px;padding:8px 12px;margin-bottom:16px;">⚠ Control Risk: Osteoid's priced-round stake (The Deal at a Glance) falls below 50%+1. The shareholders agreement guarantees Osteoid/founder majority control at all times. Reduce the negotiation discount, the investor/doctor-investor ticket size, or the sweat equity cap — the Contribution Register weights below no longer affect this.</div>
 
       <div class="note-box" style="margin-bottom:16px;">The contribution-weight sliders (Osteoid/Investor/Doctor-Investor weights, machinery %, royalty offset) and the Sweat Equity terms that drive the table above now live in the <a href="captable.html" style="color:#534AB7;font-weight:700;">"Contribution Register — Weights &amp; Sweat Equity"</a> section on the Cap Table page — edits there update this table on next load.</div>
 
@@ -462,7 +479,7 @@
           </tbody>
         </table>
       </div>
-      <div class="note-box" id="dcfNote">Free Cash Flow Years 1–5 are taken directly from the 5-year projection model (same data as the Multi-Year Plan page), taxed per the Corporate Tax toggle above (25% KV by default, with 5-year loss carryforward — no VAT is modeled, orthosis sales are VAT-exempt under KDV Kanunu 17/4-s). Terminal value uses an exit-multiple method: TV = FCF₅ × Exit Multiple — computed on the <i>same after-tax</i> FCF₅ as the interim cash flows (a proxy for an after-tax earnings multiple, not a pre-tax number an exit buyer would never actually receive). DCF Value = NPV(FCF₁₋₅) + PV(Terminal Value). <b>Pre-Money</b> is the higher of DCF Value and the Asset Floor (see The Deal at a Glance) — contributed IP and territorial rights are never implied to be worth less than their own appraised value. Post-Money = Pre-Money + Total Investment (a valuation reference only). <b>Investor Stake / Osteoid Stake</b> come from the Ownership Register above (Contribution Register — adjust the weight/vesting sliders on the Cap Table page), not from Investment/Post-Money. Discount rate (r) is set by the Risk Profile control on The Deal at a Glance, not a generic early-stage-startup premium — see "Why This Venture Is De-Risked" above.</div>
+      <div class="note-box" id="dcfNote">Free Cash Flow Years 1–5 are taken directly from the 5-year projection model (same data as the Multi-Year Plan page), taxed per the Corporate Tax toggle above (25% KV by default, with 5-year loss carryforward — no VAT is modeled, orthosis sales are VAT-exempt under KDV Kanunu 17/4-s). Terminal value uses an exit-multiple method: TV = FCF₅ × Exit Multiple — computed on the <i>same after-tax</i> FCF₅ as the interim cash flows (a proxy for an after-tax earnings multiple, not a pre-tax number an exit buyer would never actually receive). <b>Modeled Value (DCF)</b> = NPV(FCF₁₋₅) + PV(Terminal Value) — the unadjusted model output. <b>Deal Pre-Money</b> = max(Modeled Value × (1 − Negotiation Discount), Asset Floor) — see The Deal at a Glance; the discount is the negotiated concession for single-site execution risk, not a re-run of the DCF itself. <b>Post-Money</b> = Deal Pre-Money + actual new cash raised (Investor Ticket + any Doctor-Investor cash) — Osteoid's in-kind is priced into the Asset Floor, never added as cash. <b>Investor Stake</b> = Investor Ticket ÷ Post-Money; <b>Doctor-Investor Stake</b> = their cash ÷ Post-Money; <b>Sweat</b> = the vested % up to its cap; <b>Osteoid Stake</b> = the remainder — a priced round, not the Ownership Register below (that Contribution Register still drives captable.html and the referral-fee mechanics, just not stake here). Discount rate (r) is set by the Risk Profile control on The Deal at a Glance, not a generic early-stage-startup premium — see "Why This Venture Is De-Risked" above.</div>
 
       <!-- Exit Tax Structuring (Shareholder-Level) -->
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin:20px 0 8px;">Exit Tax Structuring <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— shareholder-level only; corporate tax (KV) on operating profit above is unaffected</span></div>

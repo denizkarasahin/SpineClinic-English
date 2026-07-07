@@ -23,7 +23,7 @@ document.getElementById = function(id) {
   };
 };
 
-const V = {"korseF":37800,"malzeme":50,"reklamCarpan":1.0,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.56,"kira":200000,"depozito":400000,"emlakci":400000,"m2":300,"tadilatM2":7000,"dekoM2":6750,"mobilya":300000,"ruhsat":100000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":20000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[15,15,20,25,25,33,35,41,42,50,50,55],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":30000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":1600,"mal_sens":2075,"mal_sensDelik":1250,"feeSci_stdR":10,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdR":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdR":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":40000,"pazarIstPct":30.1,"hedefOsteoidPay":40,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":true,"izmirHedefPay":30.5,"izmirUseIst":false,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":true,"ankaraHedefPay":31,"ankaraUseIst":false,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":false,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":20,"dcfGrowth":18,"dcfGrowth45":45,"dcfExitMult":10,"dcfInvest":1008662,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":12500,"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":100000,"_sen_max_kira":400000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":3500,"_sen_max_dekoM2":17000,"_sen_min_ortotistM":10000,"_sen_max_ortotistM":35000,"_sen_min_operatorM":60000,"_sen_max_operatorM":160000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3.0,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.65,"operatorM":100000,"ipLisansEur":400000,"sehirEksklusifEur":200000,"workingCapBufferEur":220000,"kvOrani":20,"vergiDahil":true,"sirketTuru":"as","exitYili":5,"kisiselVergiOrani":40,"fundAy":0,"makineKatkiOran":50,"osteoidCarpan":1.5,"yatirimciCarpan":1.0,"doktorYatirim":0,"doktorCarpan":1.5,"sweatEur":80000,"sweatVestAy":48,"sweatCliffAy":12,"sweatElapsedAy":0,"sweatMaxPct":5,"sweatCarpan":1.0,"sweatVestedToday":true,"royaltyOffsetYil":1,"royaltyOffsetPct":0,"yonetimUcretiPct":5,"izmirFlagshipPay":65,"ankaraFlagshipPay":65,"izmirSubeMi":false,"ankaraSubeMi":false,"tcmbFaiz":45,"nakdiSermayeAktif":true,"teknokentKapsam":false,"emisyonPrimiAktif":true,"nominalPayOrani":10,"feeStreamAyriMult":false,"feeExitMult":12,"_version":30};
+const V = {"korseF":37800,"malzeme":50,"reklamCarpan":1.0,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.56,"kira":200000,"depozito":400000,"emlakci":400000,"m2":300,"tadilatM2":7000,"dekoM2":6750,"mobilya":300000,"ruhsat":100000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":20000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[15,15,20,25,25,33,35,41,42,50,50,55],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":30000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":1600,"mal_sens":2075,"mal_sensDelik":1250,"feeSci_stdR":10,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdR":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdR":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":40000,"pazarIstPct":30.1,"hedefOsteoidPay":40,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":true,"izmirHedefPay":30.5,"izmirUseIst":false,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":true,"ankaraHedefPay":31,"ankaraUseIst":false,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":false,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":20,"dcfGrowth":18,"dcfGrowth45":45,"dcfExitMult":10,"dcfNegotiationDiscount":70,"dcfInvest":1008662,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":12500,"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":100000,"_sen_max_kira":400000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":3500,"_sen_max_dekoM2":17000,"_sen_min_ortotistM":10000,"_sen_max_ortotistM":35000,"_sen_min_operatorM":60000,"_sen_max_operatorM":160000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3.0,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.65,"operatorM":100000,"ipLisansEur":400000,"sehirEksklusifEur":200000,"workingCapBufferEur":220000,"kvOrani":20,"vergiDahil":true,"sirketTuru":"as","exitYili":5,"kisiselVergiOrani":40,"fundAy":0,"makineKatkiOran":50,"osteoidCarpan":1.5,"yatirimciCarpan":1.0,"doktorYatirim":0,"doktorCarpan":1.5,"sweatEur":80000,"sweatVestAy":48,"sweatCliffAy":12,"sweatElapsedAy":0,"sweatMaxPct":5,"sweatCarpan":1.0,"sweatVestedToday":true,"royaltyOffsetYil":1,"royaltyOffsetPct":0,"yonetimUcretiPct":5,"izmirFlagshipPay":65,"ankaraFlagshipPay":65,"izmirSubeMi":false,"ankaraSubeMi":false,"tcmbFaiz":45,"nakdiSermayeAktif":true,"teknokentKapsam":false,"emisyonPrimiAktif":true,"nominalPayOrani":10,"feeStreamAyriMult":false,"feeExitMult":12,"_version":31};
 // Restore state from localStorage if available; clear cache on version mismatch
 (function() {
   try {
@@ -2944,7 +2944,7 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
   el.innerHTML = html;
 }
 
-function renderInvestorRoadmap(el, totals, korseM1, feeIncomeRow, equityIncomeRow, minorityRow, b2bRow, fcfData, izmirRow, ankaraRow) {
+function renderInvestorRoadmap(el, totals, korseM1, feeIncomeRow, equityIncomeRow, minorityRow, b2bRow, fcfData, izmirRow, ankaraRow, istFinancingGapRow) {
   const fmtK = v => v > 0 ? '~€' + v + 'K' : v < 0 ? '-€' + Math.abs(v) + 'K' : '—';
   const fmtCell = v => v > 0
     ? `<td style="text-align:right;color:#1a7a45;font-weight:600;">~€${v}K</td>`
@@ -2999,6 +2999,7 @@ function renderInvestorRoadmap(el, totals, korseM1, feeIncomeRow, equityIncomeRo
     </tr></thead>
     <tbody>
       <tr><td>Istanbul C1 (private)</td>${fmtCell(korseM1[0])}${fmtCell(korseM1[1])}${fmtCell(korseM1[2])}${fmtCell(korseM1[3])}${fmtCell(korseM1[4])}${growCell(korseM1[0],korseM1[4])}</tr>
+      ${istFinancingGapRow.some(v=>v>0) ? `<tr><td style="color:#8a6d1a;font-size:11px;">↳ Opex gap financed by raised capital</td>${istFinancingGapRow.map(v=>`<td style="text-align:right;font-size:11px;color:#8a6d1a;">${v>0?'€'+v+'K':'—'}</td>`).join('')}<td></td></tr>` : ''}
       ${b2bRow[0]>0||b2bRow[1]>0 ? `<tr><td style="color:#378ADD;">B2B — Istanbul</td>${fmtCell(b2bRow[0])}${fmtCell(b2bRow[1])}${fmtCell(b2bRow[2])}${fmtCell(b2bRow[3])}${fmtCell(b2bRow[4])}${growCell(b2bRow[0],b2bRow[4])}</tr>` : ''}
       ${V.izmirAktif ? `<tr><td style="color:#1D9E75;">Izmir Center <span style="font-weight:400;font-size:10px;opacity:0.7;">— satellite's own net, memo only</span></td>${fmtCell(izmirRow[0])}${fmtCell(izmirRow[1])}${fmtCell(izmirRow[2])}${fmtCell(izmirRow[3])}${fmtCell(izmirRow[4])}${growCell(izmirRow[1],izmirRow[4])}</tr>` : ''}
       ${V.ankaraAktif ? `<tr><td style="color:#534AB7;">Ankara Center <span style="font-weight:400;font-size:10px;opacity:0.7;">— satellite's own net, memo only</span></td>${fmtCell(ankaraRow[0])}${fmtCell(ankaraRow[1])}${fmtCell(ankaraRow[2])}${fmtCell(ankaraRow[3])}${fmtCell(ankaraRow[4])}${growCell(ankaraRow[1],ankaraRow[4])}</tr>` : ''}
@@ -3010,15 +3011,16 @@ function renderInvestorRoadmap(el, totals, korseM1, feeIncomeRow, equityIncomeRo
       ${fcfData && fcfData.vergiDahil ? `<tr><td style="font-size:10px;color:#999;">↳ Loss carryforward balance (year-end)</td>${fcfData.carryEnd.map(c=>`<td style="text-align:right;font-size:10px;color:#999;">${c>0?'€'+c+'K':'—'}</td>`).join('')}<td></td></tr>` : ''}
     </tbody>
   </table></div>
-  <div style="font-size:10px;color:#888;">⚠ Istanbul Y1 = gross brace revenue (before fixed operating costs — startup costs covered by raised capital). Y2–Y5 = net after all operating costs. Izmir/Ankara rows show each satellite's own full net revenue for visibility once activated, but satellites are separate, majority-owned companies — they are memo lines, NOT summed into the flagship total. The flagship's actual take (in the total) is its management fee (100% of satellite gross revenue × the fee rate, indented below each satellite) plus its equity share of that satellite's profit after the fee. See <a href="captable.html" style="color:#534AB7;font-weight:700;">Cap Table</a> for the Network Structure explainer.${fcfData ? ' Free cash flow = consolidated pre-tax total (Y1 from the monthly model net of clinic-paid printer capex, Y2-5 from this projection)'+(fcfData.vergiDahil?', taxed at '+fcfData.kvOraniPct+'% corporate tax (KV) with 5-year loss carryforward. Orthosis sales are VAT-exempt (KDV Kanunu 17/4-s) — no VAT is modeled.':' — corporate tax is currently switched off.') : ''} &nbsp;<a href="growth.html" style="color:#534AB7;font-weight:700;">Full Multi-Year Model →</a></div>`;
+  <div style="font-size:10px;color:#888;">⚠ Istanbul C1 Y1–Y5 = net after fixed operating costs, one consistent basis every year (Y1's opex briefly exceeds gross revenue in this ramp year — that gap is the "Opex gap financed by raised capital" row above, not a basis switch). Izmir/Ankara rows show each satellite's own full net revenue for visibility once activated, but satellites are separate, majority-owned companies — they are memo lines, NOT summed into the flagship total. The flagship's actual take (in the total) is its management fee (100% of satellite gross revenue × the fee rate, indented below each satellite) plus its equity share of that satellite's profit after the fee. See <a href="captable.html" style="color:#534AB7;font-weight:700;">Cap Table</a> for the Network Structure explainer.${fcfData ? ' Free cash flow = the consolidated post-opex total above (every year, same basis)'+(fcfData.vergiDahil?', taxed at '+fcfData.kvOraniPct+'% corporate tax (KV) with 5-year loss carryforward. Orthosis sales are VAT-exempt (KDV Kanunu 17/4-s) — no VAT is modeled.':' — corporate tax is currently switched off.') : ''} &nbsp;<a href="growth.html" style="color:#534AB7;font-weight:700;">Full Multi-Year Model →</a></div>`;
 
   el.innerHTML = html;
 }
 
-// Y1 FCF comes straight from the monthly engine (already nets out any
-// clinic-paid mid-year printer top-up via printerEkMaliyet — never subtract
-// it a second time here). Y2-5 come from the same consolidated projection
-// totals used everywhere else on this page. Corporate tax (KV) is applied to
+// FCF for every year (Y1 included) comes from the same consolidated
+// projection `totals` row — Istanbul net (post-opex, already including any
+// clinic-paid mid-year printer top-up via printerEkMaliyet) + satellite
+// fee/equity income + B2B — one consistent basis, no year-specific sourcing.
+// Corporate tax (KV) is applied to
 // positive annual pre-tax profit with a 5-year loss carryforward; a single
 // running balance is enough since this model only spans 5 years, so no
 // carryforward vintage can age past its legal 5-year window before the
@@ -3052,12 +3054,12 @@ function computeNakdiSermayeDeduction() {
 function computeFcfStream() {
   const totals = window._lastTotals || [];
   if (totals.length < 5) return null;
-  const rows = window._lastRows || [];
-  const eurKur = V.eurKur ?? 50;
-  const y1fcf = rows.length > 0
-    ? Math.round(rows.reduce((s,r)=>s+(r.net||0),0) / eurKur / 1000)
-    : (totals[0] ?? 0);
-  const pretaxFcf = [y1fcf, totals[1] ?? 0, totals[2] ?? 0, totals[3] ?? 0, totals[4] ?? 0];
+  // `totals` is buildProjection()'s single consolidated post-opex net row —
+  // Istanbul net + satellite fee/equity income + B2B, for every year
+  // including Y1 (istNetRow[0] there is built from the exact same
+  // rows.gider/rows.gelirNet sums a separate Y1-only path used to read
+  // directly, so this is not a precision loss, just one source instead of two).
+  const pretaxFcf = totals.slice(0, 5);
 
   const vergiDahil = V.vergiDahil !== false;
   const kvOraniPct = V.kvOrani ?? 25;
@@ -3156,16 +3158,23 @@ function buildProjection() {
   const y4GiderEur = Math.round(y1GiderEur * 1.22);
   const y5GiderEur = Math.round(y1GiderEur * 1.25); // Istanbul Y5 opex (Istanbul only; new centers use own params)
 
-  // ── Net korse geliri = Brüt − İşletme gideri (tutarlı her yıl) ──
+  // ── Istanbul private-clinic channel — one consistent basis every year:
+  // gross revenue, opex, and net (gross − opex, floored at 0). Y1 used to
+  // show gross instead of net here (the opex gap was "hidden" by switching
+  // basis for one year only), which made Year 1 a different metric than
+  // Years 2-5 and silently broke anything that summed this row across years
+  // (computeFcfStream, in particular — see there). Y1's real shortfall — the
+  // startup-year opex gap covered by raised capital — is now its own
+  // explicit row (istFinancingGapRow) instead of a basis switch.
   const y1BrutM1 = toEur(y1KorseNet);
-  const y1NetM1  = Math.max(0, y1BrutM1 - y1GiderEur);
-  const y2NetM1  = Math.max(0, lerp(y1BrutM1, y3BrutGelir, 0.40) - y2GiderEur);
-  const y3NetM1  = Math.max(0, lerp(y1BrutM1, y3BrutGelir, 0.65) - y3GiderEur);
-  const y4NetM1  = Math.max(0, lerp(y1BrutM1, y3BrutGelir, 0.85) - y4GiderEur);
-  const y5NetM1  = Math.max(0, y3BrutGelir - y5GiderEur);
+  const istGrossRow = [y1BrutM1, lerp(y1BrutM1, y3BrutGelir, 0.40), lerp(y1BrutM1, y3BrutGelir, 0.65), lerp(y1BrutM1, y3BrutGelir, 0.85), y3BrutGelir];
+  const istOpexRow  = [y1GiderEur, y2GiderEur, y3GiderEur, y4GiderEur, y5GiderEur];
+  const istNetRow   = istGrossRow.map((g,i) => Math.max(0, g - istOpexRow[i]));
+  // Amount by which opex exceeds gross, before flooring — the gap raised
+  // capital covers in a ramp year (0 once gross overtakes opex).
+  const istFinancingGapRow = istGrossRow.map((g,i) => Math.max(0, istOpexRow[i] - g));
 
-  // Y1: show gross brace revenue (before fixed opex) — opex gap is covered by raised capital in ramp year
-  const korseM1    = [y1BrutM1, y2NetM1, y3NetM1, y4NetM1, y5NetM1];
+  const korseM1    = istNetRow; // Istanbul private-clinic net, post-opex, every year
   const korseM2    = [0, 0, 0, 0, 0];
 
 
@@ -3357,7 +3366,7 @@ function buildProjection() {
   window._lastFcf = computeFcfStream();
   renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmirY5Gelir, ankaraY5Gelir, izmirY5Adet, ankaraY5Adet);
   const _roadmapEl = document.getElementById('investorRoadmap');
-  if (_roadmapEl) renderInvestorRoadmap(_roadmapEl, totals, korseM1, feeIncomeRow, equityIncomeRow, minorityRow, b2bRow, window._lastFcf, izmirRow, ankaraRow);
+  if (_roadmapEl) renderInvestorRoadmap(_roadmapEl, totals, korseM1, feeIncomeRow, equityIncomeRow, minorityRow, b2bRow, window._lastFcf, izmirRow, ankaraRow, istFinancingGapRow);
   if (typeof renderDcf === 'function') { renderDcf(); renderGetiriTable(); }
   renderDeRiskedNarrative();
   renderTaxOptPanel();
@@ -3381,13 +3390,10 @@ function buildProjection() {
   const y1SciOran   = y1KorseNet > 0 ? y1Sci / y1KorseNet : 0.10;
   const y1EduOran   = y1KorseNet > 0 ? y1Edu / y1KorseNet : 0.10;
   const y1LibOran   = y1KorseNet > 0 ? y1Lib / y1KorseNet : 0.10;
-  const y2M1PreOpex = lerp(y1BrutM1, y3BrutGelir, 0.40);
-  const y3M1PreOpex = lerp(y1BrutM1, y3BrutGelir, 0.65);
-  const y4M1PreOpex = lerp(y1BrutM1, y3BrutGelir, 0.85);
-  const y2TotalPreOpexNet = y2M1PreOpex + (izmirRow[1]||0) + (ankaraRow[1]||0) + (b2bRow[1]||0);
-  const y3TotalPreOpexNet = y3M1PreOpex + (izmirRow[2]||0) + (ankaraRow[2]||0) + (b2bRow[2]||0);
-  const y4TotalPreOpexNet = y4M1PreOpex + (izmirRow[3]||0) + (ankaraRow[3]||0) + (b2bRow[3]||0);
-  const y5TotalPreOpexNet = y3BrutGelir  + (izmirRow[4]||0) + (ankaraRow[4]||0) + (b2bRow[4]||0);
+  const y2TotalPreOpexNet = istGrossRow[1] + (izmirRow[1]||0) + (ankaraRow[1]||0) + (b2bRow[1]||0);
+  const y3TotalPreOpexNet = istGrossRow[2] + (izmirRow[2]||0) + (ankaraRow[2]||0) + (b2bRow[2]||0);
+  const y4TotalPreOpexNet = istGrossRow[3] + (izmirRow[3]||0) + (ankaraRow[3]||0) + (b2bRow[3]||0);
+  const y5TotalPreOpexNet = istGrossRow[4] + (izmirRow[4]||0) + (ankaraRow[4]||0) + (b2bRow[4]||0);
   const y2SciEurK = Math.round(y2TotalPreOpexNet * y1SciOran);
   const y3SciEurK = Math.round(y3TotalPreOpexNet * y1SciOran);
   const y4SciEurK = Math.round(y4TotalPreOpexNet * y1SciOran);
@@ -3407,8 +3413,8 @@ function buildProjection() {
   // constant — same approximation style already used for the Scientific Study /
   // Education / Library fee rows above. Every approximated row is labeled, not asserted as fact.
   const _y1Model = computeYear1(V);
-  const istGrossY = [y1BrutM1, y2M1PreOpex, y3M1PreOpex, y4M1PreOpex, y3BrutGelir]; // pre-fixed-opex, €K
-  const istNetY   = korseM1; // Year1 = pre-opex (see projTableNote); Years 2-5 = post-opex net, €K
+  const istGrossY = istGrossRow; // pre-fixed-opex, €K — same basis every year
+  const istNetY   = istNetRow;   // = korseM1; post-opex net, €K — same basis every year
 
   // Cumulative year-end — Istanbul clinic only, same definition as the 12-Month Summary's "Cumulative year-end"
   const istCumY = [toEur(rows[11].cumBudget)];
@@ -3525,6 +3531,7 @@ function buildProjection() {
       </tr></thead>
       <tbody>
         <tr><td>Brace — Center 1 (private channel)</td>${fmt(korseM1[0])}${fmt(korseM1[1])}${fmt(korseM1[2])}${fmt(korseM1[3])}${fmt(korseM1[4])}${grow(korseM1[0],korseM1[4])}</tr>
+        ${istFinancingGapRow.some(v=>v>0) ? `<tr><td style="color:#8a6d1a;font-size:11px;">↳ Opex gap financed by raised capital</td>${istFinancingGapRow.map(v=>v>0?`<td style="color:#8a6d1a;font-size:11px;">€${v}K</td>`:`<td style="color:#aaa;font-size:11px;">—</td>`).join('')}<td style="color:#aaa;font-size:11px;">—</td></tr>` : ''}
         <tr><td>Brace — Center 2 (Year 2+)</td>${fmt(0)}${fmt(korseM2[1])}${fmt(korseM2[2])}${fmt(korseM2[3])}${fmt(korseM2[4])}${grow(korseM2[1],korseM2[4])}</tr>
         ${b2bRow[0] > 0 || b2bRow[1] > 0 ? `<tr><td style="color:#378ADD;">B2B — Center 1 (Istanbul)</td>${fmt(b2bRow[0])}${fmt(b2bRow[1])}${fmt(b2bRow[2])}${fmt(b2bRow[3])}${fmt(b2bRow[4])}${grow(b2bRow[0],b2bRow[4])}</tr>` : ''}
         ${V.izmirAktif  ? `<tr><td style="color:#1D9E75;">Izmir Center <span style="font-weight:400;font-size:10px;opacity:0.7;">— satellite's own net, memo only</span></td>${fmt(izmirRow[0])}${fmt(izmirRow[1])}${fmt(izmirRow[2])}${fmt(izmirRow[3])}${fmt(izmirRow[4])}${grow(izmirRow[1],izmirRow[4])}</tr>` : ''}
@@ -3543,7 +3550,7 @@ function buildProjection() {
   }
 
   const noteEl = document.getElementById('projTableNote');
-  if (noteEl) noteEl.textContent = 'Istanbul Y1 = gross brace revenue before fixed operating costs (startup ramp year; opex gap covered by raised capital). Y2–Y5 = net after all costs at projected capacity. Istanbul Y2–Y5 opex is Y1\'s total cost (incl. periodic costs — advertising, conferences, workshops, CPA fee) scaled flat by +15%/+18%/+22%/+25%, not modeled fresh per year. Izmir/Ankara default to separate satellite Ltd. companies (see Network Structure on the Cap Table page) — their own opex excludes HQ-shared costs entirely (see note above), and their revenue reaches the flagship only as management fee income (on 100% of satellite gross revenue) plus equity income (the flagship\'s ownership % of satellite net profit after that fee); the rest is minority interest belonging to local investors. Switching a satellite to Branch (şube) mode above instead consolidates 100% of its P&L (including any loss) directly into these figures, with no fee and no minority interest. New centers interpolated from full-market net. Figures in €K. Not final.';
+  if (noteEl) noteEl.textContent = 'Istanbul Y1–Y5 = net after fixed operating costs, one consistent basis every year (see the Brace — Center 1 row above; its opex briefly exceeds gross revenue in Year 1, the ramp year — that gap is the "Opex gap financed by raised capital" row, not a basis switch). Istanbul Y2–Y5 opex is Y1\'s total cost (incl. periodic costs — advertising, conferences, workshops, CPA fee) scaled flat by +15%/+18%/+22%/+25%, not modeled fresh per year. Izmir/Ankara default to separate satellite Ltd. companies (see Network Structure on the Cap Table page) — their own opex excludes HQ-shared costs entirely (see note above), and their revenue reaches the flagship only as management fee income (on 100% of satellite gross revenue) plus equity income (the flagship\'s ownership % of satellite net profit after that fee); the rest is minority interest belonging to local investors. Switching a satellite to Branch (şube) mode above instead consolidates 100% of its P&L (including any loss) directly into these figures, with no fee and no minority interest. New centers interpolated from full-market net. Figures in €K. Not final.';
 
   // Yıl 5 kartı KPI'ları güncelle
   const y5g = document.getElementById('y5GelirKpi');
@@ -4334,8 +4341,12 @@ function renderOwnershipMirror(reg) {
       capNote.style.display = 'none';
     }
   }
+  // Control Risk now checks the priced-round Osteoid stake (window._lastDeal),
+  // not the reference-only Contribution Register — that's the split that
+  // actually determines control since the priced round sets the deal.
   const warnEl = document.getElementById('warn_control');
-  if (warnEl) warnEl.style.display = (reg && reg.byKey.osteoid.pct < 50.01) ? 'block' : 'none';
+  const deal = window._lastDeal;
+  if (warnEl) warnEl.style.display = (deal && deal.stakes.osteoid < 50.01) ? 'block' : 'none';
 }
 
 function svSweatVestedToday(checked) {
@@ -4401,8 +4412,8 @@ function renderDcf() {
 
   const r          = (V.dcfRate ?? 28) / 100;
   const exitMult   = V.dcfExitMult ?? 10;
-  const invest     = V.dcfInvest ?? 150000;
   const reg        = window._lastRegister;
+  const inv        = window._lastInvestBreakdown;
 
   // Same taxed FCF stream shown in the investor projection table (buildProjection
   // → computeFcfStream) — DCF and the displayed FCF row can never diverge.
@@ -4445,28 +4456,66 @@ function renderDcf() {
   // is never allowed to imply the contributed assets are worth less than their
   // own appraised value.
   const assetFloorEur = reg ? reg.byKey.osteoid.valueEur : 0;
-  const premoney_eur = Math.max(dcfValue_eur, assetFloorEur);
-  const floorBinds = assetFloorEur > dcfValue_eur;
 
-  const postmoney_eur = premoney_eur + invest;
-  // Ownership % no longer comes from invest/postmoney — it comes from the
-  // Contribution Register (shared with captable.html), so the two pages can
-  // never show conflicting splits.
-  const yatirimci_pct = reg ? reg.byKey.investor.pct : 0;
-  const osteoid_pct   = reg ? reg.byKey.osteoid.pct   : 0;
+  // Deal Pre-Money = the modeled DCF value discounted for negotiation — the
+  // model is the anchor, the discount is the concession an investor extracts
+  // for single-site execution risk (unproven at this specific venue, however
+  // de-risked the underlying technology). Floored so contributed IP/rights
+  // are never implied worth less than their own appraised value.
+  const negDiscount = (V.dcfNegotiationDiscount ?? 70) / 100;
+  const discountedDcfEur = dcfValue_eur * (1 - negDiscount);
+  const premoney_eur = Math.max(discountedDcfEur, assetFloorEur);
+  const floorBinds = assetFloorEur > discountedDcfEur;
+
+  // Post-Money = deal pre-money + actual NEW CASH raised (Lead Investor +
+  // any Doctor-Investor cash) — never Osteoid's in-kind, which is already
+  // priced into pre-money via the asset floor, not paid in as cash.
+  const investorTicketEur = inv ? inv.clinicCashEur : 0;
+  const doktorYatirimEur = V.doktorYatirim ?? 0;
+  const postmoney_eur = premoney_eur + investorTicketEur + doktorYatirimEur;
+
+  // Priced-round stake: cash parties get cash ÷ post-money; the team keeps
+  // its existing vested sweat % (capped at sweatMaxPct, same vesting clock
+  // as the Contribution Register); Osteoid takes the remainder. The
+  // Contribution Register's weighted-carpan split no longer drives stake
+  // here — it still feeds the Ownership Register table below and captable.html.
+  const yatirimci_pct = postmoney_eur > 0 ? (investorTicketEur / postmoney_eur) * 100 : 0;
+  const doktor_pct    = postmoney_eur > 0 ? (doktorYatirimEur / postmoney_eur) * 100 : 0;
+  const sweatMaxPct    = V.sweatMaxPct ?? 5;
+  const sweatVestAy    = V.sweatVestAy ?? 48;
+  const sweatCliffAy   = V.sweatCliffAy ?? 12;
+  const sweatElapsedAy = V.sweatElapsedAy ?? 0;
+  const sweatVestedFrac = sweatElapsedAy < sweatCliffAy ? 0 : Math.min(1, sweatElapsedAy / sweatVestAy);
+  const sweatFracUsed  = (V.sweatVestedToday !== false) ? sweatVestedFrac : 1;
+  const sweat_pct = sweatMaxPct * sweatFracUsed;
+  const osteoid_pct = 100 - yatirimci_pct - doktor_pct - sweat_pct;
+
+  // Single source of truth for the priced-round deal — every other stake
+  // consumer (renderGetiriTable/moicSensTable, the Control Risk warning,
+  // captable.html reconciliation) reads this instead of the Contribution
+  // Register, so the whole app can never show two different splits again.
+  window._lastDeal = {
+    premoney: premoney_eur,
+    postmoney: postmoney_eur,
+    stakes: { investor: yatirimci_pct, doctor: doktor_pct, sweat: sweat_pct, osteoid: osteoid_pct },
+    ticket: investorTicketEur,
+  };
 
   const set = (id, v) => { const e = document.getElementById(id); if(e) e.textContent = v; };
   const fmtEur = v => '€' + (Math.abs(v)/1000000).toFixed(2) + 'M';
   const fmtPct = v => '%' + v.toFixed(2);
 
   const exitValue_eur = fcf[4] > 0 ? fcf[4] * exitMult * 1000 : 0;
+  const investorMoicExit = investorTicketEur > 0 ? (exitValue_eur * (yatirimci_pct/100)) / investorTicketEur : 0;
   set('dcf_exitValue',       exitValue_eur > 0 ? fmtEur(exitValue_eur) : '—');
   set('dcf_premoney',        dcfValue_eur > 0 ? fmtEur(dcfValue_eur) : '—');
   set('dcf_assetFloor',      assetFloorEur > 0 ? fmtEur(assetFloorEur) : '—');
   set('dcf_premoney_final',  premoney_eur > 0 ? fmtEur(premoney_eur) : '—');
   set('dcf_postmoney',       fmtEur(postmoney_eur));
+  set('dcf_investor_ticket', investorTicketEur > 0 ? fmtEur(investorTicketEur) : '—');
   set('dcf_yatirimci_hisse', fmtPct(yatirimci_pct));
   set('dcf_osteoid_hisse',   fmtPct(osteoid_pct));
+  set('dcf_investor_moic_exit', investorMoicExit > 0 ? investorMoicExit.toFixed(2)+'×' : '—');
   set('dcf_core_premoney',   feeSplit ? fmtEur(feeSplit.corePremoney) : '—');
   set('dcf_fee_premoney',    feeSplit ? fmtEur(feeSplit.feePremoney) : '—');
   const feeRowEl = document.getElementById('dcfFeeSplitRow');
@@ -4503,7 +4552,7 @@ function renderDcf() {
     + '<td colspan="5" style="text-align:center;font-weight:700;">'
     + 'Σ PV = €'+(Math.round(npv)/1000).toFixed(2)+'M &nbsp;≈&nbsp; <b>'+fmtEur(dcfValue_eur)+'</b>'
     + '</td><td class="neu" style="font-size:11px;">TV: €'+(Math.round(pvTv)/1000).toFixed(2)+'M incl.</td></tr>'
-    + (floorBinds ? '<tr><td colspan="7" style="font-size:11px;color:#8a6d1a;background:#fff8e8;">⚠ Asset floor binds: pre-money used below is the asset floor ('+fmtEur(assetFloorEur)+'), not this DCF value — see KPI cards above.</td></tr>' : '');
+    + (floorBinds ? '<tr><td colspan="7" style="font-size:11px;color:#8a6d1a;background:#fff8e8;">⚠ Asset floor binds: Deal Pre-Money used below is the asset floor ('+fmtEur(assetFloorEur)+'), not the discounted DCF value ('+fmtEur(discountedDcfEur)+') — see KPI cards above.</td></tr>' : '');
 }
 
 
@@ -4511,14 +4560,14 @@ function renderDcf() {
 function renderGetiriTable() {
   const t = window._lastTotals || [];
   const fcfData = window._lastFcf;
-  const reg = window._lastRegister;
-  if (!t || t.length < 5 || !fcfData || !reg) return;
+  const deal = window._lastDeal;
+  if (!t || t.length < 5 || !fcfData || !deal) return;
 
-  // Lead investor's own cash ticket (clinic cash, not the blended Total
-  // Investment which also includes Osteoid's in-kind) and their ownership %
-  // straight from the Contribution Register — never invest/postmoney.
-  const invest    = reg.byKey.investor.valueEur;
-  const hisse_pct = reg.byKey.investor.pct / 100;
+  // Lead investor's own cash ticket and ownership % from the priced round
+  // (renderDcf's window._lastDeal) — the same numbers the hero KPI cards
+  // show, never the Contribution Register's weighted split.
+  const invest    = deal.ticket;
+  const hisse_pct = deal.stakes.investor / 100;
 
   const exitMult = V.dcfExitMult ?? 10;
 
