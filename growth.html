@@ -144,6 +144,7 @@
                 </div>
                 <span class="sl-note">Charged to every active satellite on 100% of its gross revenue, before the ownership split below — the flagship earns this fee regardless of its equity %, and bears it only pro-rata to that same %. Related-party management fees require transfer-pricing documentation (emsallere uygunluk) and are VAT-able services (unlike KDV-exempt orthosis sales) — flagged for the tax advisor, not modeled here.</span>
               </div>
+              <div class="note-box" style="margin-top:10px;margin-bottom:0;font-size:11px;">⚠ Structure assumption — confirm with tax advisor, not tax advice. <b>Subsidiary Ltd. vs. Branch (şube), per satellite:</b> Turkey has no group taxation — a subsidiary's startup losses are trapped inside its own Ltd. and can never offset the flagship's profit (only that Ltd.'s own future profit, 5-yr carryforward), while a branch's losses flow directly into the flagship's own P&amp;L and reduce its taxable profit immediately. The trade-off: a branch cannot take local investors and does not isolate liability from the flagship, while a subsidiary can raise local capital and keeps satellite-level risk out of the flagship entity. Subsidiary is the default below; switch a satellite to Branch to see its full P&amp;L (fee replaced by "n/a — internal", no minority interest) consolidate into the flagship figures. Entity structure and branch/subsidiary selection require YMM sign-off before execution.</div>
             </div>
             <label style="display:flex;align-items:center;gap:8px;margin-bottom:4px;cursor:pointer;padding:8px;background:#f0fdf4;border:1px solid #1D9E7544;border-radius:6px 6px 0 0;">
               <input type="checkbox" id="izmirToggle" onchange="toggleMerkez('izmir',this.checked)" style="width:14px;height:14px;accent-color:#1D9E75;cursor:pointer;">
@@ -151,13 +152,21 @@
               <span style="font-size:10px;color:#888;margin-left:auto;">7.1% population share (incl. surroundings)</span>
             </label>
             <div style="padding:6px 10px;background:#e8f5ee;border:1px solid #1D9E7544;border-top:none;font-size:11px;">
-              <div class="sl-row" style="margin-bottom:0;">
+              <div class="sl-row" style="margin-bottom:8px;">
+                <label style="font-size:10px;color:#1D9E75;">Satellite Entity Mode</label>
+                <div style="display:flex;gap:6px;margin-top:2px;">
+                  <button type="button" id="izmirModeBtn_sub" onclick="svSubeMi('izmir',false)" style="flex:1;font-size:10px;font-weight:700;padding:6px 8px;border-radius:5px;border:1.5px solid #1D9E75;background:#1D9E75;color:#fff;cursor:pointer;">Subsidiary Ltd.</button>
+                  <button type="button" id="izmirModeBtn_branch" onclick="svSubeMi('izmir',true)" style="flex:1;font-size:10px;font-weight:700;padding:6px 8px;border-radius:5px;border:1.5px solid #1D9E75;background:#fff;color:#1D9E75;cursor:pointer;">Branch (şube)</button>
+                </div>
+              </div>
+              <div id="izmirFlagshipPayWrap" class="sl-row" style="margin-bottom:0;">
                 <label style="font-size:10px;color:#1D9E75;">Flagship Ownership of Izmir (%) — remainder to local investors</label>
                 <div class="sl-controls">
                   <input type="range" id="s_izmirFlagshipPay" min="30" max="100" step="5" value="65" style="accent-color:#1D9E75;" oninput="sv('izmirFlagshipPay',this.value)">
                   <span class="sl-val" id="izmirFlagshipPay" style="min-width:30px;color:#1D9E75;">65</span>
                 </div>
               </div>
+              <div id="izmirSubeNote" style="display:none;font-size:10px;color:#1D9E75;padding:6px 0 0;">Branch mode: 100% of Izmir's P&amp;L (incl. any loss) consolidates into the flagship — no fee, no minority interest. See trade-off note above.</div>
             </div>
             <div id="izmirTriggerInfo" style="display:flex;align-items:center;gap:6px;padding:6px 10px;background:#e8f5ee;border:1px solid #1D9E7544;border-top:none;border-radius:0 0 6px 6px;margin-bottom:8px;font-size:10px;color:#1D9E75;"></div>
             <div id="izmirRampaWrap" style="padding: 8px; background: rgb(240, 253, 244); border-radius: 6px; margin-bottom: 8px;">
@@ -246,13 +255,21 @@
               <span style="font-size:10px;color:#888;margin-left:auto;">8.2% population share (incl. surroundings)</span>
             </label>
             <div style="padding:6px 10px;background:#f0f0ff;border:1px solid #534AB744;border-top:none;font-size:11px;">
-              <div class="sl-row" style="margin-bottom:0;">
+              <div class="sl-row" style="margin-bottom:8px;">
+                <label style="font-size:10px;color:#534AB7;">Satellite Entity Mode</label>
+                <div style="display:flex;gap:6px;margin-top:2px;">
+                  <button type="button" id="ankaraModeBtn_sub" onclick="svSubeMi('ankara',false)" style="flex:1;font-size:10px;font-weight:700;padding:6px 8px;border-radius:5px;border:1.5px solid #534AB7;background:#534AB7;color:#fff;cursor:pointer;">Subsidiary Ltd.</button>
+                  <button type="button" id="ankaraModeBtn_branch" onclick="svSubeMi('ankara',true)" style="flex:1;font-size:10px;font-weight:700;padding:6px 8px;border-radius:5px;border:1.5px solid #534AB7;background:#fff;color:#534AB7;cursor:pointer;">Branch (şube)</button>
+                </div>
+              </div>
+              <div id="ankaraFlagshipPayWrap" class="sl-row" style="margin-bottom:0;">
                 <label style="font-size:10px;color:#534AB7;">Flagship Ownership of Ankara (%) — remainder to local investors</label>
                 <div class="sl-controls">
                   <input type="range" id="s_ankaraFlagshipPay" min="30" max="100" step="5" value="65" style="accent-color:#534AB7;" oninput="sv('ankaraFlagshipPay',this.value)">
                   <span class="sl-val" id="ankaraFlagshipPay" style="min-width:30px;color:#534AB7;">65</span>
                 </div>
               </div>
+              <div id="ankaraSubeNote" style="display:none;font-size:10px;color:#534AB7;padding:6px 0 0;">Branch mode: 100% of Ankara's P&amp;L (incl. any loss) consolidates into the flagship — no fee, no minority interest. See trade-off note above.</div>
             </div>
             <div id="ankaraRampaWrap" style="padding: 8px; background: rgb(240, 240, 255); border-radius: 6px; margin-top: 8px;">
               <div style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #ddddf8;">

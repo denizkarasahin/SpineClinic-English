@@ -451,13 +451,13 @@
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin:20px 0 8px;">Exit Tax Structuring <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— shareholder-level only; corporate tax (KV) on operating profit above is unaffected</span></div>
       <div class="note-box" style="margin-bottom:12px;background:#fff8e8;border-color:#f0d080;color:#8a6d1a;">⚠ Structure assumption — confirm with tax advisor. Not tax advice. Individuals selling A.Ş. share certificates (hisse senedi/ilmühaber printed) held &gt;2 years are fully exempt from income tax on the gain (GVK mük. 80); Ltd. şirket shares never qualify for individuals regardless of holding period; corporate sellers of participation shares held 2+ years get 75% of the gain KV-exempt under KVK 5/1-e (conditions apply).</div>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:10px;">
-        <div class="sl-row">
-          <label style="font-size:10px;">Company Type</label>
+        <div class="sl-row" style="grid-column:1 / -1;">
+          <label style="font-size:10px;">Flagship entity type (A.Ş. required for GVK mük.80 investor exit exemption)</label>
           <div style="display:flex;gap:8px;margin:2px 0;">
             <button type="button" id="sirketBtn_as" onclick="svSirketTuru('as')" style="flex:1;font-size:11px;font-weight:700;padding:8px 10px;border-radius:6px;border:1.5px solid #534AB7;background:#534AB7;color:#fff;cursor:pointer;">A.Ş. (share certificates printed)</button>
             <button type="button" id="sirketBtn_ltd" onclick="svSirketTuru('ltd')" style="flex:1;font-size:11px;font-weight:700;padding:8px 10px;border-radius:6px;border:1.5px solid #534AB7;background:#fff;color:#534AB7;cursor:pointer;">Ltd.</button>
           </div>
-          <span class="sl-note">Ltd. şirket shares never qualify for the individual exemption, regardless of holding period</span>
+          <span class="sl-note">The Ltd. option is kept selectable so the cost of the wrong choice stays demonstrable — Ltd. şirket shares never qualify for the individual exemption, regardless of holding period. Flagship is locked in as A.Ş.; satellites are separate Ltd. companies (see Network Structure on the Cap Table page) and are not affected by this toggle.</span>
         </div>
         <div class="sl-row">
           <label style="font-size:10px;">Exit Year</label>
@@ -484,7 +484,8 @@
           <span class="sl-note">Month the Lead Investor's cash was actually paid in — starts the 2-year clock (month 0 = signing)</span>
         </div>
       </div>
-      <div id="exitTax_clock_chip" style="font-size:11px;font-weight:700;padding:8px 12px;border-radius:4px;border:1px solid #ccc;margin-bottom:16px;">—</div>
+      <div id="exitTax_clock_chip" style="font-size:11px;font-weight:700;padding:8px 12px;border-radius:4px;border:1px solid #ccc;margin-bottom:8px;">—</div>
+      <div id="exitTax_cert_chip" style="font-size:11px;font-weight:700;color:#8a6d1a;background:#fff8e8;border:1px solid #f0d080;border-radius:4px;padding:8px 12px;margin-bottom:16px;">☐ —</div>
 
       <!-- Cash-on-Cash Return — same after-tax FCF stream, two denominators -->
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin:16px 0 8px;">Cash-on-Cash Return <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— cumulative after-tax free cash flow ÷ capital invested</span></div>
@@ -505,7 +506,7 @@
       </div>
       <div id="exitTax_explain" style="font-size:11px;color:#555;margin-bottom:8px;">—</div>
       <div class="note-box" style="margin-bottom:8px;"><b>Return on cash invested</b> is the external investor's cash-on-cash view — capital that actually leaves an investor's pocket (clinic setup cost + working capital, read live from the breakdown table above). <b>Return on total capital</b> additionally counts Osteoid A.Ş.'s in-kind contribution (machinery when Osteoid-owned, IP/design-library license, city exclusivity) as invested capital, so it's always ≤ the cash-only return. Both use the same after-tax free cash flow stream as the DCF table above, and both react live to the equipment-ownership toggle, the in-kind sliders, the corporate tax toggle, and any P&amp;L slider that moves the Year-1 cash trough. <b>Gross Multiple</b> = cumulative FCF ÷ capital invested, before shareholder-level exit tax. <b>Net-to-Investor Multiple</b> applies the Exit Tax Structuring result above to the gain portion only — return of capital itself is never taxed.</div>
-      <div class="note-box" style="margin-bottom:16px;font-size:11px;">Tax treatment is a structuring assumption based on current Turkish law; certificate printing dates, ilmühaber validity, and KVK 5/1-e conditions must be confirmed with the YMM before signing.</div>
+      <div class="note-box" style="margin-bottom:16px;font-size:11px;">Tax treatment is a structuring assumption based on current Turkish law; certificate printing dates, ilmühaber validity, and KVK 5/1-e conditions must be confirmed with the YMM before signing. Entity structure, certificate timing, and branch/subsidiary selection require YMM sign-off before execution.</div>
     </div>
 
     <!-- Osteoid için değerleme senaryosu -->
