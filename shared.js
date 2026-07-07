@@ -2482,6 +2482,7 @@ function recalc() {
   renderKurulumDonut(gv('kira'),gv('depozito'),gv('emlakci'),tadilatTop,dekoTopV,gv('mobilya')+printerMaliyet+robotKolMaliyet,gv('ruhsat'));
   window._lastInvestBreakdown = renderInvestBreakdown(kurulumTop, rows);
   window._lastRegister = buildRegister(V);
+  refreshAgreementTerms();
 
   // ── B2B Gelir ──────────────────────────────────────────────────────────────
   const fB2R = gv('korseFB2B_stdR'), fB2Rl = gv('korseFB2B_stdRl');
@@ -3711,6 +3712,31 @@ function renderCashReturn(fcfData) {
       <td>${fmtYrs(payback)}</td>
     </tr>`;
   }).join('');
+}
+
+// Keeps the "Agreement" tab (investor.html) and the standalone agreement.html
+// page's term cards live. Both pages used to set these once inside their own
+// window.addEventListener('load', ...) handler — correct at first paint, but
+// stale forever after if any register- or fee-affecting slider moved
+// afterward without a full page reload. Called from recalc() every time, on
+// every page, so it's always current; null-safe for pages without these ids.
+function refreshAgreementTerms() {
+  const reg = window._lastRegister;
+  const tutarEl = document.getElementById('term_Y_tutar');
+  if (tutarEl && reg) {
+    // Investment Amount = actual cash paid in for shares (Lead Investor +
+    // any Doctor-Investor cash) — not V.dcfInvest, which also blends in
+    // Osteoid's in-kind contribution (that's Osteoid's own equity basis,
+    // never a cash payment).
+    const invest = reg.byKey.investor.valueEur + reg.byKey.doctorInvestor.valueEur;
+    tutarEl.textContent = '€' + Math.round(invest).toLocaleString('tr-TR');
+  }
+  const komisyonEl = document.getElementById('term_H_komisyon');
+  if (komisyonEl) {
+    const _komProds = ['stdR','stdRl','delik','sens','sensDelik'];
+    const _komAvg = _komProds.reduce((s,p) => s + (V['feeSci_'+p]??10) + (V['feeEdu_'+p]??10) + (V['feeLib_'+p]??10), 0) / _komProds.length;
+    komisyonEl.textContent = '%' + Math.round(_komAvg * 10) / 10 + ' (avg. across products)';
+  }
 }
 
 // ── CONTRIBUTION REGISTER ────────────────────────────────────────────────────

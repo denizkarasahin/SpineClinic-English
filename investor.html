@@ -591,18 +591,9 @@ window.addEventListener('load', function() {
     if (st) { st.textContent = '✓ Saved link loaded'; st.style.color = '#1a7a45'; }
   }
 
-  var invest = V.dcfInvest || 150000;
-  var tutarEl = document.getElementById('term_Y_tutar');
-  if (tutarEl) tutarEl.textContent = '€' + Math.round(invest).toLocaleString('tr-TR');
-
-  // Scientific Study + Education + Library fees are set per product on market.html;
-  // show the average combined rate across the 5 products here.
-  var komisyonEl = document.getElementById('term_H_komisyon');
-  if (komisyonEl) {
-    var _komProds = ['stdR','stdRl','delik','sens','sensDelik'];
-    var _komAvg = _komProds.reduce(function(s,p){ return s + (V['feeSci_'+p]??10) + (V['feeEdu_'+p]??10) + (V['feeLib_'+p]??10); }, 0) / _komProds.length;
-    komisyonEl.textContent = '%' + Math.round(_komAvg * 10) / 10 + ' (avg. across products)';
-  }
+  // Investment Amount / Commission Rate term cards are kept live by
+  // shared.js's refreshAgreementTerms(), called on every recalc() (not just
+  // once here on load) — see shared.js for the computation.
 
   ['Y_arac','Y_kontrol','Y_temettu','Y_raporlama','Y_onalim','Y_cikis','Y_rekabet','Y_teknoloji',
    'H_odeme','H_fatura','H_kanal','H_sure','H_gizlilik','H_fesih','H_rekabet'].forEach(function(k) {
