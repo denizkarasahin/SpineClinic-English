@@ -231,7 +231,7 @@
         <tr>
           <th style="color:#aaa;">Std-R</th><th style="color:#D85A30;">Std-Rl</th><th style="color:#1D9E75;">Perf.</th><th style="color:#534AB7;">Sens</th><th style="color:#D4537E;">S+D</th>
           <th>Gross</th><th>−Sci</th><th>−Edu</th><th>−Lib</th><th>−Material</th><th>−Royalty</th><th>Net Rev.</th>
-          <th>−Fixed</th><th>−Advert.</th><th>−Kitchen</th><th>−W.Tax</th><th>−Period/Prnt</th>
+          <th>−Fixed</th><th>−Advert.</th><th>−Kitchen</th><th>−W.Tax</th><th>−Period/YMM/Prnt</th>
         </tr>
       </thead>
       <tbody id="monthlyTbody"></tbody>
@@ -437,11 +437,13 @@ function renderFormulas() {
     '<span class="k">W.Tax</span>       = <span class="b">IF</span>(month ∈ {3,6,9,12}) → '+tf(V.stopaj)+' / 0\n\n' +
     '<span class="k">Advertising</span> = donemsel.reklam[month] × reklamCarpan\n' +
     '<span class="c">            donemsel.reklam (the draggable Periodic Costs chart) is the only advertising input;\n            reklamCarpan='+((V.reklamCarpan??1).toFixed(2))+' is a sensitivity multiplier on it, not a second budget (1.00 = no scaling)</span>\n\n' +
+    '<span class="k">YMM</span>         = donemsel.ymm[month]\n' +
+    '<span class="c">            dragged on the Periodic Costs chart (separate strip from congress/workshop/other); pulled out of the Periodic bucket below and costed here directly</span>\n\n' +
     '<span class="k">Periodic</span>    = congress[month] + workshop[month] + other[month]\n' +
     '<span class="c">            variable, dragged on the Periodic Costs chart; advertising and YMM are pulled out into their own lines</span>\n\n' +
     '<span class="k">PrinterAdd</span>  = <span class="b">IF</span>(braces > currentPrinterCap) → extraPrinter × €'+(V.printerEurFiyat||35000)+' × ₺'+(V.eurKur||53.56)+'\n' +
     '<span class="c">            capacity: '+_autoPrinterAdet()+' printer × 66 braces/mo = '+(_autoPrinterAdet()*66)+' braces/mo</span>\n\n' +
-    '<span class="d">TotalCosts</span>  = −(FixedCosts + StaffAdd + W.Tax + Advertising + Periodic + PrinterAdd + Kitchen)';
+    '<span class="d">TotalCosts</span>  = −(FixedCosts + StaffAdd + W.Tax + Advertising + YMM + Periodic + PrinterAdd + Kitchen)';
 
   document.getElementById('formulKumulatif').innerHTML =
     '<span class="c">── CUMULATIVE & TRIGGERS ────────────────────────────────────────────────────</span>\n\n' +
@@ -479,7 +481,7 @@ function renderMonthlyTable() {
     var isBas=basAy&&r.ay===basAy.ay, isPoz=pozAy&&r.ay===pozAy.ay;
     var cls=isPoz?'poz':isBas?'bas':'';
     var kk=r.k||[r.korse,0,0,0,0];
-    var donPrn=(r.kongre||0)+(r.printerEkMaliyet||0);
+    var donPrn=(r.kongre||0)+(r.ymmDon||0)+(r.printerEkMaliyet||0);
     html+='<tr class="'+cls+'">' +
       '<td class="lft">Month '+r.ay+(isBas?' ✓':isPoz?' ★':'')+'</td>' +
       '<td>'+kk[0]+'</td><td>'+kk[1]+'</td><td>'+kk[2]+'</td><td>'+kk[3]+'</td><td>'+kk[4]+'</td>' +
@@ -509,7 +511,7 @@ function renderMonthlyTable() {
   var tRek=rows.reduce(function(s,r){return s+(r.reklamS||0);},0);
   var tMutfak=rows.reduce(function(s,r){return s+(r.mutfakV||0);},0);
   var tStopaj=rows.reduce(function(s,r){return s+(r.ayStopaj||0);},0);
-  var tDonPrn=rows.reduce(function(s,r){return s+(r.kongre||0)+(r.printerEkMaliyet||0);},0);
+  var tDonPrn=rows.reduce(function(s,r){return s+(r.kongre||0)+(r.ymmDon||0)+(r.printerEkMaliyet||0);},0);
   var tpK=rows.reduce(function(s,r){var k=r.k||[0,0,0,0,0];return s.map(function(v,j){return v+k[j];});}, [0,0,0,0,0]);
   html+='<tr class="tot"><td class="lft">Total</td>' +
     '<td>'+tpK[0]+'</td><td>'+tpK[1]+'</td><td>'+tpK[2]+'</td><td>'+tpK[3]+'</td><td>'+tpK[4]+'</td>' +

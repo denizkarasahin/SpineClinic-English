@@ -23,7 +23,7 @@ document.getElementById = function(id) {
   };
 };
 
-const V = {"korseF":37800,"malzeme":50,"reklamCarpan":1.0,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.56,"kira":200000,"depozito":400000,"emlakci":400000,"m2":300,"tadilatM2":7000,"dekoM2":6750,"mobilya":300000,"ruhsat":100000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":20000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[15,15,20,25,25,33,35,41,42,50,50,55],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":30000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":1600,"mal_sens":2075,"mal_sensDelik":1250,"feeSci_stdR":10,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdR":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdR":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":40000,"pazarIstPct":30.1,"hedefOsteoidPay":40,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":true,"izmirHedefPay":30.5,"izmirUseIst":false,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":true,"ankaraHedefPay":31,"ankaraUseIst":false,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":false,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":20,"dcfGrowth":18,"dcfGrowth45":45,"dcfExitMult":10,"dcfInvest":1008662,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":12500,"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":100000,"_sen_max_kira":400000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":3500,"_sen_max_dekoM2":17000,"_sen_min_ortotistM":10000,"_sen_max_ortotistM":35000,"_sen_min_operatorM":60000,"_sen_max_operatorM":160000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3.0,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.65,"operatorM":100000,"ipLisansEur":400000,"sehirEksklusifEur":200000,"workingCapBufferEur":220000,"kvOrani":20,"vergiDahil":true,"sirketTuru":"as","exitYili":5,"kisiselVergiOrani":40,"fundAy":0,"makineKatkiOran":50,"osteoidCarpan":1.5,"yatirimciCarpan":1.0,"doktorYatirim":0,"doktorCarpan":1.5,"sweatEur":80000,"sweatVestAy":48,"sweatCliffAy":12,"sweatElapsedAy":0,"sweatMaxPct":5,"sweatCarpan":1.0,"sweatVestedToday":true,"royaltyOffsetYil":1,"royaltyOffsetPct":0,"yonetimUcretiPct":5,"izmirFlagshipPay":65,"ankaraFlagshipPay":65,"izmirSubeMi":false,"ankaraSubeMi":false,"tcmbFaiz":45,"nakdiSermayeAktif":true,"teknokentKapsam":false,"emisyonPrimiAktif":true,"nominalPayOrani":10,"feeStreamAyriMult":false,"feeExitMult":12,"_version":29};
+const V = {"korseF":37800,"malzeme":50,"reklamCarpan":1.0,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.56,"kira":200000,"depozito":400000,"emlakci":400000,"m2":300,"tadilatM2":7000,"dekoM2":6750,"mobilya":300000,"ruhsat":100000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":20000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[15,15,20,25,25,33,35,41,42,50,50,55],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":30000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":1600,"mal_sens":2075,"mal_sensDelik":1250,"feeSci_stdR":10,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdR":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdR":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":40000,"pazarIstPct":30.1,"hedefOsteoidPay":40,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":true,"izmirHedefPay":30.5,"izmirUseIst":false,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":true,"ankaraHedefPay":31,"ankaraUseIst":false,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":false,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":20,"dcfGrowth":18,"dcfGrowth45":45,"dcfExitMult":10,"dcfInvest":1008662,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":12500,"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":100000,"_sen_max_kira":400000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":3500,"_sen_max_dekoM2":17000,"_sen_min_ortotistM":10000,"_sen_max_ortotistM":35000,"_sen_min_operatorM":60000,"_sen_max_operatorM":160000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3.0,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.65,"operatorM":100000,"ipLisansEur":400000,"sehirEksklusifEur":200000,"workingCapBufferEur":220000,"kvOrani":20,"vergiDahil":true,"sirketTuru":"as","exitYili":5,"kisiselVergiOrani":40,"fundAy":0,"makineKatkiOran":50,"osteoidCarpan":1.5,"yatirimciCarpan":1.0,"doktorYatirim":0,"doktorCarpan":1.5,"sweatEur":80000,"sweatVestAy":48,"sweatCliffAy":12,"sweatElapsedAy":0,"sweatMaxPct":5,"sweatCarpan":1.0,"sweatVestedToday":true,"royaltyOffsetYil":1,"royaltyOffsetPct":0,"yonetimUcretiPct":5,"izmirFlagshipPay":65,"ankaraFlagshipPay":65,"izmirSubeMi":false,"ankaraSubeMi":false,"tcmbFaiz":45,"nakdiSermayeAktif":true,"teknokentKapsam":false,"emisyonPrimiAktif":true,"nominalPayOrani":10,"feeStreamAyriMult":false,"feeExitMult":12,"_version":30};
 // Restore state from localStorage if available; clear cache on version mismatch
 (function() {
   try {
@@ -1207,6 +1207,7 @@ function renderSabitBar(aylikKira, elektrik, internet, sarf, ortoBrut, operatorB
     { label:'2nd Intern (gross)',  val:(staj2Brut||0),     color:'#FFBE7A' },
     { label:'Electricity/Water',   val:elektrik,           color:'#1D9E75' },
     { label:'Internet/Phone',      val:internet,           color:'#888780' },
+    { label:'Consumables',         val:(sarf||0),          color:'#D4537E' },
     { label:'Kitchen',             val:(mutfak||0),        color:'#BA7517' },
     { label:'General Expenses',    val:(genelGider||0),    color:'#9F8ECC' },
     { label:'CPA / Financial Adv.',val:(ymmM||0),          color:'#8B5A2B' },
@@ -1327,6 +1328,7 @@ function renderTblChart(rows) {
       { label:'Advertising',    data: rows.map(r=>r.reklamS),                                         color:'#378ADD' },
       { label:'Kitchen',        data: rows.map(r=>r.mutfakV),                                         color:'#EF9F27' },
       { label:'Withholding',    data: rows.map(r=>r.ayStopaj),                                        color:'#9FE1CB' },
+      { label:'YMM (periodic)', data: rows.map(r=>r.ymmDon||0),                                       color:'#C9A6E8' },
       { label:'Periodic',       data: rows.map(r=>r.kongre),                                          color:'#F0997B' },
       { label:'Print Cost',     data: rows.map(r=>r.baskiTop),                                        color:'#AFA9EC' },
       { label:'Sci. Study Fee', data: rows.map(r=>Math.round(r.feeSci)),                              color:'#D4537E' },
@@ -1947,13 +1949,13 @@ function computeYear1(Vlike) {
     const ayStaj2   = korse >= _e3 ? staj2Brut  : 0;
 
     const sabitGider = aylikKira + (elektrik+internet+sarf) + ortoBrut + operatorBrut + ymmM + ayStajyer + ayDestek + ayStaj2 + genelGiderV;
-    const gider = -(sabitGider + reklamS + mutfakV + ayStopaj + kongre + printerEkMaliyet);
+    const gider = -(sabitGider + reklamS + ymmDon + mutfakV + ayStopaj + kongre + printerEkMaliyet);
     const net = gelirNet + gider;
     cumBudget += net;
     if (basAy===null && net>=0) basAy = i+1;
     if (pozAy===null && cumBudget>=0) pozAy = i+1;
 
-    rows.push({ay:i+1, korse, k, gelirBrut, feeSci, feeEdu, feeLib, baskiTop, royaltyTop, kesimTop, gelirNet, sabitGider, ayStajyer, ayDestek, ayStaj2, reklamS, mutfakV, ayStopaj, kongre, printerEkMaliyet, gider, net, cumBudget});
+    rows.push({ay:i+1, korse, k, gelirBrut, feeSci, feeEdu, feeLib, baskiTop, royaltyTop, kesimTop, gelirNet, sabitGider, ayStajyer, ayDestek, ayStaj2, reklamS, ymmDon, mutfakV, ayStopaj, kongre, printerEkMaliyet, gider, net, cumBudget});
     cumKorse += korse;
     tGelir += gelirNet; tGider += gider; tNet += net; tKorse += korse;
   }
@@ -2465,7 +2467,7 @@ function recalc() {
   const staj2Brut = _refRow.ayStaj2;
   const sabitBase = aylikKira+elektrik+internet+sarf+ortoBrut+operatorBrut+mutfakV+genelGiderV+ymmM+stajyerBrut+destekBrutBar+staj2Brut; // Month 12 reference
   document.getElementById('sabitAylik').textContent=ff(-sabitBase);
-  renderSabitBar(aylikKira, elektrik+internet, internet, sarf, ortoBrut, operatorBrut, stajyerBrut, destekBrutBar, mutfakV, genelGiderV, ymmM, staj2Brut);
+  renderSabitBar(aylikKira, elektrik, internet, sarf, ortoBrut, operatorBrut, stajyerBrut, destekBrutBar, mutfakV, genelGiderV, ymmM, staj2Brut);
 
   // Brüt maliyet göstergeleri — Operator/Expert Orthotist are always active (Month 1,
   // no threshold); Intern/Junior Orthotist/Support Staff show "Not active yet" below
@@ -2647,12 +2649,13 @@ function recalc() {
     <th style="color:#888780;">Std-NR</th><th style="color:#D85A30;">Std-Rep.</th>
     <th style="color:#1D9E75;">Perf.</th><th style="color:#534AB7;">Sens</th><th style="color:#D4537E;">Sns+Prf</th>
     <th>Gross Rev.</th><th>Sci. Study Fee</th><th>Education Fee</th><th>Library Fee</th><th>Cost</th><th>Royalty</th><th>Net Revenue</th>
-    <th>Fixed</th><th>Intern</th><th>Advertising</th><th>Kitchen</th><th>Withholding</th><th>Periodic</th><th>Printer</th>
+    <th>Fixed</th><th>Intern</th><th>Advertising</th><th>Kitchen</th><th>Withholding</th><th>Periodic/YMM</th><th>Printer</th>
     <th>Tot.Cost</th><th>Monthly Net</th><th>Cumulative</th>
   </tr></thead>`;
   const tb_rows=rows.map(r=>{
     const isBas=r.ay===basAy, isPoz=r.ay===pozAy, rc=isPoz?'r-cum':isBas?'r-bas':'';
     const kk=r.k||[r.korse,0,0,0,0];
+    const donYmm = (r.kongre||0)+(r.ymmDon||0);
     return `<tr class="${rc}">
       <td>Month ${r.ay}${isBas?' ✓':''}${isPoz?' ★':''}</td>
       <td style="color:#888780;">${kk[0]||'—'}</td><td style="color:#D85A30;">${kk[1]||'—'}</td>
@@ -2666,7 +2669,7 @@ function recalc() {
       <td class="nc">${ff(-r.sabitGider)}</td><td class="${r.ayStajyer?'nc':'zc'}">${r.ayStajyer?ff(-r.ayStajyer):'—'}</td><td class="nc">${ff(-r.reklamS)}</td>
       <td class="nc">${ff(-r.mutfakV)}</td>
       <td class="${r.ayStopaj?'nc':'zc'}">${r.ayStopaj?ff(-r.ayStopaj):'—'}</td>
-      <td class="${r.kongre?'nc':'zc'}">${r.kongre?ff(-r.kongre):'—'}</td><td class="${r.printerEkMaliyet?'nc':'zc'}">${r.printerEkMaliyet?ff(-r.printerEkMaliyet):'—'}</td>
+      <td class="${donYmm?'nc':'zc'}">${donYmm?ff(-donYmm):'—'}</td><td class="${r.printerEkMaliyet?'nc':'zc'}">${r.printerEkMaliyet?ff(-r.printerEkMaliyet):'—'}</td>
       <td class="nc">${ff(r.gider)}</td>
       <td class="${cls(r.net)}">${ff(r.net)}</td>
       <td class="${cls(r.cumBudget)}">${ff(r.cumBudget)}</td>
@@ -2683,7 +2686,7 @@ function recalc() {
   const tReklam    = rows.reduce((s,r)=>s+(r.reklamS||0),0);
   const tMutfak    = rows.reduce((s,r)=>s+(r.mutfakV||0),0);
   const tStopaj    = rows.reduce((s,r)=>s+(r.ayStopaj||0),0);
-  const tKongre    = rows.reduce((s,r)=>s+(r.kongre||0),0);
+  const tKongre    = rows.reduce((s,r)=>s+(r.kongre||0)+(r.ymmDon||0),0);
   const tPrinter   = rows.reduce((s,r)=>s+(r.printerEkMaliyet||0),0);
   const tpKk = rows.reduce((s,r)=>{const k=r.k||[0,0,0,0,0]; return s.map((v,j)=>v+k[j]);}, [0,0,0,0,0]);
   const topRow = `<tr style="background:#f0efe9;font-weight:700;">
