@@ -135,9 +135,12 @@
             <td style="font-weight:700;color:#534AB7;" id="reg_osteoid_pct">—</td>
           </tr>
           <tr>
-            <td style="text-align:left;"><b style="color:#1a7a45;">Lead Investor</b><br><span style="font-size:10px;color:#888;">Cash — 3 Milestone Tranches (breakdown below)</span></td>
+            <td style="text-align:left;"><b style="color:#1a7a45;">Lead Investor</b><br><span style="font-size:10px;color:#888;">Cash</span></td>
             <td id="reg_investor_contrib">—</td>
-            <td><span id="reg_investor_carpan_blended" style="font-size:11px;font-weight:700;color:#1a7a45;" title="Blended weight ÷ funded cash — set per tranche below, not editable here">—</span></td>
+            <td>
+              <input type="range" id="s_yatirimciCarpan" min="0.5" max="2" step="0.05" value="1" oninput="sv('yatirimciCarpan',this.value); ctRefresh();">
+              <span id="yatirimciCarpan" style="font-size:11px;font-weight:700;">1.00×</span>
+            </td>
             <td id="reg_investor_vested">100%</td>
             <td id="reg_investor_weight">—</td>
             <td style="font-weight:700;color:#1a7a45;" id="reg_investor_pct">—</td>
@@ -174,72 +177,6 @@
     </div>
     <div id="reg_sweat_cap_note" class="note-box" style="display:none;margin-bottom:16px;background:#fff8e8;border-color:#f0d080;color:#8a6d1a;"></div>
     <div id="warn_control" class="ct-warn">⚠ Control Risk: Osteoid equity falls below 50%+1. The shareholders agreement guarantees Osteoid/founder majority control at all times. Reduce non-Osteoid weights or increase Osteoid's contribution/weight.</div>
-    <div class="ct-check-row" style="margin-bottom:16px;">
-      <label><input type="checkbox" id="chk_registerTodayView" checked onchange="svRegisterTodayView(this.checked)">Show register at today's milestones &amp; vesting (vs. fully executed / fully vested)</label>
-    </div>
-    <div class="note-box" style="margin-bottom:0;font-size:11px;">This one toggle drives both the Lead Investor's funded-tranche filter and the Orthotist's sweat-equity vesting below — "today" counts only what's actually funded/vested right now; "fully executed" shows the cap table once every tranche is funded and sweat is fully vested.</div>
-
-    <!-- Lead Investor — Milestone Tranche Breakdown -->
-    <div class="party-header" style="color:#1a7a45;margin-top:24px;">Lead Investor — Milestone Tranche Breakdown</div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:12px;">
-      <div class="kpi"><div class="kpi-label">Funded to Date</div><div class="kpi-val pos" id="reg_tranche_funded">—</div></div>
-      <div class="kpi"><div class="kpi-label">Full Tranche Total</div><div class="kpi-val neu" id="reg_tranche_full">—</div></div>
-      <div class="kpi"><div class="kpi-label">Model Cash Need (Setup + WC)</div><div class="kpi-val neu" id="reg_cash_need">—</div></div>
-      <div class="kpi"><div class="kpi-label">Delta — Funded vs. Need</div><div class="kpi-val" id="reg_funding_delta">—</div></div>
-    </div>
-    <div id="warn_funding_gap" class="ct-warn">⚠ Funding gap at current milestones — funded tranches fall short of the model's derived clinic cash need (setup cost + working capital, from the Investor page breakdown).</div>
-    <div class="tbl-wrap" style="margin-bottom:8px;margin-top:10px;">
-      <table id="trancheTable">
-        <thead><tr>
-          <th style="text-align:left;">Milestone</th>
-          <th>Amount (€)</th>
-          <th>Weight × (Carpan)</th>
-          <th>Funded?</th>
-          <th>Effective Weight (€)</th>
-          <th>Resulting %</th>
-          <th>Implied Valuation</th>
-        </tr></thead>
-        <tbody id="trancheTableBody">
-          <tr id="tranche_row_1">
-            <td style="text-align:left;">
-              <div id="transheMilestone_1" contenteditable="true" style="font-weight:600;outline:none;" onblur="svTrancheMilestone(1,this)">Company formation + clinic operational</div>
-              <div id="tranche_hint_1" style="font-size:10px;color:#888;margin-top:2px;"></div>
-            </td>
-            <td><input type="range" id="s_transheAmount_1" min="0" max="300000" step="10000" value="100000" style="width:80px;vertical-align:middle;" oninput="sv('transheAmount_1',this.value); ctRefresh();"> <span id="transheAmount_1" style="font-size:11px;">100.000</span></td>
-            <td><input type="range" id="s_transheCarpan_1" min="0.5" max="2" step="0.05" value="1.30" style="width:70px;vertical-align:middle;" oninput="sv('transheCarpan_1',this.value); ctRefresh();"> <span id="transheCarpan_1" style="font-size:11px;">1.30×</span></td>
-            <td><input type="checkbox" id="chk_transheDone_1" checked onchange="svTrancheDone(1,this.checked)" style="width:15px;height:15px;accent-color:#1a7a45;cursor:pointer;"></td>
-            <td id="tranche_weight_1">—</td>
-            <td style="font-weight:700;color:#1a7a45;" id="tranche_pct_1">—</td>
-            <td id="tranche_val_1">—</td>
-          </tr>
-          <tr id="tranche_row_2">
-            <td style="text-align:left;">
-              <div id="transheMilestone_2" contenteditable="true" style="font-weight:600;outline:none;" onblur="svTrancheMilestone(2,this)">Monthly break-even reached</div>
-              <div id="tranche_hint_2" style="font-size:10px;color:#888;margin-top:2px;"></div>
-            </td>
-            <td><input type="range" id="s_transheAmount_2" min="0" max="300000" step="10000" value="50000" style="width:80px;vertical-align:middle;" oninput="sv('transheAmount_2',this.value); ctRefresh();"> <span id="transheAmount_2" style="font-size:11px;">50.000</span></td>
-            <td><input type="range" id="s_transheCarpan_2" min="0.5" max="2" step="0.05" value="1.00" style="width:70px;vertical-align:middle;" oninput="sv('transheCarpan_2',this.value); ctRefresh();"> <span id="transheCarpan_2" style="font-size:11px;">1.00×</span></td>
-            <td><input type="checkbox" id="chk_transheDone_2" onchange="svTrancheDone(2,this.checked)" style="width:15px;height:15px;accent-color:#1a7a45;cursor:pointer;"></td>
-            <td id="tranche_weight_2">—</td>
-            <td style="font-weight:700;color:#1a7a45;" id="tranche_pct_2">—</td>
-            <td id="tranche_val_2">—</td>
-          </tr>
-          <tr id="tranche_row_3">
-            <td style="text-align:left;">
-              <div id="transheMilestone_3" contenteditable="true" style="font-weight:600;outline:none;" onblur="svTrancheMilestone(3,this)">First satellite management agreement signed</div>
-              <div id="tranche_hint_3" style="font-size:10px;color:#888;margin-top:2px;"></div>
-            </td>
-            <td><input type="range" id="s_transheAmount_3" min="0" max="300000" step="10000" value="50000" style="width:80px;vertical-align:middle;" oninput="sv('transheAmount_3',this.value); ctRefresh();"> <span id="transheAmount_3" style="font-size:11px;">50.000</span></td>
-            <td><input type="range" id="s_transheCarpan_3" min="0.5" max="2" step="0.05" value="0.85" style="width:70px;vertical-align:middle;" oninput="sv('transheCarpan_3',this.value); ctRefresh();"> <span id="transheCarpan_3" style="font-size:11px;">0.85×</span></td>
-            <td><input type="checkbox" id="chk_transheDone_3" onchange="svTrancheDone(3,this.checked)" style="width:15px;height:15px;accent-color:#1a7a45;cursor:pointer;"></td>
-            <td id="tranche_weight_3">—</td>
-            <td style="font-weight:700;color:#1a7a45;" id="tranche_pct_3">—</td>
-            <td id="tranche_val_3">—</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="note-box" style="margin-bottom:16px;font-size:11px;">"Implied valuation at this tranche's terms" = total register weight ÷ that tranche's carpan — a higher carpan (more ownership per euro) implies a lower entry valuation, matching the idea that earlier, riskier money buys more per euro. Model-predicted milestones (break-even month, satellite activation) are informational chips only — the funded toggle above stays manual. "Model Cash Need" is the setup cost + working capital from the <a href="investor.html" style="color:#1a7a45;font-weight:700;">Investor &amp; Agreement</a> page's breakdown table — the tranche schedule is the actual negotiated capital plan and may run ahead of or behind it.</div>
 
     <!-- Adjust underlying contributions -->
     <div class="party-header" style="color:#534AB7;margin-top:24px;">Osteoid — Underlying Contributions</div>
@@ -272,6 +209,9 @@
         <span class="sl-note">100% = full correction; 0% = no offset (Osteoid keeps both equity and the full royalty stream)</span>
       </div>
     </div>
+
+    <div class="party-header" style="color:#1a7a45;">Lead Investor — Underlying Contribution</div>
+    <div class="note-box" style="margin-bottom:4px;">Lead Investor cash is the clinic cash total (setup + working capital + buffer) from the <a href="investor.html" style="color:#1a7a45;font-weight:700;">Investor &amp; Agreement</a> page's breakdown table — it deliberately excludes Osteoid's in-kind slice of Total Investment, so the two parties are never double counted. Flows in automatically; not adjustable here.</div>
 
     <div class="party-header" style="color:#2c7bb6;">Doctor-Investor — Underlying Contribution</div>
     <div class="sl-grid">
@@ -329,7 +269,9 @@
         <span class="sl-note">Governance cap — if the weighted contribution formula would give sweat equity more than this, it's clamped here and the other three parties are rescaled to fill the rest</span>
       </div>
     </div>
-    <div class="note-box" style="font-size:11px;">Vesting shown above follows the shared "today vs. fully executed" toggle at the top of this section, alongside the Lead Investor's tranche funding filter.</div>
+    <div class="ct-check-row">
+      <label><input type="checkbox" id="chk_sweatVestedToday" checked onchange="svSweatVestedToday(this.checked)">Show ownership at today's vesting (vs. fully vested)</label>
+    </div>
   </div>
 </div>
 
@@ -462,26 +404,14 @@
 <script>
 // ── Local setters for this page's checkboxes (register sliders all use the
 // shared sv() — see shared.js) ──────────────────────────────────────────────
-function svRegisterTodayView(checked) {
-  V.registerTodayView = checked;
+function svSweatVestedToday(checked) {
+  V.sweatVestedToday = checked;
   recalc();
   ctRefresh();
   localStorage.setItem('osteoid_V', JSON.stringify(V));
 }
 function svCtExitTaxToggle(checked) {
   V.ctExitTaxToggle = checked;
-  recalc();
-  ctRefresh();
-  localStorage.setItem('osteoid_V', JSON.stringify(V));
-}
-function svTrancheDone(i, checked) {
-  V['transheDone_' + i] = checked;
-  recalc();
-  ctRefresh();
-  localStorage.setItem('osteoid_V', JSON.stringify(V));
-}
-function svTrancheMilestone(i, el) {
-  V['transheMilestone_' + i] = el.textContent.trim();
   recalc();
   ctRefresh();
   localStorage.setItem('osteoid_V', JSON.stringify(V));
@@ -537,64 +467,17 @@ function ctRefresh() {
   var t = window._lastTotals || [];
 
   // ── Master register table ──
-  var CARPAN_SLIDER = { osteoid:'osteoidCarpan', doctorInvestor:'doktorCarpan', orthotist:'sweatCarpan' };
   var syncRow = function(key, contribEur, netEur, carpan, vestedPct, weight, pct) {
     setText('reg_' + key + '_contrib', fmtEK(contribEur));
-    if (key === 'investor') {
-      // No single inline slider — carpan is set per tranche below. Show the
-      // blended (weight ÷ funded cash) figure read-only for reference.
-      setText('reg_investor_carpan_blended', contribEur > 0 ? (weight / contribEur).toFixed(2) + '×' : '—');
-    } else {
-      var sl = document.getElementById('s_' + CARPAN_SLIDER[key]);
-      if (sl) sl.value = carpan;
-      setText(CARPAN_SLIDER[key], carpan.toFixed(2) + '×');
-    }
+    var sl = document.getElementById('s_' + { osteoid:'osteoidCarpan', investor:'yatirimciCarpan', doctorInvestor:'doktorCarpan', orthotist:'sweatCarpan' }[key]);
+    if (sl) sl.value = carpan;
+    setText({ osteoid:'osteoidCarpan', investor:'yatirimciCarpan', doctorInvestor:'doktorCarpan', orthotist:'sweatCarpan' }[key], carpan.toFixed(2) + '×');
     setText('reg_' + key + '_vested', vestedPct.toFixed(1) + '%');
     setText('reg_' + key + '_weight', fmtEK(weight));
     setText('reg_' + key + '_pct', fmtPct(pct));
   };
   reg.parties.forEach(function(p) { syncRow(p.key, p.valueEur, p.netEur, p.carpan, p.vestedPct, p.weight, p.pct); });
   setText('reg_total_weight', fmtEK(reg.totalWeight));
-
-  // ── Lead Investor — milestone tranche breakdown ──
-  var invDetail = reg.byKey.investor.detail;
-  setText('reg_tranche_funded', fmtEK(invDetail.fundedEur));
-  setText('reg_tranche_full', fmtEK(invDetail.fullEur));
-  setText('reg_cash_need', fmtEK(invDetail.clinicCashNeedEur));
-  var deltaEl = document.getElementById('reg_funding_delta');
-  if (deltaEl) {
-    var gap = invDetail.fundingGapEur;
-    deltaEl.textContent = (gap > 0 ? '−' : '+') + fmtEK(Math.abs(gap));
-    deltaEl.className = 'kpi-val ' + (gap > 0 ? 'neg' : 'pos');
-  }
-  showEl('warn_funding_gap', invDetail.fundingGapEur > 0);
-
-  var cvt = document.getElementById('chk_registerTodayView');
-  if (cvt) cvt.checked = V.registerTodayView !== false;
-
-  // Tranche rows are STATIC HTML (see #trancheTableBody below) — never
-  // innerHTML-regenerated, so a slider mid-drag never gets its DOM node
-  // replaced out from under the user. ctRefresh() only updates values/text.
-  invDetail.tranches.forEach(function(tr) {
-    var i = tr.idx;
-    var aSl = document.getElementById('s_transheAmount_' + i);
-    if (aSl) aSl.value = tr.amount;
-    setText('transheAmount_' + i, tr.amount.toLocaleString('tr-TR'));
-    var cSl = document.getElementById('s_transheCarpan_' + i);
-    if (cSl) cSl.value = tr.carpan;
-    setText('transheCarpan_' + i, tr.carpan.toFixed(2) + '×');
-    var doneCb = document.getElementById('chk_transheDone_' + i);
-    if (doneCb) doneCb.checked = tr.done;
-    var mEl = document.getElementById('transheMilestone_' + i);
-    if (mEl && document.activeElement !== mEl) mEl.textContent = tr.milestone;
-    var hintEl = document.getElementById('tranche_hint_' + i);
-    if (hintEl) hintEl.textContent = tr.modelHint || '';
-    setText('tranche_weight_' + i, fmtEK(tr.weight));
-    setText('tranche_pct_' + i, fmtPct(tr.resultingPct));
-    setText('tranche_val_' + i, fmtEK(tr.impliedValuationEur));
-    var rowEl = document.getElementById('tranche_row_' + i);
-    if (rowEl) rowEl.style.opacity = tr.done ? '1' : '0.6';
-  });
 
   var svIp = document.getElementById('sv_ip');
   if (svIp) svIp.textContent = fmtEK(gv('ipLisansEur'));
@@ -623,11 +506,8 @@ function ctRefresh() {
   var cb = document.getElementById('chk_ctExitTaxToggle');
   if (cb) cb.checked = !!V.ctExitTaxToggle;
 
-  // MOIC divides by cash actually funded to date, never the hypothetical
-  // fully-executed total — same rule as renderGetiriTable() on investor.html.
-  var investorFundedEur = reg.byKey.investor.detail.fundedEur;
   var invStakeBase = evB * reg.byKey.investor.pct / 100;
-  var moicBase = investorFundedEur > 0 ? invStakeBase / investorFundedEur : 0;
+  var moicBase = reg.byKey.investor.valueEur > 0 ? invStakeBase / reg.byKey.investor.valueEur : 0;
   setText('kpi_inv_stake_val', fmtEK(invStakeBase));
   setText('kpi_moic_base', moicBase.toFixed(1) + '×');
 
@@ -709,26 +589,19 @@ function ctRefresh() {
 // ── Init sliders from V on load ──────────────────────────────────────────────
 function ctSyncSlidersFromV() {
   [
-    ['s_osteoidCarpan','osteoidCarpan'],
+    ['s_osteoidCarpan','osteoidCarpan'], ['s_yatirimciCarpan','yatirimciCarpan'],
     ['s_doktorCarpan','doktorCarpan'], ['s_sweatCarpan','sweatCarpan'],
     ['s_makineKatkiOran','makineKatkiOran'], ['s_royaltyOffsetYil','royaltyOffsetYil'],
     ['s_royaltyOffsetPct','royaltyOffsetPct'], ['s_doktorYatirim','doktorYatirim'],
     ['s_sweatEur','sweatEur'], ['s_sweatVestAy','sweatVestAy'],
     ['s_sweatCliffAy','sweatCliffAy'], ['s_sweatElapsedAy','sweatElapsedAy'],
     ['s_sweatMaxPct','sweatMaxPct'],
-    ['s_transheAmount_1','transheAmount_1'], ['s_transheCarpan_1','transheCarpan_1'],
-    ['s_transheAmount_2','transheAmount_2'], ['s_transheCarpan_2','transheCarpan_2'],
-    ['s_transheAmount_3','transheAmount_3'], ['s_transheCarpan_3','transheCarpan_3'],
   ].forEach(function(pair) {
     var sl = document.getElementById(pair[0]);
     if (sl) sl.value = gv(pair[1]);
   });
-  [1,2,3].forEach(function(i) {
-    var cb = document.getElementById('chk_transheDone_' + i);
-    if (cb) cb.checked = V['transheDone_' + i] !== undefined ? !!V['transheDone_' + i] : (i === 1);
-  });
-  var cvt = document.getElementById('chk_registerTodayView');
-  if (cvt) cvt.checked = V.registerTodayView !== false;
+  var cvt = document.getElementById('chk_sweatVestedToday');
+  if (cvt) cvt.checked = V.sweatVestedToday !== false;
   var ctx = document.getElementById('chk_ctExitTaxToggle');
   if (ctx) ctx.checked = !!V.ctExitTaxToggle;
 }
