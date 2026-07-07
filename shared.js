@@ -2855,7 +2855,7 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
   el.innerHTML = html;
 }
 
-function renderInvestorRoadmap(el, totals, korseM1, feeIncomeRow, equityIncomeRow, minorityRow, b2bRow, fcfData) {
+function renderInvestorRoadmap(el, totals, korseM1, feeIncomeRow, equityIncomeRow, minorityRow, b2bRow, fcfData, izmirRow, ankaraRow) {
   const fmtK = v => v > 0 ? '~€' + v + 'K' : '—';
   const fmtCell = v => v > 0
     ? `<td style="text-align:right;color:#1a7a45;font-weight:600;">~€${v}K</td>`
@@ -2909,15 +2909,17 @@ function renderInvestorRoadmap(el, totals, korseM1, feeIncomeRow, equityIncomeRo
     <tbody>
       <tr><td>Istanbul C1 (private)</td>${fmtCell(korseM1[0])}${fmtCell(korseM1[1])}${fmtCell(korseM1[2])}${fmtCell(korseM1[3])}${fmtCell(korseM1[4])}${growCell(korseM1[0],korseM1[4])}</tr>
       ${b2bRow[0]>0||b2bRow[1]>0 ? `<tr><td style="color:#378ADD;">B2B — Istanbul</td>${fmtCell(b2bRow[0])}${fmtCell(b2bRow[1])}${fmtCell(b2bRow[2])}${fmtCell(b2bRow[3])}${fmtCell(b2bRow[4])}${growCell(b2bRow[0],b2bRow[4])}</tr>` : ''}
-      ${(V.izmirAktif||V.ankaraAktif) ? `<tr><td style="color:#BA7517;">Management fee income (satellites)</td>${fmtCell(feeIncomeRow[0])}${fmtCell(feeIncomeRow[1])}${fmtCell(feeIncomeRow[2])}${fmtCell(feeIncomeRow[3])}${fmtCell(feeIncomeRow[4])}${growCell(feeIncomeRow[1],feeIncomeRow[4])}</tr>` : ''}
-      ${(V.izmirAktif||V.ankaraAktif) ? `<tr><td style="color:#1D9E75;">Equity income from satellites</td>${fmtCell(equityIncomeRow[0])}${fmtCell(equityIncomeRow[1])}${fmtCell(equityIncomeRow[2])}${fmtCell(equityIncomeRow[3])}${fmtCell(equityIncomeRow[4])}${growCell(equityIncomeRow[1],equityIncomeRow[4])}</tr>` : ''}
+      ${V.izmirAktif ? `<tr><td style="color:#1D9E75;">Izmir Center <span style="font-weight:400;font-size:10px;opacity:0.7;">— satellite's own net, memo only</span></td>${fmtCell(izmirRow[0])}${fmtCell(izmirRow[1])}${fmtCell(izmirRow[2])}${fmtCell(izmirRow[3])}${fmtCell(izmirRow[4])}${growCell(izmirRow[1],izmirRow[4])}</tr>` : ''}
+      ${V.ankaraAktif ? `<tr><td style="color:#534AB7;">Ankara Center <span style="font-weight:400;font-size:10px;opacity:0.7;">— satellite's own net, memo only</span></td>${fmtCell(ankaraRow[0])}${fmtCell(ankaraRow[1])}${fmtCell(ankaraRow[2])}${fmtCell(ankaraRow[3])}${fmtCell(ankaraRow[4])}${growCell(ankaraRow[1],ankaraRow[4])}</tr>` : ''}
+      ${(V.izmirAktif||V.ankaraAktif) ? `<tr><td style="color:#BA7517;">↳ Management fee income to flagship</td>${fmtCell(feeIncomeRow[0])}${fmtCell(feeIncomeRow[1])}${fmtCell(feeIncomeRow[2])}${fmtCell(feeIncomeRow[3])}${fmtCell(feeIncomeRow[4])}${growCell(feeIncomeRow[1],feeIncomeRow[4])}</tr>` : ''}
+      ${(V.izmirAktif||V.ankaraAktif) ? `<tr><td style="color:#1D9E75;">↳ Equity income to flagship</td>${fmtCell(equityIncomeRow[0])}${fmtCell(equityIncomeRow[1])}${fmtCell(equityIncomeRow[2])}${fmtCell(equityIncomeRow[3])}${fmtCell(equityIncomeRow[4])}${growCell(equityIncomeRow[1],equityIncomeRow[4])}</tr>` : ''}
       <tr style="font-weight:700;border-top:2px solid #e0e0dc;"><td>Consolidated Total (Flagship)</td>${fmtCell(totals[0])}${fmtCell(totals[1])}${fmtCell(totals[2])}${fmtCell(totals[3])}${fmtCell(totals[4])}${growCell(totals[0],totals[4])}</tr>
       ${(V.izmirAktif||V.ankaraAktif) ? `<tr><td style="font-size:10px;color:#999;">Memo: Minority interest (local investors — not in total above)</td>${minorityRow.map(v=>`<td style="text-align:right;font-size:10px;color:#999;">${v>0?'€'+v+'K':'—'}</td>`).join('')}<td></td></tr>` : ''}
       ${fcfData ? `<tr style="border-top:1px solid #e0e0dc;"><td>${fcfData.vergiDahil?'Free cash flow (after tax)':'Free cash flow (pre-tax)'}</td>${fcfData.taxedFcf.map(fmtSignedCell).join('')}${growCell(fcfData.taxedFcf[0], fcfData.taxedFcf[4])}</tr>` : ''}
       ${fcfData && fcfData.vergiDahil ? `<tr><td style="font-size:10px;color:#999;">↳ Loss carryforward balance (year-end)</td>${fcfData.carryEnd.map(c=>`<td style="text-align:right;font-size:10px;color:#999;">${c>0?'€'+c+'K':'—'}</td>`).join('')}<td></td></tr>` : ''}
     </tbody>
   </table></div>
-  <div style="font-size:10px;color:#888;">⚠ Istanbul Y1 = gross brace revenue (before fixed operating costs — startup costs covered by raised capital). Y2–Y5 = net after all operating costs. Satellites (Izmir/Ankara) are separate, majority-owned companies — the flagship's view here is its management fee (100% of satellite gross revenue × the fee rate) plus its equity share of each satellite's profit after that fee, never the satellite's full 100% net. See <a href="captable.html" style="color:#534AB7;font-weight:700;">Cap Table</a> for the Network Structure explainer.${fcfData ? ' Free cash flow = consolidated pre-tax total (Y1 from the monthly model net of clinic-paid printer capex, Y2-5 from this projection)'+(fcfData.vergiDahil?', taxed at '+fcfData.kvOraniPct+'% corporate tax (KV) with 5-year loss carryforward. Orthosis sales are VAT-exempt (KDV Kanunu 17/4-s) — no VAT is modeled.':' — corporate tax is currently switched off.') : ''} &nbsp;<a href="growth.html" style="color:#534AB7;font-weight:700;">Full Multi-Year Model →</a></div>`;
+  <div style="font-size:10px;color:#888;">⚠ Istanbul Y1 = gross brace revenue (before fixed operating costs — startup costs covered by raised capital). Y2–Y5 = net after all operating costs. Izmir/Ankara rows show each satellite's own full net revenue for visibility once activated, but satellites are separate, majority-owned companies — they are memo lines, NOT summed into the flagship total. The flagship's actual take (in the total) is its management fee (100% of satellite gross revenue × the fee rate, indented below each satellite) plus its equity share of that satellite's profit after the fee. See <a href="captable.html" style="color:#534AB7;font-weight:700;">Cap Table</a> for the Network Structure explainer.${fcfData ? ' Free cash flow = consolidated pre-tax total (Y1 from the monthly model net of clinic-paid printer capex, Y2-5 from this projection)'+(fcfData.vergiDahil?', taxed at '+fcfData.kvOraniPct+'% corporate tax (KV) with 5-year loss carryforward. Orthosis sales are VAT-exempt (KDV Kanunu 17/4-s) — no VAT is modeled.':' — corporate tax is currently switched off.') : ''} &nbsp;<a href="growth.html" style="color:#534AB7;font-weight:700;">Full Multi-Year Model →</a></div>`;
 
   el.innerHTML = html;
 }
@@ -3191,7 +3193,7 @@ function buildProjection() {
   window._lastFcf = computeFcfStream();
   renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmirY5Gelir, ankaraY5Gelir, izmirY5Adet, ankaraY5Adet);
   const _roadmapEl = document.getElementById('investorRoadmap');
-  if (_roadmapEl) renderInvestorRoadmap(_roadmapEl, totals, korseM1, feeIncomeRow, equityIncomeRow, minorityRow, b2bRow, window._lastFcf);
+  if (_roadmapEl) renderInvestorRoadmap(_roadmapEl, totals, korseM1, feeIncomeRow, equityIncomeRow, minorityRow, b2bRow, window._lastFcf, izmirRow, ankaraRow);
   if (typeof renderDcf === 'function') { renderDcf(); renderGetiriTable(); }
   const _aktifCenterLabel = ['Istanbul'].concat(V.izmirAktif?['Izmir']:[]).concat(V.ankaraAktif?['Ankara']:[]).join(' + ');
   ['y2','y3','y4'].forEach((yid, idx) => {
@@ -3358,8 +3360,10 @@ function buildProjection() {
         <tr><td>Brace — Center 1 (private channel)</td>${fmt(korseM1[0])}${fmt(korseM1[1])}${fmt(korseM1[2])}${fmt(korseM1[3])}${fmt(korseM1[4])}${grow(korseM1[0],korseM1[4])}</tr>
         <tr><td>Brace — Center 2 (Year 2+)</td>${fmt(0)}${fmt(korseM2[1])}${fmt(korseM2[2])}${fmt(korseM2[3])}${fmt(korseM2[4])}${grow(korseM2[1],korseM2[4])}</tr>
         ${b2bRow[0] > 0 || b2bRow[1] > 0 ? `<tr><td style="color:#378ADD;">B2B — Center 1 (Istanbul)</td>${fmt(b2bRow[0])}${fmt(b2bRow[1])}${fmt(b2bRow[2])}${fmt(b2bRow[3])}${fmt(b2bRow[4])}${grow(b2bRow[0],b2bRow[4])}</tr>` : ''}
-        ${(V.izmirAktif||V.ankaraAktif) ? `<tr><td style="color:#BA7517;">Management fee income (satellites)</td>${fmt(feeIncomeRow[0])}${fmt(feeIncomeRow[1])}${fmt(feeIncomeRow[2])}${fmt(feeIncomeRow[3])}${fmt(feeIncomeRow[4])}${grow(feeIncomeRow[1],feeIncomeRow[4])}</tr>` : ''}
-        ${(V.izmirAktif||V.ankaraAktif) ? `<tr><td style="color:#1D9E75;">Equity income from satellites</td>${fmt(equityIncomeRow[0])}${fmt(equityIncomeRow[1])}${fmt(equityIncomeRow[2])}${fmt(equityIncomeRow[3])}${fmt(equityIncomeRow[4])}${grow(equityIncomeRow[1],equityIncomeRow[4])}</tr>` : ''}
+        ${V.izmirAktif  ? `<tr><td style="color:#1D9E75;">Izmir Center <span style="font-weight:400;font-size:10px;opacity:0.7;">— satellite's own net, memo only</span></td>${fmt(izmirRow[0])}${fmt(izmirRow[1])}${fmt(izmirRow[2])}${fmt(izmirRow[3])}${fmt(izmirRow[4])}${grow(izmirRow[1],izmirRow[4])}</tr>` : ''}
+        ${V.ankaraAktif ? `<tr><td style="color:#534AB7;">Ankara Center <span style="font-weight:400;font-size:10px;opacity:0.7;">— satellite's own net, memo only</span></td>${fmt(ankaraRow[0])}${fmt(ankaraRow[1])}${fmt(ankaraRow[2])}${fmt(ankaraRow[3])}${fmt(ankaraRow[4])}${grow(ankaraRow[1],ankaraRow[4])}</tr>` : ''}
+        ${(V.izmirAktif||V.ankaraAktif) ? `<tr><td style="color:#BA7517;">↳ Management fee income to flagship</td>${fmt(feeIncomeRow[0])}${fmt(feeIncomeRow[1])}${fmt(feeIncomeRow[2])}${fmt(feeIncomeRow[3])}${fmt(feeIncomeRow[4])}${grow(feeIncomeRow[1],feeIncomeRow[4])}</tr>` : ''}
+        ${(V.izmirAktif||V.ankaraAktif) ? `<tr><td style="color:#1D9E75;">↳ Equity income to flagship</td>${fmt(equityIncomeRow[0])}${fmt(equityIncomeRow[1])}${fmt(equityIncomeRow[2])}${fmt(equityIncomeRow[3])}${fmt(equityIncomeRow[4])}${grow(equityIncomeRow[1],equityIncomeRow[4])}</tr>` : ''}
 
         <tr class="total"><td>Consolidated Total — Flagship (Clinic + B2B + Satellite Fee/Equity)</td>${fmt(totals[0])}${fmt(totals[1])}${fmt(totals[2])}${fmt(totals[3])}${fmt(totals[4])}${grow(totals[0],totals[4])}</tr>
         ${(V.izmirAktif||V.ankaraAktif) ? `<tr><td style="font-size:11px;color:#999;">Memo: Minority interest — local investors (not in total above)</td>${minorityRow.map(v=>`<td style="font-size:11px;color:#999;">${v>0?'€'+v+'K':'—'}</td>`).join('')}<td style="color:#aaa;font-size:11px;">—</td></tr>` : ''}
