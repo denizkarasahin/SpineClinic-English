@@ -164,13 +164,19 @@
 
       <!-- Parametreler -->
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:16px;">
-        <div class="sl-row">
-          <label style="font-size:10px;">Discount Rate — r (%)</label>
+        <div class="sl-row" style="grid-column:1 / -1;">
+          <label style="font-size:10px;">Risk Profile → Discount Rate (%)</label>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 8px;">
+            <button type="button" id="riskBtn_32" onclick="svRiskProfile(32)" style="font-size:11px;font-weight:700;padding:7px 14px;border-radius:6px;border:1.5px solid #c94f2a;background:#fff;color:#c94f2a;cursor:pointer;">Unproven concept — 32%</button>
+            <button type="button" id="riskBtn_20" onclick="svRiskProfile(20)" style="font-size:11px;font-weight:700;padding:7px 14px;border-radius:6px;border:1.5px solid #534AB7;background:#534AB7;color:#fff;cursor:pointer;">Proven technology, new venue — 20%</button>
+            <button type="button" id="riskBtn_14" onclick="svRiskProfile(14)" style="font-size:11px;font-weight:700;padding:7px 14px;border-radius:6px;border:1.5px solid #1a7a45;background:#fff;color:#1a7a45;cursor:pointer;">Established operations — 14%</button>
+          </div>
           <div class="sl-controls">
-            <input type="range" id="s_dcfRate" min="10" max="60" step="1" value="20" oninput="svDcf('dcfRate',this.value)">
+            <input type="range" id="s_dcfRate" min="10" max="40" step="1" value="20" oninput="svDcf('dcfRate',this.value)">
             <span class="sl-val" id="dcfRate" style="min-width:40px;">20</span>
           </div>
-          <span class="sl-note">Revenue-generating healthcare venture — typical range 15–30%</span>
+          <div class="note-box" style="margin-top:8px;background:#f4f3ff;border-color:#d8d5f5;color:#3d3680;">Default profile — <b>Proven technology, new venue (20%)</b>: technology operational in 17 countries, 3,000+ braces produced, CE-marked platform; exclusive territorial rights granted; no local substitute exists. Remaining risk is single-site execution, not technology or market risk.</div>
+          <span class="sl-note">Buttons set the discount rate to a named anchor; drag the slider for anything in between (fine-control range 10–40%).</span>
         </div>
         <div class="sl-row">
           <label style="font-size:10px;">Base Exit Multiple (×) — used for DCF terminal value &amp; Base scenario</label>
@@ -178,7 +184,7 @@
             <input type="range" id="s_dcfExitMult" min="4" max="20" step="0.5" value="10" oninput="svDcf('dcfExitMult',this.value)">
             <span class="sl-val" id="dcfExitMult" style="min-width:40px;">10×</span>
           </div>
-          <span class="sl-note">EV/EBITDA at exit — typical healthcare clinic 6–12×</span>
+          <span class="sl-note">EV/EBITDA at exit — typical healthcare clinic 6–12×; a proven platform with de-risked technology and market fit commands the higher end of that range, not the low end reserved for unproven concepts. The satellite management-fee stream is valued separately, at its own (typically richer) multiple below, when the sum-of-parts toggle is on.</span>
         </div>
         <div class="sl-row">
           <label style="font-size:10px;">Corporate Tax — KV (%)</label>
@@ -216,6 +222,12 @@
           </div>
           <span class="sl-note">Reference: high-margin recurring management/royalty streams often trade at 10-18× vs. 6-12× for a capital-intensive clinic operation</span>
         </div>
+      </div>
+
+      <!-- WHY DE-RISKED (compact mirror) -->
+      <div style="margin-bottom:24px;background:#f7f7f4;border:1px solid #e0e0dc;border-radius:8px;padding:16px;">
+        <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">Why This Venture Is De-Risked</div>
+        <div style="font-size:12px;color:#555;line-height:1.7;">Not a first-time startup bet: the platform is already operational in <b>17 countries</b> with 3,000+ braces produced on a CE-marked design; the flagship holds exclusive territorial rights (currently <b id="deRisked_excl">—</b>) including satellite sub-licensing; the underlying CAD/CAM IP (currently <b id="deRisked_ip">—</b>) is proprietary and patent-backed, so local competitors cannot access or replicate it; and clinical/production workflows arrive pre-validated from existing deployments rather than being built from scratch. This is why the model prices at r = <b id="deRisked_rate">—</b> (<b id="deRisked_profile">—</b>), not the startup rate — full explainer on the <a href="captable.html" style="color:#534AB7;font-weight:700;">Cap Table</a> page.</div>
       </div>
 
       <!-- Yatırım Dökümü (Investment Breakdown) — fully derived, nothing typed here -->
@@ -268,15 +280,18 @@
       <div class="note-box" style="margin-bottom:16px;">Setup cost and working capital are read directly from the model above — they are not typed, and they move whenever a P&amp;L slider, the brace ramp, or the equipment-ownership toggle changes. The Working Capital Buffer above is the one exception: it's an additional investor-contributed reserve on top of that derived figure, not a re-estimate of it. Machinery is counted once: it appears under "Osteoid parent in-kind" only when equipment is Osteoid-owned; otherwise its cost is already inside clinic setup. <b>Total Investment</b> below is the sum used everywhere else on this page (DCF, growth table, cap table, agreement).</div>
 
       <!-- DCF Sonuç Kartları -->
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;margin-bottom:16px;" id="dcfKpiGrid">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;margin-bottom:10px;" id="dcfKpiGrid">
         <div class="kpi"><div class="kpi-label">Exit Value — Year 5</div><div class="kpi-val pos" id="dcf_exitValue" title="Year 5 EBITDA × Exit Multiple (undiscounted)">—</div></div>
-        <div class="kpi"><div class="kpi-label">Pre-Money (DCF)</div><div class="kpi-val neu" id="dcf_premoney" title="Present value of exit + cash flows, discounted at r">—</div></div>
+        <div class="kpi"><div class="kpi-label">DCF Value</div><div class="kpi-val neu" id="dcf_premoney" title="Present value of exit + cash flows, discounted at r — the pure DCF calculation, before the asset floor">—</div></div>
+        <div class="kpi"><div class="kpi-label">Asset Floor</div><div class="kpi-val neu" id="dcf_assetFloor" title="Contributed IP & rights — the register's Osteoid in-kind total (IP license + territory exclusivity + machinery when contributed)">—</div></div>
+        <div class="kpi"><div class="kpi-label">Pre-Money (higher of the two)</div><div class="kpi-val pos" id="dcf_premoney_final" title="max(DCF Value, Asset Floor) — used for Post-Money and everywhere else on this page">—</div></div>
         <div class="kpi"><div class="kpi-label">Post-Money</div><div class="kpi-val neu" id="dcf_postmoney">—</div></div>
         <div class="kpi"><div class="kpi-label">Total Investment</div><div class="kpi-val neu" id="dcfInvestDisp">—</div></div>
         <div class="kpi"><div class="kpi-label">Investor Stake</div><div class="kpi-val pos" id="dcf_yatirimci_hisse">—</div></div>
         <div class="kpi"><div class="kpi-label">Osteoid Stake</div><div class="kpi-val neu" id="dcf_osteoid_hisse">—</div></div>
         <div class="kpi"><div class="kpi-label">Cumulative Free Cash (5yr)</div><div class="kpi-val neu" id="kpi_cumFcf" title="Sum of Y1-Y5 free cash flow, taxed per the toggle above">—</div></div>
       </div>
+      <div id="dcf_floor_chip" style="display:none;font-size:11px;font-weight:700;color:#8a6d1a;background:#fff8e8;border:1px solid #f0d080;border-radius:4px;padding:8px 12px;margin-bottom:16px;">⚠ DCF is below the value of contributed assets — check whether the discount rate reflects the de-risked profile.</div>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;margin-bottom:16px;" id="dcfFeeSplitRow">
         <div class="kpi"><div class="kpi-label">Core Business Pre-Money</div><div class="kpi-val neu" id="dcf_core_premoney" title="Pre-money of the FCF stream excluding satellite management-fee income, at the main Exit Multiple">—</div></div>
         <div class="kpi"><div class="kpi-label">Fee Stream Pre-Money</div><div class="kpi-val neu" id="dcf_fee_premoney" title="Pre-money of the satellite management-fee income stream alone, at the Fee Stream Exit Multiple">—</div></div>
@@ -430,7 +445,7 @@
           </tbody>
         </table>
       </div>
-      <div class="note-box" id="dcfNote">Free Cash Flow Years 1–5 are taken directly from the 5-year projection model (same data as the Multi-Year Plan page), taxed per the Corporate Tax toggle above (25% KV by default, with 5-year loss carryforward — no VAT is modeled, orthosis sales are VAT-exempt under KDV Kanunu 17/4-s). Terminal value uses the Gordon Growth Model: TV = FCF₅ × (1+g) / (r−g). Pre-money = NPV(FCF₁₋₅) + PV(Terminal Value). Post-Money = Pre-Money + Total Investment (a valuation reference only). <b>Investor Stake / Osteoid Stake</b> come from the Ownership Register above (Contribution Register — adjust the weight/vesting sliders there), not from Investment/Post-Money. Discount rate (r) reflects the risk premium for an early-stage Turkey healthcare venture.</div>
+      <div class="note-box" id="dcfNote">Free Cash Flow Years 1–5 are taken directly from the 5-year projection model (same data as the Multi-Year Plan page), taxed per the Corporate Tax toggle above (25% KV by default, with 5-year loss carryforward — no VAT is modeled, orthosis sales are VAT-exempt under KDV Kanunu 17/4-s). Terminal value uses an exit-multiple method: TV = FCF₅ × Exit Multiple — computed on the <i>same after-tax</i> FCF₅ as the interim cash flows (a proxy for an after-tax earnings multiple, not a pre-tax number an exit buyer would never actually receive). DCF Value = NPV(FCF₁₋₅) + PV(Terminal Value). <b>Pre-Money</b> is the higher of DCF Value and the Asset Floor (see cards above) — contributed IP and territorial rights are never implied to be worth less than their own appraised value. Post-Money = Pre-Money + Total Investment (a valuation reference only). <b>Investor Stake / Osteoid Stake</b> come from the Ownership Register above (Contribution Register — adjust the weight/vesting sliders there), not from Investment/Post-Money. Discount rate (r) is set by the Risk Profile control above, not a generic early-stage-startup premium — see "Why This Venture Is De-Risked" below.</div>
 
       <!-- Cash-on-Cash Return — same after-tax FCF stream, two denominators -->
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin:16px 0 8px;">Cash-on-Cash Return <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— cumulative after-tax free cash flow ÷ capital invested</span></div>

@@ -23,7 +23,7 @@ document.getElementById = function(id) {
   };
 };
 
-const V = {"korseF":37800,"malzeme":50,"reklamCarpan":1.0,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.56,"kira":200000,"depozito":400000,"emlakci":400000,"m2":300,"tadilatM2":7000,"dekoM2":6750,"mobilya":300000,"ruhsat":100000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":20000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[10,10,15,20,25,25,30,35,35,45,45,50],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":30000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":1600,"mal_sens":2075,"mal_sensDelik":1250,"feeSci_stdR":10,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdR":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdR":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":40000,"pazarIstPct":19,"hedefOsteoidPay":40,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":false,"izmirHedefPay":25,"izmirUseIst":false,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":false,"ankaraHedefPay":25,"ankaraUseIst":false,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":false,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":30,"dcfGrowth":18,"dcfGrowth45":45,"dcfExitMult":10,"dcfInvest":1505000,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":12500,"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":100000,"_sen_max_kira":400000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":3500,"_sen_max_dekoM2":17000,"_sen_min_ortotistM":10000,"_sen_max_ortotistM":35000,"_sen_min_operatorM":60000,"_sen_max_operatorM":160000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3.0,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.65,"operatorM":100000,"ipLisansEur":500000,"sehirEksklusifEur":206415,"workingCapBufferEur":100000,"kvOrani":25,"vergiDahil":true,"makineKatkiOran":100,"osteoidCarpan":1.0,"yatirimciCarpan":1.0,"doktorYatirim":0,"doktorCarpan":1.0,"sweatEur":80000,"sweatVestAy":48,"sweatCliffAy":12,"sweatElapsedAy":0,"sweatMaxPct":5,"sweatCarpan":1.0,"sweatVestedToday":true,"royaltyOffsetYil":5,"royaltyOffsetPct":100,"yonetimUcretiPct":5,"izmirFlagshipPay":65,"ankaraFlagshipPay":65,"feeStreamAyriMult":false,"feeExitMult":12,"_version":24};
+const V = {"korseF":37800,"malzeme":50,"reklamCarpan":1.0,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.56,"kira":200000,"depozito":400000,"emlakci":400000,"m2":300,"tadilatM2":7000,"dekoM2":6750,"mobilya":300000,"ruhsat":100000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":20000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[10,10,15,20,25,25,30,35,35,45,45,50],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":30000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":1600,"mal_sens":2075,"mal_sensDelik":1250,"feeSci_stdR":10,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdR":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdR":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":40000,"pazarIstPct":19,"hedefOsteoidPay":40,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":false,"izmirHedefPay":25,"izmirUseIst":false,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":false,"ankaraHedefPay":25,"ankaraUseIst":false,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":false,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":20,"dcfGrowth":18,"dcfGrowth45":45,"dcfExitMult":10,"dcfInvest":1505000,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":12500,"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":100000,"_sen_max_kira":400000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":3500,"_sen_max_dekoM2":17000,"_sen_min_ortotistM":10000,"_sen_max_ortotistM":35000,"_sen_min_operatorM":60000,"_sen_max_operatorM":160000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3.0,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.65,"operatorM":100000,"ipLisansEur":500000,"sehirEksklusifEur":206415,"workingCapBufferEur":100000,"kvOrani":25,"vergiDahil":true,"makineKatkiOran":100,"osteoidCarpan":1.0,"yatirimciCarpan":1.0,"doktorYatirim":0,"doktorCarpan":1.0,"sweatEur":80000,"sweatVestAy":48,"sweatCliffAy":12,"sweatElapsedAy":0,"sweatMaxPct":5,"sweatCarpan":1.0,"sweatVestedToday":true,"royaltyOffsetYil":5,"royaltyOffsetPct":100,"yonetimUcretiPct":5,"izmirFlagshipPay":65,"ankaraFlagshipPay":65,"feeStreamAyriMult":false,"feeExitMult":12,"_version":25};
 // Restore state from localStorage if available; clear cache on version mismatch
 (function() {
   try {
@@ -367,6 +367,15 @@ function renderPazarChartB2B(rowsB2B) {
 }
 
 
+// Named anchors on the discount-rate slider — dragging the slider to a value
+// off these three just shows no button as active; svRiskProfile() is only
+// reached by clicking one of the buttons. Declared before initDynamic() since
+// it calls _refreshRiskProfile() (which reads this) at page load.
+const RISK_PROFILE_ANCHORS = [
+  { rate: 32, id: 'riskBtn_32', color: '#c94f2a', label: 'Unproven concept' },
+  { rate: 20, id: 'riskBtn_20', color: '#534AB7', label: 'Proven technology, new venue' },
+  { rate: 14, id: 'riskBtn_14', color: '#1a7a45', label: 'Established operations' },
+];
 function initDynamic() {
   _refreshPrinterDisplay();
   svRobotKol();
@@ -387,6 +396,14 @@ function initDynamic() {
     const sp = document.getElementById(k);
     if (sl) sl.value = V[k];
     if (sp) sp.textContent = V[k];
+  });
+  _refreshRiskProfile();
+  // Contribution Register sliders (moved from captable.html to investor.html)
+  ['osteoidCarpan','yatirimciCarpan','doktorCarpan','sweatCarpan','makineKatkiOran',
+   'royaltyOffsetYil','royaltyOffsetPct','doktorYatirim','sweatEur','sweatVestAy',
+   'sweatCliffAy','sweatElapsedAy','sweatMaxPct'].forEach(function(k) {
+    const sl = document.getElementById('s_'+k);
+    if (sl) sl.value = V[k];
   });
   const _exitSl = document.getElementById('s_dcfExitMult');
   const _exitSp = document.getElementById('dcfExitMult');
@@ -3195,6 +3212,7 @@ function buildProjection() {
   const _roadmapEl = document.getElementById('investorRoadmap');
   if (_roadmapEl) renderInvestorRoadmap(_roadmapEl, totals, korseM1, feeIncomeRow, equityIncomeRow, minorityRow, b2bRow, window._lastFcf, izmirRow, ankaraRow);
   if (typeof renderDcf === 'function') { renderDcf(); renderGetiriTable(); }
+  renderDeRiskedNarrative();
   const _aktifCenterLabel = ['Istanbul'].concat(V.izmirAktif?['Izmir']:[]).concat(V.ankaraAktif?['Ankara']:[]).join(' + ');
   ['y2','y3','y4'].forEach((yid, idx) => {
     const i = idx + 1; // totals/korseCountTotal index: Year 2=1, Year 3=2, Year 4=3
@@ -4006,10 +4024,37 @@ function computeDcfPremoney(fcf, r, exitMult) {
   return { tv, pv, pvTv, npv, premoney_eur: Math.round(npv) * 1000 };
 }
 
+function _refreshRiskProfile() {
+  const rate = V.dcfRate ?? 20;
+  RISK_PROFILE_ANCHORS.forEach(a => {
+    const btn = document.getElementById(a.id);
+    if (!btn) return;
+    const active = Math.abs(rate - a.rate) < 0.001;
+    btn.style.background = active ? a.color : '#fff';
+    btn.style.color = active ? '#fff' : a.color;
+  });
+}
+// Feeds both the full "Why This Venture Is De-Risked" section (captable.html)
+// and its compact mirror (investor.html) — null-safe getElementById means
+// each page only populates the ids it actually has.
+function renderDeRiskedNarrative() {
+  const rate = V.dcfRate ?? 20;
+  const anchor = RISK_PROFILE_ANCHORS.find(a => Math.abs(rate - a.rate) < 0.001);
+  const set = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+  set('deRisked_rate', rate + '%');
+  set('deRisked_profile', anchor ? anchor.label : 'Custom');
+  set('deRisked_ip', '€' + Math.round(gv('ipLisansEur')).toLocaleString('en-US'));
+  set('deRisked_excl', '€' + Math.round(gv('sehirEksklusifEur')).toLocaleString('en-US'));
+}
+function svRiskProfile(rate) {
+  svDcf('dcfRate', rate);
+  const sl = document.getElementById('s_dcfRate');
+  if (sl) sl.value = rate;
+}
 function svDcf(key, val) {
   val = parseFloat(val);
   V[key] = val;
-  if (key === 'dcfRate')     { const e = document.getElementById('dcfRate');     if(e) e.textContent = val; }
+  if (key === 'dcfRate')     { const e = document.getElementById('dcfRate');     if(e) e.textContent = val; _refreshRiskProfile(); }
   if (key === 'dcfGrowth')   { const e = document.getElementById('dcfGrowth');   if(e) e.textContent = val; }
   if (key === 'dcfGrowth45') { const e = document.getElementById('dcfGrowth45'); if(e) e.textContent = val; }
   if (key === 'dcfExitMult') { const e = document.getElementById('dcfExitMult'); if(e) e.textContent = val + '×'; }
@@ -4033,6 +4078,11 @@ function renderDcf() {
 
   const { tv, pv, pvTv, npv, premoney_eur: blendedPremoney_eur } = computeDcfPremoney(fcf, r, exitMult);
 
+  // TV is computed on after-tax FCF (fcf[4] is already taxed per the toggle
+  // above) — it's a proxy for an earnings multiple, so terminal value should
+  // reflect the same after-tax basis as the interim cash flows, not a
+  // pre-tax number the exit buyer would never actually receive.
+
   // Sum-of-parts toggle: value the management-fee income stream at its own
   // (higher) multiple instead of blending it into the main business's
   // multiple. Fee income is high-margin, asset-light and recurring (no
@@ -4053,7 +4103,19 @@ function renderDcf() {
     const feeCalc = computeDcfPremoney(feeAfterTax, r, feeExitMult);
     feeSplit = { corePremoney: mainCalc.premoney_eur, feePremoney: feeCalc.premoney_eur };
   }
-  const premoney_eur = feeSplit ? (feeSplit.corePremoney + feeSplit.feePremoney) : blendedPremoney_eur;
+  const dcfValue_eur = feeSplit ? (feeSplit.corePremoney + feeSplit.feePremoney) : blendedPremoney_eur;
+
+  // Asset floor: the register's Osteoid in-kind total (IP license + territory
+  // exclusivity + machinery when contributed, at makineKatkiOran) — reg.valueEur
+  // is the gross figure buildRegister() already computes, before the royalty
+  // offset, so this stays consistent with the register with no separate calc.
+  // Pre-money used everywhere below (post-money, KPI cards, downstream tables)
+  // is never allowed to imply the contributed assets are worth less than their
+  // own appraised value.
+  const assetFloorEur = reg ? reg.byKey.osteoid.valueEur : 0;
+  const premoney_eur = Math.max(dcfValue_eur, assetFloorEur);
+  const floorBinds = assetFloorEur > dcfValue_eur;
+
   const postmoney_eur = premoney_eur + invest;
   // Ownership % no longer comes from invest/postmoney — it comes from the
   // Contribution Register (shared with captable.html), so the two pages can
@@ -4067,7 +4129,9 @@ function renderDcf() {
 
   const exitValue_eur = fcf[4] > 0 ? fcf[4] * exitMult * 1000 : 0;
   set('dcf_exitValue',       exitValue_eur > 0 ? fmtEur(exitValue_eur) : '—');
-  set('dcf_premoney',        premoney_eur > 0 ? fmtEur(premoney_eur) : '—');
+  set('dcf_premoney',        dcfValue_eur > 0 ? fmtEur(dcfValue_eur) : '—');
+  set('dcf_assetFloor',      assetFloorEur > 0 ? fmtEur(assetFloorEur) : '—');
+  set('dcf_premoney_final',  premoney_eur > 0 ? fmtEur(premoney_eur) : '—');
   set('dcf_postmoney',       fmtEur(postmoney_eur));
   set('dcf_yatirimci_hisse', fmtPct(yatirimci_pct));
   set('dcf_osteoid_hisse',   fmtPct(osteoid_pct));
@@ -4075,6 +4139,8 @@ function renderDcf() {
   set('dcf_fee_premoney',    feeSplit ? fmtEur(feeSplit.feePremoney) : '—');
   const feeRowEl = document.getElementById('dcfFeeSplitRow');
   if (feeRowEl) feeRowEl.style.display = feeSplit ? '' : 'none';
+  const floorChipEl = document.getElementById('dcf_floor_chip');
+  if (floorChipEl) floorChipEl.style.display = floorBinds ? 'block' : 'none';
 
   const cumFcf = fcfData.cum[4];
   const cumEl = document.getElementById('kpi_cumFcf');
@@ -4101,10 +4167,11 @@ function renderDcf() {
     + '<tr><td>PV (Discounted, €M)</td>'
     + disc.map(v=>'<td class="'+(v>=0?'pc':'nc')+'">€'+(Math.abs(v)/1000).toFixed(2)+'M</td>').join('')
     + '<td class="neu">€'+(Math.round(pvTv)/1000).toFixed(2)+'M</td></tr>'
-    + '<tr class="r-cum"><td><b>Pre-Money (NPV)</b></td>'
+    + '<tr class="r-cum"><td><b>DCF Value (NPV)</b></td>'
     + '<td colspan="5" style="text-align:center;font-weight:700;">'
-    + 'Σ PV = €'+(Math.round(npv)/1000).toFixed(2)+'M &nbsp;≈&nbsp; <b>'+fmtEur(premoney_eur)+'</b>'
-    + '</td><td class="neu" style="font-size:11px;">TV: €'+(Math.round(pvTv)/1000).toFixed(2)+'M incl.</td></tr>';
+    + 'Σ PV = €'+(Math.round(npv)/1000).toFixed(2)+'M &nbsp;≈&nbsp; <b>'+fmtEur(dcfValue_eur)+'</b>'
+    + '</td><td class="neu" style="font-size:11px;">TV: €'+(Math.round(pvTv)/1000).toFixed(2)+'M incl.</td></tr>'
+    + (floorBinds ? '<tr><td colspan="7" style="font-size:11px;color:#8a6d1a;background:#fff8e8;">⚠ Asset floor binds: pre-money used below is the asset floor ('+fmtEur(assetFloorEur)+'), not this DCF value — see KPI cards above.</td></tr>' : '');
 }
 
 
