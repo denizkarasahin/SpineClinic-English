@@ -447,6 +447,45 @@
       </div>
       <div class="note-box" id="dcfNote">Free Cash Flow Years 1–5 are taken directly from the 5-year projection model (same data as the Multi-Year Plan page), taxed per the Corporate Tax toggle above (25% KV by default, with 5-year loss carryforward — no VAT is modeled, orthosis sales are VAT-exempt under KDV Kanunu 17/4-s). Terminal value uses an exit-multiple method: TV = FCF₅ × Exit Multiple — computed on the <i>same after-tax</i> FCF₅ as the interim cash flows (a proxy for an after-tax earnings multiple, not a pre-tax number an exit buyer would never actually receive). DCF Value = NPV(FCF₁₋₅) + PV(Terminal Value). <b>Pre-Money</b> is the higher of DCF Value and the Asset Floor (see cards above) — contributed IP and territorial rights are never implied to be worth less than their own appraised value. Post-Money = Pre-Money + Total Investment (a valuation reference only). <b>Investor Stake / Osteoid Stake</b> come from the Ownership Register above (Contribution Register — adjust the weight/vesting sliders there), not from Investment/Post-Money. Discount rate (r) is set by the Risk Profile control above, not a generic early-stage-startup premium — see "Why This Venture Is De-Risked" below.</div>
 
+      <!-- Exit Tax Structuring (Shareholder-Level) -->
+      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin:20px 0 8px;">Exit Tax Structuring <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— shareholder-level only; corporate tax (KV) on operating profit above is unaffected</span></div>
+      <div class="note-box" style="margin-bottom:12px;background:#fff8e8;border-color:#f0d080;color:#8a6d1a;">⚠ Structure assumption — confirm with tax advisor. Not tax advice. Individuals selling A.Ş. share certificates (hisse senedi/ilmühaber printed) held &gt;2 years are fully exempt from income tax on the gain (GVK mük. 80); Ltd. şirket shares never qualify for individuals regardless of holding period; corporate sellers of participation shares held 2+ years get 75% of the gain KV-exempt under KVK 5/1-e (conditions apply).</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:10px;">
+        <div class="sl-row">
+          <label style="font-size:10px;">Company Type</label>
+          <div style="display:flex;gap:8px;margin:2px 0;">
+            <button type="button" id="sirketBtn_as" onclick="svSirketTuru('as')" style="flex:1;font-size:11px;font-weight:700;padding:8px 10px;border-radius:6px;border:1.5px solid #534AB7;background:#534AB7;color:#fff;cursor:pointer;">A.Ş. (share certificates printed)</button>
+            <button type="button" id="sirketBtn_ltd" onclick="svSirketTuru('ltd')" style="flex:1;font-size:11px;font-weight:700;padding:8px 10px;border-radius:6px;border:1.5px solid #534AB7;background:#fff;color:#534AB7;cursor:pointer;">Ltd.</button>
+          </div>
+          <span class="sl-note">Ltd. şirket shares never qualify for the individual exemption, regardless of holding period</span>
+        </div>
+        <div class="sl-row">
+          <label style="font-size:10px;">Exit Year</label>
+          <div class="sl-controls">
+            <input type="range" id="s_exitYili" min="2" max="8" step="1" value="5" oninput="sv('exitYili',this.value)">
+            <span class="sl-val" id="exitYili" style="min-width:40px;">5</span>
+          </div>
+          <span class="sl-note">Year of assumed exit — drives the 2-year holding-period clock only, not the 5-year cash-flow projection itself</span>
+        </div>
+        <div class="sl-row">
+          <label style="font-size:10px;">Personal Income Tax Rate (%)</label>
+          <div class="sl-controls">
+            <input type="range" id="s_kisiselVergiOrani" min="15" max="40" step="1" value="40" oninput="sv('kisiselVergiOrani',this.value)">
+            <span class="sl-val" id="kisiselVergiOrani" style="min-width:40px;">40</span>
+          </div>
+          <span class="sl-note">Applied to the gain portion of the payout only when the exemption doesn't apply — default is the top bracket, as a conservative assumption</span>
+        </div>
+        <div class="sl-row">
+          <label style="font-size:10px;">Shares Funded (month)</label>
+          <div class="sl-controls">
+            <input type="range" id="s_fundAy" min="0" max="36" step="1" value="0" oninput="sv('fundAy',this.value)">
+            <span class="sl-val" id="fundAy" style="min-width:40px;">0</span>
+          </div>
+          <span class="sl-note">Month the Lead Investor's cash was actually paid in — starts the 2-year clock (month 0 = signing)</span>
+        </div>
+      </div>
+      <div id="exitTax_clock_chip" style="font-size:11px;font-weight:700;padding:8px 12px;border-radius:4px;border:1px solid #ccc;margin-bottom:16px;">—</div>
+
       <!-- Cash-on-Cash Return — same after-tax FCF stream, two denominators -->
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin:16px 0 8px;">Cash-on-Cash Return <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— cumulative after-tax free cash flow ÷ capital invested</span></div>
       <div class="tbl-wrap" style="margin-bottom:10px;">
@@ -455,15 +494,18 @@
             <th style="text-align:left;">Basis</th>
             <th>Capital invested</th>
             <th>Cumulative FCF (5yr)</th>
-            <th>Multiple</th>
+            <th>Gross Multiple</th>
+            <th>Net-to-Investor Multiple</th>
             <th>Simple payback</th>
           </tr></thead>
           <tbody id="cashReturnBody">
-            <tr><td colspan="5" style="text-align:center;color:#aaa;font-size:11px;">Will be calculated once the model loads...</td></tr>
+            <tr><td colspan="6" style="text-align:center;color:#aaa;font-size:11px;">Will be calculated once the model loads...</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="note-box" style="margin-bottom:16px;"><b>Return on cash invested</b> is the external investor's cash-on-cash view — capital that actually leaves an investor's pocket (clinic setup cost + working capital, read live from the breakdown table above). <b>Return on total capital</b> additionally counts Osteoid A.Ş.'s in-kind contribution (machinery when Osteoid-owned, IP/design-library license, city exclusivity) as invested capital, so it's always ≤ the cash-only return. Both use the same after-tax free cash flow stream as the DCF table above, and both react live to the equipment-ownership toggle, the in-kind sliders, the corporate tax toggle, and any P&amp;L slider that moves the Year-1 cash trough.</div>
+      <div id="exitTax_explain" style="font-size:11px;color:#555;margin-bottom:8px;">—</div>
+      <div class="note-box" style="margin-bottom:8px;"><b>Return on cash invested</b> is the external investor's cash-on-cash view — capital that actually leaves an investor's pocket (clinic setup cost + working capital, read live from the breakdown table above). <b>Return on total capital</b> additionally counts Osteoid A.Ş.'s in-kind contribution (machinery when Osteoid-owned, IP/design-library license, city exclusivity) as invested capital, so it's always ≤ the cash-only return. Both use the same after-tax free cash flow stream as the DCF table above, and both react live to the equipment-ownership toggle, the in-kind sliders, the corporate tax toggle, and any P&amp;L slider that moves the Year-1 cash trough. <b>Gross Multiple</b> = cumulative FCF ÷ capital invested, before shareholder-level exit tax. <b>Net-to-Investor Multiple</b> applies the Exit Tax Structuring result above to the gain portion only — return of capital itself is never taxed.</div>
+      <div class="note-box" style="margin-bottom:16px;font-size:11px;">Tax treatment is a structuring assumption based on current Turkish law; certificate printing dates, ilmühaber validity, and KVK 5/1-e conditions must be confirmed with the YMM before signing.</div>
     </div>
 
     <!-- Osteoid için değerleme senaryosu -->
