@@ -189,8 +189,8 @@
         <div class="sl-row">
           <label style="font-size:10px;">Corporate Tax — KV (%)</label>
           <div class="sl-controls">
-            <input type="range" id="s_kvOrani" min="0" max="30" step="1" value="25" oninput="sv('kvOrani',this.value)">
-            <span class="sl-val" id="kvOrani" style="min-width:40px;">25</span>
+            <input type="range" id="s_kvOrani" min="0" max="30" step="1" value="20" oninput="sv('kvOrani',this.value)">
+            <span class="sl-val" id="kvOrani" style="min-width:40px;">20</span>
           </div>
           <span class="sl-note">Klinik Ltd. rate — no TGB exemption (that belongs solely to Osteoid A.Ş.)</span>
         </div>
@@ -248,24 +248,24 @@
         <div class="sl-row">
           <label style="font-size:10px;">IP / Design-Library License (€)</label>
           <div class="sl-controls">
-            <input type="range" id="s_ipLisansEur" min="100000" max="500000" step="10000" value="500000" oninput="sv('ipLisansEur',this.value)">
-            <span class="sl-val" id="ipLisansEur" style="min-width:70px;">500.000</span>
+            <input type="range" id="s_ipLisansEur" min="100000" max="500000" step="10000" value="400000" oninput="sv('ipLisansEur',this.value)">
+            <span class="sl-val" id="ipLisansEur" style="min-width:70px;">400.000</span>
           </div>
           <span class="sl-note">Osteoid parent in-kind — value of the Turnkey/Bracesys design library license</span>
         </div>
         <div class="sl-row">
           <label style="font-size:10px;">Master Development Rights / Territory Exclusivity (€)</label>
           <div class="sl-controls">
-            <input type="range" id="s_sehirEksklusifEur" min="100000" max="500000" step="10000" value="206415" oninput="sv('sehirEksklusifEur',this.value)">
-            <span class="sl-val" id="sehirEksklusifEur" style="min-width:70px;">206.415</span>
+            <input type="range" id="s_sehirEksklusifEur" min="100000" max="500000" step="10000" value="200000" oninput="sv('sehirEksklusifEur',this.value)">
+            <span class="sl-val" id="sehirEksklusifEur" style="min-width:70px;">200.000</span>
           </div>
           <span class="sl-note">Osteoid parent in-kind — exclusive rights within the flagship's city, now including the right to sub-license satellite companies elsewhere in the territory (see Network Structure on the Cap Table page)</span>
         </div>
         <div class="sl-row">
           <label style="font-size:10px;">Working Capital Buffer (€)</label>
           <div class="sl-controls">
-            <input type="range" id="s_workingCapBufferEur" min="100000" max="500000" step="10000" value="100000" oninput="sv('workingCapBufferEur',this.value)">
-            <span class="sl-val" id="workingCapBufferEur" style="min-width:70px;">100.000</span>
+            <input type="range" id="s_workingCapBufferEur" min="100000" max="500000" step="10000" value="220000" oninput="sv('workingCapBufferEur',this.value)">
+            <span class="sl-val" id="workingCapBufferEur" style="min-width:70px;">220.000</span>
           </div>
           <span class="sl-note">Extra cash reserve on top of the model-derived working capital below — a safety margin, not a re-estimate of the trough</span>
         </div>
@@ -321,8 +321,8 @@
         <div class="sl-row">
           <label style="font-size:10px;">Osteoid Weight ×</label>
           <div class="sl-controls">
-            <input type="range" id="s_osteoidCarpan" min="0.5" max="2" step="0.05" value="1" oninput="sv('osteoidCarpan',this.value)">
-            <span class="sl-val" id="osteoidCarpan" style="min-width:50px;">1.00×</span>
+            <input type="range" id="s_osteoidCarpan" min="0.5" max="2" step="0.05" value="1.5" oninput="sv('osteoidCarpan',this.value)">
+            <span class="sl-val" id="osteoidCarpan" style="min-width:50px;">1.50×</span>
           </div>
           <span class="sl-note">Osteoid's IP · Machinery · Exclusivity contribution weight</span>
         </div>
@@ -337,8 +337,8 @@
         <div class="sl-row">
           <label style="font-size:10px;">Doctor-Investor Weight ×</label>
           <div class="sl-controls">
-            <input type="range" id="s_doktorCarpan" min="0.5" max="2" step="0.05" value="1" oninput="sv('doktorCarpan',this.value)">
-            <span class="sl-val" id="doktorCarpan" style="min-width:50px;">1.00×</span>
+            <input type="range" id="s_doktorCarpan" min="0.5" max="2" step="0.05" value="1.5" oninput="sv('doktorCarpan',this.value)">
+            <span class="sl-val" id="doktorCarpan" style="min-width:50px;">1.50×</span>
           </div>
           <span class="sl-note">Above 1.0× sweetens an early/strategic doctor-partner's entry; below 1.0× charges a premium for a later entrant</span>
         </div>
@@ -353,24 +353,24 @@
         <div class="sl-row">
           <label style="font-size:10px;">Machinery Contributed at % of Market Price</label>
           <div class="sl-controls">
-            <input type="range" id="s_makineKatkiOran" min="0" max="100" step="5" value="100" oninput="sv('makineKatkiOran',this.value)">
-            <span class="sl-val" id="makineKatkiOran" style="min-width:50px;">100</span>
+            <input type="range" id="s_makineKatkiOran" min="0" max="100" step="5" value="50" oninput="sv('makineKatkiOran',this.value)">
+            <span class="sl-val" id="makineKatkiOran" style="min-width:50px;">50</span>
           </div>
           <span class="sl-note">Only counted when equipment ownership is Osteoid-owned (Setup/Expenses page toggle); the machinery figure itself is live from the printer/robot-arm price sliders</span>
         </div>
         <div class="sl-row">
           <label style="font-size:10px;">Royalty Offset Horizon (years)</label>
           <div class="sl-controls">
-            <input type="range" id="s_royaltyOffsetYil" min="1" max="10" step="1" value="5" oninput="sv('royaltyOffsetYil',this.value)">
-            <span class="sl-val" id="royaltyOffsetYil" style="min-width:40px;">5</span>
+            <input type="range" id="s_royaltyOffsetYil" min="1" max="10" step="1" value="1" oninput="sv('royaltyOffsetYil',this.value)">
+            <span class="sl-val" id="royaltyOffsetYil" style="min-width:40px;">1</span>
           </div>
           <span class="sl-note">Osteoid already extracts a per-brace royalty + cutting fee in perpetuity — this offsets its equity claim by that cash stream's value over N years (royalty is currently €<span id="royaltyOffsetRateNote">0</span>/brace — €0 is a valid scenario and makes this a no-op)</span>
         </div>
         <div class="sl-row">
           <label style="font-size:10px;">Royalty Offset Applied (%)</label>
           <div class="sl-controls">
-            <input type="range" id="s_royaltyOffsetPct" min="0" max="100" step="5" value="100" oninput="sv('royaltyOffsetPct',this.value)">
-            <span class="sl-val" id="royaltyOffsetPct" style="min-width:40px;">100</span>
+            <input type="range" id="s_royaltyOffsetPct" min="0" max="100" step="5" value="0" oninput="sv('royaltyOffsetPct',this.value)">
+            <span class="sl-val" id="royaltyOffsetPct" style="min-width:40px;">0</span>
           </div>
           <span class="sl-note">100% = full correction; 0% = no offset (Osteoid keeps both equity and the full royalty stream)</span>
         </div>
