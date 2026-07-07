@@ -23,7 +23,7 @@ document.getElementById = function(id) {
   };
 };
 
-const V = {"korseF":37800,"malzeme":50,"reklamCarpan":1.0,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.56,"kira":200000,"depozito":400000,"emlakci":400000,"m2":300,"tadilatM2":7000,"dekoM2":6750,"mobilya":300000,"ruhsat":100000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":20000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[10,10,15,20,25,25,30,35,35,45,45,50],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":30000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":1600,"mal_sens":2075,"mal_sensDelik":1250,"feeSci_stdR":10,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdR":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdR":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":40000,"pazarIstPct":19,"hedefOsteoidPay":40,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":false,"izmirHedefPay":25,"izmirUseIst":false,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":false,"ankaraHedefPay":25,"ankaraUseIst":false,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":false,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":30,"dcfGrowth":18,"dcfGrowth45":45,"dcfExitMult":10,"dcfInvest":1505000,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":12500,"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":100000,"_sen_max_kira":400000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":3500,"_sen_max_dekoM2":17000,"_sen_min_ortotistM":10000,"_sen_max_ortotistM":35000,"_sen_min_operatorM":60000,"_sen_max_operatorM":160000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3.0,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.65,"operatorM":100000,"ipLisansEur":500000,"sehirEksklusifEur":206415,"workingCapBufferEur":100000,"kvOrani":25,"vergiDahil":true,"_version":19};
+const V = {"korseF":37800,"malzeme":50,"reklamCarpan":1.0,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.56,"kira":200000,"depozito":400000,"emlakci":400000,"m2":300,"tadilatM2":7000,"dekoM2":6750,"mobilya":300000,"ruhsat":100000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":20000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[10,10,15,20,25,25,30,35,35,45,45,50],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":30000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":1600,"mal_sens":2075,"mal_sensDelik":1250,"feeSci_stdR":10,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdR":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdR":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":40000,"pazarIstPct":19,"hedefOsteoidPay":40,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":false,"izmirHedefPay":25,"izmirUseIst":false,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":false,"ankaraHedefPay":25,"ankaraUseIst":false,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":false,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":30,"dcfGrowth":18,"dcfGrowth45":45,"dcfExitMult":10,"dcfInvest":1505000,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":12500,"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":100000,"_sen_max_kira":400000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":3500,"_sen_max_dekoM2":17000,"_sen_min_ortotistM":10000,"_sen_max_ortotistM":35000,"_sen_min_operatorM":60000,"_sen_max_operatorM":160000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3.0,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.65,"operatorM":100000,"ipLisansEur":500000,"sehirEksklusifEur":206415,"workingCapBufferEur":100000,"kvOrani":25,"vergiDahil":true,"makineKatkiOran":100,"osteoidCarpan":1.0,"yatirimciCarpan":1.0,"doktorYatirim":0,"doktorCarpan":1.0,"sweatEur":80000,"sweatVestAy":48,"sweatCliffAy":12,"sweatElapsedAy":0,"sweatMaxPct":5,"sweatCarpan":1.0,"sweatVestedToday":true,"royaltyOffsetYil":5,"royaltyOffsetPct":100,"ctExitTaxToggle":true,"_version":20};
 // Restore state from localStorage if available; clear cache on version mismatch
 (function() {
   try {
@@ -2481,6 +2481,7 @@ function recalc() {
   document.getElementById('kurulumTop').textContent=ff(kurulumTop);
   renderKurulumDonut(gv('kira'),gv('depozito'),gv('emlakci'),tadilatTop,dekoTopV,gv('mobilya')+printerMaliyet+robotKolMaliyet,gv('ruhsat'));
   window._lastInvestBreakdown = renderInvestBreakdown(kurulumTop, rows);
+  window._lastRegister = buildRegister(V);
 
   // ── B2B Gelir ──────────────────────────────────────────────────────────────
   const fB2R = gv('korseFB2B_stdR'), fB2Rl = gv('korseFB2B_stdRl');
@@ -3712,7 +3713,164 @@ function renderCashReturn(fcfData) {
   }).join('');
 }
 
+// ── CONTRIBUTION REGISTER ────────────────────────────────────────────────────
+// Single source of truth for ownership % — shared by captable.html (editable
+// master table, one row per party with inline multiplier sliders) and
+// investor.html (read-only mirror + DCF/return payout calcs). Every
+// negotiable bargaining term here is a V-backed slider; nothing is hardcoded.
+//
+// pct_i = (value_i × carpan_i × vestedFraction_i) / Σ(same), then the
+// orthotist's sweat-equity pct is clamped to V.sweatMaxPct and the remaining
+// three parties are rescaled (preserving their relative ratios) to fill the
+// rest — a governance cap, not part of the organic contribution-weighting
+// formula.
+//
+// Reads window._lastInvestBreakdown (set by renderInvestBreakdown, always
+// called earlier in the same recalc() pass) for the clinic-cash / machinery
+// figures — same "reads a shared window global" convention already used by
+// computeFcfStream() — so this never re-derives (and risks diverging from)
+// the investment breakdown's own trough/machinery math.
+function buildRegister(V) {
+  const inv = window._lastInvestBreakdown;
+  if (!inv) return null;
+  const Y1 = computeYear1(V);
+  const eurK = V.eurKur ?? 50;
+
+  // ── Osteoid (parent) in-kind — machinery only counted when Osteoid owns it
+  // (ekipmanOsteoidden), scaled by the negotiable "contributed at X% of
+  // market" slider; same machinery figure renderInvestBreakdown already uses.
+  const ekipmanOsteoidden = V.ekipmanOsteoidden !== false;
+  const printerAdet = V.printerAdetManual !== undefined ? V.printerAdetManual : _autoPrinterAdet();
+  const machineryFullEur = printerAdet * (V.printerEurFiyat ?? 35000) + (V.robotKolAktif ? (V.robotKolEurFiyat ?? 30000) : 0);
+  const makineOran = (V.makineKatkiOran ?? 100) / 100;
+  const machineryContribEur = ekipmanOsteoidden ? machineryFullEur * makineOran : 0;
+  const ipEur = V.ipLisansEur ?? 500000;
+  const exclEur = V.sehirEksklusifEur ?? 206415;
+  const osteoidRawEur = machineryContribEur + ipEur + exclEur;
+
+  // Royalty + cutting-fee double-dip offset: Osteoid already extracts these as
+  // a perpetual cash stream from the clinic P&L, so its equity claim is
+  // reduced by the (undiscounted) PV of that stream over the offset horizon —
+  // live off actual Year-1 royalty/cutting totals, not a typed placeholder.
+  // Royalty €0 (the committed default) makes this a no-op, same as €0 being a
+  // valid royalty scenario elsewhere in the model.
+  const royaltyY1Eur = Y1.rows.reduce((s,r)=>s+(r.royaltyTop||0),0) / eurK;
+  const cuttingY1Eur = Y1.rows.reduce((s,r)=>s+(r.kesimTop||0),0) / eurK;
+  const royaltyOffsetYil = V.royaltyOffsetYil ?? 5;
+  const royaltyOffsetPct = (V.royaltyOffsetPct ?? 100) / 100;
+  const royaltyOffsetEur = (royaltyY1Eur + cuttingY1Eur) * royaltyOffsetYil * royaltyOffsetPct;
+
+  const osteoidNetEur = osteoidRawEur - royaltyOffsetEur; // can go negative if offset > contribution
+  const osteoidCarpan = V.osteoidCarpan ?? 1.0;
+  const osteoidWeight = Math.max(0, osteoidNetEur) * osteoidCarpan;
+
+  // ── Lead investor cash — the actual external cash raised (clinic setup +
+  // working capital + buffer), deliberately EXCLUDING Osteoid's in-kind slice
+  // of Total Investment so the two parties' contributions are never double
+  // counted in the register.
+  const investorRawEur = inv.clinicCashEur;
+  const yatirimciCarpan = V.yatirimciCarpan ?? 1.0;
+  const investorWeight = Math.max(0, investorRawEur) * yatirimciCarpan;
+
+  // ── Doctor-investor cash — separate from the (equity-free) referral
+  // channel; a doctor putting in actual cash as a co-investor.
+  const doktorRawEur = V.doktorYatirim ?? 0;
+  const doktorCarpan = V.doktorCarpan ?? 1.0;
+  const doktorWeight = Math.max(0, doktorRawEur) * doktorCarpan;
+
+  // ── Orthotist / operator sweat equity — 0 before the cliff, then linear
+  // monthly vesting; "vested today" toggle switches the display between
+  // today's vested value and the fully-vested target.
+  const sweatEur = V.sweatEur ?? 80000;
+  const vestAy = V.sweatVestAy ?? 48;
+  const cliffAy = V.sweatCliffAy ?? 12;
+  const elapsedAy = V.sweatElapsedAy ?? 0;
+  const vestedFrac = elapsedAy < cliffAy ? 0 : Math.min(1, elapsedAy / vestAy);
+  const sweatVestedToday = V.sweatVestedToday !== false;
+  const sweatFracUsed = sweatVestedToday ? vestedFrac : 1;
+  const sweatRawEur = sweatEur * sweatFracUsed;
+  const sweatCarpan = V.sweatCarpan ?? 1.0;
+  const sweatWeight = Math.max(0, sweatRawEur) * sweatCarpan;
+
+  const totalWeight = osteoidWeight + investorWeight + doktorWeight + sweatWeight;
+  let pO = 0, pI = 0, pD = 0, pR = 0;
+  if (totalWeight > 0) {
+    pO = osteoidWeight  / totalWeight * 100;
+    pI = investorWeight / totalWeight * 100;
+    pD = doktorWeight   / totalWeight * 100;
+    pR = sweatWeight     / totalWeight * 100;
+  }
+
+  // Sweat cap: clamp to V.sweatMaxPct, renormalize the other three so they
+  // still sum to (100 - cap), preserving their relative ratios.
+  const sweatMaxPct = V.sweatMaxPct ?? 5;
+  let capApplied = false;
+  if (pR > sweatMaxPct) {
+    capApplied = true;
+    const remaining = 100 - sweatMaxPct;
+    const otherSum = pO + pI + pD;
+    const scale = otherSum > 0 ? remaining / otherSum : 0;
+    pO *= scale; pI *= scale; pD *= scale;
+    pR = sweatMaxPct;
+  }
+  // Floating-point safety net — force an exact 100 total.
+  const sum2 = pO + pI + pD + pR;
+  if (sum2 > 0 && Math.abs(sum2 - 100) > 1e-9) {
+    const fix = 100 / sum2;
+    pO *= fix; pI *= fix; pD *= fix; pR *= fix;
+  }
+
+  const parties = [
+    { key:'osteoid', label:'Osteoid (Parent) — IP · Machinery · Exclusivity', short:'Osteoid', color:'#534AB7',
+      valueEur: osteoidRawEur, netEur: osteoidNetEur, carpan: osteoidCarpan, vestedPct: 100,
+      weight: osteoidWeight, pct: pO,
+      detail: { machineryFullEur, machineryContribEur, ipEur, exclEur, royaltyOffsetEur, makineOran: makineOran*100 } },
+    { key:'investor', label:'Lead Investor — Cash', short:'Investor', color:'#1a7a45',
+      valueEur: investorRawEur, netEur: investorRawEur, carpan: yatirimciCarpan, vestedPct: 100,
+      weight: investorWeight, pct: pI },
+    { key:'doctorInvestor', label:'Doctor-Investor — Cash', short:'Doctor-Investor', color:'#2c7bb6',
+      valueEur: doktorRawEur, netEur: doktorRawEur, carpan: doktorCarpan, vestedPct: 100,
+      weight: doktorWeight, pct: pD },
+    { key:'orthotist', label:'Orthotist / Operators — Sweat Equity', short:'Orthotist', color:'#BA7517',
+      valueEur: sweatEur, netEur: sweatRawEur, carpan: sweatCarpan, vestedPct: Math.round(sweatFracUsed*1000)/10,
+      weight: sweatWeight, pct: pR,
+      detail: { vestedFrac, sweatFracUsed, capApplied, sweatMaxPct } },
+  ];
+
+  return { parties, totalWeight, capApplied, sweatMaxPct,
+    byKey: parties.reduce((m,p)=>{ m[p.key]=p; return m; }, {}) };
+}
+
+// Read-only mirror of the Contribution Register on investor.html — the master
+// (editable, slider-driven) table lives on captable.html; this just renders
+// whatever buildRegister() already computed, so the two pages can never show
+// different splits.
+function renderOwnershipMirror(reg) {
+  const tbody = document.getElementById('ownershipMirrorBody');
+  if (!tbody) return;
+  if (!reg) { tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:#aaa;font-size:11px;">Will be calculated once the model loads...</td></tr>'; return; }
+  const fmtEur = v => '€' + Math.round(v).toLocaleString('en-US');
+  tbody.innerHTML = reg.parties.map(p => `<tr>
+      <td style="text-align:left;color:${p.color};font-weight:700;">${p.label}</td>
+      <td>${fmtEur(p.netEur)}</td>
+      <td>${p.carpan.toFixed(2)}×</td>
+      <td style="font-weight:700;color:${p.color};">${p.pct.toFixed(2)}%</td>
+    </tr>`).join('')
+    + `<tr style="background:#f0efe9;font-weight:700;"><td>Total</td><td>—</td><td>—</td><td>100.00%</td></tr>`;
+}
+
 // ── DCF DEĞERLEMESİ ──────────────────────────────────────────────────────────
+// Shared by renderDcf() (investor.html) and captable.html's reconciliation
+// section — same taxed FCF stream, same formula, called from both places
+// instead of two copies of the same math that could quietly drift apart.
+function computeDcfPremoney(fcf, r, exitMult) {
+  const tv = fcf[4] > 0 ? Math.round(fcf[4] * exitMult) : 0;
+  const pv = fcf.map((cf, i) => cf / Math.pow(1 + r, i + 1));
+  const pvTv = tv / Math.pow(1 + r, 5);
+  const npv = pv.reduce((s, v) => s + v, 0) + pvTv; // €K
+  return { tv, pv, pvTv, npv, premoney_eur: Math.round(npv) * 1000 };
+}
+
 function svDcf(key, val) {
   val = parseFloat(val);
   V[key] = val;
@@ -3732,25 +3890,19 @@ function renderDcf() {
   const r          = (V.dcfRate ?? 28) / 100;
   const exitMult   = V.dcfExitMult ?? 10;
   const invest     = V.dcfInvest ?? 150000;
+  const reg        = window._lastRegister;
 
   // Same taxed FCF stream shown in the investor projection table (buildProjection
   // → computeFcfStream) — DCF and the displayed FCF row can never diverge.
   const fcf = fcfData.taxedFcf;
 
-  // Terminal değer — EV/EBITDA exit multiple: TV = Year5_EBITDA × multiple (€K)
-  const tv = fcf[4] > 0 ? Math.round(fcf[4] * exitMult) : 0;
-
-  // PV hesabı
-  const pv  = fcf.map((cf, i) => cf / Math.pow(1 + r, i + 1));
-  const pvTv = tv  / Math.pow(1 + r, 5);
-  const npv  = pv.reduce((s, v) => s + v, 0) + pvTv;
-
-  // Pre-money €K → €
-  const premoney_eur_k = Math.round(npv);  // €K
-  const premoney_eur = premoney_eur_k * 1000;
+  const { tv, pv, pvTv, npv, premoney_eur } = computeDcfPremoney(fcf, r, exitMult);
   const postmoney_eur = premoney_eur + invest;
-  const yatirimci_pct = postmoney_eur > 0 ? (invest / postmoney_eur * 100) : 0;
-  const osteoid_pct   = 100 - yatirimci_pct;
+  // Ownership % no longer comes from invest/postmoney — it comes from the
+  // Contribution Register (shared with captable.html), so the two pages can
+  // never show conflicting splits.
+  const yatirimci_pct = reg ? reg.byKey.investor.pct : 0;
+  const osteoid_pct   = reg ? reg.byKey.osteoid.pct   : 0;
 
   const set = (id, v) => { const e = document.getElementById(id); if(e) e.textContent = v; };
   const fmtEur = v => '€' + (Math.abs(v)/1000000).toFixed(2) + 'M';
@@ -3768,6 +3920,7 @@ function renderDcf() {
   if (cumEl) cumEl.textContent = (cumFcf>=0?'€':'-€') + Math.abs(cumFcf).toLocaleString('en-US') + 'K';
 
   renderCashReturn(fcfData);
+  renderOwnershipMirror(reg);
 
   // Tablo
   const tbody = document.getElementById('dcfTableBody');
@@ -3798,25 +3951,20 @@ function renderDcf() {
 function renderGetiriTable() {
   const t = window._lastTotals || [];
   const fcfData = window._lastFcf;
-  if (!t || t.length < 5 || !fcfData) return;
+  const reg = window._lastRegister;
+  if (!t || t.length < 5 || !fcfData || !reg) return;
 
-  const invest    = V.dcfInvest ?? 150000;
+  // Lead investor's own cash ticket (clinic cash, not the blended Total
+  // Investment which also includes Osteoid's in-kind) and their ownership %
+  // straight from the Contribution Register — never invest/postmoney.
+  const invest    = reg.byKey.investor.valueEur;
+  const hisse_pct = reg.byKey.investor.pct / 100;
 
-  // Pre-money (DCF) — same taxed FCF stream as renderDcf, so the two never diverge
-  const r        = (V.dcfRate    ?? 28) / 100;
   const exitMult = V.dcfExitMult ?? 10;
-  const fcf  = fcfData.taxedFcf;
-  const tv   = fcf[4] > 0 ? Math.round(fcf[4] * exitMult) : 0;
-  const pv   = fcf.map((cf,i)=>cf/Math.pow(1+r,i+1));
-  const pvTv = tv/Math.pow(1+r,5);
-  const npv  = pv.reduce((s,v)=>s+v,0)+pvTv;  // €K
-  const premoney_eur = Math.round(npv * 1000);
-  const postmoney_eur = premoney_eur + invest;
-  const hisse_pct = postmoney_eur > 0 ? invest / postmoney_eur : 0;
 
   // Year 5 EBITDA (€) — pre-tax, since EV/EBITDA multiples are conventionally
   // applied to EBITDA, not after-tax cash flow (kept separate from the taxed
-  // FCF stream used for the DCF NPV above).
+  // FCF stream renderDcf's own NPV uses).
   const y5ebitda_eur = (t[4] ?? 0) * 1000;
 
   // Scenarios offset from the same exitMult used for the DCF terminal value
@@ -3856,7 +4004,8 @@ function renderGetiriTable() {
   }).join('');
 
   // "For 3× MOIC" target row — shows what EV / exit multiple is required
-  const target3x_ev   = 3 * postmoney_eur;
+  // (general form: payout = EV × hisse_pct = 3×invest  =>  EV = 3×invest/hisse_pct)
+  const target3x_ev   = hisse_pct > 0 ? 3 * invest / hisse_pct : 0;
   const target3x_mult = y5ebitda_eur > 0 ? (target3x_ev / y5ebitda_eur).toFixed(1) : '—';
   const target3x_pout = Math.round(target3x_ev * hisse_pct);
   const targetRow = `<tr style="border-top:2px dashed #a89ff7;background:#f4f3ff;">

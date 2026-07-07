@@ -21,6 +21,8 @@
 .party-header { font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:1px; margin:20px 0 10px; }
 .ct-check-row { display:flex; align-items:center; gap:8px; margin:12px 0 0; }
 .ct-check-row label { font-size:11px; font-weight:700; color:#555; cursor:pointer; display:flex; align-items:center; gap:7px; }
+#regTable td, #regTable th { text-align:center; }
+#regTable input[type="range"] { width:80px; vertical-align:middle; }
 </style>
 </head>
 <body>
@@ -32,150 +34,195 @@
   <div class="inv-header-left">
     <div class="inv-logo">Osteoid Centers — Investor Dashboard</div>
     <div class="inv-title">Cap Table &amp; Ownership Model</div>
-    <div class="inv-sub">Contribution-based valuation — derives pre-money and ownership split from what each party brings to the table. All sliders are live; every number updates instantly.</div>
+    <div class="inv-sub">Contribution Register — one shared model (with the Investor page) that derives ownership split from what each party actually brings to the table. All sliders are live; every number updates instantly.</div>
   </div>
   <div class="inv-header-right">
     <div class="inv-badge">Interactive Model</div>
     <div class="inv-meta">
-      <span>Method</span> Contribution Basis<br>
-      <span>Parties</span> 4 (Osteoid · Investor · Doctors · Orthotist)<br>
-      <span>Rounds</span> R1 close + R2 dilution modelled
+      <span>Method</span> Contribution Register<br>
+      <span>Parties</span> 4 (Osteoid · Lead Investor · Doctor-Investor · Orthotist)
     </div>
   </div>
 </div>
 
-<!-- ── SECTION 1: Contributions ────────────────────────────────────────────── -->
+<!-- ── SECTION 1: Contribution Register ────────────────────────────────────── -->
 <div class="section">
-  <div class="section-header open" onclick="tog(this)"><h2>Contributions — What Each Party Brings</h2><span class="tog">▾</span></div>
+  <div class="section-header open" onclick="tog(this)"><h2>Contribution Register — What Each Party Brings</h2><span class="tog">▾</span></div>
   <div class="section-body" style="display:block;">
-    <div class="note-box" style="margin-bottom:16px;">All contributions valued in €K. Non-cash items (IP, exclusivity, channel) are appraised at estimated fair value for equity purposes. These are assumptions and subject to negotiation.</div>
+    <div class="note-box" style="margin-bottom:16px;">This register is the single source of ownership % for both this page and the Investor page — they can never show a different split. Contribution values in €. Non-cash items (IP, exclusivity, sweat equity) are appraised at estimated fair value for equity purposes; the weight multipliers (×) are the negotiable "how much is this worth relative to face value" term for each party — both above and below 1.0× are valid, testable live.</div>
 
-    <!-- Osteoid -->
-    <div class="party-header" style="color:#534AB7;">Osteoid (Parent) — IP, Machinery &amp; City Exclusivity</div>
+    <div class="tbl-wrap" style="margin-bottom:8px;">
+      <table id="regTable">
+        <thead><tr>
+          <th style="text-align:left;">Party</th>
+          <th>Contribution (€)</th>
+          <th>Weight ×</th>
+          <th>Vested %</th>
+          <th>Effective Weight (€)</th>
+          <th>Ownership %</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td style="text-align:left;"><b style="color:#534AB7;">Osteoid (Parent)</b><br><span style="font-size:10px;color:#888;">IP · Machinery · Exclusivity</span></td>
+            <td id="reg_osteoid_contrib">—</td>
+            <td>
+              <input type="range" id="s_osteoidCarpan" min="0.5" max="2" step="0.05" value="1" oninput="sv('osteoidCarpan',this.value); ctRefresh();">
+              <span id="osteoidCarpan" style="font-size:11px;font-weight:700;">1.00×</span>
+            </td>
+            <td id="reg_osteoid_vested">100%</td>
+            <td id="reg_osteoid_weight">—</td>
+            <td style="font-weight:700;color:#534AB7;" id="reg_osteoid_pct">—</td>
+          </tr>
+          <tr>
+            <td style="text-align:left;"><b style="color:#1a7a45;">Lead Investor</b><br><span style="font-size:10px;color:#888;">Cash</span></td>
+            <td id="reg_investor_contrib">—</td>
+            <td>
+              <input type="range" id="s_yatirimciCarpan" min="0.5" max="2" step="0.05" value="1" oninput="sv('yatirimciCarpan',this.value); ctRefresh();">
+              <span id="yatirimciCarpan" style="font-size:11px;font-weight:700;">1.00×</span>
+            </td>
+            <td id="reg_investor_vested">100%</td>
+            <td id="reg_investor_weight">—</td>
+            <td style="font-weight:700;color:#1a7a45;" id="reg_investor_pct">—</td>
+          </tr>
+          <tr>
+            <td style="text-align:left;"><b style="color:#2c7bb6;">Doctor-Investor</b><br><span style="font-size:10px;color:#888;">Cash</span></td>
+            <td id="reg_doctorInvestor_contrib">—</td>
+            <td>
+              <input type="range" id="s_doktorCarpan" min="0.5" max="2" step="0.05" value="1" oninput="sv('doktorCarpan',this.value); ctRefresh();">
+              <span id="doktorCarpan" style="font-size:11px;font-weight:700;">1.00×</span>
+            </td>
+            <td id="reg_doctorInvestor_vested">100%</td>
+            <td id="reg_doctorInvestor_weight">—</td>
+            <td style="font-weight:700;color:#2c7bb6;" id="reg_doctorInvestor_pct">—</td>
+          </tr>
+          <tr>
+            <td style="text-align:left;"><b style="color:#BA7517;">Orthotist / Operators</b><br><span style="font-size:10px;color:#888;">Sweat Equity</span></td>
+            <td id="reg_orthotist_contrib">—</td>
+            <td>
+              <input type="range" id="s_sweatCarpan" min="0.5" max="2" step="0.05" value="1" oninput="sv('sweatCarpan',this.value); ctRefresh();">
+              <span id="sweatCarpan" style="font-size:11px;font-weight:700;">1.00×</span>
+            </td>
+            <td id="reg_orthotist_vested">—</td>
+            <td id="reg_orthotist_weight">—</td>
+            <td style="font-weight:700;color:#BA7517;" id="reg_orthotist_pct">—</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr style="background:#f0efe9;font-weight:700;">
+            <td style="text-align:left;">Total</td><td>—</td><td>—</td><td>—</td><td id="reg_total_weight">—</td><td>100.00%</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div id="reg_sweat_cap_note" class="note-box" style="display:none;margin-bottom:16px;background:#fff8e8;border-color:#f0d080;color:#8a6d1a;"></div>
+    <div id="warn_control" class="ct-warn">⚠ Control Risk: Osteoid equity falls below 50%+1. The shareholders agreement guarantees Osteoid/founder majority control at all times. Reduce non-Osteoid weights or increase Osteoid's contribution/weight.</div>
+
+    <!-- Adjust underlying contributions -->
+    <div class="party-header" style="color:#534AB7;margin-top:24px;">Osteoid — Underlying Contributions</div>
+    <div style="background:#f4f3ff;border:1px solid #d8d5f5;border-radius:6px;padding:10px 12px;font-size:11px;color:#3d3680;margin-bottom:10px;">
+      IP License <strong id="sv_ip">€500K</strong> and City Exclusivity <strong id="sv_excl">€206K</strong> are set on the <a href="investor.html" style="color:#534AB7;font-weight:700;">Investor &amp; Agreement</a> page and flow in automatically — not duplicated here.
+    </div>
     <div class="sl-grid">
       <div class="sl-row">
-        <label>IP &amp; Software Value (€K)</label>
-        <div style="background:#f4f3ff;border:1px solid #d8d5f5;border-radius:6px;padding:10px 12px;font-size:11px;color:#3d3680;">
-          <strong id="sv_ip" style="color:#534AB7;font-size:13px;">€500K</strong> — set on the <a href="investor.html" style="color:#534AB7;font-weight:700;">Investor &amp; Agreement</a> page (IP / Design-Library License slider), flows in automatically.
-        </div>
-        <span class="sl-note">AI platform, CAD/CAM, Turnkey — proprietary clinical software and production toolchain</span>
-      </div>
-      <div class="sl-row">
-        <label>Machinery Contributed (€K)</label>
+        <label>Machinery Contributed at % of Market Price</label>
         <div class="sl-controls">
-          <input type="range" id="sl_mach" min="0" max="200" step="2.5" oninput="ctSet('mach',this.value)">
-          <span class="sl-val" id="sv_mach">€35K</span>
+          <input type="range" id="s_makineKatkiOran" min="0" max="100" step="5" value="100" oninput="sv('makineKatkiOran',this.value); ctRefresh();">
+          <span class="sl-val" id="makineKatkiOran">100</span>
         </div>
-        <span class="sl-note">3D printer contributed at 50% of market price (€70K market → €35K contribution) — independent assumption, not linked to the Investor page's full-price machinery valuation</span>
+        <span class="sl-note">Only counted when equipment ownership is Osteoid-owned (Investor page toggle) — 50% reproduces the old "contributed at half of market" assumption; the machinery figure itself (printer count × price + robot arm) is live from the Investor/Setup pages</span>
       </div>
       <div class="sl-row">
-        <label>City Exclusivity Value (€K)</label>
-        <div style="background:#f4f3ff;border:1px solid #d8d5f5;border-radius:6px;padding:10px 12px;font-size:11px;color:#3d3680;">
-          <strong id="sv_excl" style="color:#534AB7;font-size:13px;">€206K</strong> — set on the <a href="investor.html" style="color:#534AB7;font-weight:700;">Investor &amp; Agreement</a> page (City Exclusivity slider), flows in automatically.
+        <label>Royalty Offset Horizon (years)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_royaltyOffsetYil" min="1" max="10" step="1" value="5" oninput="sv('royaltyOffsetYil',this.value); ctRefresh();">
+          <span class="sl-val" id="royaltyOffsetYil">5</span>
         </div>
-        <span class="sl-note">Contractual local monopoly: Osteoid will not supply same tech to any other provider in this city</span>
+        <span class="sl-note">Osteoid already extracts a per-brace royalty + cutting fee from the clinic in perpetuity — this offsets its equity claim by that cash stream's value over N years, computed live from Year-1 royalty/cutting totals (royalty is currently €<span id="royaltyOffsetRateNote">0</span>/brace — €0 is a valid scenario and makes this a no-op)</span>
+      </div>
+      <div class="sl-row">
+        <label>Royalty Offset Applied (%)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_royaltyOffsetPct" min="0" max="100" step="5" value="100" oninput="sv('royaltyOffsetPct',this.value); ctRefresh();">
+          <span class="sl-val" id="royaltyOffsetPct">100</span>
+        </div>
+        <span class="sl-note">100% = full correction; 0% = no offset (Osteoid keeps both equity and the full royalty stream)</span>
       </div>
     </div>
 
-    <!-- Doctors -->
-    <div class="party-header" style="color:#c94f2a;">Doctors — Referral Channel <span style="font-weight:400;font-size:9px;background:#fde8df;color:#c94f2a;border-radius:3px;padding:2px 6px;margin-left:6px;letter-spacing:0.5px;">PASSIVE</span></div>
-    <div style="background:#fff8f5;border:1px solid #e8c9b8;border-radius:6px;padding:10px 12px;font-size:11px;color:#a05530;margin-top:4px;">
-      Referral Channel Value: <strong id="sv_channel">€80K</strong> — pre-set, not adjustable. Doctors are passive contributors; their equity stake is based on the agreed channel valuation and referral commitment only.
-    </div>
+    <div class="party-header" style="color:#1a7a45;">Lead Investor — Underlying Contribution</div>
+    <div class="note-box" style="margin-bottom:4px;">Lead Investor cash is the clinic cash total (setup + working capital + buffer) from the <a href="investor.html" style="color:#1a7a45;font-weight:700;">Investor &amp; Agreement</a> page's breakdown table — it deliberately excludes Osteoid's in-kind slice of Total Investment, so the two parties are never double counted. Flows in automatically; not adjustable here.</div>
 
-    <!-- Orthotist -->
+    <div class="party-header" style="color:#2c7bb6;">Doctor-Investor — Underlying Contribution</div>
+    <div class="sl-grid">
+      <div class="sl-row">
+        <label>Doctor-Investor Cash (€)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_doktorYatirim" min="0" max="500000" step="10000" value="0" oninput="sv('doktorYatirim',this.value); ctRefresh();">
+          <span class="sl-val" id="doktorYatirim" style="min-width:70px;">0</span>
+        </div>
+        <span class="sl-note">A doctor investing actual cash as a co-investor — separate from the referral channel, which earns Sci/Edu/Library fees in the P&amp;L, not equity</span>
+      </div>
+    </div>
+    <div class="note-box" style="margin-bottom:16px;">The doctor-investor's <b>Weight ×</b> slider in the table above is the negotiable entry term — above 1.0× sweetens their entry (e.g. rewarding an early/strategic doctor-partner), below 1.0× charges a premium (e.g. a later or less-committed entrant); both directions are testable live.</div>
+
     <div class="party-header" style="color:#BA7517;">Orthotist / Operators — Sweat Equity</div>
     <div class="sl-grid">
       <div class="sl-row">
-        <label>Sweat Equity Value (€K)</label>
+        <label>Sweat Equity — Full Value (€)</label>
         <div class="sl-controls">
-          <input type="range" id="sl_sweat" min="0" max="1000" step="10" oninput="ctSet('sweat',this.value)">
-          <span class="sl-val" id="sv_sweat">€500K</span>
+          <input type="range" id="s_sweatEur" min="0" max="500000" step="10000" value="80000" oninput="sv('sweatEur',this.value); ctRefresh();">
+          <span class="sl-val" id="sweatEur" style="min-width:70px;">80.000</span>
         </div>
-        <span class="sl-note">Clinical operations, production, patient management — vested over time</span>
+        <span class="sl-note">Target value at full vesting — clinical operations, production, patient management</span>
       </div>
       <div class="sl-row">
-        <label>Vested Fraction Today (%)</label>
+        <label>Vesting Period (months)</label>
         <div class="sl-controls">
-          <input type="range" id="sl_vestFrac" min="5" max="10" step="1" oninput="ctSet('vestFrac',this.value)">
-          <span class="sl-val" id="sv_vestFrac">7%</span>
+          <input type="range" id="s_sweatVestAy" min="12" max="72" step="1" value="48" oninput="sv('sweatVestAy',this.value); ctRefresh();">
+          <span class="sl-val" id="sweatVestAy">48</span>
         </div>
-        <span class="sl-note">Fraction of sweat equity already earned</span>
+        <span class="sl-note">Full linear vesting horizon</span>
+      </div>
+      <div class="sl-row">
+        <label>Cliff (months)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_sweatCliffAy" min="0" max="24" step="1" value="12" oninput="sv('sweatCliffAy',this.value); ctRefresh();">
+          <span class="sl-val" id="sweatCliffAy">12</span>
+        </div>
+        <span class="sl-note">Nothing vests before this many months have elapsed</span>
+      </div>
+      <div class="sl-row">
+        <label>Elapsed Since Grant (months)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_sweatElapsedAy" min="0" max="72" step="1" value="0" oninput="sv('sweatElapsedAy',this.value); ctRefresh();">
+          <span class="sl-val" id="sweatElapsedAy">0</span>
+        </div>
+        <span class="sl-note">Time elapsed today since the equity grant — drives the vested % shown in the register above</span>
+      </div>
+      <div class="sl-row">
+        <label>Max Sweat Equity Cap (%)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_sweatMaxPct" min="0" max="15" step="0.5" value="5" oninput="sv('sweatMaxPct',this.value); ctRefresh();">
+          <span class="sl-val" id="sweatMaxPct">5</span>
+        </div>
+        <span class="sl-note">Governance cap — if the weighted contribution formula would give sweat equity more than this, it's clamped here and the other three parties are rescaled to fill the rest</span>
       </div>
     </div>
     <div class="ct-check-row">
-      <label><input type="checkbox" id="chk_vestedToday" onchange="ctSetBool('vestedToday',this.checked)">Show ownership at today's vesting (vs. fully vested)</label>
-    </div>
-
-    <!-- Investor -->
-    <div class="note-box" style="margin-top:12px;">Investor cash is set on the <strong>Investor &amp; Agreement</strong> page and flows into this model automatically.</div>
-  </div>
-</div>
-
-<!-- ── SECTION 2: Offsets ───────────────────────────────────────────────────── -->
-<div class="section">
-  <div class="section-header open" onclick="tog(this)"><h2>Offsets — Royalty &amp; Commission Double-Count Correction</h2><span class="tog">▾</span></div>
-  <div class="section-body" style="display:block;">
-    <div class="note-box" style="margin-bottom:16px;">In the active scenario, Osteoid may extract a per-brace royalty (default €75/brace — €0 is a valid scenario state, see the Royalty slider) plus a €50/brace cutting fee from the clinic in perpetuity. Doctors extract 25% commission. These are separate cash streams already captured in the financial model. Without an offset, a party would receive both equity <em>and</em> a cash stream based on the same underlying profit — double-dipping. The offset reduces their equity claim by the PV of what they already receive in cash.</div>
-    <div class="sl-grid">
-      <div class="sl-row">
-        <label>Royalty + Cutting Fee PV over Plan (€K)</label>
-        <div class="sl-controls">
-          <input type="range" id="sl_royaltyPV" min="0" max="500" step="5" oninput="ctSet('royaltyPV',this.value)">
-          <span class="sl-val" id="sv_royaltyPV">€73K</span>
-        </div>
-        <span class="sl-note">PV of (royalty + €50 cutting fee) × annual braces × plan years — reference at the €75 default royalty: Year 1 ≈ €43K at 345 braces; €0 if the scenario carries no royalty</span>
-      </div>
-      <div class="sl-row">
-        <label>Royalty Offset Applied to Osteoid (%)</label>
-        <div class="sl-controls">
-          <input type="range" id="sl_royaltyOffset" min="0" max="100" step="5" oninput="ctSet('royaltyOffset',this.value)">
-          <span class="sl-val" id="sv_royaltyOffset">100%</span>
-        </div>
-        <span class="sl-note">100% = full correction; 0% = no offset (Osteoid keeps both equity and full royalty stream)</span>
-      </div>
-      <div class="sl-row">
-        <label>Commission PV over Plan (€K)</label>
-        <div class="sl-controls">
-          <input type="range" id="sl_commPV" min="0" max="600" step="5" oninput="ctSet('commPV',this.value)">
-          <span class="sl-val" id="sv_commPV">€150K</span>
-        </div>
-        <span class="sl-note">PV of 25% doctor commission over planning horizon — reference: Year 1 ≈ €65K at avg €756/brace</span>
-      </div>
-      <div class="sl-row">
-        <label>Commission Offset Applied to Doctors (%)</label>
-        <div class="sl-controls">
-          <input type="range" id="sl_commOffset" min="0" max="100" step="5" oninput="ctSet('commOffset',this.value)">
-          <span class="sl-val" id="sv_commOffset">70%</span>
-        </div>
-        <span class="sl-note">Less than 100% — doctors also bring a scarce referral network beyond the cash commission</span>
-      </div>
+      <label><input type="checkbox" id="chk_sweatVestedToday" checked onchange="svSweatVestedToday(this.checked)">Show ownership at today's vesting (vs. fully vested)</label>
     </div>
   </div>
 </div>
 
-<!-- ── SECTION 3: KPI Grid ─────────────────────────────────────────────────── -->
+<!-- ── SECTION 2: Ownership — Exit Value & Payouts ────────────────────────── -->
 <div class="section">
-  <div class="section-header open" onclick="tog(this)"><h2>Derived Ownership — Key Results</h2><span class="tog">▾</span></div>
+  <div class="section-header open" onclick="tog(this)"><h2>Ownership — Exit Value &amp; Payouts</h2><span class="tog">▾</span></div>
   <div class="section-body" style="display:block;">
-    <div id="warn_control" class="ct-warn">⚠ Control Risk: Osteoid equity falls below 50%+1. The shareholders agreement guarantees Osteoid/founder majority control at all times. Reduce non-Osteoid contributions or increase Osteoid contribution values.</div>
-    <div class="kpi-grid" style="margin-bottom:0;">
-      <div class="kpi"><div class="kpi-label">Pre-Money (Contribution Basis)</div><div class="kpi-val neu" id="kpi_premoney">—</div></div>
-      <div class="kpi"><div class="kpi-label">Post-Money (R1 Close)</div><div class="kpi-val neu" id="kpi_postmoney">—</div></div>
-      <div class="kpi"><div class="kpi-label">Osteoid Stake</div><div class="kpi-val" id="kpi_pct_osteoid" style="color:#534AB7;">—</div></div>
-      <div class="kpi"><div class="kpi-label">Investor Stake</div><div class="kpi-val pos" id="kpi_pct_investor">—</div></div>
-      <div class="kpi"><div class="kpi-label">Doctors Stake</div><div class="kpi-val" id="kpi_pct_doctors" style="color:#c94f2a;">—</div></div>
-      <div class="kpi"><div class="kpi-label">Orthotist Stake</div><div class="kpi-val" id="kpi_pct_ortho" style="color:#BA7517;">—</div></div>
-      <div class="kpi"><div class="kpi-label">Investor Stake Value (Base 6× Exit)</div><div class="kpi-val pos" id="kpi_inv_stake_val">—</div></div>
-      <div class="kpi"><div class="kpi-label">Investor MOIC (Base 6× Exit)</div><div class="kpi-val pos" id="kpi_moic_base">—</div></div>
+    <div class="note-box" style="margin-bottom:16px;">Exit scenarios use the same Conservative / Base / Optimistic exit multiples as the Investor page's Return Analysis (Base = the Investor page's Exit Multiple slider, Conservative = Base−2×, Optimistic = Base+3×) applied to the same live Year-5 EBITDA — one consistent exit-value basis across both pages.</div>
+    <div class="kpi-grid" style="margin-bottom:16px;">
+      <div class="kpi"><div class="kpi-label">Investor Stake Value (Base Exit)</div><div class="kpi-val pos" id="kpi_inv_stake_val">—</div></div>
+      <div class="kpi"><div class="kpi-label">Investor MOIC (Base Exit)</div><div class="kpi-val pos" id="kpi_moic_base">—</div></div>
     </div>
-  </div>
-</div>
-
-<!-- ── SECTION 4: Ownership Table + Chart ─────────────────────────────────── -->
-<div class="section">
-  <div class="section-header open" onclick="tog(this)"><h2>Ownership Table &amp; Chart</h2><span class="tog">▾</span></div>
-  <div class="section-body" style="display:block;">
 
     <div class="ct-chart-wrap" style="margin-bottom:24px;">
       <div style="width:240px;height:240px;flex-shrink:0;">
@@ -189,114 +236,46 @@
         <thead>
           <tr>
             <th style="text-align:left;">Party</th>
-            <th>Net Contribution (€K)</th>
-            <th>% at R1 Close</th>
-            <th>% after R2</th>
-            <th>Stake — 4× Exit</th>
-            <th>Stake — 6× Exit</th>
-            <th>Stake — 9× Exit</th>
-            <th>6× Exit Net of Tax</th>
+            <th>Net Contribution (€)</th>
+            <th>Ownership %</th>
+            <th>Stake — Conservative</th>
+            <th>Stake — Base</th>
+            <th>Stake — Optimistic</th>
+            <th>Base, Net of Exit Tax</th>
           </tr>
         </thead>
         <tbody id="ctTableBody">
-          <tr><td colspan="8" style="text-align:center;color:#aaa;font-size:11px;">Calculating…</td></tr>
+          <tr><td colspan="7" style="text-align:center;color:#aaa;font-size:11px;">Calculating…</td></tr>
         </tbody>
       </table>
     </div>
-    <div class="note-box" style="margin-top:12px;">Exit values based on Year 5 EV scenarios: 4× / 6× / 9× EBITDA (see Investor page for basis). "6× Exit" is the reference exit EV slider in the Reconciliation section. Net-of-tax column assumes 0% effective rate via A.Ş. structure after 2-yr hold; toggle in Tax Overlay section to apply 15%.</div>
+    <div class="note-box" style="margin-top:12px;">Net-of-tax column assumes 0% effective rate via A.Ş. holding structure after a 2-yr hold; toggle in the Tax Overlay section below to model 15% instead.</div>
   </div>
 </div>
 
-<!-- ── SECTION 5: Round 2 ───────────────────────────────────────────────────── -->
+<!-- ── SECTION 3: Reconciliation ───────────────────────────────────────────── -->
 <div class="section">
-  <div class="section-header" onclick="tog(this)"><h2>Round 2 — New Capital &amp; Dilution</h2><span class="tog">▸</span></div>
-  <div class="section-body" style="display:none;">
-    <div class="note-box" style="margin-bottom:16px;">Round 2 investors enter at a higher pre-money (proof-of-model premium). All existing holders are diluted proportionally — their % decreases, but their absolute stake value grows if the R2 valuation exceeds R1 post-money.</div>
-    <div class="sl-grid" style="margin-bottom:20px;">
-      <div class="sl-row">
-        <label>Round 2 Investment (€K)</label>
-        <div class="sl-controls">
-          <input type="range" id="sl_r2cash" min="0" max="1000" step="25" oninput="ctSet('r2cash',this.value)">
-          <span class="sl-val" id="sv_r2cash">€100K</span>
-        </div>
-        <span class="sl-note">New cash entering the company at Round 2</span>
-      </div>
-      <div class="sl-row">
-        <label>Round 2 Pre-Money (€K)</label>
-        <div class="sl-controls">
-          <input type="range" id="sl_r2pre" min="100" max="8000" step="100" oninput="ctSet('r2pre',this.value)">
-          <span class="sl-val" id="sv_r2pre">€2,000K</span>
-        </div>
-        <span class="sl-note">Agreed company valuation before Round 2 money in</span>
-      </div>
-    </div>
-    <div class="kpi-grid" style="margin-bottom:16px;">
-      <div class="kpi"><div class="kpi-label">R2 Post-Money</div><div class="kpi-val neu" id="kpi_r2postmoney">—</div></div>
-      <div class="kpi"><div class="kpi-label">R2 New Investor Stake</div><div class="kpi-val pos" id="kpi_r2newpct">—</div></div>
-      <div class="kpi"><div class="kpi-label">Osteoid After R2</div><div class="kpi-val" id="kpi_r2_osteoid" style="color:#534AB7;">—</div></div>
-      <div class="kpi"><div class="kpi-label">R1 Investor After R2</div><div class="kpi-val pos" id="kpi_r2_investor">—</div></div>
-      <div class="kpi"><div class="kpi-label">Price-Up R1 Post-Money → R2 Pre-Money</div><div class="kpi-val neu" id="kpi_r2_priceup">—</div></div>
-    </div>
-    <div class="tbl-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th style="text-align:left;">Party</th>
-            <th>% at R1 Close</th>
-            <th>Dilution Factor</th>
-            <th>% After R2</th>
-            <th>Stake Value at R2 Pre-Money</th>
-          </tr>
-        </thead>
-        <tbody id="r2TableBody">
-          <tr><td colspan="5" style="text-align:center;color:#aaa;font-size:11px;">Calculating…</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-<!-- ── SECTION 6: Reconciliation ───────────────────────────────────────────── -->
-<div class="section">
-  <div class="section-header open" onclick="tog(this)"><h2>Reconciliation — Contribution Basis vs DCF / Exit EV</h2><span class="tog">▾</span></div>
+  <div class="section-header open" onclick="tog(this)"><h2>Reconciliation — Contribution Register vs DCF</h2><span class="tog">▾</span></div>
   <div class="section-body" style="display:block;">
-    <div class="note-box" style="margin-bottom:16px;">Cross-check: contribution-based pre-money should be broadly consistent with the DCF pre-money from the Investor page, and the reference Exit EV drives the stake value calculations above. A large gap (contribution pre-money &gt; DCF by &gt;25%) suggests non-cash contributions are over-appraised relative to the company's cash flow potential.</div>
-    <div class="sl-grid" style="margin-bottom:20px;">
-      <div class="sl-row">
-        <label>Year 5 Reference Exit EV — Base 6× (€K)</label>
-        <div class="sl-controls">
-          <input type="range" id="sl_evBase" min="500" max="20000" step="100" oninput="ctSet('evBase',this.value)">
-          <span class="sl-val" id="sv_evBase">€7,500K</span>
-        </div>
-        <span class="sl-note">Reference exit enterprise value (base scenario, 6× EBITDA) — pull from Investor page; default ≈ €7.5M</span>
-      </div>
-      <div class="sl-row">
-        <label>DCF Pre-Money Reference (€K)</label>
-        <div class="sl-controls">
-          <input type="range" id="sl_dcfRef" min="50" max="5000" step="50" oninput="ctSet('dcfRef',this.value)">
-          <span class="sl-val" id="sv_dcfRef">€1,000K</span>
-        </div>
-        <span class="sl-note">Today's NPV from the DCF model on the Investor page — note: DCF pre-money ≪ Year 5 EV (time value &amp; discount rate)</span>
-      </div>
-    </div>
+    <div class="note-box" style="margin-bottom:16px;">Cross-check, both sides fully live: the register's implied pre-money (Osteoid + Orthotist non-cash contributions) vs. the Investor page's DCF pre-money (same formula, same taxed free-cash-flow stream — <a href="investor.html" style="color:#534AB7;font-weight:700;">computeDcfPremoney()</a> is called from both pages so they can't diverge). A large gap (register pre-money &gt; DCF by &gt;25%) suggests the non-cash contributions are over-appraised relative to the business's current cash flow potential.</div>
     <div class="kpi-grid" style="margin-bottom:10px;">
-      <div class="kpi"><div class="kpi-label">Contribution Pre-Money</div><div class="kpi-val neu" id="recon_contrib">—</div></div>
-      <div class="kpi"><div class="kpi-label">DCF Pre-Money (Reference)</div><div class="kpi-val neu" id="recon_dcf">—</div></div>
-      <div class="kpi"><div class="kpi-label">Delta (Contrib − DCF)</div><div class="kpi-val" id="recon_delta">—</div></div>
-      <div class="kpi"><div class="kpi-label">Contrib / DCF Ratio</div><div class="kpi-val" id="recon_ratio">—</div></div>
+      <div class="kpi"><div class="kpi-label">Register Pre-Money</div><div class="kpi-val neu" id="recon_contrib">—</div></div>
+      <div class="kpi"><div class="kpi-label">DCF Pre-Money (live)</div><div class="kpi-val neu" id="recon_dcf">—</div></div>
+      <div class="kpi"><div class="kpi-label">Delta (Register − DCF)</div><div class="kpi-val" id="recon_delta">—</div></div>
+      <div class="kpi"><div class="kpi-label">Register / DCF Ratio</div><div class="kpi-val" id="recon_ratio">—</div></div>
     </div>
-    <div id="warn_overval" class="ct-warn">⚠ Over-valuation: Contribution pre-money exceeds DCF pre-money by more than 25%. Non-cash contributions (IP, exclusivity, channel) may be over-appraised relative to the business's current cash flow potential. Consider reducing contribution values or updating the DCF reference from the Investor page.</div>
-    <div id="ok_recon" class="ct-ok">✓ Contribution pre-money is within a reasonable range of DCF pre-money.</div>
+    <div id="warn_overval" class="ct-warn">⚠ Over-valuation: Register pre-money exceeds DCF pre-money by more than 25%. Non-cash contributions (IP, exclusivity, sweat equity) may be over-appraised relative to the business's current cash flow potential. Consider reducing weight multipliers or contribution values.</div>
+    <div id="ok_recon" class="ct-ok">✓ Register pre-money is within a reasonable range of DCF pre-money.</div>
   </div>
 </div>
 
-<!-- ── SECTION 7: Tax Overlay ──────────────────────────────────────────────── -->
+<!-- ── SECTION 4: Tax Overlay ──────────────────────────────────────────────── -->
 <div class="section">
   <div class="section-header" onclick="tog(this)"><h2>Tax Overlay — Exit &amp; Dividend Treatment</h2><span class="tog">▸</span></div>
   <div class="section-body">
     <div class="note-box" style="margin-bottom:16px;">A.Ş. structure note: an individual holding clinic shares through an A.Ş. holding vehicle with a ≥2-year hold qualifies for 75% capital gains exemption under KVK Art. 5/1-e (participation exemption for companies) — effective exit tax ≈ 0% at the A.Ş. level. See Methodology page for the legal basis.</div>
     <div class="ct-check-row" style="margin-bottom:16px;">
-      <label><input type="checkbox" id="chk_taxToggle" onchange="ctSetBool('taxToggle',this.checked)">Apply 15% exit tax to individual holders (i.e. A.Ş. holding structure is NOT used)</label>
+      <label><input type="checkbox" id="chk_ctExitTaxToggle" onchange="svCtExitTaxToggle(this.checked)">Apply 15% exit tax to individual holders (i.e. A.Ş. holding structure is NOT used)</label>
     </div>
     <div class="tbl-wrap">
       <table>
@@ -362,102 +341,29 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script src="shared.js"></script>
 <script>
-// ── Cap Table State ──────────────────────────────────────────────────────────
-var CT = {};
-var CT_DEFAULTS = {
-  mach: 35,
-  channel: 80, sweat: 0, cash: 2530,
-  royaltyPV: 0, royaltyOffset: 0,
-  commPV: 150, commOffset: 70,
-  vestFrac: 5, vestedToday: true,
-  r2cash: 100, r2pre: 2000,
-  evBase: 7500,
-  dcfRef: 1000,
-  taxToggle: true,
-  _ctVersion: 7
-};
-// ip & excl are NOT stored in CT — they're read live from V.ipLisansEur /
-// V.sehirEksklusifEur every recalc (see ctRecalc), the same way CT.cash
-// mirrors V.dcfInvest, so they can never drift from the Investor page.
-
-function ctLoad() {
-  CT = Object.assign({}, CT_DEFAULTS);
-  // Pull live values from V so cap table stays in sync with other pages
-  if (typeof V !== 'undefined') {
-    if (V.dcfInvest) CT.cash = Math.round(V.dcfInvest / 1000); // V is in €, CT cash is in €K
-  }
-  try {
-    var saved = localStorage.getItem('osteoid_CT');
-    if (saved) {
-      var parsed = JSON.parse(saved);
-      if (parsed._ctVersion === CT_DEFAULTS._ctVersion) {
-        Object.assign(CT, parsed);
-      } else {
-        localStorage.removeItem('osteoid_CT');
-        // Re-apply live V values after cache clear
-        if (typeof V !== 'undefined' && V.dcfInvest) CT.cash = Math.round(V.dcfInvest / 1000);
-      }
-    }
-  } catch(e) {}
+// ── Local setters for this page's checkboxes (register sliders all use the
+// shared sv() — see shared.js) ──────────────────────────────────────────────
+function svSweatVestedToday(checked) {
+  V.sweatVestedToday = checked;
+  recalc();
+  ctRefresh();
+  localStorage.setItem('osteoid_V', JSON.stringify(V));
 }
-function ctSave() {
-  try { localStorage.setItem('osteoid_CT', JSON.stringify(CT)); } catch(e) {}
-}
-function ctSet(key, val) {
-  CT[key] = parseFloat(val);
-  ctSave();
-  ctRecalc();
-}
-function ctSetBool(key, val) {
-  CT[key] = !!val;
-  ctSave();
-  ctRecalc();
-}
-
-// ── Slider display sync ──────────────────────────────────────────────────────
-var CT_PCT_KEYS  = ['royaltyOffset','commOffset','vestFrac'];
-var CT_LARGE_KEYS = ['r2pre','evBase','dcfRef'];
-
-function ctSyncUI() {
-  var all = ['mach','channel','sweat','cash',
-             'royaltyPV','royaltyOffset','commPV','commOffset',
-             'vestFrac','r2cash','r2pre','evBase','dcfRef'];
-  all.forEach(function(k) {
-    var sl = document.getElementById('sl_' + k);
-    var sv = document.getElementById('sv_' + k);
-    if (sl) sl.value = CT[k];
-    if (!sv) return;
-    var v = CT[k];
-    if (CT_PCT_KEYS.indexOf(k) >= 0) {
-      sv.textContent = v + '%';
-    } else if (CT_LARGE_KEYS.indexOf(k) >= 0) {
-      sv.textContent = '€' + Math.round(v).toLocaleString('en-US') + 'K';
-    } else {
-      sv.textContent = '€' + Math.round(v) + 'K';
-    }
-  });
-  // ip & excl read live from V (Investor page), never from CT — see CT_DEFAULTS note
-  var svIp = document.getElementById('sv_ip');
-  if (svIp) svIp.textContent = '€' + Math.round(gv('ipLisansEur') / 1000) + 'K';
-  var svExcl = document.getElementById('sv_excl');
-  if (svExcl) svExcl.textContent = '€' + Math.round(gv('sehirEksklusifEur') / 1000) + 'K';
-  var cvt = document.getElementById('chk_vestedToday');
-  var ctx = document.getElementById('chk_taxToggle');
-  if (cvt) cvt.checked = !!CT.vestedToday;
-  if (ctx) ctx.checked = !!CT.taxToggle;
+function svCtExitTaxToggle(checked) {
+  V.ctExitTaxToggle = checked;
+  recalc();
+  ctRefresh();
+  localStorage.setItem('osteoid_V', JSON.stringify(V));
 }
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 function fmtEK(v) {
-  if (Math.abs(v) >= 1000) return '€' + (v / 1000).toFixed(1) + 'M';
-  return '€' + Math.round(v) + 'K';
+  if (Math.abs(v) >= 1000000) return '€' + (v / 1000000).toFixed(2) + 'M';
+  return '€' + Math.round(v).toLocaleString('en-US');
 }
-function fmtPct(v) { return v.toFixed(1) + '%'; }
+function fmtPct(v) { return v.toFixed(2) + '%'; }
 function setText(id, txt) {
   var el = document.getElementById(id); if (el) el.textContent = txt;
-}
-function setClass(id, cls) {
-  var el = document.getElementById(id); if (el) el.className = cls;
 }
 function showEl(id, show) {
   var el = document.getElementById(id);
@@ -489,171 +395,102 @@ function renderDonut(labels, data, colors) {
   });
 }
 
-// ── Main Recalc ──────────────────────────────────────────────────────────────
-function ctRecalc() {
-  ctSyncUI();
+// ── Main refresh — everything here reads window._lastRegister /
+// window._lastTotals / window._lastFcf, all freshly (re)computed by
+// shared.js's recalc() (already called by every sv()/svXxx() setter on this
+// page), so there is no local recalculation of contributions here — only
+// rendering of what the shared register already produced.
+function ctRefresh() {
+  var reg = window._lastRegister;
+  if (!reg) return;
+  var t = window._lastTotals || [];
 
-  var ip         = gv('ipLisansEur') / 1000, mach = CT.mach, excl = gv('sehirEksklusifEur') / 1000;
-  var channel    = CT.channel, sweat   = CT.sweat,  cash      = CT.cash;
-  var royPV      = CT.royaltyPV,        royOff = CT.royaltyOffset / 100;
-  var comPV      = CT.commPV,           comOff = CT.commOffset    / 100;
-  var vestFrac   = CT.vestFrac / 100;
-  var useVested  = !!CT.vestedToday;
-  var r2cash     = CT.r2cash,  r2pre   = CT.r2pre;
-  var evBase     = CT.evBase,  dcfRef  = CT.dcfRef;
-  var taxToggle  = !!CT.taxToggle;
+  // ── Master register table ──
+  var syncRow = function(key, contribEur, netEur, carpan, vestedPct, weight, pct) {
+    setText('reg_' + key + '_contrib', fmtEK(contribEur));
+    var sl = document.getElementById('s_' + { osteoid:'osteoidCarpan', investor:'yatirimciCarpan', doctorInvestor:'doktorCarpan', orthotist:'sweatCarpan' }[key]);
+    if (sl) sl.value = carpan;
+    setText({ osteoid:'osteoidCarpan', investor:'yatirimciCarpan', doctorInvestor:'doktorCarpan', orthotist:'sweatCarpan' }[key], carpan.toFixed(2) + '×');
+    setText('reg_' + key + '_vested', vestedPct.toFixed(1) + '%');
+    setText('reg_' + key + '_weight', fmtEK(weight));
+    setText('reg_' + key + '_pct', fmtPct(pct));
+  };
+  reg.parties.forEach(function(p) { syncRow(p.key, p.valueEur, p.netEur, p.carpan, p.vestedPct, p.weight, p.pct); });
+  setText('reg_total_weight', fmtEK(reg.totalWeight));
 
-  // Net contributions (€K) — may go negative if offset > raw value
-  var netOsteoid  = (ip + mach + excl) - (royPV * royOff);
-  var netDoctors  = channel - (comPV * comOff);
-  var netOrtho    = sweat * (useVested ? vestFrac : 1);
-  var netInvestor = Math.max(0, cash);
+  var svIp = document.getElementById('sv_ip');
+  if (svIp) svIp.textContent = fmtEK(gv('ipLisansEur'));
+  var svExcl = document.getElementById('sv_excl');
+  if (svExcl) svExcl.textContent = fmtEK(gv('sehirEksklusifEur'));
+  setText('royaltyOffsetRateNote', gv('royaltyEur'));
 
-  // Effective (floored at 0) for denominator — negative = party's offset exceeds contribution
-  var effO = Math.max(0, netOsteoid);
-  var effD = Math.max(0, netDoctors);
-  var effR = Math.max(0, netOrtho);
-  var effI = netInvestor;
+  var capNote = document.getElementById('reg_sweat_cap_note');
+  if (capNote) {
+    if (reg.capApplied) {
+      capNote.style.display = 'block';
+      capNote.textContent = '⚠ Sweat equity was clamped to the ' + reg.sweatMaxPct + '% cap — the weighted contribution formula implied more, so Osteoid/Lead Investor/Doctor-Investor were rescaled proportionally to absorb the difference.';
+    } else {
+      capNote.style.display = 'none';
+    }
+  }
+  showEl('warn_control', reg.byKey.osteoid.pct < 50.01);
 
-  var preMoney  = effO + effD + effR;
-  var postMoney = preMoney + effI;
+  // ── Ownership — Exit Value & Payouts ──
+  var exitMult = V.dcfExitMult ?? 10;
+  var y5ebitdaK = t[4] ?? 0; // €K, pre-tax EBITDA — same basis as the Investor page's Return Analysis
+  var mults = { c: Math.max(2, exitMult - 2), b: exitMult, o: exitMult + 3 };
+  var evC = y5ebitdaK * mults.c * 1000, evB = y5ebitdaK * mults.b * 1000, evO = y5ebitdaK * mults.o * 1000; // €
 
-  if (postMoney <= 0) return; // guard
+  var taxRate = V.ctExitTaxToggle ? 0.15 : 0.0;
+  var cb = document.getElementById('chk_ctExitTaxToggle');
+  if (cb) cb.checked = !!V.ctExitTaxToggle;
 
-  // Raw ownership
-  var rawO = effO / postMoney * 100;
-  var rawD = effD / postMoney * 100;
-  var rawR = effR / postMoney * 100;
-  var rawI = effI / postMoney * 100;
+  var invStakeBase = evB * reg.byKey.investor.pct / 100;
+  var moicBase = reg.byKey.investor.valueEur > 0 ? invStakeBase / reg.byKey.investor.valueEur : 0;
+  setText('kpi_inv_stake_val', fmtEK(invStakeBase));
+  setText('kpi_moic_base', moicBase.toFixed(1) + '×');
 
-  // Force exactly 100% (floating-point correction)
-  var rawSum = rawO + rawD + rawR + rawI;
-  var scale  = rawSum > 0 ? 100 / rawSum : 1;
-  var pO = rawO * scale, pD = rawD * scale,
-      pR = rawR * scale, pI = rawI * scale;
-
-  // Exit EVs: user-supplied base 6× drives the scale
-  var ev4 = evBase * (4 / 6);
-  var ev6 = evBase;
-  var ev9 = evBase * (9 / 6);
-
-  // Tax rate on exit
-  var taxRate = taxToggle ? 0.15 : 0.0;
-
-  // KPIs
-  setText('kpi_premoney',       fmtEK(preMoney));
-  setText('kpi_postmoney',      fmtEK(postMoney));
-  setText('kpi_pct_osteoid',    fmtPct(pO));
-  setText('kpi_pct_investor',   fmtPct(pI));
-  setText('kpi_pct_doctors',    fmtPct(pD));
-  setText('kpi_pct_ortho',      fmtPct(pR));
-
-  var invStake6 = ev6 * pI / 100;
-  var moic      = cash > 0 ? invStake6 / cash : 0;
-  setText('kpi_inv_stake_val',  fmtEK(invStake6));
-  setText('kpi_moic_base',      moic.toFixed(1) + '×');
-
-  // Control warning
-  showEl('warn_control', pO < 50.01);
-
-  // Parties definition
-  var parties = [
-    { name: 'Osteoid (IP · Machinery · Exclusivity)', short: 'Osteoid',
-      net: netOsteoid, eff: effO, pct: pO, color: '#534AB7' },
-    { name: 'Investor (Passive — Cash)',               short: 'Investor',
-      net: netInvestor, eff: effI, pct: pI, color: '#1a7a45' },
-    { name: 'Doctors (Passive — Referral Channel)',    short: 'Doctors',
-      net: netDoctors, eff: effD, pct: pD, color: '#c94f2a' },
-    { name: 'Orthotist / Operators (Sweat Equity)',   short: 'Orthotist',
-      net: netOrtho, eff: effR, pct: pR, color: '#BA7517' }
-  ];
-
-  // Round 2 dilution
-  var r2post     = r2pre + r2cash;
-  var r2newPct   = r2post > 0 ? r2cash / r2post * 100 : 0;
-  var dilFactor  = r2post > 0 ? r2pre  / r2post       : 1;
-  var priceUp    = postMoney > 0 ? r2pre / postMoney   : 0;
-
-  setText('kpi_r2postmoney', fmtEK(r2post));
-  setText('kpi_r2newpct',    fmtPct(r2newPct));
-  setText('kpi_r2_osteoid',  fmtPct(pO * dilFactor));
-  setText('kpi_r2_investor', fmtPct(pI * dilFactor));
-  setText('kpi_r2_priceup',  priceUp.toFixed(2) + '×');
-
-  // Ownership table
   var ctbody = document.getElementById('ctTableBody');
   if (ctbody) {
-    ctbody.innerHTML = parties.map(function(p) {
-      var contribCell = p.net < 0
-        ? '<span style="color:#c0392b">−€' + Math.abs(Math.round(p.net)) + 'K (offset &gt; contribution)</span>'
-        : '€' + Math.round(p.net) + 'K';
-      var sv4   = fmtEK(ev4 * p.pct / 100);
-      var sv6   = fmtEK(ev6 * p.pct / 100);
-      var sv9   = fmtEK(ev9 * p.pct / 100);
-      var svNet = fmtEK(ev6 * p.pct / 100 * (1 - taxRate));
-      var taxNote = taxToggle ? '<span style="color:#c0392b;font-size:10px;"> (−15%)</span>'
-                              : '<span style="color:#1a7a45;font-size:10px;"> (0% tax)</span>';
+    ctbody.innerHTML = reg.parties.map(function(p) {
+      var contribCell = p.netEur < 0
+        ? '<span style="color:#c0392b">−' + fmtEK(Math.abs(p.netEur)) + ' (offset &gt; contribution)</span>'
+        : fmtEK(p.netEur);
+      var svC = fmtEK(evC * p.pct / 100);
+      var svB = fmtEK(evB * p.pct / 100);
+      var svO = fmtEK(evO * p.pct / 100);
+      var svNet = fmtEK(evB * p.pct / 100 * (1 - taxRate));
+      var taxNote = V.ctExitTaxToggle ? '<span style="color:#c0392b;font-size:10px;"> (−15%)</span>'
+                                       : '<span style="color:#1a7a45;font-size:10px;"> (0% tax)</span>';
       return '<tr>' +
-        '<td style="font-weight:700;color:' + p.color + '">' + p.name + '</td>' +
+        '<td style="font-weight:700;color:' + p.color + '">' + p.label + '</td>' +
         '<td>' + contribCell + '</td>' +
         '<td style="font-weight:700;color:' + p.color + '">' + fmtPct(p.pct) + '</td>' +
-        '<td>' + fmtPct(p.pct * dilFactor) + '</td>' +
-        '<td>' + sv4 + '</td>' +
-        '<td style="font-weight:700;">' + sv6 + '</td>' +
-        '<td>' + sv9 + '</td>' +
+        '<td>' + svC + '</td>' +
+        '<td style="font-weight:700;">' + svB + '</td>' +
+        '<td>' + svO + '</td>' +
         '<td>' + svNet + taxNote + '</td>' +
       '</tr>';
     }).join('') +
     '<tr style="background:#f0efe9;font-weight:700;">' +
       '<td>Total</td>' +
-      '<td>€' + Math.round(postMoney) + 'K</td>' +
-      '<td>100.0%</td>' +
-      '<td>' + fmtPct(100 * dilFactor) + ' + ' + fmtPct(r2newPct) + ' R2</td>' +
-      '<td>' + fmtEK(ev4) + '</td>' +
-      '<td>' + fmtEK(ev6) + '</td>' +
-      '<td>' + fmtEK(ev9) + '</td>' +
+      '<td>—</td>' +
+      '<td>100.00%</td>' +
+      '<td>' + fmtEK(evC) + '</td>' +
+      '<td>' + fmtEK(evB) + '</td>' +
+      '<td>' + fmtEK(evO) + '</td>' +
       '<td>—</td>' +
     '</tr>';
   }
 
-  // R2 table
-  var r2tbody = document.getElementById('r2TableBody');
-  if (r2tbody) {
-    var r2rows = parties.concat([{
-      name: 'Round 2 Investor (New)', short: 'R2 Investor',
-      pct: 0, color: '#2c7bb6'
-    }]);
-    r2tbody.innerHTML = r2rows.map(function(p, i) {
-      var isNew   = i === 4;
-      var r1Pct   = isNew ? '—' : fmtPct(p.pct);
-      var dil     = isNew ? '—' : fmtPct(dilFactor * 100) + ' of R1';
-      var r2Pct   = isNew ? r2newPct : p.pct * dilFactor;
-      var r2Stake = fmtEK(r2pre * r2Pct / 100); // stake value at R2 pre-money
-      return '<tr>' +
-        '<td style="font-weight:700;color:' + p.color + '">' + p.name + '</td>' +
-        '<td>' + r1Pct + '</td>' +
-        '<td>' + dil + '</td>' +
-        '<td style="font-weight:700;color:' + p.color + '">' + fmtPct(r2Pct) + '</td>' +
-        '<td>' + r2Stake + '</td>' +
-      '</tr>';
-    }).join('') +
-    '<tr style="background:#f0efe9;font-weight:700;">' +
-      '<td>Total</td><td>100.0%</td><td>—</td>' +
-      '<td>100.0%</td><td>' + fmtEK(r2post) + '</td>' +
-    '</tr>';
-  }
-
-  // Doughnut chart
   renderDonut(
-    parties.map(function(p) { return p.short; }),
-    parties.map(function(p) { return p.pct; }),
-    parties.map(function(p) { return p.color; })
+    reg.parties.map(function(p) { return p.short; }),
+    reg.parties.map(function(p) { return p.pct; }),
+    reg.parties.map(function(p) { return p.color; })
   );
-
-  // Legend
   var legendEl = document.getElementById('ctLegend');
   if (legendEl) {
-    legendEl.innerHTML = parties.map(function(p) {
+    legendEl.innerHTML = reg.parties.map(function(p) {
       return '<div class="ct-legend-item">' +
         '<div class="ct-legend-dot" style="background:' + p.color + '"></div>' +
         '<div class="ct-legend-name" style="color:' + p.color + '">' + p.short + '</div>' +
@@ -662,11 +499,18 @@ function ctRecalc() {
     }).join('');
   }
 
-  // Reconciliation
-  setText('recon_contrib', fmtEK(preMoney));
-  setText('recon_dcf',     fmtEK(dcfRef));
-  var delta = preMoney - dcfRef;
-  var ratio = dcfRef > 0 ? preMoney / dcfRef : 0;
+  // ── Reconciliation — live on both sides ──
+  var contribPreMoneyEur = reg.byKey.osteoid.netEur + reg.byKey.orthotist.netEur;
+  var fcfData = window._lastFcf;
+  var dcfPremoneyEur = 0;
+  if (fcfData && typeof computeDcfPremoney === 'function') {
+    var dcfCalc = computeDcfPremoney(fcfData.taxedFcf, (V.dcfRate ?? 28) / 100, V.dcfExitMult ?? 10);
+    dcfPremoneyEur = dcfCalc.premoney_eur;
+  }
+  setText('recon_contrib', fmtEK(contribPreMoneyEur));
+  setText('recon_dcf', fmtEK(dcfPremoneyEur));
+  var delta = contribPreMoneyEur - dcfPremoneyEur;
+  var ratio = dcfPremoneyEur > 0 ? contribPreMoneyEur / dcfPremoneyEur : 0;
   var deltaEl = document.getElementById('recon_delta');
   if (deltaEl) {
     deltaEl.textContent = (delta >= 0 ? '+' : '') + fmtEK(delta);
@@ -677,15 +521,35 @@ function ctRecalc() {
     ratioEl.textContent = ratio.toFixed(2) + '×';
     ratioEl.className = 'kpi-val ' + (ratio > 1.25 ? 'neg' : 'pos');
   }
-  showEl('warn_overval', ratio > 1.25 && preMoney > 0);
-  showEl('ok_recon',     ratio <= 1.25 && preMoney > 0);
+  showEl('warn_overval', ratio > 1.25 && contribPreMoneyEur > 0);
+  showEl('ok_recon', ratio <= 1.25 && contribPreMoneyEur > 0);
+}
+
+// ── Init sliders from V on load ──────────────────────────────────────────────
+function ctSyncSlidersFromV() {
+  [
+    ['s_osteoidCarpan','osteoidCarpan'], ['s_yatirimciCarpan','yatirimciCarpan'],
+    ['s_doktorCarpan','doktorCarpan'], ['s_sweatCarpan','sweatCarpan'],
+    ['s_makineKatkiOran','makineKatkiOran'], ['s_royaltyOffsetYil','royaltyOffsetYil'],
+    ['s_royaltyOffsetPct','royaltyOffsetPct'], ['s_doktorYatirim','doktorYatirim'],
+    ['s_sweatEur','sweatEur'], ['s_sweatVestAy','sweatVestAy'],
+    ['s_sweatCliffAy','sweatCliffAy'], ['s_sweatElapsedAy','sweatElapsedAy'],
+    ['s_sweatMaxPct','sweatMaxPct'],
+  ].forEach(function(pair) {
+    var sl = document.getElementById(pair[0]);
+    if (sl) sl.value = gv(pair[1]);
+  });
+  var cvt = document.getElementById('chk_sweatVestedToday');
+  if (cvt) cvt.checked = V.sweatVestedToday !== false;
+  var ctx = document.getElementById('chk_ctExitTaxToggle');
+  if (ctx) ctx.checked = !!V.ctExitTaxToggle;
 }
 
 // ── Init ─────────────────────────────────────────────────────────────────────
 window.addEventListener('load', function() {
-  recalc(); // shared.js (harmless — elements are null-safe)
-  ctLoad();
-  ctRecalc();
+  recalc(); // shared.js — populates window._lastRegister / _lastTotals / _lastFcf
+  ctSyncSlidersFromV();
+  ctRefresh();
 });
 </script>
 </body>
