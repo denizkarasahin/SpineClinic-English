@@ -297,6 +297,111 @@
         <div class="kpi"><div class="kpi-label">Fee Stream Pre-Money</div><div class="kpi-val neu" id="dcf_fee_premoney" title="Pre-money of the satellite management-fee income stream alone, at the Fee Stream Exit Multiple">—</div></div>
       </div>
 
+      <!-- Tax Optimization panel — collapsible, corporate-level KV levers -->
+      <div style="margin-bottom:24px;border:1px solid #e0e0dc;border-radius:8px;overflow:hidden;">
+        <div onclick="var b=document.getElementById('taxOptBody');var a=document.getElementById('taxOptArrow');var open=b.style.display==='block';b.style.display=open?'none':'block';a.textContent=open?'▸':'▾';" style="cursor:pointer;padding:12px 16px;background:#f7f7f4;display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;">Tax Optimization <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— effective KV rate after legal levers</span></span>
+          <span id="taxOptArrow" style="font-size:12px;color:#888;">▸</span>
+        </div>
+        <div id="taxOptBody" style="display:none;padding:16px;border-top:1px solid #e0e0dc;">
+          <div class="note-box" style="margin-bottom:16px;background:#fff8e8;border-color:#f0d080;color:#8a6d1a;">⚠ Structure assumptions under current Turkish law — all items require YMM confirmation (transfer pricing documentation where related parties are involved). Not tax advice.</div>
+
+          <!-- Lever 1 -->
+          <div style="font-size:11px;font-weight:700;color:#534AB7;margin-bottom:6px;">Lever 1 — Nakdi Sermaye Artışı Faiz İndirimi (KVK 10/1-ı)</div>
+          <div style="font-size:12px;color:#555;line-height:1.6;margin-bottom:10px;">Notional interest deduction on cash paid into A.Ş. share capital, claimable for 5 accounting periods from the contribution. Ltd. eligibility is genuinely unclear — confirm with YMM either way; this toggle auto-disables (stays visible) whenever the flagship entity type above is Ltd.</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:10px;">
+            <div class="sl-row">
+              <label style="font-size:10px;">TCMB Commercial Loan Rate (%)</label>
+              <div class="sl-controls">
+                <input type="range" id="s_tcmbFaiz" min="20" max="70" step="1" value="45" oninput="sv('tcmbFaiz',this.value)">
+                <span class="sl-val" id="tcmbFaiz" style="min-width:40px;">45</span>
+              </div>
+              <span class="sl-note">Deduction rate = half this rate, per KVK 10/1-ı</span>
+            </div>
+            <div class="sl-row">
+              <label style="display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer;">
+                <span style="font-size:10px;">Apply notional interest deduction</span>
+                <label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer;font-weight:400;">
+                  <input type="checkbox" id="nakdiSermayeToggle" checked onchange="svNakdiSermaye(this.checked)" style="width:14px;height:14px;accent-color:#534AB7;cursor:pointer;">
+                  <span id="nakdiSermayeTag" style="font-size:11px;font-weight:700;color:#534AB7;">Active</span>
+                </label>
+              </label>
+              <span class="sl-note" id="nakdiSermayeNote">—</span>
+            </div>
+          </div>
+          <div class="tbl-wrap" style="margin-bottom:16px;">
+            <table>
+              <thead><tr><th style="text-align:left;">Lever 1</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>Year 4</th><th>Year 5</th></tr></thead>
+              <tbody id="nakdiTableBody"><tr><td colspan="6" style="text-align:center;color:#aaa;font-size:11px;">Calculating…</td></tr></tbody>
+            </table>
+          </div>
+
+          <!-- Lever 2 -->
+          <div style="font-size:11px;font-weight:700;color:#1D9E75;margin-bottom:6px;">Lever 2 — Teknokent Royalty Pipe (4691)</div>
+          <div style="font-size:12px;color:#555;line-height:1.6;margin-bottom:10px;">The clinic's royalty/license payments to Osteoid A.Ş. are deductible at the clinic (already reflected in the P&amp;L above). If the license falls within Osteoid's registered teknokent scope, that royalty income is exempt at Osteoid's level too — a group-level, not just clinic-level, benefit.</div>
+          <div style="margin-bottom:10px;">
+            <label style="display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-size:11px;font-weight:700;">
+              <input type="checkbox" id="teknokentToggle" onchange="svTeknokentKapsam(this.checked)" style="width:14px;height:14px;accent-color:#1D9E75;cursor:pointer;">
+              <span id="teknokentTag" style="color:#888;">Off — until YMM confirms scope</span>
+            </label>
+          </div>
+          <div id="teknokent_chip" style="display:none;font-size:11px;font-weight:700;color:#1a7a45;background:#f0faf4;border:1px solid #b4e0c4;border-radius:4px;padding:6px 10px;margin-bottom:10px;">Requires transfer-pricing documentation (emsallere uygunluk).</div>
+          <div class="tbl-wrap" style="margin-bottom:16px;">
+            <table>
+              <thead><tr><th style="text-align:left;">Lever 2</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>Year 4</th><th>Year 5</th></tr></thead>
+              <tbody id="teknokentTableBody"><tr><td colspan="6" style="text-align:center;color:#aaa;font-size:11px;">Calculating…</td></tr></tbody>
+            </table>
+          </div>
+
+          <!-- Lever 3 -->
+          <div style="font-size:11px;font-weight:700;color:#BA7517;margin-bottom:6px;">Lever 3 — Emisyon Primi (KVK 5/1-ç)</div>
+          <div style="font-size:12px;color:#555;line-height:1.6;margin-bottom:10px;">Investor cash above nominal share value enters as share premium — KV-exempt income, no P&amp;L tax impact; pairs with a low-nominal A.Ş. cap table. Display only — no tax-base math beyond the nominal/premium split below.</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:10px;">
+            <div class="sl-row">
+              <label style="display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer;">
+                <span style="font-size:10px;">Treat cash above nominal as share premium</span>
+                <label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer;font-weight:400;">
+                  <input type="checkbox" id="emisyonPrimiToggle" checked onchange="svEmisyonPrimi(this.checked)" style="width:14px;height:14px;accent-color:#BA7517;cursor:pointer;">
+                </label>
+              </label>
+              <span class="sl-note">KV-exempt under KVK 5/1-ç</span>
+            </div>
+            <div class="sl-row">
+              <label style="font-size:10px;">Nominal Capital Share of Investor Cash (%)</label>
+              <div class="sl-controls">
+                <input type="range" id="s_nominalPayOrani" min="1" max="100" step="1" value="10" oninput="sv('nominalPayOrani',this.value)">
+                <span class="sl-val" id="nominalPayOrani" style="min-width:40px;">10</span>
+              </div>
+              <span class="sl-note">The rest of the Lead Investor's cash enters as share premium</span>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:16px;">
+            <div class="kpi"><div class="kpi-label">Nominal Share Capital</div><div class="kpi-val neu" id="emisyon_nominal">—</div></div>
+            <div class="kpi"><div class="kpi-label">Share Premium (KV-exempt)</div><div class="kpi-val pos" id="emisyon_premium">—</div></div>
+          </div>
+
+          <!-- Lever 4 -->
+          <div style="font-size:11px;font-weight:700;color:#c94f2a;margin-bottom:6px;">Lever 4 — Branch-Loss Consolidation</div>
+          <div style="font-size:12px;color:#555;line-height:1.6;margin-bottom:10px;">When a satellite is run as a flagship Branch (şube) instead of a Subsidiary Ltd. (toggle on the Multi-Year Plan page), its full P&amp;L — including any loss — consolidates directly into the flagship's own taxable profit. The tax layer already applies this; this row just surfaces the amount.</div>
+          <div class="tbl-wrap" style="margin-bottom:16px;">
+            <table>
+              <thead><tr><th style="text-align:left;">Lever 4</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>Year 4</th><th>Year 5</th></tr></thead>
+              <tbody id="branchLossTableBody"><tr><td colspan="6" style="text-align:center;color:#aaa;font-size:11px;">Calculating…</td></tr></tbody>
+            </table>
+          </div>
+
+          <!-- Waterfall -->
+          <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Effective KV Rate Waterfall</div>
+          <div class="tbl-wrap" style="margin-bottom:8px;">
+            <table>
+              <thead><tr><th style="text-align:left;">—</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>Year 4</th><th>Year 5</th></tr></thead>
+              <tbody id="taxOptWaterfallBody"><tr><td colspan="6" style="text-align:center;color:#aaa;font-size:11px;">Calculating…</td></tr></tbody>
+            </table>
+          </div>
+          <div class="note-box" style="font-size:11px;">This after-tax result feeds the same taxed FCF stream the DCF and Cash-on-Cash Return sections consume — Lever 1 visibly moves Pre-Money and the Net-to-Investor multiples when active. Levers never produce negative tax; an unused deduction becomes part of the same 5-year loss-carryforward balance ordinary losses already use, rather than a separate carryforward of its own. Entity structure, certificate timing, and branch/subsidiary selection require YMM sign-off before execution.</div>
+        </div>
+      </div>
+
       <!-- Ownership Register — single source of ownership % for this page (and the Return Analysis below); adjustable directly via the sliders underneath -->
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Ownership Register <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— derives the ownership split from what each party actually brings to the table; adjust the terms below</span></div>
       <div class="tbl-wrap" style="margin-bottom:8px;">
