@@ -146,6 +146,12 @@
       </div>
     </div>
 
+    <!-- NETWORK STRUCTURE (compact mirror) -->
+    <div style="margin-bottom:24px;background:#f7f7f4;border:1px solid #e0e0dc;border-radius:8px;padding:16px;">
+      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">Network Structure — Flagship &amp; Satellites</div>
+      <div style="font-size:12px;color:#555;line-height:1.7;">Osteoid scales hub-and-spoke: Istanbul is the <b>flagship</b> — it runs its own clinic and acts as the network's management company. Izmir, Ankara, and future cities are <b>satellites</b>: separate companies, majority-owned by the flagship, each with its own local investors and its own regulatory license. Satellites pay the flagship a management fee on gross revenue, and the flagship holds an equity stake in each satellite's remaining profit — but satellite expansion is funded by local investors at the satellite level, so the flagship's own cap table never dilutes as the network grows. Full explainer, chain diagram, and the live fee/ownership sliders: <a href="captable.html" style="color:#534AB7;font-weight:700;">Cap Table</a> and <a href="growth.html" style="color:#534AB7;font-weight:700;">Multi-Year Plan</a>.</div>
+    </div>
+
     <!-- MULTI-YEAR ROADMAP -->
     <div style="margin-bottom:24px;">
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:14px;">Multi-Year Revenue Roadmap — 5-Year Forecast</div>
@@ -192,6 +198,24 @@
           </label>
           <span class="sl-note">When on, KV is charged on positive annual profit with a 5-year loss carryforward; no VAT is modeled anywhere — orthosis sales are VAT-exempt (KDV Kanunu 17/4-s)</span>
         </div>
+        <div class="sl-row">
+          <label style="display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer;">
+            <span style="font-size:10px;">Value satellite fee stream separately (sum-of-parts)</span>
+            <label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer;font-weight:400;">
+              <input type="checkbox" id="feeStreamAyriMultToggle" onchange="svFeeStreamAyriMult(this.checked)" style="width:14px;height:14px;accent-color:#534AB7;cursor:pointer;">
+              <span id="feeStreamAyriMultTag" style="font-size:11px;font-weight:700;color:#888;">Off (blended into one multiple)</span>
+            </label>
+          </label>
+          <span class="sl-note">When on, management-fee income from satellites (Network Structure — see Cap Table) is valued at its own multiple below instead of blended into the main exit multiple — fee income is high-margin, asset-light and recurring (no clinic capex, no brace COGS), which typically justifies a richer multiple than the capital-intensive clinic business.</span>
+        </div>
+        <div class="sl-row" id="feeExitMultRow" style="display:none;">
+          <label style="font-size:10px;">Fee Stream Exit Multiple (×)</label>
+          <div class="sl-controls">
+            <input type="range" id="s_feeExitMult" min="5" max="20" step="0.5" value="12" oninput="sv('feeExitMult',this.value)">
+            <span class="sl-val" id="feeExitMult" style="min-width:40px;">12</span>
+          </div>
+          <span class="sl-note">Reference: high-margin recurring management/royalty streams often trade at 10-18× vs. 6-12× for a capital-intensive clinic operation</span>
+        </div>
       </div>
 
       <!-- Yatırım Dökümü (Investment Breakdown) — fully derived, nothing typed here -->
@@ -218,12 +242,12 @@
           <span class="sl-note">Osteoid parent in-kind — value of the Turnkey/Bracesys design library license</span>
         </div>
         <div class="sl-row">
-          <label style="font-size:10px;">City Exclusivity (€)</label>
+          <label style="font-size:10px;">Master Development Rights / Territory Exclusivity (€)</label>
           <div class="sl-controls">
             <input type="range" id="s_sehirEksklusifEur" min="100000" max="500000" step="10000" value="206415" oninput="sv('sehirEksklusifEur',this.value)">
             <span class="sl-val" id="sehirEksklusifEur" style="min-width:70px;">206.415</span>
           </div>
-          <span class="sl-note">Osteoid parent in-kind — value of exclusive rights within the center's city</span>
+          <span class="sl-note">Osteoid parent in-kind — exclusive rights within the flagship's city, now including the right to sub-license satellite companies elsewhere in the territory (see Network Structure on the Cap Table page)</span>
         </div>
         <div class="sl-row">
           <label style="font-size:10px;">Working Capital Buffer (€)</label>
@@ -245,6 +269,10 @@
         <div class="kpi"><div class="kpi-label">Investor Stake</div><div class="kpi-val pos" id="dcf_yatirimci_hisse">—</div></div>
         <div class="kpi"><div class="kpi-label">Osteoid Stake</div><div class="kpi-val neu" id="dcf_osteoid_hisse">—</div></div>
         <div class="kpi"><div class="kpi-label">Cumulative Free Cash (5yr)</div><div class="kpi-val neu" id="kpi_cumFcf" title="Sum of Y1-Y5 free cash flow, taxed per the toggle above">—</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;margin-bottom:16px;" id="dcfFeeSplitRow">
+        <div class="kpi"><div class="kpi-label">Core Business Pre-Money</div><div class="kpi-val neu" id="dcf_core_premoney" title="Pre-money of the FCF stream excluding satellite management-fee income, at the main Exit Multiple">—</div></div>
+        <div class="kpi"><div class="kpi-label">Fee Stream Pre-Money</div><div class="kpi-val neu" id="dcf_fee_premoney" title="Pre-money of the satellite management-fee income stream alone, at the Fee Stream Exit Multiple">—</div></div>
       </div>
 
       <!-- Ownership Register — read-only mirror of captable.html's Contribution Register -->

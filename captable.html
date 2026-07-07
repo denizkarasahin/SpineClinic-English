@@ -23,6 +23,13 @@
 .ct-check-row label { font-size:11px; font-weight:700; color:#555; cursor:pointer; display:flex; align-items:center; gap:7px; }
 #regTable td, #regTable th { text-align:center; }
 #regTable input[type="range"] { width:80px; vertical-align:middle; }
+.net-chain { display:flex; align-items:stretch; gap:0; flex-wrap:wrap; margin:16px 0; }
+.net-box { flex:1; min-width:150px; border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; justify-content:center; }
+.net-arrow { flex:0 0 auto; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:4px 10px; min-width:130px; }
+.net-arrow-line { width:100%; height:2px; background:#ccc; position:relative; }
+.net-arrow-line::after { content:'▶'; position:absolute; right:-4px; top:-7px; font-size:12px; color:#999; }
+.net-arrow-label { font-size:9px; color:#888; text-align:center; margin-top:6px; line-height:1.4; }
+@media (max-width:900px) { .net-chain { flex-direction:column; } .net-arrow { min-width:auto; padding:8px 0; } .net-arrow-line { width:2px; height:24px; } .net-arrow-line::after { right:-6px; top:auto; bottom:-4px; transform:rotate(90deg); } }
 </style>
 </head>
 <body>
@@ -42,6 +49,60 @@
       <span>Method</span> Contribution Register<br>
       <span>Parties</span> 4 (Osteoid · Lead Investor · Doctor-Investor · Orthotist)
     </div>
+  </div>
+</div>
+
+<!-- ── SECTION 0: Network Structure ─────────────────────────────────────────── -->
+<div class="section">
+  <div class="section-header open" onclick="tog(this)"><h2>Network Structure — Flagship &amp; Satellites</h2><span class="tog">▾</span></div>
+  <div class="section-body" style="display:block;">
+    <div class="note-box" style="margin-bottom:16px;">Osteoid Centers scales as a <b>hub-and-spoke network</b>, not a single company opening branches. This explains how ownership, licensing, and cash flow work as new cities come online — and why the flagship's cap table (this page) doesn't change shape as the network grows.</div>
+
+    <div class="party-header" style="color:#534AB7;">1 — The Istanbul Clinic Is the Flagship</div>
+    <div style="font-size:12px;color:#333;line-height:1.7;margin-bottom:14px;">Istanbul does two jobs at once: it runs its own clinic (the business modeled everywhere else in this dashboard), and it acts as the <b>management company</b> for the whole network — the entity that licenses the technology onward, collects management fees, and holds equity in each new city.</div>
+
+    <div class="party-header" style="color:#1D9E75;">2 — Satellites Are Separate Companies</div>
+    <div style="font-size:12px;color:#333;line-height:1.7;margin-bottom:14px;">Izmir, Ankara, and every future city are each their own legal company — majority-owned by the flagship, but with their own local investors and their own regulatory license (a standalone <i>ısmarlama ortez-protez merkezi</i> permit, with its own <i>sorumlu müdür</i>). A satellite is not a branch; it's a separately licensed clinic that happens to run on Osteoid's technology and processes.</div>
+
+    <div class="party-header" style="color:#BA7517;">3 — The Agreement Chain</div>
+    <div class="net-chain">
+      <div class="net-box" style="background:#f4f3ff;border:1px solid #d8d5f5;">
+        <div style="font-size:11px;font-weight:800;color:#534AB7;">Osteoid A.Ş.</div>
+        <div style="font-size:10px;color:#666;margin-top:3px;">Technology owner (software, CAD/CAM, IP)</div>
+      </div>
+      <div class="net-arrow">
+        <div class="net-arrow-line"></div>
+        <div class="net-arrow-label">Master development rights<br>for the territory + royalty/brace</div>
+      </div>
+      <div class="net-box" style="background:#eef6ff;border:1px solid #b8d4f0;">
+        <div style="font-size:11px;font-weight:800;color:#185FA5;">Flagship — Istanbul</div>
+        <div style="font-size:10px;color:#666;margin-top:3px;">Own clinic + network management company</div>
+      </div>
+      <div class="net-arrow">
+        <div class="net-arrow-line"></div>
+        <div class="net-arrow-label">Sub-license +<br>management services agreement</div>
+      </div>
+      <div class="net-box" style="background:#f0fdf4;border:1px solid #1D9E7544;">
+        <div style="font-size:11px;font-weight:800;color:#1D9E75;">Satellite — e.g. Izmir</div>
+        <div style="font-size:10px;color:#666;margin-top:3px;">Separate company, own license</div>
+      </div>
+      <div class="net-arrow">
+        <div class="net-arrow-line"></div>
+        <div class="net-arrow-label">Equity in<br>that one clinic only</div>
+      </div>
+      <div class="net-box" style="background:#fff8f5;border:1px solid #e8c9b8;">
+        <div style="font-size:11px;font-weight:800;color:#c94f2a;">Local Investor</div>
+        <div style="font-size:10px;color:#666;margin-top:3px;">City-specific, minority stake</div>
+      </div>
+    </div>
+
+    <div class="party-header" style="color:#c94f2a;">4 — The Management Fee Is the Engine</div>
+    <div style="font-size:12px;color:#333;line-height:1.7;margin-bottom:14px;">Each satellite pays the flagship a management fee for administration, coordination, and marketing. That fee is charged on the satellite's <b>gross revenue, before any profit split</b> — so the flagship earns it on 100% of satellite revenue, but bears its cost only pro-rata to its own equity stake in what's left. That asymmetry — full fee income, partial fee cost — is the economic engine of the network model, not an incidental detail. See the live management-fee and ownership sliders on the <a href="growth.html" style="color:#c94f2a;font-weight:700;">Multi-Year Plan</a> page.</div>
+
+    <div class="party-header" style="color:#2c7bb6;">5 — Growth Doesn't Touch the Flagship Cap Table</div>
+    <div style="font-size:12px;color:#333;line-height:1.7;">Satellite expansion is funded by <b>local investors at the satellite level</b> — not by raising more money into the flagship. So when Izmir or Ankara opens, the ownership table on this page does not change shape or dilute. The flagship investor's exposure to network growth comes entirely through two channels that already flow into the register above: the management fee stream, and the flagship's equity stake in each satellite's profit.</div>
+
+    <div class="note-box" style="margin-top:16px;font-size:11px;">⚠ Related-party management fees require transfer-pricing documentation (<i>emsallere uygunluk</i>) under Turkish tax law, and — unlike KDV-exempt orthosis sales — are VAT-able services. Flagged for the tax advisor; not modeled in this dashboard.</div>
   </div>
 </div>
 

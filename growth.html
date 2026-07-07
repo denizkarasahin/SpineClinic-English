@@ -134,11 +134,31 @@
           <div style="border-top:1px solid #e8e8e4;margin-top:10px;padding-top:10px;">
             <div style="font-size:10px;color:#888;font-weight:700;text-transform:uppercase;margin-bottom:8px;">New Center Selection</div>
             <div class="note-box" style="margin-bottom:8px;font-size:11px;">⚠ Izmir/Ankara opex below (rent, orthotist, intern, kitchen, utilities) excludes HQ-shared costs — advertising, CPA/financial advisor, general admin. These centers are modeled as if they benefit from those centrally-run functions for free; no cost-sharing allocation is charged to them. Their net figures are optimistic to that extent — a scenario simplification, not a claim that shared overhead is actually free.</div>
+            <div style="padding:8px 10px;background:#fdf8ee;border:1px solid #e8d9a8;border-radius:6px;margin-bottom:10px;">
+              <div style="font-size:10px;font-weight:700;color:#8a6d1a;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">Hub-and-Spoke — Network-Wide Term</div>
+              <div class="sl-row" style="margin-bottom:0;">
+                <label style="font-size:11px;">Satellite Management Fee (% of satellite gross revenue)</label>
+                <div class="sl-controls">
+                  <input type="range" id="s_yonetimUcretiPct" min="0" max="10" step="0.5" value="5" oninput="sv('yonetimUcretiPct',this.value)">
+                  <span class="sl-val" id="yonetimUcretiPct" style="min-width:30px;">5</span>
+                </div>
+                <span class="sl-note">Charged to every active satellite on 100% of its gross revenue, before the ownership split below — the flagship earns this fee regardless of its equity %, and bears it only pro-rata to that same %. Related-party management fees require transfer-pricing documentation (emsallere uygunluk) and are VAT-able services (unlike KDV-exempt orthosis sales) — flagged for the tax advisor, not modeled here.</span>
+              </div>
+            </div>
             <label style="display:flex;align-items:center;gap:8px;margin-bottom:4px;cursor:pointer;padding:8px;background:#f0fdf4;border:1px solid #1D9E7544;border-radius:6px 6px 0 0;">
               <input type="checkbox" id="izmirToggle" onchange="toggleMerkez('izmir',this.checked)" style="width:14px;height:14px;accent-color:#1D9E75;cursor:pointer;">
               <span style="font-size:12px;font-weight:700;color:#1D9E75;">Izmir Center</span>
               <span style="font-size:10px;color:#888;margin-left:auto;">7.1% population share (incl. surroundings)</span>
             </label>
+            <div style="padding:6px 10px;background:#e8f5ee;border:1px solid #1D9E7544;border-top:none;font-size:11px;">
+              <div class="sl-row" style="margin-bottom:0;">
+                <label style="font-size:10px;color:#1D9E75;">Flagship Ownership of Izmir (%) — remainder to local investors</label>
+                <div class="sl-controls">
+                  <input type="range" id="s_izmirFlagshipPay" min="30" max="100" step="5" value="65" style="accent-color:#1D9E75;" oninput="sv('izmirFlagshipPay',this.value)">
+                  <span class="sl-val" id="izmirFlagshipPay" style="min-width:30px;color:#1D9E75;">65</span>
+                </div>
+              </div>
+            </div>
             <div id="izmirTriggerInfo" style="display:flex;align-items:center;gap:6px;padding:6px 10px;background:#e8f5ee;border:1px solid #1D9E7544;border-top:none;border-radius:0 0 6px 6px;margin-bottom:8px;font-size:10px;color:#1D9E75;"></div>
             <div id="izmirRampaWrap" style="padding: 8px; background: rgb(240, 253, 244); border-radius: 6px; margin-bottom: 8px;">
               <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
@@ -225,6 +245,15 @@
               <span style="font-size:12px;font-weight:700;color:#534AB7;">Ankara Center</span>
               <span style="font-size:10px;color:#888;margin-left:auto;">8.2% population share (incl. surroundings)</span>
             </label>
+            <div style="padding:6px 10px;background:#f0f0ff;border:1px solid #534AB744;border-top:none;font-size:11px;">
+              <div class="sl-row" style="margin-bottom:0;">
+                <label style="font-size:10px;color:#534AB7;">Flagship Ownership of Ankara (%) — remainder to local investors</label>
+                <div class="sl-controls">
+                  <input type="range" id="s_ankaraFlagshipPay" min="30" max="100" step="5" value="65" style="accent-color:#534AB7;" oninput="sv('ankaraFlagshipPay',this.value)">
+                  <span class="sl-val" id="ankaraFlagshipPay" style="min-width:30px;color:#534AB7;">65</span>
+                </div>
+              </div>
+            </div>
             <div id="ankaraRampaWrap" style="padding: 8px; background: rgb(240, 240, 255); border-radius: 6px; margin-top: 8px;">
               <div style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #ddddf8;">
                 <div style="font-size:10px;color:#534AB7;font-weight:700;margin-bottom:4px;">Opening Month (Year 2)</div>
@@ -502,6 +531,12 @@
 <script>
 window.addEventListener('load', function() {
   recalc();
+  [['s_yonetimUcretiPct','yonetimUcretiPct'],['s_izmirFlagshipPay','izmirFlagshipPay'],['s_ankaraFlagshipPay','ankaraFlagshipPay']].forEach(function(pair) {
+    const sl = document.getElementById(pair[0]);
+    if (sl) sl.value = gv(pair[1]);
+    const sp = document.getElementById(pair[1]);
+    if (sp) sp.textContent = gv(pair[1]);
+  });
   ['izmir','ankara'].forEach(function(s) {
     const aktif = V[s+'Aktif'];
     const cb = document.getElementById(s+'Toggle');
