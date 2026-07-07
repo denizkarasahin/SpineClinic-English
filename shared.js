@@ -2528,8 +2528,12 @@ function recalc() {
     if (elCiro || elCiroB2B) {
       const royaltyTRY = gv('royaltyEur') * (V.eurKur ?? 50);
       const mal = gv('mal_' + k);
+      // Cutting fee (kesim) applies to delik/sensDelik braces only — same
+      // condition computeYear1() uses for kesimTop inside baskiTop, and the
+      // B2B card below already applied; the retail card was missing it.
+      const kesimTRY = (k === 'delik' || k === 'sensDelik') ? gv('kesimEurPer') * (V.eurKur ?? 50) : 0;
       if (elCiro) {
-        const ciro = fiyat - sciTL - eduTL - libTL - mal - royaltyTRY;
+        const ciro = fiyat - sciTL - eduTL - libTL - mal - kesimTRY - royaltyTRY;
         elCiro.textContent = ciro.toLocaleString('tr-TR');
         const elEur = document.getElementById('ciroEur_' + k);
         if (elEur) elEur.textContent = Math.round(ciro / (V.eurKur ?? 50)).toLocaleString('en-US');
@@ -2539,7 +2543,6 @@ function recalc() {
         const sciB2B = Math.round(fB2B * gv('feeSci_' + k) / 100);
         const eduB2B = Math.round(fB2B * gv('feeEdu_' + k) / 100);
         const libB2B = Math.round(fB2B * gv('feeLib_' + k) / 100);
-        const kesimTRY = (k === 'delik' || k === 'sensDelik') ? gv('kesimEurPer') * (V.eurKur ?? 50) : 0;
         const ciroB2B = fB2B - sciB2B - eduB2B - libB2B - mal - kesimTRY - royaltyTRY;
         elCiroB2B.textContent = ciroB2B.toLocaleString('tr-TR');
         const elB2BEur = document.getElementById('ciroB2BEur_' + k);
