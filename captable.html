@@ -55,9 +55,8 @@
     <div class="sl-grid">
       <div class="sl-row">
         <label>IP &amp; Software Value (€K)</label>
-        <div class="sl-controls">
-          <input type="range" id="sl_ip" min="0" max="600" step="10" oninput="ctSet('ip',this.value)">
-          <span class="sl-val" id="sv_ip">€200K</span>
+        <div style="background:#f4f3ff;border:1px solid #d8d5f5;border-radius:6px;padding:10px 12px;font-size:11px;color:#3d3680;">
+          <strong id="sv_ip" style="color:#534AB7;font-size:13px;">€500K</strong> — set on the <a href="investor.html" style="color:#534AB7;font-weight:700;">Investor &amp; Agreement</a> page (IP / Design-Library License slider), flows in automatically.
         </div>
         <span class="sl-note">AI platform, CAD/CAM, Turnkey — proprietary clinical software and production toolchain</span>
       </div>
@@ -67,13 +66,12 @@
           <input type="range" id="sl_mach" min="0" max="200" step="2.5" oninput="ctSet('mach',this.value)">
           <span class="sl-val" id="sv_mach">€35K</span>
         </div>
-        <span class="sl-note">3D printer contributed at 50% of market price (€70K market → €35K contribution)</span>
+        <span class="sl-note">3D printer contributed at 50% of market price (€70K market → €35K contribution) — independent assumption, not linked to the Investor page's full-price machinery valuation</span>
       </div>
       <div class="sl-row">
         <label>City Exclusivity Value (€K)</label>
-        <div class="sl-controls">
-          <input type="range" id="sl_excl" min="0" max="400" step="10" oninput="ctSet('excl',this.value)">
-          <span class="sl-val" id="sv_excl">€100K</span>
+        <div style="background:#f4f3ff;border:1px solid #d8d5f5;border-radius:6px;padding:10px 12px;font-size:11px;color:#3d3680;">
+          <strong id="sv_excl" style="color:#534AB7;font-size:13px;">€206K</strong> — set on the <a href="investor.html" style="color:#534AB7;font-weight:700;">Investor &amp; Agreement</a> page (City Exclusivity slider), flows in automatically.
         </div>
         <span class="sl-note">Contractual local monopoly: Osteoid will not supply same tech to any other provider in this city</span>
       </div>
@@ -367,7 +365,7 @@
 // ── Cap Table State ──────────────────────────────────────────────────────────
 var CT = {};
 var CT_DEFAULTS = {
-  ip: 250, mach: 35, excl: 100,
+  mach: 35,
   channel: 80, sweat: 0, cash: 2530,
   royaltyPV: 0, royaltyOffset: 0,
   commPV: 150, commOffset: 70,
@@ -376,8 +374,11 @@ var CT_DEFAULTS = {
   evBase: 7500,
   dcfRef: 1000,
   taxToggle: true,
-  _ctVersion: 6
+  _ctVersion: 7
 };
+// ip & excl are NOT stored in CT — they're read live from V.ipLisansEur /
+// V.sehirEksklusifEur every recalc (see ctRecalc), the same way CT.cash
+// mirrors V.dcfInvest, so they can never drift from the Investor page.
 
 function ctLoad() {
   CT = Object.assign({}, CT_DEFAULTS);
@@ -418,7 +419,7 @@ var CT_PCT_KEYS  = ['royaltyOffset','commOffset','vestFrac'];
 var CT_LARGE_KEYS = ['r2pre','evBase','dcfRef'];
 
 function ctSyncUI() {
-  var all = ['ip','mach','excl','channel','sweat','cash',
+  var all = ['mach','channel','sweat','cash',
              'royaltyPV','royaltyOffset','commPV','commOffset',
              'vestFrac','r2cash','r2pre','evBase','dcfRef'];
   all.forEach(function(k) {
@@ -435,6 +436,11 @@ function ctSyncUI() {
       sv.textContent = '€' + Math.round(v) + 'K';
     }
   });
+  // ip & excl read live from V (Investor page), never from CT — see CT_DEFAULTS note
+  var svIp = document.getElementById('sv_ip');
+  if (svIp) svIp.textContent = '€' + Math.round(gv('ipLisansEur') / 1000) + 'K';
+  var svExcl = document.getElementById('sv_excl');
+  if (svExcl) svExcl.textContent = '€' + Math.round(gv('sehirEksklusifEur') / 1000) + 'K';
   var cvt = document.getElementById('chk_vestedToday');
   var ctx = document.getElementById('chk_taxToggle');
   if (cvt) cvt.checked = !!CT.vestedToday;
@@ -487,7 +493,7 @@ function renderDonut(labels, data, colors) {
 function ctRecalc() {
   ctSyncUI();
 
-  var ip         = CT.ip,      mach    = CT.mach,   excl      = CT.excl;
+  var ip         = gv('ipLisansEur') / 1000, mach = CT.mach, excl = gv('sehirEksklusifEur') / 1000;
   var channel    = CT.channel, sweat   = CT.sweat,  cash      = CT.cash;
   var royPV      = CT.royaltyPV,        royOff = CT.royaltyOffset / 100;
   var comPV      = CT.commPV,           comOff = CT.commOffset    / 100;
