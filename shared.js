@@ -3735,6 +3735,8 @@ function renderInvestBreakdown(kurulumTop, rows) {
   }
   const dcfDisp = document.getElementById('dcfInvestDisp');
   if (dcfDisp) dcfDisp.textContent = '€' + Math.round(totalInvestEur).toLocaleString('tr-TR');
+  const setupDisp = document.getElementById('setupCostsEurDisp');
+  if (setupDisp) setupDisp.textContent = '€' + Math.round(setupCashTRY/eurK).toLocaleString('tr-TR');
 
   return { clinicCashEur, parentInKindEur, totalInvestEur };
 }
