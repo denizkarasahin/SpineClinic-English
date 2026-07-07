@@ -467,13 +467,10 @@ function initDynamic() {
     if (sp) sp.textContent = V[k];
   });
   _refreshRiskProfile();
-  // Contribution Register sliders (moved from captable.html to investor.html)
-  ['osteoidCarpan','yatirimciCarpan','doktorCarpan','sweatCarpan','makineKatkiOran',
-   'royaltyOffsetYil','royaltyOffsetPct','doktorYatirim','sweatEur','sweatVestAy',
-   'sweatCliffAy','sweatElapsedAy','sweatMaxPct'].forEach(function(k) {
-    const sl = document.getElementById('s_'+k);
-    if (sl) sl.value = V[k];
-  });
+  // Contribution Register + Sweat Equity sliders (currently on captable.html)
+  // are synced by the generic input[type=range][id] loop below — no
+  // page-specific handling needed since that loop derives V's key from the
+  // s_ prefix and runs on whichever page the sliders happen to live on.
   const _exitSl = document.getElementById('s_dcfExitMult');
   const _exitSp = document.getElementById('dcfExitMult');
   if (_exitSl) _exitSl.value = V.dcfExitMult || 10;

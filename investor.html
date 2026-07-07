@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -7,23 +7,10 @@
 <link rel="stylesheet" href="style.css">
 <script>window.PAGE_ID='yatirimci';</script>
 <style>
-.soz-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-@media (max-width: 800px) { .soz-grid { grid-template-columns: 1fr; } }
-.soz-col-title { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #fff; padding: 8px 14px; border-radius: 5px; margin-bottom: 12px; }
-.soz-col-title.yatirimci { background: #534AB7; }
-.soz-col-title.hekim { background: #1a7a45; }
-.term-card { background: #f9f8f4; border: 1px solid #e0e0dc; border-radius: 6px; padding: 12px 14px; margin-bottom: 10px; }
-.term-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #888; margin-bottom: 5px; }
-.term-body { font-size: 12px; color: #333; line-height: 1.6; outline: none; border-radius: 3px; }
-.term-body:focus { outline: 1px solid #534AB7; background: #fff; padding: 3px 5px; margin: -3px -5px; }
-.gdoc-box { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 12px; }
-.gdoc-input { flex: 1; min-width: 260px; font-size: 12px; padding: 9px 12px; border: 1px solid #d0d0cc; border-radius: 6px; background: #fafaf8; color: #1a1a1a; }
-.gdoc-input:focus { outline: 1px solid #534AB7; }
-.gdoc-btn { font-size: 12px; font-weight: 700; padding: 9px 18px; border-radius: 6px; cursor: pointer; white-space: nowrap; transition: all .15s; }
-.gdoc-btn.primary { border: 1.5px solid #534AB7; background: #534AB7; color: #fff; }
-.gdoc-btn.primary:hover { background: #4239a6; }
-.gdoc-btn.secondary { border: 1.5px solid #534AB7; background: #fff; color: #534AB7; }
-.gdoc-btn.secondary:hover { background: #f4f3ff; }
+.sozlesme-link-card { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: #f9f8f4; border: 1px solid #e0e0dc; border-radius: 8px; padding: 20px 24px; }
+.sozlesme-link-card .label { font-size: 13px; font-weight: 700; color: #333; }
+.sozlesme-link-card .sub { font-size: 11px; color: #888; margin-top: 4px; }
+.sozlesme-link-card a.go { font-size: 12px; font-weight: 700; color: #fff; text-decoration: none; padding: 9px 20px; background: #534AB7; border: 1.5px solid #534AB7; border-radius: 6px; white-space: nowrap; }
 </style>
 </head>
 <body>
@@ -38,113 +25,180 @@
 </div>
 
 <div id="tab-yatirimci">
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     SECTION 1 — THE DEAL AT A GLANCE
+     ══════════════════════════════════════════════════════════════════════ -->
 <div class="section">
-  <div class="section-header" onclick="tog(this)"><h2>Investor Value Creation — Exit &amp; Valuation Framework</h2><span class="tog">▸</span></div>
-  <div class="section-body">
+  <div class="section-header open" onclick="tog(this)"><h2>The Deal at a Glance</h2><span class="tog">▾</span></div>
+  <div class="section-body" style="display:block;">
 
-    <div class="note-box" style="margin-bottom:20px;">This section is prepared to show the investor "how my money gains value." Exact valuation figures are subject to negotiation; the multipliers below are market references.</div>
+    <div class="note-box" style="margin-bottom:12px;">Return comes from two mechanisms: annual dividends after cumulative positive, and a strategic exit — see comps below.</div>
 
-    <!-- Değer Yaratma Yolları -->
-    <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:14px;">Value Creation Mechanisms</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px;">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:6px;" id="dcfKpiGrid">
+      <div class="kpi"><div class="kpi-label">Pre-Money</div><div class="kpi-val pos" id="dcf_premoney_final" title="max(DCF Value, Asset Floor) — used for Post-Money and everywhere else on this page">—</div></div>
+      <div class="kpi"><div class="kpi-label">Post-Money</div><div class="kpi-val neu" id="dcf_postmoney">—</div></div>
+      <div class="kpi"><div class="kpi-label">Total Investment</div><div class="kpi-val neu" id="dcfInvestDisp">—</div></div>
+      <div class="kpi"><div class="kpi-label">Investor Stake</div><div class="kpi-val pos" id="dcf_yatirimci_hisse">—</div></div>
+      <div class="kpi"><div class="kpi-label">Exit Value — Year 5</div><div class="kpi-val pos" id="dcf_exitValue" title="Year 5 EBITDA × Exit Multiple (undiscounted)">—</div></div>
+      <div class="kpi"><div class="kpi-label">Cumulative Free Cash (5yr)</div><div class="kpi-val neu" id="kpi_cumFcf" title="Sum of Y1-Y5 free cash flow, taxed per the toggle above">—</div></div>
+    </div>
+    <div style="font-size:11px;color:#888;margin:2px 0 8px;">DCF <span id="dcf_premoney"></span> · Asset floor <span id="dcf_assetFloor"></span> — higher of the two applies</div>
+    <div id="dcf_floor_chip" style="display:none;font-size:11px;font-weight:700;color:#8a6d1a;background:#fff8e8;border:1px solid #f0d080;border-radius:4px;padding:8px 12px;margin-bottom:16px;">⚠ DCF is below the value of contributed assets — check whether the discount rate reflects the de-risked profile.</div>
 
-      <div style="background:#f7f7f4;border:1px solid #e0e0dc;border-radius:8px;padding:16px;">
-        <div style="font-size:12px;font-weight:700;color:#1a7a45;margin-bottom:8px;">① Dividends</div>
-        <div style="font-size:12px;color:#555;line-height:1.6;">Annual dividend distribution after the center turns profitable. Net profit remaining after royalty expenses is shared pro-rata. Year 1 cumulative positive ~Month 11, followed by a growing dividend stream each year.</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
+      <div class="sl-row" style="grid-column:1 / -1;">
+        <label style="font-size:10px;">Risk Profile → Discount Rate (%)</label>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 8px;">
+          <button type="button" id="riskBtn_32" onclick="svRiskProfile(32)" style="font-size:11px;font-weight:700;padding:7px 14px;border-radius:6px;border:1.5px solid #c94f2a;background:#fff;color:#c94f2a;cursor:pointer;">Unproven concept — 32%</button>
+          <button type="button" id="riskBtn_20" onclick="svRiskProfile(20)" style="font-size:11px;font-weight:700;padding:7px 14px;border-radius:6px;border:1.5px solid #534AB7;background:#534AB7;color:#fff;cursor:pointer;">Proven technology, new venue — 20%</button>
+          <button type="button" id="riskBtn_14" onclick="svRiskProfile(14)" style="font-size:11px;font-weight:700;padding:7px 14px;border-radius:6px;border:1.5px solid #1a7a45;background:#fff;color:#1a7a45;cursor:pointer;">Established operations — 14%</button>
+        </div>
+        <div class="sl-controls">
+          <input type="range" id="s_dcfRate" min="10" max="40" step="1" value="20" oninput="svDcf('dcfRate',this.value)">
+          <span class="sl-val" id="dcfRate" style="min-width:40px;">20</span>
+        </div>
+        <div class="note-box" style="margin-top:8px;background:#f4f3ff;border-color:#d8d5f5;color:#3d3680;">Default profile — <b>Proven technology, new venue (20%)</b>: technology operational in 17 countries, 3,000+ braces produced, CE-marked platform; exclusive territorial rights granted; no local substitute exists. Remaining risk is single-site execution, not technology or market risk.</div>
+        <span class="sl-note">Buttons set the discount rate to a named anchor; drag the slider for anything in between (fine-control range 10–40%).</span>
       </div>
-
-      <div style="background:#f7f7f4;border:1px solid #e0e0dc;border-radius:8px;padding:16px;">
-        <div style="font-size:12px;font-weight:700;color:#c94f2a;margin-bottom:8px;">② Strategic Acquisition</div>
-        <div style="font-size:12px;color:#555;line-height:1.6;margin-bottom:12px;">Acquisition of the clinic chain by a healthcare group or PE fund. Private healthcare M&amp;A is active in Turkey — scalable clinic models with proven technology infrastructure are attracting interest.</div>
-        <div style="font-size:11px;font-weight:700;color:#c94f2a;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Turkey Private Healthcare M&amp;A References</div>
-        <div class="tbl-wrap" style="margin-bottom:0;">
-          <table>
-            <thead><tr>
-              <th style="text-align:left;">Transaction / Company</th>
-              <th>Year</th>
-              <th>Party</th>
-              <th>EV/EBITDA</th>
-              <th>Note</th>
-            </tr></thead>
-            <tbody>
-              <tr>
-                <td>Medical Park Hospitals</td>
-                <td>2013</td>
-                <td>Carlyle → Turkven</td>
-                <td class="neu">~8–10x</td>
-                <td style="font-size:11px;color:#888;">Carlyle exit after 4-year partnership; 18 hospitals, 9,000+ employees</td>
-              </tr>
-              <tr>
-                <td>Acıbadem Hospitals</td>
-                <td>2012</td>
-                <td>IHH Healthcare (Malaysia)</td>
-                <td class="neu">~12–14x</td>
-                <td style="font-size:11px;color:#888;">75% stake; Turkey's largest hospital chain M&amp;A transaction</td>
-              </tr>
-              <tr>
-                <td>Turkey Private Clinic (single location)</td>
-                <td>2022–24</td>
-                <td>Sector avg.</td>
-                <td class="neu">3–6x</td>
-                <td style="font-size:11px;color:#888;">Revenue &lt;₺50M; physical therapy, orthopedics, diabetic foot clinic benchmarks</td>
-              </tr>
-              <tr>
-                <td>Turkey Private Clinic Chain (2–4 loc.)</td>
-                <td>2022–24</td>
-                <td>Sector avg.</td>
-                <td class="pc">5–9x</td>
-                <td style="font-size:11px;color:#888;">Multi-location, systematic operations, scalable model commands premium multiple</td>
-              </tr>
-              <tr>
-                <td>Medical Technology + Clinic Hybrid</td>
-                <td>2023–24</td>
-                <td>Global avg.</td>
-                <td class="pc">7–12x</td>
-                <td style="font-size:11px;color:#888;">Clinic operations + tech infrastructure + peer-reviewed publication; software ARR presence lifts multiple</td>
-              </tr>
-              <tr>
-                <td>Physical Therapy Chain (multi-loc.)</td>
-                <td>2023</td>
-                <td>US/Europe avg.</td>
-                <td class="neu">8–13x</td>
-                <td style="font-size:11px;color:#888;">Metro MSO / Confluent Health; 40–60% Turkey discount applicable</td>
-              </tr>
-            </tbody>
-          </table>
+      <div class="sl-row">
+        <label style="font-size:10px;">Base Exit Multiple (×) — used for DCF terminal value &amp; Base scenario</label>
+        <div class="sl-controls">
+          <input type="range" id="s_dcfExitMult" min="4" max="20" step="0.5" value="10" oninput="svDcf('dcfExitMult',this.value)">
+          <span class="sl-val" id="dcfExitMult" style="min-width:40px;">10×</span>
         </div>
-      </div>
-
-      <div style="background:#f7f7f4;border:1px solid #e0e0dc;border-radius:8px;padding:16px;">
-        <div style="font-size:12px;font-weight:700;color:#BA7517;margin-bottom:8px;">③ Clinical Evidence, Patient Data &amp; Academic Multiplier</div>
-        <div style="font-size:12px;color:#555;line-height:1.6;margin-bottom:12px;">
-          Osteoid's clinical claim is based not on assertion but on measured, peer-reviewed data. This is a rare positioning among comparable clinic models — and an independent value driver for a strategic acquirer.
-        </div>
-
-        <!-- Academic Publications -->
-        <div style="background:#eef6ff;border:1px solid #b8d4f0;border-radius:6px;padding:12px 14px;margin-bottom:10px;">
-          <div style="font-size:11px;font-weight:700;color:#185FA5;margin-bottom:8px;">🎓 Academic Publication Infrastructure</div>
-          <div style="font-size:11px;color:#333;line-height:1.8;">
-            <b>SRS 2026 Annual Meeting</b> — Scoliosis Research Society, the world's most selective scoliosis congress (~30% acceptance rate)<br>
-            <span style="color:#555;">Tunay Şanlı, Deniz Karaşahin et al. · <i>"AI-Assisted Bone Age Estimation: Multicenter Validation and Comparison Across Idiopathic Scoliosis Groups and Healthy Controls"</i></span>
-            <br><br>
-            <b>EUROSPINE 2026</b> — Europe's leading spinal surgery congress<br>
-            <span style="color:#555;">Same study also accepted at EUROSPINE 2026 · multicenter validation, AI-assisted clinical decision support</span>
-          </div>
-        </div>
-
-        <!-- Patient Data -->
-        <div style="background:#fff8e8;border:1px solid #f0d080;border-radius:6px;padding:12px 14px;">
-          <div style="font-size:11px;font-weight:700;color:#BA7517;margin-bottom:8px;">📊 Patient Data — Value Multiplier</div>
-          <div style="font-size:11px;color:#555;line-height:1.7;">
-            Longitudinal patient data accumulated from sensor braces (compliance rate, brace efficacy, treatment outcome) constitutes an independent value asset for strategic acquirers. Real-world clinical data at this scale does not exist in the European market. The academic publication infrastructure validates data quality and methodology externally.
-            <br><br>
-            <b>Multiplier effect:</b> Proven clinical database + peer-reviewed publications can lift EV/EBITDA by <b>+1x to +3x</b> — especially when the acquirer is a European distribution partner or medical device company. Osteoid's European bridge via KIMedix makes this scenario concrete.
-            <br><br>
-            <span style="font-size:10px;color:#888;">Note: Patient data valuation is subject to PDPL/GDPR compliance and database structure. This line does not constitute a commitment; it illustrates strategic potential.</span>
-          </div>
-        </div>
+        <span class="sl-note">EV/EBITDA at exit — typical healthcare clinic 6–12×; a proven platform with de-risked technology and market fit commands the higher end of that range, not the low end reserved for unproven concepts. The satellite management-fee stream is valued separately, at its own (typically richer) multiple, when the sum-of-parts toggle is on (see Deal Structure &amp; Assumptions below).</span>
       </div>
     </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     SECTION 2 — YOUR RETURN
+     ══════════════════════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header open" onclick="tog(this)"><h2>Your Return</h2><span class="tog">▾</span></div>
+  <div class="section-body" style="display:block;">
+
+    <!-- YATIRIMCİ GETİRİ ANALİZİ -->
+    <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:14px;">Investor Return Analysis — For €<span id="gtr_invest_lbl">150.000</span> Investment</div>
+
+    <div class="tbl-wrap" style="margin-bottom:10px;">
+      <table id="getiriTable">
+        <thead>
+          <tr>
+            <th style="text-align:left;">Scenario</th>
+            <th>Enterprise Value</th>
+            <th>Your Stake</th>
+            <th>Your Payout</th>
+            <th>MOIC</th>
+            <th>IRR (5yr ann.)</th>
+          </tr>
+        </thead>
+        <tbody id="getiriTableBody">
+          <tr><td colspan="6" style="text-align:center;color:#aaa;font-size:11px;">Calculating...</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note-box" style="margin-bottom:16px;"><b>MOIC</b> = Your payout ÷ your ticket; <b>IRR</b> = annualized return over 5 years. <b>Color guide:</b> green = IRR ≥ 25% / MOIC ≥ 3×, yellow = IRR ≥ 15% / MOIC ≥ 2×, red = below.</div>
+
+    <!-- MOIC Sensitivity mini-table -->
+    <div style="margin-top:18px;">
+      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">MOIC Sensitivity — Year 5 Exit Multiple Sweep</div>
+      <div class="tbl-wrap" style="margin-bottom:10px;">
+        <table id="moicSensTable" style="min-width:340px;">
+          <thead>
+            <tr>
+              <th>Exit Multiple</th>
+              <th>Enterprise Value</th>
+              <th>MOIC</th>
+              <th>IRR (5yr)</th>
+            </tr>
+          </thead>
+          <tbody id="moicSensBody">
+            <tr><td colspan="4" style="text-align:center;color:#aaa;font-size:11px;">Calculating...</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note-box" style="font-size:11px;">MOIC/IRR above use the Lead Investor's own cash ticket and ownership %, not the blended Total Investment. Doctor-investors and referral fees are additional return not captured here — see below.</div>
+    </div>
+
+    <!-- Exit Tax Structuring — timing/rate sliders only; entity toggle + chips live in Deal Structure & Assumptions -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:20px 0 8px;">
+      <div class="sl-row">
+        <label style="font-size:10px;">Exit Year</label>
+        <div class="sl-controls">
+          <input type="range" id="s_exitYili" min="2" max="8" step="1" value="5" oninput="sv('exitYili',this.value)">
+          <span class="sl-val" id="exitYili" style="min-width:40px;">5</span>
+        </div>
+        <span class="sl-note">Year of assumed exit — drives the 2-year holding-period clock only, not the 5-year cash-flow projection itself</span>
+      </div>
+      <div class="sl-row">
+        <label style="font-size:10px;">Personal Income Tax Rate (%)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_kisiselVergiOrani" min="15" max="40" step="1" value="40" oninput="sv('kisiselVergiOrani',this.value)">
+          <span class="sl-val" id="kisiselVergiOrani" style="min-width:40px;">40</span>
+        </div>
+        <span class="sl-note">Applied to the gain portion of the payout only when the exemption doesn't apply — default is the top bracket, as a conservative assumption</span>
+      </div>
+      <div class="sl-row">
+        <label style="font-size:10px;">Shares Funded (month)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_fundAy" min="0" max="36" step="1" value="0" oninput="sv('fundAy',this.value)">
+          <span class="sl-val" id="fundAy" style="min-width:40px;">0</span>
+        </div>
+        <span class="sl-note">Month the Lead Investor's cash was actually paid in — starts the 2-year clock (month 0 = signing)</span>
+      </div>
+    </div>
+
+    <!-- Cash-on-Cash Return — same after-tax FCF stream, two denominators -->
+    <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin:16px 0 8px;">Cash-on-Cash Return <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— cumulative after-tax free cash flow ÷ capital invested</span></div>
+    <div class="tbl-wrap" style="margin-bottom:10px;">
+      <table id="cashReturnTable">
+        <thead><tr>
+          <th style="text-align:left;">Basis</th>
+          <th>Capital invested</th>
+          <th>Cumulative FCF (5yr)</th>
+          <th>Gross Multiple</th>
+          <th>Net-to-Investor Multiple</th>
+          <th>Simple payback</th>
+        </tr></thead>
+        <tbody id="cashReturnBody">
+          <tr><td colspan="6" style="text-align:center;color:#aaa;font-size:11px;">Will be calculated once the model loads...</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="exitTax_explain" style="font-size:11px;color:#555;margin-bottom:8px;">—</div>
+    <div class="note-box" style="margin-bottom:8px;"><b>Return on cash invested</b> is the cash-on-cash view; <b>Return on total capital</b> also counts Osteoid's in-kind contribution, so it's always ≤ the cash-only return. Full methodology, including how exit tax applies to the Net-to-Investor Multiple, is below.</div>
+
+    <details style="margin-bottom:8px;">
+      <summary style="cursor:pointer;font-size:11px;font-weight:700;color:#534AB7;">How these numbers are calculated</summary>
+      <div class="note-box" style="margin-top:10px;">
+        <b>MOIC</b> = Your payout ÷ your ticket. <b>IRR</b> = annualized return over 5 years (simple: MOIC^(1/5)−1). <b>Enterprise Value</b> = Year 5 EBITDA × exit multiple. Your payout = EV × your equity stake. Equity stake = your ticket ÷ post-money valuation. The "For 3× MOIC" row shows the EV and exit multiple required to triple your investment — use it as a target benchmark. <b>Color guide:</b> green = IRR ≥ 25% / MOIC ≥ 3×, yellow = IRR ≥ 15% / MOIC ≥ 2×, red = below.
+      </div>
+      <div class="note-box" style="margin-top:10px;font-size:11px;">
+        MOIC and IRR above are for the Lead Investor's own cash ticket and ownership % (from the Contribution Register / Ownership Register in Deal Structure &amp; Assumptions below) — not the blended Total Investment, which also includes Osteoid's in-kind contribution. Doctor-investors have their own row in the register with an independently adjustable cash amount and weight. Physician partners referring patients also earn Sci/Edu/Library fees during Years 1–5 (independent of equity) — this is additional return not captured here.
+      </div>
+      <div class="note-box" style="margin-top:10px;">
+        <b>Return on cash invested</b> is the external investor's cash-on-cash view — capital that actually leaves an investor's pocket (clinic setup cost + working capital, read live from the Investment Breakdown table in Deal Structure &amp; Assumptions). <b>Return on total capital</b> additionally counts Osteoid A.Ş.'s in-kind contribution (machinery when Osteoid-owned, IP/design-library license, city exclusivity) as invested capital, so it's always ≤ the cash-only return. Both use the same after-tax free cash flow stream as the DCF table, and both react live to the equipment-ownership toggle, the in-kind sliders, the corporate tax toggle, and any P&amp;L slider that moves the Year-1 cash trough. <b>Gross Multiple</b> = cumulative FCF ÷ capital invested, before shareholder-level exit tax. <b>Net-to-Investor Multiple</b> applies the Exit Tax Structuring result (Deal Structure &amp; Assumptions below) to the gain portion only — return of capital itself is never taxed.
+      </div>
+      <div class="note-box" style="margin-top:10px;font-size:11px;">
+        Tax treatment is a structuring assumption based on current Turkish law; certificate printing dates, ilmühaber validity, and KVK 5/1-e conditions must be confirmed with the YMM before signing. Entity structure, certificate timing, and branch/subsidiary selection require YMM sign-off before execution.
+      </div>
+    </details>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     SECTION 3 — DEAL STRUCTURE & ASSUMPTIONS (collapsed by default)
+     ══════════════════════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header" onclick="tog(this)"><h2>Deal Structure &amp; Assumptions</h2><span class="tog">▸</span></div>
+  <div class="section-body" style="display:none;">
+
+    <div class="note-box" style="margin-bottom:20px;">This section is prepared to show the investor "how my money gains value." Exact valuation figures are subject to negotiation; the multipliers below are market references.</div>
 
     <!-- NETWORK STRUCTURE (compact mirror) -->
     <div style="margin-bottom:24px;background:#f7f7f4;border:1px solid #e0e0dc;border-radius:8px;padding:16px;">
@@ -158,34 +212,11 @@
       <div id="investorRoadmap"><div style="text-align:center;padding:24px;color:#aaa;font-size:12px;">Loading projection…</div></div>
     </div>
 
-    <!-- DCF DEĞERLEMESİ -->
+    <!-- DCF DEĞERLEMESİ — remaining parameters (Risk Profile & Base Exit Multiple are in The Deal at a Glance) -->
     <div style="margin-bottom:24px;">
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:14px;">Discounted Cash Flow (DCF) — Pre-Money Valuation</div>
 
-      <!-- Parametreler -->
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:16px;">
-        <div class="sl-row" style="grid-column:1 / -1;">
-          <label style="font-size:10px;">Risk Profile → Discount Rate (%)</label>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 8px;">
-            <button type="button" id="riskBtn_32" onclick="svRiskProfile(32)" style="font-size:11px;font-weight:700;padding:7px 14px;border-radius:6px;border:1.5px solid #c94f2a;background:#fff;color:#c94f2a;cursor:pointer;">Unproven concept — 32%</button>
-            <button type="button" id="riskBtn_20" onclick="svRiskProfile(20)" style="font-size:11px;font-weight:700;padding:7px 14px;border-radius:6px;border:1.5px solid #534AB7;background:#534AB7;color:#fff;cursor:pointer;">Proven technology, new venue — 20%</button>
-            <button type="button" id="riskBtn_14" onclick="svRiskProfile(14)" style="font-size:11px;font-weight:700;padding:7px 14px;border-radius:6px;border:1.5px solid #1a7a45;background:#fff;color:#1a7a45;cursor:pointer;">Established operations — 14%</button>
-          </div>
-          <div class="sl-controls">
-            <input type="range" id="s_dcfRate" min="10" max="40" step="1" value="20" oninput="svDcf('dcfRate',this.value)">
-            <span class="sl-val" id="dcfRate" style="min-width:40px;">20</span>
-          </div>
-          <div class="note-box" style="margin-top:8px;background:#f4f3ff;border-color:#d8d5f5;color:#3d3680;">Default profile — <b>Proven technology, new venue (20%)</b>: technology operational in 17 countries, 3,000+ braces produced, CE-marked platform; exclusive territorial rights granted; no local substitute exists. Remaining risk is single-site execution, not technology or market risk.</div>
-          <span class="sl-note">Buttons set the discount rate to a named anchor; drag the slider for anything in between (fine-control range 10–40%).</span>
-        </div>
-        <div class="sl-row">
-          <label style="font-size:10px;">Base Exit Multiple (×) — used for DCF terminal value &amp; Base scenario</label>
-          <div class="sl-controls">
-            <input type="range" id="s_dcfExitMult" min="4" max="20" step="0.5" value="10" oninput="svDcf('dcfExitMult',this.value)">
-            <span class="sl-val" id="dcfExitMult" style="min-width:40px;">10×</span>
-          </div>
-          <span class="sl-note">EV/EBITDA at exit — typical healthcare clinic 6–12×; a proven platform with de-risked technology and market fit commands the higher end of that range, not the low end reserved for unproven concepts. The satellite management-fee stream is valued separately, at its own (typically richer) multiple below, when the sum-of-parts toggle is on.</span>
-        </div>
         <div class="sl-row">
           <label style="font-size:10px;">Corporate Tax — KV (%)</label>
           <div class="sl-controls">
@@ -212,7 +243,7 @@
               <span id="feeStreamAyriMultTag" style="font-size:11px;font-weight:700;color:#888;">Off (blended into one multiple)</span>
             </label>
           </label>
-          <span class="sl-note">When on, management-fee income from satellites (Network Structure — see Cap Table) is valued at its own multiple below instead of blended into the main exit multiple — fee income is high-margin, asset-light and recurring (no clinic capex, no brace COGS), which typically justifies a richer multiple than the capital-intensive clinic business.</span>
+          <span class="sl-note">When on, management-fee income from satellites (Network Structure above) is valued at its own multiple below instead of blended into the main exit multiple — fee income is high-margin, asset-light and recurring (no clinic capex, no brace COGS), which typically justifies a richer multiple than the capital-intensive clinic business.</span>
         </div>
         <div class="sl-row" id="feeExitMultRow" style="display:none;">
           <label style="font-size:10px;">Fee Stream Exit Multiple (×)</label>
@@ -259,7 +290,7 @@
             <input type="range" id="s_sehirEksklusifEur" min="100000" max="500000" step="10000" value="200000" oninput="sv('sehirEksklusifEur',this.value)">
             <span class="sl-val" id="sehirEksklusifEur" style="min-width:70px;">200.000</span>
           </div>
-          <span class="sl-note">Osteoid parent in-kind — exclusive rights within the flagship's city, now including the right to sub-license satellite companies elsewhere in the territory (see Network Structure on the Cap Table page)</span>
+          <span class="sl-note">Osteoid parent in-kind — exclusive rights within the flagship's city, now including the right to sub-license satellite companies elsewhere in the territory (see Network Structure above)</span>
         </div>
         <div class="sl-row">
           <label style="font-size:10px;">Working Capital Buffer (€)</label>
@@ -274,24 +305,13 @@
           <div style="background:#f4f3ff;border:1px solid #d8d5f5;border-radius:6px;padding:10px 12px;font-size:11px;color:#3d3680;">
             <strong id="setupCostsEurDisp" style="color:#534AB7;font-size:13px;">—</strong> — one-time capex from the <a href="expenses.html" style="color:#534AB7;font-weight:700;">Expenses</a> page (rent, deposit, broker fee, renovation, decoration, furniture, license, and machinery if clinic-owned)
           </div>
-          <span class="sl-note">Read directly from the model — already included in the Investment Breakdown table above and in Total Investment below; shown here so the whole capital picture sits next to the other three components</span>
+          <span class="sl-note">Read directly from the model — already included in the Investment Breakdown table above and in Total Investment above; shown here so the whole capital picture sits next to the other three components</span>
         </div>
       </div>
-      <div class="note-box" style="margin-bottom:16px;">Setup cost and working capital are read directly from the model above — they are not typed, and they move whenever a P&amp;L slider, the brace ramp, or the equipment-ownership toggle changes. The Working Capital Buffer above is the one exception: it's an additional investor-contributed reserve on top of that derived figure, not a re-estimate of it. Machinery is counted once: it appears under "Osteoid parent in-kind" only when equipment is Osteoid-owned; otherwise its cost is already inside clinic setup. <b>Total Investment</b> below is the sum used everywhere else on this page (DCF, growth table, cap table, agreement).</div>
+      <div class="note-box" style="margin-bottom:16px;">Setup cost and working capital are read directly from the model above — they are not typed, and they move whenever a P&amp;L slider, the brace ramp, or the equipment-ownership toggle changes. The Working Capital Buffer above is the one exception: it's an additional investor-contributed reserve on top of that derived figure, not a re-estimate of it. Machinery is counted once: it appears under "Osteoid parent in-kind" only when equipment is Osteoid-owned; otherwise its cost is already inside clinic setup. <b>Total Investment</b> (The Deal at a Glance) is the sum used everywhere else on this page (DCF, growth table, cap table, agreement).</div>
 
-      <!-- DCF Sonuç Kartları -->
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;margin-bottom:10px;" id="dcfKpiGrid">
-        <div class="kpi"><div class="kpi-label">Exit Value — Year 5</div><div class="kpi-val pos" id="dcf_exitValue" title="Year 5 EBITDA × Exit Multiple (undiscounted)">—</div></div>
-        <div class="kpi"><div class="kpi-label">DCF Value</div><div class="kpi-val neu" id="dcf_premoney" title="Present value of exit + cash flows, discounted at r — the pure DCF calculation, before the asset floor">—</div></div>
-        <div class="kpi"><div class="kpi-label">Asset Floor</div><div class="kpi-val neu" id="dcf_assetFloor" title="Contributed IP & rights — the register's Osteoid in-kind total (IP license + territory exclusivity + machinery when contributed)">—</div></div>
-        <div class="kpi"><div class="kpi-label">Pre-Money (higher of the two)</div><div class="kpi-val pos" id="dcf_premoney_final" title="max(DCF Value, Asset Floor) — used for Post-Money and everywhere else on this page">—</div></div>
-        <div class="kpi"><div class="kpi-label">Post-Money</div><div class="kpi-val neu" id="dcf_postmoney">—</div></div>
-        <div class="kpi"><div class="kpi-label">Total Investment</div><div class="kpi-val neu" id="dcfInvestDisp">—</div></div>
-        <div class="kpi"><div class="kpi-label">Investor Stake</div><div class="kpi-val pos" id="dcf_yatirimci_hisse">—</div></div>
-        <div class="kpi"><div class="kpi-label">Osteoid Stake</div><div class="kpi-val neu" id="dcf_osteoid_hisse">—</div></div>
-        <div class="kpi"><div class="kpi-label">Cumulative Free Cash (5yr)</div><div class="kpi-val neu" id="kpi_cumFcf" title="Sum of Y1-Y5 free cash flow, taxed per the toggle above">—</div></div>
-      </div>
-      <div id="dcf_floor_chip" style="display:none;font-size:11px;font-weight:700;color:#8a6d1a;background:#fff8e8;border:1px solid #f0d080;border-radius:4px;padding:8px 12px;margin-bottom:16px;">⚠ DCF is below the value of contributed assets — check whether the discount rate reflects the de-risked profile.</div>
+      <!-- Fee Stream Split (sum-of-parts) -->
+      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Fee Stream Split <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— shown when the sum-of-parts toggle above is on</span></div>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;margin-bottom:16px;" id="dcfFeeSplitRow">
         <div class="kpi"><div class="kpi-label">Core Business Pre-Money</div><div class="kpi-val neu" id="dcf_core_premoney" title="Pre-money of the FCF stream excluding satellite management-fee income, at the main Exit Multiple">—</div></div>
         <div class="kpi"><div class="kpi-label">Fee Stream Pre-Money</div><div class="kpi-val neu" id="dcf_fee_premoney" title="Pre-money of the satellite management-fee income stream alone, at the Fee Stream Exit Multiple">—</div></div>
@@ -308,7 +328,7 @@
 
           <!-- Lever 1 -->
           <div style="font-size:11px;font-weight:700;color:#534AB7;margin-bottom:6px;">Lever 1 — Nakdi Sermaye Artışı Faiz İndirimi (KVK 10/1-ı)</div>
-          <div style="font-size:12px;color:#555;line-height:1.6;margin-bottom:10px;">Notional interest deduction on cash paid into A.Ş. share capital, claimable for 5 accounting periods from the contribution. Ltd. eligibility is genuinely unclear — confirm with YMM either way; this toggle auto-disables (stays visible) whenever the flagship entity type above is Ltd.</div>
+          <div style="font-size:12px;color:#555;line-height:1.6;margin-bottom:10px;">Notional interest deduction on cash paid into A.Ş. share capital, claimable for 5 accounting periods from the contribution. Ltd. eligibility is genuinely unclear — confirm with YMM either way; this toggle auto-disables (stays visible) whenever the flagship entity type below is Ltd.</div>
           <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:10px;">
             <div class="sl-row">
               <label style="font-size:10px;">TCMB Commercial Loan Rate (%)</label>
@@ -402,7 +422,10 @@
         </div>
       </div>
 
-      <!-- Ownership Register — single source of ownership % for this page (and the Return Analysis below); adjustable directly via the sliders underneath -->
+      <!-- Ownership Register — single source of ownership % for this page (and the Return Analysis above); adjustable directly via the sliders underneath -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;margin-bottom:8px;">
+        <div class="kpi"><div class="kpi-label">Osteoid Stake</div><div class="kpi-val neu" id="dcf_osteoid_hisse">—</div></div>
+      </div>
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Ownership Register <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— derives the ownership split from what each party actually brings to the table; adjust the terms below</span></div>
       <div class="tbl-wrap" style="margin-bottom:8px;">
         <table id="ownershipMirrorTable">
@@ -419,119 +442,8 @@
       </div>
       <div id="warn_control" style="display:none;font-size:11px;font-weight:700;color:#c0392b;background:#fef0f0;border:1px solid #e8b4b4;border-radius:4px;padding:8px 12px;margin-bottom:16px;">⚠ Control Risk: Osteoid equity falls below 50%+1. The shareholders agreement guarantees Osteoid/founder majority control at all times. Reduce non-Osteoid weights or increase Osteoid's contribution/weight.</div>
 
-      <!-- Adjust Contribution Terms — feeds the Ownership Register above; weight multipliers (×) both above and below 1.0× are valid, testable live -->
-      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Adjust Contribution Terms</div>
-      <div class="note-box" style="margin-bottom:16px;">Non-cash items (IP, exclusivity, sweat equity) are appraised at estimated fair value for equity purposes; the weight multipliers (×) are the negotiable "how much is this worth relative to face value" term for each party.</div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:12px;">
-        <div class="sl-row">
-          <label style="font-size:10px;">Osteoid Weight ×</label>
-          <div class="sl-controls">
-            <input type="range" id="s_osteoidCarpan" min="0.5" max="2" step="0.05" value="1.5" oninput="sv('osteoidCarpan',this.value)">
-            <span class="sl-val" id="osteoidCarpan" style="min-width:50px;">1.50×</span>
-          </div>
-          <span class="sl-note">Osteoid's IP · Machinery · Exclusivity contribution weight</span>
-        </div>
-        <div class="sl-row">
-          <label style="font-size:10px;">Lead Investor Weight ×</label>
-          <div class="sl-controls">
-            <input type="range" id="s_yatirimciCarpan" min="0.5" max="2" step="0.05" value="1" oninput="sv('yatirimciCarpan',this.value)">
-            <span class="sl-val" id="yatirimciCarpan" style="min-width:50px;">1.00×</span>
-          </div>
-          <span class="sl-note">Weight on the Lead Investor's cash (the clinic cash figure in the Investment Breakdown above)</span>
-        </div>
-        <div class="sl-row">
-          <label style="font-size:10px;">Doctor-Investor Weight ×</label>
-          <div class="sl-controls">
-            <input type="range" id="s_doktorCarpan" min="0.5" max="2" step="0.05" value="1.5" oninput="sv('doktorCarpan',this.value)">
-            <span class="sl-val" id="doktorCarpan" style="min-width:50px;">1.50×</span>
-          </div>
-          <span class="sl-note">Above 1.0× sweetens an early/strategic doctor-partner's entry; below 1.0× charges a premium for a later entrant</span>
-        </div>
-        <div class="sl-row">
-          <label style="font-size:10px;">Doctor-Investor Cash (€)</label>
-          <div class="sl-controls">
-            <input type="range" id="s_doktorYatirim" min="0" max="500000" step="10000" value="0" oninput="sv('doktorYatirim',this.value)">
-            <span class="sl-val" id="doktorYatirim" style="min-width:70px;">0</span>
-          </div>
-          <span class="sl-note">A doctor investing actual cash as a co-investor — separate from the referral channel, which earns Sci/Edu/Library fees in the P&amp;L, not equity</span>
-        </div>
-        <div class="sl-row">
-          <label style="font-size:10px;">Machinery Contributed at % of Market Price</label>
-          <div class="sl-controls">
-            <input type="range" id="s_makineKatkiOran" min="0" max="100" step="5" value="50" oninput="sv('makineKatkiOran',this.value)">
-            <span class="sl-val" id="makineKatkiOran" style="min-width:50px;">50</span>
-          </div>
-          <span class="sl-note">Only counted when equipment ownership is Osteoid-owned (Setup/Expenses page toggle); the machinery figure itself is live from the printer/robot-arm price sliders</span>
-        </div>
-        <div class="sl-row">
-          <label style="font-size:10px;">Royalty Offset Horizon (years)</label>
-          <div class="sl-controls">
-            <input type="range" id="s_royaltyOffsetYil" min="1" max="10" step="1" value="1" oninput="sv('royaltyOffsetYil',this.value)">
-            <span class="sl-val" id="royaltyOffsetYil" style="min-width:40px;">1</span>
-          </div>
-          <span class="sl-note">Osteoid already extracts a per-brace royalty + cutting fee in perpetuity — this offsets its equity claim by that cash stream's value over N years (royalty is currently €<span id="royaltyOffsetRateNote">0</span>/brace — €0 is a valid scenario and makes this a no-op)</span>
-        </div>
-        <div class="sl-row">
-          <label style="font-size:10px;">Royalty Offset Applied (%)</label>
-          <div class="sl-controls">
-            <input type="range" id="s_royaltyOffsetPct" min="0" max="100" step="5" value="0" oninput="sv('royaltyOffsetPct',this.value)">
-            <span class="sl-val" id="royaltyOffsetPct" style="min-width:40px;">0</span>
-          </div>
-          <span class="sl-note">100% = full correction; 0% = no offset (Osteoid keeps both equity and the full royalty stream)</span>
-        </div>
-      </div>
+      <div class="note-box" style="margin-bottom:16px;">The contribution-weight sliders (Osteoid/Investor/Doctor-Investor weights, machinery %, royalty offset) and the Sweat Equity terms that drive the table above now live in the <a href="captable.html" style="color:#534AB7;font-weight:700;">"Contribution Register — Weights &amp; Sweat Equity"</a> section on the Cap Table page — edits there update this table on next load.</div>
 
-      <div style="color:#BA7517;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin:16px 0 10px;">Orthotist / Operators — Sweat Equity</div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:8px;">
-        <div class="sl-row">
-          <label style="font-size:10px;">Sweat Equity Weight ×</label>
-          <div class="sl-controls">
-            <input type="range" id="s_sweatCarpan" min="0.5" max="2" step="0.05" value="1" oninput="sv('sweatCarpan',this.value)">
-            <span class="sl-val" id="sweatCarpan" style="min-width:50px;">1.00×</span>
-          </div>
-          <span class="sl-note">Weight on the orthotist/operator team's sweat-equity contribution</span>
-        </div>
-        <div class="sl-row">
-          <label style="font-size:10px;">Sweat Equity — Full Value (€)</label>
-          <div class="sl-controls">
-            <input type="range" id="s_sweatEur" min="0" max="500000" step="10000" value="80000" oninput="sv('sweatEur',this.value)">
-            <span class="sl-val" id="sweatEur" style="min-width:70px;">80.000</span>
-          </div>
-          <span class="sl-note">Target value at full vesting — clinical operations, production, patient management</span>
-        </div>
-        <div class="sl-row">
-          <label style="font-size:10px;">Vesting Period (months)</label>
-          <div class="sl-controls">
-            <input type="range" id="s_sweatVestAy" min="12" max="72" step="1" value="48" oninput="sv('sweatVestAy',this.value)">
-            <span class="sl-val" id="sweatVestAy" style="min-width:40px;">48</span>
-          </div>
-          <span class="sl-note">Full linear vesting horizon</span>
-        </div>
-        <div class="sl-row">
-          <label style="font-size:10px;">Cliff (months)</label>
-          <div class="sl-controls">
-            <input type="range" id="s_sweatCliffAy" min="0" max="24" step="1" value="12" oninput="sv('sweatCliffAy',this.value)">
-            <span class="sl-val" id="sweatCliffAy" style="min-width:40px;">12</span>
-          </div>
-          <span class="sl-note">Nothing vests before this many months have elapsed</span>
-        </div>
-        <div class="sl-row">
-          <label style="font-size:10px;">Elapsed Since Grant (months)</label>
-          <div class="sl-controls">
-            <input type="range" id="s_sweatElapsedAy" min="0" max="72" step="1" value="0" oninput="sv('sweatElapsedAy',this.value)">
-            <span class="sl-val" id="sweatElapsedAy" style="min-width:40px;">0</span>
-          </div>
-          <span class="sl-note">Time elapsed today since the equity grant — drives the vested % used above</span>
-        </div>
-        <div class="sl-row">
-          <label style="font-size:10px;">Max Sweat Equity Cap (%)</label>
-          <div class="sl-controls">
-            <input type="range" id="s_sweatMaxPct" min="0" max="15" step="0.5" value="5" oninput="sv('sweatMaxPct',this.value)">
-            <span class="sl-val" id="sweatMaxPct" style="min-width:40px;">5</span>
-          </div>
-          <span class="sl-note">Governance cap — the other three parties are rescaled proportionally to absorb any excess</span>
-        </div>
-      </div>
       <div style="display:flex;align-items:center;gap:8px;margin:8px 0 4px;">
         <label style="font-size:11px;font-weight:700;color:#555;cursor:pointer;display:flex;align-items:center;gap:7px;"><input type="checkbox" id="chk_sweatVestedToday" checked onchange="svSweatVestedToday(this.checked)">Show ownership at today's vesting (vs. fully vested)</label>
       </div>
@@ -550,7 +462,7 @@
           </tbody>
         </table>
       </div>
-      <div class="note-box" id="dcfNote">Free Cash Flow Years 1–5 are taken directly from the 5-year projection model (same data as the Multi-Year Plan page), taxed per the Corporate Tax toggle above (25% KV by default, with 5-year loss carryforward — no VAT is modeled, orthosis sales are VAT-exempt under KDV Kanunu 17/4-s). Terminal value uses an exit-multiple method: TV = FCF₅ × Exit Multiple — computed on the <i>same after-tax</i> FCF₅ as the interim cash flows (a proxy for an after-tax earnings multiple, not a pre-tax number an exit buyer would never actually receive). DCF Value = NPV(FCF₁₋₅) + PV(Terminal Value). <b>Pre-Money</b> is the higher of DCF Value and the Asset Floor (see cards above) — contributed IP and territorial rights are never implied to be worth less than their own appraised value. Post-Money = Pre-Money + Total Investment (a valuation reference only). <b>Investor Stake / Osteoid Stake</b> come from the Ownership Register above (Contribution Register — adjust the weight/vesting sliders there), not from Investment/Post-Money. Discount rate (r) is set by the Risk Profile control above, not a generic early-stage-startup premium — see "Why This Venture Is De-Risked" below.</div>
+      <div class="note-box" id="dcfNote">Free Cash Flow Years 1–5 are taken directly from the 5-year projection model (same data as the Multi-Year Plan page), taxed per the Corporate Tax toggle above (25% KV by default, with 5-year loss carryforward — no VAT is modeled, orthosis sales are VAT-exempt under KDV Kanunu 17/4-s). Terminal value uses an exit-multiple method: TV = FCF₅ × Exit Multiple — computed on the <i>same after-tax</i> FCF₅ as the interim cash flows (a proxy for an after-tax earnings multiple, not a pre-tax number an exit buyer would never actually receive). DCF Value = NPV(FCF₁₋₅) + PV(Terminal Value). <b>Pre-Money</b> is the higher of DCF Value and the Asset Floor (see The Deal at a Glance) — contributed IP and territorial rights are never implied to be worth less than their own appraised value. Post-Money = Pre-Money + Total Investment (a valuation reference only). <b>Investor Stake / Osteoid Stake</b> come from the Ownership Register above (Contribution Register — adjust the weight/vesting sliders on the Cap Table page), not from Investment/Post-Money. Discount rate (r) is set by the Risk Profile control on The Deal at a Glance, not a generic early-stage-startup premium — see "Why This Venture Is De-Risked" above.</div>
 
       <!-- Exit Tax Structuring (Shareholder-Level) -->
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin:20px 0 8px;">Exit Tax Structuring <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— shareholder-level only; corporate tax (KV) on operating profit above is unaffected</span></div>
@@ -562,56 +474,12 @@
             <button type="button" id="sirketBtn_as" onclick="svSirketTuru('as')" style="flex:1;font-size:11px;font-weight:700;padding:8px 10px;border-radius:6px;border:1.5px solid #534AB7;background:#534AB7;color:#fff;cursor:pointer;">A.Ş. (share certificates printed)</button>
             <button type="button" id="sirketBtn_ltd" onclick="svSirketTuru('ltd')" style="flex:1;font-size:11px;font-weight:700;padding:8px 10px;border-radius:6px;border:1.5px solid #534AB7;background:#fff;color:#534AB7;cursor:pointer;">Ltd.</button>
           </div>
-          <span class="sl-note">The Ltd. option is kept selectable so the cost of the wrong choice stays demonstrable — Ltd. şirket shares never qualify for the individual exemption, regardless of holding period. Flagship is locked in as A.Ş.; satellites are separate Ltd. companies (see Network Structure on the Cap Table page) and are not affected by this toggle.</span>
-        </div>
-        <div class="sl-row">
-          <label style="font-size:10px;">Exit Year</label>
-          <div class="sl-controls">
-            <input type="range" id="s_exitYili" min="2" max="8" step="1" value="5" oninput="sv('exitYili',this.value)">
-            <span class="sl-val" id="exitYili" style="min-width:40px;">5</span>
-          </div>
-          <span class="sl-note">Year of assumed exit — drives the 2-year holding-period clock only, not the 5-year cash-flow projection itself</span>
-        </div>
-        <div class="sl-row">
-          <label style="font-size:10px;">Personal Income Tax Rate (%)</label>
-          <div class="sl-controls">
-            <input type="range" id="s_kisiselVergiOrani" min="15" max="40" step="1" value="40" oninput="sv('kisiselVergiOrani',this.value)">
-            <span class="sl-val" id="kisiselVergiOrani" style="min-width:40px;">40</span>
-          </div>
-          <span class="sl-note">Applied to the gain portion of the payout only when the exemption doesn't apply — default is the top bracket, as a conservative assumption</span>
-        </div>
-        <div class="sl-row">
-          <label style="font-size:10px;">Shares Funded (month)</label>
-          <div class="sl-controls">
-            <input type="range" id="s_fundAy" min="0" max="36" step="1" value="0" oninput="sv('fundAy',this.value)">
-            <span class="sl-val" id="fundAy" style="min-width:40px;">0</span>
-          </div>
-          <span class="sl-note">Month the Lead Investor's cash was actually paid in — starts the 2-year clock (month 0 = signing)</span>
+          <span class="sl-note">The Ltd. option is kept selectable so the cost of the wrong choice stays demonstrable — Ltd. şirket shares never qualify for the individual exemption, regardless of holding period. Flagship is locked in as A.Ş.; satellites are separate Ltd. companies (see Network Structure above) and are not affected by this toggle.</span>
         </div>
       </div>
       <div id="exitTax_clock_chip" style="font-size:11px;font-weight:700;padding:8px 12px;border-radius:4px;border:1px solid #ccc;margin-bottom:8px;">—</div>
       <div id="exitTax_cert_chip" style="font-size:11px;font-weight:700;color:#8a6d1a;background:#fff8e8;border:1px solid #f0d080;border-radius:4px;padding:8px 12px;margin-bottom:16px;">☐ —</div>
-
-      <!-- Cash-on-Cash Return — same after-tax FCF stream, two denominators -->
-      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin:16px 0 8px;">Cash-on-Cash Return <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— cumulative after-tax free cash flow ÷ capital invested</span></div>
-      <div class="tbl-wrap" style="margin-bottom:10px;">
-        <table id="cashReturnTable">
-          <thead><tr>
-            <th style="text-align:left;">Basis</th>
-            <th>Capital invested</th>
-            <th>Cumulative FCF (5yr)</th>
-            <th>Gross Multiple</th>
-            <th>Net-to-Investor Multiple</th>
-            <th>Simple payback</th>
-          </tr></thead>
-          <tbody id="cashReturnBody">
-            <tr><td colspan="6" style="text-align:center;color:#aaa;font-size:11px;">Will be calculated once the model loads...</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div id="exitTax_explain" style="font-size:11px;color:#555;margin-bottom:8px;">—</div>
-      <div class="note-box" style="margin-bottom:8px;"><b>Return on cash invested</b> is the external investor's cash-on-cash view — capital that actually leaves an investor's pocket (clinic setup cost + working capital, read live from the breakdown table above). <b>Return on total capital</b> additionally counts Osteoid A.Ş.'s in-kind contribution (machinery when Osteoid-owned, IP/design-library license, city exclusivity) as invested capital, so it's always ≤ the cash-only return. Both use the same after-tax free cash flow stream as the DCF table above, and both react live to the equipment-ownership toggle, the in-kind sliders, the corporate tax toggle, and any P&amp;L slider that moves the Year-1 cash trough. <b>Gross Multiple</b> = cumulative FCF ÷ capital invested, before shareholder-level exit tax. <b>Net-to-Investor Multiple</b> applies the Exit Tax Structuring result above to the gain portion only — return of capital itself is never taxed.</div>
-      <div class="note-box" style="margin-bottom:16px;font-size:11px;">Tax treatment is a structuring assumption based on current Turkish law; certificate printing dates, ilmühaber validity, and KVK 5/1-e conditions must be confirmed with the YMM before signing. Entity structure, certificate timing, and branch/subsidiary selection require YMM sign-off before execution.</div>
+      <div class="note-box" style="margin-bottom:16px;font-size:11px;">Exit Year, Personal Income Tax Rate, and Shares Funded (month) sliders that drive the clock above are in the Your Return section.</div>
     </div>
 
     <!-- Osteoid için değerleme senaryosu -->
@@ -667,61 +535,111 @@
       </table>
     </div>
     <div class="note-box" style="margin-bottom:24px;font-size:11px;line-height:1.7;">
-      <b>Multiple Methodology:</b> EV = Year 5 EBITDA × EV/EBITDA multiple. The <b>Base Exit Multiple slider</b> drives all three calculations simultaneously — DCF terminal value, DCF pre-money, and the Base scenario exit EV all use the same multiple so there is one consistent Year-5 enterprise value. Conservative = Base−2×, Optimistic = Base+3×. Reference: US/Europe physical therapy chain (MSO) multiples 8–13× (Metro MSO, Confluent Health, etc.); Turkey market discount applied:
+      <b>Multiple Methodology:</b> EV = Year 5 EBITDA × EV/EBITDA multiple. The <b>Base Exit Multiple slider</b> (The Deal at a Glance) drives all three calculations simultaneously — DCF terminal value, DCF pre-money, and the Base scenario exit EV all use the same multiple so there is one consistent Year-5 enterprise value. Conservative = Base−2×, Optimistic = Base+3×. Reference: US/Europe physical therapy chain (MSO) multiples 8–13× (Metro MSO, Confluent Health, etc.); Turkey market discount applied:
       <ul style="margin:6px 0 0 16px;padding:0;">
         <li><b>Conservative (Base−2×):</b> Single clinic or early stage → 40–60% Turkey/liquidity discount</li>
         <li><b>Base (slider value):</b> Multi-center, model proven → moderate Turkey discount</li>
         <li><b>Optimistic (Base+3×):</b> Strategic European/global acquirer + clinical database + SRS/EUROSPINE publications → premium</li>
       </ul>
     </div>
-    <!-- YATIRIMCİ GETİRİ ANALİZİ -->
-    <div style="margin-top:24px;">
-      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:14px;">Investor Return Analysis — For €<span id="gtr_invest_lbl">150.000</span> Investment</div>
 
-      <div class="tbl-wrap" style="margin-bottom:10px;">
-        <table id="getiriTable">
-          <thead>
-            <tr>
-              <th style="text-align:left;">Scenario</th>
-              <th>Enterprise Value</th>
-              <th>Your Stake</th>
-              <th>Your Payout</th>
-              <th>MOIC</th>
-              <th>IRR (5yr ann.)</th>
-            </tr>
-          </thead>
-          <tbody id="getiriTableBody">
-            <tr><td colspan="6" style="text-align:center;color:#aaa;font-size:11px;">Calculating...</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="note-box" style="margin-bottom:16px;">
-        <b>MOIC</b> = Your payout ÷ your ticket. <b>IRR</b> = annualized return over 5 years (simple: MOIC^(1/5)−1). <b>Enterprise Value</b> = Year 5 EBITDA × exit multiple. Your payout = EV × your equity stake. Equity stake = your ticket ÷ post-money valuation. The "For 3× MOIC" row shows the EV and exit multiple required to triple your investment — use it as a target benchmark. <b>Color guide:</b> green = IRR ≥ 25% / MOIC ≥ 3×, yellow = IRR ≥ 15% / MOIC ≥ 2×, red = below.
-      </div>
+    <div class="note-box">EBITDA = Earnings Before Interest, Taxes, Depreciation and Amortization. Since there are no interest or depreciation items in this model, EBITDA ≈ operating profit (EBIT). VAT: orthosis-prosthesis delivery is exempt under VAT Law 17/4-s at 0% (full exemption). Corporate tax: 25% on profit from clinic operations; no sales exemption (Technology Development Zone exemption belongs solely to Osteoid Inc.). EV is always calculated on EBITDA — the figures above are total enterprise value, not equity value. Your equity value = EV × your ownership percentage. In addition to multiples, the multiple automatically increases by +1x (2nd center) or +2x (3rd center) as the number of active centers grows.</div>
 
-      <!-- MOIC Sensitivity mini-table -->
-      <div style="margin-top:18px;">
-        <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">MOIC Sensitivity — Year 5 Exit Multiple Sweep</div>
-        <div class="tbl-wrap" style="margin-bottom:10px;">
-          <table id="moicSensTable" style="min-width:340px;">
-            <thead>
-              <tr>
-                <th>Exit Multiple</th>
-                <th>Enterprise Value</th>
-                <th>MOIC</th>
-                <th>IRR (5yr)</th>
-              </tr>
-            </thead>
-            <tbody id="moicSensBody">
-              <tr><td colspan="4" style="text-align:center;color:#aaa;font-size:11px;">Calculating...</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="note-box" style="font-size:11px;">MOIC and IRR above are for the Lead Investor's own cash ticket and ownership % (from the Contribution Register / Ownership Register above) — not the blended Total Investment, which also includes Osteoid's in-kind contribution. Doctor-investors have their own row in the register with an independently adjustable cash amount and weight. Physician partners referring patients also earn Sci/Edu/Library fees during Years 1–5 (independent of equity) — this is additional return not captured here.</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     SECTION 4 — EXIT MARKET EVIDENCE (collapsed by default)
+     ══════════════════════════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header" onclick="tog(this)"><h2>Exit Market Evidence — Turkey Healthcare M&amp;A</h2><span class="tog">▸</span></div>
+  <div class="section-body" style="display:none;">
+
+    <div style="font-size:11px;font-weight:700;color:#c94f2a;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Turkey Private Healthcare M&amp;A References</div>
+    <div class="tbl-wrap" style="margin-bottom:24px;">
+      <table>
+        <thead><tr>
+          <th style="text-align:left;">Transaction / Company</th>
+          <th>Year</th>
+          <th>Party</th>
+          <th>EV/EBITDA</th>
+          <th>Note</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td>Medical Park Hospitals</td>
+            <td>2013</td>
+            <td>Carlyle → Turkven</td>
+            <td class="neu">~8–10x</td>
+            <td style="font-size:11px;color:#888;">Carlyle exit after 4-year partnership; 18 hospitals, 9,000+ employees</td>
+          </tr>
+          <tr>
+            <td>Acıbadem Hospitals</td>
+            <td>2012</td>
+            <td>IHH Healthcare (Malaysia)</td>
+            <td class="neu">~12–14x</td>
+            <td style="font-size:11px;color:#888;">75% stake; Turkey's largest hospital chain M&amp;A transaction</td>
+          </tr>
+          <tr>
+            <td>Turkey Private Clinic (single location)</td>
+            <td>2022–24</td>
+            <td>Sector avg.</td>
+            <td class="neu">3–6x</td>
+            <td style="font-size:11px;color:#888;">Revenue &lt;₺50M; physical therapy, orthopedics, diabetic foot clinic benchmarks</td>
+          </tr>
+          <tr>
+            <td>Turkey Private Clinic Chain (2–4 loc.)</td>
+            <td>2022–24</td>
+            <td>Sector avg.</td>
+            <td class="pc">5–9x</td>
+            <td style="font-size:11px;color:#888;">Multi-location, systematic operations, scalable model commands premium multiple</td>
+          </tr>
+          <tr>
+            <td>Medical Technology + Clinic Hybrid</td>
+            <td>2023–24</td>
+            <td>Global avg.</td>
+            <td class="pc">7–12x</td>
+            <td style="font-size:11px;color:#888;">Clinic operations + tech infrastructure + peer-reviewed publication; software ARR presence lifts multiple</td>
+          </tr>
+          <tr>
+            <td>Physical Therapy Chain (multi-loc.)</td>
+            <td>2023</td>
+            <td>US/Europe avg.</td>
+            <td class="neu">8–13x</td>
+            <td style="font-size:11px;color:#888;">Metro MSO / Confluent Health; 40–60% Turkey discount applicable</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="font-size:12px;font-weight:700;color:#BA7517;margin-bottom:8px;">Clinical Evidence, Patient Data &amp; Academic Multiplier</div>
+    <div style="font-size:12px;color:#555;line-height:1.6;margin-bottom:12px;">
+      Osteoid's clinical claim is based not on assertion but on measured, peer-reviewed data. This is a rare positioning among comparable clinic models — and an independent value driver for a strategic acquirer.
+    </div>
+
+    <!-- Academic Publications -->
+    <div style="background:#eef6ff;border:1px solid #b8d4f0;border-radius:6px;padding:12px 14px;margin-bottom:10px;">
+      <div style="font-size:11px;font-weight:700;color:#185FA5;margin-bottom:8px;">🎓 Academic Publication Infrastructure</div>
+      <div style="font-size:11px;color:#333;line-height:1.8;">
+        <b>SRS 2026 Annual Meeting</b> — Scoliosis Research Society, the world's most selective scoliosis congress (~30% acceptance rate)<br>
+        <span style="color:#555;">Tunay Şanlı, Deniz Karaşahin et al. · <i>"AI-Assisted Bone Age Estimation: Multicenter Validation and Comparison Across Idiopathic Scoliosis Groups and Healthy Controls"</i></span>
+        <br><br>
+        <b>EUROSPINE 2026</b> — Europe's leading spinal surgery congress<br>
+        <span style="color:#555;">Same study also accepted at EUROSPINE 2026 · multicenter validation, AI-assisted clinical decision support</span>
       </div>
     </div>
 
-    <div class="note-box">EBITDA = Earnings Before Interest, Taxes, Depreciation and Amortization. Since there are no interest or depreciation items in this model, EBITDA ≈ operating profit (EBIT). VAT: orthosis-prosthesis delivery is exempt under VAT Law 17/4-s at 0% (full exemption). Corporate tax: 25% on profit from clinic operations; no sales exemption (Technology Development Zone exemption belongs solely to Osteoid Inc.). EV is always calculated on EBITDA — the figures above are total enterprise value, not equity value. Your equity value = EV × your ownership percentage. In addition to multiples, the multiple automatically increases by +1x (2nd center) or +2x (3rd center) as the number of active centers grows.</div>
+    <!-- Patient Data -->
+    <div style="background:#fff8e8;border:1px solid #f0d080;border-radius:6px;padding:12px 14px;">
+      <div style="font-size:11px;font-weight:700;color:#BA7517;margin-bottom:8px;">📊 Patient Data — Value Multiplier</div>
+      <div style="font-size:11px;color:#555;line-height:1.7;">
+        Longitudinal patient data accumulated from sensor braces (compliance rate, brace efficacy, treatment outcome) constitutes an independent value asset for strategic acquirers. Real-world clinical data at this scale does not exist in the European market. The academic publication infrastructure validates data quality and methodology externally.
+        <br><br>
+        <b>Multiplier effect:</b> Proven clinical database + peer-reviewed publications can lift EV/EBITDA by <b>+1x to +3x</b> — especially when the acquirer is a European distribution partner or medical device company. Osteoid's European bridge via KIMedix makes this scenario concrete.
+        <br><br>
+        <span style="font-size:10px;color:#888;">Note: Patient data valuation is subject to PDPL/GDPR compliance and database structure. This line does not constitute a commitment; it illustrates strategic potential.</span>
+      </div>
+    </div>
 
   </div>
 </div>
@@ -731,124 +649,12 @@
 <div id="tab-sozlesme" style="display:none;">
 <div class="group-label">Agreement &amp; Terms</div>
 
-<div class="section">
-  <div class="section-header open" onclick="tog(this)"><h2>Shareholders Agreement</h2><span class="tog">▾</span></div>
-  <div class="section-body" style="display:block;">
-    <div class="note-box" style="margin-bottom:14px;">
-      The draft shareholders agreement is being prepared on Google Docs. Paste the link below — it will be saved and the same link will open in every session.
-    </div>
-    <div class="gdoc-box">
-      <input type="url" id="gdocUrl" class="gdoc-input" placeholder="https://docs.google.com/document/d/...">
-      <button class="gdoc-btn secondary" onclick="saveGdocUrl()">Save</button>
-      <button class="gdoc-btn primary" onclick="openGdoc()">&#8599; Open in Google Docs</button>
-    </div>
-    <div id="gdocStatus" style="font-size:11px;margin-top:8px;color:#888;"></div>
+<div class="sozlesme-link-card">
+  <div>
+    <div class="label">Shareholders Agreement &amp; Key Terms</div>
+    <div class="sub">The Google Docs link, editable Investor/Doctor term cards, and control-structure clauses now live on the Agreement page — edits there save to the same browser storage read here.</div>
   </div>
-</div>
-
-<div class="section">
-  <div class="section-header open" onclick="tog(this)"><h2>Key Terms — General Summary</h2><span class="tog">▾</span></div>
-  <div class="section-body" style="display:block;">
-    <div class="note-box" style="margin-bottom:18px;">⚠ This summary is a draft and has no legal binding. Clause descriptions can be edited by clicking; changes are saved in the browser.</div>
-    <div class="soz-grid">
-
-      <div>
-        <div class="soz-col-title yatirimci">Investor Agreement</div>
-
-        <div class="term-card" style="border-left:3px solid #534AB7;">
-          <div class="term-title" style="color:#534AB7;">Investment Amount <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:10px;">— <a href="investor.html" style="color:#534AB7;">Updated from the Investor tab</a></span></div>
-          <div class="term-body" id="term_Y_tutar" style="font-size:16px;font-weight:700;color:#534AB7;">€150.000</div>
-        </div>
-
-        <div class="term-card">
-          <div class="term-title">Investment Instrument</div>
-          <div class="term-body" contenteditable="true" id="term_Y_arac" onblur="saveTerm('Y_arac',this)">Open to negotiation: ordinary shares, preferred shares, or convertible debt (SAFE). The preferred structure and ratio will be determined together with the investor profile.</div>
-        </div>
-
-        <div class="term-card">
-          <div class="term-title">Control Structure</div>
-          <div class="term-body" contenteditable="true" id="term_Y_kontrol" onblur="saveTerm('Y_kontrol',this)">Deniz Karaşahin or Osteoid Health Technologies Inc. retains majority control (50%+1) under all circumstances. The investor is granted minority shares and information rights.</div>
-        </div>
-
-        <div class="term-card">
-          <div class="term-title">Dividends</div>
-          <div class="term-body" contenteditable="true" id="term_Y_temettu" onblur="saveTerm('Y_temettu',this)">No dividends will be distributed until the company reaches cumulative positive. After cumulative positive, the distribution decision on annual net profit belongs to the board of directors. Osteoid Inc. retains the right to issue invoices for software licenses or royalties without VAT based on completed R&amp;D projects; these payments are processed as expenses before dividends.</div>
-        </div>
-
-        <div class="term-card">
-          <div class="term-title">Reporting</div>
-          <div class="term-body" contenteditable="true" id="term_Y_raporlama" onblur="saveTerm('Y_raporlama',this)">Financial discipline is maintained through a Certified Public Accountant (CPA). Monthly income/expense report, quarterly KPI presentation, annual audit. CPA costs are tracked as a separate line item in periodic expenses.</div>
-        </div>
-
-        <div class="term-card">
-          <div class="term-title">Share Transfer &amp; Right of First Refusal</div>
-          <div class="term-body" contenteditable="true" id="term_Y_onalim" onblur="saveTerm('Y_onalim',this)">When any partner wishes to transfer shares, they must first offer them to existing partners. Existing partners may exercise their right of first refusal within 30 days under the same terms.</div>
-        </div>
-
-        <div class="term-card">
-          <div class="term-title">Exit Option</div>
-          <div class="term-body" contenteditable="true" id="term_Y_cikis" onblur="saveTerm('Y_cikis',this)">From the opening date of the second center, sale to a strategic acquirer or right of first refusal for an existing partner may be exercised. The valuation method is determined by a pre-agreed multiple.</div>
-        </div>
-
-        <div class="term-card">
-          <div class="term-title">Non-Compete</div>
-          <div class="term-body" contenteditable="true" id="term_Y_rekabet" onblur="saveTerm('Y_rekabet',this)">Investment in or participation in competing entities operating in the spinal orthosis field is prohibited for the duration of the agreement. The non-compete clause is void upon termination of the agreement.</div>
-        </div>
-
-        <div class="term-card" style="border-left:3px solid #D85A30;">
-          <div class="term-title" style="color:#D85A30;">Technology Supply Guarantee</div>
-          <div class="term-body" contenteditable="true" id="term_Y_teknoloji" onblur="saveTerm('Y_teknoloji',this)">Osteoid Inc. guarantees uninterrupted access to brace design software, production materials, and machine maintenance services for Osteoid Centers <strong>for as long as the center is operational</strong>. Should technology access be interrupted for any reason, Osteoid Inc. incurs liability for compensation; the duration and amount shall be negotiated by the parties. Furthermore, Osteoid Inc. commits not to provide the same technology to any other client within the center's operating area in the same city.</div>
-        </div>
-      </div>
-
-      <div>
-        <div class="soz-col-title hekim">Doctor Commission Agreement</div>
-        <div class="note-box" style="margin-bottom:12px;border-left:3px solid #1a7a45;">Since doctors directly referring patients to a center they are partners in creates a grey area, a <strong>frontman structure</strong> will be used. Shares are held through a designated legal/natural person, not in the doctor's own name.</div>
-
-        <div class="term-card" style="border-left:3px solid #1a7a45;">
-          <div class="term-title" style="color:#1a7a45;">Commission Rate &amp; Accrual <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:10px;">— <a href="market.html" style="color:#1a7a45;">Updated from the Market page</a></span></div>
-          <div class="term-body" id="term_H_komisyon" style="font-size:15px;font-weight:700;color:#1a7a45;">25%</div>
-          <div style="font-size:11px;color:#888;margin-top:5px;">The amount is not paid directly as cash; it accrues in the company account as a separate line item in the doctor's name. Commission is not contractually bound; it is fulfilled upon request for use.</div>
-        </div>
-
-        <div class="term-card">
-          <div class="term-title">Use via Expense Reimbursement</div>
-          <div class="term-body" contenteditable="true" id="term_H_odeme" onblur="saveTerm('H_odeme',this)">Accrued commission is covered directly by the company upon request for professional expenses recognized by the medical association, such as congress registration, accommodation, books, and publications. Proof of expense is required.</div>
-        </div>
-
-        <div class="term-card">
-          <div class="term-title">Cash Request &amp; Invoicing</div>
-          <div class="term-body" contenteditable="true" id="term_H_fatura" onblur="saveTerm('H_fatura',this)">If a cash payment is requested, the doctor or their designated third party is required to issue an invoice to the company. The invoice is issued inclusive of VAT; payment is made within 15 business days from the invoice date.</div>
-        </div>
-
-        <div class="term-card" style="border-left:3px solid #D4537E;">
-          <div class="term-title" style="color:#D4537E;">Channel Fee — Equity Conversion Right</div>
-          <div class="term-body" contenteditable="true" id="term_H_kanal" onblur="saveTerm('H_kanal',this)">Deniz Aktan and Tunay Şanlı have the right to use their accrued channel fees — earned for establishing and maintaining the referral channel — to purchase shares in the company at a discounted price in the future. Conversion terms (discount rate, timeline, minimum accrued amount) are determined by a separate agreement between the parties.</div>
-        </div>
-
-        <div class="term-card">
-          <div class="term-title">Agreement Term</div>
-          <div class="term-body" contenteditable="true" id="term_H_sure" onblur="saveTerm('H_sure',this)">12 months; automatic renewal provided both parties give written notice 30 days in advance. Terms may be renegotiated at the end of the first year.</div>
-        </div>
-
-        <div class="term-card">
-          <div class="term-title">Confidentiality</div>
-          <div class="term-body" contenteditable="true" id="term_H_gizlilik" onblur="saveTerm('H_gizlilik',this)">Patient data is protected under PDPL (Personal Data Protection Law). Technology infrastructure, pricing, and business processes remain confidential during and after the agreement term.</div>
-        </div>
-
-        <div class="term-card">
-          <div class="term-title">Termination</div>
-          <div class="term-body" contenteditable="true" id="term_H_fesih" onblur="saveTerm('H_fesih',this)">Immediate termination for cause (ethical violation, PDPL violation). In other cases, 30 days' written notice required; pending commission payments are settled.</div>
-        </div>
-
-        <div class="term-card">
-          <div class="term-title">Non-Compete</div>
-          <div class="term-body" contenteditable="true" id="term_H_rekabet" onblur="saveTerm('H_rekabet',this)">Active roles in competing clinic structures in the spinal orthosis field are prohibited for the duration of the agreement. The non-compete clause is void upon termination of the agreement.</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
+  <a class="go" href="agreement.html">Shareholders Agreement &amp; Key Terms &#8594; agreement.html</a>
 </div>
 
 </div><!-- /tab-sozlesme -->
@@ -862,31 +668,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script src="shared.js"></script>
 <script>
-const GDOC_KEY = 'osteoid_gdoc';
-
-function saveGdocUrl() {
-  var url = document.getElementById('gdocUrl').value.trim();
-  localStorage.setItem(GDOC_KEY, url);
-  var st = document.getElementById('gdocStatus');
-  st.textContent = url ? '✓ Saved' : 'URL cleared.';
-  st.style.color = url ? '#1a7a45' : '#888';
-}
-
-function openGdoc() {
-  var url = (document.getElementById('gdocUrl').value.trim()) || localStorage.getItem(GDOC_KEY) || '';
-  if (!url) {
-    var st = document.getElementById('gdocStatus');
-    st.textContent = 'Please enter and save a Google Docs link first.';
-    st.style.color = '#c0392b';
-    return;
-  }
-  window.open(url, '_blank');
-}
-
-function saveTerm(key, el) {
-  localStorage.setItem('osteoid_term_' + key, el.textContent.trim());
-}
-
 function switchInnerTab(btn, tabId) {
   ['tab-yatirimci','tab-sozlesme'].forEach(function(id) {
     var el = document.getElementById(id); if (el) el.style.display = 'none';
@@ -899,25 +680,6 @@ function switchInnerTab(btn, tabId) {
 
 window.addEventListener('load', function() {
   recalc();
-
-  var url = localStorage.getItem(GDOC_KEY) || 'https://docs.google.com/document/d/1A6S8b0mF-fuwrObXXbo11ZzjeAXH3XvB5TcYdH1_aao/edit?usp=sharing';
-  var gdocEl = document.getElementById('gdocUrl');
-  if (gdocEl) gdocEl.value = url;
-  if (url) {
-    var st = document.getElementById('gdocStatus');
-    if (st) { st.textContent = '✓ Saved link loaded'; st.style.color = '#1a7a45'; }
-  }
-
-  // Investment Amount / Commission Rate term cards are kept live by
-  // shared.js's refreshAgreementTerms(), called on every recalc() (not just
-  // once here on load) — see shared.js for the computation.
-
-  ['Y_arac','Y_kontrol','Y_temettu','Y_raporlama','Y_onalim','Y_cikis','Y_rekabet','Y_teknoloji',
-   'H_odeme','H_fatura','H_kanal','H_sure','H_gizlilik','H_fesih','H_rekabet'].forEach(function(k) {
-    var saved = localStorage.getItem('osteoid_term_' + k);
-    var el = document.getElementById('term_' + k);
-    if (saved && el) el.textContent = saved;
-  });
 });
 </script>
 </body>

@@ -91,6 +91,127 @@
   </div>
 </div>
 
+<!-- ── SECTION 0b: Contribution Register — Weights & Sweat Equity ───────────── -->
+<div class="section">
+  <div class="section-header" onclick="tog(this)"><h2>Contribution Register — Weights &amp; Sweat Equity</h2><span class="tog">▸</span></div>
+  <div class="section-body">
+    <div class="note-box" style="margin-bottom:16px;">These terms drive the Ownership Register and Contribution Register tables on the <a href="investor.html" style="color:#534AB7;font-weight:700;">Investor &amp; Agreement</a> page — adjust here, the ownership split and DCF pre-money on that page update on next load.</div>
+
+    <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Adjust Contribution Terms</div>
+    <div class="note-box" style="margin-bottom:16px;">Non-cash items (IP, exclusivity, sweat equity) are appraised at estimated fair value for equity purposes; the weight multipliers (×) are the negotiable "how much is this worth relative to face value" term for each party.</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:12px;">
+      <div class="sl-row">
+        <label style="font-size:10px;">Osteoid Weight ×</label>
+        <div class="sl-controls">
+          <input type="range" id="s_osteoidCarpan" min="0.5" max="2" step="0.05" value="1.5" oninput="sv('osteoidCarpan',this.value)">
+          <span class="sl-val" id="osteoidCarpan" style="min-width:50px;">1.50×</span>
+        </div>
+        <span class="sl-note">Osteoid's IP · Machinery · Exclusivity contribution weight</span>
+      </div>
+      <div class="sl-row">
+        <label style="font-size:10px;">Lead Investor Weight ×</label>
+        <div class="sl-controls">
+          <input type="range" id="s_yatirimciCarpan" min="0.5" max="2" step="0.05" value="1" oninput="sv('yatirimciCarpan',this.value)">
+          <span class="sl-val" id="yatirimciCarpan" style="min-width:50px;">1.00×</span>
+        </div>
+        <span class="sl-note">Weight on the Lead Investor's cash (the clinic cash figure in the Investment Breakdown on the Investor page)</span>
+      </div>
+      <div class="sl-row">
+        <label style="font-size:10px;">Doctor-Investor Weight ×</label>
+        <div class="sl-controls">
+          <input type="range" id="s_doktorCarpan" min="0.5" max="2" step="0.05" value="1.5" oninput="sv('doktorCarpan',this.value)">
+          <span class="sl-val" id="doktorCarpan" style="min-width:50px;">1.50×</span>
+        </div>
+        <span class="sl-note">Above 1.0× sweetens an early/strategic doctor-partner's entry; below 1.0× charges a premium for a later entrant</span>
+      </div>
+      <div class="sl-row">
+        <label style="font-size:10px;">Doctor-Investor Cash (€)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_doktorYatirim" min="0" max="500000" step="10000" value="0" oninput="sv('doktorYatirim',this.value)">
+          <span class="sl-val" id="doktorYatirim" style="min-width:70px;">0</span>
+        </div>
+        <span class="sl-note">A doctor investing actual cash as a co-investor — separate from the referral channel, which earns Sci/Edu/Library fees in the P&amp;L, not equity</span>
+      </div>
+      <div class="sl-row">
+        <label style="font-size:10px;">Machinery Contributed at % of Market Price</label>
+        <div class="sl-controls">
+          <input type="range" id="s_makineKatkiOran" min="0" max="100" step="5" value="50" oninput="sv('makineKatkiOran',this.value)">
+          <span class="sl-val" id="makineKatkiOran" style="min-width:50px;">50</span>
+        </div>
+        <span class="sl-note">Only counted when equipment ownership is Osteoid-owned (Setup/Expenses page toggle); the machinery figure itself is live from the printer/robot-arm price sliders</span>
+      </div>
+      <div class="sl-row">
+        <label style="font-size:10px;">Royalty Offset Horizon (years)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_royaltyOffsetYil" min="1" max="10" step="1" value="1" oninput="sv('royaltyOffsetYil',this.value)">
+          <span class="sl-val" id="royaltyOffsetYil" style="min-width:40px;">1</span>
+        </div>
+        <span class="sl-note">Osteoid already extracts a per-brace royalty + cutting fee in perpetuity — this offsets its equity claim by that cash stream's value over N years (royalty is currently €<span id="royaltyOffsetRateNote">0</span>/brace — €0 is a valid scenario and makes this a no-op)</span>
+      </div>
+      <div class="sl-row">
+        <label style="font-size:10px;">Royalty Offset Applied (%)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_royaltyOffsetPct" min="0" max="100" step="5" value="0" oninput="sv('royaltyOffsetPct',this.value)">
+          <span class="sl-val" id="royaltyOffsetPct" style="min-width:40px;">0</span>
+        </div>
+        <span class="sl-note">100% = full correction; 0% = no offset (Osteoid keeps both equity and the full royalty stream)</span>
+      </div>
+    </div>
+
+    <div style="color:#BA7517;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin:16px 0 10px;">Orthotist / Operators — Sweat Equity</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:8px;">
+      <div class="sl-row">
+        <label style="font-size:10px;">Sweat Equity Weight ×</label>
+        <div class="sl-controls">
+          <input type="range" id="s_sweatCarpan" min="0.5" max="2" step="0.05" value="1" oninput="sv('sweatCarpan',this.value)">
+          <span class="sl-val" id="sweatCarpan" style="min-width:50px;">1.00×</span>
+        </div>
+        <span class="sl-note">Weight on the orthotist/operator team's sweat-equity contribution</span>
+      </div>
+      <div class="sl-row">
+        <label style="font-size:10px;">Sweat Equity — Full Value (€)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_sweatEur" min="0" max="500000" step="10000" value="80000" oninput="sv('sweatEur',this.value)">
+          <span class="sl-val" id="sweatEur" style="min-width:70px;">80.000</span>
+        </div>
+        <span class="sl-note">Target value at full vesting — clinical operations, production, patient management</span>
+      </div>
+      <div class="sl-row">
+        <label style="font-size:10px;">Vesting Period (months)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_sweatVestAy" min="12" max="72" step="1" value="48" oninput="sv('sweatVestAy',this.value)">
+          <span class="sl-val" id="sweatVestAy" style="min-width:40px;">48</span>
+        </div>
+        <span class="sl-note">Full linear vesting horizon</span>
+      </div>
+      <div class="sl-row">
+        <label style="font-size:10px;">Cliff (months)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_sweatCliffAy" min="0" max="24" step="1" value="12" oninput="sv('sweatCliffAy',this.value)">
+          <span class="sl-val" id="sweatCliffAy" style="min-width:40px;">12</span>
+        </div>
+        <span class="sl-note">Nothing vests before this many months have elapsed</span>
+      </div>
+      <div class="sl-row">
+        <label style="font-size:10px;">Elapsed Since Grant (months)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_sweatElapsedAy" min="0" max="72" step="1" value="0" oninput="sv('sweatElapsedAy',this.value)">
+          <span class="sl-val" id="sweatElapsedAy" style="min-width:40px;">0</span>
+        </div>
+        <span class="sl-note">Time elapsed today since the equity grant — drives the vested % used above</span>
+      </div>
+      <div class="sl-row">
+        <label style="font-size:10px;">Max Sweat Equity Cap (%)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_sweatMaxPct" min="0" max="15" step="0.5" value="5" oninput="sv('sweatMaxPct',this.value)">
+          <span class="sl-val" id="sweatMaxPct" style="min-width:40px;">5</span>
+        </div>
+        <span class="sl-note">Governance cap — the other three parties are rescaled proportionally to absorb any excess</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ── SECTION 1: Why This Venture Is De-Risked ─────────────────────────────── -->
 <div class="section">
   <div class="section-header open" onclick="tog(this)"><h2>Why This Venture Is De-Risked</h2><span class="tog">▾</span></div>
