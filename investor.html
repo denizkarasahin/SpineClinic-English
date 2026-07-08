@@ -39,7 +39,7 @@
       <div class="kpi"><div class="kpi-label">Modeled Value (DCF)</div><div class="kpi-val neu" id="dcf_premoney" title="Present value of exit + cash flows, discounted at r — before the negotiation discount">—</div></div>
       <div class="kpi"><div class="kpi-label">Deal Pre-Money (after discount)</div><div class="kpi-val pos" id="dcf_premoney_final" title="Modeled Value × (1 − negotiation discount) — no asset floor; IP/exclusivity are a cash sale now, not an in-kind equity item">—</div></div>
       <div class="kpi"><div class="kpi-label">Post-Money</div><div class="kpi-val neu" id="dcf_postmoney" title="Deal Pre-Money + actual new cash raised (Investor Ticket + Doctor-Investor)">—</div></div>
-      <div class="kpi"><div class="kpi-label">Investor Ticket</div><div class="kpi-val neu" id="dcf_investor_ticket" title="IP license + city exclusivity (bought from Osteoid A.Ş. for cash) + working capital buffer + setup cost × 3 (Centers 1-3) — see Investment Breakdown">—</div></div>
+      <div class="kpi"><div class="kpi-label">Investor Ticket</div><div class="kpi-val neu" id="dcf_investor_ticket" title="IP license + city exclusivity (bought from Osteoid A.Ş. for cash) + working capital buffer + setup cost for Centers 1-3 (Istanbul + Izmir + Ankara, each incl. Overhead) — see Investment Breakdown">—</div></div>
       <div class="kpi"><div class="kpi-label">Investor Stake</div><div class="kpi-val pos" id="dcf_yatirimci_hisse" title="Investor Ticket ÷ Post-Money — a priced round, not the Contribution Register">—</div></div>
       <div class="kpi"><div class="kpi-label">Implied Investor MOIC at Exit</div><div class="kpi-val pos" id="dcf_investor_moic_exit" title="Exit Value (Year 5 EBITDA × Exit Multiple) × Investor Stake ÷ Investor Ticket">—</div></div>
     </div>
@@ -306,29 +306,46 @@
           </div>
           <span class="sl-note">Feeds the Investor Ticket (The Deal at a Glance) directly; also an extra cash reserve on top of the model-derived working capital below — a safety margin, not a re-estimate of the trough</span>
         </div>
+      </div>
+
+      <!-- Setup Costs — 3 Centers, grouped side by side -->
+      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Setup Costs — 3 Centers <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— each linked to its own model, each with a manual Overhead adjustment; all three feed the Investor Ticket</span></div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;">
         <div class="sl-row">
           <label style="font-size:10px;">Setup Costs — Center 1 (€)</label>
           <div style="background:#f4f3ff;border:1px solid #d8d5f5;border-radius:6px;padding:10px 12px;font-size:11px;color:#3d3680;">
-            <strong id="setupCostsEurDisp" style="color:#534AB7;font-size:13px;">—</strong> — one-time capex from the <a href="expenses.html" style="color:#534AB7;font-weight:700;">Expenses</a> page (rent, deposit, broker fee, renovation, decoration, furniture, license, and machinery if clinic-owned)
+            <strong id="setupCostsEurDisp" style="color:#534AB7;font-size:13px;">—</strong> — Istanbul capex from the <a href="expenses.html" style="color:#534AB7;font-weight:700;">Expenses</a> page (rent, deposit, broker fee, renovation, decoration, furniture, license, and machinery if clinic-owned) + Overhead below
           </div>
-          <span class="sl-note">Read directly from the model — already included in the Investment Breakdown table above and in the Investor Ticket (The Deal at a Glance); shown here so the whole capital picture sits next to the other three components</span>
+          <div class="sl-controls" style="margin-top:8px;">
+            <input type="range" id="s_setupOverheadC1" min="-50000" max="250000" step="5000" value="0" oninput="sv('setupOverheadC1',this.value)">
+            <span class="sl-val" id="setupOverheadC1" style="min-width:70px;">0</span>
+          </div>
+          <span class="sl-note">Overhead — added on top of the modeled Istanbul capex; dial it in to round the total to a clean number</span>
         </div>
         <div class="sl-row">
           <label style="font-size:10px;">Setup Costs — Center 2 (€)</label>
           <div style="background:#f4f3ff;border:1px solid #d8d5f5;border-radius:6px;padding:10px 12px;font-size:11px;color:#3d3680;">
-            <strong id="setupCostsEurDisp2" style="color:#534AB7;font-size:13px;">—</strong> — same capex assumption as Center 1 (identical clinic build-out), for the second center funded by this ticket
+            <strong id="setupCostsEurDisp2" style="color:#534AB7;font-size:13px;">—</strong> — Izmir's own setup-cost model (<a href="growth.html" style="color:#534AB7;font-weight:700;">Multi-Year Plan</a>) + Overhead below
           </div>
-          <span class="sl-note">Identical to Center 1's setup cost — a simplifying assumption, not an independent Izmir/Ankara-specific estimate (see the Multi-Year Plan page for those). Included in the Investor Ticket.</span>
+          <div class="sl-controls" style="margin-top:8px;">
+            <input type="range" id="s_setupOverheadC2" min="-50000" max="250000" step="5000" value="0" oninput="sv('setupOverheadC2',this.value)">
+            <span class="sl-val" id="setupOverheadC2" style="min-width:70px;">0</span>
+          </div>
+          <span class="sl-note">Overhead — added on top of Izmir's modeled capex; dial it in to round the total to a clean number</span>
         </div>
         <div class="sl-row">
           <label style="font-size:10px;">Setup Costs — Center 3 (€)</label>
           <div style="background:#f4f3ff;border:1px solid #d8d5f5;border-radius:6px;padding:10px 12px;font-size:11px;color:#3d3680;">
-            <strong id="setupCostsEurDisp3" style="color:#534AB7;font-size:13px;">—</strong> — same capex assumption as Center 1 (identical clinic build-out), for the third center funded by this ticket
+            <strong id="setupCostsEurDisp3" style="color:#534AB7;font-size:13px;">—</strong> — Ankara's own setup-cost model (<a href="growth.html" style="color:#534AB7;font-weight:700;">Multi-Year Plan</a>) + Overhead below
           </div>
-          <span class="sl-note">Identical to Center 1's setup cost — a simplifying assumption, not an independent Izmir/Ankara-specific estimate (see the Multi-Year Plan page for those). Included in the Investor Ticket.</span>
+          <div class="sl-controls" style="margin-top:8px;">
+            <input type="range" id="s_setupOverheadC3" min="-50000" max="250000" step="5000" value="0" oninput="sv('setupOverheadC3',this.value)">
+            <span class="sl-val" id="setupOverheadC3" style="min-width:70px;">0</span>
+          </div>
+          <span class="sl-note">Overhead — added on top of Ankara's modeled capex; dial it in to round the total to a clean number</span>
         </div>
       </div>
-      <div class="note-box" style="margin-bottom:16px;">Setup cost and working capital are read directly from the model above — they are not typed, and they move whenever a P&amp;L slider, the brace ramp, or the equipment-ownership toggle changes. The Working Capital Buffer above is the one exception: it's an additional investor-contributed reserve on top of that derived figure, not a re-estimate of it. Machinery is counted once: it appears under "Osteoid parent in-kind" only when equipment is Osteoid-owned; otherwise its cost is already inside clinic setup. Setup Costs are counted <b>three times</b> (Centers 1-3) — this round funds three identical clinic build-outs up front, not just Istanbul's. <b>Investor Ticket</b> (The Deal at a Glance) = IP license + city exclusivity (bought from Osteoid A.Ş. for cash) + Working Capital Buffer + Setup cost × 3 — that's the number Post-Money and Investor Stake actually use; the modeled Y1 working-capital trough and Osteoid's in-kind machinery are separate figures kept only for the Tax Optimization and Cash-on-Cash Return sections below.</div>
+      <div class="note-box" style="margin-bottom:16px;">Setup cost and working capital are read directly from the model above — they are not typed, and they move whenever a P&amp;L slider, the brace ramp, or the equipment-ownership toggle changes. The Working Capital Buffer above is the one exception: it's an additional investor-contributed reserve on top of that derived figure, not a re-estimate of it. Machinery is counted once: it appears under "Osteoid parent in-kind" only when equipment is Osteoid-owned; otherwise its cost is already inside clinic setup. Setup Costs cover <b>three centers</b> — Istanbul (Center 1), Izmir (Center 2), and Ankara (Center 3), each its own modeled capex plus a manual Overhead adjustment — this round funds all three build-outs up front, not just Istanbul's. <b>Investor Ticket</b> (The Deal at a Glance) = IP license + city exclusivity (bought from Osteoid A.Ş. for cash) + Working Capital Buffer + Setup cost (Centers 1+2+3, each incl. Overhead) — that's the number Post-Money and Investor Stake actually use; the modeled Y1 working-capital trough and Osteoid's in-kind machinery are separate figures kept only for the Tax Optimization and Cash-on-Cash Return sections below.</div>
 
       <!-- Fee Stream Split (sum-of-parts) -->
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Fee Stream Split <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— shown when the sum-of-parts toggle above is on</span></div>
@@ -491,7 +508,7 @@
           </tbody>
         </table>
       </div>
-      <div class="note-box" id="dcfNote">Free Cash Flow Years 1–5 are taken directly from the 5-year projection model (same data as the Multi-Year Plan page), taxed per the Corporate Tax toggle above (25% KV by default, with 5-year loss carryforward — no VAT is modeled, orthosis sales are VAT-exempt under KDV Kanunu 17/4-s). Terminal value uses an exit-multiple method: TV = FCF₅ × Exit Multiple — computed on the <i>same after-tax</i> FCF₅ as the interim cash flows (a proxy for an after-tax earnings multiple, not a pre-tax number an exit buyer would never actually receive). <b>Modeled Value (DCF)</b> = NPV(FCF₁₋₅) + PV(Terminal Value) — the unadjusted model output. <b>Deal Pre-Money</b> = Modeled Value × (1 − Negotiation Discount) — see The Deal at a Glance; the discount is the negotiated concession for single-site execution risk, not a re-run of the DCF itself. No asset floor: IP license and city exclusivity are now a cash sale to the clinic (the Investor Ticket), not an in-kind equity contribution, so there's no contributed-asset value to floor pre-money against. <b>Post-Money</b> = Deal Pre-Money + actual new cash raised (Investor Ticket + any Doctor-Investor cash). <b>Investor Ticket</b> = IP license + city exclusivity (bought from Osteoid A.Ş.) + Working Capital Buffer + Setup cost × 3 (Centers 1-3, identical assumption). <b>Investor Stake</b> = Investor Ticket ÷ Post-Money; <b>Doctor-Investor Stake</b> = their cash ÷ Post-Money; <b>Sweat</b> = the vested % up to its cap; <b>Osteoid Stake</b> = the remainder — a priced round, not the Ownership Register below (that Contribution Register is now reference-only, showing machinery in-kind vs cash under the old weighted model — see captable.html). Discount rate (r) is set by the Risk Profile control on The Deal at a Glance, not a generic early-stage-startup premium — see "Why This Venture Is De-Risked" above.</div>
+      <div class="note-box" id="dcfNote">Free Cash Flow Years 1–5 are taken directly from the 5-year projection model (same data as the Multi-Year Plan page), taxed per the Corporate Tax toggle above (25% KV by default, with 5-year loss carryforward — no VAT is modeled, orthosis sales are VAT-exempt under KDV Kanunu 17/4-s). Terminal value uses an exit-multiple method: TV = FCF₅ × Exit Multiple — computed on the <i>same after-tax</i> FCF₅ as the interim cash flows (a proxy for an after-tax earnings multiple, not a pre-tax number an exit buyer would never actually receive). <b>Modeled Value (DCF)</b> = NPV(FCF₁₋₅) + PV(Terminal Value) — the unadjusted model output. <b>Deal Pre-Money</b> = Modeled Value × (1 − Negotiation Discount) — see The Deal at a Glance; the discount is the negotiated concession for single-site execution risk, not a re-run of the DCF itself. No asset floor: IP license and city exclusivity are now a cash sale to the clinic (the Investor Ticket), not an in-kind equity contribution, so there's no contributed-asset value to floor pre-money against. <b>Post-Money</b> = Deal Pre-Money + actual new cash raised (Investor Ticket + any Doctor-Investor cash). <b>Investor Ticket</b> = IP license + city exclusivity (bought from Osteoid A.Ş.) + Working Capital Buffer + Setup cost for Centers 1-3 (Istanbul + Izmir + Ankara, each its own modeled capex plus a manual Overhead adjustment). <b>Investor Stake</b> = Investor Ticket ÷ Post-Money; <b>Doctor-Investor Stake</b> = their cash ÷ Post-Money; <b>Sweat</b> = the vested % up to its cap; <b>Osteoid Stake</b> = the remainder — a priced round, not the Ownership Register below (that Contribution Register is now reference-only, showing machinery in-kind vs cash under the old weighted model — see captable.html). Discount rate (r) is set by the Risk Profile control on The Deal at a Glance, not a generic early-stage-startup premium — see "Why This Venture Is De-Risked" above.</div>
 
       <!-- Exit Tax Structuring (Shareholder-Level) -->
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin:20px 0 8px;">Exit Tax Structuring <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— shareholder-level only; corporate tax (KV) on operating profit above is unaffected</span></div>
