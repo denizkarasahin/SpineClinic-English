@@ -3858,15 +3858,23 @@ function updateKapasiteUyari(rows) {
 }
 
 
-// ── YATIRIM DÖKÜMÜ (Clinic cash + Osteoid parent in-kind) ───────────────────
-// V.dcfInvest is fully derived here — never typed directly. Two pockets:
-//  (1) Clinic cash = setup capex + working capital (the deepest Year-1 cash
+// ── YATIRIM DÖKÜMÜ (Investor Ticket + Clinic cash + Osteoid parent in-kind) ──
+// V.dcfInvest is fully derived here — never typed directly.
+//  (1) Investor Ticket = the cash this bridge round actually asks for: IP
+//      license + city exclusivity, bought outright from Osteoid A.Ş. (a cash
+//      sale to the clinic company, NOT an in-kind contribution for equity —
+//      Osteoid is paid, not issued shares, for these two items) + the
+//      working capital buffer + Istanbul setup capex. Satellite funding
+//      (Izmir/Ankara) is a separate future ask, not part of this ticket.
+//  (2) Clinic cash = setup capex + working capital (the deepest Year-1 cash
 //      trough beyond setup, i.e. operating burn before break-even). Both are
 //      read straight off computeYear1()'s own monthly cumBudget line, so this
-//      never drifts from the real P&L.
-//  (2) Osteoid parent in-kind = machinery (only when ekipmanOsteoidden=true —
+//      never drifts from the real P&L. Kept as its own figure only because
+//      the Nakdi Sermaye tax deduction and Cash-on-Cash Return table still
+//      key off it — not part of the Investor Ticket above.
+//  (3) Osteoid parent in-kind = machinery only (when ekipmanOsteoidden=true —
 //      when false, its cost already lives inside clinic setup above, so it's
-//      never counted twice) + IP/design-library license + city exclusivity.
+//      never counted twice). IP/exclusivity moved out of this bucket — see (1).
 // Identity: clinicCashCore === -trough === setupCash + workingCapital, by
 // construction (workingCapital is defined as kurulumTop - trough). The
 // working-capital BUFFER (V.workingCapBufferEur) is a separate, investor-
@@ -3889,10 +3897,15 @@ function renderInvestBreakdown(kurulumTop, rows) {
   const machineryParentEur = ekipmanOsteoidden ? machineryEur : 0;
   const ipLisansEur = gv('ipLisansEur');
   const sehirEksklusifEur = gv('sehirEksklusifEur');
-  const parentInKindEur = machineryParentEur + ipLisansEur + sehirEksklusifEur;
+  // Osteoid parent in-kind is machinery only now — IP/exclusivity are a cash
+  // sale to the clinic (Investor Ticket below), not an in-kind equity item.
+  const parentInKindEur = machineryParentEur;
 
   const totalInvestEur = clinicCashEur + parentInKindEur;
   V.dcfInvest = Math.round(totalInvestEur); // derived — kept only for snapshot/backward-compat reads
+
+  const setupCostsEur = setupCashTRY / eurK;
+  const investorTicketEur = ipLisansEur + sehirEksklusifEur + workingCapBufferEur + setupCostsEur;
 
   const tbody = document.getElementById('investBreakdownBody');
   if (tbody) {
@@ -3901,24 +3914,28 @@ function renderInvestBreakdown(kurulumTop, rows) {
       + '<td>₺' + Math.round(eur*eurK).toLocaleString('tr-TR') + '</td>'
       + '<td>€' + Math.round(eur).toLocaleString('en-US') + '</td></tr>';
     tbody.innerHTML =
-      '<tr><td colspan="3" style="text-align:left;font-weight:700;color:#555;font-size:10px;text-transform:uppercase;">Clinic cash (from model)</td></tr>'
-      + line('Setup cost (capex)', setupCashTRY/eurK)
+      '<tr><td colspan="3" style="text-align:left;font-weight:700;color:#534AB7;font-size:10px;text-transform:uppercase;">Investor Ticket — buys IP &amp; exclusivity from Osteoid A.Ş., funds clinic setup</td></tr>'
+      + line('IP / design-library license (purchased from Osteoid A.Ş.)', ipLisansEur)
+      + line('City exclusivity (purchased from Osteoid A.Ş.)', sehirEksklusifEur)
+      + line('Working capital buffer (additional reserve)', workingCapBufferEur)
+      + line('Setup cost (capex, Istanbul only)', setupCostsEur)
+      + line('Investor Ticket — subtotal', investorTicketEur, 'r-bas')
+      + '<tr><td colspan="3" style="text-align:left;font-weight:700;color:#555;font-size:10px;text-transform:uppercase;padding-top:8px;">Clinic cash (model-derived — feeds the Tax Optimization and Cash-on-Cash Return sections only)</td></tr>'
+      + line('Setup cost (capex)', setupCostsEur)
       + line('Working capital (Y1 burn beyond setup)', workingCapTRY/eurK)
       + line('Working capital buffer (additional reserve)', workingCapBufferEur)
       + line('Clinic cash — subtotal', clinicCashEur, 'r-bas')
-      + '<tr><td colspan="3" style="text-align:left;font-weight:700;color:#555;font-size:10px;text-transform:uppercase;padding-top:8px;">Osteoid parent — in-kind</td></tr>'
+      + '<tr><td colspan="3" style="text-align:left;font-weight:700;color:#555;font-size:10px;text-transform:uppercase;padding-top:8px;">Osteoid parent — in-kind (machinery only)</td></tr>'
       + line('Machinery (3D printer + robot arm)' + (ekipmanOsteoidden ? '' : ' — inside clinic setup above'), machineryParentEur)
-      + line('IP / design-library license', ipLisansEur)
-      + line('City exclusivity', sehirEksklusifEur)
       + line('Parent in-kind — subtotal', parentInKindEur, 'r-bas')
-      + line('TOTAL INVESTMENT', totalInvestEur, 'r-cum');
+      + line('TOTAL INVESTMENT (legacy blended figure — clinic cash + in-kind)', totalInvestEur, 'r-cum');
   }
   const dcfDisp = document.getElementById('dcfInvestDisp');
   if (dcfDisp) dcfDisp.textContent = '€' + Math.round(totalInvestEur).toLocaleString('tr-TR');
   const setupDisp = document.getElementById('setupCostsEurDisp');
   if (setupDisp) setupDisp.textContent = '€' + Math.round(setupCashTRY/eurK).toLocaleString('tr-TR');
 
-  return { clinicCashEur, parentInKindEur, totalInvestEur };
+  return { clinicCashEur, parentInKindEur, totalInvestEur, investorTicketEur };
 }
 
 // Fractional-year simple payback: interpolates linearly within whichever year
@@ -4209,9 +4226,11 @@ function buildRegister(V) {
   const machineryFullEur = printerAdet * (V.printerEurFiyat ?? 35000) + (V.robotKolAktif ? (V.robotKolEurFiyat ?? 30000) : 0);
   const makineOran = (V.makineKatkiOran ?? 100) / 100;
   const machineryContribEur = ekipmanOsteoidden ? machineryFullEur * makineOran : 0;
-  const ipEur = V.ipLisansEur ?? 500000;
-  const exclEur = V.sehirEksklusifEur ?? 206415;
-  const osteoidRawEur = machineryContribEur + ipEur + exclEur;
+  // IP license and city exclusivity are no longer an in-kind equity
+  // contribution — the clinic buys them from Osteoid A.Ş. for cash (the
+  // Investor Ticket, renderInvestBreakdown) — so Osteoid's in-kind bucket
+  // here is machinery only.
+  const osteoidRawEur = machineryContribEur;
 
   // Royalty + cutting-fee double-dip offset: Osteoid already extracts these as
   // a perpetual cash stream from the clinic P&L, so its equity claim is
@@ -4286,10 +4305,10 @@ function buildRegister(V) {
   }
 
   const parties = [
-    { key:'osteoid', label:'Osteoid (Parent) — IP · Machinery · Exclusivity', short:'Osteoid', color:'#534AB7',
+    { key:'osteoid', label:'Osteoid (Parent) — Machinery (in-kind)', short:'Osteoid', color:'#534AB7',
       valueEur: osteoidRawEur, netEur: osteoidNetEur, carpan: osteoidCarpan, vestedPct: 100,
       weight: osteoidWeight, pct: pO,
-      detail: { machineryFullEur, machineryContribEur, ipEur, exclEur, royaltyOffsetEur, makineOran: makineOran*100 } },
+      detail: { machineryFullEur, machineryContribEur, royaltyOffsetEur, makineOran: makineOran*100 } },
     { key:'investor', label:'Lead Investor — Cash', short:'Investor', color:'#1a7a45',
       valueEur: investorRawEur, netEur: investorRawEur, carpan: yatirimciCarpan, vestedPct: 100,
       weight: investorWeight, pct: pI },
@@ -4448,29 +4467,23 @@ function renderDcf() {
   }
   const dcfValue_eur = feeSplit ? (feeSplit.corePremoney + feeSplit.feePremoney) : blendedPremoney_eur;
 
-  // Asset floor: the register's Osteoid in-kind total (IP license + territory
-  // exclusivity + machinery when contributed, at makineKatkiOran) — reg.valueEur
-  // is the gross figure buildRegister() already computes, before the royalty
-  // offset, so this stays consistent with the register with no separate calc.
-  // Pre-money used everywhere below (post-money, KPI cards, downstream tables)
-  // is never allowed to imply the contributed assets are worth less than their
-  // own appraised value.
-  const assetFloorEur = reg ? reg.byKey.osteoid.valueEur : 0;
-
   // Deal Pre-Money = the modeled DCF value discounted for negotiation — the
   // model is the anchor, the discount is the concession an investor extracts
   // for single-site execution risk (unproven at this specific venue, however
-  // de-risked the underlying technology). Floored so contributed IP/rights
-  // are never implied worth less than their own appraised value.
+  // de-risked the underlying technology). No asset floor: IP license and
+  // city exclusivity are now a cash sale to the clinic (Investor Ticket,
+  // renderInvestBreakdown), not an in-kind equity contribution, so there is
+  // no contributed-asset value left to floor pre-money against — Osteoid's
+  // remaining in-kind (machinery only) was never what the floor protected.
   const negDiscount = (V.dcfNegotiationDiscount ?? 70) / 100;
-  const discountedDcfEur = dcfValue_eur * (1 - negDiscount);
-  const premoney_eur = Math.max(discountedDcfEur, assetFloorEur);
-  const floorBinds = assetFloorEur > discountedDcfEur;
+  const premoney_eur = dcfValue_eur * (1 - negDiscount);
 
-  // Post-Money = deal pre-money + actual NEW CASH raised (Lead Investor +
-  // any Doctor-Investor cash) — never Osteoid's in-kind, which is already
-  // priced into pre-money via the asset floor, not paid in as cash.
-  const investorTicketEur = inv ? inv.clinicCashEur : 0;
+  // Post-Money = deal pre-money + actual NEW CASH raised (Investor Ticket +
+  // any Doctor-Investor cash). Investor Ticket already includes the cash
+  // paid to Osteoid for IP/exclusivity (see renderInvestBreakdown) — that
+  // cash leaves the round's coffers as a purchase price, but it still came
+  // in as new money raised, so it belongs in Post-Money like any other cash.
+  const investorTicketEur = inv ? inv.investorTicketEur : 0;
   const doktorYatirimEur = V.doktorYatirim ?? 0;
   const postmoney_eur = premoney_eur + investorTicketEur + doktorYatirimEur;
 
@@ -4509,7 +4522,6 @@ function renderDcf() {
   const investorMoicExit = investorTicketEur > 0 ? (exitValue_eur * (yatirimci_pct/100)) / investorTicketEur : 0;
   set('dcf_exitValue',       exitValue_eur > 0 ? fmtEur(exitValue_eur) : '—');
   set('dcf_premoney',        dcfValue_eur > 0 ? fmtEur(dcfValue_eur) : '—');
-  set('dcf_assetFloor',      assetFloorEur > 0 ? fmtEur(assetFloorEur) : '—');
   set('dcf_premoney_final',  premoney_eur > 0 ? fmtEur(premoney_eur) : '—');
   set('dcf_postmoney',       fmtEur(postmoney_eur));
   set('dcf_investor_ticket', investorTicketEur > 0 ? fmtEur(investorTicketEur) : '—');
@@ -4520,8 +4532,6 @@ function renderDcf() {
   set('dcf_fee_premoney',    feeSplit ? fmtEur(feeSplit.feePremoney) : '—');
   const feeRowEl = document.getElementById('dcfFeeSplitRow');
   if (feeRowEl) feeRowEl.style.display = feeSplit ? '' : 'none';
-  const floorChipEl = document.getElementById('dcf_floor_chip');
-  if (floorChipEl) floorChipEl.style.display = floorBinds ? 'block' : 'none';
 
   const cumFcf = fcfData.cum[4];
   const cumEl = document.getElementById('kpi_cumFcf');
@@ -4551,8 +4561,7 @@ function renderDcf() {
     + '<tr class="r-cum"><td><b>DCF Value (NPV)</b></td>'
     + '<td colspan="5" style="text-align:center;font-weight:700;">'
     + 'Σ PV = €'+(Math.round(npv)/1000).toFixed(2)+'M &nbsp;≈&nbsp; <b>'+fmtEur(dcfValue_eur)+'</b>'
-    + '</td><td class="neu" style="font-size:11px;">TV: €'+(Math.round(pvTv)/1000).toFixed(2)+'M incl.</td></tr>'
-    + (floorBinds ? '<tr><td colspan="7" style="font-size:11px;color:#8a6d1a;background:#fff8e8;">⚠ Asset floor binds: Deal Pre-Money used below is the asset floor ('+fmtEur(assetFloorEur)+'), not the discounted DCF value ('+fmtEur(discountedDcfEur)+') — see KPI cards above.</td></tr>' : '');
+    + '</td><td class="neu" style="font-size:11px;">TV: €'+(Math.round(pvTv)/1000).toFixed(2)+'M incl.</td></tr>';
 }
 
 
