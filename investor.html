@@ -285,7 +285,7 @@
         <div class="sl-row">
           <label style="font-size:10px;">IP / Design-Library License (€)</label>
           <div class="sl-controls">
-            <input type="range" id="s_ipLisansEur" min="100000" max="500000" step="10000" value="400000" oninput="sv('ipLisansEur',this.value)">
+            <input type="range" id="s_ipLisansEur" min="100000" max="1000000" step="10000" value="400000" oninput="sv('ipLisansEur',this.value)">
             <span class="sl-val" id="ipLisansEur" style="min-width:70px;">400.000</span>
           </div>
           <span class="sl-note">Purchased for cash from Osteoid A.Ş. by the clinic company (part of the Investor Ticket, The Deal at a Glance) — no longer an in-kind equity contribution</span>
@@ -293,16 +293,16 @@
         <div class="sl-row">
           <label style="font-size:10px;">Master Development Rights / Territory Exclusivity (€)</label>
           <div class="sl-controls">
-            <input type="range" id="s_sehirEksklusifEur" min="100000" max="500000" step="10000" value="200000" oninput="sv('sehirEksklusifEur',this.value)">
-            <span class="sl-val" id="sehirEksklusifEur" style="min-width:70px;">200.000</span>
+            <input type="range" id="s_sehirEksklusifEur" min="100000" max="1000000" step="10000" value="400000" oninput="sv('sehirEksklusifEur',this.value)">
+            <span class="sl-val" id="sehirEksklusifEur" style="min-width:70px;">400.000</span>
           </div>
           <span class="sl-note">Purchased for cash from Osteoid A.Ş. by the clinic company (part of the Investor Ticket, The Deal at a Glance) — includes the right to sub-license satellite companies elsewhere in the territory (see Network Structure above)</span>
         </div>
         <div class="sl-row">
           <label style="font-size:10px;">Working Capital Buffer (€)</label>
           <div class="sl-controls">
-            <input type="range" id="s_workingCapBufferEur" min="100000" max="500000" step="10000" value="220000" oninput="sv('workingCapBufferEur',this.value)">
-            <span class="sl-val" id="workingCapBufferEur" style="min-width:70px;">220.000</span>
+            <input type="range" id="s_workingCapBufferEur" min="100000" max="1000000" step="10000" value="500000" oninput="sv('workingCapBufferEur',this.value)">
+            <span class="sl-val" id="workingCapBufferEur" style="min-width:70px;">500.000</span>
           </div>
           <span class="sl-note">Feeds the Investor Ticket (The Deal at a Glance) directly; also an extra cash reserve on top of the model-derived working capital below — a safety margin, not a re-estimate of the trough</span>
         </div>
@@ -334,7 +334,7 @@
 
           <!-- Lever 1 -->
           <div style="font-size:11px;font-weight:700;color:#534AB7;margin-bottom:6px;">Lever 1 — Nakdi Sermaye Artışı Faiz İndirimi (KVK 10/1-ı)</div>
-          <div style="font-size:12px;color:#555;line-height:1.6;margin-bottom:10px;">Notional interest deduction on cash paid into A.Ş. share capital, claimable for 5 accounting periods from the contribution. Ltd. eligibility is genuinely unclear — confirm with YMM either way; this toggle auto-disables (stays visible) whenever the flagship entity type below is Ltd.</div>
+          <div style="font-size:12px;color:#555;line-height:1.6;margin-bottom:10px;">Notional interest deduction on cash paid into A.Ş. share capital, claimable for 5 accounting periods from the contribution. Flagship is locked in as A.Ş., so eligibility is just the on/off toggle below.</div>
           <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:10px;">
             <div class="sl-row">
               <label style="font-size:10px;">TCMB Commercial Loan Rate (%)</label>
@@ -484,12 +484,11 @@
       <div class="note-box" style="margin-bottom:12px;background:#fff8e8;border-color:#f0d080;color:#8a6d1a;">⚠ Structure assumption — confirm with tax advisor. Not tax advice. Individuals selling A.Ş. share certificates (hisse senedi/ilmühaber printed) held &gt;2 years are fully exempt from income tax on the gain (GVK mük. 80); Ltd. şirket shares never qualify for individuals regardless of holding period; corporate sellers of participation shares held 2+ years get 75% of the gain KV-exempt under KVK 5/1-e (conditions apply).</div>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:10px;">
         <div class="sl-row" style="grid-column:1 / -1;">
-          <label style="font-size:10px;">Flagship entity type (A.Ş. required for GVK mük.80 investor exit exemption)</label>
+          <label style="font-size:10px;">Flagship entity type</label>
           <div style="display:flex;gap:8px;margin:2px 0;">
-            <button type="button" id="sirketBtn_as" onclick="svSirketTuru('as')" style="flex:1;font-size:11px;font-weight:700;padding:8px 10px;border-radius:6px;border:1.5px solid #534AB7;background:#534AB7;color:#fff;cursor:pointer;">A.Ş. (share certificates printed)</button>
-            <button type="button" id="sirketBtn_ltd" onclick="svSirketTuru('ltd')" style="flex:1;font-size:11px;font-weight:700;padding:8px 10px;border-radius:6px;border:1.5px solid #534AB7;background:#fff;color:#534AB7;cursor:pointer;">Ltd.</button>
+            <div style="flex:1;font-size:11px;font-weight:700;padding:8px 10px;border-radius:6px;border:1.5px solid #534AB7;background:#534AB7;color:#fff;text-align:center;">A.Ş. (share certificates printed) — locked</div>
           </div>
-          <span class="sl-note">The Ltd. option is kept selectable so the cost of the wrong choice stays demonstrable — Ltd. şirket shares never qualify for the individual exemption, regardless of holding period. Flagship is locked in as A.Ş.; satellites are separate Ltd. companies (see Network Structure above) and are not affected by this toggle.</span>
+          <span class="sl-note">Flagship is locked in as A.Ş. — required for the GVK mük.80 individual exit-tax exemption below; Ltd. şirket shares never qualify for individuals, regardless of holding period. Satellites are separate Ltd. companies (see Network Structure above) and are not affected by this.</span>
         </div>
       </div>
       <div id="exitTax_clock_chip" style="font-size:11px;font-weight:700;padding:8px 12px;border-radius:4px;border:1px solid #ccc;margin-bottom:8px;">—</div>
