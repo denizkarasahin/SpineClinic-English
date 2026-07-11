@@ -23,7 +23,7 @@ document.getElementById = function(id) {
   };
 };
 
-const V = {"korseF":37800,"malzeme":50,"reklamCarpan":1.0,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.52,"kira":200000,"depozito":400000,"emlakci":400000,"m2":300,"tadilatM2":7000,"dekoM2":6750,"mobilya":300000,"ruhsat":100000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":90000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[15,15,20,25,25,33,35,41,42,50,50,55],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":27000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":1600,"mal_sens":2075,"mal_sensDelik":1250,"feeSci_stdR":10,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdR":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdR":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":45000,"pazarIstPct":30.1,"hedefOsteoidPay":23,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":true,"izmirHedefPay":23.5,"izmirUseIst":false,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":true,"ankaraHedefPay":23,"ankaraUseIst":false,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":true,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":20,"dcfGrowth":18,"dcfGrowth45":45,"dcfExitMult":10,"dcfNegotiationDiscount":20,"tranche1Eur":500000,"trancheStepUp":1.75,"dcfInvest":1008662,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":12500,"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":100000,"_sen_max_kira":400000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":3500,"_sen_max_dekoM2":17000,"_sen_min_ortotistM":55000,"_sen_max_ortotistM":160000,"_sen_min_operatorM":110000,"_sen_max_operatorM":290000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3.0,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.65,"operatorM":180000,"ipLisansEur":500000,"sehirEksklusifEur":500000,"workingCapBufferEur":500000,"stage1BufferEur":200000,"kvOrani":25,"vergiDahil":true,"exitYili":5,"kisiselVergiOrani":15,"fundAy":0,"makineKatkiOran":50,"osteoidCarpan":1,"yatirimciCarpan":1.0,"doktorYatirim":0,"doktorCarpan":1.5,"sweatEur":80000,"sweatVestAy":48,"sweatCliffAy":12,"sweatElapsedAy":0,"sweatMaxPct":5,"sweatCarpan":1.0,"sweatVestedToday":true,"royaltyOffsetYil":1,"royaltyOffsetPct":0,"yonetimUcretiPct":5,"izmirFlagshipPay":65,"ankaraFlagshipPay":65,"izmirSubeMi":true,"ankaraSubeMi":true,"euLegalFaiz":5,"setupOverheadC1":0,"setupOverheadC2":0,"setupOverheadC3":0,"nakdiSermayeAktif":true,"teknokentKapsam":false,"emisyonPrimiAktif":true,"nominalPayOrani":10,"feeStreamAyriMult":false,"feeExitMult":12,"_version":42};
+const V = {"korseF":37800,"malzeme":50,"reklamCarpan":1.0,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.52,"kira":200000,"depozito":400000,"emlakci":400000,"m2":300,"tadilatM2":7000,"dekoM2":6750,"mobilya":300000,"ruhsat":100000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":90000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[15,15,20,25,25,33,35,41,42,50,50,55],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":27000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":1600,"mal_sens":2075,"mal_sensDelik":1250,"feeSci_stdR":10,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdR":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdR":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":45000,"pazarIstPct":30.1,"hedefOsteoidPay":23,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":true,"izmirHedefPay":23.5,"izmirUseIst":false,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":true,"ankaraHedefPay":23,"ankaraUseIst":false,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":true,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":20,"dcfGrowth":18,"dcfGrowth45":45,"dcfExitMult":10,"dcfNegotiationDiscount":20,"tranche1Eur":500000,"trancheStepUp":1.75,"dcfInvest":1008662,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":12500,"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":100000,"_sen_max_kira":400000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":3500,"_sen_max_dekoM2":17000,"_sen_min_ortotistM":55000,"_sen_max_ortotistM":160000,"_sen_min_operatorM":110000,"_sen_max_operatorM":290000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3.0,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.65,"operatorM":180000,"ipLisansEur":500000,"sehirEksklusifEur":500000,"workingCapBufferEur":500000,"stage1BufferEur":200000,"kvOrani":25,"vergiDahil":true,"exitYili":5,"kisiselVergiOrani":15,"fundAy":0,"makineKatkiOran":50,"osteoidCarpan":1,"yatirimciCarpan":1.0,"doktorYatirim":0,"doktorCarpan":1.5,"sweatEur":80000,"sweatVestAy":48,"sweatCliffAy":12,"sweatElapsedAy":0,"sweatMaxPct":5,"sweatCarpan":1.0,"sweatVestedToday":true,"royaltyOffsetYil":1,"royaltyOffsetPct":0,"yonetimUcretiPct":5,"izmirFlagshipPay":65,"ankaraFlagshipPay":65,"izmirSubeMi":true,"ankaraSubeMi":true,"euLegalFaiz":5,"setupOverheadC1":0,"setupOverheadC2":0,"setupOverheadC3":0,"nakdiSermayeAktif":true,"teknokentKapsam":false,"emisyonPrimiAktif":true,"nominalPayOrani":10,"feeStreamAyriMult":false,"feeExitMult":12,"_version":43};
 // Restore state from localStorage if available; clear cache on version mismatch
 (function() {
   try {
@@ -3891,16 +3891,16 @@ function renderInvestBreakdown(kurulumTop, rows) {
   const printerAdet = V.printerAdetManual !== undefined ? V.printerAdetManual : _autoPrinterAdet();
   const machineryEur = printerAdet * (V.printerEurFiyat || 35000) + (V.robotKolAktif ? (V.robotKolEurFiyat || 30000) : 0);
   const machineryParentEur = ekipmanOsteoidden ? machineryEur : 0;
-  // License & exclusivity are contributed IN-KIND by Osteoid A.Ş. under the
-  // Shareholders' Agreement at first close (disclosed, arm's-length related-
-  // party terms) — not sold to the clinic for cash, so they never enter the
-  // Investor Ticket. These sliders are kept only as a reference value shown
-  // in a separate informational block (see the "License & Exclusivity —
-  // In-Kind" block below and investor.html's own informational block).
+  // License & exclusivity are SOLD by Osteoid A.Ş. to the clinic company for
+  // cash under a License Purchase Agreement executed at Stage 1 signing
+  // (arm's-length, disclosed at signing) — price fixed at signing, payment
+  // due at Stage 2 closing (see agreement.html's Structure / License Grant /
+  // Related-Party Hygiene term cards). So this cash feeds Stage 2 of the
+  // Investor Ticket below, not a separate in-kind bucket.
   const ipLisansEur = gv('ipLisansEur');
   const sehirEksklusifEur = gv('sehirEksklusifEur');
-  // Osteoid parent in-kind is machinery only in this bucket — IP/exclusivity
-  // are tracked separately above, not folded into this legacy figure either.
+  // Osteoid parent in-kind is machinery only — IP/exclusivity are a cash
+  // purchase (Investor Ticket, Stage 2 below), not an in-kind equity item.
   const parentInKindEur = machineryParentEur;
 
   const totalInvestEur = clinicCashEur + parentInKindEur;
@@ -3922,21 +3922,21 @@ function renderInvestBreakdown(kurulumTop, rows) {
   const setupC2Eur = izmirSetupBaseEur + overheadC2;
   const setupC3Eur = ankaraSetupBaseEur + overheadC3;
 
-  // Two-stage committed structure: one Shareholders' Agreement + one License &
-  // Exclusivity Agreement, both signed at Stage-1 closing, but Stage 2's cash
-  // (satellite build-outs) only moves once Istanbul milestones are met (see
-  // agreement.html's "Structure — Stage 1 & Stage 2" term card). Stage 1
-  // ("Bridge") funds only tangible build-out + working capital. Stage 2
-  // ("Committed") funds the satellite build-outs, released on milestone.
-  // Neither stage includes a rights payment — license & exclusivity are
-  // contributed in-kind by the parent, not purchased for cash (see above).
+  // Two-stage committed structure: one Shareholders' Agreement + one License
+  // Purchase Agreement, both signed at Stage-1 closing, but Stage 2's cash
+  // (rights payment + satellite build-outs) only moves once Istanbul
+  // milestones are met (see agreement.html's "Structure — Stage 1 & Stage 2"
+  // term card). Stage 1 ("Bridge") funds only tangible build-out + working
+  // capital — no rights payment at this stage. Stage 2 ("Committed") is the
+  // rights purchase (IP license + city exclusivity, price fixed at signing)
+  // plus the satellite build-outs, released on milestone.
   // The Working Capital Buffer slider is one pool, split by stage1BufferEur:
   // up to that much is front-loaded into Stage 1, the rest (floored at 0, in
   // case stage1BufferEur is dialed above the whole buffer) rolls into Stage 2.
   const stage1BufferEur = gv('stage1BufferEur');
   const stage2BufferEur = Math.max(0, workingCapBufferEur - stage1BufferEur);
   const stage1Eur = setupC1Eur + (workingCapTRY / eurK) + stage1BufferEur;
-  const stage2Eur = setupC2Eur + setupC3Eur + stage2BufferEur;
+  const stage2Eur = setupC2Eur + setupC3Eur + stage2BufferEur + ipLisansEur + sehirEksklusifEur;
   const investorTicketEur = stage1Eur + stage2Eur;
   // Identity guard — Investor Ticket is defined as the two stage subtotals
   // added together (so the breakdown table's grand total always matches what
@@ -3958,15 +3958,14 @@ function renderInvestBreakdown(kurulumTop, rows) {
       + line('Stage 1 buffer (immediate reserve)', stage1BufferEur)
       + line('Stage 1 — subtotal', stage1Eur, 'r-bas')
       + '<tr><td colspan="3" style="text-align:left;font-weight:700;color:#D85A30;font-size:10px;text-transform:uppercase;padding-top:8px;">Stage 2 — Committed (milestone-triggered) — released once Istanbul is operational and milestones are met</td></tr>'
+      + '<tr><td colspan="3" style="text-align:left;font-weight:700;color:#185FA5;font-size:10px;text-transform:uppercase;padding-top:6px;">Rights purchase — paid to Osteoid A.Ş. at Stage 2 (arm\'s-length, disclosed at signing)</td></tr>'
+      + line('IP / design-library license (purchased from Osteoid A.Ş.)', ipLisansEur)
+      + line('City exclusivity (purchased from Osteoid A.Ş.)', sehirEksklusifEur)
       + line('Setup cost — Center 2, Izmir (capex' + (overheadC2 ? ' + overhead' : '') + ')', setupC2Eur)
       + line('Setup cost — Center 3, Ankara (capex' + (overheadC3 ? ' + overhead' : '') + ')', setupC3Eur)
       + line('Working capital buffer (deferred remainder)', stage2BufferEur)
       + line('Stage 2 — subtotal', stage2Eur, 'r-bas')
       + line('TOTAL COMMITTED (Investor Ticket — Stage 1 + Stage 2)', investorTicketEur, 'r-cum')
-      + '<tr><td colspan="3" style="text-align:left;font-weight:700;color:#185FA5;font-size:10px;text-transform:uppercase;padding-top:8px;">License &amp; Exclusivity — In-Kind (reference value only, not part of the round)</td></tr>'
-      + line('IP / design-library license — contributed in-kind by Osteoid A.Ş. under the SHA', ipLisansEur)
-      + line('City exclusivity — contributed in-kind by Osteoid A.Ş. under the SHA', sehirEksklusifEur)
-      + line('License reference value — subtotal (not funded, not in Total Committed)', ipLisansEur + sehirEksklusifEur, 'r-bas')
       + '<tr><td colspan="3" style="text-align:left;font-weight:700;color:#555;font-size:10px;text-transform:uppercase;padding-top:8px;">Clinic cash (model-derived — feeds the Tax Optimization and Cash-on-Cash Return sections only)</td></tr>'
       + line('Setup cost (capex)', setupCostsEur)
       + line('Working capital (Y1 burn beyond setup)', workingCapTRY/eurK)
@@ -3990,31 +3989,38 @@ function renderInvestBreakdown(kurulumTop, rows) {
 }
 
 // ── USE OF FUNDS STRIP (index.html) ──────────────────────────────────────────
-// Two-tone bar showing the Stage 1 / Stage 2 split of the Investor Ticket —
-// reads the same stage1Eur/stage2Eur renderInvestBreakdown() already computed
-// (passed in via inv), so it can never drift from the Investment Breakdown
-// table or the hero cards on investor.html. Null-safe: index.html is the only
-// page with these ids, every other page just skips it.
+// Three-segment bar: Stage 1 / Platform rights (the Stage 2 rights purchase,
+// broken out as its own segment) / Stage 2 build-outs (the rest of Stage 2) —
+// reads the same stage1Eur/stage2Eur/rightsEur renderInvestBreakdown() already
+// computed (passed in via inv), so it can never drift from the Investment
+// Breakdown table or the hero cards on investor.html. Null-safe: index.html
+// is the only page with these ids, every other page just skips it.
 function renderUseOfFundsStrip(inv) {
   const bar1 = document.getElementById('useOfFundsStage1');
+  const barRights = document.getElementById('useOfFundsRights');
   const bar2 = document.getElementById('useOfFundsStage2');
-  if (!inv || (!bar1 && !bar2)) return;
-  const total = inv.stage1Eur + inv.stage2Eur;
-  const pct1 = total > 0 ? (inv.stage1Eur / total) * 100 : 50;
-  const pct2 = 100 - pct1;
+  if (!inv || (!bar1 && !barRights && !bar2)) return;
+  const stage2BuildOutsEur = inv.stage2Eur - inv.rightsEur; // Izmir/Ankara setup + deferred buffer only
+  const total = inv.stage1Eur + inv.stage2Eur; // === investorTicketEur
+  const pct1 = total > 0 ? (inv.stage1Eur / total) * 100 : 34;
+  const pctRights = total > 0 ? (inv.rightsEur / total) * 100 : 33;
+  const pct2 = 100 - pct1 - pctRights;
   const fmtEurAbbr = v => '€' + Math.round(v).toLocaleString('en-US');
   if (bar1) {
     bar1.style.width = pct1.toFixed(1) + '%';
     bar1.textContent = fmtEurAbbr(inv.stage1Eur);
     bar1.title = 'Stage 1 — Bridge (at closing): ' + fmtEurAbbr(inv.stage1Eur);
   }
+  if (barRights) {
+    barRights.style.width = pctRights.toFixed(1) + '%';
+    barRights.textContent = fmtEurAbbr(inv.rightsEur);
+    barRights.title = 'Platform rights (IP license + city exclusivity), purchased from Osteoid A.Ş. at Stage 2: ' + fmtEurAbbr(inv.rightsEur);
+  }
   if (bar2) {
     bar2.style.width = pct2.toFixed(1) + '%';
-    bar2.textContent = fmtEurAbbr(inv.stage2Eur);
-    bar2.title = 'Stage 2 — Committed (milestone-triggered): ' + fmtEurAbbr(inv.stage2Eur);
+    bar2.textContent = fmtEurAbbr(stage2BuildOutsEur);
+    bar2.title = 'Stage 2 — build-outs (Izmir/Ankara setup + deferred buffer): ' + fmtEurAbbr(stage2BuildOutsEur);
   }
-  const rightsNote = document.getElementById('useOfFundsRightsNote');
-  if (rightsNote) rightsNote.textContent = fmtEurAbbr(inv.rightsEur);
 }
 
 // Fractional-year simple payback: interpolates linearly within whichever year
@@ -4540,10 +4546,10 @@ function renderDcf() {
   // model is the anchor, the discount is the concession an investor extracts
   // for single-site execution risk (unproven at this specific venue, however
   // de-risked the underlying technology). No asset floor: IP license and
-  // city exclusivity are contributed in-kind by Osteoid under the SHA
-  // (renderInvestBreakdown), not a cash purchase, so there is no contributed-
-  // asset value left to floor pre-money against — Osteoid's remaining in-kind
-  // (machinery only) was never what the floor protected.
+  // city exclusivity are a cash purchase paid to Osteoid at Stage 2 (see
+  // renderInvestBreakdown), not an in-kind equity contribution, so there is
+  // no contributed-asset value left to floor pre-money against — Osteoid's
+  // remaining in-kind (machinery only) was never what the floor protected.
   const negDiscount = (V.dcfNegotiationDiscount ?? 70) / 100;
   const premoney_eur = dcfValue_eur * (1 - negDiscount);
 
@@ -4621,7 +4627,7 @@ function renderDcf() {
   set('dcf_investor_ticket', investorTicketEur > 0 ? fmtEur(investorTicketEur) : '—');
   set('dcf_stage1',         inv && inv.stage1Eur > 0 ? fmtEur(inv.stage1Eur) : '—');
   set('dcf_stage2',         inv && inv.stage2Eur > 0 ? fmtEur(inv.stage2Eur) : '—');
-  set('dcf_rights_inkind',  inv ? fmtEur(inv.rightsEur) : '—');
+  set('dcf_rights_purchase', inv ? fmtEur(inv.rightsEur) : '—');
   renderUseOfFundsStrip(inv);
 
   // Two-tranche pricing table — T1/T2 priced independently, blended stake is
