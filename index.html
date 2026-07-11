@@ -21,6 +21,20 @@
   <div class="section-header open" onclick="tog(this)"><h2>12-Month Summary</h2><span class="tog">▾</span></div>
   <div class="section-body" style="display:block;">
     <div class="kpi-grid" id="kpiGrid" style="margin-bottom:20px;"><div class="kpi"><div class="kpi-label">Total braces</div><div class="kpi-val neu">—</div></div><div class="kpi"><div class="kpi-label">Clinic net revenue (year)</div><div class="kpi-val pos">—</div></div><div class="kpi"><div class="kpi-label">Year-end cumulative</div><div class="kpi-val pos">—</div></div><div class="kpi"><div class="kpi-label">Monthly break-even</div><div class="kpi-val pos">—</div></div><div class="kpi"><div class="kpi-label">Cumulative positive</div><div class="kpi-val pos">—</div></div><div class="kpi"><div class="kpi-label">Setup cost</div><div class="kpi-val neg">—</div></div><div class="kpi"><div class="kpi-label">Printing cost per unit</div><div class="kpi-val neg">—</div></div><div class="kpi"><div class="kpi-label">Royalty / year</div><div class="kpi-val neg">—</div></div><div class="kpi"><div class="kpi-label">Osteoid A.Ş. royalty</div><div class="kpi-val neu">—</div></div><div class="kpi"><div class="kpi-label">Net margin / brace</div><div class="kpi-val neu">—</div></div></div>
+
+    <div style="margin-bottom:20px;">
+      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Use of Funds — Investor Ticket <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— <a href="investor.html" style="color:#534AB7;">full breakdown on the Investor page</a></span></div>
+      <div style="display:flex;height:28px;border-radius:6px;overflow:hidden;border:1px solid #e0e0dc;">
+        <div id="useOfFundsStage1" style="background:#534AB7;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden;width:50%;">—</div>
+        <div id="useOfFundsStage2" style="background:#D85A30;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden;width:50%;">—</div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:10px;color:#888;">
+        <span><span style="display:inline-block;width:8px;height:8px;background:#534AB7;border-radius:2px;margin-right:4px;"></span>Stage 1 — Bridge (at closing)</span>
+        <span><span style="display:inline-block;width:8px;height:8px;background:#D85A30;border-radius:2px;margin-right:4px;"></span>Stage 2 — Committed (milestone-triggered)</span>
+      </div>
+      <div style="margin-top:6px;font-size:10px;color:#185FA5;">Platform rights (license + exclusivity, <span id="useOfFundsRightsNote">€1,000,000</span> reference value) are contributed in-kind by Osteoid A.Ş. — not a funded segment above.</div>
+    </div>
+
     <div style="border-top:1px solid #eeeee9;padding-top:16px;">
       <div style="display:flex;gap:6px;margin-bottom:12px;" id="tblChartTabs">
         <button class="tct active" onclick="setTblTab('gelir',this)">Revenue &amp; Cost</button>

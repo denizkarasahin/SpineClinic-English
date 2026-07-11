@@ -37,12 +37,15 @@
 
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:6px;" id="dcfKpiGrid">
       <div class="kpi"><div class="kpi-label">Modeled Value (DCF)</div><div class="kpi-val neu" id="dcf_premoney" title="Present value of exit + cash flows, discounted at r — before the negotiation discount">—</div></div>
-      <div class="kpi"><div class="kpi-label">Deal Pre-Money (after discount)</div><div class="kpi-val pos" id="dcf_premoney_final" title="Modeled Value × (1 − negotiation discount) — no asset floor; IP/exclusivity are a cash sale now, not an in-kind equity item">—</div></div>
-      <div class="kpi"><div class="kpi-label">Post-Money</div><div class="kpi-val neu" id="dcf_postmoney" title="Deal Pre-Money + actual new cash raised (Investor Ticket + Doctor-Investor)">—</div></div>
-      <div class="kpi"><div class="kpi-label">Investor Ticket</div><div class="kpi-val neu" id="dcf_investor_ticket" title="IP license + city exclusivity (bought from Osteoid A.Ş. for cash) + working capital buffer + setup cost for Centers 1-3 (Istanbul + Izmir + Ankara, each incl. Overhead) — see Investment Breakdown">—</div></div>
-      <div class="kpi"><div class="kpi-label">Investor Stake</div><div class="kpi-val pos" id="dcf_yatirimci_hisse" title="Investor Ticket ÷ Post-Money — a priced round, not the Contribution Register">—</div></div>
-      <div class="kpi"><div class="kpi-label">Implied Investor MOIC at Exit</div><div class="kpi-val pos" id="dcf_investor_moic_exit" title="Exit Value (Year 5 EBITDA × Exit Multiple) × Investor Stake ÷ Investor Ticket">—</div></div>
+      <div class="kpi"><div class="kpi-label">Deal Pre-Money (after discount)</div><div class="kpi-val pos" id="dcf_premoney_final" title="Modeled Value × (1 − negotiation discount) — no asset floor; IP/exclusivity are contributed in-kind by Osteoid under the SHA, not part of this cash valuation">—</div></div>
+      <div class="kpi"><div class="kpi-label">Post-Money</div><div class="kpi-val neu" id="dcf_postmoney" title="Deal Pre-Money + actual new cash raised (Investor Ticket + Doctor-Investor) — one priced deal, two closings: the stake and post-money are set once, up front, for the full committed amount">—</div></div>
+      <div class="kpi"><div class="kpi-label">Stage 1 — Bridge</div><div class="kpi-val neu" id="dcf_stage1" title="At closing: Istanbul setup (incl. Overhead) + model-derived working capital + Stage 1 buffer. No rights payments at this stage — see Investment Breakdown">—</div></div>
+      <div class="kpi"><div class="kpi-label">Stage 2 — Committed</div><div class="kpi-val neu" id="dcf_stage2" title="Milestone-triggered: Izmir/Ankara setup (incl. Overhead) + remaining working capital buffer — see Investment Breakdown. No rights payment: license &amp; exclusivity are in-kind, not funded here">—</div></div>
+      <div class="kpi"><div class="kpi-label">Total Committed</div><div class="kpi-val neu" id="dcf_investor_ticket" title="Stage 1 + Stage 2 — one priced deal, two closings: this full amount (not just Stage 1) is what Post-Money and Investor Stake are computed against">—</div></div>
+      <div class="kpi"><div class="kpi-label">Investor Stake</div><div class="kpi-val pos" id="dcf_yatirimci_hisse" title="The Two-Tranche Pricing blended stake below — same investor, two sequential closings at two pre-money valuations, not a flat cash÷post-money ratio and not the Contribution Register">—</div></div>
+      <div class="kpi"><div class="kpi-label">Implied Investor MOIC at Exit</div><div class="kpi-val pos" id="dcf_investor_moic_exit" title="Exit Value (Year 5 EBITDA × Exit Multiple) × Investor Stake (two-tranche blended) ÷ Total Committed">—</div></div>
     </div>
+    <div class="note-box" style="margin-top:10px;margin-bottom:6px;">License &amp; exclusivity (reference value <span id="dcf_rights_inkind">€1,000,000</span>) are contributed <b>in-kind</b> by Osteoid A.Ş. under the Shareholders' Agreement at Stage 1 closing — disclosed, arm's-length related-party terms, not a cash purchase in either stage. Stage 1 funds tangible build-out and working capital only; Stage 2 funds the Izmir/Ankara build-outs.</div>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
       <div class="sl-row" style="grid-column:1 / -1;">
@@ -75,6 +78,41 @@
         </div>
         <span class="sl-note">The modeled DCF value is the anchor; this discount is the negotiated concession for single-site execution risk (not yet a proven multi-year, multi-center track record at this specific venue).</span>
       </div>
+      <div class="sl-row">
+        <label style="font-size:10px;">Tranche 1 amount (€)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_tranche1Eur" min="100000" max="1000000" step="10000" value="500000" oninput="sv('tranche1Eur',this.value)">
+          <span class="sl-val" id="tranche1Eur" style="min-width:70px;">500.000</span>
+        </div>
+        <span class="sl-note">How much of the Investor Ticket is priced at Tranche 1's (more discounted) pre-money; the remainder prices at Tranche 2's pre-money</span>
+      </div>
+      <div class="sl-row">
+        <label style="font-size:10px;">Tranche step-up (×)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_trancheStepUp" min="1.0" max="3.0" step="0.05" value="1.75" oninput="sv('trancheStepUp',this.value)">
+          <span class="sl-val" id="trancheStepUp" style="min-width:40px;">1.75</span>
+        </div>
+        <span class="sl-note">Tranche 2 pre-money ÷ this factor = Tranche 1 pre-money — the valuation discount Tranche 1 gets for closing before Istanbul's milestones de-risk the venue</span>
+      </div>
+    </div>
+
+    <!-- Two-Tranche Pricing — same investor, two sequential closings at two different pre-money valuations -->
+    <div style="margin-top:16px;">
+      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Two-Tranche Pricing <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— how the hero Investor Stake above is actually priced; independent of the Stage 1/Stage 2 cash-timing split</span></div>
+      <div class="tbl-wrap" style="margin-bottom:8px;">
+        <table id="trancheTable">
+          <thead><tr>
+            <th style="text-align:left;">Tranche</th>
+            <th>Pre-Money</th>
+            <th>Investment</th>
+            <th>Stake</th>
+          </tr></thead>
+          <tbody id="trancheTableBody">
+            <tr><td colspan="4" style="text-align:center;color:#aaa;font-size:11px;">Will be calculated once the model loads...</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note-box">Tranche 1 buys its stake of the pre-Tranche-2 company at Tranche 1's pre-money; Tranche 2 buys its stake of the post-Tranche-1 company at the full discounted-DCF pre-money. The same investor holds both, so <b>Blended</b> = Tranche 1's diluted remainder + the investor's fresh Tranche 2 stake — this is the "~20%" figure the deck quotes, and it's the exact same number as the "Investor Stake" hero card above (not a separate, second figure).</div>
     </div>
 
   </div>
@@ -184,7 +222,7 @@
         <b>MOIC</b> = Your payout ÷ your ticket. <b>IRR</b> = annualized return over 5 years (simple: MOIC^(1/5)−1). <b>Enterprise Value</b> = Year 5 EBITDA × exit multiple. Your payout = EV × your equity stake. Equity stake = your ticket ÷ post-money valuation. The "For 3× MOIC" row shows the EV and exit multiple required to triple your investment — use it as a target benchmark. <b>Color guide:</b> green = IRR ≥ 25% / MOIC ≥ 3×, yellow = IRR ≥ 15% / MOIC ≥ 2×, red = below.
       </div>
       <div class="note-box" style="margin-top:10px;font-size:11px;">
-        MOIC and IRR above are for the Lead Investor's own Investor Ticket and Investor Stake — the priced round from The Deal at a Glance (Investor Ticket ÷ Post-Money), not the Contribution Register. Doctor-investors have their own cash amount and stake computed the same way. Physician partners referring patients also earn Sci/Edu/Library fees during Years 1–5 (independent of equity) — this is additional return not captured here.
+        MOIC and IRR above are for the Lead Investor's own Investor Ticket and Investor Stake — the priced round from The Deal at a Glance (the Two-Tranche Pricing blended stake, not a flat Investor Ticket ÷ Post-Money ratio), not the Contribution Register. Doctor-investors have their own cash amount and a flat cash ÷ Post-Money stake (un-tranched). Physician partners referring patients also earn Sci/Edu/Library fees during Years 1–5 (independent of equity) — this is additional return not captured here.
       </div>
       <div class="note-box" style="margin-top:10px;">
         <b>Return on cash invested</b> is the external investor's cash-on-cash view — capital that actually leaves an investor's pocket (clinic setup cost + working capital, read live from the Investment Breakdown table in Deal Structure &amp; Assumptions). <b>Return on total capital</b> additionally counts Osteoid A.Ş.'s remaining in-kind contribution (machinery, only when Osteoid-owned) as invested capital, so it's always ≤ the cash-only return — IP license and city exclusivity are no longer in-kind here, since the clinic now buys them from Osteoid for cash (the Investor Ticket). Both rows use the same after-tax free cash flow stream as the DCF table, and both react live to the equipment-ownership toggle, the corporate tax toggle, and any P&amp;L slider that moves the Year-1 cash trough. <b>Gross Multiple</b> = cumulative FCF ÷ capital invested, before shareholder-level exit tax. <b>Net-to-Investor Multiple</b> applies the Exit Tax Structuring result (Deal Structure &amp; Assumptions below) to the gain portion only — return of capital itself is never taxed.
@@ -226,8 +264,8 @@
         <div class="sl-row">
           <label style="font-size:10px;">Corporate Tax — KV (%)</label>
           <div class="sl-controls">
-            <input type="range" id="s_kvOrani" min="0" max="30" step="1" value="20" oninput="sv('kvOrani',this.value)">
-            <span class="sl-val" id="kvOrani" style="min-width:40px;">20</span>
+            <input type="range" id="s_kvOrani" min="0" max="30" step="1" value="25" oninput="sv('kvOrani',this.value)">
+            <span class="sl-val" id="kvOrani" style="min-width:40px;">25</span>
           </div>
           <span class="sl-note">Klinik Ltd. rate — no TGB exemption (that belongs solely to Osteoid A.Ş.)</span>
         </div>
@@ -268,7 +306,7 @@
       </div>
 
       <!-- Yatırım Dökümü (Investment Breakdown) — fully derived, nothing typed here -->
-      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Investment Breakdown <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— the Investor Ticket (cash), clinic cash from the live model, and Osteoid's remaining in-kind (machinery only)</span></div>
+      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Investment Breakdown <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— Stage 1 &amp; Stage 2 of the committed cash (Investor Ticket), the in-kind License &amp; Exclusivity reference value (not funded), clinic cash from the live model, and Osteoid's remaining in-kind (machinery only)</span></div>
       <div class="tbl-wrap" style="margin-bottom:12px;">
         <table id="investBreakdownTable">
           <thead><tr>
@@ -283,28 +321,41 @@
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:16px;">
         <div class="sl-row">
-          <label style="font-size:10px;">IP / Design-Library License (€)</label>
-          <div class="sl-controls">
-            <input type="range" id="s_ipLisansEur" min="100000" max="1000000" step="10000" value="500000" oninput="sv('ipLisansEur',this.value)">
-            <span class="sl-val" id="ipLisansEur" style="min-width:70px;">500.000</span>
-          </div>
-          <span class="sl-note">Purchased for cash from Osteoid A.Ş. by the clinic company (part of the Investor Ticket, The Deal at a Glance) — no longer an in-kind equity contribution</span>
-        </div>
-        <div class="sl-row">
-          <label style="font-size:10px;">Master Development Rights / Territory Exclusivity (€)</label>
-          <div class="sl-controls">
-            <input type="range" id="s_sehirEksklusifEur" min="100000" max="1000000" step="10000" value="500000" oninput="sv('sehirEksklusifEur',this.value)">
-            <span class="sl-val" id="sehirEksklusifEur" style="min-width:70px;">500.000</span>
-          </div>
-          <span class="sl-note">Purchased for cash from Osteoid A.Ş. by the clinic company (part of the Investor Ticket, The Deal at a Glance) — includes the right to sub-license satellite companies elsewhere in the territory (see Network Structure above)</span>
-        </div>
-        <div class="sl-row">
           <label style="font-size:10px;">Working Capital Buffer (€)</label>
           <div class="sl-controls">
             <input type="range" id="s_workingCapBufferEur" min="100000" max="1000000" step="10000" value="500000" oninput="sv('workingCapBufferEur',this.value)">
             <span class="sl-val" id="workingCapBufferEur" style="min-width:70px;">500.000</span>
           </div>
-          <span class="sl-note">Feeds the Investor Ticket (The Deal at a Glance) directly; also an extra cash reserve on top of the model-derived working capital below — a safety margin, not a re-estimate of the trough</span>
+          <span class="sl-note">Feeds the Investor Ticket (The Deal at a Glance) directly; also an extra cash reserve on top of the model-derived working capital below — a safety margin, not a re-estimate of the trough. Split across the two stages by the Stage 1 Buffer slider below</span>
+        </div>
+        <div class="sl-row">
+          <label style="font-size:10px;">Stage 1 Buffer (€) <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:10px;color:#534AB7;">— front-loaded at closing</span></label>
+          <div class="sl-controls">
+            <input type="range" id="s_stage1BufferEur" min="0" max="500000" step="10000" value="200000" oninput="sv('stage1BufferEur',this.value)">
+            <span class="sl-val" id="stage1BufferEur" style="min-width:70px;">200.000</span>
+          </div>
+          <span class="sl-note">How much of the Working Capital Buffer above is front-loaded into Stage 1 (the Bridge); the remainder rolls into Stage 2</span>
+        </div>
+      </div>
+
+      <!-- License & Exclusivity — in-kind, informational only, NOT part of the funded round -->
+      <div style="font-size:11px;font-weight:700;color:#185FA5;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">License &amp; Exclusivity — In-Kind <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— reference value only; contributed by Osteoid A.Ş. under the SHA, not part of the Investor Ticket</span></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:16px;background:#eef6ff;border:1px solid #b8d4f0;border-radius:8px;padding:14px;">
+        <div class="sl-row">
+          <label style="font-size:10px;">License reference value — in-kind, not part of the round (€)</label>
+          <div class="sl-controls">
+            <input type="range" id="s_ipLisansEur" min="100000" max="1000000" step="10000" value="500000" oninput="sv('ipLisansEur',this.value)">
+            <span class="sl-val" id="ipLisansEur" style="min-width:70px;">500.000</span>
+          </div>
+          <span class="sl-note">Contributed in-kind by Osteoid A.Ş. under the Shareholders' Agreement at Stage 1 closing (disclosed, arm's-length related-party terms) — not purchased for cash, so it does not feed the Investor Ticket</span>
+        </div>
+        <div class="sl-row">
+          <label style="font-size:10px;">Exclusivity reference value — in-kind, not part of the round (€)</label>
+          <div class="sl-controls">
+            <input type="range" id="s_sehirEksklusifEur" min="100000" max="1000000" step="10000" value="500000" oninput="sv('sehirEksklusifEur',this.value)">
+            <span class="sl-val" id="sehirEksklusifEur" style="min-width:70px;">500.000</span>
+          </div>
+          <span class="sl-note">Contributed in-kind by Osteoid A.Ş. under the Shareholders' Agreement at Stage 1 closing — includes satellite sub-licensing rights (see Network Structure above); performance-conditional only if Osteoid's stake falls below 50%</span>
         </div>
       </div>
 
@@ -345,7 +396,7 @@
           <span class="sl-note">Overhead — added on top of Ankara's modeled capex; dial it in to round the total to a clean number</span>
         </div>
       </div>
-      <div class="note-box" style="margin-bottom:16px;">Setup cost and working capital are read directly from the model above — they are not typed, and they move whenever a P&amp;L slider, the brace ramp, or the equipment-ownership toggle changes. The Working Capital Buffer above is the one exception: it's an additional investor-contributed reserve on top of that derived figure, not a re-estimate of it. Machinery is counted once: it appears under "Osteoid parent in-kind" only when equipment is Osteoid-owned; otherwise its cost is already inside clinic setup. Setup Costs cover <b>three centers</b> — Istanbul (Center 1), Izmir (Center 2), and Ankara (Center 3), each its own modeled capex plus a manual Overhead adjustment — this round funds all three build-outs up front, not just Istanbul's. <b>Investor Ticket</b> (The Deal at a Glance) = IP license + city exclusivity (bought from Osteoid A.Ş. for cash) + Working Capital Buffer + Setup cost (Centers 1+2+3, each incl. Overhead) — that's the number Post-Money and Investor Stake actually use; the modeled Y1 working-capital trough and Osteoid's in-kind machinery are separate figures kept only for the Tax Optimization and Cash-on-Cash Return sections below.</div>
+      <div class="note-box" style="margin-bottom:16px;">Setup cost and working capital are read directly from the model above — they are not typed, and they move whenever a P&amp;L slider, the brace ramp, or the equipment-ownership toggle changes. The Working Capital Buffer above is the one exception: it's an additional investor-contributed reserve on top of that derived figure, not a re-estimate of it. Machinery is counted once: it appears under "Osteoid parent in-kind" only when equipment is Osteoid-owned; otherwise its cost is already inside clinic setup. Setup Costs cover <b>three centers</b> — Istanbul (Center 1), Izmir (Center 2), and Ankara (Center 3), each its own modeled capex plus a manual Overhead adjustment — this round funds all three build-outs up front, not just Istanbul's. <b>Stage 1 — Bridge</b> = Istanbul setup (incl. Overhead) + model-derived working capital + Stage 1 Buffer — funded at closing. <b>Stage 2 — Committed</b> = Izmir/Ankara setup (incl. Overhead) + the remaining Working Capital Buffer — released once Istanbul milestones are met. Neither stage includes a rights payment: <b>License &amp; Exclusivity</b> are contributed in-kind by Osteoid A.Ş. under the Shareholders' Agreement at Stage 1 closing (disclosed, arm's-length related-party terms) — a reference value only, shown separately above, never funded by the round. <b>Total Committed</b> (The Deal at a Glance) = Stage 1 + Stage 2 — that's the number Post-Money and Investor Stake actually use, one priced deal across both closings; the modeled Y1 working-capital trough shown again below and Osteoid's in-kind machinery are separate figures kept only for the Tax Optimization and Cash-on-Cash Return sections below.</div>
 
       <!-- Fee Stream Split (sum-of-parts) -->
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Fee Stream Split <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— shown when the sum-of-parts toggle above is on</span></div>
@@ -465,7 +516,7 @@
         <div class="kpi"><div class="kpi-label">Exit Value — Year 5</div><div class="kpi-val neu" id="dcf_exitValue" title="Year 5 EBITDA × Exit Multiple (undiscounted)">—</div></div>
         <div class="kpi"><div class="kpi-label">Cumulative Free Cash (5yr)</div><div class="kpi-val neu" id="kpi_cumFcf" title="Sum of Y1-Y5 free cash flow, taxed per the toggle above">—</div></div>
         <div class="kpi"><div class="kpi-label">Total Investment (legacy)</div><div class="kpi-val neu" id="dcfInvestDisp" title="Clinic cash (model-derived) + Osteoid's remaining in-kind (machinery only) — the old blended figure, no longer what Post-Money uses">—</div></div>
-        <div class="kpi"><div class="kpi-label">Osteoid Stake</div><div class="kpi-val neu" id="dcf_osteoid_hisse" title="100% − Investor − Doctor-Investor − Sweat, from the priced round above">—</div></div>
+        <div class="kpi"><div class="kpi-label">Osteoid Stake</div><div class="kpi-val neu" id="dcf_osteoid_hisse" title="100% − Investor − Doctor-Investor, from the priced round above. Sweat equity is not a stake in this priced round — it's tracked separately in the Contribution Register (reference view, Cap Table page)">—</div></div>
       </div>
 
       <!-- Ownership Register — the Contribution Register's weighted split. No longer
@@ -486,7 +537,7 @@
           </tbody>
         </table>
       </div>
-      <div id="warn_control" style="display:none;font-size:11px;font-weight:700;color:#c0392b;background:#fef0f0;border:1px solid #e8b4b4;border-radius:4px;padding:8px 12px;margin-bottom:16px;">⚠ Control Risk: Osteoid's priced-round stake (The Deal at a Glance) falls below 50%+1. The shareholders agreement guarantees Osteoid/founder majority control at all times. Reduce the negotiation discount, the investor/doctor-investor ticket size, or the sweat equity cap — the Contribution Register weights below no longer affect this.</div>
+      <div id="warn_control" style="display:none;font-size:11px;font-weight:700;color:#c0392b;background:#fef0f0;border:1px solid #e8b4b4;border-radius:4px;padding:8px 12px;margin-bottom:16px;">⚠ Control Risk: Osteoid's priced-round stake (The Deal at a Glance) falls below 50%+1. The shareholders agreement guarantees Osteoid/founder majority control at all times. Reduce the negotiation discount or the investor/doctor-investor ticket size — the Contribution Register weights below (and sweat equity, which isn't a stake in this priced round) no longer affect this.</div>
 
       <div class="note-box" style="margin-bottom:16px;">The contribution-weight sliders (Osteoid/Investor/Doctor-Investor weights, machinery %, royalty offset) and the Sweat Equity terms that drive the table above now live in the <a href="captable.html" style="color:#534AB7;font-weight:700;">"Contribution Register — Weights &amp; Sweat Equity"</a> section on the Cap Table page — edits there update this table on next load.</div>
 
@@ -508,7 +559,7 @@
           </tbody>
         </table>
       </div>
-      <div class="note-box" id="dcfNote">Free Cash Flow Years 1–5 are taken directly from the 5-year projection model (same data as the Multi-Year Plan page), taxed per the Corporate Tax toggle above (25% KV by default, with 5-year loss carryforward — no VAT is modeled, orthosis sales are VAT-exempt under KDV Kanunu 17/4-s). Terminal value uses an exit-multiple method: TV = FCF₅ × Exit Multiple — computed on the <i>same after-tax</i> FCF₅ as the interim cash flows (a proxy for an after-tax earnings multiple, not a pre-tax number an exit buyer would never actually receive). <b>Modeled Value (DCF)</b> = NPV(FCF₁₋₅) + PV(Terminal Value) — the unadjusted model output. <b>Deal Pre-Money</b> = Modeled Value × (1 − Negotiation Discount) — see The Deal at a Glance; the discount is the negotiated concession for single-site execution risk, not a re-run of the DCF itself. No asset floor: IP license and city exclusivity are now a cash sale to the clinic (the Investor Ticket), not an in-kind equity contribution, so there's no contributed-asset value to floor pre-money against. <b>Post-Money</b> = Deal Pre-Money + actual new cash raised (Investor Ticket + any Doctor-Investor cash). <b>Investor Ticket</b> = IP license + city exclusivity (bought from Osteoid A.Ş.) + Working Capital Buffer + Setup cost for Centers 1-3 (Istanbul + Izmir + Ankara, each its own modeled capex plus a manual Overhead adjustment). <b>Investor Stake</b> = Investor Ticket ÷ Post-Money; <b>Doctor-Investor Stake</b> = their cash ÷ Post-Money; <b>Sweat</b> = the vested % up to its cap; <b>Osteoid Stake</b> = the remainder — a priced round, not the Ownership Register below (that Contribution Register is now reference-only, showing machinery in-kind vs cash under the old weighted model — see captable.html). Discount rate (r) is set by the Risk Profile control on The Deal at a Glance, not a generic early-stage-startup premium — see "Why This Venture Is De-Risked" above.</div>
+      <div class="note-box" id="dcfNote">Free Cash Flow Years 1–5 are taken directly from the 5-year projection model (same data as the Multi-Year Plan page), taxed per the Corporate Tax toggle above (25% KV by default, with 5-year loss carryforward — no VAT is modeled, orthosis sales are VAT-exempt under KDV Kanunu 17/4-s). Terminal value uses an exit-multiple method: TV = FCF₅ × Exit Multiple — computed on the <i>same after-tax</i> FCF₅ as the interim cash flows (a proxy for an after-tax earnings multiple, not a pre-tax number an exit buyer would never actually receive). <b>Modeled Value (DCF)</b> = NPV(FCF₁₋₅) + PV(Terminal Value) — the unadjusted model output. <b>Deal Pre-Money</b> = Modeled Value × (1 − Negotiation Discount) — see The Deal at a Glance; the discount is the negotiated concession for single-site execution risk, not a re-run of the DCF itself. No asset floor: IP license and city exclusivity are contributed in-kind by Osteoid under the SHA (see the License &amp; Exclusivity — In-Kind block above), not a cash purchase, so there's no contributed-asset value to floor pre-money against. <b>Post-Money</b> = Deal Pre-Money + actual new cash raised (Investor Ticket + any Doctor-Investor cash). <b>Investor Ticket</b> = Stage 1 (Istanbul setup + working capital + Stage 1 buffer) + Stage 2 (Izmir/Ankara setup + remaining working capital buffer) — no rights payment in either stage; IP license and city exclusivity are a separate in-kind reference value, not part of this cash figure. <b>Investor Stake</b> = the Two-Tranche Pricing blended stake (see that table above) — Tranche 1's diluted remainder + the investor's fresh Tranche 2 stake, not a flat Investor Ticket ÷ Post-Money ratio; <b>Doctor-Investor Stake</b> = their cash ÷ Post-Money (a single, un-tranched contribution); <b>Osteoid Stake</b> = the remainder — a priced round, not the Ownership Register below (that Contribution Register is now reference-only, showing machinery in-kind vs cash under the old weighted model — see captable.html; sweat equity is tracked there only, it is not a stake in this priced round). Discount rate (r) is set by the Risk Profile control on The Deal at a Glance, not a generic early-stage-startup premium — see "Why This Venture Is De-Risked" above.</div>
 
       <!-- Exit Tax Structuring (Shareholder-Level) -->
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin:20px 0 8px;">Exit Tax Structuring <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— shareholder-level only; corporate tax (KV) on operating profit above is unaffected</span></div>
