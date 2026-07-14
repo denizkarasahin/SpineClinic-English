@@ -2602,15 +2602,17 @@ function recalc() {
   const tBrut = rows.reduce((s,r)=>s+(r.gelirBrut||0),0);
   const brütMarj = tBrut > 0 ? Math.round(tGelir / tBrut * 100) : 0;
   // Kümülatif pozitif tahmini (12 ayda ulaşılamazsa)
-  let pozAyLabel, pozAyClass;
+  let pozAyLabel, pozAyClass, pozAySub = '';
   if (pozAy) {
     pozAyLabel = 'Month ' + pozAy; pozAyClass = 'pos';
   } else {
     const tahmin = _tahminPozAy(rows);
     if (tahmin) {
       pozAyLabel = '~Month ' + tahmin + ' (estimated)'; pozAyClass = 'neg';
+      pozAySub = 'Linear trend past Month 12 · Istanbul clinic only';
     } else {
       pozAyLabel = 'Not reached'; pozAyClass = 'neg';
+      pozAySub = 'Trend not yet improving';
     }
   }
   const _royTL = rows.reduce((s,r)=>s+(r.royaltyTop||0),0);
@@ -2624,7 +2626,7 @@ function recalc() {
     {label:'B2B net revenue (year)',    val:feEur(tGelirB2B),                           sub:ffTRY(tGelirB2B),      c:tGelirB2B>0?'pos':'neu'},
     {label:'Cumulative year-end',       val:feEur(rows[11].cumBudget),                  sub:ffTRY(rows[11].cumBudget), c:rows[11].cumBudget>=0?'pos':'neg'},
     {label:'Monthly break-even',        val:basAy?'Month '+basAy:'Not reached',         sub:'',                 c:basAy?'pos':'neg'},
-    {label:'Cumulative positive',       val:pozAyLabel,                                 sub:'',                 c:pozAyClass},
+    {label:'Cumulative positive',       val:pozAyLabel,                                 sub:pozAySub,            c:pozAyClass},
     {label:'Total Committed (Stage 1+2)', val:'€'+Math.round(window._lastInvestBreakdown.investorTicketEur).toLocaleString('en-US'), sub:'', c:'neg'},
     {label:'Setup cost',                val:feEur(kurulumTop),                          sub:ffTRY(kurulumTop),     c:'neg'},
     {label:'Scientific study fee',      val:feEur(-_sciTL),                             sub:ffTRY(-_sciTL),        c:'neg'},
