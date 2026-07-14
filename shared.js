@@ -1468,6 +1468,17 @@ function renderPazarChart(rows) {
     { label:'Break-even market share (IST)',val: ((17/pazarIst)*100).toFixed(2)+'%', c:'neg' },
   ].map(k=>`<div class="kpi"><div class="kpi-label">${k.label}</div><div class="kpi-val ${k.c}">${k.val}</div></div>`).join('');
 
+  // B2C KPI mirror (korse.html) — same 3-card format as kpiGridB2B below it.
+  const kpiB2C = document.getElementById('kpiGridB2C');
+  if (kpiB2C) {
+    const tGelirB2C = rows.reduce((s,r)=>s+(r.gelirNet||0),0);
+    kpiB2C.innerHTML = [
+      { label:'B2C total braces', val: totalKorse+' units', c:'neu' },
+      { label:'B2C annual net revenue', val: ff(tGelirB2C), c: tGelirB2C>0?'pos':'neu' },
+      { label:'TR market share (B2C)', val: payTR.toFixed(2)+'%', c: payTR>=1?'pos':'neu' },
+    ].map(k=>`<div class="kpi"><div class="kpi-label">${k.label}</div><div class="kpi-val ${k.c}">${k.val}</div></div>`).join('');
+  }
+
   // Mix stacked bar — ürün karışımı + pazar payı referans çizgisi
   if (mixChartInst) mixChartInst.destroy();
   const ctx2 = _origGetById('mixChart');
