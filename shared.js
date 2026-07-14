@@ -2565,7 +2565,7 @@ function recalc() {
   document.getElementById('kurulumTop').textContent=ff(kurulumTop);
   renderKurulumDonut(gv('kira'),gv('depozito'),gv('emlakci'),tadilatTop,dekoTopV,gv('mobilya')+printerMaliyet+robotKolMaliyet,gv('ruhsat'));
   window._lastInvestBreakdown = renderInvestBreakdown(kurulumTop, rows);
-  renderStage1Return(window._lastInvestBreakdown, tGelir);
+  renderStage1Return(window._lastInvestBreakdown, tNet);
   window._lastRegister = buildRegister(V);
   refreshAgreementTerms();
 
@@ -2941,9 +2941,10 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
   const inv2 = window._lastInvestBreakdown;
   if (inv2) {
     const stage2Eur = inv2.stage2Eur;
-    const satelliteNetEur = (izmirNet + ankaraNet) * 1000; // izmirNet/ankaraNet are €K
+    const satelliteNetEur = (izmirNet + ankaraNet) * 1000; // izmirNet/ankaraNet are €K, already net of each satellite's own opex
     const stage2YieldPct = stage2Eur > 0 ? (satelliteNetEur / stage2Eur) * 100 : 0;
-    const fmtEurFull = v => '€' + Math.round(v).toLocaleString('en-US');
+    const fmtEurFull = v => (v < 0 ? '-€' : '€') + Math.round(Math.abs(v)).toLocaleString('en-US');
+    const stage2YieldColor = stage2YieldPct >= 0 ? '#1a7a45' : '#c94f2a';
     html += `
     <div style="border:1px solid #D85A3044;border-left:3px solid #D85A30;border-radius:6px;padding:12px 16px;margin-top:16px;">
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">Stage 2 Investment &amp; Return <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— the Committed tranche, funds the Izmir/Ankara build-outs</span></div>
@@ -2953,15 +2954,15 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
           <div style="font-size:18px;font-weight:700;color:#D85A30;">${fmtEurFull(stage2Eur)}</div>
         </div>
         <div>
-          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Izmir + Ankara net revenue</div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Izmir + Ankara net profit</div>
           <div style="font-size:18px;font-weight:700;color:#333;">${fmtEurFull(satelliteNetEur)}</div>
         </div>
         <div>
           <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Annual yield</div>
-          <div style="font-size:18px;font-weight:700;color:#1a7a45;">${stage2YieldPct.toFixed(1)}%</div>
+          <div style="font-size:18px;font-weight:700;color:${stage2YieldColor};">${stage2YieldPct.toFixed(1)}%</div>
         </div>
       </div>
-      <div style="font-size:10px;color:#888;margin-top:8px;">Annual yield = Izmir + Ankara net revenue (at full penetration, above) ÷ Stage 2 investment (Izmir/Ankara setup + deferred working-capital buffer) — a simple yield, not a discounted or multi-year return.</div>
+      <div style="font-size:10px;color:#888;margin-top:8px;">Annual yield = Izmir + Ankara net profit at full penetration (net of each satellite's own operating costs, above) ÷ Stage 2 investment (Izmir/Ankara setup + deferred working-capital buffer) — same basis as Stage 1's yield; a simple yield, not a discounted or multi-year return.</div>
     </div>`;
   }
 
@@ -4057,24 +4058,30 @@ function renderUseOfFundsStrip(inv) {
 }
 
 // ── STAGE 1 INVESTMENT & RETURN (index.html) ─────────────────────────────────
-// Simple annual yield: Year 1 net revenue (the same clinic-only figure shown
-// in the 12-Month Summary KPI grid) ÷ Stage 1's own investment (tangible
-// build-out + working capital, renderInvestBreakdown) — not a discounted or
-// multi-year return, just this year's cash yield on the money Stage 1 put in.
-// Null-safe: index.html is the only page with these ids.
-function renderStage1Return(inv, tGelirTRY) {
+// Simple annual yield: Year 1 true net profit (revenue minus ALL Y1 operating
+// costs — rent, salaries, marketing, etc. — the same tNet computeYear1()
+// already tracks, not the revenue-only tGelir) ÷ Stage 1's own investment
+// (tangible build-out + working capital, renderInvestBreakdown). Using profit
+// rather than revenue keeps this on the same basis as the Stage 2 block below
+// (izmirNet/ankaraNet there are already net of each satellite's own opex) —
+// not a discounted or multi-year return, just this year's cash yield on the
+// money Stage 1 put in. Null-safe: index.html is the only page with these ids.
+function renderStage1Return(inv, tNetTRY) {
   const el = document.getElementById('stage1InvestEur');
   if (!el || !inv) return;
   const eurK = V.eurKur ?? 50;
   const stage1Eur = inv.stage1Eur;
-  const y1RevenueEur = tGelirTRY / eurK;
-  const yieldPct = stage1Eur > 0 ? (y1RevenueEur / stage1Eur) * 100 : 0;
-  const fmtEurFull = v => '€' + Math.round(v).toLocaleString('en-US');
+  const y1ProfitEur = tNetTRY / eurK;
+  const yieldPct = stage1Eur > 0 ? (y1ProfitEur / stage1Eur) * 100 : 0;
+  const fmtEurFull = v => (v < 0 ? '-€' : '€') + Math.round(Math.abs(v)).toLocaleString('en-US');
   el.textContent = fmtEurFull(stage1Eur);
-  const revEl = document.getElementById('stage1RevenueEur');
-  if (revEl) revEl.textContent = fmtEurFull(y1RevenueEur);
+  const revEl = document.getElementById('stage1ProfitEur');
+  if (revEl) revEl.textContent = fmtEurFull(y1ProfitEur);
   const yieldEl = document.getElementById('stage1YieldPct');
-  if (yieldEl) yieldEl.textContent = yieldPct.toFixed(1) + '%';
+  if (yieldEl) {
+    yieldEl.textContent = yieldPct.toFixed(1) + '%';
+    yieldEl.style.color = yieldPct >= 0 ? '#1a7a45' : '#c94f2a';
+  }
 }
 
 // Fractional-year simple payback: interpolates linearly within whichever year
