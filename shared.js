@@ -2625,7 +2625,7 @@ function recalc() {
     {label:'Cumulative year-end',       val:feEur(rows[11].cumBudget),                  sub:ffTRY(rows[11].cumBudget), c:rows[11].cumBudget>=0?'pos':'neg'},
     {label:'Monthly break-even',        val:basAy?'Month '+basAy:'Not reached',         sub:'',                 c:basAy?'pos':'neg'},
     {label:'Cumulative positive',       val:pozAyLabel,                                 sub:'',                 c:pozAyClass},
-    {label:'Total investment',           val:'€'+(V.dcfInvest||150000).toLocaleString('en-US'), sub:'',           c:'neg'},
+    {label:'Total Committed (Stage 1+2)', val:'€'+Math.round(window._lastInvestBreakdown.investorTicketEur).toLocaleString('en-US'), sub:'', c:'neg'},
     {label:'Setup cost',                val:feEur(kurulumTop),                          sub:ffTRY(kurulumTop),     c:'neg'},
     {label:'Scientific study fee',      val:feEur(-_sciTL),                             sub:ffTRY(-_sciTL),        c:'neg'},
     {label:'Education fee',             val:feEur(-_eduTL),                             sub:ffTRY(-_eduTL),        c:'neg'},
