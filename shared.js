@@ -466,8 +466,6 @@ function initDynamic() {
   const _exitSp = document.getElementById('dcfExitMult');
   if (_exitSl) _exitSl.value = V.dcfExitMult || 10;
   if (_exitSp) _exitSp.textContent = (V.dcfExitMult || 10) + '×';
-  // dcfInvestDisp is no longer a typed slider — it's kept in sync by
-  // renderInvestBreakdown() (called from recalc()) since it's a derived total.
   ['ipLisansEur','sehirEksklusifEur','workingCapBufferEur'].forEach(function(k) {
     const sl = document.getElementById('s_'+k);
     const sp = document.getElementById(k);
@@ -4176,8 +4174,6 @@ function renderInvestBreakdown(kurulumTop, rows) {
       + line('Parent in-kind — subtotal', parentInKindEur, 'r-bas')
       + line('TOTAL INVESTMENT (legacy blended figure — clinic cash + in-kind)', totalInvestEur, 'r-cum');
   }
-  const dcfDisp = document.getElementById('dcfInvestDisp');
-  if (dcfDisp) dcfDisp.textContent = '€' + Math.round(totalInvestEur).toLocaleString('tr-TR');
   const setupDisp1 = document.getElementById('setupCostsEurDisp');
   if (setupDisp1) setupDisp1.textContent = '€' + Math.round(setupC1Eur).toLocaleString('tr-TR');
   const setupDisp2 = document.getElementById('setupCostsEurDisp2');
