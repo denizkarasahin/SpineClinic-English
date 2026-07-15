@@ -83,6 +83,20 @@
     <div id="ankaraAnnualDetailWrap" style="overflow-x:auto;"></div>
   </div>
 
+  <div class="section" id="bursaAnnualDetailSection" style="display:none;">
+    <div class="section-label" style="color:#c94f2a;">Financial Projection</div>
+    <div class="section-title">Annual Financial Detail — Bursa</div>
+    <div style="font-size:11px;color:var(--ink3);margin-bottom:8px;">Bursa has no monthly model of its own — it's ramped from a single full-capacity target, so "Monthly break-even" doesn't apply here. Doctor fee, channel share, and cutting fee all borrow Istanbul's Year-1 ratios. Opens Year 3 (one year after Izmir/Ankara), so it only reaches 80% of its full-capacity target by Year 5 within this model's horizon. Setup cost lands entirely in the opening year.</div>
+    <div id="bursaAnnualDetailWrap" style="overflow-x:auto;"></div>
+  </div>
+
+  <div class="section" id="gaziantepAnnualDetailSection" style="display:none;">
+    <div class="section-label" style="color:#8a6d1a;">Financial Projection</div>
+    <div class="section-title">Annual Financial Detail — Gaziantep</div>
+    <div style="font-size:11px;color:var(--ink3);margin-bottom:8px;">Gaziantep has no monthly model of its own — it's ramped from a single full-capacity target, so "Monthly break-even" doesn't apply here. Doctor fee, channel share, and cutting fee all borrow Istanbul's Year-1 ratios. Opens Year 3 (one year after Izmir/Ankara), so it only reaches 80% of its full-capacity target by Year 5 within this model's horizon. Setup cost lands entirely in the opening year.</div>
+    <div id="gaziantepAnnualDetailWrap" style="overflow-x:auto;"></div>
+  </div>
+
   <!-- TEHLİKE TETİKLEYİCİ -->
   <div class="section">
     <div class="section-label">Growth Logic</div>
@@ -275,7 +289,7 @@
               <div style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #ddddf8;">
                 <div style="font-size:10px;color:#534AB7;font-weight:700;margin-bottom:4px;">Opening Month (Year 2)</div>
                 <div style="display:flex;align-items:center;gap:8px;">
-                  <input type="range" id="s_ankaraAcilisAy" min="1" max="12" step="1" value="3" style="flex:1;accent-color:#534AB7;" oninput="svAnkaraAcilisAy(this.value)">
+                  <input type="range" id="s_ankaraAcilisAy" min="1" max="12" step="1" value="3" style="flex:1;accent-color:#534AB7;" oninput="svMerkezAcilisAy('ankara',this.value)">
                   <span style="font-size:11px;font-weight:700;color:#534AB7;min-width:60px;" id="ankaraAcilisAyVal">Year 2 Month 3</span>
                 </div>
               </div>
@@ -371,10 +385,232 @@
           <span class="year-badge">Ramp-up</span>
         </div>
         <div class="year-card-body">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
             <div class="year-kpi"><div class="year-kpi-label">Consolidated net revenue</div><div class="year-kpi-val pos" id="y3GelirKpi">—</div></div>
             <div class="year-kpi"><div class="year-kpi-label">Total braces</div><div class="year-kpi-val" id="y3KorseKpi">—</div></div>
             <div class="year-kpi" style="grid-column:span 2;"><div class="year-kpi-label">Active centers</div><div class="year-kpi-val" id="y3MerkezKpi">—</div></div>
+            <div class="year-kpi" id="bursaAcilisKpi" style="display:none;"><div class="year-kpi-label" style="color:#c94f2a;">Bursa opening</div><div class="year-kpi-val neu" id="bursaAcilisTarihi">—</div></div>
+            <div class="year-kpi" id="gaziantepAcilisKpi" style="display:none;"><div class="year-kpi-label" style="color:#8a6d1a;">Gaziantep opening</div><div class="year-kpi-val neu" id="gaziantepAcilisTarihi">—</div></div>
+          </div>
+          <div style="border-top:1px solid #e8e8e4;padding-top:10px;">
+            <div style="font-size:10px;color:#888;font-weight:700;text-transform:uppercase;margin-bottom:8px;">3rd/4th Center Selection — Bursa &amp; Gaziantep (Year 3)</div>
+            <div class="note-box" style="margin-bottom:8px;font-size:11px;">⚠ Same modeling approach as Izmir/Ankara: opex below excludes HQ-shared costs, satellite management fee and Subsidiary/Branch mode use the network-wide terms set in the Year 2 card above. Bursa/Gaziantep open one year later than Izmir/Ankara, so their ramp is shifted a year — they reach 50%/80% of target by Year 4/5, not 100%, within this model's 5-year horizon.</div>
+            <label style="display:flex;align-items:center;gap:8px;margin-bottom:4px;cursor:pointer;padding:8px;background:#fdf1ec;border:1px solid #c94f2a44;border-radius:6px 6px 0 0;">
+              <input type="checkbox" id="bursaToggle" onchange="toggleMerkez('bursa',this.checked)" style="width:14px;height:14px;accent-color:#c94f2a;cursor:pointer;">
+              <span style="font-size:12px;font-weight:700;color:#c94f2a;">Bursa Center</span>
+              <span style="font-size:10px;color:#888;margin-left:auto;">4.5% population share (incl. surroundings)</span>
+            </label>
+            <div style="padding:6px 10px;background:#fdf1ec;border:1px solid #c94f2a44;border-top:none;font-size:11px;">
+              <div class="sl-row" style="margin-bottom:8px;">
+                <label style="font-size:10px;color:#c94f2a;">Satellite Entity Mode</label>
+                <div style="display:flex;gap:6px;margin-top:2px;">
+                  <button type="button" id="bursaModeBtn_sub" onclick="svSubeMi('bursa',false)" style="flex:1;font-size:10px;font-weight:700;padding:6px 8px;border-radius:5px;border:1.5px solid #c94f2a;background:#c94f2a;color:#fff;cursor:pointer;">Subsidiary Ltd.</button>
+                  <button type="button" id="bursaModeBtn_branch" onclick="svSubeMi('bursa',true)" style="flex:1;font-size:10px;font-weight:700;padding:6px 8px;border-radius:5px;border:1.5px solid #c94f2a;background:#fff;color:#c94f2a;cursor:pointer;">Branch (şube)</button>
+                </div>
+              </div>
+              <div id="bursaFlagshipPayWrap" class="sl-row" style="margin-bottom:0;">
+                <label style="font-size:10px;color:#c94f2a;">Flagship Ownership of Bursa (%) — remainder to local investors</label>
+                <div class="sl-controls">
+                  <input type="range" id="s_bursaFlagshipPay" min="30" max="100" step="5" value="65" style="accent-color:#c94f2a;" oninput="sv('bursaFlagshipPay',this.value)">
+                  <span class="sl-val" id="bursaFlagshipPay" style="min-width:30px;color:#c94f2a;">65</span>
+                </div>
+              </div>
+              <div id="bursaSubeNote" style="display:none;font-size:10px;color:#c94f2a;padding:6px 0 0;">Branch mode: 100% of Bursa's P&amp;L (incl. any loss) consolidates into the flagship — no fee, no minority interest. See trade-off note above.</div>
+            </div>
+            <div id="bursaRampaWrap" style="padding: 8px; background: rgb(253, 241, 236); border-radius: 6px; margin-bottom: 8px;">
+              <div style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #f0ddd3;">
+                <div style="font-size:10px;color:#c94f2a;font-weight:700;margin-bottom:4px;">Opening Month (Year 3)</div>
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <input type="range" id="s_bursaAcilisAy" min="1" max="12" step="1" value="3" style="flex:1;accent-color:#c94f2a;" oninput="svMerkezAcilisAy('bursa',this.value)">
+                  <span style="font-size:11px;font-weight:700;color:#c94f2a;min-width:60px;" id="bursaAcilisAyVal">Year 3 Month 3</span>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+                <div style="font-size:10px;color:#c94f2a;font-weight:700;">Bursa — Monthly Brace Ramp</div>
+                <label style="display:flex;align-items:center;gap:4px;cursor:pointer;">
+                  <input type="checkbox" id="bursaIstToggle" onchange="toggleIstRampa('bursa',this.checked)" style="width:12px;height:12px;accent-color:#c94f2a;">
+                  <span style="font-size:10px;color:#555;">Use IST ramp</span>
+                </label>
+              </div>
+              <div id="bursaOranWrap" style="display:none;background:rgba(201,79,42,0.08);border-radius:4px;padding:6px 8px;margin-bottom:6px;">
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <label style="font-size:10px;color:#c94f2a;white-space:nowrap;">IST multiplier</label>
+                  <input type="range" id="s_bursaRampaOran" min="0.1" max="2.0" step="0.05" value="0.4" style="flex:1;accent-color:#c94f2a;" oninput="updMerkezRampaOran('bursa',this.value)">
+                  <span id="bursaRampaOranVal" style="font-size:11px;font-weight:700;color:#c94f2a;min-width:36px;">×0.40</span>
+                </div>
+              </div>
+              <canvas id="bursaRampaChartCanvas" height="80" style="width:100%;height:80px;display:block;margin-bottom:4px;border-radius:3px;"></canvas>
+              <div style="margin-top:8px;padding-top:6px;border-top:1px solid #f0ddd3;">
+                <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
+                  <input type="checkbox" id="bursaIstGiderToggle" checked="" onchange="toggleIstGider('bursa',this.checked)" style="width:12px;height:12px;accent-color:#c94f2a;">
+                  <span style="font-size:10px;color:#555;">Use IST costs</span>
+                  <span id="bursaGiderNotu" style="font-size:10px;color:#c94f2a;margin-left:auto;">IST base</span>
+                </label>
+              <div id="bursaGiderSliders" style="display:none;margin-top:10px;padding:10px;background:rgba(0,0,0,0.03);border-radius:4px;">
+                <div style="font-size:10px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">Cost Variables</div>
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                  <div class="sl-row">
+                    <label style="color:#666;">Monthly Rent (₺)</label>
+                    <div class="sl-controls">
+                      <input type="range" id="s_bursaKira" min="30000" max="300000" step="5000" value="80000" style="accent-color:#c94f2a;" oninput="sv('bursaKira',this.value);buildProjection()">
+                      <span class="sl-val" id="bursaKira" contenteditable="true" onblur="svMerkez('bursaKira','s_bursaKira',this)" style="color:#c94f2a;">80,000</span>
+                    </div>
+                  </div>
+                  <div class="sl-row">
+                    <label style="color:#666;">Orthotist Salary (₺)</label>
+                    <div class="sl-controls">
+                      <input type="range" id="s_bursaOrtotistM" min="30000" max="150000" step="5000" value="55000" style="accent-color:#c94f2a;" oninput="sv('bursaOrtotistM',this.value);buildProjection()">
+                      <span class="sl-val" id="bursaOrtotistM" contenteditable="true" onblur="svMerkez('bursaOrtotistM','s_bursaOrtotistM',this)" style="color:#c94f2a;">55,000</span>
+                    </div>
+                  </div>
+                  <div class="sl-row">
+                    <label style="color:#666;">Intern Salary (₺)</label>
+                    <div class="sl-controls">
+                      <input type="range" id="s_bursaStajyerM" min="10000" max="80000" step="5000" value="25000" style="accent-color:#c94f2a;" oninput="sv('bursaStajyerM',this.value);buildProjection()">
+                      <span class="sl-val" id="bursaStajyerM" contenteditable="true" onblur="svMerkez('bursaStajyerM','s_bursaStajyerM',this)" style="color:#c94f2a;">25,000</span>
+                    </div>
+                  </div>
+                  <div class="sl-row">
+                    <label style="color:#666;">Kitchen/Cleaning (₺)</label>
+                    <div class="sl-controls">
+                      <input type="range" id="s_bursaMutfak" min="5000" max="50000" step="1000" value="18000" style="accent-color:#c94f2a;" oninput="sv('bursaMutfak',this.value);buildProjection()">
+                      <span class="sl-val" id="bursaMutfak" contenteditable="true" onblur="svMerkez('bursaMutfak','s_bursaMutfak',this)" style="color:#c94f2a;">18,000</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(0,0,0,0.07);">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+                    <div style="font-size:10px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:0.5px;">Setup Cost</div>
+                    <label style="display:flex;align-items:center;gap:4px;cursor:pointer;">
+                      <input type="checkbox" id="bursaIstKurulumToggle" checked="" onchange="toggleIstKurulum('bursa',this.checked)" style="width:11px;height:11px;accent-color:#c94f2a;">
+                      <span style="font-size:10px;color:#555;">IST values</span>
+                    </label>
+                  </div>
+                  <div id="bursaKurulumOranWrap" style="display:flex;align-items:center;gap:8px;margin-bottom:6px;padding:5px 8px;background:rgba(201,79,42,0.07);border-radius:4px;">
+                    <label style="font-size:10px;color:#c94f2a;white-space:nowrap;">IST multiplier</label>
+                    <input type="range" id="s_bursaKurulumOran" min="0.5" max="2.0" step="0.05" value="0.75" style="flex:1;accent-color:#c94f2a;" oninput="updMerkezKurulumOran('bursa',this.value)">
+                    <span id="bursaKurulumOranVal" style="font-size:11px;font-weight:700;color:#c94f2a;min-width:36px;">×0.75</span>
+                  </div>
+                  <div id="bursaKurulumSliders" style="display:none;flex-direction:column;gap:6px;">
+                    <div class="sl-row"><label style="color:#666;">Rent (₺)</label><div class="sl-controls"><input type="range" id="s_bursaKurulumKira" min="0" max="500000" step="10000" value="120000" style="accent-color:#c94f2a;" oninput="sv('bursaKurulumKira',this.value);buildProjection()"><span class="sl-val" id="bursaKurulumKira" style="color:#c94f2a;">120.000</span></div></div>
+                    <div class="sl-row"><label style="color:#666;">Deposit (₺)</label><div class="sl-controls"><input type="range" id="s_bursaKurulumDepozito" min="0" max="600000" step="10000" value="200000" style="accent-color:#c94f2a;" oninput="sv('bursaKurulumDepozito',this.value);buildProjection()"><span class="sl-val" id="bursaKurulumDepozito" style="color:#c94f2a;">200.000</span></div></div>
+                    <div class="sl-row"><label style="color:#666;">Renovation ₺/m² (₺)</label><div class="sl-controls"><input type="range" id="s_bursaKurulumTadilat" min="1000" max="10000" step="250" value="4750" style="accent-color:#c94f2a;" oninput="sv('bursaKurulumTadilat',this.value);buildProjection()"><span class="sl-val" id="bursaKurulumTadilat" style="color:#c94f2a;">4.750</span></div></div>
+                    <div class="sl-row"><label style="color:#666;">Decoration ₺/m² (₺)</label><div class="sl-controls"><input type="range" id="s_bursaKurulumDeko" min="500" max="6000" step="250" value="2000" style="accent-color:#c94f2a;" oninput="sv('bursaKurulumDeko',this.value);buildProjection()"><span class="sl-val" id="bursaKurulumDeko" style="color:#c94f2a;">2.000</span></div></div>
+                    <div class="sl-row"><label style="color:#666;">Equipment &amp; Machinery (₺)</label><div class="sl-controls"><input type="range" id="s_bursaKurulumMobilya" min="100000" max="1500000" step="50000" value="600000" style="accent-color:#c94f2a;" oninput="sv('bursaKurulumMobilya',this.value);buildProjection()"><span class="sl-val" id="bursaKurulumMobilya" style="color:#c94f2a;">600.000</span></div></div>
+                  </div>
+                  <div id="bursaKurulumOzet" style="font-size:11px;color:#c94f2a;font-weight:600;margin-top:4px;">—</div>
+                </div>
+              </div>
+            </div>
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;padding:8px;background:#fdf8ee;border:1px solid #8a6d1a44;border-radius:6px;">
+              <input type="checkbox" id="gaziantepToggle" onchange="toggleMerkez('gaziantep',this.checked)" style="width:14px;height:14px;accent-color:#8a6d1a;cursor:pointer;">
+              <span style="font-size:12px;font-weight:700;color:#8a6d1a;">Gaziantep Center</span>
+              <span style="font-size:10px;color:#888;margin-left:auto;">3.0% population share (incl. surroundings)</span>
+            </label>
+            <div style="padding:6px 10px;background:#fdf8ee;border:1px solid #8a6d1a44;border-top:none;font-size:11px;">
+              <div class="sl-row" style="margin-bottom:8px;">
+                <label style="font-size:10px;color:#8a6d1a;">Satellite Entity Mode</label>
+                <div style="display:flex;gap:6px;margin-top:2px;">
+                  <button type="button" id="gaziantepModeBtn_sub" onclick="svSubeMi('gaziantep',false)" style="flex:1;font-size:10px;font-weight:700;padding:6px 8px;border-radius:5px;border:1.5px solid #8a6d1a;background:#8a6d1a;color:#fff;cursor:pointer;">Subsidiary Ltd.</button>
+                  <button type="button" id="gaziantepModeBtn_branch" onclick="svSubeMi('gaziantep',true)" style="flex:1;font-size:10px;font-weight:700;padding:6px 8px;border-radius:5px;border:1.5px solid #8a6d1a;background:#fff;color:#8a6d1a;cursor:pointer;">Branch (şube)</button>
+                </div>
+              </div>
+              <div id="gaziantepFlagshipPayWrap" class="sl-row" style="margin-bottom:0;">
+                <label style="font-size:10px;color:#8a6d1a;">Flagship Ownership of Gaziantep (%) — remainder to local investors</label>
+                <div class="sl-controls">
+                  <input type="range" id="s_gaziantepFlagshipPay" min="30" max="100" step="5" value="65" style="accent-color:#8a6d1a;" oninput="sv('gaziantepFlagshipPay',this.value)">
+                  <span class="sl-val" id="gaziantepFlagshipPay" style="min-width:30px;color:#8a6d1a;">65</span>
+                </div>
+              </div>
+              <div id="gaziantepSubeNote" style="display:none;font-size:10px;color:#8a6d1a;padding:6px 0 0;">Branch mode: 100% of Gaziantep's P&amp;L (incl. any loss) consolidates into the flagship — no fee, no minority interest. See trade-off note above.</div>
+            </div>
+            <div id="gaziantepRampaWrap" style="padding: 8px; background: rgb(253, 248, 238); border-radius: 6px; margin-top: 8px;">
+              <div style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #f0e4c0;">
+                <div style="font-size:10px;color:#8a6d1a;font-weight:700;margin-bottom:4px;">Opening Month (Year 3)</div>
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <input type="range" id="s_gaziantepAcilisAy" min="1" max="12" step="1" value="3" style="flex:1;accent-color:#8a6d1a;" oninput="svMerkezAcilisAy('gaziantep',this.value)">
+                  <span style="font-size:11px;font-weight:700;color:#8a6d1a;min-width:60px;" id="gaziantepAcilisAyVal">Year 3 Month 3</span>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+                <div style="font-size:10px;color:#8a6d1a;font-weight:700;">Gaziantep — Monthly Brace Ramp</div>
+                <label style="display:flex;align-items:center;gap:4px;cursor:pointer;">
+                  <input type="checkbox" id="gaziantepIstToggle" onchange="toggleIstRampa('gaziantep',this.checked)" style="width:12px;height:12px;accent-color:#8a6d1a;">
+                  <span style="font-size:10px;color:#555;">Use IST ramp</span>
+                </label>
+              </div>
+              <div id="gaziantepOranWrap" style="display:none;background:rgba(138,109,26,0.07);border-radius:4px;padding:6px 8px;margin-bottom:6px;">
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <label style="font-size:10px;color:#8a6d1a;white-space:nowrap;">IST multiplier</label>
+                  <input type="range" id="s_gaziantepRampaOran" min="0.1" max="2.0" step="0.05" value="0.4" style="flex:1;accent-color:#8a6d1a;" oninput="updMerkezRampaOran('gaziantep',this.value)">
+                  <span id="gaziantepRampaOranVal" style="font-size:11px;font-weight:700;color:#8a6d1a;min-width:36px;">×0.40</span>
+                </div>
+              </div>
+              <canvas id="gaziantepRampaChartCanvas" height="80" style="width:100%;height:80px;display:block;margin-bottom:4px;border-radius:3px;"></canvas>
+              <div style="margin-top:8px;padding-top:6px;border-top:1px solid #f0e4c0;">
+                <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
+                  <input type="checkbox" id="gaziantepIstGiderToggle" checked="" onchange="toggleIstGider('gaziantep',this.checked)" style="width:12px;height:12px;accent-color:#8a6d1a;">
+                  <span style="font-size:10px;color:#555;">Use IST costs</span>
+                  <span id="gaziantepGiderNotu" style="font-size:10px;color:#8a6d1a;margin-left:auto;">IST base</span>
+                </label>
+              <div id="gaziantepGiderSliders" style="display:none;margin-top:10px;padding:10px;background:rgba(0,0,0,0.03);border-radius:4px;">
+                <div style="font-size:10px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">Cost Variables</div>
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                  <div class="sl-row">
+                    <label style="color:#666;">Monthly Rent (₺)</label>
+                    <div class="sl-controls">
+                      <input type="range" id="s_gaziantepKira" min="30000" max="300000" step="5000" value="85000" style="accent-color:#8a6d1a;" oninput="sv('gaziantepKira',this.value);buildProjection()">
+                      <span class="sl-val" id="gaziantepKira" contenteditable="true" onblur="svMerkez('gaziantepKira','s_gaziantepKira',this)" style="color:#8a6d1a;">85,000</span>
+                    </div>
+                  </div>
+                  <div class="sl-row">
+                    <label style="color:#666;">Orthotist Salary (₺)</label>
+                    <div class="sl-controls">
+                      <input type="range" id="s_gaziantepOrtotistM" min="30000" max="150000" step="5000" value="55000" style="accent-color:#8a6d1a;" oninput="sv('gaziantepOrtotistM',this.value);buildProjection()">
+                      <span class="sl-val" id="gaziantepOrtotistM" contenteditable="true" onblur="svMerkez('gaziantepOrtotistM','s_gaziantepOrtotistM',this)" style="color:#8a6d1a;">55,000</span>
+                    </div>
+                  </div>
+                  <div class="sl-row">
+                    <label style="color:#666;">Intern Salary (₺)</label>
+                    <div class="sl-controls">
+                      <input type="range" id="s_gaziantepStajyerM" min="10000" max="80000" step="5000" value="25000" style="accent-color:#8a6d1a;" oninput="sv('gaziantepStajyerM',this.value);buildProjection()">
+                      <span class="sl-val" id="gaziantepStajyerM" contenteditable="true" onblur="svMerkez('gaziantepStajyerM','s_gaziantepStajyerM',this)" style="color:#8a6d1a;">25,000</span>
+                    </div>
+                  </div>
+                  <div class="sl-row">
+                    <label style="color:#666;">Kitchen/Cleaning (₺)</label>
+                    <div class="sl-controls">
+                      <input type="range" id="s_gaziantepMutfak" min="5000" max="50000" step="1000" value="18000" style="accent-color:#8a6d1a;" oninput="sv('gaziantepMutfak',this.value);buildProjection()">
+                      <span class="sl-val" id="gaziantepMutfak" contenteditable="true" onblur="svMerkez('gaziantepMutfak','s_gaziantepMutfak',this)" style="color:#8a6d1a;">18,000</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(0,0,0,0.07);">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+                    <div style="font-size:10px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:0.5px;">Setup Cost</div>
+                    <label style="display:flex;align-items:center;gap:4px;cursor:pointer;">
+                      <input type="checkbox" id="gaziantepIstKurulumToggle" checked="" onchange="toggleIstKurulum('gaziantep',this.checked)" style="width:11px;height:11px;accent-color:#8a6d1a;">
+                      <span style="font-size:10px;color:#555;">IST values</span>
+                    </label>
+                  </div>
+                  <div id="gaziantepKurulumOranWrap" style="display:flex;align-items:center;gap:8px;margin-bottom:6px;padding:5px 8px;background:rgba(138,109,26,0.07);border-radius:4px;">
+                    <label style="font-size:10px;color:#8a6d1a;white-space:nowrap;">IST multiplier</label>
+                    <input type="range" id="s_gaziantepKurulumOran" min="0.5" max="2.0" step="0.05" value="0.65" style="flex:1;accent-color:#8a6d1a;" oninput="updMerkezKurulumOran('gaziantep',this.value)">
+                    <span id="gaziantepKurulumOranVal" style="font-size:11px;font-weight:700;color:#8a6d1a;min-width:36px;">×0.65</span>
+                  </div>
+                  <div id="gaziantepKurulumSliders" style="display:none;flex-direction:column;gap:6px;">
+                    <div class="sl-row"><label style="color:#666;">Rent (₺)</label><div class="sl-controls"><input type="range" id="s_gaziantepKurulumKira" min="0" max="500000" step="10000" value="120000" style="accent-color:#8a6d1a;" oninput="sv('gaziantepKurulumKira',this.value);buildProjection()"><span class="sl-val" id="gaziantepKurulumKira" style="color:#8a6d1a;">120.000</span></div></div>
+                    <div class="sl-row"><label style="color:#666;">Deposit (₺)</label><div class="sl-controls"><input type="range" id="s_gaziantepKurulumDepozito" min="0" max="600000" step="10000" value="200000" style="accent-color:#8a6d1a;" oninput="sv('gaziantepKurulumDepozito',this.value);buildProjection()"><span class="sl-val" id="gaziantepKurulumDepozito" style="color:#8a6d1a;">200.000</span></div></div>
+                    <div class="sl-row"><label style="color:#666;">Renovation ₺/m² (₺)</label><div class="sl-controls"><input type="range" id="s_gaziantepKurulumTadilat" min="1000" max="10000" step="250" value="4750" style="accent-color:#8a6d1a;" oninput="sv('gaziantepKurulumTadilat',this.value);buildProjection()"><span class="sl-val" id="gaziantepKurulumTadilat" style="color:#8a6d1a;">4.750</span></div></div>
+                    <div class="sl-row"><label style="color:#666;">Decoration ₺/m² (₺)</label><div class="sl-controls"><input type="range" id="s_gaziantepKurulumDeko" min="500" max="6000" step="250" value="2000" style="accent-color:#8a6d1a;" oninput="sv('gaziantepKurulumDeko',this.value);buildProjection()"><span class="sl-val" id="gaziantepKurulumDeko" style="color:#8a6d1a;">2.000</span></div></div>
+                    <div class="sl-row"><label style="color:#666;">Equipment &amp; Machinery (₺)</label><div class="sl-controls"><input type="range" id="s_gaziantepKurulumMobilya" min="100000" max="1500000" step="50000" value="600000" style="accent-color:#8a6d1a;" oninput="sv('gaziantepKurulumMobilya',this.value);buildProjection()"><span class="sl-val" id="gaziantepKurulumMobilya" style="color:#8a6d1a;">600.000</span></div></div>
+                  </div>
+                  <div id="gaziantepKurulumOzet" style="font-size:11px;color:#8a6d1a;font-weight:600;margin-top:4px;">—</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -426,6 +662,22 @@
                 <input type="range" id="s_ankaraHedefPay" min="1" max="100" step="0.5" value="30" style="flex:1;accent-color:#534AB7;" oninput="sv('ankaraHedefPay',this.value)">
                 <span class="sl-val" id="ankaraHedefPay" contenteditable="true" onblur="sv2('ankaraHedefPay','s_ankaraHedefPay',this)" style="min-width:40px;font-size:12px;color:#534AB7;">30</span>
                 <span style="font-size:10px;color:#888;">% ANK</span>
+              </div>
+            </div>
+            <div id="bursaHedefWrap" style="">
+              <div style="font-size:10px;color:#c94f2a;margin-bottom:4px;font-weight:700;">BURSA <span style="font-weight:400;text-transform:none;color:#888;">(target — 80% reached by Y5)</span></div>
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
+                <input type="range" id="s_bursaHedefPay" min="1" max="100" step="0.5" value="30" style="flex:1;accent-color:#c94f2a;" oninput="sv('bursaHedefPay',this.value)">
+                <span class="sl-val" id="bursaHedefPay" contenteditable="true" onblur="sv2('bursaHedefPay','s_bursaHedefPay',this)" style="min-width:40px;font-size:12px;color:#c94f2a;">30</span>
+                <span style="font-size:10px;color:#888;">% BUR</span>
+              </div>
+            </div>
+            <div id="gaziantepHedefWrap" style="">
+              <div style="font-size:10px;color:#8a6d1a;margin-bottom:4px;font-weight:700;">GAZIANTEP <span style="font-weight:400;text-transform:none;color:#888;">(target — 80% reached by Y5)</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <input type="range" id="s_gaziantepHedefPay" min="1" max="100" step="0.5" value="30" style="flex:1;accent-color:#8a6d1a;" oninput="sv('gaziantepHedefPay',this.value)">
+                <span class="sl-val" id="gaziantepHedefPay" contenteditable="true" onblur="sv2('gaziantepHedefPay','s_gaziantepHedefPay',this)" style="min-width:40px;font-size:12px;color:#8a6d1a;">30</span>
+                <span style="font-size:10px;color:#888;">% GAZ</span>
               </div>
             </div>
           </div>
@@ -548,13 +800,13 @@
 <script>
 window.addEventListener('load', function() {
   recalc();
-  [['s_yonetimUcretiPct','yonetimUcretiPct'],['s_izmirFlagshipPay','izmirFlagshipPay'],['s_ankaraFlagshipPay','ankaraFlagshipPay'],['s_izmirHedefPay','izmirHedefPay'],['s_ankaraHedefPay','ankaraHedefPay']].forEach(function(pair) {
+  [['s_yonetimUcretiPct','yonetimUcretiPct'],['s_izmirFlagshipPay','izmirFlagshipPay'],['s_ankaraFlagshipPay','ankaraFlagshipPay'],['s_bursaFlagshipPay','bursaFlagshipPay'],['s_gaziantepFlagshipPay','gaziantepFlagshipPay'],['s_izmirHedefPay','izmirHedefPay'],['s_ankaraHedefPay','ankaraHedefPay'],['s_bursaHedefPay','bursaHedefPay'],['s_gaziantepHedefPay','gaziantepHedefPay']].forEach(function(pair) {
     const sl = document.getElementById(pair[0]);
     if (sl) sl.value = gv(pair[1]);
     const sp = document.getElementById(pair[1]);
     if (sp) sp.textContent = gv(pair[1]);
   });
-  ['izmir','ankara'].forEach(function(s) {
+  ['izmir','ankara','bursa','gaziantep'].forEach(function(s) {
     const aktif = V[s+'Aktif'];
     const cb = document.getElementById(s+'Toggle');
     if (cb) cb.checked = !!aktif;
@@ -579,12 +831,13 @@ window.addEventListener('load', function() {
       if (giderCb) giderCb.checked = V[s+'UseIstGider'] !== false;
       const kurulumCb = document.getElementById(s+'IstKurulumToggle');
       if (kurulumCb) kurulumCb.checked = V[s+'UseIstKurulum'] !== false;
-      if (s === 'ankara') {
-        const ay = V.ankaraAcilisAy || 3;
-        const sl = document.getElementById('s_ankaraAcilisAy');
+      if (s === 'ankara' || s === 'bursa' || s === 'gaziantep') {
+        const ay = V[s+'AcilisAy'] || 3;
+        const sl = document.getElementById('s_'+s+'AcilisAy');
         if (sl) sl.value = ay;
-        const vl = document.getElementById('ankaraAcilisAyVal');
-        if (vl) vl.textContent = 'Year 2 Month ' + ay;
+        const vl = document.getElementById(s+'AcilisAyVal');
+        const yil = (typeof _MERKEZ_ACILIS_YIL !== 'undefined' && _MERKEZ_ACILIS_YIL[s]) || 2;
+        if (vl) vl.textContent = 'Year ' + yil + ' Month ' + ay;
       }
       initMerkezRampaChart(s);
       renderMerkezRampaChart(s);

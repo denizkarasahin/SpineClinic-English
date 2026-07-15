@@ -23,7 +23,7 @@ document.getElementById = function(id) {
   };
 };
 
-const V = {"korseF":37800,"malzeme":50,"reklamCarpan":1.0,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.66,"kira":200000,"depozito":400000,"emlakci":400000,"m2":300,"tadilatM2":7000,"dekoM2":6750,"mobilya":300000,"ruhsat":100000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":90000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[15,15,20,25,25,33,35,41,42,50,50,55],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":27000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":1600,"mal_sens":2075,"mal_sensDelik":1250,"feeSci_stdR":10,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdR":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdR":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":45000,"pazarIstPct":30.1,"hedefOsteoidPay":30,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":true,"izmirHedefPay":30,"izmirUseIst":false,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":true,"ankaraHedefPay":30,"ankaraUseIst":false,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":true,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":20,"dcfGrowth":18,"dcfGrowth45":45,"dcfExitMult":10,"dcfNegotiationDiscount":20,"tranche1Eur":500000,"trancheStepUp":1.75,"dcfInvest":1008662,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":12500,"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":100000,"_sen_max_kira":400000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":3500,"_sen_max_dekoM2":17000,"_sen_min_ortotistM":55000,"_sen_max_ortotistM":160000,"_sen_min_operatorM":110000,"_sen_max_operatorM":290000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3.0,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.65,"operatorM":180000,"ipLisansEur":500000,"sehirEksklusifEur":500000,"workingCapBufferEur":500000,"stage1BufferEur":200000,"kvOrani":25,"vergiDahil":true,"exitYili":5,"kisiselVergiOrani":15,"fundAy":0,"makineKatkiOran":50,"osteoidCarpan":1,"yatirimciCarpan":1.0,"doktorYatirim":0,"doktorCarpan":1.5,"sweatEur":80000,"sweatVestAy":48,"sweatCliffAy":12,"sweatElapsedAy":0,"sweatMaxPct":5,"sweatCarpan":1.0,"sweatVestedToday":true,"royaltyOffsetYil":1,"royaltyOffsetPct":0,"yonetimUcretiPct":5,"izmirFlagshipPay":65,"ankaraFlagshipPay":65,"izmirSubeMi":true,"ankaraSubeMi":true,"euLegalFaiz":5,"setupOverheadC1":0,"setupOverheadC2":0,"setupOverheadC3":0,"nakdiSermayeAktif":true,"teknokentKapsam":false,"emisyonPrimiAktif":true,"nominalPayOrani":10,"feeStreamAyriMult":false,"feeExitMult":12,"_version":44};
+const V = {"korseF":37800,"malzeme":50,"reklamCarpan":1.0,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.66,"kira":200000,"depozito":400000,"emlakci":400000,"m2":300,"tadilatM2":7000,"dekoM2":6750,"mobilya":300000,"ruhsat":100000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":90000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[15,15,20,25,25,33,35,41,42,50,50,55],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":27000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":1600,"mal_sens":2075,"mal_sensDelik":1250,"feeSci_stdR":10,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdR":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdR":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":45000,"pazarIstPct":30.1,"hedefOsteoidPay":30,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":true,"izmirHedefPay":30,"izmirUseIst":false,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":true,"ankaraHedefPay":30,"ankaraUseIst":false,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"bursaAktif":true,"bursaHedefPay":30,"bursaUseIst":false,"bursaUseIstGider":true,"bursaKira":80000,"bursaOrtotistM":55000,"bursaStajyerM":25000,"bursaMutfak":18000,"bursaSarf":3000,"bursaUseIstKurulum":true,"bursaKurulumKira":120000,"bursaKurulumDepozito":200000,"bursaKurulumTadilat":4750,"bursaKurulumDeko":2000,"bursaKurulumMobilya":600000,"bursaRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"gaziantepAktif":true,"gaziantepHedefPay":30,"gaziantepUseIst":false,"gaziantepUseIstGider":true,"gaziantepKira":85000,"gaziantepOrtotistM":55000,"gaziantepStajyerM":25000,"gaziantepMutfak":18000,"gaziantepSarf":3000,"gaziantepUseIstKurulum":true,"gaziantepKurulumKira":120000,"gaziantepKurulumDepozito":200000,"gaziantepKurulumTadilat":4750,"gaziantepKurulumDeko":2000,"gaziantepKurulumMobilya":600000,"gaziantepRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"bursaNufusPay":4.5,"gaziantepNufusPay":3.0,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":true,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":20,"dcfGrowth":18,"dcfGrowth45":45,"dcfExitMult":10,"dcfNegotiationDiscount":20,"tranche1Eur":500000,"trancheStepUp":1.75,"dcfInvest":1008662,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":12500,"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":100000,"_sen_max_kira":400000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":3500,"_sen_max_dekoM2":17000,"_sen_min_ortotistM":55000,"_sen_max_ortotistM":160000,"_sen_min_operatorM":110000,"_sen_max_operatorM":290000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3.0,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.65,"bursaRampaOran":0.75,"bursaKurulumOran":0.75,"gaziantepRampaOran":0.8,"gaziantepKurulumOran":0.65,"operatorM":180000,"ipLisansEur":500000,"sehirEksklusifEur":500000,"workingCapBufferEur":500000,"stage1BufferEur":200000,"kvOrani":25,"vergiDahil":true,"exitYili":5,"kisiselVergiOrani":15,"fundAy":0,"makineKatkiOran":50,"osteoidCarpan":1,"yatirimciCarpan":1.0,"doktorYatirim":0,"doktorCarpan":1.5,"sweatEur":80000,"sweatVestAy":48,"sweatCliffAy":12,"sweatElapsedAy":0,"sweatMaxPct":5,"sweatCarpan":1.0,"sweatVestedToday":true,"royaltyOffsetYil":1,"royaltyOffsetPct":0,"yonetimUcretiPct":5,"izmirFlagshipPay":65,"ankaraFlagshipPay":65,"bursaFlagshipPay":65,"gaziantepFlagshipPay":65,"izmirSubeMi":true,"ankaraSubeMi":true,"bursaSubeMi":true,"gaziantepSubeMi":true,"euLegalFaiz":5,"setupOverheadC1":0,"setupOverheadC2":0,"setupOverheadC3":0,"setupOverheadC4":0,"setupOverheadC5":0,"nakdiSermayeAktif":true,"teknokentKapsam":false,"emisyonPrimiAktif":true,"nominalPayOrani":10,"feeStreamAyriMult":false,"feeExitMult":12,"_version":45};
 // Restore state from localStorage if available; clear cache on version mismatch
 (function() {
   try {
@@ -2184,11 +2184,16 @@ function updMerkezRampaOran(sehir, val) {
   localStorage.setItem('osteoid_V', JSON.stringify(V));
 }
 
-function svAnkaraAcilisAy(val) {
+// Manual "opening month" slider shared by every satellite that doesn't use
+// Izmir's auto-trigger mechanism — Ankara (Year 2) and Bursa/Gaziantep
+// (Year 3, one wave later). The opening year is fixed per city here since
+// there's no dynamic way to derive it generically from V.
+const _MERKEZ_ACILIS_YIL = { ankara: 2, bursa: 3, gaziantep: 3 };
+function svMerkezAcilisAy(sehir, val) {
   val = parseInt(val);
-  V.ankaraAcilisAy = val;
-  const vl = document.getElementById('ankaraAcilisAyVal');
-  if (vl) vl.textContent = 'Year 2 Month ' + val;
+  V[sehir + 'AcilisAy'] = val;
+  const vl = document.getElementById(sehir + 'AcilisAyVal');
+  if (vl) vl.textContent = 'Year ' + (_MERKEZ_ACILIS_YIL[sehir] || 2) + ' Month ' + val;
   recalc();
   localStorage.setItem('osteoid_V', JSON.stringify(V));
 }
@@ -2822,7 +2827,7 @@ let projChartInst = null;
 initDynamic();
 recalc();
 
-function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmirY5Gelir, ankaraY5Gelir, izmirY5Adet, ankaraY5Adet) {
+function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmirY5Gelir, ankaraY5Gelir, izmirY5Adet, ankaraY5Adet, bursaRow, gaziantepRow, bursaY5Gelir, gaziantepY5Gelir, bursaY5Adet, gaziantepY5Adet) {
   const el = document.getElementById('summaryOutcomes3yr');
   if (!el) return;
   const eurKur = V.eurKur ?? 50;
@@ -2833,9 +2838,14 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
 
   // Revenue at full market penetration — per center (all in €K), net after own operating costs
   const _n = totals.length - 1; // last year index (4 for 5-year model)
-  const istNet     = Math.max(0, (totals[_n] || 0) - (izmirRow[_n]||0) - (ankaraRow[_n]||0)); // includes b2b, net
+  const istNet     = Math.max(0, (totals[_n] || 0) - (izmirRow[_n]||0) - (ankaraRow[_n]||0) - (bursaRow[_n]||0) - (gaziantepRow[_n]||0)); // includes b2b, net
   const izmirNet   = izmirRow[_n]  || 0;  // net after center-specific opex (= izmirFullNet)
   const ankaraNet  = ankaraRow[_n] || 0;  // net after center-specific opex (= ankaraFullNet)
+  // Bursa/Gaziantep open Year 3, so their _n (=Year 5) figure is only 80% of
+  // full-capacity target (bursaFullNet/gaziantepFullNet), not the target
+  // itself — see the ramp comment in buildProjection().
+  const bursaNet = bursaRow[_n] || 0;
+  const gaziantepNet = gaziantepRow[_n] || 0;
   // Combined total = net consolidated (matches Multi-Year Plan page)
   const totalNet  = totals[_n] || 0;
 
@@ -2935,6 +2945,30 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
     );
   }
 
+  if (V.bursaAktif) {
+    html += clinicCard(
+      'Bursa Center',
+      'BUR · ' + (V.bursaHedefPay || 30).toFixed(0) + '% market share',
+      '#c94f2a', bursaY5Adet || 0,
+      (V.bursaHedefPay || 30).toFixed(1),
+      bursaNet,
+      'Opens Year 3 — only 80% of full-capacity target reached by Year 5 within this model\'s horizon. Net after center-specific opex. Gross: ~€' + Math.round((bursaY5Gelir||0)) + 'K',
+      'Annual net revenue (Year 5, 80% of target)'
+    );
+  }
+
+  if (V.gaziantepAktif) {
+    html += clinicCard(
+      'Gaziantep Center',
+      'GAZ · ' + (V.gaziantepHedefPay || 30).toFixed(0) + '% market share',
+      '#8a6d1a', gaziantepY5Adet || 0,
+      (V.gaziantepHedefPay || 30).toFixed(1),
+      gaziantepNet,
+      'Opens Year 3 — only 80% of full-capacity target reached by Year 5 within this model\'s horizon. Net after center-specific opex. Gross: ~€' + Math.round((gaziantepY5Gelir||0)) + 'K',
+      'Annual net revenue (Year 5, 80% of target)'
+    );
+  }
+
   // ── Total ──
   html += `
     <div style="border:2px solid #534AB7;border-radius:6px;padding:14px 16px;margin-top:4px;display:flex;align-items:center;justify-content:space-between;">
@@ -2946,28 +2980,29 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
     </div>
     <div style="font-size:10px;color:#555;margin-top:10px;">⚠ These are Year-5 capacity targets — not year-bound projections. All centers show net after their own operating costs. Each center uses its own rent/staff params; combined total matches the Multi-Year Plan page.</div>`;
 
-  // ── Stage 2 Investment & Return — Stage 2 funds the Izmir/Ankara build-outs,
-  // so its "return" is a simple annual yield against those two cities' own
-  // net revenue at full market penetration (izmirNet/ankaraNet above), not the
-  // whole network's combined total (which also includes Istanbul + B2B, none
-  // of which Stage 2 money funded).
+  // ── Stage 2 Investment & Return — Stage 2 funds the Izmir/Ankara/Bursa/
+  // Gaziantep build-outs, so its "return" is a simple annual yield against
+  // those four cities' own net revenue (Izmir/Ankara at full penetration,
+  // Bursa/Gaziantep at Year 5's 80%-of-target since they open a year later),
+  // not the whole network's combined total (which also includes Istanbul +
+  // B2B, none of which Stage 2 money funded).
   const inv2 = window._lastInvestBreakdown;
   if (inv2) {
     const stage2Eur = inv2.stage2Eur;
-    const satelliteNetEur = (izmirNet + ankaraNet) * 1000; // izmirNet/ankaraNet are €K, already net of each satellite's own opex
+    const satelliteNetEur = (izmirNet + ankaraNet + bursaNet + gaziantepNet) * 1000; // €K -> EUR, already net of each satellite's own opex
     const stage2YieldPct = stage2Eur > 0 ? (satelliteNetEur / stage2Eur) * 100 : 0;
     const fmtEurFull = v => (v < 0 ? '-€' : '€') + Math.round(Math.abs(v)).toLocaleString('en-US');
     const stage2YieldColor = stage2YieldPct >= 0 ? '#1a7a45' : '#c94f2a';
     html += `
     <div style="border:1px solid #D85A3044;border-left:3px solid #D85A30;border-radius:6px;padding:12px 16px;margin-top:16px;">
-      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">Stage 2 Investment &amp; Return <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— the Committed tranche, funds the Izmir/Ankara build-outs</span></div>
+      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">Stage 2 Investment &amp; Return <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— the Committed tranche, funds the Izmir/Ankara/Bursa/Gaziantep build-outs</span></div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
         <div>
           <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Stage 2 investment</div>
           <div style="font-size:18px;font-weight:700;color:#D85A30;">${fmtEurFull(stage2Eur)}</div>
         </div>
         <div>
-          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Izmir + Ankara net profit</div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">4-city net profit</div>
           <div style="font-size:18px;font-weight:700;color:#333;">${fmtEurFull(satelliteNetEur)}</div>
         </div>
         <div>
@@ -2975,14 +3010,14 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
           <div style="font-size:18px;font-weight:700;color:${stage2YieldColor};">${stage2YieldPct.toFixed(1)}%</div>
         </div>
       </div>
-      <div style="font-size:10px;color:#888;margin-top:8px;">Annual yield = Izmir + Ankara net profit at full penetration (net of each satellite's own operating costs, above) ÷ Stage 2 investment (Izmir/Ankara setup + deferred working-capital buffer) — same basis as Stage 1's yield; a simple yield, not a discounted or multi-year return.</div>
+      <div style="font-size:10px;color:#888;margin-top:8px;">Annual yield = Izmir + Ankara + Bursa + Gaziantep net profit (Year 5, net of each satellite's own operating costs, above) ÷ Stage 2 investment (all four cities' setup + deferred working-capital buffer) — same basis as Stage 1's yield; a simple yield, not a discounted or multi-year return.</div>
     </div>`;
   }
 
   el.innerHTML = html;
 }
 
-function renderInvestorRoadmap(el, totals, korseM1, feeIncomeRow, equityIncomeRow, minorityRow, b2bRow, fcfData, izmirRow, ankaraRow, istFinancingGapRow) {
+function renderInvestorRoadmap(el, totals, korseM1, feeIncomeRow, equityIncomeRow, minorityRow, b2bRow, fcfData, izmirRow, ankaraRow, istFinancingGapRow, bursaRow, gaziantepRow) {
   const fmtK = v => v > 0 ? '~€' + v + 'K' : v < 0 ? '-€' + Math.abs(v) + 'K' : '—';
   const fmtCell = v => v > 0
     ? `<td style="text-align:right;color:#1a7a45;font-weight:600;">~€${v}K</td>`
@@ -3002,7 +3037,7 @@ function renderInvestorRoadmap(el, totals, korseM1, feeIncomeRow, equityIncomeRo
                : V.izmirAktif  ? 'Izmir center opens'
                : V.ankaraAktif ? 'Ankara center opens'
                : 'Istanbul scales';
-  const cCount = 1 + (V.izmirAktif ? 1 : 0) + (V.ankaraAktif ? 1 : 0);
+  const cCount = 1 + (V.izmirAktif ? 1 : 0) + (V.ankaraAktif ? 1 : 0) + (V.bursaAktif ? 1 : 0) + (V.gaziantepAktif ? 1 : 0);
 
   const years = [
     { label:'Year 1', badge:'✓ Monthly model', color:'#534AB7',
@@ -3041,10 +3076,12 @@ function renderInvestorRoadmap(el, totals, korseM1, feeIncomeRow, equityIncomeRo
       ${b2bRow[0]>0||b2bRow[1]>0 ? `<tr><td style="color:#378ADD;">B2B — Istanbul</td>${fmtCell(b2bRow[0])}${fmtCell(b2bRow[1])}${fmtCell(b2bRow[2])}${fmtCell(b2bRow[3])}${fmtCell(b2bRow[4])}${growCell(b2bRow[0],b2bRow[4])}</tr>` : ''}
       ${V.izmirAktif ? `<tr><td style="color:#1D9E75;">Izmir Center <span style="font-weight:400;font-size:10px;opacity:0.7;">— satellite's own net, memo only</span></td>${fmtCell(izmirRow[0])}${fmtCell(izmirRow[1])}${fmtCell(izmirRow[2])}${fmtCell(izmirRow[3])}${fmtCell(izmirRow[4])}${growCell(izmirRow[1],izmirRow[4])}</tr>` : ''}
       ${V.ankaraAktif ? `<tr><td style="color:#534AB7;">Ankara Center <span style="font-weight:400;font-size:10px;opacity:0.7;">— satellite's own net, memo only</span></td>${fmtCell(ankaraRow[0])}${fmtCell(ankaraRow[1])}${fmtCell(ankaraRow[2])}${fmtCell(ankaraRow[3])}${fmtCell(ankaraRow[4])}${growCell(ankaraRow[1],ankaraRow[4])}</tr>` : ''}
-      ${(V.izmirAktif||V.ankaraAktif) ? `<tr><td style="color:#BA7517;">↳ Management fee income to flagship</td>${fmtCell(feeIncomeRow[0])}${fmtCell(feeIncomeRow[1])}${fmtCell(feeIncomeRow[2])}${fmtCell(feeIncomeRow[3])}${fmtCell(feeIncomeRow[4])}${growCell(feeIncomeRow[1],feeIncomeRow[4])}</tr>` : ''}
-      ${(V.izmirAktif||V.ankaraAktif) ? `<tr><td style="color:#1D9E75;">↳ Equity income to flagship</td>${fmtCell(equityIncomeRow[0])}${fmtCell(equityIncomeRow[1])}${fmtCell(equityIncomeRow[2])}${fmtCell(equityIncomeRow[3])}${fmtCell(equityIncomeRow[4])}${growCell(equityIncomeRow[1],equityIncomeRow[4])}</tr>` : ''}
+      ${V.bursaAktif ? `<tr><td style="color:#c94f2a;">Bursa Center <span style="font-weight:400;font-size:10px;opacity:0.7;">— satellite's own net, memo only, opens Year 3</span></td>${fmtCell(bursaRow[0])}${fmtCell(bursaRow[1])}${fmtCell(bursaRow[2])}${fmtCell(bursaRow[3])}${fmtCell(bursaRow[4])}${growCell(bursaRow[2],bursaRow[4])}</tr>` : ''}
+      ${V.gaziantepAktif ? `<tr><td style="color:#8a6d1a;">Gaziantep Center <span style="font-weight:400;font-size:10px;opacity:0.7;">— satellite's own net, memo only, opens Year 3</span></td>${fmtCell(gaziantepRow[0])}${fmtCell(gaziantepRow[1])}${fmtCell(gaziantepRow[2])}${fmtCell(gaziantepRow[3])}${fmtCell(gaziantepRow[4])}${growCell(gaziantepRow[2],gaziantepRow[4])}</tr>` : ''}
+      ${(V.izmirAktif||V.ankaraAktif||V.bursaAktif||V.gaziantepAktif) ? `<tr><td style="color:#BA7517;">↳ Management fee income to flagship</td>${fmtCell(feeIncomeRow[0])}${fmtCell(feeIncomeRow[1])}${fmtCell(feeIncomeRow[2])}${fmtCell(feeIncomeRow[3])}${fmtCell(feeIncomeRow[4])}${growCell(feeIncomeRow[1],feeIncomeRow[4])}</tr>` : ''}
+      ${(V.izmirAktif||V.ankaraAktif||V.bursaAktif||V.gaziantepAktif) ? `<tr><td style="color:#1D9E75;">↳ Equity income to flagship</td>${fmtCell(equityIncomeRow[0])}${fmtCell(equityIncomeRow[1])}${fmtCell(equityIncomeRow[2])}${fmtCell(equityIncomeRow[3])}${fmtCell(equityIncomeRow[4])}${growCell(equityIncomeRow[1],equityIncomeRow[4])}</tr>` : ''}
       <tr style="font-weight:700;border-top:2px solid #e0e0dc;"><td>Consolidated Total (Flagship)</td>${fmtCell(totals[0])}${fmtCell(totals[1])}${fmtCell(totals[2])}${fmtCell(totals[3])}${fmtCell(totals[4])}${growCell(totals[0],totals[4])}</tr>
-      ${(V.izmirAktif||V.ankaraAktif) ? `<tr><td style="font-size:10px;color:#999;">Memo: Minority interest (local investors — not in total above)</td>${minorityRow.map(v=>`<td style="text-align:right;font-size:10px;color:#999;">${v>0?'€'+v+'K':'—'}</td>`).join('')}<td></td></tr>` : ''}
+      ${(V.izmirAktif||V.ankaraAktif||V.bursaAktif||V.gaziantepAktif) ? `<tr><td style="font-size:10px;color:#999;">Memo: Minority interest (local investors — not in total above)</td>${minorityRow.map(v=>`<td style="text-align:right;font-size:10px;color:#999;">${v>0?'€'+v+'K':'—'}</td>`).join('')}<td></td></tr>` : ''}
       ${fcfData ? `<tr style="border-top:1px solid #e0e0dc;"><td>${fcfData.vergiDahil?'Free cash flow (after tax)':'Free cash flow (pre-tax)'}</td>${fcfData.taxedFcf.map(fmtSignedCell).join('')}${growCell(fcfData.taxedFcf[0], fcfData.taxedFcf[4])}</tr>` : ''}
       ${fcfData && fcfData.vergiDahil ? `<tr><td style="font-size:10px;color:#999;">↳ Loss carryforward balance (year-end)</td>${fcfData.carryEnd.map(c=>`<td style="text-align:right;font-size:10px;color:#999;">${c>0?'€'+c+'K':'—'}</td>`).join('')}<td></td></tr>` : ''}
     </tbody>
@@ -3230,25 +3267,49 @@ function buildProjection() {
   const _ankaraAcilisAyYil2 = V.ankaraAcilisAy || 3;
   const _ankaraAcilisAy = 12 + _ankaraAcilisAyYil2;
   const _ankaraAktifAyYil2 = Math.max(0, Math.min(12, 25 - _ankaraAcilisAy));
+  // Bursa/Gaziantep open in Year 3 (global months 25-36), one year later than
+  // Izmir/Ankara's Year 2 — same manual-slider opening mechanism as Ankara,
+  // just shifted a year.
+  const _bursaAcilisAyYil3 = V.bursaAcilisAy || 3;
+  const _bursaAcilisAy = 24 + _bursaAcilisAyYil3;
+  const _bursaAktifAyYil3 = Math.max(0, Math.min(12, 37 - _bursaAcilisAy));
+  const _gaziantepAcilisAyYil3 = V.gaziantepAcilisAy || 3;
+  const _gaziantepAcilisAy = 24 + _gaziantepAcilisAyYil3;
+  const _gaziantepAktifAyYil3 = Math.max(0, Math.min(12, 37 - _gaziantepAcilisAy));
 
   updateMerkezGiderNotu('izmir');
   updateMerkezGiderNotu('ankara');
+  updateMerkezGiderNotu('bursa');
+  updateMerkezGiderNotu('gaziantep');
 
   // İzmir / Ankara açılış tarihi — Nisan 2026 başlangıç + acilisAy - 1 ay
   const _aylar = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  // Generalized to any year, not just Year 2 — Bursa/Gaziantep open in Year 3
+  // (global months 25-36); ay=15 still resolves to "Year 2 Month 3" exactly
+  // as before.
   function _acilisLabel(ay) {
     const d = new Date(2026, 3, 1); // April 2026
     d.setMonth(d.getMonth() + ay - 1);
-    return 'Year 2 Month ' + (ay - 12) + ' · ' + _aylar[d.getMonth()] + ' ' + d.getFullYear();
+    const yil = Math.ceil(ay / 12);
+    const ayInYil = ay - (yil - 1) * 12;
+    return 'Year ' + yil + ' Month ' + ayInYil + ' · ' + _aylar[d.getMonth()] + ' ' + d.getFullYear();
   }
   const _izmirAcilisKpi = document.getElementById('izmirAcilisKpi');
   const _ankaraAcilisKpi = document.getElementById('ankaraAcilisKpi');
+  const _bursaAcilisKpi = document.getElementById('bursaAcilisKpi');
+  const _gaziantepAcilisKpi = document.getElementById('gaziantepAcilisKpi');
   if (_izmirAcilisKpi) _izmirAcilisKpi.style.display = V.izmirAktif ? '' : 'none';
   if (_ankaraAcilisKpi) _ankaraAcilisKpi.style.display = V.ankaraAktif ? '' : 'none';
+  if (_bursaAcilisKpi) _bursaAcilisKpi.style.display = V.bursaAktif ? '' : 'none';
+  if (_gaziantepAcilisKpi) _gaziantepAcilisKpi.style.display = V.gaziantepAktif ? '' : 'none';
   const _izmirAcilisEl = document.getElementById('izmirAcilisTarihi');
   const _ankaraAcilisEl = document.getElementById('ankaraAcilisTarihi');
+  const _bursaAcilisEl = document.getElementById('bursaAcilisTarihi');
+  const _gaziantepAcilisEl = document.getElementById('gaziantepAcilisTarihi');
   if (_izmirAcilisEl && V.izmirAktif) _izmirAcilisEl.textContent = _acilisLabel(_acilisAy);
   if (_ankaraAcilisEl && V.ankaraAktif) _ankaraAcilisEl.textContent = _acilisLabel(_ankaraAcilisAy);
+  if (_bursaAcilisEl && V.bursaAktif) _bursaAcilisEl.textContent = _acilisLabel(_bursaAcilisAy);
+  if (_gaziantepAcilisEl && V.gaziantepAktif) _gaziantepAcilisEl.textContent = _acilisLabel(_gaziantepAcilisAy);
 
   // Büyüme Mantığı tetik notu
   const _trigNote = document.getElementById('triggerNote');
@@ -3276,12 +3337,21 @@ function buildProjection() {
   // Yıl 5 hedef gelirleri (gross brace revenue at target market share)
   const pazarIzmir  = Math.round(gv('pazarTR') * V.izmirNufusPay / 100);
   const pazarAnkara = Math.round(gv('pazarTR') * V.ankaraNufusPay / 100);
+  const pazarBursa = Math.round(gv('pazarTR') * V.bursaNufusPay / 100);
+  const pazarGaziantep = Math.round(gv('pazarTR') * V.gaziantepNufusPay / 100);
   const y1BirimNetEur = toEur(y1KorseNet) / (y1Korse||1) * 1000; // €/adet
 
   const izmirY5Adet  = V.izmirAktif  ? Math.round(pazarIzmir  * gv('izmirHedefPay')  / 100) : 0;
   const ankaraY5Adet = V.ankaraAktif ? Math.round(pazarAnkara * gv('ankaraHedefPay') / 100) : 0;
   const izmirY5Gelir  = Math.round(izmirY5Adet  * y1BirimNetEur / 1000);
   const ankaraY5Gelir = Math.round(ankaraY5Adet * y1BirimNetEur / 1000);
+  // "Y5Adet"/"Y5Gelir" naming kept consistent with Izmir/Ankara even though
+  // Bursa/Gaziantep (Year-3 openers) only reach 80% of this full-capacity
+  // target by the model's actual Year 5 — see the ramp block below.
+  const bursaY5Adet = V.bursaAktif ? Math.round(pazarBursa * gv('bursaHedefPay') / 100) : 0;
+  const gaziantepY5Adet = V.gaziantepAktif ? Math.round(pazarGaziantep * gv('gaziantepHedefPay') / 100) : 0;
+  const bursaY5Gelir = Math.round(bursaY5Adet * y1BirimNetEur / 1000);
+  const gaziantepY5Gelir = Math.round(gaziantepY5Adet * y1BirimNetEur / 1000);
 
   // Center-specific Y5 opex — clinic-direct costs only (no HQ overhead)
   // ymmM, donemsel.reklam advertising, genelGider are Istanbul/HQ costs; Izmir/Ankara don't carry them
@@ -3293,8 +3363,18 @@ function buildProjection() {
     + (V.ankaraMutfak||18000) + (V.ankaraSarf||3000)
     + (V.elektrik||16500) + (V.internet||1500)
     + Math.round(((V.ankaraOrtotistM||55000) + (V.ankaraStajyerM||25000)) * 0.23);
+  const bursaMonthlyTRY = (V.bursaKira||80000) + (V.bursaOrtotistM||55000) + (V.bursaStajyerM||25000)
+    + (V.bursaMutfak||18000) + (V.bursaSarf||3000)
+    + (V.elektrik||16500) + (V.internet||1500)
+    + Math.round(((V.bursaOrtotistM||55000) + (V.bursaStajyerM||25000)) * 0.23);
+  const gaziantepMonthlyTRY = (V.gaziantepKira||85000) + (V.gaziantepOrtotistM||55000) + (V.gaziantepStajyerM||25000)
+    + (V.gaziantepMutfak||18000) + (V.gaziantepSarf||3000)
+    + (V.elektrik||16500) + (V.internet||1500)
+    + Math.round(((V.gaziantepOrtotistM||55000) + (V.gaziantepStajyerM||25000)) * 0.23);
   const izmirY5GiderEur  = Math.round(toEur(izmirMonthlyTRY  * 12) * 1.25);
   const ankaraY5GiderEur = Math.round(toEur(ankaraMonthlyTRY * 12) * 1.25);
+  const bursaY5GiderEur = Math.round(toEur(bursaMonthlyTRY * 12) * 1.25);
+  const gaziantepY5GiderEur = Math.round(toEur(gaziantepMonthlyTRY * 12) * 1.25);
 
   // Full-capacity net at Y5 (gross minus center-specific operating cost base).
   // Not floored at 0 — a satellite's own inputs (target market share vs. its
@@ -3314,6 +3394,21 @@ function buildProjection() {
   const ankaraY4Net = Math.round(ankaraFullNet * 0.80);
   const izmirRow  = [0, izmirGelirY2,  izmirY3Net,  izmirY4Net,  izmirFullNet];
   const ankaraRow = [0, ankaraGelirY2, ankaraY3Net, ankaraY4Net, ankaraFullNet];
+  // Bursa/Gaziantep open in Year 3 — same ramp shape as Izmir/Ankara, shifted
+  // one year later: Year 3 = opening-year partial fraction, Year 4 = 50%,
+  // Year 5 = 80% of full-capacity net. They never reach 100% within this
+  // model's 5-year horizon (there's no Year 6 to reach it in), same as if
+  // Izmir/Ankara's own ramp were cut off one year early.
+  const bursaFullNet = V.bursaAktif ? (bursaY5Gelir - bursaY5GiderEur) : 0;
+  const gaziantepFullNet = V.gaziantepAktif ? (gaziantepY5Gelir - gaziantepY5GiderEur) : 0;
+  const bursaGelirY3 = V.bursaAktif ? Math.round(bursaFullNet * 0.25 * _bursaAktifAyYil3 / 12) : 0;
+  const gaziantepGelirY3 = V.gaziantepAktif ? Math.round(gaziantepFullNet * 0.25 * _gaziantepAktifAyYil3 / 12) : 0;
+  const bursaY4Net = Math.round(bursaFullNet * 0.50);
+  const gaziantepY4Net = Math.round(gaziantepFullNet * 0.50);
+  const bursaY5NetAt80 = Math.round(bursaFullNet * 0.80);
+  const gaziantepY5NetAt80 = Math.round(gaziantepFullNet * 0.80);
+  const bursaRow = [0, 0, bursaGelirY3, bursaY4Net, bursaY5NetAt80];
+  const gaziantepRow = [0, 0, gaziantepGelirY3, gaziantepY4Net, gaziantepY5NetAt80];
 
   // ── Hub-and-spoke: satellite management fee + ownership split ────────────
   // Each satellite (Izmir/Ankara) defaults to a separate Ltd. şirket,
@@ -3340,34 +3435,55 @@ function buildProjection() {
   const ankaraGrossRow = V.ankaraAktif
     ? [0, Math.round(ankaraY5Gelir * 0.25 * _ankaraAktifAyYil2  / 12), Math.round(ankaraY5Gelir * 0.50), Math.round(ankaraY5Gelir * 0.80), ankaraY5Gelir]
     : [0,0,0,0,0];
+  // Bursa/Gaziantep: same gross-revenue ramp, shifted to Year 3 (index 0-1 =
+  // 0, index 2 = opening-year partial, index 3 = 50%, index 4 = 80% — never
+  // reaching izmirY5Gelir-style 100%, per the Year-3-opener ramp above).
+  const bursaGrossRow = V.bursaAktif
+    ? [0, 0, Math.round(bursaY5Gelir * 0.25 * _bursaAktifAyYil3 / 12), Math.round(bursaY5Gelir * 0.50), Math.round(bursaY5Gelir * 0.80)]
+    : [0,0,0,0,0];
+  const gaziantepGrossRow = V.gaziantepAktif
+    ? [0, 0, Math.round(gaziantepY5Gelir * 0.25 * _gaziantepAktifAyYil3 / 12), Math.round(gaziantepY5Gelir * 0.50), Math.round(gaziantepY5Gelir * 0.80)]
+    : [0,0,0,0,0];
   const yonetimUcretiOran = (V.yonetimUcretiPct ?? 5) / 100;
   const izmirIsSube  = !!V.izmirSubeMi;
   const ankaraIsSube = !!V.ankaraSubeMi;
+  const bursaIsSube = !!V.bursaSubeMi;
+  const gaziantepIsSube = !!V.gaziantepSubeMi;
   const izmirFlagshipPayOran  = (V.izmirFlagshipPay  ?? 65) / 100;
   const ankaraFlagshipPayOran = (V.ankaraFlagshipPay ?? 65) / 100;
+  const bursaFlagshipPayOran = (V.bursaFlagshipPay ?? 65) / 100;
+  const gaziantepFlagshipPayOran = (V.gaziantepFlagshipPay ?? 65) / 100;
 
   const izmirFeeRow  = izmirIsSube  ? izmirGrossRow.map(()=>0)  : izmirGrossRow.map(g  => Math.round(g * yonetimUcretiOran));
   const ankaraFeeRow = ankaraIsSube ? ankaraGrossRow.map(()=>0) : ankaraGrossRow.map(g => Math.round(g * yonetimUcretiOran));
+  const bursaFeeRow = bursaIsSube ? bursaGrossRow.map(()=>0) : bursaGrossRow.map(g => Math.round(g * yonetimUcretiOran));
+  const gaziantepFeeRow = gaziantepIsSube ? gaziantepGrossRow.map(()=>0) : gaziantepGrossRow.map(g => Math.round(g * yonetimUcretiOran));
   // Subsidiary: satellite's own net additionally bears the management fee
   // before it's split, floored at 0 — a Ltd.'s loss stays trapped inside it,
   // never reducing the flagship's equity-income line. Branch: no fee, full
   // net (can be negative) passes straight through.
   const izmirNetAfterFeeRow  = izmirIsSube  ? izmirRow.slice()  : izmirRow.map((n,i)  => Math.max(0, n  - izmirFeeRow[i]));
   const ankaraNetAfterFeeRow = ankaraIsSube ? ankaraRow.slice() : ankaraRow.map((n,i) => Math.max(0, n  - ankaraFeeRow[i]));
+  const bursaNetAfterFeeRow = bursaIsSube ? bursaRow.slice() : bursaRow.map((n,i) => Math.max(0, n - bursaFeeRow[i]));
+  const gaziantepNetAfterFeeRow = gaziantepIsSube ? gaziantepRow.slice() : gaziantepRow.map((n,i) => Math.max(0, n - gaziantepFeeRow[i]));
   const izmirEquityRow  = izmirIsSube  ? izmirNetAfterFeeRow.slice()  : izmirNetAfterFeeRow.map(n  => Math.round(n * izmirFlagshipPayOran));
   const ankaraEquityRow = ankaraIsSube ? ankaraNetAfterFeeRow.slice() : ankaraNetAfterFeeRow.map(n => Math.round(n * ankaraFlagshipPayOran));
+  const bursaEquityRow = bursaIsSube ? bursaNetAfterFeeRow.slice() : bursaNetAfterFeeRow.map(n => Math.round(n * bursaFlagshipPayOran));
+  const gaziantepEquityRow = gaziantepIsSube ? gaziantepNetAfterFeeRow.slice() : gaziantepNetAfterFeeRow.map(n => Math.round(n * gaziantepFlagshipPayOran));
   // Branch: no minority interest — a branch cannot take local investors.
   const izmirMinorityRow  = izmirIsSube  ? izmirRow.map(()=>0)  : izmirNetAfterFeeRow.map((n,i)  => n  - izmirEquityRow[i]);
   const ankaraMinorityRow = ankaraIsSube ? ankaraRow.map(()=>0) : ankaraNetAfterFeeRow.map((n,i) => n  - ankaraEquityRow[i]);
+  const bursaMinorityRow = bursaIsSube ? bursaRow.map(()=>0) : bursaNetAfterFeeRow.map((n,i) => n - bursaEquityRow[i]);
+  const gaziantepMinorityRow = gaziantepIsSube ? gaziantepRow.map(()=>0) : gaziantepNetAfterFeeRow.map((n,i) => n - gaziantepEquityRow[i]);
   // Flagship-side aggregates — these, not the satellites' own 100% net, are
   // what flows into the flagship's consolidated view, valuation, AND taxable
   // profit (via computeFcfStream(), which taxes `totals` below with the
   // standard 5-yr loss carryforward) — so a Branch's loss reduces flagship
   // KV exactly like a bad month at the Istanbul clinic would, while a
   // Subsidiary's loss (floored above) never does.
-  const feeIncomeRow    = [0,1,2,3,4].map(i => izmirFeeRow[i]    + ankaraFeeRow[i]);
-  const equityIncomeRow = [0,1,2,3,4].map(i => izmirEquityRow[i] + ankaraEquityRow[i]);
-  const minorityRow     = [0,1,2,3,4].map(i => izmirMinorityRow[i] + ankaraMinorityRow[i]);
+  const feeIncomeRow    = [0,1,2,3,4].map(i => izmirFeeRow[i]    + ankaraFeeRow[i]    + bursaFeeRow[i]    + gaziantepFeeRow[i]);
+  const equityIncomeRow = [0,1,2,3,4].map(i => izmirEquityRow[i] + ankaraEquityRow[i] + bursaEquityRow[i] + gaziantepEquityRow[i]);
+  const minorityRow     = [0,1,2,3,4].map(i => izmirMinorityRow[i] + ankaraMinorityRow[i] + bursaMinorityRow[i] + gaziantepMinorityRow[i]);
 
   // B2B: yalnızca İstanbul Merkez 1
   const b2bY1 = toEur(window._lastGelirB2B || 0);
@@ -3390,7 +3506,9 @@ function buildProjection() {
   const korseCountIst    = [y1Korse, lerp(y1Korse, y5KorseAdet, 0.40), lerp(y1Korse, y5KorseAdet, 0.65), lerp(y1Korse, y5KorseAdet, 0.85), y5KorseAdet];
   const korseCountIzmir  = [0, Math.round(izmirY5Adet  * 0.25 * _aktifAyYil2 / 12),       Math.round(izmirY5Adet  * 0.50), Math.round(izmirY5Adet  * 0.80), izmirY5Adet];
   const korseCountAnkara = [0, Math.round(ankaraY5Adet * 0.25 * _ankaraAktifAyYil2 / 12), Math.round(ankaraY5Adet * 0.50), Math.round(ankaraY5Adet * 0.80), ankaraY5Adet];
-  const korseCountTotal  = [0,1,2,3,4].map(i => korseCountIst[i] + korseCountIzmir[i] + korseCountAnkara[i]);
+  const korseCountBursa  = [0, 0, Math.round(bursaY5Adet * 0.25 * _bursaAktifAyYil3 / 12), Math.round(bursaY5Adet * 0.50), Math.round(bursaY5Adet * 0.80)];
+  const korseCountGaziantep = [0, 0, Math.round(gaziantepY5Adet * 0.25 * _gaziantepAktifAyYil3 / 12), Math.round(gaziantepY5Adet * 0.50), Math.round(gaziantepY5Adet * 0.80)];
+  const korseCountTotal  = [0,1,2,3,4].map(i => korseCountIst[i] + korseCountIzmir[i] + korseCountAnkara[i] + korseCountBursa[i] + korseCountGaziantep[i]);
   // For the Tax Optimization panel's Lever 2 (teknokent royalty pipe) — total
   // royalty paid to Osteoid A.Ş. across all active centers, €K/yr.
   window._lastRoyaltyRow = korseCountTotal.map(k => Math.round(k * gv('royaltyEur') / 1000));
@@ -3405,15 +3523,22 @@ function buildProjection() {
   window._lastBranchLoss = {
     izmir:  { isSube: izmirIsSube,  row: izmirEquityRow.slice() },
     ankara: { isSube: ankaraIsSube, row: ankaraEquityRow.slice() },
+    bursa: { isSube: bursaIsSube, row: bursaEquityRow.slice() },
+    gaziantep: { isSube: gaziantepIsSube, row: gaziantepEquityRow.slice() },
   };
   window._lastFcf = computeFcfStream();
-  renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmirY5Gelir, ankaraY5Gelir, izmirY5Adet, ankaraY5Adet);
+  renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmirY5Gelir, ankaraY5Gelir, izmirY5Adet, ankaraY5Adet, bursaRow, gaziantepRow, bursaY5Gelir, gaziantepY5Gelir, bursaY5Adet, gaziantepY5Adet);
   const _roadmapEl = document.getElementById('investorRoadmap');
-  if (_roadmapEl) renderInvestorRoadmap(_roadmapEl, totals, korseM1, feeIncomeRow, equityIncomeRow, minorityRow, b2bRow, window._lastFcf, izmirRow, ankaraRow, istFinancingGapRow);
+  if (_roadmapEl) renderInvestorRoadmap(_roadmapEl, totals, korseM1, feeIncomeRow, equityIncomeRow, minorityRow, b2bRow, window._lastFcf, izmirRow, ankaraRow, istFinancingGapRow, bursaRow, gaziantepRow);
   if (typeof renderDcf === 'function') { renderDcf(); renderGetiriTable(); }
   renderDeRiskedNarrative();
   renderTaxOptPanel();
-  const _aktifCenterLabel = ['Istanbul'].concat(V.izmirAktif?['Izmir']:[]).concat(V.ankaraAktif?['Ankara']:[]).join(' + ');
+  // Izmir/Ankara open within Year 2, so they're always shown once toggled
+  // active; Bursa/Gaziantep don't open until Year 3, so they're excluded
+  // from the Year 2 label specifically (this mirrors bursaAcilisKpi/
+  // gaziantepAcilisKpi, which are Year-3-card KPIs, not Year-2).
+  const _aktifCenterLabelY2 = ['Istanbul'].concat(V.izmirAktif?['Izmir']:[]).concat(V.ankaraAktif?['Ankara']:[]).join(' + ');
+  const _aktifCenterLabelY3plus = ['Istanbul'].concat(V.izmirAktif?['Izmir']:[]).concat(V.ankaraAktif?['Ankara']:[]).concat(V.bursaAktif?['Bursa']:[]).concat(V.gaziantepAktif?['Gaziantep']:[]).join(' + ');
   ['y2','y3','y4'].forEach((yid, idx) => {
     const i = idx + 1; // totals/korseCountTotal index: Year 2=1, Year 3=2, Year 4=3
     const gEl = document.getElementById(yid+'GelirKpi');
@@ -3421,10 +3546,10 @@ function buildProjection() {
     const kEl = document.getElementById(yid+'KorseKpi');
     if (kEl) kEl.textContent = korseCountTotal[i].toLocaleString('tr-TR') + ' units';
     const mEl = document.getElementById(yid+'MerkezKpi');
-    if (mEl) mEl.textContent = _aktifCenterLabel;
+    if (mEl) mEl.textContent = yid === 'y2' ? _aktifCenterLabelY2 : _aktifCenterLabelY3plus;
   });
   // Kurulum özet güncelle — full label+value rebuild for consistency
-  ['izmir','ankara'].forEach(_updateKurulumOzet);
+  ['izmir','ankara','bursa','gaziantep'].forEach(_updateKurulumOzet);
 
   // Bilimsel çalışma / eğitim / kütüphane bedeli tahmini: Y1 oranı sabit varsayım
   const y1SciEurK   = toEur(y1Sci);
@@ -3433,10 +3558,10 @@ function buildProjection() {
   const y1SciOran   = y1KorseNet > 0 ? y1Sci / y1KorseNet : 0.10;
   const y1EduOran   = y1KorseNet > 0 ? y1Edu / y1KorseNet : 0.10;
   const y1LibOran   = y1KorseNet > 0 ? y1Lib / y1KorseNet : 0.10;
-  const y2TotalPreOpexNet = istGrossRow[1] + (izmirRow[1]||0) + (ankaraRow[1]||0) + (b2bRow[1]||0);
-  const y3TotalPreOpexNet = istGrossRow[2] + (izmirRow[2]||0) + (ankaraRow[2]||0) + (b2bRow[2]||0);
-  const y4TotalPreOpexNet = istGrossRow[3] + (izmirRow[3]||0) + (ankaraRow[3]||0) + (b2bRow[3]||0);
-  const y5TotalPreOpexNet = istGrossRow[4] + (izmirRow[4]||0) + (ankaraRow[4]||0) + (b2bRow[4]||0);
+  const y2TotalPreOpexNet = istGrossRow[1] + (izmirRow[1]||0) + (ankaraRow[1]||0) + (bursaRow[1]||0) + (gaziantepRow[1]||0) + (b2bRow[1]||0);
+  const y3TotalPreOpexNet = istGrossRow[2] + (izmirRow[2]||0) + (ankaraRow[2]||0) + (bursaRow[2]||0) + (gaziantepRow[2]||0) + (b2bRow[2]||0);
+  const y4TotalPreOpexNet = istGrossRow[3] + (izmirRow[3]||0) + (ankaraRow[3]||0) + (bursaRow[3]||0) + (gaziantepRow[3]||0) + (b2bRow[3]||0);
+  const y5TotalPreOpexNet = istGrossRow[4] + (izmirRow[4]||0) + (ankaraRow[4]||0) + (bursaRow[4]||0) + (gaziantepRow[4]||0) + (b2bRow[4]||0);
   const y2SciEurK = Math.round(y2TotalPreOpexNet * y1SciOran);
   const y3SciEurK = Math.round(y3TotalPreOpexNet * y1SciOran);
   const y4SciEurK = Math.round(y4TotalPreOpexNet * y1SciOran);
@@ -3515,12 +3640,15 @@ function buildProjection() {
   // borrow Istanbul's Year-1 ratios — a second layer of approximation on top of
   // the one Istanbul's own Y2-5 columns already carry. Setup cost lands entirely
   // in the opening year (Year 2 in this model), not spread out.
-  function _centerAnnualCfg(sehir, korseCountArr, netRevArr, y5GrossGelir, aktifAyYil2, feeRow, netAfterFeeRow, equityRow, minorityRowLocal, flagshipPayPct) {
+  // grossRow is passed in already correctly shaped for this city's opening
+  // year (Year 2 for Izmir/Ankara, Year 3 for Bursa/Gaziantep) — computed
+  // once above (izmirGrossRow/ankaraGrossRow/bursaGrossRow/gaziantepGrossRow)
+  // rather than re-derived here, so this works for either ramp shape without
+  // hardcoding one of them.
+  function _centerAnnualCfg(sehir, korseCountArr, netRevArr, grossRow, feeRow, netAfterFeeRow, equityRow, minorityRowLocal, flagshipPayPct) {
     const aktif = !!V[sehir+'Aktif'];
     const isSube = !!V[sehir+'SubeMi'];
-    const grossY = aktif
-      ? [0, Math.round(y5GrossGelir * 0.25 * aktifAyYil2 / 12), Math.round(y5GrossGelir*0.50), Math.round(y5GrossGelir*0.80), y5GrossGelir]
-      : [0,0,0,0,0];
+    const grossY = grossRow;
     const setupEurK = aktif ? toEur(getMerkezKurulum(sehir)) : 0;
     const setupY = [0, setupEurK, 0, 0, 0];
     // Cumulative uses the satellite's own bottom line AFTER the management
@@ -3554,12 +3682,22 @@ function buildProjection() {
   const izmirDetailEl = document.getElementById('izmirAnnualDetailSection');
   if (izmirDetailEl) izmirDetailEl.style.display = V.izmirAktif ? '' : 'none';
   if (V.izmirAktif) {
-    renderAnnualDetailTable('izmirAnnualDetailWrap', 'Izmir', _centerAnnualCfg('izmir', korseCountIzmir, izmirRow, izmirY5Gelir, _aktifAyYil2, izmirFeeRow, izmirNetAfterFeeRow, izmirEquityRow, izmirMinorityRow, Math.round(izmirFlagshipPayOran*100)));
+    renderAnnualDetailTable('izmirAnnualDetailWrap', 'Izmir', _centerAnnualCfg('izmir', korseCountIzmir, izmirRow, izmirGrossRow, izmirFeeRow, izmirNetAfterFeeRow, izmirEquityRow, izmirMinorityRow, Math.round(izmirFlagshipPayOran*100)));
   }
   const ankaraDetailEl = document.getElementById('ankaraAnnualDetailSection');
   if (ankaraDetailEl) ankaraDetailEl.style.display = V.ankaraAktif ? '' : 'none';
   if (V.ankaraAktif) {
-    renderAnnualDetailTable('ankaraAnnualDetailWrap', 'Ankara', _centerAnnualCfg('ankara', korseCountAnkara, ankaraRow, ankaraY5Gelir, _ankaraAktifAyYil2, ankaraFeeRow, ankaraNetAfterFeeRow, ankaraEquityRow, ankaraMinorityRow, Math.round(ankaraFlagshipPayOran*100)));
+    renderAnnualDetailTable('ankaraAnnualDetailWrap', 'Ankara', _centerAnnualCfg('ankara', korseCountAnkara, ankaraRow, ankaraGrossRow, ankaraFeeRow, ankaraNetAfterFeeRow, ankaraEquityRow, ankaraMinorityRow, Math.round(ankaraFlagshipPayOran*100)));
+  }
+  const bursaDetailEl = document.getElementById('bursaAnnualDetailSection');
+  if (bursaDetailEl) bursaDetailEl.style.display = V.bursaAktif ? '' : 'none';
+  if (V.bursaAktif) {
+    renderAnnualDetailTable('bursaAnnualDetailWrap', 'Bursa', _centerAnnualCfg('bursa', korseCountBursa, bursaRow, bursaGrossRow, bursaFeeRow, bursaNetAfterFeeRow, bursaEquityRow, bursaMinorityRow, Math.round(bursaFlagshipPayOran*100)));
+  }
+  const gaziantepDetailEl = document.getElementById('gaziantepAnnualDetailSection');
+  if (gaziantepDetailEl) gaziantepDetailEl.style.display = V.gaziantepAktif ? '' : 'none';
+  if (V.gaziantepAktif) {
+    renderAnnualDetailTable('gaziantepAnnualDetailWrap', 'Gaziantep', _centerAnnualCfg('gaziantep', korseCountGaziantep, gaziantepRow, gaziantepGrossRow, gaziantepFeeRow, gaziantepNetAfterFeeRow, gaziantepEquityRow, gaziantepMinorityRow, Math.round(gaziantepFlagshipPayOran*100)));
   }
 
   // Tablo güncelle
@@ -3579,11 +3717,13 @@ function buildProjection() {
         ${b2bRow[0] > 0 || b2bRow[1] > 0 ? `<tr><td style="color:#378ADD;">B2B — Center 1 (Istanbul)</td>${fmt(b2bRow[0])}${fmt(b2bRow[1])}${fmt(b2bRow[2])}${fmt(b2bRow[3])}${fmt(b2bRow[4])}${grow(b2bRow[0],b2bRow[4])}</tr>` : ''}
         ${V.izmirAktif  ? `<tr><td style="color:#1D9E75;">Izmir Center <span style="font-weight:400;font-size:10px;opacity:0.7;">— satellite's own net, memo only</span></td>${fmt(izmirRow[0])}${fmt(izmirRow[1])}${fmt(izmirRow[2])}${fmt(izmirRow[3])}${fmt(izmirRow[4])}${grow(izmirRow[1],izmirRow[4])}</tr>` : ''}
         ${V.ankaraAktif ? `<tr><td style="color:#534AB7;">Ankara Center <span style="font-weight:400;font-size:10px;opacity:0.7;">— satellite's own net, memo only</span></td>${fmt(ankaraRow[0])}${fmt(ankaraRow[1])}${fmt(ankaraRow[2])}${fmt(ankaraRow[3])}${fmt(ankaraRow[4])}${grow(ankaraRow[1],ankaraRow[4])}</tr>` : ''}
-        ${(V.izmirAktif||V.ankaraAktif) ? `<tr><td style="color:#BA7517;">↳ Management fee income to flagship</td>${fmt(feeIncomeRow[0])}${fmt(feeIncomeRow[1])}${fmt(feeIncomeRow[2])}${fmt(feeIncomeRow[3])}${fmt(feeIncomeRow[4])}${grow(feeIncomeRow[1],feeIncomeRow[4])}</tr>` : ''}
-        ${(V.izmirAktif||V.ankaraAktif) ? `<tr><td style="color:#1D9E75;">↳ Equity income to flagship</td>${fmt(equityIncomeRow[0])}${fmt(equityIncomeRow[1])}${fmt(equityIncomeRow[2])}${fmt(equityIncomeRow[3])}${fmt(equityIncomeRow[4])}${grow(equityIncomeRow[1],equityIncomeRow[4])}</tr>` : ''}
+        ${V.bursaAktif ? `<tr><td style="color:#c94f2a;">Bursa Center <span style="font-weight:400;font-size:10px;opacity:0.7;">— satellite's own net, memo only, opens Year 3</span></td>${fmt(bursaRow[0])}${fmt(bursaRow[1])}${fmt(bursaRow[2])}${fmt(bursaRow[3])}${fmt(bursaRow[4])}${grow(bursaRow[2],bursaRow[4])}</tr>` : ''}
+        ${V.gaziantepAktif ? `<tr><td style="color:#8a6d1a;">Gaziantep Center <span style="font-weight:400;font-size:10px;opacity:0.7;">— satellite's own net, memo only, opens Year 3</span></td>${fmt(gaziantepRow[0])}${fmt(gaziantepRow[1])}${fmt(gaziantepRow[2])}${fmt(gaziantepRow[3])}${fmt(gaziantepRow[4])}${grow(gaziantepRow[2],gaziantepRow[4])}</tr>` : ''}
+        ${(V.izmirAktif||V.ankaraAktif||V.bursaAktif||V.gaziantepAktif) ? `<tr><td style="color:#BA7517;">↳ Management fee income to flagship</td>${fmt(feeIncomeRow[0])}${fmt(feeIncomeRow[1])}${fmt(feeIncomeRow[2])}${fmt(feeIncomeRow[3])}${fmt(feeIncomeRow[4])}${grow(feeIncomeRow[1],feeIncomeRow[4])}</tr>` : ''}
+        ${(V.izmirAktif||V.ankaraAktif||V.bursaAktif||V.gaziantepAktif) ? `<tr><td style="color:#1D9E75;">↳ Equity income to flagship</td>${fmt(equityIncomeRow[0])}${fmt(equityIncomeRow[1])}${fmt(equityIncomeRow[2])}${fmt(equityIncomeRow[3])}${fmt(equityIncomeRow[4])}${grow(equityIncomeRow[1],equityIncomeRow[4])}</tr>` : ''}
 
         <tr class="total"><td>Consolidated Total — Flagship (Clinic + B2B + Satellite Fee/Equity)</td>${fmt(totals[0])}${fmt(totals[1])}${fmt(totals[2])}${fmt(totals[3])}${fmt(totals[4])}${grow(totals[0],totals[4])}</tr>
-        ${(V.izmirAktif||V.ankaraAktif) ? `<tr><td style="font-size:11px;color:#999;">Memo: Minority interest — local investors (not in total above)</td>${minorityRow.map(v=>`<td style="font-size:11px;color:#999;">${v>0?'€'+v+'K':'—'}</td>`).join('')}<td style="color:#aaa;font-size:11px;">—</td></tr>` : ''}
+        ${(V.izmirAktif||V.ankaraAktif||V.bursaAktif||V.gaziantepAktif) ? `<tr><td style="font-size:11px;color:#999;">Memo: Minority interest — local investors (not in total above)</td>${minorityRow.map(v=>`<td style="font-size:11px;color:#999;">${v>0?'€'+v+'K':'—'}</td>`).join('')}<td style="color:#aaa;font-size:11px;">—</td></tr>` : ''}
         <tr style="background:#fff7f5;"><td style="color:#c94f2a;font-size:11px;">↳ Scientific Study Fee <span style="font-weight:400;opacity:0.65;">(Y1 ratio fixed · projection)</span></td><td style="color:#c94f2a;font-size:11px;">~€${y1SciEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y2SciEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y3SciEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y4SciEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y5SciEurK}K</td><td style="color:#aaa;font-size:11px;">—</td></tr>
         <tr style="background:#fff7f5;"><td style="color:#c94f2a;font-size:11px;">↳ Education Fee <span style="font-weight:400;opacity:0.65;">(Y1 ratio fixed · projection)</span></td><td style="color:#c94f2a;font-size:11px;">~€${y1EduEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y2EduEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y3EduEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y4EduEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y5EduEurK}K</td><td style="color:#aaa;font-size:11px;">—</td></tr>
         <tr style="background:#fff7f5;"><td style="color:#c94f2a;font-size:11px;">↳ Library Fee <span style="font-weight:400;opacity:0.65;">(Y1 ratio fixed · projection)</span></td><td style="color:#c94f2a;font-size:11px;">~€${y1LibEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y2LibEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y3LibEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y4LibEurK}K</td><td style="color:#c94f2a;font-size:11px;">~€${y5LibEurK}K</td><td style="color:#aaa;font-size:11px;">—</td></tr>
@@ -3602,11 +3742,15 @@ function buildProjection() {
   if (y5g) y5g.textContent = '~€' + totals[4] + 'K';
   const y5PayLabel = '%' + y5PayPct + ' IST'
     + (V.izmirAktif  ? ' · %' + gv('izmirHedefPay').toFixed(1)  + ' IZM' : '')
-    + (V.ankaraAktif ? ' · %' + gv('ankaraHedefPay').toFixed(1) + ' ANK' : '');
+    + (V.ankaraAktif ? ' · %' + gv('ankaraHedefPay').toFixed(1) + ' ANK' : '')
+    + (V.bursaAktif ? ' · %' + gv('bursaHedefPay').toFixed(1) + ' BUR (target; 80% reached by Y5)' : '')
+    + (V.gaziantepAktif ? ' · %' + gv('gaziantepHedefPay').toFixed(1) + ' GAZ (target; 80% reached by Y5)' : '');
   if (y5p) y5p.textContent = y5PayLabel;
   const y5AdetLabel = y5KorseAdet.toLocaleString('tr-TR')
     + (V.izmirAktif  ? ' + ' + izmirY5Adet.toLocaleString('tr-TR')  : '')
     + (V.ankaraAktif ? ' + ' + ankaraY5Adet.toLocaleString('tr-TR') : '')
+    + (V.bursaAktif ? ' + ' + korseCountBursa[4].toLocaleString('tr-TR') : '')
+    + (V.gaziantepAktif ? ' + ' + korseCountGaziantep[4].toLocaleString('tr-TR') : '')
     + ' units/year';
   if (y5k) y5k.textContent = y5AdetLabel;
 
@@ -3621,8 +3765,8 @@ function buildProjection() {
       datasets: [
         { label:'Brace C1 (private)', data:korseM1, backgroundColor:'rgba(44,74,46,0.85)', borderColor:'#2c4a2e', borderWidth:1, borderRadius:3 },
         ...(b2bRow[0] > 0 || b2bRow[1] > 0 ? [{ label:'B2B C1', data:b2bRow, backgroundColor:'rgba(55,138,221,0.7)', borderColor:'#378ADD', borderWidth:1, borderRadius:3 }] : []),
-        ...((V.izmirAktif||V.ankaraAktif) ? [{ label:'Satellite fee income', data:feeIncomeRow, backgroundColor:'rgba(186,117,23,0.7)', borderColor:'#BA7517', borderWidth:1, borderRadius:3 }] : []),
-        ...((V.izmirAktif||V.ankaraAktif) ? [{ label:'Satellite equity income', data:equityIncomeRow, backgroundColor:'rgba(29,158,117,0.7)', borderColor:'#1D9E75', borderWidth:1, borderRadius:3 }] : []),
+        ...((V.izmirAktif||V.ankaraAktif||V.bursaAktif||V.gaziantepAktif) ? [{ label:'Satellite fee income', data:feeIncomeRow, backgroundColor:'rgba(186,117,23,0.7)', borderColor:'#BA7517', borderWidth:1, borderRadius:3 }] : []),
+        ...((V.izmirAktif||V.ankaraAktif||V.bursaAktif||V.gaziantepAktif) ? [{ label:'Satellite equity income', data:equityIncomeRow, backgroundColor:'rgba(29,158,117,0.7)', borderColor:'#1D9E75', borderWidth:1, borderRadius:3 }] : []),
       ]
     },
     options: {
@@ -3953,21 +4097,28 @@ function renderInvestBreakdown(kurulumTop, rows) {
   const totalInvestEur = clinicCashEur + parentInKindEur;
   V.dcfInvest = Math.round(totalInvestEur); // derived — kept only for snapshot/backward-compat reads
 
-  // Setup cost covers three centers — Istanbul (Center 1, this model's own
-  // capex), Izmir (Center 2) and Ankara (Center 3, each their own setup-cost
-  // model already used by the Multi-Year Plan's Annual Detail tables) — this
-  // round funds all three build-outs up front, not just Istanbul's. Each
-  // center also gets a manual Overhead adjustment (default 0) so the total
-  // can be rounded to a clean ask number without editing the underlying model.
+  // Setup cost covers five centers — Istanbul (Center 1, this model's own
+  // capex), Izmir (Center 2), Ankara (Center 3), Bursa (Center 4) and
+  // Gaziantep (Center 5) — each their own setup-cost model already used by
+  // the Multi-Year Plan's Annual Detail tables. This round funds all five
+  // build-outs up front, not just Istanbul's. Each center also gets a manual
+  // Overhead adjustment (default 0) so the total can be rounded to a clean
+  // ask number without editing the underlying model.
   const setupCostsEur = setupCashTRY / eurK;
   const izmirSetupBaseEur = getMerkezKurulum('izmir') / eurK;
   const ankaraSetupBaseEur = getMerkezKurulum('ankara') / eurK;
+  const bursaSetupBaseEur = getMerkezKurulum('bursa') / eurK;
+  const gaziantepSetupBaseEur = getMerkezKurulum('gaziantep') / eurK;
   const overheadC1 = V.setupOverheadC1 ?? 0;
   const overheadC2 = V.setupOverheadC2 ?? 0;
   const overheadC3 = V.setupOverheadC3 ?? 0;
+  const overheadC4 = V.setupOverheadC4 ?? 0;
+  const overheadC5 = V.setupOverheadC5 ?? 0;
   const setupC1Eur = setupCostsEur + overheadC1;
   const setupC2Eur = izmirSetupBaseEur + overheadC2;
   const setupC3Eur = ankaraSetupBaseEur + overheadC3;
+  const setupC4Eur = bursaSetupBaseEur + overheadC4;
+  const setupC5Eur = gaziantepSetupBaseEur + overheadC5;
 
   // Two-stage committed structure: one Shareholders' Agreement + one License
   // Purchase Agreement, both signed at Stage-1 closing, but Stage 2's cash
@@ -3983,7 +4134,7 @@ function renderInvestBreakdown(kurulumTop, rows) {
   const stage1BufferEur = gv('stage1BufferEur');
   const stage2BufferEur = Math.max(0, workingCapBufferEur - stage1BufferEur);
   const stage1Eur = setupC1Eur + (workingCapTRY / eurK) + stage1BufferEur;
-  const stage2Eur = setupC2Eur + setupC3Eur + stage2BufferEur + ipLisansEur + sehirEksklusifEur;
+  const stage2Eur = setupC2Eur + setupC3Eur + setupC4Eur + setupC5Eur + stage2BufferEur + ipLisansEur + sehirEksklusifEur;
   const investorTicketEur = stage1Eur + stage2Eur;
   // Identity guard — Investor Ticket is defined as the two stage subtotals
   // added together (so the breakdown table's grand total always matches what
@@ -4010,6 +4161,8 @@ function renderInvestBreakdown(kurulumTop, rows) {
       + line('City exclusivity (purchased from Osteoid A.Ş.)', sehirEksklusifEur)
       + line('Setup cost — Center 2, Izmir (capex' + (overheadC2 ? ' + overhead' : '') + ')', setupC2Eur)
       + line('Setup cost — Center 3, Ankara (capex' + (overheadC3 ? ' + overhead' : '') + ')', setupC3Eur)
+      + line('Setup cost — Center 4, Bursa (capex' + (overheadC4 ? ' + overhead' : '') + ')', setupC4Eur)
+      + line('Setup cost — Center 5, Gaziantep (capex' + (overheadC5 ? ' + overhead' : '') + ')', setupC5Eur)
       + line('Working capital buffer (deferred remainder)', stage2BufferEur)
       + line('Stage 2 — subtotal', stage2Eur, 'r-bas')
       + line('TOTAL COMMITTED (Investor Ticket — Stage 1 + Stage 2)', investorTicketEur, 'r-cum')
@@ -4031,6 +4184,10 @@ function renderInvestBreakdown(kurulumTop, rows) {
   if (setupDisp2) setupDisp2.textContent = '€' + Math.round(setupC2Eur).toLocaleString('tr-TR');
   const setupDisp3 = document.getElementById('setupCostsEurDisp3');
   if (setupDisp3) setupDisp3.textContent = '€' + Math.round(setupC3Eur).toLocaleString('tr-TR');
+  const setupDisp4 = document.getElementById('setupCostsEurDisp4');
+  if (setupDisp4) setupDisp4.textContent = '€' + Math.round(setupC4Eur).toLocaleString('tr-TR');
+  const setupDisp5 = document.getElementById('setupCostsEurDisp5');
+  if (setupDisp5) setupDisp5.textContent = '€' + Math.round(setupC5Eur).toLocaleString('tr-TR');
 
   return { clinicCashEur, parentInKindEur, totalInvestEur, investorTicketEur, stage1Eur, stage2Eur, rightsEur: ipLisansEur + sehirEksklusifEur };
 }
@@ -4047,7 +4204,7 @@ function renderUseOfFundsStrip(inv) {
   const barRights = document.getElementById('useOfFundsRights');
   const bar2 = document.getElementById('useOfFundsStage2');
   if (!inv || (!bar1 && !barRights && !bar2)) return;
-  const stage2BuildOutsEur = inv.stage2Eur - inv.rightsEur; // Izmir/Ankara setup + deferred buffer only
+  const stage2BuildOutsEur = inv.stage2Eur - inv.rightsEur; // Izmir/Ankara/Bursa/Gaziantep setup + deferred buffer only
   const total = inv.stage1Eur + inv.stage2Eur; // === investorTicketEur
   const pct1 = total > 0 ? (inv.stage1Eur / total) * 100 : 34;
   const pctRights = total > 0 ? (inv.rightsEur / total) * 100 : 33;
@@ -4066,7 +4223,7 @@ function renderUseOfFundsStrip(inv) {
   if (bar2) {
     bar2.style.width = pct2.toFixed(1) + '%';
     bar2.textContent = fmtEurAbbr(stage2BuildOutsEur);
-    bar2.title = 'Stage 2 — build-outs (Izmir/Ankara setup + deferred buffer): ' + fmtEurAbbr(stage2BuildOutsEur);
+    bar2.title = 'Stage 2 — build-outs (Izmir/Ankara/Bursa/Gaziantep setup + deferred buffer): ' + fmtEurAbbr(stage2BuildOutsEur);
   }
 }
 
