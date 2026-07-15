@@ -3004,7 +3004,12 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
   const inv2 = window._lastInvestBreakdown;
   if (inv2) {
     const stage2Eur = inv2.stage2Eur;
-    const satelliteNetEur = (izmirNet + ankaraNet + bursaNet + gaziantepNet) * 1000; // €K -> EUR, already net of each satellite's own opex
+    // All 5 centers' own 100% net profit, per Deniz's explicit call — Istanbul
+    // included even though its own build-out was funded by Stage 1, not
+    // Stage 2, so this yield is a blended reference ratio (whole-network
+    // profit over Stage 2's slice of total capital), not a return purely
+    // attributable to Stage 2 money. See the note below the box.
+    const satelliteNetEur = (istNet + izmirNet + ankaraNet + bursaNet + gaziantepNet) * 1000; // €K -> EUR, already net of each center's own opex
     const stage2YieldPct = stage2Eur > 0 ? (satelliteNetEur / stage2Eur) * 100 : 0;
     const fmtEurFull = v => (v < 0 ? '-€' : '€') + Math.round(Math.abs(v)).toLocaleString('en-US');
     const stage2YieldColor = stage2YieldPct >= 0 ? '#1a7a45' : '#c94f2a';
@@ -3029,15 +3034,74 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
           <div style="font-size:18px;font-weight:700;color:#D85A30;">${fmtEurFull(stage2Eur)}</div>
         </div>
         <div>
-          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">4-city net profit</div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">All 5 centers' net profit (100%, Year 5 only)</div>
           <div style="font-size:18px;font-weight:700;color:#333;">${fmtEurFull(satelliteNetEur)}</div>
         </div>
         <div>
-          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Annual yield</div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Blended yield</div>
           <div style="font-size:18px;font-weight:700;color:${stage2YieldColor};">${stage2YieldPct.toFixed(1)}%</div>
         </div>
       </div>
-      <div style="font-size:10px;color:#888;margin-top:8px;">Annual yield = Izmir + Ankara + Bursa + Gaziantep net profit (Year 5, net of each satellite's own operating costs, above) ÷ Stage 2 investment (all four cities' setup + deferred working-capital buffer) — same basis as Stage 1's yield; a simple yield, not a discounted or multi-year return.</div>
+      <div style="font-size:10px;color:#888;margin-top:8px;">Blended yield = Istanbul + Izmir + Ankara + Bursa + Gaziantep's own 100% net profit (Year 5, net of each center's own operating costs, before any fee/equity split) ÷ Stage 2 investment alone — deliberately whole-network profit over just Stage 2's slice of capital, at Deniz's request, so it overstates a return purely attributable to Stage 2 money (Istanbul's profit came from Stage 1's capital, not this). Not the same figure as "Combined — net consolidated" above, which is also Istanbul-inclusive but only carries the flagship's fee+equity cut of each satellite, not its full 100%.</div>
+    </div>`;
+
+    // ── Total Investment & Return — Total Committed (Stage 1+2) buys the
+    // whole business: Istanbul's build-out, the IP/exclusivity rights, AND
+    // all four satellite build-outs together. So the "whole business"
+    // comparison is Total Committed against the entire network's cumulative
+    // net profit across all 5 model years (not a single year's snapshot) —
+    // 100% basis per center, same convention as the blended yield above.
+    const totalCommittedEur = inv2.investorTicketEur;
+    let cum100NetEur = 0;
+    for (let yi = 0; yi < 5; yi++) {
+      const istYear = Math.max(0, (totals[yi]||0) - (izmirRow[yi]||0) - (ankaraRow[yi]||0) - (bursaRow[yi]||0) - (gaziantepRow[yi]||0));
+      cum100NetEur += istYear + (izmirRow[yi]||0) + (ankaraRow[yi]||0) + (bursaRow[yi]||0) + (gaziantepRow[yi]||0);
+    }
+    cum100NetEur *= 1000; // €K -> EUR
+    const totalMultiple = totalCommittedEur > 0 ? cum100NetEur / totalCommittedEur : 0;
+    const totalMultipleColor = totalMultiple >= 1 ? '#1a7a45' : '#c94f2a';
+    // Exit Value (100%) — same "whole business" convention as the two stats
+    // above: Year 5's 100% net profit (satelliteNetEur, already computed
+    // above and inclusive of Istanbul) × the same Exit Multiple slider
+    // (V.dcfExitMult) investor.html's own "Exit Value — Year 5" KPI uses.
+    // That KPI values the flagship's consolidated after-tax FCF instead —
+    // smaller in scope, same multiple — so the two are deliberately
+    // different numbers, not a duplicate.
+    const exitMult100 = V.dcfExitMult ?? 10;
+    const exitValue100Eur = satelliteNetEur * exitMult100;
+    const totalInvestTopEl = document.getElementById('totalInvestEurBox');
+    if (totalInvestTopEl) totalInvestTopEl.textContent = fmtEurFull(totalCommittedEur);
+    const totalProfitTopEl = document.getElementById('totalProfitEurBox');
+    if (totalProfitTopEl) totalProfitTopEl.textContent = fmtEurFull(cum100NetEur);
+    const totalMultipleTopEl = document.getElementById('totalMultipleBox');
+    if (totalMultipleTopEl) {
+      totalMultipleTopEl.textContent = totalMultiple.toFixed(2) + '×';
+      totalMultipleTopEl.style.color = totalMultipleColor;
+    }
+    const totalExitTopEl = document.getElementById('totalExitValueBox');
+    if (totalExitTopEl) totalExitTopEl.textContent = fmtEurFull(exitValue100Eur);
+    html += `
+    <div style="border:2px solid #534AB7;border-radius:6px;padding:12px 16px;margin-top:16px;background:#f9f8ff;">
+      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">Total Investment &amp; Return <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— Total Committed (Stage 1+2) funds the entire business: Istanbul, the IP/exclusivity rights, and all four satellite build-outs</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;">
+        <div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Total Committed</div>
+          <div style="font-size:18px;font-weight:700;color:#534AB7;">${fmtEurFull(totalCommittedEur)}</div>
+        </div>
+        <div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Cumulative net profit (100%, sum of Years 1-5)</div>
+          <div style="font-size:18px;font-weight:700;color:#333;">${fmtEurFull(cum100NetEur)}</div>
+        </div>
+        <div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Multiple</div>
+          <div style="font-size:18px;font-weight:700;color:${totalMultipleColor};">${totalMultiple.toFixed(2)}×</div>
+        </div>
+        <div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Exit Value (100%, Year 5)</div>
+          <div style="font-size:18px;font-weight:700;color:#185FA5;">${fmtEurFull(exitValue100Eur)}</div>
+        </div>
+      </div>
+      <div style="font-size:10px;color:#888;margin-top:8px;">Multiple = the sum of every center's own 100% net profit across all 5 model years (Istanbul + Izmir + Ankara + Bursa + Gaziantep, before any fee/equity split) ÷ Total Committed. A cumulative multi-year figure, not an annual rate — comparable to a simple gross MOIC, not IRR. Exit Value = Year 5's 100% net profit × the Exit Multiple slider (${exitMult100}×, same slider as the Investor page). Both use the entire business at 100% ownership, same convention as the boxes above; the flagship's actual entitlement is smaller — see "Exit Value — Year 5" and "Implied Investor MOIC at Exit" on the <a href="investor.html" style="color:#534AB7;">Investor page</a> for those equity-adjusted figures.</div>
     </div>`;
   }
 
