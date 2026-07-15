@@ -42,77 +42,6 @@
     </div>
   </div>
 
-  <!-- GELİR TABLOSU -->
-  <div class="section">
-    <div class="section-label">Financial Projection</div>
-    <div class="section-title">Consolidated Revenue Forecast</div>
-    <div id="projTableWrap">
-    <table class="rev-table">
-      <thead><tr>
-        <th>Revenue Item</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>Year 4</th><th>Year 5</th><th>Y1→Y5</th>
-      </tr></thead>
-      <tbody>
-        <tr><td>Brace — Center 1 (private channel)</td><td class="val-pos">—</td><td class="val-pos">—</td><td class="val-pos">—</td><td class="val-grow">—</td></tr>
-      </tbody>
-    </table></div>
-    <div style="font-size:11px;color:var(--ink3);margin-top:8px;" id="projTableNote"></div>
-    <div class="chart-wrap" style="margin-top:24px;">
-      <canvas id="revenueChart" style="display:block;height:240px;width:100%;" width="778" height="240"></canvas>
-    </div>
-  </div>
-
-  <!-- ANNUAL FINANCIAL DETAIL — same metrics as the 12-Month Summary, per year, per center -->
-  <div class="section">
-    <div class="section-label">Financial Projection</div>
-    <div class="section-title">Annual Financial Detail — Istanbul</div>
-    <div style="font-size:11px;color:var(--ink3);margin-bottom:8px;">Same metrics as the 12-Month Summary (index.html), shown for every year. Year 1 is the actual monthly model; Years 2-5 are annual projections — several rows are approximations (labeled inline) since this projection has no monthly or per-product granularity beyond Year 1.</div>
-    <div id="istAnnualDetailWrap" style="overflow-x:auto;"></div>
-  </div>
-
-  <div class="section" id="izmirAnnualDetailSection" style="display:none;">
-    <div class="section-label" style="color:#1D9E75;">Financial Projection</div>
-    <div class="section-title">Annual Financial Detail — Izmir</div>
-    <div style="font-size:11px;color:var(--ink3);margin-bottom:8px;">Izmir has no monthly model of its own — it's ramped from a single full-capacity target, so "Monthly break-even" doesn't apply here. Doctor fee, channel share, and cutting fee all borrow Istanbul's Year-1 ratios (a second layer of approximation on top of Istanbul's own Year 2-5 estimate). Setup cost lands entirely in the opening year.</div>
-    <div id="izmirAnnualDetailWrap" style="overflow-x:auto;"></div>
-  </div>
-
-  <div class="section" id="ankaraAnnualDetailSection" style="display:none;">
-    <div class="section-label" style="color:#534AB7;">Financial Projection</div>
-    <div class="section-title">Annual Financial Detail — Ankara</div>
-    <div style="font-size:11px;color:var(--ink3);margin-bottom:8px;">Ankara has no monthly model of its own — it's ramped from a single full-capacity target, so "Monthly break-even" doesn't apply here. Doctor fee, channel share, and cutting fee all borrow Istanbul's Year-1 ratios (a second layer of approximation on top of Istanbul's own Year 2-5 estimate). Setup cost lands entirely in the opening year.</div>
-    <div id="ankaraAnnualDetailWrap" style="overflow-x:auto;"></div>
-  </div>
-
-  <div class="section" id="bursaAnnualDetailSection" style="display:none;">
-    <div class="section-label" style="color:#c94f2a;">Financial Projection</div>
-    <div class="section-title">Annual Financial Detail — Bursa</div>
-    <div style="font-size:11px;color:var(--ink3);margin-bottom:8px;">Bursa has no monthly model of its own — it's ramped from a single full-capacity target, so "Monthly break-even" doesn't apply here. Doctor fee, channel share, and cutting fee all borrow Istanbul's Year-1 ratios. Opens Year 3 (one year after Izmir/Ankara); the "Years to reach Bursa's full target" slider above controls how many years from opening it takes to reach 100% of that target — at the default (4 years), it doesn't quite get there within this model's 5-year horizon. Setup cost lands entirely in the opening year.</div>
-    <div id="bursaAnnualDetailWrap" style="overflow-x:auto;"></div>
-  </div>
-
-  <div class="section" id="gaziantepAnnualDetailSection" style="display:none;">
-    <div class="section-label" style="color:#8a6d1a;">Financial Projection</div>
-    <div class="section-title">Annual Financial Detail — Gaziantep</div>
-    <div style="font-size:11px;color:var(--ink3);margin-bottom:8px;">Gaziantep has no monthly model of its own — it's ramped from a single full-capacity target, so "Monthly break-even" doesn't apply here. Doctor fee, channel share, and cutting fee all borrow Istanbul's Year-1 ratios. Opens Year 3 (one year after Izmir/Ankara); the "Years to reach Gaziantep's full target" slider above controls how many years from opening it takes to reach 100% of that target — at the default (4 years), it doesn't quite get there within this model's 5-year horizon. Setup cost lands entirely in the opening year.</div>
-    <div id="gaziantepAnnualDetailWrap" style="overflow-x:auto;"></div>
-  </div>
-
-  <!-- TEHLİKE TETİKLEYİCİ -->
-  <div class="section">
-    <div class="section-label">Growth Logic</div>
-    <div class="trigger-box">
-      <div class="trigger-icon">◎</div>
-      <div class="trigger-content">
-        <div class="trigger-title">2nd Center Trigger</div>
-        <div class="trigger-text">When Center 1's 4-month moving average net profit turns positive — the 2nd center setup process begins.</div>
-        <div class="trigger-note" id="triggerNote">—</div>
-      </div>
-    </div>
-    <div class="highlight">
-      Every center uses the same infrastructure: <strong>Osteoid Inc.'s software, machinery, protocols.</strong> Centers 2 and 3 are not repetitions of Center 1 — they are accelerated versions of learned processes. Marginal setup cost decreases, ramp time shortens.
-    </div>
-  </div>
-
   <!-- 3 YIL ÖZET KARTLARI -->
   <div class="section">
     <div class="section-label">Annual Summary</div>
@@ -734,6 +663,77 @@
           </ul>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- GELİR TABLOSU -->
+  <div class="section">
+    <div class="section-label">Financial Projection</div>
+    <div class="section-title">Consolidated Revenue Forecast</div>
+    <div id="projTableWrap">
+    <table class="rev-table">
+      <thead><tr>
+        <th>Revenue Item</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>Year 4</th><th>Year 5</th><th>Y1→Y5</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>Brace — Center 1 (private channel)</td><td class="val-pos">—</td><td class="val-pos">—</td><td class="val-pos">—</td><td class="val-grow">—</td></tr>
+      </tbody>
+    </table></div>
+    <div style="font-size:11px;color:var(--ink3);margin-top:8px;" id="projTableNote"></div>
+    <div class="chart-wrap" style="margin-top:24px;">
+      <canvas id="revenueChart" style="display:block;height:240px;width:100%;" width="778" height="240"></canvas>
+    </div>
+  </div>
+
+  <!-- ANNUAL FINANCIAL DETAIL — same metrics as the 12-Month Summary, per year, per center -->
+  <div class="section">
+    <div class="section-label">Financial Projection</div>
+    <div class="section-title">Annual Financial Detail — Istanbul</div>
+    <div style="font-size:11px;color:var(--ink3);margin-bottom:8px;">Same metrics as the 12-Month Summary (index.html), shown for every year. Year 1 is the actual monthly model; Years 2-5 are annual projections — several rows are approximations (labeled inline) since this projection has no monthly or per-product granularity beyond Year 1.</div>
+    <div id="istAnnualDetailWrap" style="overflow-x:auto;"></div>
+  </div>
+
+  <div class="section" id="izmirAnnualDetailSection" style="display:none;">
+    <div class="section-label" style="color:#1D9E75;">Financial Projection</div>
+    <div class="section-title">Annual Financial Detail — Izmir</div>
+    <div style="font-size:11px;color:var(--ink3);margin-bottom:8px;">Izmir has no monthly model of its own — it's ramped from a single full-capacity target, so "Monthly break-even" doesn't apply here. Doctor fee, channel share, and cutting fee all borrow Istanbul's Year-1 ratios (a second layer of approximation on top of Istanbul's own Year 2-5 estimate). Setup cost lands entirely in the opening year.</div>
+    <div id="izmirAnnualDetailWrap" style="overflow-x:auto;"></div>
+  </div>
+
+  <div class="section" id="ankaraAnnualDetailSection" style="display:none;">
+    <div class="section-label" style="color:#534AB7;">Financial Projection</div>
+    <div class="section-title">Annual Financial Detail — Ankara</div>
+    <div style="font-size:11px;color:var(--ink3);margin-bottom:8px;">Ankara has no monthly model of its own — it's ramped from a single full-capacity target, so "Monthly break-even" doesn't apply here. Doctor fee, channel share, and cutting fee all borrow Istanbul's Year-1 ratios (a second layer of approximation on top of Istanbul's own Year 2-5 estimate). Setup cost lands entirely in the opening year.</div>
+    <div id="ankaraAnnualDetailWrap" style="overflow-x:auto;"></div>
+  </div>
+
+  <div class="section" id="bursaAnnualDetailSection" style="display:none;">
+    <div class="section-label" style="color:#c94f2a;">Financial Projection</div>
+    <div class="section-title">Annual Financial Detail — Bursa</div>
+    <div style="font-size:11px;color:var(--ink3);margin-bottom:8px;">Bursa has no monthly model of its own — it's ramped from a single full-capacity target, so "Monthly break-even" doesn't apply here. Doctor fee, channel share, and cutting fee all borrow Istanbul's Year-1 ratios. Opens Year 3 (one year after Izmir/Ankara); the "Years to reach Bursa's full target" slider above controls how many years from opening it takes to reach 100% of that target — at the default (4 years), it doesn't quite get there within this model's 5-year horizon. Setup cost lands entirely in the opening year.</div>
+    <div id="bursaAnnualDetailWrap" style="overflow-x:auto;"></div>
+  </div>
+
+  <div class="section" id="gaziantepAnnualDetailSection" style="display:none;">
+    <div class="section-label" style="color:#8a6d1a;">Financial Projection</div>
+    <div class="section-title">Annual Financial Detail — Gaziantep</div>
+    <div style="font-size:11px;color:var(--ink3);margin-bottom:8px;">Gaziantep has no monthly model of its own — it's ramped from a single full-capacity target, so "Monthly break-even" doesn't apply here. Doctor fee, channel share, and cutting fee all borrow Istanbul's Year-1 ratios. Opens Year 3 (one year after Izmir/Ankara); the "Years to reach Gaziantep's full target" slider above controls how many years from opening it takes to reach 100% of that target — at the default (4 years), it doesn't quite get there within this model's 5-year horizon. Setup cost lands entirely in the opening year.</div>
+    <div id="gaziantepAnnualDetailWrap" style="overflow-x:auto;"></div>
+  </div>
+
+  <!-- TEHLİKE TETİKLEYİCİ -->
+  <div class="section">
+    <div class="section-label">Growth Logic</div>
+    <div class="trigger-box">
+      <div class="trigger-icon">◎</div>
+      <div class="trigger-content">
+        <div class="trigger-title">2nd Center Trigger</div>
+        <div class="trigger-text">When Center 1's 4-month moving average net profit turns positive — the 2nd center setup process begins.</div>
+        <div class="trigger-note" id="triggerNote">—</div>
+      </div>
+    </div>
+    <div class="highlight">
+      Every center uses the same infrastructure: <strong>Osteoid Inc.'s software, machinery, protocols.</strong> Centers 2 and 3 are not repetitions of Center 1 — they are accelerated versions of learned processes. Marginal setup cost decreases, ramp time shortens.
     </div>
   </div>
 
