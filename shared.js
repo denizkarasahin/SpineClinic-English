@@ -23,7 +23,7 @@ document.getElementById = function(id) {
   };
 };
 
-const V = {"korseF":37800,"malzeme":50,"reklamCarpan":1.0,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.66,"kira":200000,"depozito":400000,"emlakci":400000,"m2":300,"tadilatM2":7000,"dekoM2":6750,"mobilya":300000,"ruhsat":100000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":90000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[15,15,20,25,25,33,35,41,42,50,50,55],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":27000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":1600,"mal_sens":2075,"mal_sensDelik":1250,"feeSci_stdR":10,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdR":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdR":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":45000,"pazarIstPct":30.1,"hedefOsteoidPay":30,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":true,"izmirHedefPay":30,"izmirUseIst":false,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":true,"ankaraHedefPay":30,"ankaraUseIst":false,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"bursaAktif":true,"bursaHedefPay":30,"bursaUseIst":false,"bursaUseIstGider":true,"bursaKira":80000,"bursaOrtotistM":55000,"bursaStajyerM":25000,"bursaMutfak":18000,"bursaSarf":3000,"bursaUseIstKurulum":true,"bursaKurulumKira":120000,"bursaKurulumDepozito":200000,"bursaKurulumTadilat":4750,"bursaKurulumDeko":2000,"bursaKurulumMobilya":600000,"bursaRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"gaziantepAktif":true,"gaziantepHedefPay":30,"gaziantepUseIst":false,"gaziantepUseIstGider":true,"gaziantepKira":85000,"gaziantepOrtotistM":55000,"gaziantepStajyerM":25000,"gaziantepMutfak":18000,"gaziantepSarf":3000,"gaziantepUseIstKurulum":true,"gaziantepKurulumKira":120000,"gaziantepKurulumDepozito":200000,"gaziantepKurulumTadilat":4750,"gaziantepKurulumDeko":2000,"gaziantepKurulumMobilya":600000,"gaziantepRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"bursaNufusPay":4.5,"gaziantepNufusPay":3.0,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":true,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":20,"dcfGrowth":18,"dcfGrowth45":45,"dcfExitMult":10,"dcfNegotiationDiscount":20,"tranche1Eur":500000,"trancheStepUp":1.75,"dcfInvest":1008662,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":12500,"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":100000,"_sen_max_kira":400000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":3500,"_sen_max_dekoM2":17000,"_sen_min_ortotistM":55000,"_sen_max_ortotistM":160000,"_sen_min_operatorM":110000,"_sen_max_operatorM":290000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3.0,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.65,"bursaRampaOran":0.75,"bursaKurulumOran":0.75,"gaziantepRampaOran":0.8,"gaziantepKurulumOran":0.65,"operatorM":180000,"ipLisansEur":500000,"sehirEksklusifEur":500000,"workingCapBufferEur":500000,"stage1BufferEur":200000,"kvOrani":25,"vergiDahil":true,"exitYili":5,"kisiselVergiOrani":15,"fundAy":0,"makineKatkiOran":50,"osteoidCarpan":1,"yatirimciCarpan":1.0,"doktorYatirim":0,"doktorCarpan":1.5,"sweatEur":80000,"sweatVestAy":48,"sweatCliffAy":12,"sweatElapsedAy":0,"sweatMaxPct":5,"sweatCarpan":1.0,"sweatVestedToday":true,"royaltyOffsetYil":1,"royaltyOffsetPct":0,"yonetimUcretiPct":5,"izmirFlagshipPay":65,"ankaraFlagshipPay":65,"bursaFlagshipPay":65,"gaziantepFlagshipPay":65,"izmirSubeMi":true,"ankaraSubeMi":true,"bursaSubeMi":true,"gaziantepSubeMi":true,"euLegalFaiz":5,"setupOverheadC1":0,"setupOverheadC2":0,"setupOverheadC3":0,"setupOverheadC4":0,"setupOverheadC5":0,"bursaGaziantepFcfFunded":false,"nakdiSermayeAktif":true,"teknokentKapsam":false,"emisyonPrimiAktif":true,"nominalPayOrani":10,"feeStreamAyriMult":false,"feeExitMult":12,"_version":46};
+const V = {"korseF":37800,"malzeme":50,"reklamCarpan":1.0,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.66,"kira":250000,"depozito":250000,"emlakci":500000,"m2":360,"tadilatM2":7000,"dekoM2":6750,"mobilya":300000,"ruhsat":100000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":90000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[15,15,20,25,25,33,35,41,42,50,50,55],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":27000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":1600,"mal_sens":2075,"mal_sensDelik":1250,"feeSci_stdR":10,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdR":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdR":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":45000,"pazarIstPct":30.1,"hedefOsteoidPay":30,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":true,"izmirHedefPay":30,"izmirUseIst":false,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":true,"ankaraHedefPay":30,"ankaraUseIst":false,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"bursaAktif":true,"bursaHedefPay":30,"bursaUseIst":false,"bursaUseIstGider":true,"bursaKira":80000,"bursaOrtotistM":55000,"bursaStajyerM":25000,"bursaMutfak":18000,"bursaSarf":3000,"bursaUseIstKurulum":true,"bursaKurulumKira":120000,"bursaKurulumDepozito":200000,"bursaKurulumTadilat":4750,"bursaKurulumDeko":2000,"bursaKurulumMobilya":600000,"bursaRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"gaziantepAktif":true,"gaziantepHedefPay":30,"gaziantepUseIst":false,"gaziantepUseIstGider":true,"gaziantepKira":85000,"gaziantepOrtotistM":55000,"gaziantepStajyerM":25000,"gaziantepMutfak":18000,"gaziantepSarf":3000,"gaziantepUseIstKurulum":true,"gaziantepKurulumKira":120000,"gaziantepKurulumDepozito":200000,"gaziantepKurulumTadilat":4750,"gaziantepKurulumDeko":2000,"gaziantepKurulumMobilya":600000,"gaziantepRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"bursaNufusPay":4.5,"gaziantepNufusPay":3.0,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":true,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":20,"dcfGrowth":18,"dcfGrowth45":45,"dcfExitMult":10,"dcfNegotiationDiscount":20,"tranche1Eur":500000,"trancheStepUp":1.75,"dcfInvest":1008662,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":12500,"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":100000,"_sen_max_kira":400000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":3500,"_sen_max_dekoM2":17000,"_sen_min_ortotistM":55000,"_sen_max_ortotistM":160000,"_sen_min_operatorM":110000,"_sen_max_operatorM":290000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3.0,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.65,"bursaRampaOran":0.75,"bursaKurulumOran":0.75,"gaziantepRampaOran":0.8,"gaziantepKurulumOran":0.65,"operatorM":180000,"ipLisansEur":500000,"sehirEksklusifEur":500000,"workingCapBufferEur":500000,"stage1BufferEur":200000,"kvOrani":25,"vergiDahil":true,"exitYili":5,"kisiselVergiOrani":15,"fundAy":0,"makineKatkiOran":50,"osteoidCarpan":1,"yatirimciCarpan":1.0,"doktorYatirim":0,"doktorCarpan":1.5,"sweatEur":80000,"sweatVestAy":48,"sweatCliffAy":12,"sweatElapsedAy":0,"sweatMaxPct":5,"sweatCarpan":1.0,"sweatVestedToday":true,"royaltyOffsetYil":1,"royaltyOffsetPct":0,"yonetimUcretiPct":5,"izmirFlagshipPay":65,"ankaraFlagshipPay":65,"bursaFlagshipPay":65,"gaziantepFlagshipPay":65,"izmirSubeMi":true,"ankaraSubeMi":true,"bursaSubeMi":true,"gaziantepSubeMi":true,"euLegalFaiz":5,"setupOverheadC1":0,"setupOverheadC2":0,"setupOverheadC3":0,"setupOverheadC4":0,"setupOverheadC5":0,"bursaGaziantepFcfFunded":false,"nakdiSermayeAktif":true,"teknokentKapsam":false,"emisyonPrimiAktif":true,"nominalPayOrani":10,"feeStreamAyriMult":false,"feeExitMult":12,"istRampYears":5,"izmirRampYears":4,"ankaraRampYears":4,"bursaRampYears":4,"gaziantepRampYears":4,"_version":48};
 // Restore state from localStorage if available; clear cache on version mismatch
 (function() {
   try {
@@ -83,6 +83,37 @@ function ff(n) {
 function feEur(tryVal) { return ff(tryVal); }
 function cls(n) { return n>0?'pc':n<0?'nc':'zc'; }
 
+// Ramp-to-target fractions — how much of a city's designated market-
+// potential (its Year-5 target) has been reached by calendar year `yearIdx`
+// (1-5), as a function of the user-adjustable "years to reach potential"
+// slider (V.{city}RampYears, 1-5). Two shapes, since Istanbul already has a
+// real Year-1 result (not a guess) while the satellites start from zero on
+// the month they open:
+//  - _istRampFrac: Istanbul's Year 1 is pinned to its own actual first-year
+//    performance (frac 0, handled by the caller, not here); the slider
+//    controls how many years it then takes to close the gap up to the Year-5
+//    target, interpolating evenly. rampYears=1 means Year 1 already IS the
+//    target.
+//  - _satRampFrac: a satellite's opening year is itself the first ramp step
+//    (scaled by how many months of that year it's actually open —
+//    openMonthsFrac), reaching 100% of its full-capacity target after
+//    rampYears total steps since opening. rampYears=1 means full target from
+//    the month it opens (still scaled by that first partial year).
+// Both clamp rampYears to the slider's own 1-5 range so a corrupted/missing
+// V field can't throw the ramp outside what the UI ever allows.
+function _istRampFrac(yearIdx, rampYears) {
+  const n = Math.max(1, Math.min(5, rampYears || 5));
+  return n <= 1 ? 1 : Math.min(1, (yearIdx - 1) / (n - 1));
+}
+function _satRampFrac(yearIdx, openYear, rampYears, openMonthsFrac) {
+  if (yearIdx < openYear) return 0;
+  const n = Math.max(1, Math.min(5, rampYears || 4));
+  const steps = yearIdx - openYear; // 0 in the opening year itself
+  let frac = Math.min(1, (steps + 1) / n);
+  if (steps === 0 && openMonthsFrac !== undefined) frac *= openMonthsFrac;
+  return frac;
+}
+
 const SCEN = {
   // royaltyEur carries its own assumption per scenario — the royalty
   // structure isn't final, so each named case states what it's betting on
@@ -91,11 +122,10 @@ const SCEN = {
   baz:     { korseF:37800, malzeme:50, mutfak:20000, stopaj:60000, royaltyEur:75,  korse:[5,10,15,20,25,25,30,30,35,35,40,45], kongre:[0,100000,0,200000,0,500000,100000,0,0,350000,0,350000] },
   iyimser: { korseF:37800, malzeme:50, mutfak:18000, stopaj:60000, royaltyEur:0,   korse:[8,14,20,26,30,32,36,38,42,44,48,55], kongre:[0,50000,0,100000,0,300000,100000,0,0,200000,0,200000] },
   kotu:    { korseF:30000, malzeme:50, mutfak:22000, stopaj:60000, royaltyEur:100, korse:[3,7,10,14,18,20,22,25,28,28,33,38], kongre:[0,100000,0,200000,0,500000,100000,0,0,350000,0,350000] },
-  // Setup-cost scenarios — two named points on the same live sliders, not a
-  // hardcoded override. Neither is "the truth"; pick one as a starting point
-  // and keep adjusting the sliders from there.
-  leanSetup:     { kira:150000, depozito:150000, emlakci:80000, m2:200, tadilatM2:4000, dekoM2:2000, mobilya:400000, ruhsat:90000, ekipmanOsteoidden:true },
-  fullSelfOwned: { kira:250000, depozito:250000, emlakci:500000, m2:360, tadilatM2:7000, dekoM2:6750, mobilya:300000, ruhsat:100000, ekipmanOsteoidden:false },
+  // Setup-cost scenario — a named point on the same live sliders, not a
+  // hardcoded override; the committed default now starts here (see V's
+  // kira/depozito/emlakci/m2 below), this button just resets back to it.
+  fullSelfOwned: { kira:250000, depozito:250000, emlakci:500000, m2:360, tadilatM2:7000, dekoM2:6750, mobilya:300000, ruhsat:100000 },
 };
 
 // Every slider key a scenario preset is allowed to touch. loadScen() only
@@ -121,10 +151,6 @@ function loadScen(key, btn) {
       const slA = document.getElementById('s_aylikKira'); if (slA) slA.value = s[k];
     }
   });
-  if (s.ekipmanOsteoidden !== undefined) {
-    V.ekipmanOsteoidden = s.ekipmanOsteoidden;
-    _refreshEkipmanOsteoidden();
-  }
   if (s.korse) s.korse.forEach((v,i)=>{ V.korse[i]=v; });
   if (window._redrawRamp) window._redrawRamp();
   // sync donemsel from kongre shorthand
@@ -428,7 +454,6 @@ function svSubeMi(sehir, isSube) {
 function initDynamic() {
   _refreshPrinterDisplay();
   svRobotKol();
-  _refreshEkipmanOsteoidden();
   _refreshVergiDahil();
   _refreshFeeStreamAyriMult();
   _refreshSubeMi('izmir');
@@ -1455,15 +1480,12 @@ function renderPazarChart(rows) {
   const _pIstEl = document.getElementById('pazarIstAdet'); if(_pIstEl) _pIstEl.textContent = pazarIst.toLocaleString('tr-TR');
 
   const payTR  = totalKorse / pazarTR * 100;
-  const payIst = totalKorse / pazarIst * 100;
 
   // KPI
   document.getElementById('pazarKpi').innerHTML = [
     { label:'Turkey market (year)',        val: pazarTR.toLocaleString('tr-TR')+' units', c:'neu' },
     { label:'Istanbul market (year)',      val: pazarIst.toLocaleString('tr-TR')+' units', c:'neu' },
-    { label:'Year 1 braces (total)',       val: totalKorse+' units', c:'neu' },
-    { label:'TR market share',             val: payTR.toFixed(2)+'%', c: payTR>=1?'pos':'neu' },
-    { label:'Istanbul market share',       val: payIst.toFixed(2)+'%', c: payIst>=2?'pos':'neu' },
+    { label:'Year 1 braces (total) (from brace ramp)', val: totalKorse+' units', c:'neu' },
     { label:'Break-even market share (IST)',val: ((17/pazarIst)*100).toFixed(2)+'%', c:'neg' },
   ].map(k=>`<div class="kpi"><div class="kpi-label">${k.label}</div><div class="kpi-val ${k.c}">${k.val}</div></div>`).join('');
 
@@ -2576,7 +2598,6 @@ function recalc() {
 
   _refreshPrinterDisplay();
   svRobotKol();
-  _refreshEkipmanOsteoidden();
   document.getElementById('kurulumTop').textContent=ff(kurulumTop);
   renderKurulumDonut(gv('kira'),gv('depozito'),gv('emlakci'),tadilatTop,dekoTopV,gv('mobilya')+printerMaliyet+robotKolMaliyet,gv('ruhsat'));
   window._lastInvestBreakdown = renderInvestBreakdown(kurulumTop, rows);
@@ -2840,9 +2861,9 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
   const istNet     = Math.max(0, (totals[_n] || 0) - (izmirRow[_n]||0) - (ankaraRow[_n]||0) - (bursaRow[_n]||0) - (gaziantepRow[_n]||0)); // includes b2b, net
   const izmirNet   = izmirRow[_n]  || 0;  // net after center-specific opex (= izmirFullNet)
   const ankaraNet  = ankaraRow[_n] || 0;  // net after center-specific opex (= ankaraFullNet)
-  // Bursa/Gaziantep open Year 3, so their _n (=Year 5) figure is only 80% of
-  // full-capacity target (bursaFullNet/gaziantepFullNet), not the target
-  // itself — see the ramp comment in buildProjection().
+  // Bursa/Gaziantep open Year 3, so their _n (=Year 5) figure is whatever
+  // fraction of full-capacity target (bursaFullNet/gaziantepFullNet) their
+  // Years-to-reach-target slider has reached by then — see _satRampFrac.
   const bursaNet = bursaRow[_n] || 0;
   const gaziantepNet = gaziantepRow[_n] || 0;
   // Combined total = net consolidated (matches Multi-Year Plan page)
@@ -2945,26 +2966,28 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
   }
 
   if (V.bursaAktif) {
+    const bursaReachPct = Math.round(_satRampFrac(5, 3, V.bursaRampYears || 4) * 100);
     html += clinicCard(
       'Bursa Center',
       'BUR · ' + (V.bursaHedefPay || 30).toFixed(0) + '% market share',
       '#c94f2a', bursaY5Adet || 0,
       (V.bursaHedefPay || 30).toFixed(1),
       bursaNet,
-      'Opens Year 3 — only 80% of full-capacity target reached by Year 5 within this model\'s horizon. Net after center-specific opex. Gross: ~€' + Math.round((bursaY5Gelir||0)) + 'K',
-      'Annual net revenue (Year 5, 80% of target)'
+      'Opens Year 3 — ' + bursaReachPct + '% of full-capacity target reached by Year 5 within this model\'s horizon (adjustable via the "Years to reach target" slider on the Multi-Year Plan page). Net after center-specific opex. Gross: ~€' + Math.round((bursaY5Gelir||0)) + 'K',
+      'Annual net revenue (Year 5, ' + bursaReachPct + '% of target)'
     );
   }
 
   if (V.gaziantepAktif) {
+    const gaziantepReachPct = Math.round(_satRampFrac(5, 3, V.gaziantepRampYears || 4) * 100);
     html += clinicCard(
       'Gaziantep Center',
       'GAZ · ' + (V.gaziantepHedefPay || 30).toFixed(0) + '% market share',
       '#8a6d1a', gaziantepY5Adet || 0,
       (V.gaziantepHedefPay || 30).toFixed(1),
       gaziantepNet,
-      'Opens Year 3 — only 80% of full-capacity target reached by Year 5 within this model\'s horizon. Net after center-specific opex. Gross: ~€' + Math.round((gaziantepY5Gelir||0)) + 'K',
-      'Annual net revenue (Year 5, 80% of target)'
+      'Opens Year 3 — ' + gaziantepReachPct + '% of full-capacity target reached by Year 5 within this model\'s horizon (adjustable via the "Years to reach target" slider on the Multi-Year Plan page). Net after center-specific opex. Gross: ~€' + Math.round((gaziantepY5Gelir||0)) + 'K',
+      'Annual net revenue (Year 5, ' + gaziantepReachPct + '% of target)'
     );
   }
 
@@ -3246,7 +3269,8 @@ function buildProjection() {
   // startup-year opex gap covered by raised capital — is now its own
   // explicit row (istFinancingGapRow) instead of a basis switch.
   const y1BrutM1 = toEur(y1KorseNet);
-  const istGrossRow = [y1BrutM1, lerp(y1BrutM1, y3BrutGelir, 0.40), lerp(y1BrutM1, y3BrutGelir, 0.65), lerp(y1BrutM1, y3BrutGelir, 0.85), y3BrutGelir];
+  const istRampYears = V.istRampYears || 5;
+  const istGrossRow = [1,2,3,4,5].map(y => y===1 ? y1BrutM1 : lerp(y1BrutM1, y3BrutGelir, _istRampFrac(y, istRampYears)));
   const istOpexRow  = [y1GiderEur, y2GiderEur, y3GiderEur, y4GiderEur, y5GiderEur];
   const istNetRow   = istGrossRow.map((g,i) => Math.max(0, g - istOpexRow[i]));
   // Amount by which opex exceeds gross, before flooring — the gap raised
@@ -3275,6 +3299,15 @@ function buildProjection() {
   const _gaziantepAcilisAyYil3 = V.gaziantepAcilisAy || 3;
   const _gaziantepAcilisAy = 24 + _gaziantepAcilisAyYil3;
   const _gaziantepAktifAyYil3 = Math.max(0, Math.min(12, 37 - _gaziantepAcilisAy));
+
+  // Years to reach each city's designated market-potential target (1-5,
+  // user-adjustable — see _satRampFrac/_istRampFrac above). Defaults match
+  // this model's original fixed ramp shape as closely as the linear
+  // generalization allows.
+  const izmirRampYears = V.izmirRampYears || 4;
+  const ankaraRampYears = V.ankaraRampYears || 4;
+  const bursaRampYears = V.bursaRampYears || 4;
+  const gaziantepRampYears = V.gaziantepRampYears || 4;
 
   updateMerkezGiderNotu('izmir');
   updateMerkezGiderNotu('ankara');
@@ -3345,8 +3378,9 @@ function buildProjection() {
   const izmirY5Gelir  = Math.round(izmirY5Adet  * y1BirimNetEur / 1000);
   const ankaraY5Gelir = Math.round(ankaraY5Adet * y1BirimNetEur / 1000);
   // "Y5Adet"/"Y5Gelir" naming kept consistent with Izmir/Ankara even though
-  // Bursa/Gaziantep (Year-3 openers) only reach 80% of this full-capacity
-  // target by the model's actual Year 5 — see the ramp block below.
+  // Bursa/Gaziantep (Year-3 openers) may not fully reach this full-capacity
+  // target by the model's actual Year 5, depending on their ramp-years
+  // slider — see _satRampFrac / the ramp block below.
   const bursaY5Adet = V.bursaAktif ? Math.round(pazarBursa * gv('bursaHedefPay') / 100) : 0;
   const gaziantepY5Adet = V.gaziantepAktif ? Math.round(pazarGaziantep * gv('gaziantepHedefPay') / 100) : 0;
   const bursaY5Gelir = Math.round(bursaY5Adet * y1BirimNetEur / 1000);
@@ -3384,30 +3418,19 @@ function buildProjection() {
   // existing default-scenario number.
   const izmirFullNet  = V.izmirAktif  ? (izmirY5Gelir  - izmirY5GiderEur) : 0;
   const ankaraFullNet = V.ankaraAktif ? (ankaraY5Gelir - ankaraY5GiderEur) : 0;
-  // New centers: 5-year ramp — interpolate from full-capacity net to avoid cost-base distortion
-  const izmirGelirY2  = V.izmirAktif  ? Math.round(izmirFullNet  * 0.25 * _aktifAyYil2  / 12) : 0;
-  const ankaraGelirY2 = V.ankaraAktif ? Math.round(ankaraFullNet * 0.25 * _ankaraAktifAyYil2 / 12) : 0;
-  const izmirY3Net  = Math.round(izmirFullNet  * 0.50);
-  const izmirY4Net  = Math.round(izmirFullNet  * 0.80);
-  const ankaraY3Net = Math.round(ankaraFullNet * 0.50);
-  const ankaraY4Net = Math.round(ankaraFullNet * 0.80);
-  const izmirRow  = [0, izmirGelirY2,  izmirY3Net,  izmirY4Net,  izmirFullNet];
-  const ankaraRow = [0, ankaraGelirY2, ankaraY3Net, ankaraY4Net, ankaraFullNet];
-  // Bursa/Gaziantep open in Year 3 — same ramp shape as Izmir/Ankara, shifted
-  // one year later: Year 3 = opening-year partial fraction, Year 4 = 50%,
-  // Year 5 = 80% of full-capacity net. They never reach 100% within this
-  // model's 5-year horizon (there's no Year 6 to reach it in), same as if
-  // Izmir/Ankara's own ramp were cut off one year early.
+  // New centers: user-adjustable ramp (V.{city}RampYears, 1-5) — interpolate
+  // from full-capacity net to avoid cost-base distortion.
+  const izmirRow  = [1,2,3,4,5].map(y => Math.round(izmirFullNet  * _satRampFrac(y, 2, izmirRampYears,  _aktifAyYil2  / 12)));
+  const ankaraRow = [1,2,3,4,5].map(y => Math.round(ankaraFullNet * _satRampFrac(y, 2, ankaraRampYears, _ankaraAktifAyYil2 / 12)));
+  // Bursa/Gaziantep open in Year 3 — same ramp mechanism as Izmir/Ankara,
+  // shifted one year later. At the default 4-year ramp they don't reach 100%
+  // of full-capacity net within this model's 5-year horizon (there's no
+  // Year 6 to reach it in); dialing their ramp-years slider down to 3 or
+  // less reaches it by Year 5 instead.
   const bursaFullNet = V.bursaAktif ? (bursaY5Gelir - bursaY5GiderEur) : 0;
   const gaziantepFullNet = V.gaziantepAktif ? (gaziantepY5Gelir - gaziantepY5GiderEur) : 0;
-  const bursaGelirY3 = V.bursaAktif ? Math.round(bursaFullNet * 0.25 * _bursaAktifAyYil3 / 12) : 0;
-  const gaziantepGelirY3 = V.gaziantepAktif ? Math.round(gaziantepFullNet * 0.25 * _gaziantepAktifAyYil3 / 12) : 0;
-  const bursaY4Net = Math.round(bursaFullNet * 0.50);
-  const gaziantepY4Net = Math.round(gaziantepFullNet * 0.50);
-  const bursaY5NetAt80 = Math.round(bursaFullNet * 0.80);
-  const gaziantepY5NetAt80 = Math.round(gaziantepFullNet * 0.80);
-  const bursaRow = [0, 0, bursaGelirY3, bursaY4Net, bursaY5NetAt80];
-  const gaziantepRow = [0, 0, gaziantepGelirY3, gaziantepY4Net, gaziantepY5NetAt80];
+  const bursaRow = [1,2,3,4,5].map(y => Math.round(bursaFullNet * _satRampFrac(y, 3, bursaRampYears, _bursaAktifAyYil3 / 12)));
+  const gaziantepRow = [1,2,3,4,5].map(y => Math.round(gaziantepFullNet * _satRampFrac(y, 3, gaziantepRampYears, _gaziantepAktifAyYil3 / 12)));
 
   // ── Hub-and-spoke: satellite management fee + ownership split ────────────
   // Each satellite (Izmir/Ankara) defaults to a separate Ltd. şirket,
@@ -3428,21 +3451,12 @@ function buildProjection() {
   // 5-yr carryforward) and never touch flagship taxable profit; a Branch's
   // losses flow straight into the flagship's own taxable profit because they
   // ARE the flagship's own P&L, not a separate return.
-  const izmirGrossRow  = V.izmirAktif
-    ? [0, Math.round(izmirY5Gelir  * 0.25 * _aktifAyYil2        / 12), Math.round(izmirY5Gelir  * 0.50), Math.round(izmirY5Gelir  * 0.80), izmirY5Gelir]
-    : [0,0,0,0,0];
-  const ankaraGrossRow = V.ankaraAktif
-    ? [0, Math.round(ankaraY5Gelir * 0.25 * _ankaraAktifAyYil2  / 12), Math.round(ankaraY5Gelir * 0.50), Math.round(ankaraY5Gelir * 0.80), ankaraY5Gelir]
-    : [0,0,0,0,0];
-  // Bursa/Gaziantep: same gross-revenue ramp, shifted to Year 3 (index 0-1 =
-  // 0, index 2 = opening-year partial, index 3 = 50%, index 4 = 80% — never
-  // reaching izmirY5Gelir-style 100%, per the Year-3-opener ramp above).
-  const bursaGrossRow = V.bursaAktif
-    ? [0, 0, Math.round(bursaY5Gelir * 0.25 * _bursaAktifAyYil3 / 12), Math.round(bursaY5Gelir * 0.50), Math.round(bursaY5Gelir * 0.80)]
-    : [0,0,0,0,0];
-  const gaziantepGrossRow = V.gaziantepAktif
-    ? [0, 0, Math.round(gaziantepY5Gelir * 0.25 * _gaziantepAktifAyYil3 / 12), Math.round(gaziantepY5Gelir * 0.50), Math.round(gaziantepY5Gelir * 0.80)]
-    : [0,0,0,0,0];
+  const izmirGrossRow  = [1,2,3,4,5].map(y => Math.round(izmirY5Gelir  * _satRampFrac(y, 2, izmirRampYears,  _aktifAyYil2  / 12)));
+  const ankaraGrossRow = [1,2,3,4,5].map(y => Math.round(ankaraY5Gelir * _satRampFrac(y, 2, ankaraRampYears, _ankaraAktifAyYil2 / 12)));
+  // Bursa/Gaziantep: same gross-revenue ramp mechanism, shifted to Year 3 —
+  // see bursaRampYears/gaziantepRampYears above.
+  const bursaGrossRow = [1,2,3,4,5].map(y => Math.round(bursaY5Gelir * _satRampFrac(y, 3, bursaRampYears, _bursaAktifAyYil3 / 12)));
+  const gaziantepGrossRow = [1,2,3,4,5].map(y => Math.round(gaziantepY5Gelir * _satRampFrac(y, 3, gaziantepRampYears, _gaziantepAktifAyYil3 / 12)));
   const yonetimUcretiOran = (V.yonetimUcretiPct ?? 5) / 100;
   const izmirIsSube  = !!V.izmirSubeMi;
   const ankaraIsSube = !!V.ankaraSubeMi;
@@ -3498,15 +3512,15 @@ function buildProjection() {
   // ── Brace counts per year — clinic channel only (Istanbul + Izmir + Ankara);
   // B2B is tracked separately (see korse.html / kpiGridB2B) and not folded in
   // here so this stays consistent with Year 1's and Year 5's existing brace
-  // KPIs, which have always excluded B2B. Uses the SAME interpolation weights
-  // (0.40/0.65/0.85) and center ramp fractions (0.25×months/12, 0.50, 0.80)
-  // as the revenue projection above, so brace counts and revenue tell the
-  // same growth story instead of two independently-guessed curves.
-  const korseCountIst    = [y1Korse, lerp(y1Korse, y5KorseAdet, 0.40), lerp(y1Korse, y5KorseAdet, 0.65), lerp(y1Korse, y5KorseAdet, 0.85), y5KorseAdet];
-  const korseCountIzmir  = [0, Math.round(izmirY5Adet  * 0.25 * _aktifAyYil2 / 12),       Math.round(izmirY5Adet  * 0.50), Math.round(izmirY5Adet  * 0.80), izmirY5Adet];
-  const korseCountAnkara = [0, Math.round(ankaraY5Adet * 0.25 * _ankaraAktifAyYil2 / 12), Math.round(ankaraY5Adet * 0.50), Math.round(ankaraY5Adet * 0.80), ankaraY5Adet];
-  const korseCountBursa  = [0, 0, Math.round(bursaY5Adet * 0.25 * _bursaAktifAyYil3 / 12), Math.round(bursaY5Adet * 0.50), Math.round(bursaY5Adet * 0.80)];
-  const korseCountGaziantep = [0, 0, Math.round(gaziantepY5Adet * 0.25 * _gaziantepAktifAyYil3 / 12), Math.round(gaziantepY5Adet * 0.50), Math.round(gaziantepY5Adet * 0.80)];
+  // KPIs, which have always excluded B2B. Uses the SAME _istRampFrac/
+  // _satRampFrac ramp fractions as the revenue projection above, so brace
+  // counts and revenue tell the same growth story instead of two
+  // independently-guessed curves.
+  const korseCountIst    = [1,2,3,4,5].map(y => y===1 ? y1Korse : lerp(y1Korse, y5KorseAdet, _istRampFrac(y, istRampYears)));
+  const korseCountIzmir  = [1,2,3,4,5].map(y => Math.round(izmirY5Adet  * _satRampFrac(y, 2, izmirRampYears,  _aktifAyYil2  / 12)));
+  const korseCountAnkara = [1,2,3,4,5].map(y => Math.round(ankaraY5Adet * _satRampFrac(y, 2, ankaraRampYears, _ankaraAktifAyYil2 / 12)));
+  const korseCountBursa  = [1,2,3,4,5].map(y => Math.round(bursaY5Adet  * _satRampFrac(y, 3, bursaRampYears,  _bursaAktifAyYil3 / 12)));
+  const korseCountGaziantep = [1,2,3,4,5].map(y => Math.round(gaziantepY5Adet * _satRampFrac(y, 3, gaziantepRampYears, _gaziantepAktifAyYil3 / 12)));
   const korseCountTotal  = [0,1,2,3,4].map(i => korseCountIst[i] + korseCountIzmir[i] + korseCountAnkara[i] + korseCountBursa[i] + korseCountGaziantep[i]);
   // For the Tax Optimization panel's Lever 2 (teknokent royalty pipe) — total
   // royalty paid to Osteoid A.Ş. across all active centers, €K/yr.
@@ -3936,22 +3950,6 @@ function svRobotKol() {
 function svRobotKolToggle(checked) {
   V.robotKolAktif = checked;
   svRobotKol();
-  recalc();
-  localStorage.setItem('osteoid_V', JSON.stringify(V));
-}
-// Scenario switch: who owns the printers/robot arm — Osteoid A.Ş. (intercompany,
-// no clinic capex) or the clinic itself (full purchase, counted in setup cost).
-function _refreshEkipmanOsteoidden() {
-  if (V.ekipmanOsteoidden === undefined) V.ekipmanOsteoidden = true;
-  const aktif = V.ekipmanOsteoidden;
-  const cb = document.getElementById('ekipmanOsteoiddenToggle');
-  if (cb) cb.checked = aktif;
-  const tag = document.getElementById('ekipmanOsteoiddenTag');
-  if (tag) { tag.textContent = aktif ? 'Osteoid A.Ş. owns it' : 'Clinic buys it'; tag.style.color = aktif ? '#534AB7' : '#c94f2a'; }
-}
-function svEkipmanOsteoidden(checked) {
-  V.ekipmanOsteoidden = checked;
-  _refreshEkipmanOsteoidden();
   recalc();
   localStorage.setItem('osteoid_V', JSON.stringify(V));
 }

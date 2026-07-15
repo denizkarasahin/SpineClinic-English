@@ -27,10 +27,9 @@
   <div class="section-header" onclick="tog(this)"><h2>Setup Costs</h2><span class="tog">▸</span></div>
   <div class="section-body">
     <div style="display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:14px;">
-      <span style="font-size:11px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:0.3px;">Setup scenario:</span>
-      <button class="sb" onclick="loadScen('leanSetup',this)">Lean setup (~€39K)</button>
+      <span style="font-size:11px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:0.3px;">Setup default:</span>
       <button class="sb" onclick="loadScen('fullSelfOwned',this)">Full self-owned (~€219K)</button>
-      <span style="font-size:11px;color:#aaa;">Presets move every slider below — neither is "correct," pick a starting point and keep adjusting.</span>
+      <span style="font-size:11px;color:#aaa;">Resets every slider below to the committed default — still just a starting point, keep adjusting.</span>
     </div>
     <div class="two-col">
       <div class="sl-grid" style="grid-template-columns:1fr 1fr;">
@@ -94,16 +93,13 @@
           </div>
         </div>
         <hr style="border:none;border-top:1px solid #e8e8e4;margin:12px 0;grid-column:1/-1;">
-        <div style="font-size:10px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;grid-column:1/-1;">Osteoid A.Ş. Equipment (intercompany)</div>
+        <div style="font-size:10px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;grid-column:1/-1;">Equipment (Clinic-Owned)</div>
         <div class="sl-row" style="margin-bottom:8px;grid-column:1/-1;">
-          <label style="display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer;">
+          <label style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
             <span>Equipment ownership (printers &amp; robot arm)</span>
-            <label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer;font-weight:400;">
-              <input type="checkbox" id="ekipmanOsteoiddenToggle" checked onchange="svEkipmanOsteoidden(this.checked)" style="width:14px;height:14px;accent-color:#534AB7;cursor:pointer;">
-              <span id="ekipmanOsteoiddenTag" style="font-size:11px;font-weight:700;color:#534AB7;">Osteoid A.Ş. owns it</span>
-            </label>
+            <span style="font-size:11px;font-weight:700;color:#c94f2a;">Clinic buys it</span>
           </label>
-          <span class="sl-note">When on, Osteoid A.Ş. supplies this equipment and the clinic's setup cost excludes it entirely; when off, the clinic purchases it and the capex below counts toward setup cost.</span>
+          <span class="sl-note">The clinic purchases the 3D printer and robot arm itself, at full market price — the capex below counts toward setup cost.</span>
         </div>
         <div class="sl-row">
           <label style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
@@ -142,7 +138,7 @@
           <span class="sl-note"><span id="robotKolTRY">—</span></span>
         </div>
         <div class="note-box" style="margin-top:12px;border-left:3px solid #534AB7;background:#f4f3ff;color:#534AB7;grid-column:1/-1;">
-          ⚠ With "Equipment ownership" on above, the 3D Printer and Robot Arm are supplied by Osteoid A.Ş. as an intercompany transfer. <strong>Once the initial investment is recovered, the equipment will be transferred to Osteoid Centers at 50% of market price.</strong> Turn it off to model the clinic purchasing this equipment itself.
+          The 3D Printer and Robot Arm are purchased outright by the clinic, at full market price — no Osteoid A.Ş. intercompany transfer or buy-back.
         </div>
       </div>
       <div>

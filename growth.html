@@ -86,14 +86,14 @@
   <div class="section" id="bursaAnnualDetailSection" style="display:none;">
     <div class="section-label" style="color:#c94f2a;">Financial Projection</div>
     <div class="section-title">Annual Financial Detail — Bursa</div>
-    <div style="font-size:11px;color:var(--ink3);margin-bottom:8px;">Bursa has no monthly model of its own — it's ramped from a single full-capacity target, so "Monthly break-even" doesn't apply here. Doctor fee, channel share, and cutting fee all borrow Istanbul's Year-1 ratios. Opens Year 3 (one year after Izmir/Ankara), so it only reaches 80% of its full-capacity target by Year 5 within this model's horizon. Setup cost lands entirely in the opening year.</div>
+    <div style="font-size:11px;color:var(--ink3);margin-bottom:8px;">Bursa has no monthly model of its own — it's ramped from a single full-capacity target, so "Monthly break-even" doesn't apply here. Doctor fee, channel share, and cutting fee all borrow Istanbul's Year-1 ratios. Opens Year 3 (one year after Izmir/Ankara); the "Years to reach Bursa's full target" slider above controls how many years from opening it takes to reach 100% of that target — at the default (4 years), it doesn't quite get there within this model's 5-year horizon. Setup cost lands entirely in the opening year.</div>
     <div id="bursaAnnualDetailWrap" style="overflow-x:auto;"></div>
   </div>
 
   <div class="section" id="gaziantepAnnualDetailSection" style="display:none;">
     <div class="section-label" style="color:#8a6d1a;">Financial Projection</div>
     <div class="section-title">Annual Financial Detail — Gaziantep</div>
-    <div style="font-size:11px;color:var(--ink3);margin-bottom:8px;">Gaziantep has no monthly model of its own — it's ramped from a single full-capacity target, so "Monthly break-even" doesn't apply here. Doctor fee, channel share, and cutting fee all borrow Istanbul's Year-1 ratios. Opens Year 3 (one year after Izmir/Ankara), so it only reaches 80% of its full-capacity target by Year 5 within this model's horizon. Setup cost lands entirely in the opening year.</div>
+    <div style="font-size:11px;color:var(--ink3);margin-bottom:8px;">Gaziantep has no monthly model of its own — it's ramped from a single full-capacity target, so "Monthly break-even" doesn't apply here. Doctor fee, channel share, and cutting fee all borrow Istanbul's Year-1 ratios. Opens Year 3 (one year after Izmir/Ankara); the "Years to reach Gaziantep's full target" slider above controls how many years from opening it takes to reach 100% of that target — at the default (4 years), it doesn't quite get there within this model's 5-year horizon. Setup cost lands entirely in the opening year.</div>
     <div id="gaziantepAnnualDetailWrap" style="overflow-x:auto;"></div>
   </div>
 
@@ -178,6 +178,13 @@
                 <div class="sl-controls">
                   <input type="range" id="s_izmirFlagshipPay" min="30" max="100" step="5" value="65" style="accent-color:#1D9E75;" oninput="sv('izmirFlagshipPay',this.value)">
                   <span class="sl-val" id="izmirFlagshipPay" style="min-width:30px;color:#1D9E75;">65</span>
+                </div>
+              </div>
+              <div class="sl-row" style="margin-bottom:0;margin-top:8px;">
+                <label style="font-size:10px;color:#1D9E75;">Years to reach Izmir's full target — designated market potential</label>
+                <div class="sl-controls">
+                  <input type="range" id="s_izmirRampYears" min="1" max="5" step="1" value="4" style="accent-color:#1D9E75;" oninput="sv('izmirRampYears',this.value)">
+                  <span class="sl-val" id="izmirRampYears" style="min-width:30px;color:#1D9E75;">4</span>
                 </div>
               </div>
               <div id="izmirSubeNote" style="display:none;font-size:10px;color:#1D9E75;padding:6px 0 0;">Branch mode: 100% of Izmir's P&amp;L (incl. any loss) consolidates into the flagship — no fee, no minority interest. See trade-off note above.</div>
@@ -281,6 +288,13 @@
                 <div class="sl-controls">
                   <input type="range" id="s_ankaraFlagshipPay" min="30" max="100" step="5" value="65" style="accent-color:#534AB7;" oninput="sv('ankaraFlagshipPay',this.value)">
                   <span class="sl-val" id="ankaraFlagshipPay" style="min-width:30px;color:#534AB7;">65</span>
+                </div>
+              </div>
+              <div class="sl-row" style="margin-bottom:0;margin-top:8px;">
+                <label style="font-size:10px;color:#534AB7;">Years to reach Ankara's full target — designated market potential</label>
+                <div class="sl-controls">
+                  <input type="range" id="s_ankaraRampYears" min="1" max="5" step="1" value="4" style="accent-color:#534AB7;" oninput="sv('ankaraRampYears',this.value)">
+                  <span class="sl-val" id="ankaraRampYears" style="min-width:30px;color:#534AB7;">4</span>
                 </div>
               </div>
               <div id="ankaraSubeNote" style="display:none;font-size:10px;color:#534AB7;padding:6px 0 0;">Branch mode: 100% of Ankara's P&amp;L (incl. any loss) consolidates into the flagship — no fee, no minority interest. See trade-off note above.</div>
@@ -394,7 +408,7 @@
           </div>
           <div style="border-top:1px solid #e8e8e4;padding-top:10px;">
             <div style="font-size:10px;color:#888;font-weight:700;text-transform:uppercase;margin-bottom:8px;">3rd/4th Center Selection — Bursa &amp; Gaziantep (Year 3)</div>
-            <div class="note-box" style="margin-bottom:8px;font-size:11px;">⚠ Same modeling approach as Izmir/Ankara: opex below excludes HQ-shared costs, satellite management fee and Subsidiary/Branch mode use the network-wide terms set in the Year 2 card above. Bursa/Gaziantep open one year later than Izmir/Ankara, so their ramp is shifted a year — they reach 50%/80% of target by Year 4/5, not 100%, within this model's 5-year horizon.</div>
+            <div class="note-box" style="margin-bottom:8px;font-size:11px;">⚠ Same modeling approach as Izmir/Ankara: opex below excludes HQ-shared costs, satellite management fee and Subsidiary/Branch mode use the network-wide terms set in the Year 2 card above. Bursa/Gaziantep open one year later than Izmir/Ankara — each has its own "Years to reach full target" slider (below), so how much of their target they've reached by Year 5 is now adjustable rather than fixed.</div>
             <label style="display:flex;align-items:center;gap:8px;margin-bottom:4px;cursor:pointer;padding:8px;background:#fdf1ec;border:1px solid #c94f2a44;border-radius:6px 6px 0 0;">
               <input type="checkbox" id="bursaToggle" onchange="toggleMerkez('bursa',this.checked)" style="width:14px;height:14px;accent-color:#c94f2a;cursor:pointer;">
               <span style="font-size:12px;font-weight:700;color:#c94f2a;">Bursa Center</span>
@@ -413,6 +427,13 @@
                 <div class="sl-controls">
                   <input type="range" id="s_bursaFlagshipPay" min="30" max="100" step="5" value="65" style="accent-color:#c94f2a;" oninput="sv('bursaFlagshipPay',this.value)">
                   <span class="sl-val" id="bursaFlagshipPay" style="min-width:30px;color:#c94f2a;">65</span>
+                </div>
+              </div>
+              <div class="sl-row" style="margin-bottom:0;margin-top:8px;">
+                <label style="font-size:10px;color:#c94f2a;">Years to reach Bursa's full target — designated market potential</label>
+                <div class="sl-controls">
+                  <input type="range" id="s_bursaRampYears" min="1" max="5" step="1" value="4" style="accent-color:#c94f2a;" oninput="sv('bursaRampYears',this.value)">
+                  <span class="sl-val" id="bursaRampYears" style="min-width:30px;color:#c94f2a;">4</span>
                 </div>
               </div>
               <div id="bursaSubeNote" style="display:none;font-size:10px;color:#c94f2a;padding:6px 0 0;">Branch mode: 100% of Bursa's P&amp;L (incl. any loss) consolidates into the flagship — no fee, no minority interest. See trade-off note above.</div>
@@ -521,6 +542,13 @@
                 <div class="sl-controls">
                   <input type="range" id="s_gaziantepFlagshipPay" min="30" max="100" step="5" value="65" style="accent-color:#8a6d1a;" oninput="sv('gaziantepFlagshipPay',this.value)">
                   <span class="sl-val" id="gaziantepFlagshipPay" style="min-width:30px;color:#8a6d1a;">65</span>
+                </div>
+              </div>
+              <div class="sl-row" style="margin-bottom:0;margin-top:8px;">
+                <label style="font-size:10px;color:#8a6d1a;">Years to reach Gaziantep's full target — designated market potential</label>
+                <div class="sl-controls">
+                  <input type="range" id="s_gaziantepRampYears" min="1" max="5" step="1" value="4" style="accent-color:#8a6d1a;" oninput="sv('gaziantepRampYears',this.value)">
+                  <span class="sl-val" id="gaziantepRampYears" style="min-width:30px;color:#8a6d1a;">4</span>
                 </div>
               </div>
               <div id="gaziantepSubeNote" style="display:none;font-size:10px;color:#8a6d1a;padding:6px 0 0;">Branch mode: 100% of Gaziantep's P&amp;L (incl. any loss) consolidates into the flagship — no fee, no minority interest. See trade-off note above.</div>
@@ -648,6 +676,11 @@
               <span class="sl-val" id="hedefOsteoidPay" contenteditable="true" onblur="sv2('hedefOsteoidPay','s_hedefOsteoidPay',this)" style="min-width:40px;font-size:12px;color:#c94f2a;">30</span>
               <span style="font-size:10px;color:#888;">% IST</span>
             </div>
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
+              <input type="range" id="s_istRampYears" min="1" max="5" step="1" value="5" style="flex:1;accent-color:#c94f2a;" oninput="sv('istRampYears',this.value)">
+              <span class="sl-val" id="istRampYears" style="min-width:40px;font-size:12px;color:#c94f2a;">5</span>
+              <span style="font-size:10px;color:#888;">yrs to target</span>
+            </div>
             <div id="izmirHedefWrap" style="">
               <div style="font-size:10px;color:#1D9E75;margin-bottom:4px;font-weight:700;">IZMIR</div>
               <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
@@ -665,7 +698,7 @@
               </div>
             </div>
             <div id="bursaHedefWrap" style="">
-              <div style="font-size:10px;color:#c94f2a;margin-bottom:4px;font-weight:700;">BURSA <span style="font-weight:400;text-transform:none;color:#888;">(target — 80% reached by Y5)</span></div>
+              <div style="font-size:10px;color:#c94f2a;margin-bottom:4px;font-weight:700;">BURSA <span style="font-weight:400;text-transform:none;color:#888;">(target — years-to-reach set above)</span></div>
               <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
                 <input type="range" id="s_bursaHedefPay" min="1" max="100" step="0.5" value="30" style="flex:1;accent-color:#c94f2a;" oninput="sv('bursaHedefPay',this.value)">
                 <span class="sl-val" id="bursaHedefPay" contenteditable="true" onblur="sv2('bursaHedefPay','s_bursaHedefPay',this)" style="min-width:40px;font-size:12px;color:#c94f2a;">30</span>
@@ -673,7 +706,7 @@
               </div>
             </div>
             <div id="gaziantepHedefWrap" style="">
-              <div style="font-size:10px;color:#8a6d1a;margin-bottom:4px;font-weight:700;">GAZIANTEP <span style="font-weight:400;text-transform:none;color:#888;">(target — 80% reached by Y5)</span></div>
+              <div style="font-size:10px;color:#8a6d1a;margin-bottom:4px;font-weight:700;">GAZIANTEP <span style="font-weight:400;text-transform:none;color:#888;">(target — years-to-reach set above)</span></div>
               <div style="display:flex;align-items:center;gap:6px;">
                 <input type="range" id="s_gaziantepHedefPay" min="1" max="100" step="0.5" value="30" style="flex:1;accent-color:#8a6d1a;" oninput="sv('gaziantepHedefPay',this.value)">
                 <span class="sl-val" id="gaziantepHedefPay" contenteditable="true" onblur="sv2('gaziantepHedefPay','s_gaziantepHedefPay',this)" style="min-width:40px;font-size:12px;color:#8a6d1a;">30</span>
@@ -800,7 +833,7 @@
 <script>
 window.addEventListener('load', function() {
   recalc();
-  [['s_yonetimUcretiPct','yonetimUcretiPct'],['s_izmirFlagshipPay','izmirFlagshipPay'],['s_ankaraFlagshipPay','ankaraFlagshipPay'],['s_bursaFlagshipPay','bursaFlagshipPay'],['s_gaziantepFlagshipPay','gaziantepFlagshipPay'],['s_izmirHedefPay','izmirHedefPay'],['s_ankaraHedefPay','ankaraHedefPay'],['s_bursaHedefPay','bursaHedefPay'],['s_gaziantepHedefPay','gaziantepHedefPay']].forEach(function(pair) {
+  [['s_yonetimUcretiPct','yonetimUcretiPct'],['s_izmirFlagshipPay','izmirFlagshipPay'],['s_ankaraFlagshipPay','ankaraFlagshipPay'],['s_bursaFlagshipPay','bursaFlagshipPay'],['s_gaziantepFlagshipPay','gaziantepFlagshipPay'],['s_izmirHedefPay','izmirHedefPay'],['s_ankaraHedefPay','ankaraHedefPay'],['s_bursaHedefPay','bursaHedefPay'],['s_gaziantepHedefPay','gaziantepHedefPay'],['s_istRampYears','istRampYears'],['s_izmirRampYears','izmirRampYears'],['s_ankaraRampYears','ankaraRampYears'],['s_bursaRampYears','bursaRampYears'],['s_gaziantepRampYears','gaziantepRampYears']].forEach(function(pair) {
     const sl = document.getElementById(pair[0]);
     if (sl) sl.value = gv(pair[1]);
     const sp = document.getElementById(pair[1]);

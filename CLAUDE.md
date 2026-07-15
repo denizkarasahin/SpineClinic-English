@@ -10,7 +10,7 @@ Bu dosya Claude Code'un bu projeyi anlaması için bağlam sağlar. Her oturumda
 
 Bundan çıkan somut kurallar:
 
-1. **Hiçbir statik HTML veya dokümantasyon sayfası tek bir senaryonun çıktısını "gerçek" gibi sunamaz.** Bir sayfada gösterilen her rakam ya (a) o an canlı `V` state'inden hesaplanmış olmalı, ya da (b) hangi senaryonun ürettiği açıkça etiketlenmiş olmalı ("Lean setup senaryosunda ~€39K" gibi).
+1. **Hiçbir statik HTML veya dokümantasyon sayfası tek bir senaryonun çıktısını "gerçek" gibi sunamaz.** Bir sayfada gösterilen her rakam ya (a) o an canlı `V` state'inden hesaplanmış olmalı, ya da (b) hangi senaryonun ürettiği açıkça etiketlenmiş olmalı ("Full self-owned senaryosunda ~€219K" gibi).
 2. **Varsayılan ≠ doğru değer.** `V` içindeki her sayı bir başlangıç noktasıdır; yatırımcı/operatör tartışmasıyla değişebilir. Bir sayının "varsayılan" olması onu ayrıcalıklı kılmaz.
 3. **Gelecekteki her değişiklik slider/preset eklemeli, sonucu sabitlememeli.** Yeni bir parametre gerekiyorsa: bir slider ekle (veya mevcut bir `SCEN` presetini genişlet) ki canlı ayarlanabilir kalsın. Hesaplanmış bir sonucu asla statik markup'a gömme (`<div>₺X</div>` gibi sabit bir sayı yazıp geçme — `recalc()`'in dolduracağı bir id'ye veya bir formüle bağla).
 4. **Yeni bir doc sayfası veya tablo satırı eklerken önce sor:** "Bu senaryoya özel mi, yoksa her senaryoda geçerli mi?" Senaryoya özel olan her şey senaryo adıyla etiketlenmeli.
@@ -110,19 +110,18 @@ Aşağıdaki her değer bir **default**'tur, "doğru fiyat" değildir. Slider ar
 - P&L'deki `Advertising` terimi = `donemsel.reklam[ay] × reklamCarpan`. `V.kongre` şeridi (drag-chart senkronu) bu terimle çakışmasın diye ham `donemsel.reklam` değeri ayrıca netlenir.
 
 ### Ekipman sahipliği (`V.ekipmanOsteoidden`, `setup.html` + `expenses.html`)
-- Boolean toggle, default **true**.
-- `true`: 3D yazıcı ve robot kol Osteoid A.Ş. tarafından intercompany transfer olarak sağlanır — klinik kurulum maliyetine hiç girmez (ana yatırım geri döndükten sonra ekipman piyasa fiyatının %50'sinden kliniğe devredilir).
-- `false`: Klinik ekipmanı kendisi satın alır — capex kurulum maliyetine dahil olur.
+- ⚠ **Artık slider/toggle değil — sabit `false`.** Önceden bir toggle'dı ("Osteoid A.Ş. owns it" / "Clinic buys it"); Deniz'in talebiyle kaldırıldı (2026-07-15). Klinik, 3D yazıcı ve robot kolu her zaman kendisi satın alır (capex kurulum maliyetine dahil) — Osteoid A.Ş.'nin intercompany transfer + %50 piyasa fiyatından geri devir seçeneği artık mevcut değil.
+- UI: `setup.html`/`expenses.html`'de "Equipment (Clinic-Owned)" başlığı altında salt-okunur "Clinic buys it" etiketi var, checkbox yok. `svEkipmanOsteoidden()`/`_refreshEkipmanOsteoidden()` fonksiyonları `shared.js`'den silindi.
+- Kodun geri kalanı (`computeYear1`, `renderInvestBreakdown`, printer/robot KPI etiketleri, Contribution Register'daki `machineryContribEur`) hâlâ `V.ekipmanOsteoidden !== false` deseniyle canlı okuyor — değer sabit `false` olduğu için hepsi otomatik olarak "klinik sahiplenir" dalına düşüyor, ek kod değişikliği gerekmedi.
 
 ### İsimlendirilmiş senaryo presetleri (`SCEN`, `shared.js`)
 `loadScen(key, btn)` fonksiyonu `SCEN_SLIDER_KEYS` listesindeki alanları günceller — bir preset sadece kendi ilgili olduğu slider'lara dokunur (setup preseti gelir varsayımlarını etkilemez, tersi de geçerli).
 
 | Preset key | Buton | Kurulum maliyeti | Parametre seti |
 |---|---|---|---|
-| `leanSetup` | "Lean setup (~€39K)" | **~€39K** | `kira:150000, depozito:150000, emlakci:80000, m2:200, tadilatM2:4000, dekoM2:2000, mobilya:400000, ruhsat:90000, ekipmanOsteoidden:true` |
-| `fullSelfOwned` | "Full self-owned (~€219K)" | **~€219.653** | `kira:250000, depozito:250000, emlakci:500000, m2:360, tadilatM2:7000, dekoM2:6750, mobilya:300000, ruhsat:100000, ekipmanOsteoidden:false` |
+| `fullSelfOwned` | "Full self-owned (~€219K)" | **~€219.653** | `kira:250000, depozito:250000, emlakci:500000, m2:360, tadilatM2:7000, dekoM2:6750, mobilya:300000, ruhsat:100000` |
 
-İki buton da `setup.html` ve `expenses.html`'de bulunur. Hiçbiri "doğru" değildir — biri başlangıç noktası olarak seçilip slider'larla devam edilir.
+⚠ **`leanSetup` kaldırıldı (2026-07-15).** `fullSelfOwned`'ın parametre seti artık `V`'nin committed default'u (`_version:47`) — buton artık "ikinci bir senaryo" değil, sliderları o committed default'a resetleyen bir kısayol. `setup.html` ve `expenses.html`'de bulunur.
 
 ⚠ `shared.js`'de ayrıca `baz`/`iyimser`/`kotu` adında üç gelir-senaryosu presetı da tanımlı (`korseF`, `korse` rampası, `royaltyEur` farklarıyla) ama şu an hiçbir sayfada buton olarak bağlı değil — sadece kod seviyesinde erişilebilir. Bir UI eklenmeden "aktif" sayılmamalı.
 
@@ -134,6 +133,7 @@ Aşağıdaki her değer bir **default**'tur, "doğru fiyat" değildir. Slider ar
 ### Büyüme Motoru
 - Temel sürücü: aktif hekim sayısı (korse adedi değil)
 - Hekim başına ortalama: 3,5 korse/ay (öngörü, referans veri yok)
+- **Merkez başına "yıllara yayılı hedefe ulaşma" slider'ı** (`V.istRampYears`/`izmirRampYears`/`ankaraRampYears`/`bursaRampYears`/`gaziantepRampYears`, `growth.html`, **1–5 yıl**, adım 1): her merkezin kendi "designated market potential" hedefine (Yıl 5 hedef pazar payı) açılıştan itibaren kaç yılda ulaşacağını kontrol eder — `_istRampFrac`/`_satRampFrac` (`shared.js`). Istanbul default **5** (Yıl1 gerçek veri, Yıl5'te %100); Izmir/Ankara/Bursa/Gaziantep default **4** (eski sabit rampa şekline en yakın). Bursa/Gaziantep Yıl 3'te açıldığı için default 4 ile Yıl 5'te hedefin %100'üne ulaşmaz (slider 3'e veya altına çekilirse ulaşır) — bu artık sabit değil, canlı ayarlanabilir.
 
 ### SGK Kanalı (Yıl 2+)
 - SGK bedeli: ₺17.500/korse, tahsilat 60–90 gün gecikme
@@ -164,7 +164,7 @@ Her önemli rakamın yanında ⚠ öngörü ibaresi veya senaryo etiketi bulunma
 - Hekim başına 3,5 korse/ay → referans veri yok, öngörü
 - Royalty €75/korse → yapı henüz kesinleşmedi, €0 dahil her değer geçerli senaryo
 - SGK 60–90 gün tahsilat gecikmesi → operatör deneyimiyle doğrulanmalı
-- Kurulum maliyeti (~€39K veya ~€219K) → hangi preset seçilirse o, ikisi de "doğru" değil
+- Kurulum maliyeti (~€219K, `fullSelfOwned` committed default) → hâlâ bir başlangıç noktası, slider'larla değişebilir
 
 ### Vergi
 - Klinik Ltd.: %25 KV, KDV muaf (ortez satışı)
