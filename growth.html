@@ -123,12 +123,35 @@
           <span class="year-num">Year 1</span>
           <span class="year-badge">Flagship — Istanbul</span>
         </div>
-        <div class="year-card-body" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
-          <div class="year-kpi"><div class="year-kpi-label">Net revenue</div><div class="year-kpi-val pos" id="y1GelirKpi">—</div></div>
-          <div class="year-kpi"><div class="year-kpi-label">Break-even</div><div class="year-kpi-val pos" id="y1BasKpi">—</div></div>
-          <div class="year-kpi"><div class="year-kpi-label">Cumulative +</div><div class="year-kpi-val neu" id="y1CumKpi">—</div></div>
-          <div class="year-kpi"><div class="year-kpi-label">Total braces</div><div class="year-kpi-val" id="y1KorseKpi">—</div></div>
-          <div class="year-kpi" style="grid-column:span 2;"><div class="year-kpi-label">2nd Center Trigger</div><div class="year-kpi-val pos" id="y1TriggerKpi" style="font-size:13px;">—</div></div>
+        <div class="year-card-body">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px;">
+            <div class="year-kpi"><div class="year-kpi-label">Net revenue</div><div class="year-kpi-val pos" id="y1GelirKpi">—</div></div>
+            <div class="year-kpi"><div class="year-kpi-label">Break-even</div><div class="year-kpi-val pos" id="y1BasKpi">—</div></div>
+            <div class="year-kpi"><div class="year-kpi-label">Cumulative +</div><div class="year-kpi-val neu" id="y1CumKpi">—</div></div>
+            <div class="year-kpi"><div class="year-kpi-label">Total braces</div><div class="year-kpi-val" id="y1KorseKpi">—</div></div>
+            <div class="year-kpi" style="grid-column:span 2;"><div class="year-kpi-label">2nd Center Trigger</div><div class="year-kpi-val pos" id="y1TriggerKpi" style="font-size:13px;">—</div></div>
+          </div>
+          <div style="border-top:1px solid #e8e8e4;margin-top:10px;padding-top:10px;">
+            <div style="font-size:10px;color:#888;font-weight:700;text-transform:uppercase;margin-bottom:8px;">Istanbul — Target &amp; Ramp <span style="font-weight:400;text-transform:none;color:#888;">— the monthly brace ramp itself lives on the <a href="korse.html" style="color:#534AB7;">Brace Ramp</a> page; these two set where it's headed</span></div>
+            <div style="padding:8px 10px;background:#fdf1ec;border:1px solid #e8c3b344;border-radius:6px;">
+              <div class="sl-row" style="margin-bottom:0;">
+                <label style="font-size:11px;color:#c94f2a;">Target Market Share (%) — Istanbul's designated potential at Year 5</label>
+                <div class="sl-controls">
+                  <input type="range" id="s_hedefOsteoidPay" min="1" max="100" step="0.5" value="30" style="accent-color:#c94f2a;" oninput="sv('hedefOsteoidPay',this.value)">
+                  <span class="sl-val" id="hedefOsteoidPay" contenteditable="true" onblur="sv2('hedefOsteoidPay','s_hedefOsteoidPay',this)" style="min-width:40px;color:#c94f2a;">30</span>
+                </div>
+                <span class="sl-note">Share of Istanbul's addressable market (Market &amp; Product Mix page) targeted at full capacity — drives the Year 5 target brace count.</span>
+              </div>
+              <div class="sl-row" style="margin-bottom:0;margin-top:8px;">
+                <label style="font-size:11px;color:#c94f2a;">Years to reach full target — designated market potential</label>
+                <div class="sl-controls">
+                  <input type="range" id="s_istRampYears" min="1" max="5" step="1" value="5" style="accent-color:#c94f2a;" oninput="sv('istRampYears',this.value)">
+                  <span class="sl-val" id="istRampYears" style="min-width:30px;color:#c94f2a;">5</span>
+                </div>
+                <span class="sl-note">Year 1 above is always Istanbul's own realized result, not a projection — this controls how many years it then takes to close the gap up to the Year 5 target.</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -669,20 +692,9 @@
             <div class="year-kpi"><div class="year-kpi-label">Target brace count</div><div class="year-kpi-val pos" id="y5KorseKpi">—</div></div>
           </div>
           <div style="margin-top:12px;padding-top:10px;border-top:1px solid #e8e8e4;">
-            <div style="font-size:10px;color:#888;font-weight:700;text-transform:uppercase;margin-bottom:8px;">Year 5 Target Market Shares</div>
-            <div style="font-size:10px;color:#c94f2a;margin-bottom:4px;font-weight:700;">ISTANBUL</div>
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
-              <input type="range" id="s_hedefOsteoidPay" min="1" max="100" step="0.5" value="30" style="flex:1;accent-color:#c94f2a;" oninput="sv('hedefOsteoidPay',this.value)">
-              <span class="sl-val" id="hedefOsteoidPay" contenteditable="true" onblur="sv2('hedefOsteoidPay','s_hedefOsteoidPay',this)" style="min-width:40px;font-size:12px;color:#c94f2a;">30</span>
-              <span style="font-size:10px;color:#888;">% IST</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
-              <input type="range" id="s_istRampYears" min="1" max="5" step="1" value="5" style="flex:1;accent-color:#c94f2a;" oninput="sv('istRampYears',this.value)">
-              <span class="sl-val" id="istRampYears" style="min-width:40px;font-size:12px;color:#c94f2a;">5</span>
-              <span style="font-size:10px;color:#888;">yrs to target</span>
-            </div>
+            <div style="font-size:10px;color:#888;font-weight:700;text-transform:uppercase;margin-bottom:8px;">Satellite Target Market Shares <span style="font-weight:400;text-transform:none;color:#888;">— Istanbul's own target &amp; ramp moved to the Year 1 card</span></div>
             <div id="izmirHedefWrap" style="">
-              <div style="font-size:10px;color:#1D9E75;margin-bottom:4px;font-weight:700;">IZMIR</div>
+              <div style="font-size:10px;color:#1D9E75;margin-bottom:4px;font-weight:700;">IZMIR <span style="font-weight:400;text-transform:none;color:#888;">(target — years-to-reach set above)</span></div>
               <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
                 <input type="range" id="s_izmirHedefPay" min="1" max="100" step="0.5" value="30" style="flex:1;accent-color:#1D9E75;" oninput="sv('izmirHedefPay',this.value)">
                 <span class="sl-val" id="izmirHedefPay" contenteditable="true" onblur="sv2('izmirHedefPay','s_izmirHedefPay',this)" style="min-width:40px;font-size:12px;color:#1D9E75;">30</span>
@@ -690,7 +702,7 @@
               </div>
             </div>
             <div id="ankaraHedefWrap" style="">
-              <div style="font-size:10px;color:#534AB7;margin-bottom:4px;font-weight:700;">ANKARA</div>
+              <div style="font-size:10px;color:#534AB7;margin-bottom:4px;font-weight:700;">ANKARA <span style="font-weight:400;text-transform:none;color:#888;">(target — years-to-reach set above)</span></div>
               <div style="display:flex;align-items:center;gap:6px;">
                 <input type="range" id="s_ankaraHedefPay" min="1" max="100" step="0.5" value="30" style="flex:1;accent-color:#534AB7;" oninput="sv('ankaraHedefPay',this.value)">
                 <span class="sl-val" id="ankaraHedefPay" contenteditable="true" onblur="sv2('ankaraHedefPay','s_ankaraHedefPay',this)" style="min-width:40px;font-size:12px;color:#534AB7;">30</span>
