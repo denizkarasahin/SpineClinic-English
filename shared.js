@@ -23,7 +23,7 @@ document.getElementById = function(id) {
   };
 };
 
-const V = {"korseF":37800,"malzeme":50,"reklamCarpan":1.0,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.66,"kira":250000,"depozito":250000,"emlakci":500000,"m2":360,"tadilatM2":7000,"dekoM2":6750,"mobilya":300000,"ruhsat":100000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":90000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[15,15,20,25,25,33,35,41,42,50,50,55],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":27000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":1600,"mal_sens":2075,"mal_sensDelik":1250,"feeSci_stdR":10,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdR":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdR":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":45000,"pazarIstPct":30.1,"hedefOsteoidPay":30,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":true,"izmirHedefPay":30,"izmirUseIst":false,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":true,"ankaraHedefPay":30,"ankaraUseIst":false,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"bursaAktif":true,"bursaHedefPay":30,"bursaUseIst":false,"bursaUseIstGider":true,"bursaKira":80000,"bursaOrtotistM":55000,"bursaStajyerM":25000,"bursaMutfak":18000,"bursaSarf":3000,"bursaUseIstKurulum":true,"bursaKurulumKira":120000,"bursaKurulumDepozito":200000,"bursaKurulumTadilat":4750,"bursaKurulumDeko":2000,"bursaKurulumMobilya":600000,"bursaRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"gaziantepAktif":true,"gaziantepHedefPay":30,"gaziantepUseIst":false,"gaziantepUseIstGider":true,"gaziantepKira":85000,"gaziantepOrtotistM":55000,"gaziantepStajyerM":25000,"gaziantepMutfak":18000,"gaziantepSarf":3000,"gaziantepUseIstKurulum":true,"gaziantepKurulumKira":120000,"gaziantepKurulumDepozito":200000,"gaziantepKurulumTadilat":4750,"gaziantepKurulumDeko":2000,"gaziantepKurulumMobilya":600000,"gaziantepRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"bursaNufusPay":4.5,"gaziantepNufusPay":3.0,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":true,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":20,"dcfGrowth":18,"dcfGrowth45":45,"dcfExitMult":10,"dcfNegotiationDiscount":20,"tranche1Eur":500000,"trancheStepUp":1.75,"dcfInvest":1008662,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":12500,"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":100000,"_sen_max_kira":400000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":3500,"_sen_max_dekoM2":17000,"_sen_min_ortotistM":55000,"_sen_max_ortotistM":160000,"_sen_min_operatorM":110000,"_sen_max_operatorM":290000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3.0,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.65,"bursaRampaOran":0.75,"bursaKurulumOran":0.75,"gaziantepRampaOran":0.8,"gaziantepKurulumOran":0.65,"operatorM":180000,"ipLisansEur":500000,"sehirEksklusifEur":500000,"workingCapBufferEur":500000,"stage1BufferEur":200000,"kvOrani":25,"vergiDahil":true,"exitYili":5,"kisiselVergiOrani":15,"fundAy":0,"makineKatkiOran":50,"osteoidCarpan":1,"yatirimciCarpan":1.0,"doktorYatirim":0,"doktorCarpan":1.5,"sweatEur":80000,"sweatVestAy":48,"sweatCliffAy":12,"sweatElapsedAy":0,"sweatMaxPct":5,"sweatCarpan":1.0,"sweatVestedToday":true,"royaltyOffsetYil":1,"royaltyOffsetPct":0,"yonetimUcretiPct":5,"izmirFlagshipPay":65,"ankaraFlagshipPay":65,"bursaFlagshipPay":65,"gaziantepFlagshipPay":65,"izmirSubeMi":true,"ankaraSubeMi":true,"bursaSubeMi":true,"gaziantepSubeMi":true,"euLegalFaiz":5,"setupOverheadC1":0,"setupOverheadC2":0,"setupOverheadC3":0,"setupOverheadC4":0,"setupOverheadC5":0,"bursaGaziantepFcfFunded":false,"nakdiSermayeAktif":true,"teknokentKapsam":false,"emisyonPrimiAktif":true,"nominalPayOrani":10,"feeStreamAyriMult":false,"feeExitMult":12,"istRampYears":5,"izmirRampYears":4,"ankaraRampYears":4,"bursaRampYears":4,"gaziantepRampYears":4,"_version":48};
+const V = {"korseF":37800,"malzeme":50,"reklamCarpan":1,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.72,"kira":250000,"depozito":250000,"emlakci":500000,"m2":360,"tadilatM2":7000,"dekoM2":6750,"mobilya":300000,"ruhsat":100000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":90000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[15,15,20,25,25,33,35,41,42,50,50,55],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":27000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":3500,"mal_sens":2075,"mal_sensDelik":4975,"feeSci_stdR":10,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdR":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdR":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":45000,"pazarIstPct":30.1,"hedefOsteoidPay":30,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":true,"izmirHedefPay":30,"izmirUseIst":false,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":true,"ankaraHedefPay":30,"ankaraUseIst":false,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"bursaAktif":true,"bursaHedefPay":30,"bursaUseIst":false,"bursaUseIstGider":true,"bursaKira":80000,"bursaOrtotistM":55000,"bursaStajyerM":25000,"bursaMutfak":18000,"bursaSarf":3000,"bursaUseIstKurulum":true,"bursaKurulumKira":120000,"bursaKurulumDepozito":200000,"bursaKurulumTadilat":4750,"bursaKurulumDeko":2000,"bursaKurulumMobilya":600000,"bursaRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"gaziantepAktif":true,"gaziantepHedefPay":30,"gaziantepUseIst":false,"gaziantepUseIstGider":true,"gaziantepKira":85000,"gaziantepOrtotistM":55000,"gaziantepStajyerM":25000,"gaziantepMutfak":18000,"gaziantepSarf":3000,"gaziantepUseIstKurulum":true,"gaziantepKurulumKira":120000,"gaziantepKurulumDepozito":200000,"gaziantepKurulumTadilat":4750,"gaziantepKurulumDeko":2000,"gaziantepKurulumMobilya":600000,"gaziantepRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"bursaNufusPay":4.5,"gaziantepNufusPay":3,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":true,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":18,"dcfGrowth":18,"dcfGrowth45":45,"dcfExitMult":10,"dcfNegotiationDiscount":20,"tranche1Eur":500000,"trancheStepUp":1.75,"dcfInvest":771443,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":12500,"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":130000,"_sen_max_kira":500000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":3500,"_sen_max_dekoM2":17000,"_sen_min_ortotistM":55000,"_sen_max_ortotistM":160000,"_sen_min_operatorM":110000,"_sen_max_operatorM":290000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.75,"bursaRampaOran":0.75,"bursaKurulumOran":0.75,"gaziantepRampaOran":0.8,"gaziantepKurulumOran":0.75,"operatorM":180000,"ipLisansEur":500000,"sehirEksklusifEur":500000,"workingCapBufferEur":500000,"stage1BufferEur":200000,"kvOrani":25,"vergiDahil":true,"exitYili":5,"kisiselVergiOrani":15,"fundAy":0,"makineKatkiOran":50,"osteoidCarpan":1,"yatirimciCarpan":1,"doktorYatirim":0,"doktorCarpan":1.5,"sweatEur":80000,"sweatVestAy":48,"sweatCliffAy":12,"sweatElapsedAy":0,"sweatMaxPct":5,"sweatCarpan":1,"sweatVestedToday":true,"royaltyOffsetYil":1,"royaltyOffsetPct":0,"yonetimUcretiPct":5,"izmirFlagshipPay":65,"ankaraFlagshipPay":65,"bursaFlagshipPay":65,"gaziantepFlagshipPay":65,"izmirSubeMi":true,"ankaraSubeMi":true,"bursaSubeMi":true,"gaziantepSubeMi":true,"euLegalFaiz":5,"setupOverheadC1":30000,"setupOverheadC2":30000,"setupOverheadC3":45000,"setupOverheadC4":40000,"setupOverheadC5":40000,"bursaGaziantepFcfFunded":true,"nakdiSermayeAktif":true,"teknokentKapsam":false,"emisyonPrimiAktif":true,"nominalPayOrani":10,"feeStreamAyriMult":false,"feeExitMult":12,"istRampYears":3,"izmirRampYears":3,"ankaraRampYears":3,"bursaRampYears":4,"gaziantepRampYears":4,"bursaAcilisAy":3,"ankaraAcilisAy":5,"_version":50};
 // Restore state from localStorage if available; clear cache on version mismatch
 (function() {
   try {
@@ -1295,57 +1295,55 @@ function setTblTab(tab, btn) {
   tblTab = tab;
   document.querySelectorAll('.tct').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  if (window._lastRows) renderTblChart(window._lastRows);
+  if (window._lastYearly) renderTblChart();
 }
 
-function renderTblChart(rows) {
-  window._lastRows = rows;
+// 5-year version (Year 1-5, €K) of the Summary page's Revenue&Cost/Cost
+// Distribution/Cumulative chart — was Year-1-only monthly detail; see the
+// window._lastYearly comment in buildProjection() for what each series means
+// and why (Istanbul-only Gross/Opex bars, full-consolidated Net line, cost-
+// by-center distribution instead of cost-by-category since categories were
+// never modeled past Year 1).
+function renderTblChart() {
+  const Y = window._lastYearly;
   if (tblChartInst) { tblChartInst.destroy(); tblChartInst = null; }
   const ctx = _origGetById('tblChart');
-  if (!ctx) return;
-  const labels = rows.map(r => 'Month ' + r.ay);
+  if (!ctx || !Y) return;
+  const labels = ['Year 1','Year 2','Year 3','Year 4','Year 5'];
   const _kumNote = document.getElementById('kumNote');
   if (_kumNote) _kumNote.style.display = 'none';
+  const eurK = v => '€' + Math.round(v).toLocaleString('en-US') + 'K';
 
   if (tblTab === 'gelir') {
     tblChartInst = new Chart(ctx, {
       data: {
         labels,
         datasets: [
-          { type:'bar', label:'Gross Revenue', data: rows.map(r=>r.gelirBrut), backgroundColor:'rgba(26,122,69,0.55)', borderColor:'#1a7a45', borderWidth:1, order:2, yAxisID:'y' },
-          { type:'bar', label:'Total Costs', data: rows.map(r=>Math.abs(r.gider)), backgroundColor:'rgba(192,57,43,0.55)', borderColor:'#c0392b', borderWidth:1, order:2, yAxisID:'y' },
-          { type:'bar', label:'Fees (Sci+Edu+Lib)', data: rows.map(r=>Math.round(r.feeSci+r.feeEdu+r.feeLib)), backgroundColor:'rgba(212,83,126,0.6)', borderColor:'#D4537E', borderWidth:1, order:2, yAxisID:'y' },
-          { type:'line', label:'Monthly Net', data: rows.map(r=>r.net), borderColor:'#534AB7', backgroundColor:'rgba(83,74,183,0.07)', borderWidth:2.5, pointRadius:4, pointBackgroundColor: rows.map(r=>r.net>=0?'#1a7a45':'#c0392b'), tension:0.3, fill:false, order:1, yAxisID:'y' },
+          { type:'bar', label:'Istanbul Gross Revenue', data: Y.istGross, backgroundColor:'rgba(26,122,69,0.55)', borderColor:'#1a7a45', borderWidth:1, order:2, yAxisID:'y' },
+          { type:'bar', label:'Istanbul Opex', data: Y.istOpex, backgroundColor:'rgba(192,57,43,0.55)', borderColor:'#c0392b', borderWidth:1, order:2, yAxisID:'y' },
+          { type:'line', label:'Consolidated Net (All Centers)', data: Y.consolidatedNet, borderColor:'#534AB7', backgroundColor:'rgba(83,74,183,0.07)', borderWidth:2.5, pointRadius:4, pointBackgroundColor: Y.consolidatedNet.map(v=>v>=0?'#1a7a45':'#c0392b'), tension:0.3, fill:false, order:1, yAxisID:'y' },
         ]
       },
       options: {
         responsive:true, maintainAspectRatio:false,
         plugins: {
           legend:{ position:'bottom', labels:{ font:{size:11}, boxWidth:10, padding:10 } },
-          tooltip:{ mode:'index', callbacks:{ label: c => c.dataset.label+': €'+Math.round(Math.abs(c.raw)/(V.eurKur ?? 50)).toLocaleString('en-US') } }
+          tooltip:{ mode:'index', callbacks:{ label: c => c.dataset.label+': '+eurK(c.raw) } }
         },
         scales: {
           x:{ grid:{display:false} },
-          y:{ ticks:{ callback: v=>'€'+(Math.round(v/(V.eurKur ?? 50)/1000))+'K' }, grid:{color:'rgba(0,0,0,0.05)'} }
+          y:{ ticks:{ callback: v=>eurK(v) }, grid:{color:'rgba(0,0,0,0.05)'} }
         }
       }
     });
 
   } else if (tblTab === 'dagılım') {
-    const ortoBrutVal = gv('ortotistM') * gv('sgkCarpan');
     const sets = [
-      { label:'Rent',           data: rows.map((r,i)=>i===0?0:gv('kira')),                     color:'#534AB7' },
-      { label:'Personnel',      data: rows.map(()=>Math.round(ortoBrutVal)),                          color:'#D85A30' },
-      { label:'Elct./Int./Sup.',data: rows.map(()=>gv('elektrik')+gv('internet')+gv('sarf')),        color:'#1D9E75' },
-      { label:'Advertising',    data: rows.map(r=>r.reklamS),                                         color:'#378ADD' },
-      { label:'Kitchen',        data: rows.map(r=>r.mutfakV),                                         color:'#EF9F27' },
-      { label:'Withholding',    data: rows.map(r=>r.ayStopaj),                                        color:'#9FE1CB' },
-      { label:'YMM (periodic)', data: rows.map(r=>r.ymmDon||0),                                       color:'#C9A6E8' },
-      { label:'Periodic',       data: rows.map(r=>r.kongre),                                          color:'#F0997B' },
-      { label:'Print Cost',     data: rows.map(r=>r.baskiTop),                                        color:'#AFA9EC' },
-      { label:'Sci. Study Fee', data: rows.map(r=>Math.round(r.feeSci)),                              color:'#D4537E' },
-      { label:'Education Fee',  data: rows.map(r=>Math.round(r.feeEdu)),                              color:'#E37FA0' },
-      { label:'Library Fee',    data: rows.map(r=>Math.round(r.feeLib)),                              color:'#F0A8C0' },
+      { label:'Istanbul Opex',  data: Y.entityCost.istanbul,  color:'#534AB7' },
+      { label:'Izmir Cost',     data: Y.entityCost.izmir,     color:'#1D9E75' },
+      { label:'Ankara Cost',    data: Y.entityCost.ankara,    color:'#E8963C' },
+      { label:'Bursa Cost',     data: Y.entityCost.bursa,     color:'#c94f2a' },
+      { label:'Gaziantep Cost', data: Y.entityCost.gaziantep, color:'#8a6d1a' },
     ];
     tblChartInst = new Chart(ctx, {
       type:'bar',
@@ -1354,32 +1352,27 @@ function renderTblChart(rows) {
         responsive:true, maintainAspectRatio:false,
         plugins:{
           legend:{ position:'bottom', labels:{ font:{size:11}, boxWidth:10, padding:8 } },
-          tooltip:{ mode:'index', callbacks:{ label: c=>c.dataset.label+': €'+Math.round(c.raw/(V.eurKur ?? 50)).toLocaleString('en-US') } }
+          tooltip:{ mode:'index', callbacks:{ label: c=>c.dataset.label+': '+eurK(c.raw) } }
         },
         scales:{
           x:{ stacked:true, grid:{display:false} },
-          y:{ stacked:true, ticks:{ callback: v=>'€'+(Math.round(v/(V.eurKur ?? 50)/1000))+'K' }, grid:{color:'rgba(0,0,0,0.05)'} }
+          y:{ stacked:true, ticks:{ callback: v=>eurK(v) }, grid:{color:'rgba(0,0,0,0.05)'} }
         }
       }
     });
 
   } else { // kumulatif
-    const basabasAy = rows.find(r=>r.net>=0)?.ay || null;
-    const pozAy     = rows.find(r=>r.cumBudget>=0)?.ay || null;
+    const basabasYr = Y.consolidatedNet.findIndex(v=>v>=0);
+    const pozIdx     = Y.cum.findIndex(v=>v>=0);
     if (_kumNote) {
       _kumNote.style.display = '';
       let kumNoteText, kumNoteColor;
-      if (pozAy) {
-        kumNoteText = 'Cumulative positive reached at Month ' + pozAy;
+      if (pozIdx >= 0) {
+        kumNoteText = 'Cumulative positive reached at Year ' + (pozIdx+1);
         kumNoteColor = '#534AB7';
         _kumNote.style.background = '#f4f3ff';
       } else {
-        const tahmin2 = _tahminPozAy(rows);
-        if (tahmin2) {
-          kumNoteText = 'Not reached within 12 months — expected at ~Month ' + tahmin2 + ' based on growth trend';
-        } else {
-          kumNoteText = 'Cumulative positive not reached within 12 months';
-        }
+        kumNoteText = 'Cumulative positive not reached within the 5-year model';
         kumNoteColor = '#c0392b';
         _kumNote.style.background = '#fff5f5';
       }
@@ -1391,13 +1384,13 @@ function renderTblChart(rows) {
       data:{
         labels,
         datasets:[
-          { type:'bar',  label:'Monthly Net', data: rows.map(r=>Math.round(r.net/1000)),
-            backgroundColor: rows.map(r=>r.net>=0?'rgba(26,122,69,0.6)':'rgba(192,57,43,0.5)'),
-            borderColor:     rows.map(r=>r.net>=0?'#1a7a45':'#c0392b'), borderWidth:1, yAxisID:'y', order:2 },
-          { type:'line', label:'Cumulative (€K)', data: rows.map(r=>Math.round(r.cumBudget/1000)),
+          { type:'bar',  label:'Annual Net (All Centers)', data: Y.consolidatedNet,
+            backgroundColor: Y.consolidatedNet.map(v=>v>=0?'rgba(26,122,69,0.6)':'rgba(192,57,43,0.5)'),
+            borderColor:     Y.consolidatedNet.map(v=>v>=0?'#1a7a45':'#c0392b'), borderWidth:1, yAxisID:'y', order:2 },
+          { type:'line', label:'Cumulative (€K)', data: Y.cum,
             borderColor:'#534AB7', backgroundColor:'rgba(83,74,183,0.08)', borderWidth:2.5,
-            pointRadius: rows.map(r => r.ay===basabasAy||r.ay===pozAy ? 7 : 3),
-            pointBackgroundColor: rows.map(r=>r.cumBudget>=0?'#1a7a45':'#c0392b'),
+            pointRadius: Y.cum.map((v,i) => i===basabasYr||i===pozIdx ? 7 : 3),
+            pointBackgroundColor: Y.cum.map(v=>v>=0?'#1a7a45':'#c0392b'),
             tension:0.3, fill:true, yAxisID:'y2', order:1 }
         ]
       },
@@ -1405,13 +1398,13 @@ function renderTblChart(rows) {
         responsive:true, maintainAspectRatio:false,
         plugins:{
           legend:{ position:'bottom', labels:{ font:{size:11}, boxWidth:10, padding:10 } },
-          tooltip:{ mode:'index', callbacks:{ label: c=>c.dataset.label+': €'+Math.round(Math.abs(c.raw)/(V.eurKur ?? 50)).toLocaleString('en-US')+'K' } },
+          tooltip:{ mode:'index', callbacks:{ label: c=>c.dataset.label+': '+eurK(c.raw) } },
           annotation: {}
         },
         scales:{
           x:{ grid:{display:false} },
-          y:{ position:'left', ticks:{ callback: v=>'€'+v+'K' }, grid:{color:'rgba(0,0,0,0.05)'}, title:{display:true,text:'Monthly Net (€K)',font:{size:10}} },
-          y2:{ position:'right', ticks:{ callback: v=>'€'+v+'K' }, grid:{display:false}, title:{display:true,text:'Cumulative (€K)',font:{size:10}} }
+          y:{ position:'left', ticks:{ callback: v=>eurK(v) }, grid:{color:'rgba(0,0,0,0.05)'}, title:{display:true,text:'Annual Net (€K)',font:{size:10}} },
+          y2:{ position:'right', ticks:{ callback: v=>eurK(v) }, grid:{display:false}, title:{display:true,text:'Cumulative (€K)',font:{size:10}} }
         }
       }
     });
@@ -2788,7 +2781,7 @@ function recalc() {
   updateValuationTable(rows, tNet);
   buildProjection();
   runSensitivity();
-  renderTblChart(rows);
+  renderTblChart();
   renderPazarChart(rows);
   renderPazarChartB2B(rowsB2B);
   renderTrigger(rows);
@@ -3015,6 +3008,18 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
     const stage2YieldPct = stage2Eur > 0 ? (satelliteNetEur / stage2Eur) * 100 : 0;
     const fmtEurFull = v => (v < 0 ? '-€' : '€') + Math.round(Math.abs(v)).toLocaleString('en-US');
     const stage2YieldColor = stage2YieldPct >= 0 ? '#1a7a45' : '#c94f2a';
+    // Mirror the same three figures into the 12-Month Summary section's own
+    // Stage 2 box (index.html), right next to Stage 1's — null-safe, only
+    // index.html has these ids.
+    const stage2InvestTopEl = document.getElementById('stage2InvestEur');
+    if (stage2InvestTopEl) stage2InvestTopEl.textContent = fmtEurFull(stage2Eur);
+    const stage2ProfitTopEl = document.getElementById('stage2ProfitEur');
+    if (stage2ProfitTopEl) stage2ProfitTopEl.textContent = fmtEurFull(satelliteNetEur);
+    const stage2YieldTopEl = document.getElementById('stage2YieldPct');
+    if (stage2YieldTopEl) {
+      stage2YieldTopEl.textContent = stage2YieldPct.toFixed(1) + '%';
+      stage2YieldTopEl.style.color = stage2YieldColor;
+    }
     html += `
     <div style="border:1px solid #D85A3044;border-left:3px solid #D85A30;border-radius:6px;padding:12px 16px;margin-top:16px;">
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">Stage 2 Investment &amp; Return <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— the Committed tranche, funds the Izmir/Ankara/Bursa/Gaziantep build-outs</span></div>
@@ -3529,6 +3534,34 @@ function buildProjection() {
   // Yıl 2 KPI güncelle
   window._lastTotals = totals;
   window._lastFeeIncomeRow = feeIncomeRow; // €K, Y1-Y5, pretax — for the DCF sum-of-parts toggle
+
+  // ── 5-Year dataset for the Summary page's Revenue&Cost/Cost Distribution/
+  // Cumulative chart (renderTblChart) — reuses only already-computed rows
+  // above, no new modeling. Gross/Opex bars stay Istanbul-only (the only
+  // entity with real per-year opex, matching what those bars always meant);
+  // the Net line is the full consolidated flagship total. Cost Distribution
+  // is by center (Istanbul opex + each satellite's own gross-minus-net),
+  // since per-category expense detail (rent/staff/ads/...) was never modeled
+  // past Year 1. Cumulative starts from the same Setup Cost the Year-1
+  // monthly model's own cumBudget already reconciles to (kurulumTop, derived
+  // from rows[0] so this never drifts from the real trough), then layers on
+  // each year's consolidated net.
+  const kurulumTopEur = rows.length ? (rows[0].cumBudget - rows[0].net) / eurKur / 1000 : 0; // €K, matches totals' units
+  const cumRow5yr = [];
+  { let run = kurulumTopEur; totals.forEach(t => { run += t; cumRow5yr.push(Math.round(run)); }); }
+  window._lastYearly = {
+    istGross: istGrossRow.map(Math.round),
+    istOpex: istOpexRow.map(Math.round),
+    consolidatedNet: totals.map(Math.round),
+    entityCost: {
+      istanbul: istOpexRow.map(Math.round),
+      izmir: izmirGrossRow.map((g,i) => Math.max(0, Math.round(g - izmirRow[i]))),
+      ankara: ankaraGrossRow.map((g,i) => Math.max(0, Math.round(g - ankaraRow[i]))),
+      bursa: bursaGrossRow.map((g,i) => Math.max(0, Math.round(g - bursaRow[i]))),
+      gaziantep: gaziantepGrossRow.map((g,i) => Math.max(0, Math.round(g - gaziantepRow[i]))),
+    },
+    cum: cumRow5yr,
+  };
   // For the Tax Optimization panel's Lever 4 (Branch-loss consolidation) —
   // surfaces which satellite (if any) is in Branch mode and loss-making;
   // the actual tax effect already flows through equityIncomeRow -> totals ->

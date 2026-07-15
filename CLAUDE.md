@@ -121,7 +121,7 @@ Aşağıdaki her değer bir **default**'tur, "doğru fiyat" değildir. Slider ar
 |---|---|---|---|
 | `fullSelfOwned` | "Full self-owned (~€219K)" | **~€219.653** | `kira:250000, depozito:250000, emlakci:500000, m2:360, tadilatM2:7000, dekoM2:6750, mobilya:300000, ruhsat:100000` |
 
-⚠ **`leanSetup` kaldırıldı (2026-07-15).** `fullSelfOwned`'ın parametre seti artık `V`'nin committed default'u (`_version:47`) — buton artık "ikinci bir senaryo" değil, sliderları o committed default'a resetleyen bir kısayol. `setup.html` ve `expenses.html`'de bulunur.
+⚠ **`leanSetup` kaldırıldı (2026-07-15).** `V`'nin committed default'u birkaç kez Deniz'in kendi canlı ayarladığı snapshot'larla güncellendi (2026-07-15, `_version:50`) — şu an yine `fullSelfOwned` preset değerleriyle bire bir eşleşiyor (`kira:250000, depozito:250000, emlakci:500000, m2:360, tadilatM2:7000, dekoM2:6750`), ama bu durum snapshot'tan snapshot'a değişebilir; buton her zaman "şu anki committed default" anlamına gelmez, sadece kendi (~€219K) senaryosuna geçiş sağlar — ikisi de eşit derecede geçerli başlangıç noktası, hiçbiri "doğru" değil.
 
 ⚠ `shared.js`'de ayrıca `baz`/`iyimser`/`kotu` adında üç gelir-senaryosu presetı da tanımlı (`korseF`, `korse` rampası, `royaltyEur` farklarıyla) ama şu an hiçbir sayfada buton olarak bağlı değil — sadece kod seviyesinde erişilebilir. Bir UI eklenmeden "aktif" sayılmamalı.
 

@@ -20,10 +20,6 @@
 <div class="section">
   <div class="section-header open" onclick="tog(this)"><h2>12-Month Summary</h2><span class="tog">▾</span></div>
   <div class="section-body" style="display:block;">
-    <div class="kpi-grid" id="kpiGrid" style="margin-bottom:20px;"><div class="kpi"><div class="kpi-label">Total braces</div><div class="kpi-val neu">—</div></div><div class="kpi"><div class="kpi-label">Clinic net revenue (year)</div><div class="kpi-val pos">—</div></div><div class="kpi"><div class="kpi-label">Year-end cumulative</div><div class="kpi-val pos">—</div></div><div class="kpi"><div class="kpi-label">Monthly break-even</div><div class="kpi-val pos">—</div></div><div class="kpi"><div class="kpi-label">Cumulative positive</div><div class="kpi-val pos">—</div></div><div class="kpi"><div class="kpi-label">Setup cost</div><div class="kpi-val neg">—</div></div><div class="kpi"><div class="kpi-label">Printing cost per unit</div><div class="kpi-val neg">—</div></div><div class="kpi"><div class="kpi-label">Royalty / year</div><div class="kpi-val neg">—</div></div><div class="kpi"><div class="kpi-label">Osteoid A.Ş. royalty</div><div class="kpi-val neu">—</div></div><div class="kpi"><div class="kpi-label">Net margin / brace</div><div class="kpi-val neu">—</div></div></div>
-
-    <div class="note-box" style="margin-bottom:20px;">⚠ <b>Cumulative Positive</b> is Istanbul's own running cash balance (starting from its own Setup Cost, then adding each month's net) crossing zero — it is <b>not</b> a payback metric for the €2.03M Total Committed raise, which also funds the rights purchase and the Izmir/Ankara build-outs. <b>Monthly Break-even</b> (Month 8) is when a single month's net income first turns positive; <b>Cumulative Positive</b> is when the running total has recovered everything spent before and since (Setup Cost + all monthly net — see Cumulative Year-end, still negative at Month 12). Because the model only runs 12 real months, an estimated month past 12 is a straight-line extrapolation of the Year 1 trend, not a modeled Year 2 P&amp;L — Years 2+ elsewhere in this dashboard use ramp-curve assumptions, not a linear projection.</div>
-
     <div style="margin-bottom:20px;">
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Use of Funds — Investor Ticket <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— <a href="investor.html" style="color:#534AB7;">full breakdown on the Investor page</a></span></div>
       <div style="display:flex;height:28px;border-radius:6px;overflow:hidden;border:1px solid #e0e0dc;">
@@ -54,7 +50,26 @@
           <div style="font-size:18px;font-weight:700;color:#1a7a45;" id="stage1YieldPct">—</div>
         </div>
       </div>
-      <div style="font-size:10px;color:#888;margin-top:8px;">Year 1 net profit is the operating result only — revenue minus Year 1's running costs (rent/staff/marketing), <b>excluding</b> the one-time Setup Cost KPI above. Add them together and they reconcile exactly with Cumulative Year-end: Setup Cost + Year 1 net profit = Cumulative Year-end. Annual yield = Year 1 net profit ÷ Stage 1 investment — a per-year operating ratio (same basis as Stage 2's yield), not the cumulative cash position; that's what Cumulative Positive above tracks instead, on Istanbul's own multi-year payback timeline.</div>
+      <div style="font-size:10px;color:#888;margin-top:8px;">Year 1 net profit is the operating result only — revenue minus Year 1's running costs (rent/staff/marketing), <b>excluding</b> the one-time Setup Cost KPI above. Annual yield = Year 1 net profit ÷ Stage 1 investment — a per-year operating ratio, same basis as Stage 2's yield below.</div>
+    </div>
+
+    <div style="border:1px solid #D85A3044;border-left:3px solid #D85A30;border-radius:6px;padding:12px 16px;margin-bottom:20px;background:#f9f8f4;">
+      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">Stage 2 Investment &amp; Return <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— the Committed tranche, funds the Izmir/Ankara/Bursa/Gaziantep build-outs</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+        <div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Stage 2 investment</div>
+          <div style="font-size:18px;font-weight:700;color:#D85A30;" id="stage2InvestEur">—</div>
+        </div>
+        <div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">4-city net profit (Year 5)</div>
+          <div style="font-size:18px;font-weight:700;color:#333;" id="stage2ProfitEur">—</div>
+        </div>
+        <div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Annual yield</div>
+          <div style="font-size:18px;font-weight:700;color:#1a7a45;" id="stage2YieldPct">—</div>
+        </div>
+      </div>
+      <div style="font-size:10px;color:#888;margin-top:8px;">Annual yield = Izmir + Ankara + Bursa + Gaziantep net profit (Year 5, net of each satellite's own operating costs) ÷ Stage 2 investment (all four cities' setup + deferred working-capital buffer) — same basis as Stage 1's yield above, a simple yield, not a discounted or multi-year return. Unlike Stage 1 (Istanbul's real Year-1 result), this is a Year-5 capacity target, not a year-bound projection — see <a href="growth.html" style="color:#D85A30;">Multi-Year Plan</a> for the live build-up.</div>
     </div>
 
     <div style="border-top:1px solid #eeeee9;padding-top:16px;">
