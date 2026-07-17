@@ -32,6 +32,17 @@
 >    (unjustified) ×2.2 B2B projection in its totals. With B2B truly off,
 >    Year-5 EBITDA is **€2,696,000** — lower than Prompt-5's €2,865,000, which
 >    is the more correct baseline. Year-1 B2B (actual, €79K) always stays.
+>
+> **Follow-up tweaks (no default-KPI movement):**
+> - B2B assumption sliders (Year-5 target, years-to-target) moved from the
+>   Expenses capacity card to the **Multi-Year Plan** page as a "B2B Wholesale
+>   Channel" panel in the Year-1 card — presented as a parallel flagship line
+>   (printers only), not a satellite clinic.
+> - Removed the **Branch monthly rent** slider (`subeKiraAy`): the flagship's
+>   overflow fitting-office now carries only its one-time fit-out + utilities;
+>   branch/clinic rent economics live in the multi-year plan. Only bites when
+>   Istanbul's rooms exceed the per-site max (never at defaults → no headline
+>   change). `_version` 54 → 55.
 
 ---
 

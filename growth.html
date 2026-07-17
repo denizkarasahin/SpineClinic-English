@@ -91,6 +91,26 @@
                 <span class="sl-note">Year 1 above is always Istanbul's own realized result, not a projection — this controls how many years it then takes to close the gap up to the Year 5 target.</span>
               </div>
             </div>
+            <div style="margin-top:12px;padding-top:10px;border-top:1px solid #e8e8e4;">
+              <div style="font-size:10px;color:#888;font-weight:700;text-transform:uppercase;margin-bottom:8px;">B2B Wholesale Channel <span style="font-weight:400;text-transform:none;color:#888;">— flagship-run, printers only (no rooms/staff); runs Year 1 onward like a parallel line, not a satellite clinic</span></div>
+              <div style="padding:8px 10px;background:#eef4ff;border:1px solid #378ADD44;border-radius:6px;">
+                <div class="sl-row" style="margin-bottom:0;">
+                  <label style="font-size:11px;color:#378ADD;">Year-5 target (braces/year) — 0 removes the channel</label>
+                  <div class="sl-controls">
+                    <input type="range" id="s_b2bHedefAdetYil" min="0" max="5000" step="60" value="1200" style="accent-color:#378ADD;" oninput="sv('b2bHedefAdetYil',this.value)">
+                    <span class="sl-val" id="b2bHedefAdetYil" contenteditable="true" onblur="sv2('b2bHedefAdetYil','s_b2bHedefAdetYil',this)" style="min-width:40px;color:#378ADD;">1.200</span>
+                  </div>
+                  <span class="sl-note">Wholesale braces printed centrally at Istanbul and shipped to buyer clinics. Ramps the monthly rate from the Year-1 exit rate toward this target, then holds. Its net revenue is its own "Center 1 (B2B channel)" line in the tables below; it lifts shared printer capex but adds no rooms, orthotist or workshop cost.</span>
+                </div>
+                <div class="sl-row" style="margin-bottom:0;margin-top:8px;">
+                  <label style="font-size:11px;color:#378ADD;">Years to reach target</label>
+                  <div class="sl-controls">
+                    <input type="range" id="s_b2bRampYears" min="1" max="5" step="1" value="3" style="accent-color:#378ADD;" oninput="sv('b2bRampYears',this.value)">
+                    <span class="sl-val" id="b2bRampYears" style="min-width:30px;color:#378ADD;">3</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -850,12 +870,15 @@
 <script>
 window.addEventListener('load', function() {
   recalc();
-  [['s_yonetimUcretiPct','yonetimUcretiPct'],['s_izmirFlagshipPay','izmirFlagshipPay'],['s_ankaraFlagshipPay','ankaraFlagshipPay'],['s_bursaFlagshipPay','bursaFlagshipPay'],['s_gaziantepFlagshipPay','gaziantepFlagshipPay'],['s_izmirHedefPay','izmirHedefPay'],['s_ankaraHedefPay','ankaraHedefPay'],['s_bursaHedefPay','bursaHedefPay'],['s_gaziantepHedefPay','gaziantepHedefPay'],['s_istRampYears','istRampYears'],['s_izmirRampYears','izmirRampYears'],['s_ankaraRampYears','ankaraRampYears'],['s_bursaRampYears','bursaRampYears'],['s_gaziantepRampYears','gaziantepRampYears']].forEach(function(pair) {
+  [['s_yonetimUcretiPct','yonetimUcretiPct'],['s_izmirFlagshipPay','izmirFlagshipPay'],['s_ankaraFlagshipPay','ankaraFlagshipPay'],['s_bursaFlagshipPay','bursaFlagshipPay'],['s_gaziantepFlagshipPay','gaziantepFlagshipPay'],['s_izmirHedefPay','izmirHedefPay'],['s_ankaraHedefPay','ankaraHedefPay'],['s_bursaHedefPay','bursaHedefPay'],['s_gaziantepHedefPay','gaziantepHedefPay'],['s_istRampYears','istRampYears'],['s_izmirRampYears','izmirRampYears'],['s_ankaraRampYears','ankaraRampYears'],['s_bursaRampYears','bursaRampYears'],['s_gaziantepRampYears','gaziantepRampYears'],['s_b2bHedefAdetYil','b2bHedefAdetYil'],['s_b2bRampYears','b2bRampYears']].forEach(function(pair) {
     const sl = document.getElementById(pair[0]);
     if (sl) sl.value = gv(pair[1]);
     const sp = document.getElementById(pair[1]);
     if (sp) sp.textContent = gv(pair[1]);
   });
+  // B2B target shows with thousands separator (the forEach above set the raw number)
+  const _b2bTargetSp = document.getElementById('b2bHedefAdetYil');
+  if (_b2bTargetSp) _b2bTargetSp.textContent = (V.b2bHedefAdetYil||0).toLocaleString('tr-TR');
   ['izmir','ankara','bursa','gaziantep'].forEach(function(s) {
     const aktif = V[s+'Aktif'];
     const cb = document.getElementById(s+'Toggle');
