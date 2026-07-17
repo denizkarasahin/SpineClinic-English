@@ -457,7 +457,7 @@ function applyExitTax(grossPayout, costBasis) {
 // see buildProjection()'s izmirFeeRow/izmirEquityRow/izmirMinorityRow fork.
 function _refreshSubeMi(sehir) {
   const isSube = !!V[sehir+'SubeMi'];
-  const color = sehir === 'izmir' ? '#1D9E75' : '#534AB7';
+  const color = { izmir:'#1D9E75', ankara:'#E8963C', bursa:'#c94f2a', gaziantep:'#8a6d1a' }[sehir] || '#534AB7';
   const btnSub = document.getElementById(sehir+'ModeBtn_sub');
   const btnBranch = document.getElementById(sehir+'ModeBtn_branch');
   if (btnSub)    { btnSub.style.background    = !isSube ? color : '#fff'; btnSub.style.color    = !isSube ? '#fff' : color; }
@@ -482,6 +482,8 @@ function initDynamic() {
   _refreshFeeStreamAyriMult();
   _refreshSubeMi('izmir');
   _refreshSubeMi('ankara');
+  _refreshSubeMi('bursa');
+  _refreshSubeMi('gaziantep');
   _refreshNakdiSermaye();
   _refreshTeknokentKapsam();
   _refreshEmisyonPrimi();
@@ -3736,14 +3738,15 @@ function buildProjection() {
   const gaziantepRow = [1,2,3,4,5].map(y => Math.round(gaziantepFullNet * _satRampFrac(y, 3, gaziantepRampYears, _gaziantepAktifAyYil3 / 12)));
 
   // ── Hub-and-spoke: satellite management fee + ownership split ────────────
-  // Each satellite (Izmir/Ankara) defaults to a separate Ltd. şirket,
-  // majority-owned by the flagship, with its own local investors. The
-  // flagship charges a management fee on the satellite's GROSS revenue
-  // (before any profit split) — so the flagship earns the fee on 100% of
-  // satellite revenue but bears it only pro-rata to its own stake in the
-  // remaining profit. That asymmetry is the engine of the model, not an
-  // incidental detail. This is Subsidiary mode (izmirSubeMi/ankaraSubeMi
-  // false, the default).
+  // In Subsidiary mode a satellite is a separate Ltd. şirket, majority-owned
+  // by the flagship with its own local investors: the flagship charges a
+  // management fee on the satellite's GROSS revenue (before any profit split)
+  // — earning the fee on 100% of satellite revenue but bearing it only
+  // pro-rata to its own equity stake in the remaining profit. That asymmetry
+  // is the engine of the model.
+  // NOTE: all four satellites default to BRANCH mode ({sehir}SubeMi = true) in
+  // the committed defaults — a branch consolidates 100% of the satellite's
+  // P&L (incl. losses) into the flagship, with no fee and no minority interest.
   //
   // A satellite can alternatively be run as a flagship Branch (şube) instead
   // — no separate legal entity, so no fee (a company cannot invoice itself)
@@ -4387,7 +4390,7 @@ function capAssumeGroupHTML(p) {
       + '<div class="sl-controls"><input type="range" id="s_cap_' + p + '_' + pr.k + '" min="' + pr.min + '" max="' + pr.max + '" step="' + pr.step + '" value="' + val + '" oninput="svCap(\'' + pr.k + '\',this.value)">'
       + '<span class="sl-val" id="cap_' + p + '_' + pr.k + '" style="min-width:56px;">' + numFmt(pr.k, val) + '</span></div></div>';
   }).join('');
-  return '<details style="margin-top:10px;"><summary style="cursor:pointer;font-size:10px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:0.5px;">Capacity assumptions (time &amp; motion — network-wide; edits apply to every clinic)</summary>'
+  return '<details open style="margin-top:10px;"><summary style="cursor:pointer;font-size:10px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:0.5px;">Capacity assumptions (time &amp; motion — network-wide; edits apply to every clinic)</summary>'
     + '<div class="sl-grid" style="margin-top:8px;">' + rows + '</div></details>';
 }
 // Inject once per container that exists on the page (only the Multi-Year Plan

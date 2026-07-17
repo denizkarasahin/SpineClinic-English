@@ -111,6 +111,7 @@
                 </div>
               </div>
             </div>
+            <div id="istCapAssume"></div>
           </div>
         </div>
       </div>
@@ -178,6 +179,7 @@
                 </div>
               </div>
               <div id="izmirSubeNote" style="display:none;font-size:10px;color:#1D9E75;padding:6px 0 0;">Branch mode: 100% of Izmir's P&amp;L (incl. any loss) consolidates into the flagship — no fee, no minority interest. See trade-off note above.</div>
+              <div id="izmirCapAssume"></div>
             </div>
             <div id="izmirTriggerInfo" style="display:flex;align-items:center;gap:6px;padding:6px 10px;background:#e8f5ee;border:1px solid #1D9E7544;border-top:none;border-radius:0 0 6px 6px;margin-bottom:8px;font-size:10px;color:#1D9E75;"></div>
             <div id="izmirRampaWrap" style="padding: 8px; background: rgb(240, 253, 244); border-radius: 6px; margin-bottom: 8px;">
@@ -295,6 +297,7 @@
                 </div>
               </div>
               <div id="ankaraSubeNote" style="display:none;font-size:10px;color:#E8963C;padding:6px 0 0;">Branch mode: 100% of Ankara's P&amp;L (incl. any loss) consolidates into the flagship — no fee, no minority interest. See trade-off note above.</div>
+              <div id="ankaraCapAssume"></div>
             </div>
             <div id="ankaraRampaWrap" style="padding: 8px; background: rgb(253, 246, 236); border-radius: 6px; margin-top: 8px;">
               <div style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #f0d9a8;">
@@ -441,6 +444,7 @@
                 </div>
               </div>
               <div id="bursaSubeNote" style="display:none;font-size:10px;color:#c94f2a;padding:6px 0 0;">Branch mode: 100% of Bursa's P&amp;L (incl. any loss) consolidates into the flagship — no fee, no minority interest. See trade-off note above.</div>
+              <div id="bursaCapAssume"></div>
             </div>
             <div id="bursaRampaWrap" style="padding: 8px; background: rgb(253, 241, 236); border-radius: 6px; margin-bottom: 8px;">
               <div style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #f0ddd3;">
@@ -563,6 +567,7 @@
                 </div>
               </div>
               <div id="gaziantepSubeNote" style="display:none;font-size:10px;color:#8a6d1a;padding:6px 0 0;">Branch mode: 100% of Gaziantep's P&amp;L (incl. any loss) consolidates into the flagship — no fee, no minority interest. See trade-off note above.</div>
+              <div id="gaziantepCapAssume"></div>
             </div>
             <div id="gaziantepRampaWrap" style="padding: 8px; background: rgb(253, 248, 238); border-radius: 6px; margin-top: 8px;">
               <div style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #f0e4c0;">
@@ -716,7 +721,6 @@
     <div class="section-title">Annual Financial Detail — Istanbul</div>
     <div style="font-size:11px;color:var(--ink3);margin-bottom:8px;">Same metrics as the 12-Month Summary (index.html), shown for every year. Year 1 is the actual monthly model; Years 2-5 are annual projections — several rows are approximations (labeled inline) since this projection has no monthly or per-product granularity beyond Year 1.</div>
     <div id="istAnnualDetailWrap" style="overflow-x:auto;"></div>
-    <div id="istCapAssume"></div>
   </div>
 
   <div class="section" id="izmirAnnualDetailSection" style="display:none;">
@@ -724,7 +728,6 @@
     <div class="section-title">Annual Financial Detail — Izmir</div>
     <div style="font-size:11px;color:var(--ink3);margin-bottom:8px;">Izmir has no monthly model of its own — it's ramped from a single full-capacity target, so "Monthly break-even" doesn't apply here. Doctor fee, channel share, and cutting fee all borrow Istanbul's Year-1 ratios (a second layer of approximation on top of Istanbul's own Year 2-5 estimate). Setup cost lands entirely in the opening year.</div>
     <div id="izmirAnnualDetailWrap" style="overflow-x:auto;"></div>
-    <div id="izmirCapAssume"></div>
   </div>
 
   <div class="section" id="ankaraAnnualDetailSection" style="display:none;">
@@ -732,7 +735,6 @@
     <div class="section-title">Annual Financial Detail — Ankara</div>
     <div style="font-size:11px;color:var(--ink3);margin-bottom:8px;">Ankara has no monthly model of its own — it's ramped from a single full-capacity target, so "Monthly break-even" doesn't apply here. Doctor fee, channel share, and cutting fee all borrow Istanbul's Year-1 ratios (a second layer of approximation on top of Istanbul's own Year 2-5 estimate). Setup cost lands entirely in the opening year.</div>
     <div id="ankaraAnnualDetailWrap" style="overflow-x:auto;"></div>
-    <div id="ankaraCapAssume"></div>
   </div>
 
   <div class="section" id="bursaAnnualDetailSection" style="display:none;">
@@ -740,7 +742,6 @@
     <div class="section-title">Annual Financial Detail — Bursa</div>
     <div style="font-size:11px;color:var(--ink3);margin-bottom:8px;">Bursa has no monthly model of its own — it's ramped from a single full-capacity target, so "Monthly break-even" doesn't apply here. Doctor fee, channel share, and cutting fee all borrow Istanbul's Year-1 ratios. Opens Year 3 (one year after Izmir/Ankara); the "Years to reach Bursa's full target" slider above controls how many years from opening it takes to reach 100% of that target — at the default (4 years), it doesn't quite get there within this model's 5-year horizon. Setup cost lands entirely in the opening year.</div>
     <div id="bursaAnnualDetailWrap" style="overflow-x:auto;"></div>
-    <div id="bursaCapAssume"></div>
   </div>
 
   <div class="section" id="gaziantepAnnualDetailSection" style="display:none;">
@@ -748,7 +749,6 @@
     <div class="section-title">Annual Financial Detail — Gaziantep</div>
     <div style="font-size:11px;color:var(--ink3);margin-bottom:8px;">Gaziantep has no monthly model of its own — it's ramped from a single full-capacity target, so "Monthly break-even" doesn't apply here. Doctor fee, channel share, and cutting fee all borrow Istanbul's Year-1 ratios. Opens Year 3 (one year after Izmir/Ankara); the "Years to reach Gaziantep's full target" slider above controls how many years from opening it takes to reach 100% of that target — at the default (4 years), it doesn't quite get there within this model's 5-year horizon. Setup cost lands entirely in the opening year.</div>
     <div id="gaziantepAnnualDetailWrap" style="overflow-x:auto;"></div>
-    <div id="gaziantepCapAssume"></div>
   </div>
 
   <!-- TEHLİKE TETİKLEYİCİ -->
