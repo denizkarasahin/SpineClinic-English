@@ -681,8 +681,14 @@ function renderProjection() {
   const y5KorseToplam = Math.round(y5KorseAdet * birimNetEur / 1000);
 
   const y3BrutGelir = y5KorseToplam;
-  const y2GiderEur  = Math.round(y1GiderEur * 1.15);
-  const y3GiderEur  = Math.round(y1GiderEur * 1.25);
+  // Istanbul Y2/Y3 opex is capacity-derived in the live model — read the real
+  // committed numbers it already computed (window._lastYearly.istOpex) rather
+  // than the old flat ×1.15/×1.25 approximation, so this validation view stays
+  // in sync with the model. Falls back to the inflation formula only if the
+  // projection hasn't run yet.
+  const _istOpexLive = (window._lastYearly && window._lastYearly.istOpex) || [];
+  const y2GiderEur  = _istOpexLive[1] != null ? _istOpexLive[1] : Math.round(y1GiderEur * 1.15);
+  const y3GiderEur  = _istOpexLive[2] != null ? _istOpexLive[2] : Math.round(y1GiderEur * 1.25);
   const y1BrutM1    = toEur(y1KorseNet);
   const y1NetM1     = Math.max(0, y1BrutM1 - y1GiderEur);
   const y2NetM1     = Math.max(0, lerp(y1BrutM1, y3BrutGelir, 0.4) - y2GiderEur);
@@ -715,14 +721,14 @@ function renderProjection() {
     '<span class="k">Y1_CostEur</span>     = -(Σ monthly costs) / eurRate / 1000 → €'+y1GiderEur+'K\n\n' +
     '<span class="c">── YEAR 2 ──────────────────────────────────────────────────────────────────</span>\n' +
     '<span class="k">Y2_GrossC1</span>     = LINEAR(Y1=€'+y1BrutM1+'K → Y3=€'+y3BrutGelir+'K, t=0.4)\n' +
-    '<span class="k">Y2_CostEur</span>     = Y1_Cost × 1.15 (staff + rent increase) = €'+y2GiderEur+'K\n' +
+    '<span class="k">Y2_CostEur</span>     = capacity-derived (structural base ×1.15 + time-&-motion staff/printers/branches) = €'+y2GiderEur+'K\n' +
     '<span class="k">Y2_C1_Net</span>      = MAX(0, Y2_Gross − Y2_Cost) → €'+y2NetM1+'K\n' +
     '<span class="k">Y2_SSI_Net</span>     = Y3_SSI × 0.25 (ramp-up 25%) → €'+y2SgkNet+'K\n\n' +
     '<span class="c">── YEAR 3 ──────────────────────────────────────────────────────────────────</span>\n' +
     '<span class="k">Y3_TargetBraces</span>= MarketIST × '+gv('hedefOsteoidPay')+'% = '+pazarIst.toLocaleString('tr-TR')+' × '+gv('hedefOsteoidPay')+'% = '+y5KorseAdet+' units\n' +
     '<span class="k">UnitNetEur</span>     = Year-end avg (last 3 months) = ₺'+sonBirimNet.toLocaleString('tr-TR')+'/brace\n' +
     '<span class="k">Y3_GrossRevenue</span>= '+y5KorseAdet+' × ₺'+sonBirimNet.toLocaleString('tr-TR')+' / '+eurKur+' / 1000 = €'+y3BrutGelir+'K\n' +
-    '<span class="k">Y3_CostEur</span>     = Y1_Cost × 1.25 → €'+y3GiderEur+'K\n' +
+    '<span class="k">Y3_CostEur</span>     = capacity-derived (structural base ×1.18-1.25 + time-&-motion staff/printers/branches) → €'+y3GiderEur+'K\n' +
     '<span class="r">Y3_C1_Net</span>      = MAX(0, Y3_Gross − Y3_Cost) → €'+y3NetM1+'K\n' +
     '<span class="k">Y3_SSI_Net</span>     = Y3_C1_Net × 0.35 × 0.85 → €'+y3SgkNet+'K\n' +
     '<span class="c">            0.35 = SSI channel share estimate · 0.85 = collection efficiency (60–90 day delay)</span>';

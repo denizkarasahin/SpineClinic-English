@@ -23,7 +23,7 @@ document.getElementById = function(id) {
   };
 };
 
-const V = {"korseF":37800,"malzeme":50,"reklamCarpan":1,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.72,"kira":250000,"depozito":250000,"emlakci":500000,"m2":360,"tadilatM2":7000,"dekoM2":6750,"mobilya":300000,"ruhsat":100000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":90000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[15,15,20,25,25,33,35,41,42,50,50,55],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":27000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":3500,"mal_sens":2075,"mal_sensDelik":4975,"feeSci_stdR":10,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdR":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdR":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":45000,"pazarIstPct":30.1,"hedefOsteoidPay":30,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":true,"izmirHedefPay":30,"izmirUseIst":false,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":true,"ankaraHedefPay":30,"ankaraUseIst":false,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"bursaAktif":true,"bursaHedefPay":30,"bursaUseIst":false,"bursaUseIstGider":true,"bursaKira":80000,"bursaOrtotistM":55000,"bursaStajyerM":25000,"bursaMutfak":18000,"bursaSarf":3000,"bursaUseIstKurulum":true,"bursaKurulumKira":120000,"bursaKurulumDepozito":200000,"bursaKurulumTadilat":4750,"bursaKurulumDeko":2000,"bursaKurulumMobilya":600000,"bursaRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"gaziantepAktif":true,"gaziantepHedefPay":30,"gaziantepUseIst":false,"gaziantepUseIstGider":true,"gaziantepKira":85000,"gaziantepOrtotistM":55000,"gaziantepStajyerM":25000,"gaziantepMutfak":18000,"gaziantepSarf":3000,"gaziantepUseIstKurulum":true,"gaziantepKurulumKira":120000,"gaziantepKurulumDepozito":200000,"gaziantepKurulumTadilat":4750,"gaziantepKurulumDeko":2000,"gaziantepKurulumMobilya":600000,"gaziantepRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"bursaNufusPay":4.5,"gaziantepNufusPay":3,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":true,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":18,"dcfGrowth":18,"dcfGrowth45":45,"dcfExitMult":10,"dcfNegotiationDiscount":20,"tranche1Eur":500000,"trancheStepUp":1.75,"dcfInvest":771443,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":12500,"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":130000,"_sen_max_kira":500000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":3500,"_sen_max_dekoM2":17000,"_sen_min_ortotistM":55000,"_sen_max_ortotistM":160000,"_sen_min_operatorM":110000,"_sen_max_operatorM":290000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.75,"bursaRampaOran":0.75,"bursaKurulumOran":0.75,"gaziantepRampaOran":0.8,"gaziantepKurulumOran":0.75,"operatorM":180000,"ipLisansEur":500000,"sehirEksklusifEur":500000,"workingCapBufferEur":500000,"stage1BufferEur":200000,"kvOrani":25,"vergiDahil":true,"exitYili":5,"kisiselVergiOrani":15,"fundAy":0,"makineKatkiOran":50,"osteoidCarpan":1,"yatirimciCarpan":1,"doktorYatirim":0,"doktorCarpan":1.5,"sweatEur":80000,"sweatVestAy":48,"sweatCliffAy":12,"sweatElapsedAy":0,"sweatMaxPct":5,"sweatCarpan":1,"sweatVestedToday":true,"royaltyOffsetYil":1,"royaltyOffsetPct":0,"yonetimUcretiPct":5,"izmirFlagshipPay":65,"ankaraFlagshipPay":65,"bursaFlagshipPay":65,"gaziantepFlagshipPay":65,"izmirSubeMi":true,"ankaraSubeMi":true,"bursaSubeMi":true,"gaziantepSubeMi":true,"euLegalFaiz":5,"setupOverheadC1":30000,"setupOverheadC2":30000,"setupOverheadC3":45000,"setupOverheadC4":40000,"setupOverheadC5":40000,"bursaGaziantepFcfFunded":true,"nakdiSermayeAktif":true,"teknokentKapsam":false,"emisyonPrimiAktif":true,"nominalPayOrani":10,"feeStreamAyriMult":false,"feeExitMult":12,"istRampYears":3,"izmirRampYears":3,"ankaraRampYears":3,"bursaRampYears":4,"gaziantepRampYears":4,"bursaAcilisAy":3,"ankaraAcilisAy":5,"workingCapBufferFcfFunded":false,"_version":51};
+const V = {"korseF":37800,"malzeme":50,"reklamCarpan":1,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.72,"kira":250000,"depozito":250000,"emlakci":500000,"m2":360,"tadilatM2":7000,"dekoM2":6750,"mobilya":300000,"ruhsat":100000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":90000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[15,15,20,25,25,33,35,41,42,50,50,55],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":27000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":3500,"mal_sens":2075,"mal_sensDelik":4975,"feeSci_stdR":10,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdR":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdR":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":45000,"pazarIstPct":30.1,"hedefOsteoidPay":30,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":true,"izmirHedefPay":30,"izmirUseIst":false,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":true,"ankaraHedefPay":30,"ankaraUseIst":false,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"bursaAktif":true,"bursaHedefPay":30,"bursaUseIst":false,"bursaUseIstGider":true,"bursaKira":80000,"bursaOrtotistM":55000,"bursaStajyerM":25000,"bursaMutfak":18000,"bursaSarf":3000,"bursaUseIstKurulum":true,"bursaKurulumKira":120000,"bursaKurulumDepozito":200000,"bursaKurulumTadilat":4750,"bursaKurulumDeko":2000,"bursaKurulumMobilya":600000,"bursaRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"gaziantepAktif":true,"gaziantepHedefPay":30,"gaziantepUseIst":false,"gaziantepUseIstGider":true,"gaziantepKira":85000,"gaziantepOrtotistM":55000,"gaziantepStajyerM":25000,"gaziantepMutfak":18000,"gaziantepSarf":3000,"gaziantepUseIstKurulum":true,"gaziantepKurulumKira":120000,"gaziantepKurulumDepozito":200000,"gaziantepKurulumTadilat":4750,"gaziantepKurulumDeko":2000,"gaziantepKurulumMobilya":600000,"gaziantepRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"bursaNufusPay":4.5,"gaziantepNufusPay":3,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":true,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":18,"dcfGrowth":18,"dcfGrowth45":45,"dcfExitMult":10,"dcfNegotiationDiscount":20,"tranche1Eur":500000,"trancheStepUp":1.75,"dcfInvest":771443,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":12500,"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":130000,"_sen_max_kira":500000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":3500,"_sen_max_dekoM2":17000,"_sen_min_ortotistM":55000,"_sen_max_ortotistM":160000,"_sen_min_operatorM":110000,"_sen_max_operatorM":290000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.75,"bursaRampaOran":0.75,"bursaKurulumOran":0.75,"gaziantepRampaOran":0.8,"gaziantepKurulumOran":0.75,"operatorM":180000,"ipLisansEur":500000,"sehirEksklusifEur":500000,"workingCapBufferEur":500000,"stage1BufferEur":200000,"kvOrani":25,"vergiDahil":true,"exitYili":5,"kisiselVergiOrani":15,"fundAy":0,"makineKatkiOran":50,"osteoidCarpan":1,"yatirimciCarpan":1,"doktorYatirim":0,"doktorCarpan":1.5,"sweatEur":80000,"sweatVestAy":48,"sweatCliffAy":12,"sweatElapsedAy":0,"sweatMaxPct":5,"sweatCarpan":1,"sweatVestedToday":true,"royaltyOffsetYil":1,"royaltyOffsetPct":0,"yonetimUcretiPct":5,"izmirFlagshipPay":65,"ankaraFlagshipPay":65,"bursaFlagshipPay":65,"gaziantepFlagshipPay":65,"izmirSubeMi":true,"ankaraSubeMi":true,"bursaSubeMi":true,"gaziantepSubeMi":true,"euLegalFaiz":5,"setupOverheadC1":30000,"setupOverheadC2":30000,"setupOverheadC3":45000,"setupOverheadC4":40000,"setupOverheadC5":40000,"bursaGaziantepFcfFunded":true,"nakdiSermayeAktif":true,"teknokentKapsam":false,"emisyonPrimiAktif":true,"nominalPayOrani":10,"feeStreamAyriMult":false,"feeExitMult":12,"istRampYears":3,"izmirRampYears":3,"ankaraRampYears":3,"bursaRampYears":4,"gaziantepRampYears":4,"bursaAcilisAy":3,"ankaraAcilisAy":5,"workingCapBufferFcfFunded":false,"hastaPerOdaGun":6,"odaMaxPerKlinik":6,"odaM2":10,"calismaGunAy":26,"haftaSonuGunAy":9,"haftaSonuTalepPct":60,"visitPerKorse":1,"ortotistDkFitting":20,"expertDkHasta":8,"destekDkHasta":45,"staffUtilPct":75,"korsePerPrinterAy":66,"ekOrtotistM":65000,"subeSetupTRY":900000,"subeKiraAy":60000,"izmirDestekM":25000,"ankaraDestekM":25000,"bursaDestekM":25000,"gaziantepDestekM":25000,"b2bHedefAdetYil":1200,"b2bRampYears":3,"_version":54};
 // Restore state from localStorage if available; clear cache on version mismatch
 (function() {
   try {
@@ -453,6 +453,7 @@ function svSubeMi(sehir, isSube) {
 }
 function initDynamic() {
   _refreshPrinterDisplay();
+  renderCapacityCard();
   svRobotKol();
   _refreshVergiDahil();
   _refreshFeeStreamAyriMult();
@@ -1859,11 +1860,23 @@ function computeYear1(Vlike) {
   const ekipmanOsteoidden = Vlike.ekipmanOsteoidden !== false;
 
   const korseArr = Vlike.korse || [];
-  const maxKorse = korseArr.length ? Math.max(...korseArr.map(Number)) : 0;
-  // Auto printer count (mirrors _autoPrinterAdet), derived locally so this
-  // function never has to write V.printerAdet as a side effect.
-  const autoPrinterAdet = Math.max(2, Math.ceil(maxKorse / 66));
-  const startPrinterAdet = Vlike.printerAdetManual !== undefined ? Vlike.printerAdetManual : autoPrinterAdet;
+  const korseB2BArr = Vlike.korseB2B || [];
+  // Opening printer count for the monthly engine: manual override, else the
+  // FIRST active month's combined (B2C+B2B) need via clinicCapacityProfile,
+  // floored at 2. The engine tops up as the ramp climbs (see the loop), so the
+  // year-end peak is reached via mid-year purchases rather than front-loaded —
+  // which is what lets the top-up trigger actually fire. The peak-sized count
+  // shown on the printer card comes from the separate _autoPrinterAdet().
+  // clinicCapacityProfile reads V's capacity sliders — during a calcMetric
+  // scenario clone V IS Vlike, so this stays consistent.
+  let _openB2C = 0, _openB2B = 0;
+  for (let _i = 0; _i < Math.max(korseArr.length, korseB2BArr.length); _i++) {
+    const _b2c = Number(korseArr[_i]) || 0, _b2b = Number(korseB2BArr[_i]) || 0;
+    if (_b2c > 0 || _b2b > 0) { _openB2C = _b2c; _openB2B = _b2b; break; }
+  }
+  const startPrinterAdet = Vlike.printerAdetManual !== undefined
+    ? Vlike.printerAdetManual
+    : Math.max(2, clinicCapacityProfile(_openB2C, _openB2B).printers);
 
   const printerMaliyet = (printerAktif && !ekipmanOsteoidden) ? startPrinterAdet * printerEurFiyat * eurKur : 0;
   const robotKolMaliyet = (robotKolAktif && !ekipmanOsteoidden) ? robotKolEurFiyat * eurKur : 0;
@@ -1890,10 +1903,11 @@ function computeYear1(Vlike) {
     stdR: gv1('feeLib_stdR')/100, stdRl: gv1('feeLib_stdRl')/100,
     delik: gv1('feeLib_delik')/100, sens: gv1('feeLib_sens')/100, sensDelik: gv1('feeLib_sensDelik')/100,
   };
-  const _e1 = Vlike.esikStajyer1 ?? 15, _e2 = Vlike.esikDestek ?? 30, _e3 = Vlike.esikStajyer2 ?? 76;
+  // esikDestek no longer gates support staff — support is now capacity-derived
+  // (see the loop). Intern thresholds (_e1/_e3) stay.
+  const _e1 = Vlike.esikStajyer1 ?? 15, _e3 = Vlike.esikStajyer2 ?? 76;
   const stajBrut = gv1('stajyerM')*sgkC, destekBrut = gv1('destekM')*sgkC, staj2Brut = gv1('stajyer2M')*sgkC;
 
-  const printerKapAyMax = 66;  // günde 3 korse × 22 iş günü
   const printerBirimMaliyet = printerEurFiyat * eurKur;
   let aktifPrinterSayisi = startPrinterAdet;
   const printerTetikAylari = [];
@@ -1945,10 +1959,17 @@ function computeYear1(Vlike) {
     const royaltyTop = korse * royaltyTRY;
     const gelirNet  = gelirBrut - feeSci - feeEdu - feeLib - baskiTop - royaltyTop;
 
+    // Capacity profile for THIS month, from combined B2C + B2B load. Drives
+    // the printer top-up trigger and the derived staffing below — B2B braces
+    // consume printers only (no rooms/orthotist/workshop), which the profile
+    // already encodes.
+    const b2bAy = Number(korseB2BArr[i]) || 0;
+    const cap = clinicCapacityProfile(korse, b2bAy);
+
     // Printer tetikleyici — bu ayın korsesi mevcut kapasite aşıyorsa ek printer al.
     // Capacity/timing is still tracked even when Osteoid A.Ş. supplies the
     // equipment (ekipmanOsteoidden) — only the cost hitting the clinic P&L is zeroed.
-    const gerekliPrinter = Math.ceil(korse / printerKapAyMax);
+    const gerekliPrinter = cap.printers;
     let printerEkMaliyet = 0;
     if (gerekliPrinter > aktifPrinterSayisi) {
       const yeniPrinter = gerekliPrinter - aktifPrinterSayisi;
@@ -1958,18 +1979,27 @@ function computeYear1(Vlike) {
     }
 
     const ayStopaj = (i===2||i===5||i===8||i===11) ? stopajV : 0;
+    // Interns stay threshold-gated (training pipeline, not capacity math).
     const ayStajyer = korse >= _e1 ? stajBrut   : 0;
-    const ayDestek  = korse >= _e2 ? destekBrut : 0;
     const ayStaj2   = korse >= _e3 ? staj2Brut  : 0;
+    // Support (workshop) staff and fitting orthotists are now sized by the
+    // time-and-motion capacity engine, replacing the single esikDestek
+    // threshold hire. The expert orthotist remains the existing ortoBrut
+    // line — fitting orthotists are ADDITIONAL headcount at ekOrtotistM each,
+    // so no double-count.
+    const ortotistSayisi = cap.orthotists;
+    const destekSayisi    = cap.supportStaff;
+    const fittingOrtoBrut = ortotistSayisi * gv1('ekOrtotistM') * sgkC;
+    const ayDestek        = destekSayisi * destekBrut; // derived count × brut (field name kept for the Fixed-Costs display)
 
-    const sabitGider = aylikKira + (elektrik+internet+sarf) + ortoBrut + operatorBrut + ymmM + ayStajyer + ayDestek + ayStaj2 + genelGiderV;
+    const sabitGider = aylikKira + (elektrik+internet+sarf) + ortoBrut + fittingOrtoBrut + operatorBrut + ymmM + ayStajyer + ayDestek + ayStaj2 + genelGiderV;
     const gider = -(sabitGider + reklamS + ymmDon + mutfakV + ayStopaj + kongre + printerEkMaliyet);
     const net = gelirNet + gider;
     cumBudget += net;
     if (basAy===null && net>=0) basAy = i+1;
     if (pozAy===null && cumBudget>=0) pozAy = i+1;
 
-    rows.push({ay:i+1, korse, k, gelirBrut, feeSci, feeEdu, feeLib, baskiTop, royaltyTop, kesimTop, gelirNet, sabitGider, ayStajyer, ayDestek, ayStaj2, reklamS, ymmDon, mutfakV, ayStopaj, kongre, printerEkMaliyet, gider, net, cumBudget});
+    rows.push({ay:i+1, korse, k, gelirBrut, feeSci, feeEdu, feeLib, baskiTop, royaltyTop, kesimTop, gelirNet, sabitGider, ayStajyer, ayDestek, ayStaj2, fittingOrtoBrut, ortotistSayisi, destekSayisi, odaSayisi: cap.rooms, peakDayPatients: cap.peakDayPatients, expertLoadPct: cap.expertLoadPct, reklamS, ymmDon, mutfakV, ayStopaj, kongre, printerEkMaliyet, gider, net, cumBudget});
     cumKorse += korse;
     tGelir += gelirNet; tGider += gider; tNet += net; tKorse += korse;
   }
@@ -2276,19 +2306,27 @@ function updMerkezKurulumOran(sehir, val) {
 function getMerkezKurulum(sehir) {
   const useIst = V[sehir+'UseIstKurulum'] !== false;
   const m2 = gv('m2');
+  const _ekipmanOsteoidden = V.ekipmanOsteoidden !== false;
+  // Printer capex sized to THIS satellite's own full-capacity monthly volume,
+  // not Istanbul's Year-1 count. Satellites are 100% B2C — the model routes no
+  // B2B to satellites — so printer sizing passes 0 B2B.
+  const _satFullMonthly = gv('pazarTR') * ((V[sehir+'NufusPay']||0)/100) * ((V[sehir+'HedefPay']||0)/100) / 12;
+  const _satPrinters = clinicCapacityProfile(_satFullMonthly, 0).printers;
+  const _satPrinterCapex = (V.printerAktif !== false && !_ekipmanOsteoidden) ? _satPrinters * (V.printerEurFiyat||35000) * (V.eurKur ?? 50) : 0;
   if (useIst) {
     const oran = V[sehir+'KurulumOran'] || 1.0;
-    const _ekipmanOsteoidden = V.ekipmanOsteoidden !== false;
-    const _pM = (V.printerAktif !== false && !_ekipmanOsteoidden) ? _autoPrinterAdet()*(V.printerEurFiyat||35000)*(V.eurKur ?? 50) : 0;
     const _rM = (V.robotKolAktif && !_ekipmanOsteoidden) ? (V.robotKolEurFiyat||30000)*(V.eurKur ?? 50) : 0;
-    return (gv('kira') + gv('depozito') + gv('emlakci') + m2*gv('tadilatM2') + m2*gv('dekoM2') + gv('mobilya') + gv('ruhsat') + _pM + _rM) * oran;
+    return (gv('kira') + gv('depozito') + gv('emlakci') + m2*gv('tadilatM2') + m2*gv('dekoM2') + gv('mobilya') + gv('ruhsat') + _satPrinterCapex + _rM) * oran;
   } else {
     const kira     = V[sehir+'KurulumKira']     || gv('kira');
     const depozito = V[sehir+'KurulumDepozito'] || gv('depozito');
     const tadilat  = V[sehir+'KurulumTadilat']  || gv('tadilatM2');
     const deko     = V[sehir+'KurulumDeko']     || gv('dekoM2');
     const mobilya  = V[sehir+'KurulumMobilya']  || gv('mobilya');
-    return kira + depozito + gv('emlakci') + m2*tadilat + m2*deko + mobilya + gv('ruhsat');
+    // Custom branch previously had ZERO printer capex (its ₺600K equipment
+    // field can't cover even one €35K printer) — add the same profile-sized
+    // printer term here so a self-built satellite still budgets its printers.
+    return kira + depozito + gv('emlakci') + m2*tadilat + m2*deko + mobilya + gv('ruhsat') + _satPrinterCapex;
   }
 }
 
@@ -2480,7 +2518,11 @@ function recalc() {
   // paying right now, at the end of Year 1."
   const _refRow = computeYear1(V).rows[11];
   const _refKorse = V.korse ? V.korse[V.korse.length-1] : 0;
-  const _esik1 = V.esikStajyer1 ?? 15, _esikD = V.esikDestek ?? 30, _esik2 = V.esikStajyer2 ?? 76;
+  // Interns (esikStajyer1/esikStajyer2) stay threshold-gated. Support staff is
+  // no longer threshold-gated (esikDestek) — it's capacity-derived by the
+  // time-and-motion engine, read from the Month-12 reference row below.
+  const _esik1 = V.esikStajyer1 ?? 15, _esik2 = V.esikStajyer2 ?? 76;
+  const _refDestekSay = _refRow.destekSayisi || 0;
   const stajyerBrut = _refRow.ayStajyer;
   const destekBrutBar = _refRow.ayDestek;
   const staj2Brut = _refRow.ayStaj2;
@@ -2503,7 +2545,6 @@ function recalc() {
   const brutPairsGated = [
     ['brutStajyer',   gv('stajyerM'),  _refKorse >= _esik1, _esik1],
     ['brutYeniMezun', gv('stajyer2M'), _refKorse >= _esik2, _esik2],
-    ['brutDestek',    gv('destekM'),   _refKorse >= _esikD, _esikD],
   ];
   brutPairsGated.forEach(([id, net, aktif, esik]) => {
     const el = document.getElementById(id);
@@ -2516,8 +2557,20 @@ function recalc() {
       el.style.color = '#c94f2a';
     }
   });
-  // Threshold badges next to each role's title — same active/inactive signal at a glance
-  [['esikLabel1', _refKorse >= _esik1], ['esikLabel2', _refKorse >= _esikD], ['esikLabel3', _refKorse >= _esik2]].forEach(([id, aktif]) => {
+  // Support staff — capacity-derived (time & motion), no longer esikDestek-gated.
+  const _brutDestekEl = document.getElementById('brutDestek');
+  if (_brutDestekEl) {
+    if (_refDestekSay > 0) {
+      _brutDestekEl.textContent = (_refDestekSay > 1 ? _refDestekSay + ' × ' : '') + Math.round(gv('destekM') * _sgkC).toLocaleString('tr-TR') + (_refDestekSay > 1 ? '' : '') ;
+      _brutDestekEl.style.color = '';
+    } else {
+      _brutDestekEl.textContent = 'None at current volume';
+      _brutDestekEl.style.color = '#c94f2a';
+    }
+  }
+  // Threshold badges next to each role's title — interns gated; support badge
+  // reflects the capacity-derived count instead of a threshold.
+  [['esikLabel1', _refKorse >= _esik1], ['esikLabel2', _refDestekSay > 0], ['esikLabel3', _refKorse >= _esik2]].forEach(([id, aktif]) => {
     const el = document.getElementById(id);
     if (!el) return;
     el.style.background = aktif ? '#e8f8f0' : '#f5e0d8';
@@ -2591,6 +2644,7 @@ function recalc() {
   document.getElementById('dm2d').textContent=dm2.toLocaleString('tr-TR');
 
   _refreshPrinterDisplay();
+  renderCapacityCard();
   svRobotKol();
   document.getElementById('kurulumTop').textContent=ff(kurulumTop);
   renderKurulumDonut(gv('kira'),gv('depozito'),gv('emlakci'),tadilatTop,dekoTopV,gv('mobilya')+printerMaliyet+robotKolMaliyet,gv('ruhsat'));
@@ -2668,12 +2722,20 @@ function recalc() {
     {label:'Net margin / brace',        val:brütMarj+'%',                               sub:'',                 c:'neu'},
   ].map(k=>`<div class="kpi"><div class="kpi-label">${k.label}</div><div class="kpi-val ${k.c}">${k.val}</div>${k.sub?`<div style="font-size:10px;color:#aaa;margin-top:2px;line-height:1.2;">${k.sub}</div>`:''}</div>`).join('');
 
+  // Show orthotist/support headcount columns only when the capacity engine
+  // ever needs more than one of either in Year 1 (on defaults both stay 1, so
+  // the table keeps its original shape). The two extra columns shift the B2B
+  // section's colspans, handled below.
+  const showStaffCols = rows.some(r => (r.ortotistSayisi||0) > 1 || (r.destekSayisi||0) > 1);
+  const staffHead = showStaffCols ? '<th>Ortho.</th><th>Support</th>' : '';
+  const b2bSepCols = showStaffCols ? 25 : 23;
+  const b2bMidCols = showStaffCols ? 10 : 8;
   const th=`<thead><tr>
     <th>Month</th>
     <th style="color:#888780;">Std-NR</th><th style="color:#D85A30;">Std-Rep.</th>
     <th style="color:#1D9E75;">Perf.</th><th style="color:#534AB7;">Sens</th><th style="color:#D4537E;">Sns+Prf</th>
     <th>Gross Rev.</th><th>Sci. Study Fee</th><th>Education Fee</th><th>Library Fee</th><th>Cost</th><th>Royalty</th><th>Net Revenue</th>
-    <th>Fixed</th><th>Intern</th><th>Advertising</th><th>Kitchen</th><th>Withholding</th><th>Periodic/YMM</th><th>Printer</th>
+    <th>Fixed</th><th>Intern</th><th>Advertising</th><th>Kitchen</th><th>Withholding</th><th>Periodic/YMM</th><th>Printer</th>${staffHead}
     <th>Tot.Cost</th><th>Monthly Net</th><th>Cumulative</th>
   </tr></thead>`;
   const tb_rows=rows.map(r=>{
@@ -2694,6 +2756,7 @@ function recalc() {
       <td class="nc">${ff(-r.mutfakV)}</td>
       <td class="${r.ayStopaj?'nc':'zc'}">${r.ayStopaj?ff(-r.ayStopaj):'—'}</td>
       <td class="${donYmm?'nc':'zc'}">${donYmm?ff(-donYmm):'—'}</td><td class="${r.printerEkMaliyet?'nc':'zc'}">${r.printerEkMaliyet?ff(-r.printerEkMaliyet):'—'}</td>
+      ${showStaffCols ? `<td>${r.ortotistSayisi||0}</td><td>${r.destekSayisi||0}</td>` : ''}
       <td class="nc">${ff(r.gider)}</td>
       <td class="${cls(r.net)}">${ff(r.net)}</td>
       <td class="${cls(r.cumBudget)}">${ff(r.cumBudget)}</td>
@@ -2724,13 +2787,14 @@ function recalc() {
     <td class="${cls(tGelir)}">${ff(tGelir)}</td>
     <td class="nc">${ff(-tSabit)}</td><td class="nc">${ff(-tStajyer)}</td><td class="nc">${ff(-tReklam)}</td>
     <td class="nc">${ff(-tMutfak)}</td><td class="nc">${ff(-tStopaj)}</td><td class="nc">${ff(-tKongre)}</td><td class="${tPrinter?'nc':'zc'}">${tPrinter?ff(-tPrinter):'—'}</td>
+    ${showStaffCols ? `<td>${Math.max(...rows.map(r=>r.ortotistSayisi||0))}</td><td>${Math.max(...rows.map(r=>r.destekSayisi||0))}</td>` : ''}
     <td class="${cls(tGider)}">${ff(tGider)}</td>
     <td class="${cls(tNet)}">${ff(tNet)}</td>
     <td class="${cls(rows[11].cumBudget)}">${ff(rows[11].cumBudget)}</td>
   </tr>`;
   // B2B bölümü
   const b2bSep = `<tr style="background:#1a1a1a;color:#fff;font-size:10px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;">
-    <td colspan="23" style="padding:5px 8px;">B2B Channel</td></tr>`;
+    <td colspan="${b2bSepCols}" style="padding:5px 8px;">B2B Channel</td></tr>`;
   const b2b_rows = rowsB2B.map(r => {
     const kk = r.k || [r.korse,0,0,0,0];
     return `<tr style="background:#f7f6ff;">
@@ -2744,7 +2808,7 @@ function recalc() {
       <td class="${r.baskiTop?'nc':'zc'}">${r.baskiTop?ff(-r.baskiTop):'—'}</td>
       <td class="nc">${ff(-r.royaltyTop)}</td>
       <td class="${cls(r.gelirNet)}">${ff(r.gelirNet)}</td>
-      <td class="zc" colspan="8">—</td>
+      <td class="zc" colspan="${b2bMidCols}">—</td>
       <td class="${cls(r.gelirNet)}">${ff(r.gelirNet)}</td>
       <td class="zc">—</td>
     </tr>`;
@@ -2767,7 +2831,7 @@ function recalc() {
     <td class="nc">${ff(-b2bBaski)}</td>
     <td class="nc">${ff(-b2bRoy)}</td>
     <td class="${cls(tGelirB2B)}">${ff(tGelirB2B)}</td>
-    <td class="zc" colspan="8">—</td>
+    <td class="zc" colspan="${b2bMidCols}">—</td>
     <td class="${cls(tGelirB2B)}">${ff(tGelirB2B)}</td>
     <td class="zc">—</td>
   </tr>`;
@@ -2778,6 +2842,7 @@ function recalc() {
   if(window._redrawDonem) window._redrawDonem();
   window._lastRows = rows;
   window._lastGelirB2B = tGelirB2B;
+  window._lastRowsB2B = rowsB2B; // Year-1 B2B monthly rows — buildProjection reads the year-end unit economics for the Y2-5 B2B stream
   updatePinnedKpi(rows, tGelir, basAy, pozAy, tKorse);
   updateValuationTable(rows, tNet);
   buildProjection();
@@ -3173,7 +3238,7 @@ function renderInvestorRoadmap(el, totals, korseM1, feeIncomeRow, equityIncomeRo
     <tbody>
       <tr><td>Istanbul C1 (private)</td>${fmtCell(korseM1[0])}${fmtCell(korseM1[1])}${fmtCell(korseM1[2])}${fmtCell(korseM1[3])}${fmtCell(korseM1[4])}${growCell(korseM1[0],korseM1[4])}</tr>
       ${istFinancingGapRow.some(v=>v>0) ? `<tr><td style="color:#8a6d1a;font-size:11px;">↳ Opex gap financed by raised capital</td>${istFinancingGapRow.map(v=>`<td style="text-align:right;font-size:11px;color:#8a6d1a;">${v>0?'€'+v+'K':'—'}</td>`).join('')}<td></td></tr>` : ''}
-      ${b2bRow[0]>0||b2bRow[1]>0 ? `<tr><td style="color:#378ADD;">B2B — Istanbul</td>${fmtCell(b2bRow[0])}${fmtCell(b2bRow[1])}${fmtCell(b2bRow[2])}${fmtCell(b2bRow[3])}${fmtCell(b2bRow[4])}${growCell(b2bRow[0],b2bRow[4])}</tr>` : ''}
+      ${b2bRow[0]>0||b2bRow[1]>0 ? `<tr><td style="color:#378ADD;">Brace — Center 1 (B2B channel)</td>${fmtCell(b2bRow[0])}${fmtCell(b2bRow[1])}${fmtCell(b2bRow[2])}${fmtCell(b2bRow[3])}${fmtCell(b2bRow[4])}${growCell(b2bRow[0],b2bRow[4])}</tr>` : ''}
       ${V.izmirAktif ? `<tr><td style="color:#1D9E75;">Izmir Center <span style="font-weight:400;font-size:10px;opacity:0.7;">— satellite's own net, memo only</span></td>${fmtCell(izmirRow[0])}${fmtCell(izmirRow[1])}${fmtCell(izmirRow[2])}${fmtCell(izmirRow[3])}${fmtCell(izmirRow[4])}${growCell(izmirRow[1],izmirRow[4])}</tr>` : ''}
       ${V.ankaraAktif ? `<tr><td style="color:#E8963C;">Ankara Center <span style="font-weight:400;font-size:10px;opacity:0.7;">— satellite's own net, memo only</span></td>${fmtCell(ankaraRow[0])}${fmtCell(ankaraRow[1])}${fmtCell(ankaraRow[2])}${fmtCell(ankaraRow[3])}${fmtCell(ankaraRow[4])}${growCell(ankaraRow[1],ankaraRow[4])}</tr>` : ''}
       ${V.bursaAktif ? `<tr><td style="color:#c94f2a;">Bursa Center <span style="font-weight:400;font-size:10px;opacity:0.7;">— satellite's own net, memo only, opens Year 3</span></td>${fmtCell(bursaRow[0])}${fmtCell(bursaRow[1])}${fmtCell(bursaRow[2])}${fmtCell(bursaRow[3])}${fmtCell(bursaRow[4])}${growCell(bursaRow[2],bursaRow[4])}</tr>` : ''}
@@ -3331,13 +3396,6 @@ function buildProjection() {
   // ── Yıl 3 hedef brüt gelir = pazar payı hedefi × yıl sonu birim net gelir ──
   const y3BrutGelir = y5KorseToplam; // €K (gider henüz düşülmedi)
 
-  // ── Gider projeksiyonu: Yıl 1 bazından ölçek ekonomisiyle ──
-  // Yıl 2: +%15, Yıl 3: +%18, Yıl 4: +%22, Yıl 5: +%25 (personel, kira artışı)
-  const y2GiderEur = Math.round(y1GiderEur * 1.15);
-  const y3GiderEur = Math.round(y1GiderEur * 1.18);
-  const y4GiderEur = Math.round(y1GiderEur * 1.22);
-  const y5GiderEur = Math.round(y1GiderEur * 1.25); // Istanbul Y5 opex (Istanbul only; new centers use own params)
-
   // ── Istanbul private-clinic channel — one consistent basis every year:
   // gross revenue, opex, and net (gross − opex, floored at 0). Y1 used to
   // show gross instead of net here (the opex gap was "hidden" by switching
@@ -3349,14 +3407,132 @@ function buildProjection() {
   const y1BrutM1 = toEur(y1KorseNet);
   const istRampYears = V.istRampYears || 5;
   const istGrossRow = [1,2,3,4,5].map(y => y===1 ? y1BrutM1 : lerp(y1BrutM1, y3BrutGelir, _istRampFrac(y, istRampYears)));
-  const istOpexRow  = [y1GiderEur, y2GiderEur, y3GiderEur, y4GiderEur, y5GiderEur];
+
+  // Istanbul brace count per year — single source (the consolidated
+  // korseCount* group below reuses this exact array). Needed here to size
+  // the capacity-derived Y2-5 opex.
+  const korseCountIst = [1,2,3,4,5].map(y => y===1 ? y1Korse : lerp(y1Korse, y5KorseAdet, _istRampFrac(y, istRampYears)));
+
+  // ── B2B channel (flagship Istanbul) — Years 2-5 ramped stream ────────────
+  // B2B braces are printed centrally and shipped to buyer clinics — they
+  // consume PRINTERS ONLY (no rooms, orthotist or workshop time), so B2B
+  // scales printer capex but adds no staff/premises opex. Volume ramps the
+  // MONTHLY rate from the Year-1 exit rate (korseB2B[11]) toward the Year-5
+  // target (b2bHedefAdetYil/12) over b2bRampYears, then holds. If the target
+  // is below the exit rate the ramp declines — a valid scenario, allowed.
+  const _rowsB2Bproj = window._lastRowsB2B || [];
+  const _b2bY1Adet   = (V.korseB2B || []).reduce((s,v) => s + (Number(v)||0), 0); // actual Y1 total
+  const _b2bExitRate = Number((V.korseB2B || [])[11]) || 0;                       // Y1 exit monthly rate
+  const _b2bTargetMo = (V.b2bHedefAdetYil || 0) / 12;
+  const _b2bRampYears = V.b2bRampYears || 3;
+  // b2bHedefAdetYil = 0 is an off switch: the forward (Y2-5) stream is removed
+  // cleanly and printers fall back to B2C-only. Year 1 always keeps its actual
+  // B2B (historical). A target that's positive but below the exit rate ramps
+  // DOWN — a valid scenario, allowed.
+  const _b2bOff = (V.b2bHedefAdetYil || 0) <= 0;
+  const b2bAdetRow = [1,2,3,4,5].map(y => {
+    if (y === 1) return _b2bY1Adet;
+    if (_b2bOff) return 0;
+    const mo = _b2bExitRate + (_b2bTargetMo - _b2bExitRate) * _istRampFrac(y, _b2bRampYears);
+    return Math.max(0, Math.round(mo * 12));
+  });
+  // Year-end B2B unit net (€/brace) — last 3 months of the Year-1 B2B engine,
+  // exactly the B2C sonBirimNet convention. B2B bears the SAME deductions the
+  // Y1 B2B engine applies (Scientific/Education/Library doctor fees + print/
+  // material cost + royalty); it does NOT bear rooms/orthotist/workshop, which
+  // are volume-independent of B2B. rowsB2B.gelirNet already nets all of these.
+  const _b2bLast3   = _rowsB2Bproj.slice(-3);
+  const _b2bLast3Ad = _b2bLast3.reduce((s,r) => s + (r.korse||0), 0) || 1;
+  const _b2bLast3Net= _b2bLast3.reduce((s,r) => s + (r.gelirNet||0), 0);
+  const _b2bUnitNetEur = toEur(_b2bLast3Net) / _b2bLast3Ad * 1000; // €/brace (0 if no Y1 B2B)
+  // Year 1 = actual Y1 B2B net (exact, matches the monthly model); Years 2-5 =
+  // ramped volume × year-end unit net. €K net contribution.
+  const b2bGrossRow = b2bAdetRow.map((a,i) => i===0 ? toEur(window._lastGelirB2B||0) : Math.round(a * _b2bUnitNetEur / 1000));
+
+  // ── Istanbul Years 2-5 opex — capacity-derived (time & motion) ───────────
+  // Year 1 (index 0) keeps its real monthly-engine opex (y1GiderEur). Years
+  // 2-5 inflate only the STRUCTURAL Y1 base (rent, expert orthotist, operator,
+  // interns, utilities, kitchen, admin, advertising) at the historical
+  // ×1.15/1.18/1.22/1.25 rent-and-salary inflation, then ADD freshly derived
+  // capacity lines: (a) printer capex, (b) fitting-orthotist + support staff,
+  // (c) branch premises. The Y1 base is first stripped of its own capacity
+  // staff (the fitting-orthotist + support lines Prompt 2 added to the
+  // monthly engine) so those are never double-counted when the derived lines
+  // are added back on top.
+  const sgkCproj = gv('sgkCarpan');
+  const _y1CapStaffTRY = rows.reduce((s,r) => s + (r.fittingOrtoBrut||0) + (r.ayDestek||0), 0);
+  const y1BaseGiderEur = toEur(y1Gider - _y1CapStaffTRY); // structural Y1 opex, €K (capacity staff removed)
+  const _inflMult = [1, 1.15, 1.18, 1.22, 1.25];
+  // B2B printer sizing per year uses the ramped B2B stream (b2bAdetRow[y]/12),
+  // not a flat hold — B2B consumes printers only (never rooms/orthotist/
+  // workshop), so it lifts printer capex but no other opex line.
+  // Year-1 closing printer count = Y1's peak monthly requirement (floored at
+  // 2), the starting floor for Y2+ cumulative printer purchases (Prompt 2).
+  let _y1PrinterClose = 2;
+  (V.korse || []).forEach((k, i) => {
+    _y1PrinterClose = Math.max(_y1PrinterClose, clinicCapacityProfile(Number(k)||0, Number((V.korseB2B||[])[i])||0).printers);
+  });
+  const _ekipmanOsteoiddenProj = V.ekipmanOsteoidden !== false;
+  const _printerBirimEur = V.printerEurFiyat || 35000; // € per printer
+  const _ekOrtotistM = V.ekOrtotistM || 65000;
+  const _destekMproj = gv('destekM');
+  const _subeSetupTRY = V.subeSetupTRY || 900000;
+  const _subeKiraAy = V.subeKiraAy || 60000;
+  const _branchUtilAy = gv('elektrik') + gv('internet') + gv('sarf');
+  // Per-year build-out detail for the Growth page. Index 0 = Year 1's own
+  // peak-month profile (from the monthly engine), for display completeness.
+  const _y1PeakProf = clinicCapacityProfile(Math.max(...(V.korse||[0]).map(Number)), _b2bExitRate);
+  const _y1MaxB2C = Math.max(...(V.korse||[0]).map(Number));
+  const _y1B2cPrinters = Math.max(1, Math.ceil(_y1MaxB2C / (V.korsePerPrinterAy||66)));
+  const istCapBuildout = [{
+    printers: _y1PrinterClose, newPrinters: 0, b2cPrinters: _y1B2cPrinters, b2bPrinters: Math.max(0, _y1PrinterClose - _y1B2cPrinters),
+    orthotists: _y1PeakProf.orthotists, support: _y1PeakProf.supportStaff,
+    rooms: _y1PeakProf.rooms, branches: _y1PeakProf.branches, newBranches: 0, branchSetupEurK: 0, printerCapexEurK: 0,
+  }, null, null, null, null];
+  let _prevPrinters = _y1PrinterClose;
+  let _prevBranches = 0;
+  const _kppLoop = V.korsePerPrinterAy || 66;
+  const istOpexRow = [0,1,2,3,4].map(i => {
+    if (i === 0) return y1GiderEur; // Year 1 — real monthly-engine opex, unchanged
+    const monthlyB2C = korseCountIst[i] / 12;
+    const monthlyB2B = b2bAdetRow[i] / 12; // ramped B2B stream — printers only
+    const prof = clinicCapacityProfile(monthlyB2C, monthlyB2B);
+    // (a) printer capex — cumulative required vs prior year, charged in the
+    // year acquired; ekipmanOsteoidden (Osteoid supplies the kit) zeroes it.
+    // Printers are shared hardware; the B2C/B2B split below is display-only.
+    const cumPrinters = Math.max(_prevPrinters, prof.printers);
+    const newPrinters = Math.max(0, cumPrinters - _prevPrinters);
+    const printerCapexEurK = _ekipmanOsteoiddenProj ? 0 : newPrinters * _printerBirimEur / 1000;
+    const _b2cPrinters = Math.max(1, Math.ceil(monthlyB2C / _kppLoop));
+    const _b2bPrinters = Math.max(0, cumPrinters - _b2cPrinters);
+    _prevPrinters = cumPrinters;
+    // (b) staff opex — fitting orthotists (at ekOrtotistM) + workshop support
+    // (at destekM), each grossed by SGK and annualised. The expert orthotist
+    // and interns are already in the structural base, so they're not re-added.
+    const staffTRY = prof.orthotists * _ekOrtotistM * sgkCproj * 12 + prof.supportStaff * _destekMproj * sgkCproj * 12;
+    // (c) branch premises ONLY — printers are global (a) and staff global (b),
+    // so a branch adds just its one-time fit-out (for branches opened THIS
+    // year) plus rent + utilities for every active branch, annualised.
+    const newBranches = Math.max(0, prof.branches - _prevBranches);
+    const branchTRY = newBranches * _subeSetupTRY + prof.branches * (_subeKiraAy * 12 + _branchUtilAy * 12);
+    _prevBranches = prof.branches;
+    // (d) inflated structural base + derived € (all €K)
+    const opexEurK = Math.round(y1BaseGiderEur * _inflMult[i]) + printerCapexEurK + toEur(staffTRY) + toEur(branchTRY);
+    istCapBuildout[i] = {
+      printers: cumPrinters, newPrinters, b2cPrinters: _b2cPrinters, b2bPrinters: _b2bPrinters,
+      orthotists: prof.orthotists, support: prof.supportStaff,
+      rooms: prof.rooms, branches: prof.branches, newBranches,
+      branchSetupEurK: toEur(newBranches * _subeSetupTRY), printerCapexEurK: Math.round(printerCapexEurK),
+    };
+    return Math.round(opexEurK);
+  });
+  window._lastIstCapBuildout = istCapBuildout;
   const istNetRow   = istGrossRow.map((g,i) => Math.max(0, g - istOpexRow[i]));
   // Amount by which opex exceeds gross, before flooring — the gap raised
   // capital covers in a ramp year (0 once gross overtakes opex).
   const istFinancingGapRow = istGrossRow.map((g,i) => Math.max(0, istOpexRow[i] - g));
 
   const korseM1    = istNetRow; // Istanbul private-clinic net, post-opex, every year
-  const korseM2    = [0, 0, 0, 0, 0];
 
 
   // Tetik ayına göre 2. merkez açılış zamanlaması
@@ -3465,23 +3641,47 @@ function buildProjection() {
   const gaziantepY5Gelir = Math.round(gaziantepY5Adet * y1BirimNetEur / 1000);
 
   // Center-specific Y5 opex — clinic-direct costs only (no HQ overhead)
-  // ymmM, donemsel.reklam advertising, genelGider are Istanbul/HQ costs; Izmir/Ankara don't carry them
+  // ymmM, donemsel.reklam advertising, genelGider are Istanbul/HQ costs; Izmir/Ankara don't carry them.
+  //
+  // Each satellite's fitting orthotists + workshop support staff are now sized
+  // by the SAME time-and-motion engine as Istanbul, from the satellite's own
+  // full-capacity monthly volume (its Year-5 target ÷ 12). Satellites are 100%
+  // B2C (no B2B routed to them), so profile B2B = 0. The existing single
+  // orthotist line is the satellite's EXPERT (kept); derived fitting
+  // orthotists come on top at {sehir}OrtotistM, and support staff at a
+  // dedicated {sehir}DestekM (default 25000) rather than the intern salary.
+  // The profile's room-overflow (rooms > per-site max) is surfaced as a
+  // warning tag on the card — satellites never auto-open sub-branches.
+  const _satProf = {};
+  ['izmir','ankara','bursa','gaziantep'].forEach(function(s) {
+    const y5Adet = s==='izmir' ? izmirY5Adet : s==='ankara' ? ankaraY5Adet : s==='bursa' ? bursaY5Adet : gaziantepY5Adet;
+    const prof = clinicCapacityProfile((y5Adet||0)/12, 0);
+    const ortoM = V[s+'OrtotistM'] || 55000;
+    const destekM = V[s+'DestekM'] || 25000;
+    prof.derivedStaffTRY = prof.orthotists * ortoM * sgkCproj + prof.supportStaff * destekM * sgkCproj;
+    _satProf[s] = prof;
+  });
+  window._lastSatProfiles = _satProf;
   const izmirMonthlyTRY  = (V.izmirKira||80000)  + (V.izmirOrtotistM||55000)  + (V.izmirStajyerM||25000)
     + (V.izmirMutfak||18000)  + (V.izmirSarf||3000)
     + (V.elektrik||16500) + (V.internet||1500)
-    + Math.round(((V.izmirOrtotistM||55000)  + (V.izmirStajyerM||25000))  * 0.23);
+    + Math.round(((V.izmirOrtotistM||55000)  + (V.izmirStajyerM||25000))  * 0.23)
+    + _satProf.izmir.derivedStaffTRY;
   const ankaraMonthlyTRY = (V.ankaraKira||85000) + (V.ankaraOrtotistM||55000) + (V.ankaraStajyerM||25000)
     + (V.ankaraMutfak||18000) + (V.ankaraSarf||3000)
     + (V.elektrik||16500) + (V.internet||1500)
-    + Math.round(((V.ankaraOrtotistM||55000) + (V.ankaraStajyerM||25000)) * 0.23);
+    + Math.round(((V.ankaraOrtotistM||55000) + (V.ankaraStajyerM||25000)) * 0.23)
+    + _satProf.ankara.derivedStaffTRY;
   const bursaMonthlyTRY = (V.bursaKira||80000) + (V.bursaOrtotistM||55000) + (V.bursaStajyerM||25000)
     + (V.bursaMutfak||18000) + (V.bursaSarf||3000)
     + (V.elektrik||16500) + (V.internet||1500)
-    + Math.round(((V.bursaOrtotistM||55000) + (V.bursaStajyerM||25000)) * 0.23);
+    + Math.round(((V.bursaOrtotistM||55000) + (V.bursaStajyerM||25000)) * 0.23)
+    + _satProf.bursa.derivedStaffTRY;
   const gaziantepMonthlyTRY = (V.gaziantepKira||85000) + (V.gaziantepOrtotistM||55000) + (V.gaziantepStajyerM||25000)
     + (V.gaziantepMutfak||18000) + (V.gaziantepSarf||3000)
     + (V.elektrik||16500) + (V.internet||1500)
-    + Math.round(((V.gaziantepOrtotistM||55000) + (V.gaziantepStajyerM||25000)) * 0.23);
+    + Math.round(((V.gaziantepOrtotistM||55000) + (V.gaziantepStajyerM||25000)) * 0.23)
+    + _satProf.gaziantep.derivedStaffTRY;
   const izmirY5GiderEur  = Math.round(toEur(izmirMonthlyTRY  * 12) * 1.25);
   const ankaraY5GiderEur = Math.round(toEur(ankaraMonthlyTRY * 12) * 1.25);
   const bursaY5GiderEur = Math.round(toEur(bursaMonthlyTRY * 12) * 1.25);
@@ -3576,16 +3776,16 @@ function buildProjection() {
   const equityIncomeRow = [0,1,2,3,4].map(i => izmirEquityRow[i] + ankaraEquityRow[i] + bursaEquityRow[i] + gaziantepEquityRow[i]);
   const minorityRow     = [0,1,2,3,4].map(i => izmirMinorityRow[i] + ankaraMinorityRow[i] + bursaMinorityRow[i] + gaziantepMinorityRow[i]);
 
-  // B2B: yalnızca İstanbul Merkez 1
-  const b2bY1 = toEur(window._lastGelirB2B || 0);
-  const b2bRow = [b2bY1, Math.round(b2bY1*1.5), Math.round(b2bY1*1.8), Math.round(b2bY1*2.0), Math.round(b2bY1*2.2)];
+  // B2B: flagship (Istanbul) only — the ramped Years 2-5 stream computed above
+  // (b2bGrossRow, €K net). Separately zeroable via b2bHedefAdetYil = 0.
+  const b2bRow = b2bGrossRow;
 
   // Consolidated FLAGSHIP view = own clinic (Istanbul + B2B) + management fee
   // income (100% of all active satellites' fees) + equity income from
   // satellites (flagshipPay% of each satellite's net-after-fee). Minority
   // interest (minorityRow) is deliberately excluded — it belongs to local
   // investors, not the flagship.
-  const totals = [0,1,2,3,4].map(i => korseM1[i]+korseM2[i]+feeIncomeRow[i]+equityIncomeRow[i]+b2bRow[i]);
+  const totals = [0,1,2,3,4].map(i => korseM1[i]+feeIncomeRow[i]+equityIncomeRow[i]+b2bRow[i]);
 
   // ── Brace counts per year — clinic channel only (Istanbul + Izmir + Ankara);
   // B2B is tracked separately (see korse.html / kpiGridB2B) and not folded in
@@ -3594,7 +3794,7 @@ function buildProjection() {
   // _satRampFrac ramp fractions as the revenue projection above, so brace
   // counts and revenue tell the same growth story instead of two
   // independently-guessed curves.
-  const korseCountIst    = [1,2,3,4,5].map(y => y===1 ? y1Korse : lerp(y1Korse, y5KorseAdet, _istRampFrac(y, istRampYears)));
+  // korseCountIst declared earlier (single source for the capacity-derived opex above)
   const korseCountIzmir  = [1,2,3,4,5].map(y => Math.round(izmirY5Adet  * _satRampFrac(y, 2, izmirRampYears,  _aktifAyYil2  / 12)));
   const korseCountAnkara = [1,2,3,4,5].map(y => Math.round(ankaraY5Adet * _satRampFrac(y, 2, ankaraRampYears, _ankaraAktifAyYil2 / 12)));
   const korseCountBursa  = [1,2,3,4,5].map(y => Math.round(bursaY5Adet  * _satRampFrac(y, 3, bursaRampYears,  _bursaAktifAyYil3 / 12)));
@@ -3745,12 +3945,29 @@ function buildProjection() {
   const _y1BraceMarj = _y1TBrut > 0 ? Math.round(y1KorseNet/_y1TBrut*100) : 0;
   const istMarginY = [_y1BraceMarj].concat(istNetY.slice(1).map((n,idx) => istGrossY[idx+1] > 0 ? Math.round(n/istGrossY[idx+1]*100) : null));
 
+  // Capacity build-out cells — Istanbul only. "2+1 orthotists" = 2 fitting +
+  // the 1 expert; "4/6 rooms" = rooms of the per-site max; branch fit-out
+  // capex is called out in its landing year.
+  const _odaMax = V.odaMaxPerKlinik || 6;
+  // Printer count/capex split by channel (display only — printers are shared
+  // hardware, bought once). A total > PRINTER_OPS_FLAG in any year gets a ⚠
+  // space/ops flag for the founder.
+  const PRINTER_OPS_FLAG = 15; // Y5 printer count above this warns (space/logistics)
+  const istCapCells = istCapBuildout.map(c => {
+    if (!c) return '—';
+    const split = c.b2bPrinters > 0 ? ' (' + c.b2cPrinters + ' B2C · ' + c.b2bPrinters + ' B2B)' : '';
+    const flag = c.printers > PRINTER_OPS_FLAG ? ' ⚠ >' + PRINTER_OPS_FLAG + ' printers' : '';
+    const capex = c.printerCapexEurK ? ' · capex €' + c.printerCapexEurK + 'K' : '';
+    const bits = c.printers + ' printers' + split + capex + ' · ' + c.orthotists + '+1 orthotists · ' + c.support + ' support · ' + c.rooms + '/' + _odaMax + ' rooms · ' + c.branches + ' branch' + (c.branches===1?'':'es');
+    return (c.branchSetupEurK ? bits + ' · +€' + c.branchSetupEurK + 'K fit-out' : bits) + flag;
+  });
   renderAnnualDetailTable('istAnnualDetailWrap', 'Istanbul', {
     braces: korseCountIst, netRevenue: istNetY, cumEnd: istCumY,
     basAyLabels: istBasAyLabels, pozAyLabels: istPozAyLabels,
     invest: istInvestY, setup: istSetupY,
     sciFee: istSciY, eduFee: istEduY, libFee: istLibY,
     royalty: istRoyaltyY, cuttingFee: istCuttingY, margin: istMarginY,
+    capBuildout: istCapCells,
   });
 
   // ── Same Annual Financial Detail metrics for Izmir / Ankara. These centers have
@@ -3785,12 +4002,24 @@ function buildProjection() {
     const royaltyY   = korseCountArr.map(k => Math.round(k * gv('royaltyEur') * (V.eurKur??50) / 1000));
     const cuttingY   = korseCountArr.map(k => Math.round(k * _sonKesimPct * gv('kesimEurPer') * (V.eurKur??50) / 1000));
     const marginY    = netRevArr.map((n,i) => grossY[i] > 0 ? Math.round(n/grossY[i]*100) : null);
+    // Capacity build-out — same compact line as Istanbul, from the satellite's
+    // own full-capacity profile (100% B2C). Shown from the opening year on
+    // (years with braces); a room count over the per-site max gets an inline
+    // ⚠ — satellites never auto-open sub-branches, so it's a flag, not a spend.
+    const _odaMaxSat = V.odaMaxPerKlinik || 6;
+    const _prof = _satProf[sehir];
+    let capCells = ['—','—','—','—','—'];
+    if (aktif && _prof) {
+      const _over = _prof.rooms > _odaMaxSat;
+      const _line = _prof.printers + ' printers · ' + _prof.orthotists + '+1 orthotists · ' + _prof.supportStaff + ' support · ' + _prof.rooms + '/' + _odaMaxSat + ' rooms' + (_over ? ' ⚠ over per-site max' : '');
+      capCells = korseCountArr.map(k => k > 0 ? _line : '—');
+    }
     return {
       braces: korseCountArr, netRevenue: netRevArr, cumEnd: cumY,
       basAyLabels: ['—','—','—','—','—'], pozAyLabels,
       invest: [null,null,null,null,null], setup: setupY,
       sciFee: sciY, eduFee: eduY, libFee: libY,
-      royalty: royaltyY, cuttingFee: cuttingY, margin: marginY,
+      royalty: royaltyY, cuttingFee: cuttingY, margin: marginY, capBuildout: capCells,
       // Hub-and-spoke split — only Izmir/Ankara pass these; Istanbul (the
       // flagship's own clinic) doesn't, so renderAnnualDetailTable skips
       // these rows for Istanbul.
@@ -3832,8 +4061,7 @@ function buildProjection() {
       <tbody>
         <tr><td>Brace — Center 1 (private channel)</td>${fmt(korseM1[0])}${fmt(korseM1[1])}${fmt(korseM1[2])}${fmt(korseM1[3])}${fmt(korseM1[4])}${grow(korseM1[0],korseM1[4])}</tr>
         ${istFinancingGapRow.some(v=>v>0) ? `<tr><td style="color:#8a6d1a;font-size:11px;">↳ Opex gap financed by raised capital</td>${istFinancingGapRow.map(v=>v>0?`<td style="color:#8a6d1a;font-size:11px;">€${v}K</td>`:`<td style="color:#aaa;font-size:11px;">—</td>`).join('')}<td style="color:#aaa;font-size:11px;">—</td></tr>` : ''}
-        <tr><td>Brace — Center 2 (Year 2+)</td>${fmt(0)}${fmt(korseM2[1])}${fmt(korseM2[2])}${fmt(korseM2[3])}${fmt(korseM2[4])}${grow(korseM2[1],korseM2[4])}</tr>
-        ${b2bRow[0] > 0 || b2bRow[1] > 0 ? `<tr><td style="color:#378ADD;">B2B — Center 1 (Istanbul)</td>${fmt(b2bRow[0])}${fmt(b2bRow[1])}${fmt(b2bRow[2])}${fmt(b2bRow[3])}${fmt(b2bRow[4])}${grow(b2bRow[0],b2bRow[4])}</tr>` : ''}
+        ${b2bRow[0] > 0 || b2bRow[1] > 0 ? `<tr><td style="color:#378ADD;">Brace — Center 1 (B2B channel)</td>${fmt(b2bRow[0])}${fmt(b2bRow[1])}${fmt(b2bRow[2])}${fmt(b2bRow[3])}${fmt(b2bRow[4])}${grow(b2bRow[0],b2bRow[4])}</tr>` : ''}
         ${V.izmirAktif  ? `<tr><td style="color:#1D9E75;">Izmir Center <span style="font-weight:400;font-size:10px;opacity:0.7;">— satellite's own net, memo only</span></td>${fmt(izmirRow[0])}${fmt(izmirRow[1])}${fmt(izmirRow[2])}${fmt(izmirRow[3])}${fmt(izmirRow[4])}${grow(izmirRow[1],izmirRow[4])}</tr>` : ''}
         ${V.ankaraAktif ? `<tr><td style="color:#E8963C;">Ankara Center <span style="font-weight:400;font-size:10px;opacity:0.7;">— satellite's own net, memo only</span></td>${fmt(ankaraRow[0])}${fmt(ankaraRow[1])}${fmt(ankaraRow[2])}${fmt(ankaraRow[3])}${fmt(ankaraRow[4])}${grow(ankaraRow[1],ankaraRow[4])}</tr>` : ''}
         ${V.bursaAktif ? `<tr><td style="color:#c94f2a;">Bursa Center <span style="font-weight:400;font-size:10px;opacity:0.7;">— satellite's own net, memo only, opens Year 3</span></td>${fmt(bursaRow[0])}${fmt(bursaRow[1])}${fmt(bursaRow[2])}${fmt(bursaRow[3])}${fmt(bursaRow[4])}${grow(bursaRow[2],bursaRow[4])}</tr>` : ''}
@@ -3883,7 +4111,7 @@ function buildProjection() {
       labels: ['Year 1','Year 2','Year 3','Year 4','Year 5'],
       datasets: [
         { label:'Brace C1 (private)', data:korseM1, backgroundColor:'rgba(44,74,46,0.85)', borderColor:'#2c4a2e', borderWidth:1, borderRadius:3 },
-        ...(b2bRow[0] > 0 || b2bRow[1] > 0 ? [{ label:'B2B C1', data:b2bRow, backgroundColor:'rgba(55,138,221,0.7)', borderColor:'#378ADD', borderWidth:1, borderRadius:3 }] : []),
+        ...(b2bRow[0] > 0 || b2bRow[1] > 0 ? [{ label:'B2B (Center 1)', data:b2bRow, backgroundColor:'rgba(55,138,221,0.7)', borderColor:'#378ADD', borderWidth:1, borderRadius:3 }] : []),
         ...((V.izmirAktif||V.ankaraAktif||V.bursaAktif||V.gaziantepAktif) ? [{ label:'Satellite fee income', data:feeIncomeRow, backgroundColor:'rgba(186,117,23,0.7)', borderColor:'#BA7517', borderWidth:1, borderRadius:3 }] : []),
         ...((V.izmirAktif||V.ankaraAktif||V.bursaAktif||V.gaziantepAktif) ? [{ label:'Satellite equity income', data:equityIncomeRow, backgroundColor:'rgba(29,158,117,0.7)', borderColor:'#1D9E75', borderWidth:1, borderRadius:3 }] : []),
       ]
@@ -3943,6 +4171,7 @@ function renderAnnualDetailTable(elId, sehirLabel, cfg) {
       ${row('Osteoid A.Ş. royalty', cfg.royalty.map(fmtRoyaltyPos))}
       ${row('Cutting / Osteoid A.Ş.', cfg.cuttingFee.map(fmtRoyaltyPos), '(Y1 product mix % fixed · projection)')}
       ${row('Net margin', cfg.margin.map(fmtPct), '(Y1: brace-level · Y2-5: operating margin — not directly comparable)')}
+      ${cfg.capBuildout ? row('Capacity build-out', cfg.capBuildout.map(fmtText), '(time &amp; motion — printers/orthotists/support/rooms/branches; Y1 = peak-month)') : ''}
       ${cfg.flagshipEquity ? row('↳ Flagship equity income', cfg.flagshipEquity.map(fmtEurK), cfg.isSube ? '(100% — branch, fully consolidated, incl. any loss)' : '('+cfg.flagshipPayPct+'% ownership — see growth.html slider)') : ''}
       ${cfg.minorityLocal ? (cfg.isSube
         ? row('↳ Local investor share (minority)', cfg.minorityLocal.map(()=>'<td style="color:#aaa;">n/a — branch</td>'), '(a branch cannot take local investors)')
@@ -3951,11 +4180,70 @@ function renderAnnualDetailTable(elId, sehirLabel, cfg) {
     </tbody>
   </table>`;
 }
+// ── CAPACITY ENGINE (time & motion) ──────────────────────────────────────────
+// Pure function — reads only its two arguments plus the capacity sliders in
+// V, touches no revenue/cost figure. Used by every clinic (flagship, Istanbul
+// branches, satellites) to size fitting rooms, orthotists, workshop support
+// staff and printers against a single month's brace volume.
+//
+// designDay = the worse of the weekend/holiday peak or the weekday average,
+// rounded to a whole patient count before anything is sized off it (rooms,
+// orthotists, expert load) — you can't build half a fitting room for 0.67 of
+// a patient. B2B braces consume printers only: no rooms, no orthotist
+// fitting time, no workshop time (patients never set foot in the clinic).
+function clinicCapacityProfile(korseB2C_ay, korseB2B_ay) {
+  korseB2C_ay = korseB2C_ay || 0;
+  korseB2B_ay = korseB2B_ay || 0;
+  const active = korseB2C_ay > 0;
+
+  const hastaPerOdaGun    = V.hastaPerOdaGun    || 6;
+  const odaMaxPerKlinik   = V.odaMaxPerKlinik   || 6;
+  const odaM2             = V.odaM2             || 10;
+  const calismaGunAy      = V.calismaGunAy      || 26;
+  const haftaSonuGunAy    = V.haftaSonuGunAy    || 9;
+  const haftaSonuTalepPct = V.haftaSonuTalepPct ?? 60;
+  const visitPerKorse     = V.visitPerKorse     || 1;
+  const ortotistDkFitting = V.ortotistDkFitting || 20;
+  const expertDkHasta     = V.expertDkHasta     || 8;
+  const destekDkHasta     = V.destekDkHasta     || 45;
+  const staffUtilPct      = V.staffUtilPct      || 75;
+  const korsePerPrinterAy = V.korsePerPrinterAy || 66;
+
+  const visitsAy       = korseB2C_ay * visitPerKorse;
+  const weekdayGunAy   = Math.max(1, calismaGunAy - haftaSonuGunAy); // guard divide-by-zero
+  const peakDayRaw     = haftaSonuGunAy > 0 ? (visitsAy * (haftaSonuTalepPct / 100)) / haftaSonuGunAy : 0;
+  const weekdayAvgRaw  = (visitsAy * (1 - haftaSonuTalepPct / 100)) / weekdayGunAy;
+  const designDay      = Math.round(Math.max(peakDayRaw, weekdayAvgRaw));
+
+  const staffDayCap = 8 * (staffUtilPct / 100); // usable staff-hours/day
+
+  const rooms       = active ? Math.max(1, Math.ceil(designDay / hastaPerOdaGun)) : 0;
+  const branches     = active ? Math.max(0, Math.ceil((rooms - odaMaxPerKlinik) / odaMaxPerKlinik)) : 0;
+  const orthotists   = active ? Math.max(1, Math.ceil((designDay * ortotistDkFitting / 60) / staffDayCap)) : 0;
+  // Workshop support work is schedulable across the month, not day-peaked —
+  // averaged over working days, not sized to the design day. B2B adds zero.
+  const supportStaff = active ? Math.max(1, Math.ceil((korseB2C_ay * destekDkHasta / 60) / (staffDayCap * calismaGunAy))) : 0;
+  const expertLoadPct = (designDay * expertDkHasta / 60 / 8) * 100; // report only, warn > 60
+  const printers      = Math.max(1, Math.ceil((korseB2C_ay + korseB2B_ay) / korsePerPrinterAy));
+  const roomM2        = rooms * odaM2; // for the space sanity note vs V.m2
+
+  return { printers, rooms, branches, orthotists, supportStaff, expertLoadPct, peakDayPatients: designDay, roomM2 };
+}
+
 // ── PRINTER & ROBOT KOL ───────────────────────────────────────────────────────
+// Auto printer count sizes to the single busiest COMBINED (B2C+B2B) month —
+// previously read only V.korse and silently ignored B2B entirely, which
+// understated printer needs whenever B2B volume ran ahead of B2C.
 function _autoPrinterAdet() {
   const korse = (V.korse || []).map(Number);
-  const maxK = korse.length ? Math.max.apply(null, korse) : 0;
-  return Math.max(2, Math.ceil(maxK / 66));
+  const korseB2B = (V.korseB2B || []).map(Number);
+  const n = Math.max(korse.length, korseB2B.length);
+  let bestB2C = 0, bestB2B = 0, bestTotal = -1;
+  for (let i = 0; i < n; i++) {
+    const b2c = korse[i] || 0, b2b = korseB2B[i] || 0;
+    if (b2c + b2b > bestTotal) { bestTotal = b2c + b2b; bestB2C = b2c; bestB2B = b2b; }
+  }
+  return Math.max(2, clinicCapacityProfile(bestB2C, bestB2B).printers);
 }
 // Lineer regresyonla kümülatif pozitife tahmini varış ayı.
 // rows: 12 aylık hesap satırları. Dönüş: null (eğim<=0) veya tahmini ay sayısı (13+).
@@ -3983,7 +4271,10 @@ function _refreshPrinterDisplay() {
   const adet = (V.printerAdetManual !== undefined) ? V.printerAdetManual : autoAdet;
   V.printerAdet = adet;
   const eur = adet * (V.printerEurFiyat||35000);
-  const kapMin = adet * 44, kapMax = adet * 66;
+  // Capacity range follows the Braces-per-printer slider (korsePerPrinterAy):
+  // lower bound ≈ ⅔ of the rated monthly throughput, upper = the rated figure.
+  const _kpp = V.korsePerPrinterAy || 66;
+  const kapMin = Math.round(adet * _kpp * 2/3), kapMax = adet * _kpp;
   const korse    = (V.korse    || []).map(Number);
   const korseB2B = (V.korseB2B || []).map(Number);
   const toplam   = korse.map((v,i) => v + (korseB2B[i]||0));
@@ -4010,6 +4301,58 @@ function _refreshPrinterDisplay() {
   if (priceSp) priceSp.textContent = (V.printerEurFiyat||35000).toLocaleString('tr-TR');
   var info = document.getElementById('printerAutoInfo');
   if (info) info.textContent = '';
+}
+// KPI row reports what the current brace ramp's busiest combined (B2C+B2B)
+// month requires; the space-sanity note uses the flagship's Year-5 target
+// volume. The engine also feeds the live P&L (Prompts 2-4) — this card is
+// where its assumptions are edited.
+function renderCapacityCard() {
+  const el = document.getElementById('capRooms');
+  if (!el) return;
+  const korse = (V.korse || []).map(Number);
+  const korseB2B = (V.korseB2B || []).map(Number);
+  const n = Math.max(korse.length, korseB2B.length);
+  let bestB2C = 0, bestB2B = 0, bestTotal = -1;
+  for (let i = 0; i < n; i++) {
+    const b2c = korse[i] || 0, b2b = korseB2B[i] || 0;
+    if (b2c + b2b > bestTotal) { bestTotal = b2c + b2b; bestB2C = b2c; bestB2B = b2b; }
+  }
+  const cap = clinicCapacityProfile(bestB2C, bestB2B);
+  const set = (id, val) => { const e = document.getElementById(id); if (e) e.textContent = val; };
+  set('capRooms', cap.rooms + ' room' + (cap.rooms===1?'':'s'));
+  set('capBranches', cap.branches);
+  set('capOrthotists', cap.orthotists);
+  set('capSupportStaff', cap.supportStaff);
+  const loadEl = document.getElementById('capExpertLoad');
+  if (loadEl) {
+    loadEl.textContent = cap.expertLoadPct.toFixed(0) + '%';
+    loadEl.className = 'kpi-val ' + (cap.expertLoadPct > 60 ? 'neg' : 'neu');
+  }
+  set('capPeakDay', cap.peakDayPatients + ' patients');
+  set('capRoomM2', cap.roomM2 + ' m²');
+
+  // Space sanity — flagship at Year-5 target volume: fitting-room m² vs total
+  // clinic m² (V.m2). Rooms > 40% of the floorplate warns (leaves too little
+  // for workshop / waiting / office).
+  const noteEl = document.getElementById('capSpaceNote');
+  if (noteEl) {
+    const pazarIst = Math.round((V.pazarTR||45000) * (V.pazarIstPct||30)/100);
+    const y5Adet = Math.round(pazarIst * (V.hedefOsteoidPay||30)/100);
+    const y5b2b = Number((V.korseB2B||[])[11]) || 0;
+    const y5Prof = clinicCapacityProfile(y5Adet/12, y5b2b);
+    const m2 = V.m2 || 360;
+    const roomM2 = y5Prof.roomM2;
+    const pct = m2 > 0 ? roomM2 / m2 * 100 : 0;
+    const over = pct > 40;
+    noteEl.innerHTML = (over ? '⚠ ' : '') + roomM2 + ' m² of fitting rooms ('
+      + y5Prof.rooms + ' × ' + (V.odaM2||10) + ' m²) inside ' + m2 + ' m² — '
+      + (over
+          ? 'that is ' + pct.toFixed(0) + '% of the floorplate, leaving little for workshop, waiting and office. Consider a larger site or a branch fitting office.'
+          : 'workshop, waiting, office in the remaining ' + (m2 - roomM2) + ' m² (' + pct.toFixed(0) + '% in rooms).');
+    noteEl.style.background = over ? '#fff8e8' : '';
+    noteEl.style.borderColor = over ? '#f0d080' : '';
+    noteEl.style.color = over ? '#8a6d1a' : '';
+  }
 }
 function svPrinterFiyat(val) {
   val = parseInt(val);
@@ -4130,20 +4473,46 @@ function updateKapasiteUyari(rows) {
   // Printer tetiklenme aylarını rows'tan topla
   const tetikAylari = rows.filter(r => r.printerEkMaliyet > 0);
 
+  // Capacity strain: Year 1 warns (never opens branches) when a month's room
+  // need exceeds the per-site max, or expert QC load runs past 60%.
+  const odaMax = V.odaMaxPerKlinik || 6;
+  const odaAsim = rows.filter(r => (r.odaSayisi || 0) > odaMax);
+  const expertAsim = rows.filter(r => (r.expertLoadPct || 0) > 60);
+
+  const parts = [];
   if (tetikAylari.length > 0) {
-    el.style.display = 'block';
     const ayListesi = tetikAylari.map(r => {
       const adet = Math.round(r.printerEkMaliyet / ((V.printerEurFiyat||35000) * (V.eurKur ?? 50)));
       return 'Month ' + r.ay + ': +' + adet + ' printer (€' + Math.round(r.printerEkMaliyet/(V.eurKur ?? 50)).toLocaleString('en-US') + ')';
     }).join(' · ');
-    txt.textContent = 'Automatic printer purchase triggered — ' + ayListesi;
+    parts.push({ kind:'ok', text: 'Automatic printer purchase triggered — ' + ayListesi });
+  }
+  if (odaAsim.length > 0) {
+    const mos = odaAsim.map(r => 'M'+r.ay+' ('+r.odaSayisi+' rooms)').join(', ');
+    parts.push({ kind:'warn', text: 'Fitting rooms exceed the '+odaMax+'-room per-site max in ' + mos + ' — Year 1 flags this; a branch fitting office would open in the multi-year plan.' });
+  }
+  if (expertAsim.length > 0) {
+    const mos = expertAsim.map(r => 'M'+r.ay+' ('+Math.round(r.expertLoadPct)+'%)').join(', ');
+    parts.push({ kind:'warn', text: 'Expert QC load exceeds 60% in ' + mos + ' — a second QC-qualified orthotist may be needed.' });
+  }
+
+  if (parts.length === 0) { el.style.display = 'none'; return; }
+
+  el.style.display = 'block';
+  const anyWarn = parts.some(p => p.kind === 'warn');
+  txt.textContent = parts.map(p => p.text).join('  ·  ');
+  const iconSpan = el.querySelector('span[style]');
+  const titleSpan = el.querySelector('.kapasiteUyariBaslik');
+  if (anyWarn) {
+    el.style.background = '#fff8e8';
+    el.style.borderColor = '#f0d080';
+    if (iconSpan) iconSpan.style.color = '#8a6d1a';
+    if (titleSpan) { titleSpan.textContent = '⚠ Capacity Strain'; titleSpan.style.color = '#8a6d1a'; }
+  } else {
     el.style.background = '#e8f5ee';
     el.style.borderColor = '#68c48a';
-    el.querySelector('span[style]').style.color = '#1a7a45';
-    const span = el.querySelector('.kapasiteUyariBaslik');
-    if (span) { span.textContent = '✓ Printer Triggered'; span.style.color = '#1a7a45'; }
-  } else {
-    el.style.display = 'none';
+    if (iconSpan) iconSpan.style.color = '#1a7a45';
+    if (titleSpan) { titleSpan.textContent = '✓ Printer Triggered'; titleSpan.style.color = '#1a7a45'; }
   }
 }
 

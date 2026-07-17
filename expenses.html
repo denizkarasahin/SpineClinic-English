@@ -158,6 +158,140 @@
         <div class="note-box" style="margin-top:8px;">Withholding tax is reflected in the monthly model.</div>
       </div>
     </div>
+    <hr style="border:none;border-top:1px solid #e8e8e4;margin:20px 0 16px;">
+    <div style="font-size:10px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Capacity Assumptions (time &amp; motion)</div>
+    <div class="kpi-grid" id="capacityKpiGrid" style="margin-bottom:12px;">
+      <div class="kpi"><div class="kpi-label">Fitting Rooms Needed</div><div class="kpi-val neu" id="capRooms">—</div></div>
+      <div class="kpi"><div class="kpi-label">Extra Branches Needed</div><div class="kpi-val neu" id="capBranches">—</div></div>
+      <div class="kpi"><div class="kpi-label">Fitting Orthotists</div><div class="kpi-val neu" id="capOrthotists">—</div></div>
+      <div class="kpi"><div class="kpi-label">Workshop Support Staff</div><div class="kpi-val neu" id="capSupportStaff">—</div></div>
+      <div class="kpi"><div class="kpi-label">Expert QC Load</div><div class="kpi-val neu" id="capExpertLoad">—</div></div>
+      <div class="kpi"><div class="kpi-label">Design-Day Patients</div><div class="kpi-val neu" id="capPeakDay">—</div></div>
+      <div class="kpi"><div class="kpi-label">Room Space Needed</div><div class="kpi-val neu" id="capRoomM2">—</div></div>
+    </div>
+    <div class="sl-grid">
+      <div class="sl-row">
+        <label>Patients per fitting room / day</label>
+        <div class="sl-controls">
+          <input type="range" id="s_hastaPerOdaGun" min="4" max="10" step="1" value="6" oninput="sv('hastaPerOdaGun',this.value)">
+          <span class="sl-val" id="hastaPerOdaGun" contenteditable="true" onblur="sv2('hastaPerOdaGun','s_hastaPerOdaGun',this)">6</span>
+        </div>
+      </div>
+      <div class="sl-row">
+        <label>Max fitting rooms per site</label>
+        <div class="sl-controls">
+          <input type="range" id="s_odaMaxPerKlinik" min="2" max="10" step="1" value="6" oninput="sv('odaMaxPerKlinik',this.value)">
+          <span class="sl-val" id="odaMaxPerKlinik" contenteditable="true" onblur="sv2('odaMaxPerKlinik','s_odaMaxPerKlinik',this)">6</span>
+        </div>
+      </div>
+      <div class="sl-row">
+        <label>m² per fitting room</label>
+        <div class="sl-controls">
+          <input type="range" id="s_odaM2" min="8" max="20" step="1" value="10" oninput="sv('odaM2',this.value)">
+          <span class="sl-val" id="odaM2" contenteditable="true" onblur="sv2('odaM2','s_odaM2',this)">10</span>
+        </div>
+      </div>
+      <div class="sl-row">
+        <label>Working days / month (6-day week)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_calismaGunAy" min="22" max="27" step="1" value="26" oninput="sv('calismaGunAy',this.value)">
+          <span class="sl-val" id="calismaGunAy" contenteditable="true" onblur="sv2('calismaGunAy','s_calismaGunAy',this)">26</span>
+        </div>
+      </div>
+      <div class="sl-row">
+        <label>Weekend + school-holiday days / month</label>
+        <div class="sl-controls">
+          <input type="range" id="s_haftaSonuGunAy" min="6" max="12" step="1" value="9" oninput="sv('haftaSonuGunAy',this.value)">
+          <span class="sl-val" id="haftaSonuGunAy" contenteditable="true" onblur="sv2('haftaSonuGunAy','s_haftaSonuGunAy',this)">9</span>
+        </div>
+      </div>
+      <div class="sl-row">
+        <label>% of patients needing weekend/holiday slots</label>
+        <div class="sl-controls">
+          <input type="range" id="s_haftaSonuTalepPct" min="30" max="90" step="5" value="60" oninput="sv('haftaSonuTalepPct',this.value)">
+          <span class="sl-val" id="haftaSonuTalepPct" contenteditable="true" onblur="sv2('haftaSonuTalepPct','s_haftaSonuTalepPct',this)">60</span>
+        </div>
+      </div>
+      <div class="sl-row">
+        <label>Fitting-room visits per brace</label>
+        <div class="sl-controls">
+          <input type="range" id="s_visitPerKorse" min="1" max="3" step="1" value="1" oninput="sv('visitPerKorse',this.value)">
+          <span class="sl-val" id="visitPerKorse" contenteditable="true" onblur="sv2('visitPerKorse','s_visitPerKorse',this)">1</span>
+        </div>
+      </div>
+      <div class="sl-row">
+        <label>Orthotist minutes per fitting</label>
+        <div class="sl-controls">
+          <input type="range" id="s_ortotistDkFitting" min="10" max="40" step="1" value="20" oninput="sv('ortotistDkFitting',this.value)">
+          <span class="sl-val" id="ortotistDkFitting" contenteditable="true" onblur="sv2('ortotistDkFitting','s_ortotistDkFitting',this)">20</span>
+        </div>
+      </div>
+      <div class="sl-row">
+        <label>Expert QC minutes per patient</label>
+        <div class="sl-controls">
+          <input type="range" id="s_expertDkHasta" min="5" max="15" step="1" value="8" oninput="sv('expertDkHasta',this.value)">
+          <span class="sl-val" id="expertDkHasta" contenteditable="true" onblur="sv2('expertDkHasta','s_expertDkHasta',this)">8</span>
+        </div>
+      </div>
+      <div class="sl-row">
+        <label>Workshop minutes per B2C brace</label>
+        <div class="sl-controls">
+          <input type="range" id="s_destekDkHasta" min="20" max="90" step="5" value="45" oninput="sv('destekDkHasta',this.value)">
+          <span class="sl-val" id="destekDkHasta" contenteditable="true" onblur="sv2('destekDkHasta','s_destekDkHasta',this)">45</span>
+        </div>
+      </div>
+      <div class="sl-row">
+        <label>Usable share of an 8h staff day (%)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_staffUtilPct" min="60" max="90" step="1" value="75" oninput="sv('staffUtilPct',this.value)">
+          <span class="sl-val" id="staffUtilPct" contenteditable="true" onblur="sv2('staffUtilPct','s_staffUtilPct',this)">75</span>
+        </div>
+      </div>
+      <div class="sl-row">
+        <label>Braces per printer / month</label>
+        <div class="sl-controls">
+          <input type="range" id="s_korsePerPrinterAy" min="30" max="90" step="1" value="66" oninput="sv('korsePerPrinterAy',this.value)">
+          <span class="sl-val" id="korsePerPrinterAy" contenteditable="true" onblur="sv2('korsePerPrinterAy','s_korsePerPrinterAy',this)">66</span>
+        </div>
+      </div>
+      <div class="sl-row">
+        <label>B2B Year-5 target (braces/year) <span style="font-size:10px;font-weight:400;color:#378ADD;">— wholesale channel; 0 removes it</span></label>
+        <div class="sl-controls">
+          <input type="range" id="s_b2bHedefAdetYil" min="0" max="5000" step="60" value="1200" oninput="sv('b2bHedefAdetYil',this.value)">
+          <span class="sl-val" id="b2bHedefAdetYil" contenteditable="true" onblur="sv2('b2bHedefAdetYil','s_b2bHedefAdetYil',this)">1.200</span>
+        </div>
+      </div>
+      <div class="sl-row">
+        <label>B2B years to reach target</label>
+        <div class="sl-controls">
+          <input type="range" id="s_b2bRampYears" min="1" max="5" step="1" value="3" oninput="sv('b2bRampYears',this.value)">
+          <span class="sl-val" id="b2bRampYears" contenteditable="true" onblur="sv2('b2bRampYears','s_b2bRampYears',this)">3</span>
+        </div>
+      </div>
+      <div class="sl-row">
+        <label>Extra orthotist monthly base salary (₺, beyond the expert)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_ekOrtotistM" min="40000" max="120000" step="5000" value="65000" oninput="sv('ekOrtotistM',this.value)">
+          <span class="sl-val" id="ekOrtotistM" contenteditable="true" onblur="sv2('ekOrtotistM','s_ekOrtotistM',this)">65.000</span>
+        </div>
+      </div>
+      <div class="sl-row">
+        <label>Branch fitting-office setup (₺, one-time)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_subeSetupTRY" min="400000" max="2500000" step="50000" value="900000" oninput="sv('subeSetupTRY',this.value)">
+          <span class="sl-val" id="subeSetupTRY" contenteditable="true" onblur="sv2('subeSetupTRY','s_subeSetupTRY',this)">900.000</span>
+        </div>
+      </div>
+      <div class="sl-row">
+        <label>Branch monthly rent (₺)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_subeKiraAy" min="30000" max="150000" step="5000" value="60000" oninput="sv('subeKiraAy',this.value)">
+          <span class="sl-val" id="subeKiraAy" contenteditable="true" onblur="sv2('subeKiraAy','s_subeKiraAy',this)">60.000</span>
+        </div>
+      </div>
+    </div>
+    <div id="capSpaceNote" class="note-box" style="margin-top:8px;"></div>
+    <div class="note-box" style="margin-top:8px;">B2B braces consume printers only — no rooms, no orthotist time, no workshop time. Staffing is sized to the peak weekend/holiday day, not the weekly average, because patients are school children. These assumptions drive the model: printer top-ups and derived staffing flow into the Year-1 monthly P&amp;L and the Year 2-5 / satellite projections (see the Multi-Year Plan and Methodology pages). The KPI row above reports what the current brace ramp's busiest month requires; the space check below uses the flagship's Year-5 target volume.</div>
   </div>
 </div>
 </div><!-- /tab-kurulum -->

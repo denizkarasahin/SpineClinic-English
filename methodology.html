@@ -87,26 +87,24 @@
       </div>
 
       <div style="background:#f7f7f4;border:1px solid #e0e0dc;border-radius:8px;padding:16px;">
-        <div style="font-size:12px;font-weight:700;color:#534AB7;margin-bottom:8px;">Year 2-3 Net Revenue Calculation</div>
+        <div style="font-size:12px;font-weight:700;color:#534AB7;margin-bottom:8px;">Istanbul Year 2-5 Cost — Capacity-Derived</div>
         <div style="font-size:12px;color:#555;line-height:1.7;">
-          For each year: <b>Net = Gross brace revenue − Operating cost</b><br><br>
-          • <b>Gross revenue:</b> Target brace count × year-end unit net revenue<br>
-          • <b>Cost projection:</b> Grows from Year 1 cost base<br>
-          &nbsp;&nbsp;— Year 2: ×1.15 (rent increase, marketing)<br>
-          &nbsp;&nbsp;— Year 3: ×1.25 (growth, SSI management)<br>
-          • SSI revenue is added in Year 3, with 15% delay/collection loss deducted
+          For each year: <b>Net = Gross brace revenue − Operating cost</b>. Gross revenue is target brace count × year-end unit net revenue. Istanbul's Year 2-5 operating cost is no longer a flat multiple of Year 1 — it is built up from the time-and-motion capacity engine (see below):<br><br>
+          • <b>Structural base</b> (rent, expert orthotist, operator, interns, utilities, kitchen, admin, advertising) inflates off Year 1 at ×1.15 / ×1.18 / ×1.22 / ×1.25 for Years 2-5 — rent-and-salary inflation only.<br>
+          • <b>Fitting orthotists &amp; workshop support</b> are added on top, sized each year by the capacity engine from that year's monthly brace volume (annual ramp ÷ 12).<br>
+          • <b>Printers</b> are bought as the ramp crosses each printer's monthly capacity — the incremental capex lands in the year acquired (zeroed if Osteoid Inc. supplies the equipment).<br>
+          • <b>Branch fitting offices</b> open when required rooms exceed the per-site maximum; their one-time fit-out lands in the opening year, with rent + utilities recurring thereafter.
         </div>
       </div>
 
       <div style="background:#f7f7f4;border:1px solid #e0e0dc;border-radius:8px;padding:16px;">
-        <div style="font-size:12px;font-weight:700;color:#534AB7;margin-bottom:8px;">Personnel Threshold System</div>
+        <div style="font-size:12px;font-weight:700;color:#534AB7;margin-bottom:8px;">Time-and-Motion Capacity Engine</div>
         <div style="font-size:12px;color:#555;line-height:1.7;">
-          Staff cost is not fixed — it scales with monthly brace volume:<br><br>
-          • Specialist orthotist: fixed from Month 1 at every center<br>
-          • Intern: monthly avg. ≥ <b id="metEsik1">15</b> braces/month<br>
-          • Graduate: monthly avg. ≥ <b id="metEsik2">30</b> braces/month<br>
-          • Support staff: monthly avg. ≥ <b id="metEsik3">76</b> braces/month<br><br>
-          For new centers, threshold is calculated by dividing the annual ramp total by 12.
+          Every clinic's physical footprint and staffing are derived from a single time-and-motion model rather than fixed headcount thresholds. From a month's brace volume it computes fitting rooms, fitting orthotists, workshop support staff, printers and (where rooms overflow) branch offices.<br><br>
+          • <b>Weekend-peak sizing:</b> the patients are school children, so a large share (default 60%) can only attend on weekends and school holidays. Rooms and fitting staff are therefore sized to the busiest <i>design day</i> — the peak weekend/holiday day — not the smoother weekly average, so the clinic can actually absorb the concentrated demand.<br>
+          • <b>B2B asymmetry:</b> B2B (wholesale / orthosis-store) braces consume <b>printers only</b> — they never enter a fitting room, take orthotist time, or add workshop hours, since the patient is never seen at the clinic. So B2B scales printers but adds zero rooms, orthotists or support staff.<br>
+          • <b>Interns and the junior/graduate orthotist</b> remain threshold-gated (a training pipeline, not capacity math); the fitting orthotists and workshop support staff above are the capacity-driven lines.<br>
+          • <b>B2B stream (Years 2-5):</b> the wholesale / orthosis-store channel ramps its monthly rate from the Year-1 exit rate toward a Year-5 target (<code>b2bHedefAdetYil</code>, default 1,200/yr) over <code>b2bRampYears</code> (default 3), then holds; set the target to 0 to remove it. Revenue = ramped volume × the Year-1 B2B channel's year-end unit net (same doctor-fee / print-cost / royalty deductions as B2C). It flows into consolidated gross, FCF, Year-5 EBITDA and Exit Value as its own visible "Center 1 (B2B channel)" line. B2B lifts printer capex (shared hardware, sized on B2C + B2B volume) but adds no rooms, orthotist or workshop cost.
         </div>
       </div>
 
@@ -577,7 +575,15 @@ function renderProjection() {
   var birimNetEur=sonN/sonK/eurKur;
   var y5KorseToplam=Math.round(y5KorseAdet*birimNetEur/1000);
   var y3BrutGelir=y5KorseToplam;
-  var y2GiderEur=Math.round(y1GiderEur*1.15), y3GiderEur=Math.round(y1GiderEur*1.25);
+  // Istanbul Y2/Y3 opex is now capacity-derived in the live model (structural
+  // base inflation + time-and-motion staff/printer/branch lines). Read the
+  // real numbers the model already computed (window._lastYearly.istOpex)
+  // rather than the old flat ×1.15/×1.25 formula, so this validation view
+  // shows committed figures, not stale ones. Fall back to the inflation
+  // approximation only if the projection hasn't populated yet.
+  var _istOpexLive=(window._lastYearly&&window._lastYearly.istOpex)||[];
+  var y2GiderEur=_istOpexLive[1]!=null?_istOpexLive[1]:Math.round(y1GiderEur*1.15);
+  var y3GiderEur=_istOpexLive[2]!=null?_istOpexLive[2]:Math.round(y1GiderEur*1.25);
   var y1BrutM1=toEur(y1KorseNet);
   var y1NetM1=Math.max(0,y1BrutM1-y1GiderEur);
   var y2NetM1=Math.max(0,lerp(y1BrutM1,y3BrutGelir,0.4)-y2GiderEur);
@@ -606,14 +612,14 @@ function renderProjection() {
     '<span class="k">Yr1_CostEur</span>    = -(Σ monthly costs) / eurKur / 1000 → €'+y1GiderEur+'K\n\n' +
     '<span class="c">── YEAR 2 ──────────────────────────────────────────────────────────────────</span>\n' +
     '<span class="k">Yr2_GrossM1</span>    = LINEAR(Yr1=€'+y1BrutM1+'K → Yr3=€'+y3BrutGelir+'K, t=0.4)\n' +
-    '<span class="k">Yr2_CostEur</span>    = Yr1_Cost × 1.15 = €'+y2GiderEur+'K\n' +
+    '<span class="k">Yr2_CostEur</span>    = capacity-derived (structural base ×1.15 + time-&-motion staff/printers/branches) = €'+y2GiderEur+'K\n' +
     '<span class="k">Yr2_M1_Net</span>     = MAX(0, Yr2_Gross − Yr2_Cost) → €'+y2NetM1+'K\n' +
     '<span class="k">Yr2_SSI_Net</span>    = Yr3_SSI × 0.25 → €'+y2SgkNet+'K\n\n' +
     '<span class="c">── YEAR 3 ──────────────────────────────────────────────────────────────────</span>\n' +
     '<span class="k">Yr3_Target_Braces</span>= MarketIST × '+gv('hedefOsteoidPay')+'% = '+pazarIst.toLocaleString('tr-TR')+' × '+gv('hedefOsteoidPay')+'% = '+y5KorseAdet+' units\n' +
     '<span class="k">UnitNetEur</span>      = Year-end average (last 3 months) = ₺'+sonBirimNet.toLocaleString('tr-TR')+'/brace\n' +
     '<span class="k">Yr3_GrossRev</span>   = '+y5KorseAdet+' × ₺'+sonBirimNet.toLocaleString('tr-TR')+' / '+eurKur+' / 1000 = €'+y3BrutGelir+'K\n' +
-    '<span class="k">Yr3_CostEur</span>    = Yr1_Cost × 1.25 → €'+y3GiderEur+'K\n' +
+    '<span class="k">Yr3_CostEur</span>    = capacity-derived (structural base ×1.18-1.25 + time-&-motion staff/printers/branches) → €'+y3GiderEur+'K\n' +
     '<span class="r">Yr3_M1_Net</span>     = MAX(0, Yr3_Gross − Yr3_Cost) → €'+y3NetM1+'K\n' +
     '<span class="k">Yr3_SSI_Net</span>    = Yr3_M1_Net × 0.35 × 0.85 → €'+y3SgkNet+'K';
 
