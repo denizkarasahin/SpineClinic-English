@@ -83,6 +83,28 @@ function ff(n) {
 function feEur(tryVal) { return ff(tryVal); }
 function cls(n) { return n>0?'pc':n<0?'nc':'zc'; }
 
+// Shared capacity-assumption spec — ONE network-wide set, rendered as an
+// editable block under each clinic on the Multi-Year Plan (see capAssumeGroupHTML
+// / renderCapAssume / svCap below). Declared up here (before the top-level
+// initDynamic() call) to stay out of the temporal dead zone.
+const CAP_PREFIXES = ['ist','izmir','ankara','bursa','gaziantep'];
+const CAP_PARAMS = [
+  { k:'hastaPerOdaGun',   l:'Patients per fitting room / day',        min:4,     max:10,     step:1 },
+  { k:'odaMaxPerKlinik',  l:'Max fitting rooms per site',             min:2,     max:10,     step:1 },
+  { k:'odaM2',            l:'m² per fitting room',                    min:8,     max:20,     step:1 },
+  { k:'calismaGunAy',     l:'Working days / month (6-day week)',      min:22,    max:27,     step:1 },
+  { k:'haftaSonuGunAy',   l:'Weekend + school-holiday days / month',  min:6,     max:12,     step:1 },
+  { k:'haftaSonuTalepPct',l:'% patients needing weekend/holiday slots',min:30,   max:90,     step:5 },
+  { k:'visitPerKorse',    l:'Fitting-room visits per brace',          min:1,     max:3,      step:1 },
+  { k:'ortotistDkFitting',l:'Orthotist minutes per fitting',          min:10,    max:40,     step:1 },
+  { k:'expertDkHasta',    l:'Expert QC minutes per patient',          min:5,     max:15,     step:1 },
+  { k:'destekDkHasta',    l:'Workshop minutes per B2C brace',         min:20,    max:90,     step:5 },
+  { k:'staffUtilPct',     l:'Usable share of an 8h staff day (%)',    min:60,    max:90,     step:1 },
+  { k:'korsePerPrinterAy',l:'Braces per printer / month',             min:30,    max:90,     step:1 },
+  { k:'ekOrtotistM',      l:'Extra orthotist base salary (₺)',        min:40000, max:120000, step:5000 },
+  { k:'subeSetupTRY',     l:'Branch fitting-office setup (₺, one-time)',min:400000,max:2500000,step:50000 },
+];
+
 // Ramp-to-target fractions — how much of a city's designated market-
 // potential (its Year-5 target) has been reached by calendar year `yearIdx`
 // (1-5), as a function of the user-adjustable "years to reach potential"
@@ -454,6 +476,7 @@ function svSubeMi(sehir, isSube) {
 function initDynamic() {
   _refreshPrinterDisplay();
   renderCapacityCard();
+  renderCapAssume();
   svRobotKol();
   _refreshVergiDahil();
   _refreshFeeStreamAyriMult();
@@ -4355,6 +4378,42 @@ function renderCapacityCard() {
     noteEl.style.borderColor = over ? '#f0d080' : '';
     noteEl.style.color = over ? '#8a6d1a' : '';
   }
+}
+
+function capAssumeGroupHTML(p) {
+  const rows = CAP_PARAMS.map(pr => {
+    const val = V[pr.k];
+    return '<div class="sl-row"><label style="font-size:10px;">' + pr.l + '</label>'
+      + '<div class="sl-controls"><input type="range" id="s_cap_' + p + '_' + pr.k + '" min="' + pr.min + '" max="' + pr.max + '" step="' + pr.step + '" value="' + val + '" oninput="svCap(\'' + pr.k + '\',this.value)">'
+      + '<span class="sl-val" id="cap_' + p + '_' + pr.k + '" style="min-width:56px;">' + numFmt(pr.k, val) + '</span></div></div>';
+  }).join('');
+  return '<details style="margin-top:10px;"><summary style="cursor:pointer;font-size:10px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:0.5px;">Capacity assumptions (time &amp; motion — network-wide; edits apply to every clinic)</summary>'
+    + '<div class="sl-grid" style="margin-top:8px;">' + rows + '</div></details>';
+}
+// Inject once per container that exists on the page (only the Multi-Year Plan
+// has them). Idempotent via the data-rendered guard.
+function renderCapAssume() {
+  CAP_PREFIXES.forEach(p => {
+    const el = _origGetById(p + 'CapAssume'); // real element or null — not the null-safe stub
+    if (el && !el.dataset.capRendered) {
+      el.innerHTML = capAssumeGroupHTML(p);
+      el.dataset.capRendered = '1';
+    }
+  });
+}
+// One setter for all mirror copies: update V, keep every clinic's slider/label
+// in lockstep, then recalc.
+function svCap(key, val) {
+  val = parseFloat(val);
+  V[key] = val;
+  CAP_PREFIXES.forEach(p => {
+    const sl = document.getElementById('s_cap_' + p + '_' + key);
+    if (sl && parseFloat(sl.value) !== val) sl.value = val;
+    const sp = document.getElementById('cap_' + p + '_' + key);
+    if (sp) sp.textContent = numFmt(key, val);
+  });
+  recalc();
+  localStorage.setItem('osteoid_V', JSON.stringify(V));
 }
 function svPrinterFiyat(val) {
   val = parseInt(val);

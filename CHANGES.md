@@ -38,6 +38,12 @@
 >   Expenses capacity card to the **Multi-Year Plan** page as a "B2B Wholesale
 >   Channel" panel in the Year-1 card — presented as a parallel flagship line
 >   (printers only), not a satellite clinic.
+> - The **capacity assumptions** (time-and-motion sliders) moved off the
+>   Expenses page to a collapsible "Capacity assumptions (network-wide)" block
+>   **under each clinic** on the Multi-Year Plan. They remain ONE shared set —
+>   editing any clinic's copy updates all of them (same clinical process
+>   everywhere). Expenses keeps the derived flagship capacity KPIs + space
+>   check, now pointing to the plan for edits.
 > - Removed the **Branch monthly rent** slider (`subeKiraAy`): the flagship's
 >   overflow fitting-office now carries only its one-time fit-out + utilities;
 >   branch/clinic rent economics live in the multi-year plan. Only bites when
