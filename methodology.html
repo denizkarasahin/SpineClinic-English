@@ -247,25 +247,25 @@
   <div class="sec-title">6 — Multi-Year Projection Methodology</div>
   <div class="sub-title">Year 1 — Model Data</div>
   <div class="info">Year 1 figures are taken directly from the 12-month calculation model; no projection or coefficient is applied.</div>
-  <div class="sub-title">Year 2-3 Projection Logic</div>
+  <div class="sub-title">Years 2-5 Projection Logic</div>
   <div class="fbox" id="formulProj"></div>
   <div class="sub-title">Multi-Year Summary Table (Live)</div>
   <table class="proj-tbl" id="projTablosu">
-    <thead><tr><th style="min-width:260px;">Revenue Item</th><th>Formula / Source</th><th style="text-align:right;">Year 1 (€K)</th><th style="text-align:right;">Year 2 (€K)</th><th style="text-align:right;">Year 3 (€K)</th></tr></thead>
+    <thead><tr><th style="min-width:260px;">Revenue Item</th><th>Formula / Source</th><th style="text-align:right;">Year 1 (€K)</th><th style="text-align:right;">Year 2 (€K)</th><th style="text-align:right;">Year 3 (€K)</th><th style="text-align:right;">Year 4 (€K)</th><th style="text-align:right;">Year 5 (€K)</th></tr></thead>
     <tbody id="projTbody"></tbody>
   </table>
-  <div class="note"><strong>SSI calculation:</strong> Y3 SSI revenue = Y3 private channel revenue × 35% (SSI channel share coefficient) × 85% (collection efficiency — discount for average 60–90 day delay). Y2 SSI = Y3 × 25% (approval process + half-year ramp). These coefficients should be validated against operator experience.</div>
+  <div class="note">These are the live model's own consolidated projection rows (read directly from <code>window._lastProjRows</code>, the same rows the Multi-Year Plan table is built from) — not an independent re-derivation. Satellites are memo lines (own 100% net); the flagship's actual take from each is its management fee + equity share (Subsidiary mode) or 100% consolidation (Branch mode, the default). No SSI channel is modelled in this 5-year view.</div>
 </div>
 
 <div class="sec">
-  <div class="sec-title">7 — New Center Calculation (Izmir / Ankara)</div>
-  <div class="sub-title">Trigger Mechanism</div>
+  <div class="sec-title">7 — New Center Calculation (Satellites)</div>
+  <div class="sub-title">Izmir Opening Trigger Mechanism</div>
   <div class="fbox" id="formulTetik"></div>
   <div id="tetikDurumu" class="trigger-box"></div>
-  <div class="sub-title">Center Revenue Calculation</div>
+  <div class="sub-title">Center Revenue Calculation (full-capacity target)</div>
   <div class="fbox" id="formulMerkez"></div>
-  <table class="proj-tbl" id="merkezTbl" style="max-width:960px;">
-    <thead><tr><th>Center</th><th>Ramp total (braces/year)</th><th>Unit net revenue (₺/brace)</th><th>Gross annual revenue</th><th>Annual operating cost</th><th>Net revenue (₺)</th><th>Net revenue (€K)</th></tr></thead>
+  <table class="proj-tbl" id="merkezTbl" style="max-width:1000px;">
+    <thead><tr><th>Center</th><th>Target braces/year (full capacity)</th><th>Unit net revenue (₺/brace)</th><th>Gross annual revenue</th><th>Annual operating cost</th><th>Net revenue (₺)</th><th>Net revenue (€K)</th></tr></thead>
     <tbody id="merkezTbody"></tbody>
   </table>
   <div class="sub-title">Center Setup Cost</div>
@@ -557,88 +557,56 @@ function renderKurulum() {
 }
 
 function renderProjection() {
+  // Mirror the LIVE model: read the exact 5-year rows buildProjection() already
+  // computed (window._lastProjRows) instead of re-deriving with retired
+  // formulas. Every figure here equals the Multi-Year Plan's own table.
+  var P=window._lastProjRows;
+  var Y=window._lastYearly||{};
   var rows=window._lastRows||[];
+  if(!P){ return; }
   var eurKur=V.eurKur||53.56;
-  var toEur=function(v){return Math.round(v/eurKur/1000);};
-  var lerp=function(a,b,t){return Math.round(a+(b-a)*t);};
-  var y1KorseNet=rows.reduce(function(s,r){return s+(r.gelirNet||0);},0);
-  var y1Korse=rows.reduce(function(s,r){return s+(r.korse||0);},0);
-  var y1Gider=Math.abs(rows.reduce(function(s,r){return s+(r.gider||0);},0));
-  var y1GiderEur=toEur(y1Gider);
-  var pazarTR=gv('pazarTR'), pazarIstPct=gv('pazarIstPct')/100;
-  var pazarIst=Math.round(pazarTR*pazarIstPct);
-  var hedefPay=gv('hedefOsteoidPay')/100;
-  var y5KorseAdet=Math.round(pazarIst*hedefPay);
   var sonR=rows.slice(-3);
   var sonK=sonR.reduce(function(s,r){return s+(r.korse||0);},0)||1;
   var sonN=sonR.reduce(function(s,r){return s+(r.gelirNet||0);},0);
-  var birimNetEur=sonN/sonK/eurKur;
-  var y5KorseToplam=Math.round(y5KorseAdet*birimNetEur/1000);
-  var y3BrutGelir=y5KorseToplam;
-  // Istanbul Y2/Y3 opex is now capacity-derived in the live model (structural
-  // base inflation + time-and-motion staff/printer/branch lines). Read the
-  // real numbers the model already computed (window._lastYearly.istOpex)
-  // rather than the old flat ×1.15/×1.25 formula, so this validation view
-  // shows committed figures, not stale ones. Fall back to the inflation
-  // approximation only if the projection hasn't populated yet.
-  var _istOpexLive=(window._lastYearly&&window._lastYearly.istOpex)||[];
-  var y2GiderEur=_istOpexLive[1]!=null?_istOpexLive[1]:Math.round(y1GiderEur*1.15);
-  var y3GiderEur=_istOpexLive[2]!=null?_istOpexLive[2]:Math.round(y1GiderEur*1.25);
-  var y1BrutM1=toEur(y1KorseNet);
-  var y1NetM1=Math.max(0,y1BrutM1-y1GiderEur);
-  var y2NetM1=Math.max(0,lerp(y1BrutM1,y3BrutGelir,0.4)-y2GiderEur);
-  var y3NetM1=Math.max(0,y3BrutGelir-y3GiderEur);
-  var y3SgkNet=Math.round(y3BrutGelir*0.35*0.85), y2SgkNet=Math.round(y3SgkNet*0.25);
-  var b2bY1=toEur(window._lastGelirB2B||0);
-  var b2bRow=[b2bY1,Math.round(b2bY1*1.5),Math.round(b2bY1*2.2)];
-  var trigResult=calc4AyOrtalama(rows);
-  var _trigAy=trigResult.triggerAy;
-  var _acilisAy=_trigAy?Math.max(13,_trigAy+3):13;
-  var _aktifAy=Math.max(0,Math.min(12,25-_acilisAy));
-  var izmirGelirY2=V.izmirAktif?Math.round(getMerkezGelir('izmir')*_aktifAy/12):0;
-  var ankaraGelirY2=V.ankaraAktif?Math.round(getMerkezGelir('ankara')*_aktifAy/12):0;
-  var pazarIzmir=Math.round(gv('pazarTR')*V.izmirNufusPay/100);
-  var pazarAnkara=Math.round(gv('pazarTR')*V.ankaraNufusPay/100);
-  var y1BirimNetEur=toEur(y1KorseNet)/(y1Korse||1)*1000;
-  var izmirY3Adet=V.izmirAktif?Math.round(pazarIzmir*gv('izmirHedefPay')/100):0;
-  var ankaraY3Adet=V.ankaraAktif?Math.round(pazarAnkara*gv('ankaraHedefPay')/100):0;
-  var izmirY3Gelir=Math.round(izmirY3Adet*y1BirimNetEur/1000);
-  var ankaraY3Gelir=Math.round(ankaraY3Adet*y1BirimNetEur/1000);
   var sonBirimNet=Math.round(sonN/sonK);
+  var istGross=Y.istGross||[], istOpex=Y.istOpex||[];
+  var anyFee=P.fee.some(function(v){return v>0;});
+  var anyEquity=P.equity.some(function(v){return v>0;});
+  var anyB2B=P.b2b.some(function(v){return v>0;});
+  var satOrder=[['izmir','Izmir'],['ankara','Ankara'],['bursa','Bursa'],['gaziantep','Gaziantep']];
 
   document.getElementById('formulProj').innerHTML =
-    '<span class="c">── YEAR 1 ──────────────────────────────────────────────────────────────────</span>\n' +
-    '<span class="k">Yr1_M1_Net</span>     = Direct from 12-month model → €'+y1NetM1+'K\n' +
-    '<span class="k">Yr1_CostEur</span>    = -(Σ monthly costs) / eurKur / 1000 → €'+y1GiderEur+'K\n\n' +
-    '<span class="c">── YEAR 2 ──────────────────────────────────────────────────────────────────</span>\n' +
-    '<span class="k">Yr2_GrossM1</span>    = LINEAR(Yr1=€'+y1BrutM1+'K → Yr3=€'+y3BrutGelir+'K, t=0.4)\n' +
-    '<span class="k">Yr2_CostEur</span>    = capacity-derived (structural base ×1.15 + time-&-motion staff/printers/branches) = €'+y2GiderEur+'K\n' +
-    '<span class="k">Yr2_M1_Net</span>     = MAX(0, Yr2_Gross − Yr2_Cost) → €'+y2NetM1+'K\n' +
-    '<span class="k">Yr2_SSI_Net</span>    = Yr3_SSI × 0.25 → €'+y2SgkNet+'K\n\n' +
-    '<span class="c">── YEAR 3 ──────────────────────────────────────────────────────────────────</span>\n' +
-    '<span class="k">Yr3_Target_Braces</span>= MarketIST × '+gv('hedefOsteoidPay')+'% = '+pazarIst.toLocaleString('tr-TR')+' × '+gv('hedefOsteoidPay')+'% = '+y5KorseAdet+' units\n' +
-    '<span class="k">UnitNetEur</span>      = Year-end average (last 3 months) = ₺'+sonBirimNet.toLocaleString('tr-TR')+'/brace\n' +
-    '<span class="k">Yr3_GrossRev</span>   = '+y5KorseAdet+' × ₺'+sonBirimNet.toLocaleString('tr-TR')+' / '+eurKur+' / 1000 = €'+y3BrutGelir+'K\n' +
-    '<span class="k">Yr3_CostEur</span>    = capacity-derived (structural base ×1.18-1.25 + time-&-motion staff/printers/branches) → €'+y3GiderEur+'K\n' +
-    '<span class="r">Yr3_M1_Net</span>     = MAX(0, Yr3_Gross − Yr3_Cost) → €'+y3NetM1+'K\n' +
-    '<span class="k">Yr3_SSI_Net</span>    = Yr3_M1_Net × 0.35 × 0.85 → €'+y3SgkNet+'K';
+    '<span class="c">── ISTANBUL C1 (private channel) — one consistent net basis every year ─────</span>\n' +
+    '<span class="k">Y1_Net</span>       = direct from the 12-month model → €'+P.istNet[0]+'K\n' +
+    '<span class="k">Y2-5_Gross</span>   = LINEAR(Y1 gross €'+(istGross[0]||0)+'K → Y5 target €'+(istGross[4]||0)+'K), reached over istRampYears='+(V.istRampYears||5)+' yr\n' +
+    '<span class="k">Y2-5_Opex</span>    = capacity-derived: structural base ×1.15/1.18/1.22/1.25 + time-&-motion staff / printers / branches\n' +
+    '<span class="k">           </span>   → Opex €['+istOpex.join(' / ')+']K\n' +
+    '<span class="r">Yr_Net</span>       = MAX(0, Gross − Opex) → €['+P.istNet.join(' / ')+']K\n\n' +
+    '<span class="c">── SATELLITES (memo — each center\'s own 100% net) ─────────────────────────</span>\n' +
+    '<span class="k">Target</span>      = city market (its pop. share of the TR total) × the center\'s target market-share %\n' +
+    '<span class="k">UnitNet</span>     = year-end mix (last 3 months) = ₺'+sonBirimNet.toLocaleString('tr-TR')+'/brace — same basis as Istanbul\'s target year\n' +
+    '<span class="k">Ramp</span>        = reaches full target over {city}RampYears yr from opening (Izmir/Ankara open Y2, Bursa/Gaziantep Y3)\n' +
+    '<span class="k">Net</span>         = Gross − the center\'s own operating cost (own rent/staff; no HQ overhead)\n\n' +
+    '<span class="c">── FLAGSHIP TAKE FROM SATELLITES ──────────────────────────────────────────</span>\n' +
+    '<span class="k">Branch (şube)</span> = 100% of the satellite P&L consolidates into the flagship (committed default)\n' +
+    '<span class="k">Subsidiary</span>    = management fee ('+(V.yonetimUcretiPct!=null?V.yonetimUcretiPct:5)+'% of gross) + equity (flagshipPay%, default 65%, of net-after-fee); the rest is minority interest\n' +
+    (anyB2B ? '\n<span class="c">── B2B (Istanbul, printers only) ──────────────────────────────────────────</span>\n' +
+    '<span class="k">B2B</span>         = ramped Years 2-5 stream → €['+P.b2b.join(' / ')+']K\n' : '');
 
-  var fmt=function(v){return v>0?'€'+v+'K':'—';};
-  var trows=[
-    ['Brace — M1 (private channel)','Model Yr1; growth projection Yr2-3',y1NetM1,y2NetM1,y3NetM1],
-    ['Brace — M1 (SSI, Year 2+)','Yr3 × 0.35 × 0.85; Yr2 = Yr3 × 0.25',0,y2SgkNet,y3SgkNet],
-  ];
-  if(b2bRow[0]>0||b2bRow[1]>0) trows.push(['B2B — Istanbul','From Yr1 model; Yr2=×1.5; Yr3=×2.2',b2bRow[0],b2bRow[1],b2bRow[2]]);
-  if(V.izmirAktif) trows.push(['Brace — Izmir','getMerkezGelir × activeMonths/12; Yr3: pop. share × unitNet',0,izmirGelirY2,izmirY3Gelir]);
-  if(V.ankaraAktif) trows.push(['Brace — Ankara','getMerkezGelir × activeMonths/12; Yr3: pop. share × unitNet',0,ankaraGelirY2,ankaraY3Gelir]);
-  var totals=[
-    y1NetM1+b2bRow[0],
-    y2NetM1+y2SgkNet+b2bRow[1]+izmirGelirY2+ankaraGelirY2,
-    y3NetM1+y3SgkNet+b2bRow[2]+izmirY3Gelir+ankaraY3Gelir,
-  ];
-  document.getElementById('projTbody').innerHTML =
-    trows.map(function(a){return '<tr><td>'+a[0]+'</td><td class="formula">'+a[1]+'</td><td class="result">'+(a[2]?fmt(a[2]):'—')+'</td><td class="result">'+(a[3]?fmt(a[3]):'—')+'</td><td class="result">'+(a[4]?fmt(a[4]):'—')+'</td></tr>';}).join('') +
-    '<tr class="grp"><td>Consolidated Total</td><td class="formula">Σ all items</td><td class="result">€'+totals[0]+'K</td><td class="result">€'+totals[1]+'K</td><td class="result">€'+totals[2]+'K</td></tr>';
+  var fmt=function(v){return v>0?'€'+v+'K':(v<0?'-€'+Math.abs(v)+'K':'—');};
+  var cells=function(arr){return arr.map(function(v){return '<td class="result">'+fmt(v)+'</td>';}).join('');};
+  var rowHtml=function(name,formula,arr){return '<tr><td>'+name+'</td><td class="formula">'+formula+'</td>'+cells(arr)+'</tr>';};
+  var html='';
+  html+=rowHtml('Istanbul C1 (private channel)','gross ramp − capacity-derived opex',P.istNet);
+  if(anyB2B) html+=rowHtml('B2B — Istanbul','ramped Y2-5 stream (printers only)',P.b2b);
+  satOrder.forEach(function(pr){
+    var s=P.sat[pr[0]];
+    if(s.aktif) html+=rowHtml(pr[1]+' Center <span style="font-weight:400;font-size:10px;opacity:.7;">— own net, memo</span>','target × year-end unit net, ramped '+s.ramp+'yr from Y'+s.openYear,s.net);
+  });
+  if(anyFee) html+=rowHtml('↳ Management fee to flagship','% of satellite gross revenue',P.fee);
+  if(anyEquity) html+=rowHtml('↳ Equity income to flagship','flagship % of satellite net-after-fee',P.equity);
+  html+='<tr class="grp"><td>Consolidated Total (Flagship)</td><td class="formula">C1 + B2B + fee + equity</td>'+cells(P.totals)+'</tr>';
+  document.getElementById('projTbody').innerHTML=html;
 }
 
 function renderMerkezler() {
@@ -664,44 +632,49 @@ function renderMerkezler() {
     : '◎ Current model trigger not yet met — default opening: <strong>Year 2 Month 1</strong> → <strong>12 months</strong> active');
 
   document.getElementById('formulMerkez').innerHTML =
-    '<span class="c">── NEW CENTER NET REVENUE CALCULATION (getMerkezGelir) ─────────────────────</span>\n\n' +
-    '<span class="k">Ramp</span>        = 12-month brace target array (draggable chart)\n\n' +
-    '<span class="k">TotalBraces</span> = Σ Ramp[0..11]\n\n' +
-    '<span class="k">UnitNetTRY</span>  = Year-end mix average: (last 3 mo net revenue) / (last 3 mo braces)\n\n' +
-    '<span class="k">GrossRev</span>    = TotalBraces × UnitNetTRY\n\n' +
-    '<span class="k">OpCosts</span>     = Σ [ monthly fixed costs + threshold-based staff + w.tax ]\n\n' +
-    '<span class="r">NetRevEurK</span>  = (GrossRev − OpCosts) / eurKur / 1000';
+    '<span class="c">── SATELLITE FULL-CAPACITY NET REVENUE (live model) ────────────────────────</span>\n\n' +
+    '<span class="k">Target</span>      = TR market × city population share × the center\'s target market-share %\n\n' +
+    '<span class="k">UnitNetTRY</span>  = year-end mix (last 3 mo net revenue) / (last 3 mo braces) — the mature product mix, same basis Istanbul\'s target year uses\n\n' +
+    '<span class="k">GrossRev</span>    = Target × UnitNetTRY\n\n' +
+    '<span class="k">OpCost</span>      = the center\'s own operating cost (rent, expert orthotist + time-&-motion fitting/support staff at the network SGK multiplier, utilities, kitchen) × 1.25 mature-year factor — no HQ overhead\n\n' +
+    '<span class="r">NetRevEurK</span>  = (GrossRev − OpCost) / eurKur / 1000\n\n' +
+    '<span class="c">The table below is each center at FULL capacity. Bursa/Gaziantep open in Year 3, so within this 5-year horizon they reach a fraction of this (see their Years-to-target slider); the live projection above ramps to it.</span>';
 
-  var sehirler=[{key:'izmir',name:'Izmir',color:'#1D9E75',aktif:V.izmirAktif},{key:'ankara',name:'Ankara',color:'#534AB7',aktif:V.ankaraAktif}];
+  var P=window._lastProjRows;
   var sonR=rows.slice(-3);
   var sonK=sonR.reduce(function(s,r){return s+(r.korse||0);},0)||1;
   var sonN=sonR.reduce(function(s,r){return s+(r.gelirNet||0);},0);
   var birimNetTRY=Math.round(sonN/sonK);
+  var satOrder=[['izmir','Izmir'],['ankara','Ankara'],['bursa','Bursa'],['gaziantep','Gaziantep']];
 
-  document.getElementById('merkezTbody').innerHTML=sehirler.map(function(s){
-    if(!s.aktif) return '<tr><td style="color:'+s.color+';font-weight:700;">'+s.name+'</td><td colspan="6" style="color:#aaa;text-align:center;">Inactive — not selected</td></tr>';
-    var rampa=V[s.key+'Rampa']||[];
-    var topK=rampa.reduce(function(a,v){return a+v;},0);
-    var brutTRY=topK*birimNetTRY;
-    var netEurK=getMerkezGelir(s.key);
-    var isletme=brutTRY-netEurK*(V.eurKur||53.56)*1000;
-    return '<tr><td style="color:'+s.color+';font-weight:700;">'+s.name+'</td>' +
-      '<td style="text-align:right;">'+topK+' units</td>' +
+  document.getElementById('merkezTbody').innerHTML=satOrder.map(function(pr){
+    var s=P?P.sat[pr[0]]:null;
+    var color=s?s.color:'#888';
+    if(!s||!s.aktif) return '<tr><td style="color:'+color+';font-weight:700;">'+pr[1]+'</td><td colspan="6" style="color:#aaa;text-align:center;">Inactive — not selected</td></tr>';
+    var brutEurK=s.fullGross;                 // €K, full-capacity gross
+    var netEurK=s.fullNet;                     // €K, full-capacity net
+    var brutTRY=brutEurK*eurKur*1000;
+    var netTRY=netEurK*eurKur*1000;
+    var isletmeTRY=brutTRY-netTRY;             // opex = gross − net
+    return '<tr><td style="color:'+color+';font-weight:700;">'+pr[1]+'</td>' +
+      '<td style="text-align:right;">'+(s.adet||0).toLocaleString('tr-TR')+' units</td>' +
       '<td style="text-align:right;">₺'+birimNetTRY.toLocaleString('tr-TR')+'</td>' +
       '<td style="text-align:right;">₺'+Math.round(brutTRY).toLocaleString('tr-TR')+'</td>' +
-      '<td style="text-align:right;color:#D85A30;">₺'+Math.round(isletme).toLocaleString('tr-TR')+'</td>' +
-      '<td style="text-align:right;font-weight:700;color:#1D9E75;">₺'+Math.round(netEurK*(V.eurKur||53.56)*1000).toLocaleString('tr-TR')+'</td>' +
-      '<td style="text-align:right;font-weight:700;color:#1D9E75;">€'+netEurK+'K</td></tr>';
+      '<td style="text-align:right;color:#D85A30;">₺'+Math.round(isletmeTRY).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;font-weight:700;color:'+color+';">₺'+Math.round(netTRY).toLocaleString('tr-TR')+'</td>' +
+      '<td style="text-align:right;font-weight:700;color:'+color+';">€'+netEurK+'K</td></tr>';
   }).join('');
 
-  document.getElementById('merkezKurulumTbody').innerHTML=sehirler.map(function(s){
-    if(!s.aktif) return '<tr><td style="color:'+s.color+';font-weight:700;">'+s.name+'</td><td colspan="4" style="color:#aaa;text-align:center;">Inactive</td></tr>';
-    var useIst=V[s.key+'UseIstKurulum']!==false;
-    var oran=V[s.key+'KurulumOran']||1.0;
-    var top=getMerkezKurulum(s.key);
+  document.getElementById('merkezKurulumTbody').innerHTML=satOrder.map(function(pr){
+    var s=P?P.sat[pr[0]]:null;
+    var color=s?s.color:'#888';
+    if(!s||!s.aktif) return '<tr><td style="color:'+color+';font-weight:700;">'+pr[1]+'</td><td colspan="4" style="color:#aaa;text-align:center;">Inactive</td></tr>';
+    var useIst=V[pr[0]+'UseIstKurulum']!==false;
+    var oran=V[pr[0]+'KurulumOran']||1.0;
+    var top=getMerkezKurulum(pr[0]);
     var eurK=Math.round(top/(V.eurKur||53.56)/1000);
     var formula=useIst?'IST setup × '+oran.toFixed(2)+' (multiplier)':'Sum of custom line items';
-    return '<tr><td style="color:'+s.color+';font-weight:700;">'+s.name+'</td>' +
+    return '<tr><td style="color:'+color+';font-weight:700;">'+pr[1]+'</td>' +
       '<td>'+(useIst?'IST-based':'Custom')+'</td>' +
       '<td class="formula">'+formula+'</td>' +
       '<td style="text-align:right;font-weight:700;">₺'+Math.round(top).toLocaleString('tr-TR')+'</td>' +

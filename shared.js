@@ -2012,13 +2012,17 @@ function computeYear1(Vlike) {
     const cap = clinicCapacityProfile(korse, b2bAy);
 
     // Printer tetikleyici — bu ayın korsesi mevcut kapasite aşıyorsa ek printer al.
-    // Capacity/timing is still tracked even when Osteoid A.Ş. supplies the
-    // equipment (ekipmanOsteoidden) — only the cost hitting the clinic P&L is zeroed.
+    // Capacity/timing is still tracked even when the cost is zeroed — but the
+    // COST is charged only under the exact same condition as the setup printer
+    // line (printerMaliyet): printers must be in the model (printerAktif) AND
+    // clinic-owned (!ekipmanOsteoidden). Previously the top-up ignored
+    // printerAktif, so a ramp that crossed a printer threshold still charged
+    // the clinic even with printers Excluded — while setup charged €0 (F9).
     const gerekliPrinter = cap.printers;
     let printerEkMaliyet = 0;
     if (gerekliPrinter > aktifPrinterSayisi) {
       const yeniPrinter = gerekliPrinter - aktifPrinterSayisi;
-      printerEkMaliyet = ekipmanOsteoidden ? 0 : yeniPrinter * printerBirimMaliyet;
+      printerEkMaliyet = (printerAktif && !ekipmanOsteoidden) ? yeniPrinter * printerBirimMaliyet : 0;
       aktifPrinterSayisi = gerekliPrinter;
       printerTetikAylari.push({ ay: i+1, adet: yeniPrinter, maliyet: printerEkMaliyet });
     }
@@ -2951,7 +2955,7 @@ let projChartInst = null;
 initDynamic();
 recalc();
 
-function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmirY5Gelir, ankaraY5Gelir, izmirY5Adet, ankaraY5Adet, bursaRow, gaziantepRow, bursaY5Gelir, gaziantepY5Gelir, bursaY5Adet, gaziantepY5Adet) {
+function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmirY5Gelir, ankaraY5Gelir, izmirY5Adet, ankaraY5Adet, bursaRow, gaziantepRow, bursaY5Gelir, gaziantepY5Gelir, bursaY5Adet, gaziantepY5Adet, istNetRow) {
   const el = document.getElementById('summaryOutcomes3yr');
   if (!el) return;
   const eurKur = V.eurKur ?? 50;
@@ -2962,7 +2966,15 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
 
   // Revenue at full market penetration — per center (all in €K), net after own operating costs
   const _n = totals.length - 1; // last year index (4 for 5-year model)
-  const istNet     = Math.max(0, (totals[_n] || 0) - (izmirRow[_n]||0) - (ankaraRow[_n]||0) - (bursaRow[_n]||0) - (gaziantepRow[_n]||0)); // includes b2b, net
+  // Istanbul's own 100% net (incl. B2B), taken DIRECTLY from its own rows —
+  // not by subtracting satellites out of the consolidated total. The old
+  // subtraction only held in Branch mode (where totals carries each
+  // satellite's full 100% net); in Subsidiary mode totals carries just the
+  // flagship's fee+equity slice, so subtracting each satellite's full net
+  // pushed the minority share in as a phantom Istanbul loss, then floored to
+  // 0 (audit F8). istNetRow[i] is already floored ≥ 0; b2bRow[i] ≥ 0.
+  const _istRow = istNetRow || [];
+  const istNet     = (_istRow[_n] || 0) + (b2bRow[_n] || 0);
   const izmirNet   = izmirRow[_n]  || 0;  // net after center-specific opex (= izmirFullNet)
   const ankaraNet  = ankaraRow[_n] || 0;  // net after center-specific opex (= ankaraFullNet)
   // Bursa/Gaziantep open Year 3, so their _n (=Year 5) figure is whatever
@@ -3166,7 +3178,9 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
     const totalCommittedEur = inv2.investorTicketEur;
     let cum100NetEur = 0;
     for (let yi = 0; yi < 5; yi++) {
-      const istYear = Math.max(0, (totals[yi]||0) - (izmirRow[yi]||0) - (ankaraRow[yi]||0) - (bursaRow[yi]||0) - (gaziantepRow[yi]||0));
+      // Istanbul's own 100% net (incl. B2B) taken directly, per F8 — same
+      // reason as istNet above (subtraction is wrong in Subsidiary mode).
+      const istYear = (_istRow[yi] || 0) + (b2bRow[yi] || 0);
       cum100NetEur += istYear + (izmirRow[yi]||0) + (ankaraRow[yi]||0) + (bursaRow[yi]||0) + (gaziantepRow[yi]||0);
     }
     cum100NetEur *= 1000; // €K -> EUR
@@ -3702,20 +3716,27 @@ function buildProjection() {
   const pazarAnkara = Math.round(gv('pazarTR') * V.ankaraNufusPay / 100);
   const pazarBursa = Math.round(gv('pazarTR') * V.bursaNufusPay / 100);
   const pazarGaziantep = Math.round(gv('pazarTR') * V.gaziantepNufusPay / 100);
-  const y1BirimNetEur = toEur(y1KorseNet) / (y1Korse||1) * 1000; // €/adet
+  // Satellites reach full capacity at Year 5 — a MATURE clinic with the same
+  // premium product mix Istanbul carries by then, so their per-brace net must
+  // use the year-end (last-3-month) unit-net basis (sonBirimNet), exactly as
+  // Istanbul's own Year-5 gross does (y5KorseToplam above). The earlier
+  // full-year AVERAGE basis (y1KorseNet / y1Korse) was dragged down ~13% by
+  // Year-1's ramp months, which are dominated by cheap standard braces —
+  // understating every satellite's mature economics vs. the flagship's on an
+  // otherwise identical product (audit F6).
 
   const izmirY5Adet  = V.izmirAktif  ? Math.round(pazarIzmir  * gv('izmirHedefPay')  / 100) : 0;
   const ankaraY5Adet = V.ankaraAktif ? Math.round(pazarAnkara * gv('ankaraHedefPay') / 100) : 0;
-  const izmirY5Gelir  = Math.round(izmirY5Adet  * y1BirimNetEur / 1000);
-  const ankaraY5Gelir = Math.round(ankaraY5Adet * y1BirimNetEur / 1000);
+  const izmirY5Gelir  = Math.round(izmirY5Adet  * sonBirimNet / 1000);
+  const ankaraY5Gelir = Math.round(ankaraY5Adet * sonBirimNet / 1000);
   // "Y5Adet"/"Y5Gelir" naming kept consistent with Izmir/Ankara even though
   // Bursa/Gaziantep (Year-3 openers) may not fully reach this full-capacity
   // target by the model's actual Year 5, depending on their ramp-years
   // slider — see _satRampFrac / the ramp block below.
   const bursaY5Adet = V.bursaAktif ? Math.round(pazarBursa * gv('bursaHedefPay') / 100) : 0;
   const gaziantepY5Adet = V.gaziantepAktif ? Math.round(pazarGaziantep * gv('gaziantepHedefPay') / 100) : 0;
-  const bursaY5Gelir = Math.round(bursaY5Adet * y1BirimNetEur / 1000);
-  const gaziantepY5Gelir = Math.round(gaziantepY5Adet * y1BirimNetEur / 1000);
+  const bursaY5Gelir = Math.round(bursaY5Adet * sonBirimNet / 1000);
+  const gaziantepY5Gelir = Math.round(gaziantepY5Adet * sonBirimNet / 1000);
 
   // Center-specific Y5 opex — clinic-direct costs only (no HQ overhead)
   // ymmM, donemsel.reklam advertising, genelGider are Istanbul/HQ costs; Izmir/Ankara don't carry them.
@@ -3739,25 +3760,32 @@ function buildProjection() {
     _satProf[s] = prof;
   });
   window._lastSatProfiles = _satProf;
+  // Employer SGK burden on the satellite's expert orthotist + intern uses the
+  // model-wide multiplier (sgkCproj - 1 = the on-top employer share, so net ×
+  // sgkCproj gross) — matching both the derived fitting/support staff on the
+  // same line (_satProf...derivedStaffTRY, which already uses sgkCproj) and
+  // the flagship's own staffing. Previously a stale hardcoded 23% understated
+  // the burden ~₺30K/mo/city vs. the 60% (sgkCarpan 1.6) used everywhere else
+  // (audit F5).
   const izmirMonthlyTRY  = (V.izmirKira||80000)  + (V.izmirOrtotistM||55000)  + (V.izmirStajyerM||25000)
     + (V.izmirMutfak||18000)  + (V.izmirSarf||3000)
     + (V.elektrik||16500) + (V.internet||1500)
-    + Math.round(((V.izmirOrtotistM||55000)  + (V.izmirStajyerM||25000))  * 0.23)
+    + Math.round(((V.izmirOrtotistM||55000)  + (V.izmirStajyerM||25000))  * (sgkCproj - 1))
     + _satProf.izmir.derivedStaffTRY;
   const ankaraMonthlyTRY = (V.ankaraKira||85000) + (V.ankaraOrtotistM||55000) + (V.ankaraStajyerM||25000)
     + (V.ankaraMutfak||18000) + (V.ankaraSarf||3000)
     + (V.elektrik||16500) + (V.internet||1500)
-    + Math.round(((V.ankaraOrtotistM||55000) + (V.ankaraStajyerM||25000)) * 0.23)
+    + Math.round(((V.ankaraOrtotistM||55000) + (V.ankaraStajyerM||25000)) * (sgkCproj - 1))
     + _satProf.ankara.derivedStaffTRY;
   const bursaMonthlyTRY = (V.bursaKira||80000) + (V.bursaOrtotistM||55000) + (V.bursaStajyerM||25000)
     + (V.bursaMutfak||18000) + (V.bursaSarf||3000)
     + (V.elektrik||16500) + (V.internet||1500)
-    + Math.round(((V.bursaOrtotistM||55000) + (V.bursaStajyerM||25000)) * 0.23)
+    + Math.round(((V.bursaOrtotistM||55000) + (V.bursaStajyerM||25000)) * (sgkCproj - 1))
     + _satProf.bursa.derivedStaffTRY;
   const gaziantepMonthlyTRY = (V.gaziantepKira||85000) + (V.gaziantepOrtotistM||55000) + (V.gaziantepStajyerM||25000)
     + (V.gaziantepMutfak||18000) + (V.gaziantepSarf||3000)
     + (V.elektrik||16500) + (V.internet||1500)
-    + Math.round(((V.gaziantepOrtotistM||55000) + (V.gaziantepStajyerM||25000)) * 0.23)
+    + Math.round(((V.gaziantepOrtotistM||55000) + (V.gaziantepStajyerM||25000)) * (sgkCproj - 1))
     + _satProf.gaziantep.derivedStaffTRY;
   const izmirY5GiderEur  = Math.round(toEur(izmirMonthlyTRY  * 12) * 1.25);
   const ankaraY5GiderEur = Math.round(toEur(ankaraMonthlyTRY * 12) * 1.25);
@@ -3885,6 +3913,21 @@ function buildProjection() {
   // Yıl 2 KPI güncelle
   window._lastTotals = totals;
   window._lastFeeIncomeRow = feeIncomeRow; // €K, Y1-Y5, pretax — for the DCF sum-of-parts toggle
+  // Full live 5-year projection rows (€K) — single source the Methodology /
+  // Formula-Validation pages read so their tables MIRROR the live model rather
+  // than re-deriving with retired formulas (getMerkezGelir/esikDestek/×1.5-2.2
+  // B2B/full-year unit net) — audit F10. Every row here is exactly what the
+  // growth-page projection table and consolidated total are built from.
+  window._lastProjRows = {
+    istNet: korseM1, b2b: b2bGrossRow,
+    fee: feeIncomeRow, equity: equityIncomeRow, minority: minorityRow, totals,
+    sat: {
+      izmir:     { net: izmirRow,     gross: izmirGrossRow,     adet: izmirY5Adet,     fullGross: izmirY5Gelir,     fullNet: izmirFullNet,     aktif: !!V.izmirAktif,     isSube: izmirIsSube,     openYear: 2, ramp: izmirRampYears,     hedefPay: gv('izmirHedefPay'),     color:'#1D9E75' },
+      ankara:    { net: ankaraRow,    gross: ankaraGrossRow,    adet: ankaraY5Adet,    fullGross: ankaraY5Gelir,    fullNet: ankaraFullNet,    aktif: !!V.ankaraAktif,    isSube: ankaraIsSube,    openYear: 2, ramp: ankaraRampYears,    hedefPay: gv('ankaraHedefPay'),    color:'#E8963C' },
+      bursa:     { net: bursaRow,     gross: bursaGrossRow,     adet: bursaY5Adet,     fullGross: bursaY5Gelir,     fullNet: bursaFullNet,     aktif: !!V.bursaAktif,     isSube: bursaIsSube,     openYear: 3, ramp: bursaRampYears,     hedefPay: gv('bursaHedefPay'),     color:'#c94f2a' },
+      gaziantep: { net: gaziantepRow, gross: gaziantepGrossRow, adet: gaziantepY5Adet, fullGross: gaziantepY5Gelir, fullNet: gaziantepFullNet, aktif: !!V.gaziantepAktif, isSube: gaziantepIsSube, openYear: 3, ramp: gaziantepRampYears, hedefPay: gv('gaziantepHedefPay'), color:'#8a6d1a' },
+    },
+  };
 
   // ── 5-Year dataset for the Summary page's Revenue&Cost/Cost Distribution/
   // Cumulative chart (renderTblChart) — reuses only already-computed rows
@@ -3924,7 +3967,7 @@ function buildProjection() {
     gaziantep: { isSube: gaziantepIsSube, row: gaziantepEquityRow.slice() },
   };
   window._lastFcf = computeFcfStream();
-  renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmirY5Gelir, ankaraY5Gelir, izmirY5Adet, ankaraY5Adet, bursaRow, gaziantepRow, bursaY5Gelir, gaziantepY5Gelir, bursaY5Adet, gaziantepY5Adet);
+  renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmirY5Gelir, ankaraY5Gelir, izmirY5Adet, ankaraY5Adet, bursaRow, gaziantepRow, bursaY5Gelir, gaziantepY5Gelir, bursaY5Adet, gaziantepY5Adet, korseM1);
   const _roadmapEl = document.getElementById('investorRoadmap');
   if (_roadmapEl) renderInvestorRoadmap(_roadmapEl, totals, korseM1, feeIncomeRow, equityIncomeRow, minorityRow, b2bRow, window._lastFcf, izmirRow, ankaraRow, istFinancingGapRow, bursaRow, gaziantepRow);
   if (typeof renderDcf === 'function') { renderDcf(); renderGetiriTable(); }
@@ -4064,11 +4107,18 @@ function buildProjection() {
     const isSube = !!V[sehir+'SubeMi'];
     const grossY = grossRow;
     const setupEurK = aktif ? toEur(getMerkezKurulum(sehir)) : 0;
-    const setupY = [0, setupEurK, 0, 0, 0];
+    // Setup cost lands in the city's OWN opening year, not always Year 2:
+    // Izmir/Ankara open Year 2 (index 1), Bursa/Gaziantep open Year 3 (index
+    // 2). Reuses the same _MERKEZ_ACILIS_YIL opening-year map the projection
+    // uses elsewhere (izmir absent → default 2). Booking Bursa/Gaziantep setup
+    // in Year 2 (before they exist) was audit F7.
+    const _openIdx = (_MERKEZ_ACILIS_YIL[sehir] || 2) - 1; // 0-based year index
+    const setupY = [0,0,0,0,0];
+    setupY[_openIdx] = setupEurK;
     // Cumulative uses the satellite's own bottom line AFTER the management
     // fee — that's the real cash position from a local investor's view.
     const cumY = [0];
-    for (let i=1;i<5;i++) cumY.push(cumY[i-1] + netAfterFeeRow[i] - (i===1 ? setupEurK : 0));
+    for (let i=1;i<5;i++) cumY.push(cumY[i-1] + netAfterFeeRow[i] - (i===_openIdx ? setupEurK : 0));
     const pozAyLabels = ['—'];
     for (let i=1;i<5;i++) {
       if (!aktif) { pozAyLabels.push('Not opened'); continue; }
