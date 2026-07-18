@@ -3103,7 +3103,8 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
   // ── Stage 2 Investment & Return — Stage 2 funds the Izmir/Ankara/Bursa/
   // Gaziantep build-outs, so its "return" is a simple annual yield against
   // those four cities' own net revenue (Izmir/Ankara at full penetration,
-  // Bursa/Gaziantep at Year 5's 80%-of-target since they open a year later),
+  // Bursa/Gaziantep at whatever fraction of target their ramp-years slider
+  // has reached by Year 5 — see _satRampFrac; they open a year later),
   // not the whole network's combined total (which also includes Istanbul +
   // B2B, none of which Stage 2 money funded).
   const inv2 = window._lastInvestBreakdown;
@@ -3243,15 +3244,29 @@ function renderInvestorRoadmap(el, totals, korseM1, feeIncomeRow, equityIncomeRo
                : 'Istanbul scales';
   const cCount = 1 + (V.izmirAktif ? 1 : 0) + (V.ankaraAktif ? 1 : 0) + (V.bursaAktif ? 1 : 0) + (V.gaziantepAktif ? 1 : 0);
 
+  // Year-1 claims and per-year capacity badges are read off the LIVE model
+  // (window._lastRows + the istRampYears ramp), never hardcoded — at one
+  // point this card asserted "Break-even ~Month 4 · Cumulative positive
+  // ~Month 11" while the committed defaults actually produced Month 10 /
+  // not reached in Y1 (audit finding F2).
+  const _rmRows = window._lastRows || [];
+  const _rmBasAy = (_rmRows.find(r => r.net >= 0) || {}).ay || null;
+  const _rmPozAy = (_rmRows.find(r => r.cumBudget >= 0) || {}).ay || null;
+  const _rmTahmin = (!_rmPozAy && _rmRows.length) ? _tahminPozAy(_rmRows) : null;
+  const _rmPozTxt = _rmPozAy ? '~Month ' + _rmPozAy
+                  : (_rmTahmin ? '~Month ' + _rmTahmin + ' (trend est.)' : 'beyond Year 1');
+  const _rmIstRampYears = V.istRampYears || 5;
+  const _rmPct = y => Math.round(_istRampFrac(y, _rmIstRampYears) * 100);
   const years = [
     { label:'Year 1', badge:'✓ Monthly model', color:'#534AB7',
-      body:'Istanbul Flagship · Break-even ~Month 4 · Cumulative positive ~Month 11' },
+      body:'Istanbul Flagship · Break-even ' + (_rmBasAy ? '~Month ' + _rmBasAy : 'not reached in Y1')
+           + ' · Cumulative positive ' + _rmPozTxt },
     { label:'Year 2', badge:'Expansion', color:'#1D9E75',
-      body:'Istanbul 40% capacity · ' + c2text },
-    { label:'Year 3', badge:'65% capacity', color:'#BA7517',
-      body: cCount + ' active center' + (cCount>1?'s':'') + ' · 65% of market target' },
-    { label:'Year 4', badge:'85% capacity', color:'#c94f2a',
-      body: cCount + ' active center' + (cCount>1?'s':'') + ' · 85% of market target' },
+      body:'Istanbul ' + _rmPct(2) + '% of market target · ' + c2text },
+    { label:'Year 3', badge:_rmPct(3) + '% capacity', color:'#BA7517',
+      body: cCount + ' active center' + (cCount>1?'s':'') + ' · ' + _rmPct(3) + '% of market target' },
+    { label:'Year 4', badge:_rmPct(4) + '% capacity', color:'#c94f2a',
+      body: cCount + ' active center' + (cCount>1?'s':'') + ' · ' + _rmPct(4) + '% of market target' },
     { label:'Year 5', badge:'Full penetration', color:'#2c4a2e',
       body:'Market penetration target reached · ' + cCount + ' center' + (cCount>1?'s':'') + ' at capacity' },
   ];
@@ -3357,7 +3372,16 @@ function computeFcfStream() {
   // separate carryforward tracking, so an unused deduction never persists
   // beyond what the existing 5-yr carryforward mechanism already allows.
   const nakdi = computeNakdiSermayeDeduction();
-  const taxableBase = pretaxFcf.map((v,i) => v - nakdi.deduction[i]);
+  // True accounting pre-tax result = the cash row minus the Istanbul ramp-
+  // year financing gap that `totals` floors away (buildProjection's
+  // istFinancingGapRow). The CASH view (pretaxFcf/taxedFcf) keeps the floor —
+  // that burn is funded by the raised working capital, already counted in
+  // the investment denominator — but the TAX base must see the real loss,
+  // otherwise Year 1 pays KV on B2B profit while the entity as a whole made
+  // less (or lost money), and no loss carryforward ever accrues (audit F3).
+  const _finGapRow = window._lastIstFinancingGapRow || [0,0,0,0,0];
+  const accountingPretax = pretaxFcf.map((v,i) => v - (_finGapRow[i] || 0));
+  const taxableBase = accountingPretax.map((v,i) => v - nakdi.deduction[i]);
 
   let carry = 0;
   const taxedFcf = [], taxPaid = [], carryEnd = [];
@@ -3384,7 +3408,7 @@ function computeFcfStream() {
   let running = 0;
   for (let i = 0; i < 5; i++) { running += taxedFcf[i]; cum.push(running); }
 
-  return { pretaxFcf, taxedFcf, taxPaid, carryEnd, vergiDahil, kvOraniPct, cum, nakdi };
+  return { pretaxFcf, accountingPretax, taxedFcf, taxPaid, carryEnd, vergiDahil, kvOraniPct, cum, nakdi };
 }
 
 // 5 Yıllık Projeksiyon — dinamik
@@ -3570,8 +3594,14 @@ function buildProjection() {
   window._lastIstCapBuildout = istCapBuildout;
   const istNetRow   = istGrossRow.map((g,i) => Math.max(0, g - istOpexRow[i]));
   // Amount by which opex exceeds gross, before flooring — the gap raised
-  // capital covers in a ramp year (0 once gross overtakes opex).
+  // capital covers in a ramp year (0 once gross overtakes opex). Exposed as
+  // a window global so computeFcfStream() can reconstruct the UNfloored
+  // accounting result for the tax base (audit F3): the floor is a cash-view
+  // convention (the gap is funded by the working capital already counted in
+  // the investment denominator), but tax law still sees the whole entity's
+  // P&L — the loss must reduce taxable profit / feed the carryforward.
   const istFinancingGapRow = istGrossRow.map((g,i) => Math.max(0, istOpexRow[i] - g));
+  window._lastIstFinancingGapRow = istFinancingGapRow;
 
   const korseM1    = istNetRow; // Istanbul private-clinic net, post-opex, every year
 
@@ -3972,13 +4002,13 @@ function buildProjection() {
   const istSciY = istGrossY.map(g => Math.round(g * y1SciOran));
   const istEduY = istGrossY.map(g => Math.round(g * y1EduOran));
   const istLibY = istGrossY.map(g => Math.round(g * y1LibOran));
-  const istRoyaltyY   = korseCountIst.map(k => Math.round(k * gv('royaltyEur') * (V.eurKur??50) / 1000));
+  const istRoyaltyY   = korseCountIst.map(k => Math.round(k * gv('royaltyEur') / 1000));
 
   // Cutting fee (Perf/S+P braces only) — Year 1's actual last-3-month product mix held
   // constant; this projection has no per-product mix at all beyond Year 1.
   const _sonK = lastRows.reduce((s,r) => { const k=r.k||[0,0,0,0,0]; return s.map((v,j)=>v+k[j]); }, [0,0,0,0,0]);
   const _sonKesimPct = sonKorse > 0 ? (_sonK[2]+_sonK[4]) / sonKorse : 0;
-  const istCuttingY = korseCountIst.map(k => Math.round(k * _sonKesimPct * gv('kesimEurPer') * (V.eurKur??50) / 1000));
+  const istCuttingY = korseCountIst.map(k => Math.round(k * _sonKesimPct * gv('kesimEurPer') / 1000));
 
   // Margin: Year 1 = brace-level margin (net ÷ list price, matches 12-Month Summary exactly);
   // Years 2-5 = operating margin (post-opex net ÷ pre-opex gross) — a different basis, since
@@ -4041,8 +4071,8 @@ function buildProjection() {
     const sciY = grossY.map(g => Math.round(g * y1SciOran));
     const eduY = grossY.map(g => Math.round(g * y1EduOran));
     const libY = grossY.map(g => Math.round(g * y1LibOran));
-    const royaltyY   = korseCountArr.map(k => Math.round(k * gv('royaltyEur') * (V.eurKur??50) / 1000));
-    const cuttingY   = korseCountArr.map(k => Math.round(k * _sonKesimPct * gv('kesimEurPer') * (V.eurKur??50) / 1000));
+    const royaltyY   = korseCountArr.map(k => Math.round(k * gv('royaltyEur') / 1000));
+    const cuttingY   = korseCountArr.map(k => Math.round(k * _sonKesimPct * gv('kesimEurPer') / 1000));
     const marginY    = netRevArr.map((n,i) => grossY[i] > 0 ? Math.round(n/grossY[i]*100) : null);
     // Capacity build-out — same compact line as Istanbul, from the satellite's
     // own full-capacity profile (100% B2C). Shown from the opening year on
@@ -4132,8 +4162,10 @@ function buildProjection() {
   const y5PayLabel = '%' + y5PayPct + ' IST'
     + (V.izmirAktif  ? ' · %' + gv('izmirHedefPay').toFixed(1)  + ' IZM' : '')
     + (V.ankaraAktif ? ' · %' + gv('ankaraHedefPay').toFixed(1) + ' ANK' : '')
-    + (V.bursaAktif ? ' · %' + gv('bursaHedefPay').toFixed(1) + ' BUR (target; 80% reached by Y5)' : '')
-    + (V.gaziantepAktif ? ' · %' + gv('gaziantepHedefPay').toFixed(1) + ' GAZ (target; 80% reached by Y5)' : '');
+    + (V.bursaAktif ? ' · %' + gv('bursaHedefPay').toFixed(1) + ' BUR (target; '
+        + Math.round(_satRampFrac(5, 3, bursaRampYears) * 100) + '% reached by Y5)' : '')
+    + (V.gaziantepAktif ? ' · %' + gv('gaziantepHedefPay').toFixed(1) + ' GAZ (target; '
+        + Math.round(_satRampFrac(5, 3, gaziantepRampYears) * 100) + '% reached by Y5)' : '');
   if (y5p) y5p.textContent = y5PayLabel;
   const y5AdetLabel = y5KorseAdet.toLocaleString('tr-TR')
     + (V.izmirAktif  ? ' + ' + izmirY5Adet.toLocaleString('tr-TR')  : '')
@@ -5109,14 +5141,21 @@ function renderTaxOptPanel() {
   // ── Waterfall: pre-tax profit → levers → taxable profit → KV → effective rate ──
   const wfBody = document.getElementById('taxOptWaterfallBody');
   if (wfBody) {
-    const pretax = fcfData.pretaxFcf;
+    // Waterfall starts from the ACCOUNTING pre-tax result (cash row minus the
+    // Istanbul ramp-year financing gap) — the same base computeFcfStream()
+    // actually taxes — so "Taxable profit" here always reconciles with the
+    // "KV paid" row below it. The gap line is shown whenever it's nonzero.
+    const pretax = fcfData.accountingPretax || fcfData.pretaxFcf;
+    const gapRow = fcfData.pretaxFcf.map((v,i) => v - pretax[i]);
     const dedRow = nakdi.active ? nakdi.deduction : [0,0,0,0,0];
     const taxableProfit = pretax.map((v,i) => v - dedRow[i]);
     const kvPaid = fcfData.taxPaid;
     const effRate = pretax.map((v,i) => v > 0 ? (kvPaid[i]/v*100) : 0);
     const fmtSigned = v => (v>=0?'€':'-€') + Math.abs(Math.round(v)).toLocaleString('en-US') + 'K';
     wfBody.innerHTML =
-      '<tr><td style="text-align:left;"><b>Pre-tax profit</b></td>' + pretax.map(v=>`<td>${fmtSigned(v)}</td>`).join('') + '</tr>' +
+      (gapRow.some(v=>v>0) ? '<tr><td style="text-align:left;color:#8a6d1a;font-size:11px;">Cash-view FCF row</td>' + fcfData.pretaxFcf.map(v=>`<td style="color:#8a6d1a;font-size:11px;">${fmtSigned(v)}</td>`).join('') + '</tr>' +
+      '<tr><td style="text-align:left;color:#8a6d1a;font-size:11px;">− Ramp-year opex gap (financed by raised capital, floored out of the cash row but still a real P&amp;L loss)</td>' + gapRow.map(v=>`<td style="color:#8a6d1a;font-size:11px;">${v>0?'-'+fmtEurK(v):'—'}</td>`).join('') + '</tr>' : '') +
+      '<tr><td style="text-align:left;"><b>Pre-tax profit (accounting)</b></td>' + pretax.map(v=>`<td>${fmtSigned(v)}</td>`).join('') + '</tr>' +
       '<tr><td style="text-align:left;color:#534AB7;">− Lever 1: notional interest deduction</td>' + dedRow.map(v=>`<td style="color:#534AB7;">${v?'-'+fmtEurK(v):'—'}</td>`).join('') + '</tr>' +
       '<tr><td style="text-align:left;"><b>Taxable profit</b></td>' + taxableProfit.map(v=>`<td>${fmtSigned(v)}</td>`).join('') + '</tr>' +
       '<tr><td style="text-align:left;">KV @ '+kvOraniPct+'% (net of 5-yr carryforward)</td>' + kvPaid.map(v=>`<td class="${v?'nc':''}">${v?'-'+fmtEurK(v):'—'}</td>`).join('') + '</tr>' +
