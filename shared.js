@@ -23,7 +23,7 @@ document.getElementById = function(id) {
   };
 };
 
-const V = {"korseF":37800,"malzeme":50,"reklamCarpan":1,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.72,"kira":250000,"depozito":250000,"emlakci":500000,"m2":360,"tadilatM2":7000,"dekoM2":6750,"mobilya":300000,"ruhsat":100000,"aylikKira":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":90000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[15,15,20,25,25,33,35,41,42,50,50,55],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":27000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":3500,"mal_sens":2075,"mal_sensDelik":4975,"feeSci_stdR":10,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdR":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdR":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":45000,"pazarIstPct":30.1,"hedefOsteoidPay":30,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":true,"izmirHedefPay":30,"izmirUseIst":false,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":true,"ankaraHedefPay":30,"ankaraUseIst":false,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"bursaAktif":true,"bursaHedefPay":30,"bursaUseIst":false,"bursaUseIstGider":true,"bursaKira":80000,"bursaOrtotistM":55000,"bursaStajyerM":25000,"bursaMutfak":18000,"bursaSarf":3000,"bursaUseIstKurulum":true,"bursaKurulumKira":120000,"bursaKurulumDepozito":200000,"bursaKurulumTadilat":4750,"bursaKurulumDeko":2000,"bursaKurulumMobilya":600000,"bursaRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"gaziantepAktif":true,"gaziantepHedefPay":30,"gaziantepUseIst":false,"gaziantepUseIstGider":true,"gaziantepKira":85000,"gaziantepOrtotistM":55000,"gaziantepStajyerM":25000,"gaziantepMutfak":18000,"gaziantepSarf":3000,"gaziantepUseIstKurulum":true,"gaziantepKurulumKira":120000,"gaziantepKurulumDepozito":200000,"gaziantepKurulumTadilat":4750,"gaziantepKurulumDeko":2000,"gaziantepKurulumMobilya":600000,"gaziantepRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"bursaNufusPay":4.5,"gaziantepNufusPay":3,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":true,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":18,"dcfGrowth":18,"dcfGrowth45":45,"dcfExitMult":10,"dcfNegotiationDiscount":20,"tranche1Eur":500000,"trancheStepUp":1.75,"dcfInvest":771443,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":12500,"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":130000,"_sen_max_kira":500000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":3500,"_sen_max_dekoM2":17000,"_sen_min_ortotistM":55000,"_sen_max_ortotistM":160000,"_sen_min_operatorM":110000,"_sen_max_operatorM":290000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.75,"bursaRampaOran":0.75,"bursaKurulumOran":0.75,"gaziantepRampaOran":0.8,"gaziantepKurulumOran":0.75,"operatorM":180000,"ipLisansEur":500000,"sehirEksklusifEur":500000,"workingCapBufferEur":500000,"stage1BufferEur":200000,"kvOrani":25,"vergiDahil":true,"exitYili":5,"kisiselVergiOrani":15,"fundAy":0,"makineKatkiOran":50,"osteoidCarpan":1,"yatirimciCarpan":1,"doktorYatirim":0,"doktorCarpan":1.5,"sweatEur":80000,"sweatVestAy":48,"sweatCliffAy":12,"sweatElapsedAy":0,"sweatMaxPct":5,"sweatCarpan":1,"sweatVestedToday":true,"royaltyOffsetYil":1,"royaltyOffsetPct":0,"yonetimUcretiPct":5,"izmirFlagshipPay":65,"ankaraFlagshipPay":65,"bursaFlagshipPay":65,"gaziantepFlagshipPay":65,"izmirSubeMi":true,"ankaraSubeMi":true,"bursaSubeMi":true,"gaziantepSubeMi":true,"euLegalFaiz":5,"setupOverheadC1":30000,"setupOverheadC2":30000,"setupOverheadC3":45000,"setupOverheadC4":40000,"setupOverheadC5":40000,"bursaGaziantepFcfFunded":true,"nakdiSermayeAktif":true,"teknokentKapsam":false,"emisyonPrimiAktif":true,"nominalPayOrani":10,"feeStreamAyriMult":false,"feeExitMult":12,"istRampYears":3,"izmirRampYears":3,"ankaraRampYears":3,"bursaRampYears":4,"gaziantepRampYears":4,"bursaAcilisAy":3,"ankaraAcilisAy":5,"workingCapBufferFcfFunded":false,"hastaPerOdaGun":6,"odaMaxPerKlinik":6,"odaM2":10,"calismaGunAy":26,"haftaSonuGunAy":9,"haftaSonuTalepPct":60,"visitPerKorse":1,"ortotistDkFitting":20,"expertDkHasta":8,"destekDkHasta":45,"staffUtilPct":75,"korsePerPrinterAy":66,"ekOrtotistM":65000,"subeSetupTRY":900000,"izmirDestekM":25000,"ankaraDestekM":25000,"bursaDestekM":25000,"gaziantepDestekM":25000,"b2bHedefAdetYil":1200,"b2bRampYears":3,"_version":55};
+const V = {"reklamCarpan":1,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.72,"kira":250000,"depozito":250000,"emlakci":500000,"m2":360,"tadilatM2":7000,"dekoM2":6750,"mobilya":300000,"ruhsat":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":90000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[15,15,20,25,25,33,35,41,42,50,50,55],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":27000,"korseF_stdRl":35000,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":3500,"mal_sens":2075,"mal_sensDelik":4975,"feeSci_stdR":10,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdR":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdR":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":45000,"pazarIstPct":30.1,"hedefOsteoidPay":30,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":true,"izmirHedefPay":30,"izmirUseIst":false,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"ankaraAktif":true,"ankaraHedefPay":30,"ankaraUseIst":false,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"bursaAktif":true,"bursaHedefPay":30,"bursaUseIst":false,"bursaUseIstGider":true,"bursaKira":80000,"bursaOrtotistM":55000,"bursaStajyerM":25000,"bursaMutfak":18000,"bursaSarf":3000,"bursaUseIstKurulum":true,"bursaKurulumKira":120000,"bursaKurulumDepozito":200000,"bursaKurulumTadilat":4750,"bursaKurulumDeko":2000,"bursaKurulumMobilya":600000,"bursaRampa":[8,8,11,15,19,19,23,26,26,34,34,38],"gaziantepAktif":true,"gaziantepHedefPay":30,"gaziantepUseIst":false,"gaziantepUseIstGider":true,"gaziantepKira":85000,"gaziantepOrtotistM":55000,"gaziantepStajyerM":25000,"gaziantepMutfak":18000,"gaziantepSarf":3000,"gaziantepUseIstKurulum":true,"gaziantepKurulumKira":120000,"gaziantepKurulumDepozito":200000,"gaziantepKurulumTadilat":4750,"gaziantepKurulumDeko":2000,"gaziantepKurulumMobilya":600000,"gaziantepRampa":[8,8,12,16,20,20,24,28,28,36,36,40],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"bursaNufusPay":4.5,"gaziantepNufusPay":3,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":true,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":18,"dcfExitMult":10,"dcfNegotiationDiscount":20,"tranche1Eur":500000,"trancheStepUp":1.75,"dcfInvest":771443,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":12500,"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":130000,"_sen_max_kira":500000,"_sen_min_tadilatM2":3500,"_sen_max_tadilatM2":17500,"_sen_min_dekoM2":3500,"_sen_max_dekoM2":17000,"_sen_min_ortotistM":55000,"_sen_max_ortotistM":160000,"_sen_min_operatorM":110000,"_sen_max_operatorM":290000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.75,"bursaRampaOran":0.75,"bursaKurulumOran":0.75,"gaziantepRampaOran":0.8,"gaziantepKurulumOran":0.75,"operatorM":180000,"ipLisansEur":500000,"sehirEksklusifEur":500000,"workingCapBufferEur":500000,"stage1BufferEur":200000,"kvOrani":25,"vergiDahil":true,"exitYili":5,"kisiselVergiOrani":15,"fundAy":0,"makineKatkiOran":50,"osteoidCarpan":1,"yatirimciCarpan":1,"doktorYatirim":0,"doktorCarpan":1.5,"sweatEur":80000,"sweatVestAy":48,"sweatCliffAy":12,"sweatElapsedAy":0,"sweatMaxPct":5,"sweatCarpan":1,"sweatVestedToday":true,"royaltyOffsetYil":1,"royaltyOffsetPct":0,"yonetimUcretiPct":5,"izmirFlagshipPay":65,"ankaraFlagshipPay":65,"bursaFlagshipPay":65,"gaziantepFlagshipPay":65,"izmirSubeMi":true,"ankaraSubeMi":true,"bursaSubeMi":true,"gaziantepSubeMi":true,"euLegalFaiz":5,"setupOverheadC1":30000,"setupOverheadC2":30000,"setupOverheadC3":45000,"setupOverheadC4":40000,"setupOverheadC5":40000,"bursaGaziantepFcfFunded":true,"nakdiSermayeAktif":true,"teknokentKapsam":false,"emisyonPrimiAktif":true,"nominalPayOrani":10,"feeStreamAyriMult":false,"feeExitMult":12,"istRampYears":3,"izmirRampYears":3,"ankaraRampYears":3,"bursaRampYears":4,"gaziantepRampYears":4,"bursaAcilisAy":3,"ankaraAcilisAy":5,"gaziantepAcilisAy":3,"workingCapBufferFcfFunded":false,"hastaPerOdaGun":6,"odaMaxPerKlinik":6,"odaM2":10,"calismaGunAy":26,"haftaSonuGunAy":9,"haftaSonuTalepPct":60,"visitPerKorse":1,"ortotistDkFitting":20,"expertDkHasta":8,"destekDkHasta":45,"staffUtilPct":75,"korsePerPrinterAy":66,"ekOrtotistM":65000,"subeSetupTRY":900000,"izmirDestekM":25000,"ankaraDestekM":25000,"bursaDestekM":25000,"gaziantepDestekM":25000,"b2bHedefAdetYil":1200,"b2bRampYears":3,"_version":56};
 // Restore state from localStorage if available; clear cache on version mismatch
 (function() {
   try {
@@ -141,9 +141,10 @@ const SCEN = {
   // structure isn't final, so each named case states what it's betting on
   // (baz: the €75 reference; iyimser: none yet agreed, €0 is a real state
   // not a placeholder; kotu: a worse-than-baseline rate stacked on weaker volume).
-  baz:     { korseF:37800, malzeme:50, mutfak:20000, stopaj:60000, royaltyEur:75,  korse:[5,10,15,20,25,25,30,30,35,35,40,45], kongre:[0,100000,0,200000,0,500000,100000,0,0,350000,0,350000] },
-  iyimser: { korseF:37800, malzeme:50, mutfak:18000, stopaj:60000, royaltyEur:0,   korse:[8,14,20,26,30,32,36,38,42,44,48,55], kongre:[0,50000,0,100000,0,300000,100000,0,0,200000,0,200000] },
-  kotu:    { korseF:30000, malzeme:50, mutfak:22000, stopaj:60000, royaltyEur:100, korse:[3,7,10,14,18,20,22,25,28,28,33,38], kongre:[0,100000,0,200000,0,500000,100000,0,0,350000,0,350000] },
+  // korseF/malzeme dropped — dead keys nothing reads (pricing is per-SKU korseF_*/mal_*), audit F13.
+  baz:     { mutfak:20000, stopaj:60000, royaltyEur:75,  korse:[5,10,15,20,25,25,30,30,35,35,40,45], kongre:[0,100000,0,200000,0,500000,100000,0,0,350000,0,350000] },
+  iyimser: { mutfak:18000, stopaj:60000, royaltyEur:0,   korse:[8,14,20,26,30,32,36,38,42,44,48,55], kongre:[0,50000,0,100000,0,300000,100000,0,0,200000,0,200000] },
+  kotu:    { mutfak:22000, stopaj:60000, royaltyEur:100, korse:[3,7,10,14,18,20,22,25,28,28,33,38], kongre:[0,100000,0,200000,0,500000,100000,0,0,350000,0,350000] },
   // Setup-cost scenario — a named point on the same live sliders, not a
   // hardcoded override; the committed default now starts here (see V's
   // kira/depozito/emlakci/m2 below), this button just resets back to it.
@@ -153,7 +154,7 @@ const SCEN = {
 // Every slider key a scenario preset is allowed to touch. loadScen() only
 // applies keys actually present on the chosen scenario object, so a setup
 // scenario leaves revenue assumptions untouched and vice versa.
-const SCEN_SLIDER_KEYS = ['korseF','malzeme','mutfak','stopaj','royaltyEur',
+const SCEN_SLIDER_KEYS = ['mutfak','stopaj','royaltyEur',
   'kira','depozito','emlakci','m2','tadilatM2','dekoM2','mobilya','ruhsat'];
 
 function loadScen(key, btn) {
@@ -175,8 +176,15 @@ function loadScen(key, btn) {
   });
   if (s.korse) s.korse.forEach((v,i)=>{ V.korse[i]=v; });
   if (window._redrawRamp) window._redrawRamp();
-  // sync donemsel from kongre shorthand
-  if (s.kongre) s.kongre.forEach((v,i)=>{ V.kongre[i]=v; });
+  // A preset's `kongre` array is its conference/periodic budget — write it into
+  // donemsel.kongre (the live source the P&L reads), then rebuild V.kongre as
+  // the per-month sum of ALL donemsel categories, matching the drag-chart's own
+  // sync. Previously it set V.kongre directly and left donemsel stale, so the
+  // P&L netted the OLD donemsel.reklam out of the NEW kongre (audit F13).
+  if (s.kongre && V.donemsel && V.donemsel.kongre) {
+    s.kongre.forEach((v,i)=>{ V.donemsel.kongre[i]=v; });
+    V.kongre = Array.from({length:12}, (_,i) => Object.keys(V.donemsel).reduce((sum,k)=>sum+(V.donemsel[k][i]||0),0));
+  }
   if (window._redrawDonem) window._redrawDonem();
   localStorage.setItem('osteoid_V', JSON.stringify(V));
   recalc();
@@ -503,8 +511,9 @@ function initDynamic() {
   const _feSp = document.getElementById('feeExitMult');
   if (_feSl) _feSl.value = V.feeExitMult ?? 12;
   if (_feSp) _feSp.textContent = V.feeExitMult ?? 12;
-  // Init DCF sliders
-  ['dcfRate','dcfGrowth','dcfGrowth45'].forEach(function(k) {
+  // Init DCF sliders (dcfGrowth/dcfGrowth45 retired — no formula read them and
+  // no page bound them; removed from V, audit F14)
+  ['dcfRate'].forEach(function(k) {
     const sl = document.getElementById('s_'+k);
     const sp = document.getElementById(k);
     if (sl) sl.value = V[k];
@@ -1043,7 +1052,7 @@ function renderGiderDagilim(rows) {
   const tadTop = gv('m2')*gv('tadilatM2');
   const dekTop = gv('m2')*gv('dekoM2');
   const kData = [
-    { label:'Rent (1st month)',    val: gv('kira'),     color:'#534AB7' },
+    { label:'Rent (pre-opening month)', val: gv('kira'),     color:'#534AB7' },
     { label:'Deposit',             val: gv('depozito'), color:'#7F77DD' },
     { label:'Real Estate Agent',   val: gv('emlakci'),  color:'#AFA9EC' },
     { label:'Renovation',          val: tadTop,         color:'#D85A30' },
@@ -1175,7 +1184,7 @@ function renderKurulumDonut(kira, depozito, emlakci, tadilatTop, dekoTopV, mobil
   const canvas = _origGetById('kurulumDonut');
   if (!canvas) return;
   const data = [
-    { label:'Rent',              val: kira,      color:'#534AB7' },
+    { label:'Rent (pre-opening)', val: kira,     color:'#534AB7' },
     { label:'Deposit',           val: depozito,  color:'#7F77DD' },
     { label:'Real Estate Agent', val: emlakci,   color:'#AFA9EC' },
     { label:'Renovation',        val: tadilatTop,color:'#D85A30' },
@@ -1790,7 +1799,7 @@ function updatePinnedKpi(rows, tGelir, basAy, pozAy, tKorse) {
   _s('y1TriggerKpi', _tAy?'✓ Triggered Month '+_tAy+' — '+_aktifSehir+' signal':'Not triggered yet', _tAy?'pos':'neg');
   const royTL = rows.reduce((s,r)=>s+(r.royaltyTop||0),0);
   const royEur= Math.round(royTL/(V.eurKur ?? 50));
-  set('pkpi_royalty','€'+royEur.toLocaleString('tr-TR'), 'neg');
+  set('pkpi_royalty','€'+royEur.toLocaleString('en-US'), 'neg'); // en-US grouping to match every other €-prefixed figure (audit F20)
 
   // trigger
   const {triggerAy} = calc4AyOrtalama(rows);
@@ -1861,14 +1870,14 @@ function initSensitivityInputs() {
         <span style="font-size:10px;color:#888;min-width:26px;">Min</span>
         <input type="range" min="${minSlBounds[0]}" max="${minSlBounds[1]}" step="${item.step}" value="${minV}"
           style="flex:1;accent-color:#c0392b;"
-          oninput="V['_sen_min_${item.key}']=parseInt(this.value);document.getElementById('smn_${item.key}').textContent='${item.unit === '₺' ? '€' : ''}'+${item.unit === '₺' ? 'Math.round(parseInt(this.value)/(V.eurKur ?? 50)).toLocaleString(\'en-US\')' : 'parseInt(this.value).toLocaleString(\'tr-TR\')'};runSensitivity();">
+          oninput="V['_sen_min_${item.key}']=parseFloat(this.value);document.getElementById('smn_${item.key}').textContent='${item.unit === '₺' ? '€' : ''}'+${item.unit === '₺' ? 'Math.round(parseFloat(this.value)/(V.eurKur ?? 50)).toLocaleString(\'en-US\')' : 'parseFloat(this.value).toLocaleString(\'tr-TR\')'};runSensitivity();">
         <span id="smn_${item.key}" style="min-width:64px;font-size:11px;font-weight:700;color:#c0392b;text-align:right;">${fmtV(minV)}</span>
       </div>
       <div style="display:flex;align-items:center;gap:6px;">
         <span style="font-size:10px;color:#888;min-width:26px;">Max</span>
         <input type="range" min="${maxSlBounds[0]}" max="${maxSlBounds[1]}" step="${item.step}" value="${maxV}"
           style="flex:1;accent-color:#1a7a45;"
-          oninput="V['_sen_max_${item.key}']=parseInt(this.value);document.getElementById('smx_${item.key}').textContent='${item.unit === '₺' ? '€' : ''}'+${item.unit === '₺' ? 'Math.round(parseInt(this.value)/(V.eurKur ?? 50)).toLocaleString(\'en-US\')' : 'parseInt(this.value).toLocaleString(\'tr-TR\')'};runSensitivity();">
+          oninput="V['_sen_max_${item.key}']=parseFloat(this.value);document.getElementById('smx_${item.key}').textContent='${item.unit === '₺' ? '€' : ''}'+${item.unit === '₺' ? 'Math.round(parseFloat(this.value)/(V.eurKur ?? 50)).toLocaleString(\'en-US\')' : 'parseFloat(this.value).toLocaleString(\'tr-TR\')'};runSensitivity();">
         <span id="smx_${item.key}" style="min-width:64px;font-size:11px;font-weight:700;color:#1a7a45;text-align:right;">${fmtV(maxV)}</span>
       </div>
     </div>`;
@@ -2077,11 +2086,19 @@ function calcMetric(overrides) {
 }
 
 function runSensitivity() {
+  // Early-out on pages without the panel (currently every page) — the tornado
+  // chart and its table both live behind #tornadoChart, so with no canvas
+  // there's nothing to render and the ~19 calcMetric passes below are pure
+  // waste on every recalc (audit F12). Guard hoisted above the passes.
+  if (!_origGetById('tornadoChart') && !_origGetById('senTableBody')) return;
   const bazResult = calcMetric({});
+  // ?? not || so a legitimate min/max of 0 (e.g. royaltyEur, whose whole point
+  // is testing "what if a royalty is added" from a 0 baseline) isn't discarded
+  // back to the base value (audit F12).
   const results = SEN_ITEMS.map(item => {
-    const minResult = calcMetric({ [item.key]: V['_sen_min_'+item.key] || V[item.key] });
-    const maxResult = calcMetric({ [item.key]: V['_sen_max_'+item.key] || V[item.key] });
-    return { ...item, baz: V[item.key], minV: V['_sen_min_'+item.key]||V[item.key], maxV: V['_sen_max_'+item.key]||V[item.key], minR: minResult, maxR: maxResult, range: Math.abs(maxResult-minResult) };
+    const minResult = calcMetric({ [item.key]: V['_sen_min_'+item.key] ?? V[item.key] });
+    const maxResult = calcMetric({ [item.key]: V['_sen_max_'+item.key] ?? V[item.key] });
+    return { ...item, baz: V[item.key], minV: V['_sen_min_'+item.key]??V[item.key], maxV: V['_sen_max_'+item.key]??V[item.key], minR: minResult, maxR: maxResult, range: Math.abs(maxResult-minResult) };
   }).sort((a,b)=>b.range-a.range);
 
   // Tornado chart
@@ -2421,51 +2438,11 @@ function toggleIstGider(sehir, useIst) {
 }
 
 
-function getMerkezGelir(sehir) {
-  const rows = window._lastRows || [];
-  const eurKur = V.eurKur ?? 50;
-  const y1Korse = rows.reduce((s,r)=>s+(r.korse||0),0) || 1;
-  const y1KorseNet = rows.reduce((s,r)=>s+(r.gelirNet||0),0);
-  // Yıl sonu mix baz al — üst ürün ağırlığını yansıtır
-  const sonR = rows.slice(-3);
-  const sonK = sonR.reduce((s,r)=>s+(r.korse||0),0) || 1;
-  const sonN = sonR.reduce((s,r)=>s+(r.gelirNet||0),0);
-  const birimNet = sonN / sonK;  // yıl sonu mix birim net geliri
-  const rampa    = V[sehir+'Rampa'];
-  const topKorse = rampa.reduce((s,v)=>s+v, 0);
-
-  const useIstGider = V[sehir+'UseIstGider'] !== false;  // varsayılan true
-
-  // Ay-ay gider hesapla (recalc ile tutarlı eşik mantığı)
-  let isletmeYil = 0;
-  const _aylikKira   = useIstGider ? gv('kira')           : (V[sehir+'Kira']      || gv('kira') * 0.8);
-  const _elektrik    = gv('elektrik');
-  const _internet    = gv('internet');
-  const _sarf        = useIstGider ? gv('sarf')          : (V[sehir+'Sarf']      || gv('sarf'));
-  const _ortoBrut    = (useIstGider ? gv('ortotistM') : (V[sehir+'OrtotistM'] || gv('ortotistM'))) * gv('sgkCarpan');
-  const _stajyerBrut = (useIstGider ? gv('stajyerM')  : (V[sehir+'StajyerM'] || gv('stajyerM')))  * gv('sgkCarpan');
-  const _mutfakV     = useIstGider ? gv('mutfak')        : (V[sehir+'Mutfak']    || gv('mutfak'));
-  const _stopajV     = gv('stopaj');
-  const _esik1 = V.esikStajyer1 ?? 15;
-  const _esikD = V.esikDestek   ?? 30;
-  const _esik2 = V.esikStajyer2 ?? 76;
-  const _destekBrut  = gv('destekM')   * gv('sgkCarpan');
-  const _staj2Brut   = gv('stajyer2M') * gv('sgkCarpan');
-
-  for (let mi = 0; mi < 12; mi++) {
-    const ayKorse = rampa[mi] || 0;
-    const ayStopaj = (mi===2||mi===5||mi===8||mi===11) ? _stopajV : 0;
-    const personelAy = _ortoBrut
-      + (ayKorse >= _esik1 ? _stajyerBrut : 0)
-      + (ayKorse >= _esikD ? _destekBrut  : 0)
-      + (ayKorse >= _esik2 ? _staj2Brut   : 0);
-    isletmeYil += _aylikKira + _elektrik + _internet + _sarf + personelAy + _mutfakV + gv('genelGider') + ayStopaj;
-  }
-
-  const brutGelir = topKorse * birimNet;
-  const netGelir  = brutGelir - isletmeYil;
-  return Math.round(netGelir / eurKur / 1000);
-}
+// getMerkezGelir() removed (audit F14) — a retired satellite-revenue path that
+// used the abandoned esikDestek threshold staffing + kira×0.8 fallback. Nothing
+// calls it anymore: the live model sizes satellites via clinicCapacityProfile +
+// _satRampFrac in buildProjection(), and the Methodology / Formula-Validation
+// pages now read those live rows (window._lastProjRows) — see F10.
 
 
 function toggleIstRampa(sehir, useIst) {
@@ -2507,9 +2484,14 @@ function updateValuationTable(rows, tNet) {
   const q4OpexAy = rows.slice(-3).reduce((s,r) => s + Math.abs(r.gider||0), 0) / 3;
   const q4OpexYilEurK = Math.round(q4OpexAy * 12 / eurKur / 1000);
 
-  // Aktif merkez sayısına göre çarpan ayarla
-  const aktifMerkez = 1 + (V.izmirAktif?1:0) + (V.ankaraAktif?1:0);
-  const multAdj = aktifMerkez === 1 ? 0 : aktifMerkez === 2 ? 1 : 2;
+  // Aktif merkez sayısına göre çarpan ayarla — all five centers count (Bursa
+  // and Gaziantep were previously omitted, so the Y5 opex estimate below ran
+  // ×3 instead of ×5 at defaults, understating network opex ~40% — audit F11).
+  const aktifMerkez = 1 + (V.izmirAktif?1:0) + (V.ankaraAktif?1:0) + (V.bursaAktif?1:0) + (V.gaziantepAktif?1:0);
+  // Multiple premium for being multi-center, capped at +2 (original mapping:
+  // 1→0, 2→1, 3+→2) — kept capped so 4-5 centers don't inflate the exit
+  // multiple beyond the conservative original ceiling.
+  const multAdj = Math.min(2, aktifMerkez - 1);
 
   // Y5 Ciro = (Y5 FAVÖK + Y5 tahmini opex) / ürün brüt marjı
   // Mantık: FAVÖK = Ciro × ürün_marjı − opex  →  Ciro = (FAVÖK + opex) / ürün_marjı
@@ -2991,7 +2973,10 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
   const y1PctOfTarget = istAdet > 0 ? Math.round(y1Braces / istAdet * 100) : 0;
 
   const fmtEur  = v => v > 0 ? '€' + v.toLocaleString('en-US') : '—';
-  const fmtKEur = v => v > 0 ? '~€' + (v * 1000).toLocaleString('en-US') : '—';
+  // Show a modeled loss as a negative, not "—" (which hid it) — a satellite's
+  // own inputs can imply a negative net at any scale (audit F20). Zero → "—".
+  const fmtKEur = v => v > 0 ? '~€' + (v * 1000).toLocaleString('en-US')
+                    : v < 0 ? '-€' + Math.abs(v * 1000).toLocaleString('en-US') : '—';
   const fmtN    = v => v > 0 ? v.toLocaleString('en-US') + ' units/yr' : '—';
 
   const clinicCard = (name, badge, color, adet, payPct, net, note, revLabel) => `
@@ -4533,7 +4518,7 @@ function svPrinterFiyat(val) {
 function svRobotKol() {
   const delikAy = (V.aktifAy||[])[2]; const sdAy = (V.aktifAy||[])[4];
   const autoAktif = (delikAy !== undefined && delikAy < 12) || (sdAy !== undefined && sdAy < 12);
-  if (V.robotKolAktif === undefined) V.robotKolAktif = autoAktif; // ilk yüklemede otomatik varsayılan
+  if (V.robotKolAktif === undefined) { V.robotKolAktif = autoAktif; try { localStorage.setItem('osteoid_V', JSON.stringify(V)); } catch(e) {} } // ilk yüklemede otomatik varsayılan — persist so it isn't recomputed each load (audit F21)
   const aktif = V.robotKolAktif;
   const cb = document.getElementById('robotKolToggle');
   if (cb) cb.checked = aktif;
@@ -4763,9 +4748,10 @@ function renderInvestBreakdown(kurulumTop, rows) {
   // cumulative) already comfortably covers their combined setup cost — see
   // the Cumulative Free Cash KPI on this page. When on, their setup cost is
   // drawn from that operating cash flow instead of the Investor Ticket, so
-  // it drops out of Stage 2 and Total Committed shrinks accordingly. Default
-  // off — the original "fold into the ticket" decision stays the committed
-  // default; this is a live scenario switch, not a re-estimate.
+  // it drops out of Stage 2 and Total Committed shrinks accordingly. The
+  // committed default is ON (V.bursaGaziantepFcfFunded=true — self-funded from
+  // operating cash flow), set from Deniz's snapshot; toggling off folds the
+  // two setups back into the Investor Ticket. Either is a valid scenario.
   const fcfFundedSatellites = V.bursaGaziantepFcfFunded === true;
   const satelliteFcfEur = setupC4Eur + setupC5Eur;
 
@@ -5466,8 +5452,6 @@ function svDcf(key, val) {
   val = parseFloat(val);
   V[key] = val;
   if (key === 'dcfRate')     { const e = document.getElementById('dcfRate');     if(e) e.textContent = val; _refreshRiskProfile(); }
-  if (key === 'dcfGrowth')   { const e = document.getElementById('dcfGrowth');   if(e) e.textContent = val; }
-  if (key === 'dcfGrowth45') { const e = document.getElementById('dcfGrowth45'); if(e) e.textContent = val; }
   if (key === 'dcfExitMult') { const e = document.getElementById('dcfExitMult'); if(e) e.textContent = val + '×'; }
   renderDcf();
   renderGetiriTable();

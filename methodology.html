@@ -539,7 +539,7 @@ function renderKurulum() {
   var robTRY=(V.robotKolAktif && !ekipmanOsteoidden)?(V.robotKolEurFiyat||30000)*(V.eurKur||53.56):0;
   var toplam=(V.kira||0)+(V.depozito||0)+(V.emlakci||0)+tadTop+dekoTop+(V.mobilya||0)+(V.ruhsat||0)+prTRY+robTRY;
   var items=[
-    ['Rent (1st month)','V.kira',V.kira||0],
+    ['Rent (pre-opening month)','V.kira — paid during fit-out, before the 12 operating months',V.kira||0],
     ['Deposit','V.depozito',V.depozito||0],
     ['Agency commission','V.emlakci',V.emlakci||0],
     ['Renovation',m2+' m² × ₺'+tmR.toLocaleString('tr-TR')+'/m²',tadTop],

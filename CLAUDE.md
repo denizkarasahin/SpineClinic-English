@@ -123,7 +123,7 @@ Aşağıdaki her değer bir **default**'tur, "doğru fiyat" değildir. Slider ar
 
 ⚠ **`leanSetup` kaldırıldı (2026-07-15).** `V`'nin committed default'u birkaç kez Deniz'in kendi canlı ayarladığı snapshot'larla güncellendi (2026-07-15, `_version:50`) — şu an yine `fullSelfOwned` preset değerleriyle bire bir eşleşiyor (`kira:250000, depozito:250000, emlakci:500000, m2:360, tadilatM2:7000, dekoM2:6750`), ama bu durum snapshot'tan snapshot'a değişebilir; buton her zaman "şu anki committed default" anlamına gelmez, sadece kendi (~€219K) senaryosuna geçiş sağlar — ikisi de eşit derecede geçerli başlangıç noktası, hiçbiri "doğru" değil.
 
-⚠ `shared.js`'de ayrıca `baz`/`iyimser`/`kotu` adında üç gelir-senaryosu presetı da tanımlı (`korseF`, `korse` rampası, `royaltyEur` farklarıyla) ama şu an hiçbir sayfada buton olarak bağlı değil — sadece kod seviyesinde erişilebilir. Bir UI eklenmeden "aktif" sayılmamalı.
+⚠ `shared.js`'de ayrıca `baz`/`iyimser`/`kotu` adında üç gelir-senaryosu presetı da tanımlı (`mutfak`, `stopaj`, `korse` rampası, `royaltyEur`, `kongre` farklarıyla) ama şu an hiçbir sayfada buton olarak bağlı değil — sadece kod seviyesinde erişilebilir. Bir UI eklenmeden "aktif" sayılmamalı. (2026-07-18 audit: dead `korseF`/`malzeme` alanları bu presetlerden ve `V`'den kaldırıldı; presetin `kongre`'si artık `donemsel.kongre`'ye yazılıp `V.kongre` yeniden toplanıyor — eski desync giderildi.)
 
 ### EUR/TRY kuru (`V.eurKur`)
 - Default **53,07**, canlı ayarlanabilir (header'daki `eurRateInput` widget'ı, `investor.html` katman header'ı).
