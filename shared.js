@@ -1504,15 +1504,21 @@ function renderPazarChart(rows) {
   // Break-even market share — derived from the live P&L, so it responds to
   // price/cost changes (was previously a hardcoded 17 braces, price-blind).
   // At the mature product mix (last modeled month): contribution per brace =
-  // net revenue ÷ braces; annual break-even volume = 12 × monthly fixed opex ÷
-  // that contribution; break-even share = that volume ÷ the Istanbul annual
-  // market. If a brace doesn't cover its own variable cost (net ≤ 0), no
-  // volume breaks even → "n/a".
+  // net revenue ÷ braces. Annual cost base to cover = the mature staffing
+  // run-rate (12 × Month-12 sabitGider) PLUS the year's actual non-sabit
+  // operating budget — advertising, kitchen, quarterly withholding, periodic
+  // costs (conferences/workshops/CPA/other) — which the old formula ignored
+  // entirely, understating break-even ~15% (audit F4). One-off printer
+  // top-ups (capex, printerEkMaliyet) stay excluded. Break-even share = that
+  // volume ÷ the Istanbul annual market. If a brace doesn't cover its own
+  // variable cost (net ≤ 0), no volume breaks even → "n/a".
   const _mature = rows[rows.length - 1] || {};
   const _netPerBrace = (_mature.korse > 0) ? (_mature.gelirNet / _mature.korse) : 0;
-  const _monthlyFixed = _mature.sabitGider || 0;
+  const _annualPeriodic = rows.reduce((s,r) =>
+    s + (r.reklamS||0) + (r.mutfakV||0) + (r.ayStopaj||0) + (r.kongre||0) + (r.ymmDon||0), 0);
+  const _annualFixed = 12 * (_mature.sabitGider || 0) + _annualPeriodic;
   const _beShare = (_netPerBrace > 0 && pazarIst > 0)
-    ? (12 * _monthlyFixed / _netPerBrace) / pazarIst * 100
+    ? (_annualFixed / _netPerBrace) / pazarIst * 100
     : null;
 
   // KPI
