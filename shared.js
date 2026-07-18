@@ -1501,12 +1501,26 @@ function renderPazarChart(rows) {
 
   const payTR  = totalKorse / pazarTR * 100;
 
+  // Break-even market share — derived from the live P&L, so it responds to
+  // price/cost changes (was previously a hardcoded 17 braces, price-blind).
+  // At the mature product mix (last modeled month): contribution per brace =
+  // net revenue ÷ braces; annual break-even volume = 12 × monthly fixed opex ÷
+  // that contribution; break-even share = that volume ÷ the Istanbul annual
+  // market. If a brace doesn't cover its own variable cost (net ≤ 0), no
+  // volume breaks even → "n/a".
+  const _mature = rows[rows.length - 1] || {};
+  const _netPerBrace = (_mature.korse > 0) ? (_mature.gelirNet / _mature.korse) : 0;
+  const _monthlyFixed = _mature.sabitGider || 0;
+  const _beShare = (_netPerBrace > 0 && pazarIst > 0)
+    ? (12 * _monthlyFixed / _netPerBrace) / pazarIst * 100
+    : null;
+
   // KPI
   document.getElementById('pazarKpi').innerHTML = [
     { label:'Turkey market (year)',        val: pazarTR.toLocaleString('tr-TR')+' units', c:'neu' },
     { label:'Istanbul market (year)',      val: pazarIst.toLocaleString('tr-TR')+' units', c:'neu' },
     { label:'Year 1 braces (total) (from brace ramp)', val: totalKorse+' units', c:'neu' },
-    { label:'Break-even market share (IST)',val: ((17/pazarIst)*100).toFixed(2)+'%', c:'neg' },
+    { label:'Break-even market share (IST)',val: _beShare === null ? 'n/a' : _beShare.toFixed(2)+'%', c:'neg' },
   ].map(k=>`<div class="kpi"><div class="kpi-label">${k.label}</div><div class="kpi-val ${k.c}">${k.val}</div></div>`).join('');
 
   // B2C KPI mirror (korse.html) — same 3-card format as kpiGridB2B below it.
