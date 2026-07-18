@@ -2467,9 +2467,13 @@ function toggleIstRampa(sehir, useIst) {
 
 function updateValuationTable(rows, tNet) {
   const eurKur = V.eurKur ?? 50;
-  // Year 5 EBITDA — direct from 5-year projection (totals[4])
+  // Year 5 EBITDA (FAVÖK) — genuine EBITDA from the metric ladder (opProfit +
+  // expensed-capex add-back), investor scope; not totals[4], which is operating
+  // profit and would borrow the EBITDA name (PROMPT 7). Reads the same
+  // one-cycle-behind globals this function already used for totals.
   const t3 = window._lastTotals || [];
-  const y5Favok = t3[4] || t3[2] || 0; // €K
+  const _vtLadder = metricLadder('investor');
+  const y5Favok = _vtLadder ? _vtLadder.ebitda[4] : (t3[4] || t3[2] || 0); // €K
 
   // Y1 model verisi
   const y1BrutGelir = rows.reduce((s,r) => s + (r.gelirBrut||0), 0);
@@ -2507,13 +2511,18 @@ function updateValuationTable(rows, tNet) {
     { id:'b', mult: 6 + multAdj },
     { id:'o', mult: 9 + multAdj },
   ];
+  // Pre-tax base for the tax / net-profit rows is OPERATING profit, not EBITDA
+  // (EBITDA sits above pre-tax by the year's capex, so taxing EBITDA would
+  // overstate tax). EV and margin ride on EBITDA; tax and net kâr on opProfit.
+  // At defaults Year-5 capex is 0 so the two coincide. PROMPT 7.
+  const y5OpProfit = _vtLadder ? _vtLadder.opProfit[4] : y5Favok; // €K
   scenarios.forEach(s => {
-    const evEur = y5Favok * s.mult;  // €K
+    const evEur = y5Favok * s.mult;  // €K — EV on EBITDA
     const evM   = (evEur / 1000).toFixed(2);  // €M
     const set = (id, val) => { const e = document.getElementById(id); if(e) e.textContent = val; };
     const vergiOrani = (V.kvOrani ?? 25) / 100;
-    const vergiEur   = Math.round(y5Favok * vergiOrani);  // €K
-    const netKarEur  = y5Favok - vergiEur;
+    const vergiEur   = Math.round(y5OpProfit * vergiOrani);  // €K — tax on pre-tax operating profit
+    const netKarEur  = y5OpProfit - vergiEur;
     set('vt_ciro_'  + s.id, y5Ciro  > 0 ? '~€' + (y5Ciro/1000).toFixed(2)   + 'M' : '—');
     set('vt_favok_' + s.id, y5Favok > 0 ? '~€' + (y5Favok/1000).toFixed(2)  + 'M' : '—');
     set('vt_marj_'  + s.id, favokMarj > 0 ? '%' + favokMarj                          : '—');
@@ -3143,7 +3152,7 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
           <div style="font-size:18px;font-weight:700;color:#D85A30;">${fmtEurFull(stage2Eur)}</div>
         </div>
         <div>
-          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">All 5 centers' net profit (100%, Year 5 only)</div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">All 5 centers' operating profit (100%, Year 5 only)</div>
           <div style="font-size:18px;font-weight:700;color:#333;">${fmtEurFull(satelliteNetEur)}</div>
         </div>
         <div>
@@ -3151,7 +3160,7 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
           <div style="font-size:18px;font-weight:700;color:${stage2YieldColor};">${stage2YieldPct.toFixed(1)}%</div>
         </div>
       </div>
-      <div style="font-size:10px;color:#888;margin-top:8px;">Blended yield = Istanbul + Izmir + Ankara + Bursa + Gaziantep's own 100% net profit (Year 5, net of each center's own operating costs, before any fee/equity split) ÷ Stage 2 investment alone — deliberately whole-network profit over just Stage 2's slice of capital, at Deniz's request, so it overstates a return purely attributable to Stage 2 money (Istanbul's profit came from Stage 1's capital, not this). Not the same figure as "Combined — net consolidated" above, which is also Istanbul-inclusive but only carries the flagship's fee+equity cut of each satellite, not its full 100%.</div>
+      <div style="font-size:10px;color:#888;margin-top:8px;">Blended yield = Istanbul + Izmir + Ankara + Bursa + Gaziantep's own 100% operating profit (Year 5, pre-tax, net of each center's own operating costs, before any fee/equity split) ÷ Stage 2 investment alone — deliberately whole-network profit over just Stage 2's slice of capital, at Deniz's request, so it overstates a return purely attributable to Stage 2 money (Istanbul's profit came from Stage 1's capital, not this). Not the same figure as "Combined — net consolidated" above, which is also Istanbul-inclusive but only carries the flagship's fee+equity cut of each satellite, not its full 100%.</div>
     </div>`;
 
     // ── Total Investment & Return — Total Committed (Stage 1+2) buys the
@@ -3179,7 +3188,15 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
     // smaller in scope, same multiple — so the two are deliberately
     // different numbers, not a duplicate.
     const exitMult100 = V.dcfExitMult ?? 10;
-    const exitValue100Eur = satelliteNetEur * exitMult100;
+    // Exit Value on genuine Year-5 EBITDA (opProfit + expensed-capex add-back),
+    // the single metric-ladder base every multiple now uses — replacing the old
+    // convention that applied the exit multiple to operating profit under the
+    // EBITDA label (PROMPT 7). €K → EUR. At defaults Y5 capex is 0 so EBITDA ==
+    // operating profit here, but the two diverge in any capex year.
+    const _ladder100 = metricLadder('100');
+    const ebitda100Eur = (_ladder100 ? _ladder100.ebitda[4] : (satelliteNetEur/1000)) * 1000;
+    const opProfit100Eur = (_ladder100 ? _ladder100.opProfit[4] : (satelliteNetEur/1000)) * 1000; // = satelliteNetEur; shown next to EBITDA so neither borrows the other's name
+    const exitValue100Eur = ebitda100Eur * exitMult100;
     const totalInvestTopEl = document.getElementById('totalInvestEurBox');
     if (totalInvestTopEl) totalInvestTopEl.textContent = fmtEurFull(totalCommittedEur);
     const totalProfitTopEl = document.getElementById('totalProfitEurBox');
@@ -3192,9 +3209,11 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
     const totalExitTopEl = document.getElementById('totalExitValueBox');
     if (totalExitTopEl) totalExitTopEl.textContent = fmtEurFull(exitValue100Eur);
     const totalEbitdaTopEl = document.getElementById('totalEbitdaBox');
-    if (totalEbitdaTopEl) totalEbitdaTopEl.textContent = fmtEurFull(satelliteNetEur);
+    if (totalEbitdaTopEl) totalEbitdaTopEl.textContent = fmtEurFull(ebitda100Eur);
+    const totalOpProfitTopEl = document.getElementById('totalOpProfitBox');
+    if (totalOpProfitTopEl) totalOpProfitTopEl.textContent = fmtEurFull(opProfit100Eur);
     const totalExitLabelTopEl = document.getElementById('totalExitValueLabel');
-    if (totalExitLabelTopEl) totalExitLabelTopEl.innerHTML = 'Exit Value <span style="color:#185FA5;">(' + exitMult100 + '× EBITDA)</span>';
+    if (totalExitLabelTopEl) totalExitLabelTopEl.innerHTML = 'Exit Value — whole business (100%) <span style="color:#185FA5;">(' + exitMult100 + '× EBITDA)</span>';
     html += `
     <div style="border:2px solid #534AB7;border-radius:6px;padding:12px 16px;margin-top:16px;background:#f9f8ff;">
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">Total Investment &amp; Return <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— Total Committed (Stage 1+2) funds the entire business: Istanbul, the IP/exclusivity rights, and all four satellite build-outs</span></div>
@@ -3204,7 +3223,7 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
           <div style="font-size:18px;font-weight:700;color:#534AB7;">${fmtEurFull(totalCommittedEur)}</div>
         </div>
         <div>
-          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Cumulative net profit (100%, sum of Years 1-5)</div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Cumulative operating profit (100%, sum of Years 1-5)</div>
           <div style="font-size:18px;font-weight:700;color:#333;">${fmtEurFull(cum100NetEur)}</div>
         </div>
         <div>
@@ -3213,14 +3232,15 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
         </div>
         <div>
           <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Year 5 EBITDA (100%)</div>
-          <div style="font-size:18px;font-weight:700;color:#333;">${fmtEurFull(satelliteNetEur)}</div>
+          <div style="font-size:18px;font-weight:700;color:#333;">${fmtEurFull(ebitda100Eur)}</div>
+          <div style="font-size:10px;color:#888;margin-top:2px;">Operating profit ${fmtEurFull(opProfit100Eur)}</div>
         </div>
         <div>
-          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Exit Value <span style="color:#185FA5;">(${exitMult100}× EBITDA)</span></div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Exit Value — whole business (100%) <span style="color:#185FA5;">(${exitMult100}× EBITDA)</span></div>
           <div style="font-size:18px;font-weight:700;color:#185FA5;">${fmtEurFull(exitValue100Eur)}</div>
         </div>
       </div>
-      <div style="font-size:10px;color:#888;margin-top:8px;">Multiple = the sum of every center's own 100% net profit across all 5 model years (Istanbul + Izmir + Ankara + Bursa + Gaziantep, before any fee/equity split) ÷ Total Committed. A cumulative multi-year figure, not an annual rate — comparable to a simple gross MOIC, not IRR. Year 5 EBITDA (100%) = the same "All 5 centers' net profit" figure the Stage 2 box above shows, per this model's EBITDA≈net-profit convention (methodology.html) — Exit Value = EBITDA × the Exit Multiple slider (${exitMult100}×, industry-appropriate: healthcare clinics typically trade at 6–12× EV/EBITDA at exit, a proven de-risked platform like this one commanding the higher end, not the low end reserved for unproven concepts — same slider as the Investor page). Both use the entire business at 100% ownership, same convention as the boxes above; the flagship's actual entitlement is smaller — see "Exit Value — Year 5" and "Implied Investor MOIC at Exit" on the <a href="investor.html" style="color:#534AB7;">Investor page</a> for those equity-adjusted figures.</div>
+      <div style="font-size:10px;color:#888;margin-top:8px;">Metric ladder (all 100% ownership, pre fee/equity split): <b>Operating profit</b> = revenue − all cash operating costs, capex expensed. <b>EBITDA</b> = operating profit + the capex expensed that year added back (this model expenses capex rather than depreciating it, and carries no interest, so operating-profit + capex is a true EBITDA; at defaults Year-5 capex is 0, so EBITDA equals operating profit here but diverges in any capex year). <b>After-tax net</b> = pre-tax − 25% corporate tax (shown on the Investor page). Multiple = the sum of every center's own 100% operating profit across all 5 model years ÷ Total Committed — a cumulative multi-year figure, not an annual rate (comparable to a simple gross MOIC, not IRR). Exit Value = Year-5 EBITDA × the Exit Multiple slider (${exitMult100}×, industry-appropriate: healthcare clinics typically trade at 6–12× EV/EBITDA at exit, a proven de-risked platform like this one commanding the higher end — same slider and same EBITDA base as the Investor page). The flagship's actual entitlement is smaller — see "Exit Value — Year 5" and "Implied Investor MOIC at Exit" on the <a href="investor.html" style="color:#534AB7;">Investor page</a> for the equity-adjusted figures.</div>
     </div>`;
   }
 
@@ -3414,6 +3434,82 @@ function computeFcfStream() {
   for (let i = 0; i < 5; i++) { running += taxedFcf[i]; cum.push(running); }
 
   return { pretaxFcf, accountingPretax, taxedFcf, taxPaid, carryEnd, vergiDahil, kvOraniPct, cum, nakdi };
+}
+
+// ── METRIC LADDER (single source of truth for the exit-value metrics) ─────────
+// One place that defines the four Year-1…Year-5 rungs every exit multiple and
+// valuation figure should read from, so "EBITDA" stops meaning three different
+// bases across the Summary, Investor DCF and scenario table (audit PROMPT 7).
+// Pure: reads only globals buildProjection() already populated (_lastProjRows,
+// _lastIstCapBuildout, _lastFcf, _lastRows) — never recomputes the model.
+//
+//   opProfit → the existing net rows: revenue − all cash opex, with capex
+//              EXPENSED (this model has no capitalization/depreciation). Consumed
+//              as-is, not re-derived.
+//   capex    → per-year capex that ACTUALLY reduced opProfit, so the add-back
+//              stays consistent with what was expensed. In this model only the
+//              flagship expenses capex through its annual opex: Year-1 mid-year
+//              printer top-ups (from the monthly engine) + Years 2-5 printer
+//              purchases and branch fit-out (from the capacity build-out).
+//              Already respects ekipmanOsteoidden — printerCapexEurK is 0 when
+//              Osteoid supplies the kit, exactly as it was in opProfit, so the
+//              add-back is 0 too. Satellite SETUP equipment is a separate
+//              investment line that never hit the satellite annual net, so it is
+//              NOT added back here (adding back what was never subtracted would
+//              overstate EBITDA).
+//   ebitda   = opProfit + capex. Genuine EBITDA: no D&A (capex is expensed),
+//              no interest in the model, tax not yet applied.
+//   fcf      → the existing taxed stream (25% CIT + 5-yr loss carryforward) from
+//              computeFcfStream(); consumed, not duplicated. Modeled on the
+//              flagship-consolidated basis (the only basis the tax layer runs
+//              on) regardless of scope.
+//
+// scope: '100'      → whole business at 100% ownership (Istanbul own net + B2B +
+//                     every satellite's own full net) — the Summary/growth
+//                     "whole business" basis.
+//        'investor' → the flagship-consolidated total (own clinic + B2B +
+//                     management fee + equity share of satellites; minority
+//                     excluded) — the Investor page / DCF basis.
+// This preserves the existing per-page scope split; only the base metric unifies.
+function metricLadder(scope) {
+  const P = window._lastProjRows;
+  const fcfData = window._lastFcf;
+  const cap = window._lastIstCapBuildout || [];
+  const rows = window._lastRows || [];
+  if (!P) return null;
+  const eurKur = V.eurKur ?? 50;
+  const toEur = v => Math.round(v / eurKur / 1000);
+
+  // opProfit — consume the existing net rows for the requested scope.
+  let opProfit;
+  if (scope === 'investor') {
+    opProfit = (P.totals || []).slice(); // flagship-consolidated (istNet + b2b + fee + equity)
+  } else { // '100'
+    opProfit = [0,1,2,3,4].map(i =>
+      (P.istNet[i]||0) + (P.b2b[i]||0)
+      + (P.sat.izmir.net[i]||0) + (P.sat.ankara.net[i]||0)
+      + (P.sat.bursa.net[i]||0) + (P.sat.gaziantep.net[i]||0));
+  }
+
+  // capex — the flagship-expensed capex that actually reduced opProfit. Same for
+  // both scopes (it's the flagship's own, and it sits inside both the 100% and
+  // the investor-consolidated opProfit). Year 1 from the monthly engine's
+  // printer top-ups; Years 2-5 from the capacity build-out (printer purchases +
+  // branch fit-out only — utilities stay in opex as genuine recurring cost).
+  const y1PrinterCapex = toEur(rows.reduce((s,r) => s + (r.printerEkMaliyet||0), 0));
+  const capex = [0,1,2,3,4].map(i => {
+    if (i === 0) return y1PrinterCapex;
+    const c = cap[i] || {};
+    return (c.printerCapexEurK || 0) + (c.branchSetupEurK || 0);
+  });
+
+  // ebitda = opProfit + capex add-back (genuine — see header).
+  const ebitda = opProfit.map((v,i) => v + (capex[i]||0));
+
+  // fcf — the existing taxed stream (flagship-consolidated basis).
+  const fcf = (fcfData && fcfData.taxedFcf) ? fcfData.taxedFcf.slice() : opProfit.map(()=>0);
+
+  return { opProfit, capex, ebitda, fcf };
 }
 
 // 5 Yıllık Projeksiyon — dinamik
@@ -5413,8 +5509,14 @@ function svSweatVestedToday(checked) {
 // Shared by renderDcf() (investor.html) and captable.html's reconciliation
 // section — same taxed FCF stream, same formula, called from both places
 // instead of two copies of the same math that could quietly drift apart.
-function computeDcfPremoney(fcf, r, exitMult) {
-  const tv = fcf[4] > 0 ? Math.round(fcf[4] * exitMult) : 0;
+// tvBaseY5 = the Year-5 base the exit multiple is applied to for the terminal
+// value. EV-based TV on EBITDA, cash-flow years on after-tax FCF — standard
+// simple-DCF convention; exit taxation ignored, stated in methodology. Falls
+// back to fcf[4] when no base is passed (preserves any caller not yet on the
+// ladder). PROMPT 7.
+function computeDcfPremoney(fcf, r, exitMult, tvBaseY5) {
+  const _tvBase = (tvBaseY5 != null) ? tvBaseY5 : fcf[4];
+  const tv = _tvBase > 0 ? Math.round(_tvBase * exitMult) : 0;
   const pv = fcf.map((cf, i) => cf / Math.pow(1 + r, i + 1));
   const pvTv = tv / Math.pow(1 + r, 5);
   const npv = pv.reduce((s, v) => s + v, 0) + pvTv; // €K
@@ -5470,13 +5572,14 @@ function renderDcf() {
   // Same taxed FCF stream shown in the investor projection table (buildProjection
   // → computeFcfStream) — DCF and the displayed FCF row can never diverge.
   const fcf = fcfData.taxedFcf;
+  // Year-5 EBITDA (investor scope, same scope as this fcf stream) from the
+  // metric ladder — the terminal value's exit multiple applies to EBITDA, while
+  // the interim years discount after-tax FCF. Standard simple-DCF convention;
+  // exit taxation ignored, stated in methodology (PROMPT 7).
+  const _ladderInv = metricLadder('investor');
+  const ebitdaY5 = _ladderInv ? _ladderInv.ebitda[4] : fcf[4];
 
-  const { tv, pv, pvTv, npv, premoney_eur: blendedPremoney_eur } = computeDcfPremoney(fcf, r, exitMult);
-
-  // TV is computed on after-tax FCF (fcf[4] is already taxed per the toggle
-  // above) — it's a proxy for an earnings multiple, so terminal value should
-  // reflect the same after-tax basis as the interim cash flows, not a
-  // pre-tax number the exit buyer would never actually receive.
+  const { tv, pv, pvTv, npv, premoney_eur: blendedPremoney_eur } = computeDcfPremoney(fcf, r, exitMult, ebitdaY5);
 
   // Sum-of-parts toggle: value the management-fee income stream at its own
   // (higher) multiple instead of blending it into the main business's
@@ -5494,8 +5597,13 @@ function renderDcf() {
     const feePretax = window._lastFeeIncomeRow; // €K, Y1-Y5, pretax
     const feeAfterTax = fcfData.vergiDahil ? feePretax.map(v => Math.round(v * (1 - kvRate))) : feePretax;
     const mainFcf = fcf.map((v,i) => v - feeAfterTax[i]);
-    const mainCalc = computeDcfPremoney(mainFcf, r, exitMult);
-    const feeCalc = computeDcfPremoney(feeAfterTax, r, feeExitMult);
+    // Terminal value bases stay on the ladder: the core stream's TV on core
+    // EBITDA (network EBITDA minus the carved-out fee), the fee stream's TV on
+    // its own Year-5 figure (fee income is asset-light — no capex, so its
+    // EBITDA is the fee itself). PROMPT 7.
+    const coreEbitdaY5 = ebitdaY5 - feeAfterTax[4];
+    const mainCalc = computeDcfPremoney(mainFcf, r, exitMult, coreEbitdaY5);
+    const feeCalc = computeDcfPremoney(feeAfterTax, r, feeExitMult, feeAfterTax[4]);
     feeSplit = { corePremoney: mainCalc.premoney_eur, feePremoney: feeCalc.premoney_eur };
   }
   const dcfValue_eur = feeSplit ? (feeSplit.corePremoney + feeSplit.feePremoney) : blendedPremoney_eur;
@@ -5576,9 +5684,40 @@ function renderDcf() {
   const fmtEur = v => '€' + (Math.abs(v)/1000000).toFixed(2) + 'M';
   const fmtPct = v => '%' + v.toFixed(2);
 
-  const exitValue_eur = fcf[4] > 0 ? fcf[4] * exitMult * 1000 : 0;
+  // Exit Value = Year-5 EBITDA (investor scope, from the ladder) × exit multiple.
+  // ebitdaY5 is €K; ×1000 → EUR, matching the prior fcf[4]-based unit convention
+  // exactly (PROMPT 7). MOIC at exit rides on the same EBITDA-based EV.
+  const exitValue_eur = ebitdaY5 > 0 ? ebitdaY5 * exitMult * 1000 : 0;
   const investorMoicExit = investorTicketEur > 0 ? (exitValue_eur * (yatirimci_pct/100)) / investorTicketEur : 0;
   set('dcf_exitValue',       exitValue_eur > 0 ? fmtEur(exitValue_eur) : '—');
+
+  // ── Exit-value scope bridge (PROMPT 7 §4) — tie the two Exit KPIs on screen.
+  // Summary page shows the whole-business EV (100% ownership of every center);
+  // this page shows the flagship-consolidated EV (own clinic + B2B + management
+  // fee + equity share of satellites). The ONLY scope difference is the local-
+  // investor MINORITY interest in the satellites (not a flat %, and not the
+  // fee-multiple split — the fee is inside both). Both KPIs read the SAME
+  // V.dcfExitMult slider (exitMult here == exitMult100 there). Then the
+  // investor's OWN share = flagship EV × their priced-round stake.
+  const _l100 = metricLadder('100');
+  const wholeBizEbitdaY5 = _l100 ? _l100.ebitda[4] : ebitdaY5;   // €K, 100% scope
+  const wholeBizExitEur  = wholeBizEbitdaY5 > 0 ? wholeBizEbitdaY5 * exitMult * 1000 : 0;
+  const minorityExitEur  = Math.max(0, wholeBizExitEur - exitValue_eur); // satellite minority slice of EV
+  const investorShareEur = exitValue_eur * (yatirimci_pct / 100);
+  const bridgeEl = document.getElementById('exitScopeBridge');
+  if (bridgeEl) {
+    const feeSep = (V.feeStreamAyriMult && window._lastFeeIncomeRow)
+      ? ' &nbsp;·&nbsp; Note: the sum-of-parts toggle is on, so the DCF <i>pre-money</i> values the management-fee stream separately at ' + (V.feeExitMult ?? 12) + '× — that affects the DCF valuation above, not this exit EV (both exit figures use the same ' + exitMult + '× on EBITDA).'
+      : '';
+    bridgeEl.innerHTML =
+      '<b>Exit-value scope bridge</b> (both use the same ' + exitMult + '× exit multiple on Year-5 EBITDA): '
+      + 'Whole-business EV <b>' + fmtEur(wholeBizExitEur) + '</b> (100%, Summary page) '
+      + '− local-investor minority interest in the satellites <b>' + fmtEur(minorityExitEur) + '</b> '
+      + '= flagship-consolidated EV <b>' + fmtEur(exitValue_eur) + '</b> (shown above). '
+      + (minorityExitEur === 0 ? 'All satellites are in Branch mode, so minority = €0 and the two figures match. ' : 'Satellites in Subsidiary mode carry local investors, hence the gap. ')
+      + 'Your own share at exit = flagship EV × your ' + fmtPct(yatirimci_pct) + ' stake = <b>' + fmtEur(investorShareEur) + '</b> (drives the MOIC).'
+      + feeSep;
+  }
   set('dcf_premoney',        dcfValue_eur > 0 ? fmtEur(dcfValue_eur) : '—');
   set('dcf_premoney_final',  premoney_eur > 0 ? fmtEur(premoney_eur) : '—');
   set('dcf_postmoney',       fmtEur(postmoney_eur));
@@ -5653,10 +5792,14 @@ function renderGetiriTable() {
 
   const exitMult = V.dcfExitMult ?? 10;
 
-  // Year 5 EBITDA (€) — pre-tax, since EV/EBITDA multiples are conventionally
-  // applied to EBITDA, not after-tax cash flow (kept separate from the taxed
-  // FCF stream renderDcf's own NPV uses).
-  const y5ebitda_eur = (t[4] ?? 0) * 1000;
+  // Year 5 EBITDA (€) — consumed from the single metric ladder (investor scope,
+  // matching this table's flagship-consolidated stake basis), not recomputed
+  // here. Genuine EBITDA (opProfit + expensed-capex add-back), the same base the
+  // Summary Exit box and the DCF terminal value now use (PROMPT 7). The "For 3×
+  // MOIC — n× EBITDA needed" back-solve below divides by this same figure, so
+  // it stays consistent.
+  const _ladderInv = metricLadder('investor');
+  const y5ebitda_eur = (_ladderInv ? _ladderInv.ebitda[4] : (t[4] ?? 0)) * 1000;
 
   // Scenarios offset from the same exitMult used for the DCF terminal value
   // so DCF pre-money and Base exit EV share one consistent Year-5 multiple

@@ -1,3 +1,62 @@
+# CHANGES — Metric definitions & Exit-Value reconciliation (PROMPT 7)
+
+**What was wrong.** The label "EBITDA" was attached to three different bases: the
+Summary/growth Exit Value multiplied a *pre-tax net profit with capex expensed*
+(and a footnote admitted an "EBITDA≈net-profit convention"); the Investor DCF
+applied the same exit multiple to *after-tax FCF*; the scenario table computed its
+own third "Year-5 EBITDA". Three bases, one label.
+
+**The fix — one metric ladder (`metricLadder(scope)` in shared.js), consumed everywhere:**
+
+| Metric | Definition |
+|---|---|
+| **Operating profit** | revenue − all cash operating costs; equipment purchases expensed when incurred (this model has no capitalization/depreciation). |
+| **EBITDA** | operating profit + that year's expensed equipment/setup added back; no depreciation is modeled because capex is expensed, no interest exists → a genuine EBITDA. |
+| **FCF** | operating profit − 25% corporate tax (with 5-year loss carryforward). |
+| **Exit Value** | Year-5 EBITDA × the exit-multiple slider; exit-year taxation not modeled (stated simplification). |
+
+Every exit multiple now reads `metricLadder(...).ebitda[4]`: the Summary/growth
+Exit box (`'100'` whole-business scope), the Investor DCF terminal value + Exit
+KPI (`'investor'` flagship-consolidated scope), and the scenario + vt tables.
+`computeDcfPremoney` gained a `tvBaseY5` param — EV-based terminal value on
+EBITDA, interim years still on after-tax FCF (standard simple-DCF).
+
+**Relabeling (no figure borrows another's name).** "Year-5 EBITDA (100%)" now
+shows genuine EBITDA with an "Operating profit €Y" sub-line; figures that are
+operating profit are labeled *operating profit* (were "net profit"); the vt table
+taxes operating profit (not EBITDA). The "EBITDA≈net-profit convention" text is
+deleted everywhere; methodology.html carries one four-line **Metric definitions**
+block. The two Exit KPIs keep distinct scopes — "Exit Value — whole business
+(100%)" vs "Exit Value — Year 5 (flagship scope)" — with a live **bridge line**
+on investor.html: whole-business EV − satellite minority interest = flagship EV,
+then × investor stake = the investor's own share. Both KPIs read the one
+`dcfExitMult` slider.
+
+**Headline KPI deltas at committed defaults** (Year-5 capex is 0 at defaults, so
+EBITDA == operating profit there; the exit-multiple re-basing still moves the
+DCF, which was on after-tax FCF):
+
+| KPI | Before (§Prompt-6) | After (PROMPT 7) | Note |
+|---|---|---|---|
+| Whole-business Exit Value (Summary, 100%) | €31.04M | €31.04M | unchanged — Y5 capex 0; rises by capex×mult in any build-out year |
+| Year-5 EBITDA (100%) box | €3.10M (labeled EBITDA, was net profit) | €3.10M EBITDA · €3.10M operating profit | now two honest lines |
+| DCF Exit Value — Year 5 (flagship) | €23.33M (on after-tax FCF) | **€31.04M** (on EBITDA) | +€7.71M — an EV/EBITDA multiple belongs on EBITDA |
+| DCF value (NPV) | €14.28M | **€17.65M** | terminal re-based to EBITDA |
+| Deal pre-money (after 20% discount) | €11.43M | **€14.12M** | follows the NPV |
+| Implied Investor MOIC at exit | 1.69× | **2.24×** | exit EV re-based |
+| Blended yield (Stage 2) | 182.3% | 182.3% | unchanged — operating-profit based |
+| Year-1 net / totals / Total Committed | −₺3,058,025 / [77,1209,2559,3033,3104] / €2,227,429 | (identical) | model math untouched |
+
+**Acceptance checks (all pass).** Identity `EBITDA[4] − capex[4] === operating
+profit[4]` exact for all years and both scopes. Bridge ties out on screen (Branch:
+€31.04M − €0 = €31.04M; Subsidiary: €31.04M − €3.56M = €27.48M = the flagship KPI).
+Both Exit KPIs track the one slider (10→8× → both €31.04M→€24.83M). With
+`ekipmanOsteoidden=true` the capex add-back goes to 0 and EBITDA == operating
+profit every year (no double-count). Every "EBITDA" string in the repo sits on a
+ladder EBITDA figure, a multiple tag, or the definitions text.
+
+---
+
 # CHANGES — Time-and-Motion Capacity Engine (Prompts 1–6)
 
 > **Prompt 6 addendum (B2B Years 2–5 revenue stream) — deltas vs. Prompt-5:**

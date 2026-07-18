@@ -120,13 +120,15 @@
       </div>
 
       <div style="background:#f7f7f4;border:1px solid #e0e0dc;border-radius:8px;padding:16px;">
-        <div style="font-size:12px;font-weight:700;color:#1D9E75;margin-bottom:8px;">Valuation EBITDA Calculation</div>
+        <div style="font-size:12px;font-weight:700;color:#1D9E75;margin-bottom:8px;">Metric definitions</div>
         <div style="font-size:12px;color:#555;line-height:1.7;">
-          EBITDA ≈ Consolidated Year 5 net clinic revenue (braces + new centers at full market penetration)<br><br>
-          • VAT: orthosis-prosthesis supply is <b>fully exempt (0%)</b> under VAT Law 17/4-s<br>
-          • Corporate tax: clinic activity subject to <b>25%</b> (TGB exemption applies only to Osteoid Inc.)<br>
-          • Depreciation not a separate line item in the model — reasonable simplification at this scale<br>
-          • EV calculation is always based on EBITDA, before tax deductions
+          One set of definitions feeds every valuation figure on every page (Summary Exit box, Investor DCF, scenario table) — no figure borrows another's name:<br><br>
+          • <b>Operating profit</b> = revenue − all cash operating costs; equipment purchases are expensed when incurred.<br>
+          • <b>EBITDA</b> = operating profit + that year's expensed equipment/setup added back; no depreciation is modeled because capex is expensed.<br>
+          • <b>FCF</b> = operating profit − corporate tax at 25% (with loss carryforward).<br>
+          • <b>Exit Value</b> = Year-5 EBITDA × the exit-multiple slider; exit-year taxation is not modeled (a stated simplification — see shareholder Exit Tax Structuring on the Investor page).<br><br>
+          • VAT: orthosis-prosthesis supply is <b>fully exempt (0%)</b> under VAT Law 17/4-s.<br>
+          • Corporate tax: clinic activity subject to <b>25%</b> (TGB exemption applies only to Osteoid Inc.).
         </div>
       </div>
 

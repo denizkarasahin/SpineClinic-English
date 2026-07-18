@@ -61,7 +61,7 @@
           <div style="font-size:18px;font-weight:700;color:#D85A30;" id="stage2InvestEur">—</div>
         </div>
         <div>
-          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">All 5 centers' net profit (100%, Year 5 only)</div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">All 5 centers' operating profit (100%, Year 5 only)</div>
           <div style="font-size:18px;font-weight:700;color:#333;" id="stage2ProfitEur">—</div>
         </div>
         <div>
@@ -69,7 +69,7 @@
           <div style="font-size:18px;font-weight:700;color:#1a7a45;" id="stage2YieldPct">—</div>
         </div>
       </div>
-      <div style="font-size:10px;color:#888;margin-top:8px;">Blended yield = Istanbul + Izmir + Ankara + Bursa + Gaziantep's own <b>100% net profit</b> (Year 5, net of each center's own operating costs — before any fee/equity split) ÷ Stage 2 investment alone — deliberately whole-network profit over just Stage 2's slice of capital, at Deniz's request, so it overstates a return purely attributable to Stage 2 money (Istanbul's own profit came from Stage 1's capital, not this). <b>This is not the same figure as "Net consolidated at capacity"</b> on the <a href="growth.html" style="color:#D85A30;">Multi-Year Plan</a> page: that figure is also Istanbul-inclusive but only carries the flagship's management-fee + equity-share cut of each satellite (not their full 100% net) — the two totals measure different things and aren't directly comparable.</div>
+      <div style="font-size:10px;color:#888;margin-top:8px;">Blended yield = Istanbul + Izmir + Ankara + Bursa + Gaziantep's own <b>100% operating profit</b> (Year 5, pre-tax, net of each center's own operating costs — before any fee/equity split) ÷ Stage 2 investment alone — deliberately whole-network profit over just Stage 2's slice of capital, at Deniz's request, so it overstates a return purely attributable to Stage 2 money (Istanbul's own profit came from Stage 1's capital, not this). <b>This is not the same figure as "Net consolidated at capacity"</b> on the <a href="growth.html" style="color:#D85A30;">Multi-Year Plan</a> page: that figure is also Istanbul-inclusive but only carries the flagship's management-fee + equity-share cut of each satellite (not their full 100% net) — the two totals measure different things and aren't directly comparable.</div>
     </div>
 
     <div style="border:2px solid #534AB7;border-radius:6px;padding:12px 16px;margin-bottom:20px;background:#f9f8ff;">
@@ -80,7 +80,7 @@
           <div style="font-size:18px;font-weight:700;color:#534AB7;" id="totalInvestEurBox">—</div>
         </div>
         <div>
-          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Cumulative net profit (100%, sum of Years 1-5)</div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Cumulative operating profit (100%, sum of Years 1-5)</div>
           <div style="font-size:18px;font-weight:700;color:#333;" id="totalProfitEurBox">—</div>
         </div>
         <div>
@@ -90,13 +90,14 @@
         <div>
           <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Year 5 EBITDA (100%)</div>
           <div style="font-size:18px;font-weight:700;color:#333;" id="totalEbitdaBox">—</div>
+          <div style="font-size:10px;color:#888;margin-top:2px;">Operating profit <span id="totalOpProfitBox">—</span></div>
         </div>
         <div>
-          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;" id="totalExitValueLabel">Exit Value</div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;" id="totalExitValueLabel">Exit Value — whole business (100%)</div>
           <div style="font-size:18px;font-weight:700;color:#185FA5;" id="totalExitValueBox">—</div>
         </div>
       </div>
-      <div style="font-size:10px;color:#888;margin-top:8px;">Multiple = the sum of every center's own <b>100% net profit across all 5 model years</b> (Istanbul + Izmir + Ankara + Bursa + Gaziantep, before any fee/equity split) ÷ Total Committed. A cumulative multi-year figure, not an annual rate — comparable to a simple gross MOIC, not IRR. Year 5 EBITDA (100%) = the same "All 5 centers' net profit" figure the Stage 2 box above shows, per this model's EBITDA≈net-profit convention (see Methodology page) — Exit Value = EBITDA × the Exit Multiple slider (industry-appropriate: healthcare clinics typically trade at 6–12× EV/EBITDA at exit, a proven de-risked platform like this one commanding the higher end, not the low end reserved for unproven concepts — same slider as the Investor page). Both use the entire business at 100% ownership, same convention as the boxes above; the flagship's actual entitlement is smaller — see "Exit Value — Year 5" and "Implied Investor MOIC at Exit" on the <a href="investor.html" style="color:#534AB7;">Investor page</a> for those equity-adjusted figures.</div>
+      <div style="font-size:10px;color:#888;margin-top:8px;">Metric ladder (all 100% ownership, pre fee/equity split): <b>Operating profit</b> = revenue − all cash operating costs, capex expensed. <b>EBITDA</b> = operating profit + the capex expensed that year added back (this model expenses capex rather than depreciating it, and carries no interest, so operating-profit + capex is a true EBITDA; at defaults Year-5 capex is 0, so EBITDA equals operating profit here but diverges in any capex year). <b>After-tax net</b> = pre-tax − 25% corporate tax (Investor page). Multiple = the sum of every center's own <b>100% operating profit across all 5 model years</b> ÷ Total Committed — a cumulative multi-year figure, not an annual rate (comparable to a simple gross MOIC, not IRR). Exit Value = Year-5 EBITDA × the Exit Multiple slider (industry-appropriate: healthcare clinics typically trade at 6–12× EV/EBITDA at exit, a proven de-risked platform like this one commanding the higher end — same slider and same EBITDA base as the Investor page). The flagship's actual entitlement is smaller — see "Exit Value — Year 5" and "Implied Investor MOIC at Exit" on the <a href="investor.html" style="color:#534AB7;">Investor page</a> for the equity-adjusted figures.</div>
     </div>
 
     <div style="border-top:1px solid #eeeee9;padding-top:16px;">

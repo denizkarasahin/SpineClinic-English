@@ -545,10 +545,11 @@
       <!-- Additional detail — dropped from the hero grid when it was cut down to the 6 priced-round KPIs -->
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Additional Detail</div>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;margin-bottom:16px;">
-        <div class="kpi"><div class="kpi-label">Exit Value — Year 5</div><div class="kpi-val neu" id="dcf_exitValue" title="Year 5 EBITDA × Exit Multiple (undiscounted)">—</div></div>
+        <div class="kpi"><div class="kpi-label">Exit Value — Year 5 (flagship scope)</div><div class="kpi-val neu" id="dcf_exitValue" title="Year 5 flagship-consolidated EBITDA × Exit Multiple (undiscounted). Flagship scope = own clinic + B2B + management fee + equity share of satellites; local-investor minority excluded. The Summary page shows the whole-business (100%) figure — see the bridge below.">—</div></div>
         <div class="kpi"><div class="kpi-label">Cumulative Free Cash (5yr)</div><div class="kpi-val neu" id="kpi_cumFcf" title="Sum of Y1-Y5 free cash flow, taxed per the toggle above">—</div></div>
         <div class="kpi"><div class="kpi-label">Osteoid Stake</div><div class="kpi-val neu" id="dcf_osteoid_hisse" title="100% − Investor − Doctor-Investor, from the priced round above. Sweat equity is not a stake in this priced round — it's tracked separately in the Contribution Register (reference view, Cap Table page)">—</div></div>
       </div>
+      <div id="exitScopeBridge" style="font-size:10px;color:#666;background:#f7f7f4;border:1px solid #e0e0dc;border-left:3px solid #185FA5;border-radius:6px;padding:9px 12px;margin-bottom:16px;line-height:1.6;"></div>
 
       <!-- Ownership Register — the Contribution Register's weighted split. No longer
            drives Investor/Osteoid Stake in the hero above (that's the priced round:
@@ -670,7 +671,7 @@
       </ul>
     </div>
 
-    <div class="note-box">EBITDA = Earnings Before Interest, Taxes, Depreciation and Amortization. Since there are no interest or depreciation items in this model, EBITDA ≈ operating profit (EBIT). VAT: orthosis-prosthesis delivery is exempt under VAT Law 17/4-s at 0% (full exemption). Corporate tax: 25% on profit from clinic operations; no sales exemption (Technology Development Zone exemption belongs solely to Osteoid Inc.). EV is always calculated on EBITDA — the figures above are total enterprise value, not equity value. Your equity value = EV × your ownership percentage. In addition to multiples, the multiple automatically increases by +1x (2nd center) or +2x (3rd center) as the number of active centers grows.</div>
+    <div class="note-box">EBITDA = Earnings Before Interest, Taxes, Depreciation and Amortization. This model carries no interest and no depreciation (capex is expensed in the year incurred rather than capitalized and depreciated), so EBITDA = operating profit + that expensed capex added back. In a steady-state year with no new capex the two coincide; in a build-out year EBITDA sits above operating profit by the year's capex. The metric ladder is: operating profit (revenue − cash opex, capex expensed) → EBITDA (that + capex add-back) → after-tax net (− 25% corporate tax). VAT: orthosis-prosthesis delivery is exempt under VAT Law 17/4-s at 0% (full exemption). Corporate tax: 25% on profit from clinic operations; no sales exemption (Technology Development Zone exemption belongs solely to Osteoid Inc.). EV is always calculated on EBITDA — the figures above are total enterprise value, not equity value. Your equity value = EV × your ownership percentage. In addition to multiples, the multiple automatically increases by +1x (2nd center) or +2x (3rd center) as the number of active centers grows.</div>
 
   </div>
 </div>
