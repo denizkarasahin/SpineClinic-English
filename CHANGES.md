@@ -1,3 +1,28 @@
+# CHANGES — Review §4 "Model integrity" (branch `fix/model-integrity`, `_version` 57 → 58)
+
+Baseline, after-state and the full BEFORE / AFTER / DELTA table: `scratch/baseline.md`, `scratch/after.md`. Report-only content items: `scratch/content-flags.md`. No operating assumption (market share, prices, ramps, fees, salaries, rent) was changed.
+
+- **4-A1** — Setup capex (each centre in its opening year) and the €1.0M rights purchase (Stage 2 year) are now FCF/DCF outflows; group view nets the rights out. Cum. FCF €5,942K → €4,099K.
+- **4-A2** — Bursa/Gaziantep setup counted once: excluded from Stage 2 and deducted from Year-3 FCF when self-funded, in Stage 2 otherwise; setup-funding reconciliation + cash ledger added.
+- **4-A3** — Istanbul's operating result is no longer floored; a ramp-year loss stays in the P&L and cumulative profit, its financing only in the cash-flow block (no effect at v57; −€57K at v56).
+- **4-A4** — DCF terminal value = Year-5 after-tax FCF × multiple; exit EV = Year-5 EBITDA × multiple, labelled EV/EBITDA; TV share of DCF shown (80.3%).
+- **4-A5** — Deal pre-money is a negotiated input (`dealPreMoneyEur`, default €10,964,800 = the v57 output); DCF is a reference; `dcfNegotiationDiscount` removed.
+- **4-A6** — One exit-multiple set (`dcfExitMult` ± `exitMultLowDelta`/`exitMultHighDelta`, + `multiCenterPremiumX` default 0); hidden +2× removed; valuation table labels now equal the calculation (8×/10×/13×).
+- **4-A7** — "Blended yield" (147%) replaced by Stage 2 attributable yield (33.2%: only Stage-2-funded centres); "at Deniz's request" wording removed.
+- **4-A8** — `setupOverheadC1–5` → itemised pre-opening overheads (`preOpenHire/Mkt/Legal/OtherC1–5`); existing amounts sit in "other (to be itemised)", new lines €0.
+- **4-A9** — Fixed EUR/TRY by default (`eurKurSabit`, `eurKurTarih`); live rate behind an off-by-default header toggle (`liveFxAktif`); rate + date in every header; methodology "real 2026 terms" note.
+- **4-A10** — Dividend payout slider (`dividendPayoutPct`, 60); investor return = dividends + exit proceeds + retained cash, separate lines; IRR from timed flows (2.19× exit-only → 2.76× total).
+- **4-B11** — Revenue ladder (gross → net after doctor fees → operating profit / EBITDA) in every projection table; post-opex rows renamed "operating profit".
+- **4-B12** — Satellite text aligned to the Branch defaults; satellite rows labelled by mode (branch = consolidated, subsidiary = memo).
+- **4-B13** — "Total braces" label covers every centre open that year.
+- **4-B14** — Istanbul Y2–5 cost described identically (capacity-built) on Multi-Year Plan and Methodology; stale flat-uplift note removed.
+- **4-B15** — Every market-share figure names its denominator (national / Istanbul / city market / six competitors).
+- **4-B16** — Implementation Timeline rendered from the live model (break-even, cumulative-positive, opening order, centres at target); diabetic-foot/cranial-helmet marked "revenue not modelled".
+- **4-B17** — Cover date September 2026; "pre-revenue" dropped.
+- **4-D** — Methodology / Formula Validation formulas updated; shared live ledger with FCF-identity and setup-funding checks.
+
+---
+
 # CHANGES — Metric definitions & Exit-Value reconciliation (PROMPT 7)
 
 **What was wrong.** The label "EBITDA" was attached to three different bases: the
