@@ -54,7 +54,7 @@
 </div>
 
 <!-- Key Terms General Summary -->
-<div class="section" id="keyTermsSection" data-terms-version="4">
+<div class="section" id="keyTermsSection" data-terms-version="5">
   <div class="section-header open" onclick="tog(this)"><h2>Key Terms — General Summary</h2><span class="tog">▾</span></div>
   <div class="section-body" style="display:block;">
     <div class="note-box" style="margin-bottom:18px;">⚠ This summary is a draft and has no legal binding. Term descriptions can be edited by clicking; changes are saved in the browser. [Bracketed] items are still open for negotiation.</div>
@@ -107,18 +107,18 @@
 
       <!-- DOCTOR PARTNERSHIP -->
       <div>
-        <div class="soz-col-title hekim">Doctor Commission Agreement</div>
-        <div class="note-box" style="margin-bottom:12px;border-left:3px solid #1a7a45;">Since doctors directly referring patients to a center they co-own creates a grey area, a <strong>frontman structure</strong> will be used. Shares are held under a designated legal/natural person, not in the doctor's name.</div>
+        <div class="soz-col-title hekim">Channel Fee Agreement</div>
+        <div class="note-box" style="margin-bottom:12px;border-left:3px solid #1a7a45;">Doctor investors may participate directly or through a holding entity; the participation structure is set out in the shareholders' agreement.</div>
 
         <div class="term-card" style="border-left:3px solid #1a7a45;">
-          <div class="term-title" style="color:#1a7a45;">Commission Rate &amp; Accrual <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:10px;">— <a href="market.html" style="color:#1a7a45;">Updated from the Market page</a></span></div>
-          <div class="term-body" id="term_H_komisyon" style="font-size:15px;font-weight:700;color:#1a7a45;">25%</div>
-          <div style="font-size:11px;color:#888;margin-top:5px;">The amount is not paid out as direct cash; it accrues as a separate line item in the company's accounts under the doctor's name. The commission is not contractually binding; it is fulfilled upon a usage request.</div>
+          <div class="term-title" style="color:#1a7a45;">Channel Fee Rate &amp; Accrual <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:10px;">— <a href="market.html" style="color:#1a7a45;">Updated from the Market page</a></span></div>
+          <div class="term-body" id="term_H_komisyon" style="font-size:15px;font-weight:700;color:#1a7a45;">—</div>
+          <div style="font-size:11px;color:#888;margin-top:5px;">The amount is not paid out as direct cash; it accrues as a separate line item in the company's accounts under the doctor's name. The channel fee is not contractually binding; it is fulfilled upon a usage request.</div>
         </div>
 
         <div class="term-card">
           <div class="term-title">Use via Expenditure</div>
-          <div class="term-body" contenteditable="true" id="term_H_odeme" onblur="saveTerm('H_odeme',this)">The accrued commission is covered directly by the company upon request for professional expenses accepted by the medical chamber, such as conference registration, accommodation, books, and publications. Proof of expenditure is required.</div>
+          <div class="term-body" contenteditable="true" id="term_H_odeme" onblur="saveTerm('H_odeme',this)">The accrued channel fee is covered directly by the company upon request for professional expenses accepted by the medical chamber, such as conference registration, accommodation, books, and publications. Proof of expenditure is required.</div>
         </div>
 
         <div class="term-card">
@@ -143,7 +143,7 @@
 
         <div class="term-card">
           <div class="term-title">Termination</div>
-          <div class="term-body" contenteditable="true" id="term_H_fesih" onblur="saveTerm('H_fesih',this)">Immediate termination for cause (ethical violation, PDPL violation). Otherwise, 30 days' written notice; pending commission payments shall be settled.</div>
+          <div class="term-body" contenteditable="true" id="term_H_fesih" onblur="saveTerm('H_fesih',this)">Immediate termination for cause (ethical violation, PDPL violation). Otherwise, 30 days' written notice; pending channel-fee payments shall be settled.</div>
         </div>
 
         <div class="term-card">
@@ -202,7 +202,7 @@ window.addEventListener('load', function() {
     st.style.color = '#1a7a45';
   }
 
-  // Commission Rate term card is kept live by shared.js's
+  // Channel Fee Rate term card is kept live by shared.js's
   // refreshAgreementTerms(), called on every recalc() (not just once here
   // on load) — see shared.js for the computation.
 

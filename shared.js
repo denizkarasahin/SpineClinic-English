@@ -5849,7 +5849,11 @@ function refreshAgreementTerms() {
   if (komisyonEl) {
     const _komProds = ['stdR','stdRl','delik','sens','sensDelik'];
     const _komAvg = _komProds.reduce((s,p) => s + (V['feeSci_'+p]??10) + (V['feeEdu_'+p]??10) + (V['feeLib_'+p]??10), 0) / _komProds.length;
-    komisyonEl.textContent = '%' + Math.round(_komAvg * 10) / 10 + ' (avg. across products)';
+    // Channel fee = Scientific Study + Education + Library fee (FU-1), averaged
+    // across products — live from the Market page sliders, never a typed %.
+    const _avg = pre => _komProds.reduce((s,p) => s + (V[pre+p]??10), 0) / _komProds.length;
+    const _r = v => Math.round(v * 10) / 10;
+    komisyonEl.textContent = _r(_komAvg) + '% (Scientific ' + _r(_avg('feeSci_')) + '% + Education ' + _r(_avg('feeEdu_')) + '% + Library ' + _r(_avg('feeLib_')) + '%, avg. across products)';
   }
 }
 
