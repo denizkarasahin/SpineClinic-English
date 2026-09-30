@@ -1582,7 +1582,7 @@ function setIstShare(v) {
 // price × (1 − standard-SKU referral-fee %) − standard material − royalty;
 // incremental rooms/staff are NOT modelled, so treat it as an upper bound.
 // The base totals, FCF, DCF and investor return never include it; it only
-// feeds the separately labelled "incl. upside" figures.
+// is included in every total when switched on (UP-1).
 function upsideSegments() {
   return [
     { key:'adult',    label:'Adult / degenerative',            low:1000, base:2500, high:5000, min:1000, max:5000,
@@ -1607,8 +1607,8 @@ function renderUpsideSummary() {
   const U = window._lastProjRows && window._lastProjRows.upside;
   el.innerHTML = 'National market — base (pazarTR, paediatric): <b>' + gv('pazarTR').toLocaleString('en-US') + '</b> braces/yr · '
     + (act.length ? 'Total incl. active upside (' + act.map(s => s.label).join(', ') + '): <b>' + incl.toLocaleString('en-US') + '</b> braces/yr'
-                  + (U ? ' · Osteoid upside volume Y5 ' + U.totalBraces[4].toLocaleString('en-US') + ' braces, contribution Y5 €' + U.totalContribK[4] + 'K (upper bound)' : '')
-                  : 'No upside segment is switched on — every figure in the dashboard is base only.');
+                  + (U ? ' · Osteoid upside volume Y5 ' + U.totalBraces[4].toLocaleString('en-US') + ' braces, net contribution Y5 €' + U.totalContribK[4].toLocaleString('en-US') + 'K — <b>included in every total</b> (revenue, EBITDA, FCF, funding need, KPIs; the extra fittings load capacity)' : '')
+                  : 'No upside segment is switched on — every figure in the dashboard is the paediatric case only.');
   segs.forEach(s => {
     const cb = document.getElementById(s.key + 'AktifToggle'); if (cb) cb.checked = s.aktif;
   });
@@ -1685,11 +1685,12 @@ function computeBusinessCase() {
   }
   const sum = a => a.reduce((s, v) => s + (v || 0), 0);
   const tot = {
-    braces: [0,1,2,3,4].map(i => centres.reduce((a, c) => a + (c.braces[i] || 0), 0) + ((P.braces.sgk && P.braces.sgk.total[i]) || 0)),
+    braces: [0,1,2,3,4].map(i => centres.reduce((a, c) => a + (c.braces[i] || 0), 0) + ((P.braces.sgk && P.braces.sgk.total[i]) || 0) + ((P.braces.upside && P.braces.upside.total[i]) || 0)),
     rev: P.rev.total.gross.slice(), ebitda: L.ebitda.slice(),
   };
   tot.margin = tot.ebitda.map((e, i) => tot.rev[i] > 0 ? e / tot.rev[i] * 100 : null);
   return { centres, tot, sgkBraces: P.braces.sgk ? P.braces.sgk.total : [0,0,0,0,0], sgkOn: V.sgkAktif === true,
+           upBraces: P.braces.upside ? P.braces.upside.total.slice() : [0,0,0,0,0],
            unit: window._lastUnitEcon, fcf: f.fcf.slice(), cumFcf: f.cum.slice(), taxK: f.taxPaid.slice(), capexK: L.capex.slice(),
            setupOutK: f.setupOut.slice(), wcK: f.wcChange.slice(),
            cumMonthly, peakNeedK: -low, peakNeedMonth: lowMonth, totalSetupK: plan.totalSetupEur / 1000,
@@ -1722,6 +1723,7 @@ function renderBusinessCase() {
   h += grp('Braces per year');
   C.forEach(c => { h += row(c.label, c.braces, n); });
   if (B.sgkOn) h += row('SGK extra braces (all centres, upside line)', B.sgkBraces, n, 'color:#185FA5;');
+  if (B.upBraces.some(v => v)) h += row('Upside segments — adult / post-op / fracture (all centres)', B.upBraces, n, 'color:#8a6d1a;');
   h += row('<b>Total</b>', B.tot.braces, v => '<b>' + n(v) + '</b>');
   h += grp('Revenue (list price × braces' + (B.sgkOn ? '; SGK inside each centre' : '') + ')');
   C.forEach(c => { h += row(c.label, c.rev, kK); });
@@ -1738,6 +1740,9 @@ function renderBusinessCase() {
   if (U) {
     const cols = [['Clinic private — Year 1 actual', U.privY1], ['Clinic private — Year 5 mix (' + Math.round(U.premY5Pct) + '% premium)', U.privY5], ['B2B', U.b2b]];
     if (U.sgk.on) cols.push(['SGK (upside line)', U.sgk]);
+    ((window._lastProjRows && window._lastProjRows.upside && window._lastProjRows.upside.segments) || []).filter(s => s.aktif).forEach(s => {
+      cols.push([s.label.split(' (')[0] + ' (upside)', { gross: s.unit.gross, fee: s.unit.sci + s.unit.edu + s.unit.lib, mat: s.unit.mat, roy: s.unit.roy, net: s.unit.net }]);
+    });
     const ur = (lbl, key, sign, b) => '<tr' + (b ? ' style="font-weight:700;"' : '') + '><td style="text-align:left;">' + lbl + '</td>' + cols.map(c => '<td ' + tdR + '>' + kE((sign || 1) * c[1][key]) + '</td>').join('') + '</tr>';
     h += '<div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin:16px 0 6px;">Unit economics per brace (€)</div>'
       + '<div class="tbl-wrap"><table><thead><tr><th style="text-align:left;">€ per brace</th>' + cols.map(c => '<th ' + tdR + '>' + c[0] + '</th>').join('') + '</tr></thead><tbody>'
@@ -1985,8 +1990,8 @@ function renderMarketSensitivity() {
 // ── Business sensitivity (BC-6) — Summary page, business terms only ───────
 // Every cell is a full live model run: one input changed at a time from the
 // current settings, recalc(), read Year-5 EBITDA, 5-year cumulative FCF and
-// peak funding need; the "with upside" column repeats the run with the three
-// upside segments (adult, post-op, fracture) switched on — they are separate
+// peak funding need at the current settings (upside segments as toggled); the
+// last column repeats the run with the three upside segments flipped — they are separate
 // lines, so the base columns never include them. Everything is restored
 // afterwards; guarded so nested recalc() calls never re-enter this table.
 function renderBusinessSensitivity() {
@@ -2018,14 +2023,17 @@ function renderBusinessSensitivity() {
   ];
   const run = () => { recalc(); const L = metricLadder('100'), f = window._lastFcf, B = window._lastBusinessCase; return { e5: L ? L.ebitda[4] : 0, cum: f ? f.cum[4] : 0, peak: B ? B.peakNeedK : 0 }; };
   const out = [];
+  const upNow = UPS.some(u => V[u] === true);
+  const hdr = _origGetById('bcSensUpHdr');
+  if (hdr) hdr.textContent = upNow ? 'Year-5 EBITDA without upside' : 'Year-5 EBITDA with upside';
   window._inScenario = true;
   try {
     cases.forEach(([grp, k, vals, fmt, isB]) => vals.forEach(v => {
-      Object.assign(V, base); UPS.forEach(u => { V[u] = false; }); set[k](v);
+      Object.assign(V, base); set[k](v);
       const r = run();
-      UPS.forEach(u => { V[u] = true; }); recalc();
-      const U = window._lastProjRows && window._lastProjRows.upside;
-      out.push(Object.assign(r, { grp, lbl: fmt(v), isBase: isB(v), e5Up: r.e5 + (U ? U.totalContribK[4] : 0) }));
+      UPS.forEach(u => { V[u] = !upNow; });
+      const r2 = run();
+      out.push(Object.assign(r, { grp, lbl: fmt(v), isBase: isB(v), e5Up: r2.e5 }));
     }));
   } finally {
     Object.assign(V, base); recalc(); window._inScenario = false;
@@ -4193,7 +4201,7 @@ function computeFcfStream() {
   // the centres-company view (already inside operating profit), revenue at
   // Osteoid A.Ş. — so the group view adds it back.
   const _BR = (window._lastProjRows && window._lastProjRows.braces) || null;
-  const royaltyK = [0,1,2,3,4].map(i => _BR ? Math.round(((_BR.istanbul[i]||0) + (_BR.izmir[i]||0) + (_BR.ankara[i]||0) + (_BR.bursa[i]||0) + (_BR.gaziantep[i]||0) + (_BR.b2b[i]||0) + ((_BR.sgk && _BR.sgk.total[i])||0)) * gv('royaltyEur') / 1000) : 0);
+  const royaltyK = [0,1,2,3,4].map(i => _BR ? Math.round(((_BR.istanbul[i]||0) + (_BR.izmir[i]||0) + (_BR.ankara[i]||0) + (_BR.bursa[i]||0) + (_BR.gaziantep[i]||0) + (_BR.b2b[i]||0) + ((_BR.sgk && _BR.sgk.total[i])||0) + ((_BR.upside && _BR.upside.total[i])||0)) * gv('royaltyEur') / 1000) : 0);
   // SGK line cash effect (BC-4): EBITDA effect − its extra capex + its receivables change
   const _sgkL = window._lastProjRows && window._lastProjRows.sgk;
   if (_sgkL) _sgkL.cashK = _sgkL.ebitdaK.map((v, i) => v - _sgkL.extraCapexK[i] + wcChange[i]);
@@ -4483,9 +4491,28 @@ function buildProjection() {
   // korseCount* group below reuses this exact array). Needed here to size
   // the capacity-derived Y2-5 opex.
   const korseCountIst = [1,2,3,4,5].map(y => y===1 ? y1Korse : lerp(y1Korse, y5KorseAdet, _istRampFrac(y, istRampYears)));
+  // ── Upside segments (UP-1) — adult / post-op / fracture ─────────────────
+  // A segment that is switched on is part of the plan: its braces are fitted
+  // at the centres (they load the capacity engine), and its revenue, channel
+  // fee, material and royalty flow into each centre's P&L — so into every
+  // total, FCF, funding need and KPI. Volume per centre = the segment's
+  // national market × the centre's share of the national market × the
+  // centre's target share, on that centre's own ramp; Year 2 onward (Year 1
+  // stays the verified monthly engine). Own SKU price; channel fee and
+  // material at the standard SKU's rates.
+  const _upSegsOn = upsideSegments().filter(sg => sg.aktif);
+  const _upUnit = sg => { const g = sg.price / eurKur, sci = g * gv('feeSci_stdR') / 100, edu = g * gv('feeEdu_stdR') / 100, lib = g * gv('feeLib_stdR') / 100, mat = gv('mal_stdR') / eurKur, roy = gv('royaltyEur');
+    return { gross: g, sci, edu, lib, mat, roy, net: g - sci - edu - lib - mat - roy }; }; // € per brace
+  const _upFull = (share, tgt) => _upSegsOn.map(sg => sg.vol * share * tgt); // braces/yr per segment at full target
+  const _upIstFull = _upFull(gv('pazarIstPct') / 100, gv('hedefOsteoidPay') / 100);
+  const _upBy = { istanbul: [0,1,2,3,4].map(i => _upIstFull.map(b => i === 0 || y5KorseAdet <= 0 ? 0 : b * korseCountIst[i] / y5KorseAdet)) };
+  _upBy.istanbul.full = _upIstFull;
+  const _upBraces = c => [0,1,2,3,4].map(i => _upBy[c] ? _upBy[c][i].reduce((a, b) => a + b, 0) : 0);
+  const _upK = (c, key) => [0,1,2,3,4].map(i => _upBy[c] ? _upBy[c][i].reduce((a, b, j) => a + b * _upUnit(_upSegsOn[j])[key], 0) / 1000 : 0); // €K
   // Net revenue (after doctor fees, materials, royalty) — Y1 actual; Y2-5 =
   // braces × that year's premium-mix unit net (FU-3).
-  const istGrossRow = [1,2,3,4,5].map((y, i) => y===1 ? y1BrutM1 : Math.round(korseCountIst[i] * mixUnit(i).net / 1000));
+  const _upIstNetK = _upK('istanbul', 'net');
+  const istGrossRow = [1,2,3,4,5].map((y, i) => y===1 ? y1BrutM1 : Math.round(korseCountIst[i] * mixUnit(i).net / 1000 + _upIstNetK[i])); // + upside (UP-1)
 
   // ── B2B channel (flagship Istanbul) — Years 2-5 ramped stream ────────────
   // B2B braces are printed centrally and shipped to buyer clinics — they
@@ -4574,7 +4601,7 @@ function buildProjection() {
   let _prevBranches = 0;
   const istOpexRow = [0,1,2,3,4].map(i => {
     if (i === 0) return y1GiderEur; // Year 1 — real monthly-engine opex, unchanged
-    const monthlyB2C = korseCountIst[i] * (1 + (withSgk ? _sgkSi(i) : 0)) / 12; // SGK braces are fitted too (BC-4)
+    const monthlyB2C = (korseCountIst[i] * (1 + (withSgk ? _sgkSi(i) : 0)) + _upBraces('istanbul')[i]) / 12; // SGK (BC-4) and upside (UP-1) braces are fitted too
     const monthlyB2B = b2bAdetRow[i] / 12; // ramped B2B stream — printers only
     const prof = clinicCapacityProfile(monthlyB2C, monthlyB2B);
     // (a) printer capex — cumulative required vs prior year, charged in the
@@ -4752,14 +4779,23 @@ function buildProjection() {
   // dedicated {sehir}DestekM (default 25000) rather than the intern salary.
   // The profile's room-overflow (rooms > per-site max) is surfaced as a
   // warning tag on the card — satellites never auto-open sub-branches.
+  // Upside volume per satellite (UP-1), on the satellite's own ramp.
+  const _upSatFr = { izmir: y => _satRampFrac(y, 2, izmirRampYears, _aktifAyYil2 / 12), ankara: y => _satRampFrac(y, 2, ankaraRampYears, _ankaraAktifAyYil2 / 12),
+                     bursa: y => _satRampFrac(y, 3, bursaRampYears, _bursaAktifAyYil3 / 12), gaziantep: y => _satRampFrac(y, 3, gaziantepRampYears, _gaziantepAktifAyYil3 / 12) };
+  ['izmir','ankara','bursa','gaziantep'].forEach(s => {
+    const full = V[s + 'Aktif'] ? _upFull(gv(s + 'NufusPay') / 100, gv(s + 'HedefPay') / 100) : _upSegsOn.map(() => 0);
+    _upBy[s] = [0,1,2,3,4].map(i => full.map(b => b * _upSatFr[s](i + 1)));
+    _upBy[s].full = full;
+  });
+  const _upFullSum = s => _upBy[s].full.reduce((a, b) => a + b, 0);
   const _satProf = {};
   ['izmir','ankara','bursa','gaziantep'].forEach(function(s) {
     const y5Adet = s==='izmir' ? izmirY5Adet : s==='ankara' ? ankaraY5Adet : s==='bursa' ? bursaY5Adet : gaziantepY5Adet;
-    const prof = clinicCapacityProfile((y5Adet||0) * (1 + _sgkSi(4)) / 12, 0); // + SGK braces (BC-4)
+    const prof = clinicCapacityProfile(((y5Adet||0) * (1 + _sgkSi(4)) + _upFullSum(s)) / 12, 0); // + SGK (BC-4) and upside (UP-1) braces
     const ortoM = V[s+'OrtotistM'] || 55000;
     const destekM = V[s+'DestekM'] || 25000;
     prof.derivedStaffTRY = prof.orthotists * ortoM * sgkCproj + prof.supportStaff * destekM * sgkCproj;
-    const _p0 = _sgkOn ? clinicCapacityProfile((y5Adet||0) / 12, 0) : prof;
+    const _p0 = _sgkOn ? clinicCapacityProfile(((y5Adet||0) + _upFullSum(s)) / 12, 0) : prof;
     prof.sgkStaffEurK = Math.round(toEur(12 * (prof.derivedStaffTRY - (_p0.orthotists * ortoM * sgkCproj + _p0.supportStaff * destekM * sgkCproj))) * 1.25); // Y5 full-capacity SGK staff cost, €K
     _satProf[s] = prof;
   });
@@ -4849,6 +4885,12 @@ function buildProjection() {
   const bursaGrossRow = [1,2,3,4,5].map((y,i) => Math.round(bursaY5Adet * _satRampFrac(y, 3, bursaRampYears, _bursaAktifAyYil3 / 12) * mixUnit(i).net / 1000));
   const gaziantepGrossRow = [1,2,3,4,5].map((y,i) => Math.round(gaziantepY5Adet * _satRampFrac(y, 3, gaziantepRampYears, _gaziantepAktifAyYil3 / 12) * mixUnit(i).net / 1000));
 
+  // Upside segments (UP-1) in each satellite's operating result and net revenue
+  // (before the head-office split, the management fee and the equity split).
+  [['izmir', izmirRow, izmirGrossRow], ['ankara', ankaraRow, ankaraGrossRow], ['bursa', bursaRow, bursaGrossRow], ['gaziantep', gaziantepRow, gaziantepGrossRow]].forEach(([s, row, gross]) => {
+    const up = _upK(s, 'net');
+    for (let i = 0; i < 5; i++) { row[i] += Math.round(up[i]); gross[i] += Math.round(up[i]); }
+  });
   // ── Head-office add-on (BC-5; FU-5 allocation) ───────────────────────────
   // Only central functions NOT already booked: the operator (business
   // development / doctor relations), YMM bookkeeping, general expenses,
@@ -4964,28 +5006,25 @@ function buildProjection() {
   const revB2B = _revLines(b2bAdetRow.map((a, i) => i === 0 ? toEur(_sumRows(_rowsB2Bproj, r => r.gelirBrut||0)) : Math.round(a * _b2bUnitBrutEur / 1000)),
                            _b2bF3.map(f => _pct(_b2bLast3, f)), _b2bF3.map(f => toEur(_sumRows(_rowsB2Bproj, f))));
   const _revAll = [revIst, revB2B, revIzmir, revAnkara, revBursa, revGaziantep];
-  // Upside segments (MKT-B6) — separate channel lines, never in the base.
-  const _upCentres = [
-    { k:'istanbul',  share: gv('pazarIstPct') / 100, tgt: gv('hedefOsteoidPay') / 100, braces: korseCountIst, target: y5KorseAdet, aktif: true },
-    { k:'izmir',     share: gv('izmirNufusPay') / 100, tgt: gv('izmirHedefPay') / 100, braces: null, target: izmirY5Adet, aktif: !!V.izmirAktif },
-    { k:'ankara',    share: gv('ankaraNufusPay') / 100, tgt: gv('ankaraHedefPay') / 100, braces: null, target: ankaraY5Adet, aktif: !!V.ankaraAktif },
-    { k:'bursa',     share: gv('bursaNufusPay') / 100, tgt: gv('bursaHedefPay') / 100, braces: null, target: bursaY5Adet, aktif: !!V.bursaAktif },
-    { k:'gaziantep', share: gv('gaziantepNufusPay') / 100, tgt: gv('gaziantepHedefPay') / 100, braces: null, target: gaziantepY5Adet, aktif: !!V.gaziantepAktif },
-  ];
-  const _feeStdPct = (gv('feeSci_stdR') + gv('feeEdu_stdR') + gv('feeLib_stdR')) / 100;
-  const _upSegs = upsideSegments().map(sg => {
-    const unitEur = (sg.price * (1 - _feeStdPct) - gv('mal_stdR')) / eurKur - gv('royaltyEur');
-    const braces = [0,1,2,3,4].map(i => sg.aktif ? Math.round(_upCentres.reduce((acc, c) => {
-      if (!c.aktif || !c.target) return acc;
-      const paed = c.braces ? c.braces[i] : ({ izmir: izmirY5Adet, ankara: ankaraY5Adet, bursa: bursaY5Adet, gaziantep: gaziantepY5Adet }[c.k]
-        * ({ izmir: _satRampFrac(i+1, 2, izmirRampYears, _aktifAyYil2/12), ankara: _satRampFrac(i+1, 2, ankaraRampYears, _ankaraAktifAyYil2/12),
-             bursa: _satRampFrac(i+1, 3, bursaRampYears, _bursaAktifAyYil3/12), gaziantep: _satRampFrac(i+1, 3, gaziantepRampYears, _gaziantepAktifAyYil3/12) }[c.k]));
-      return acc + sg.vol * c.share * c.tgt * (paed / c.target);
-    }, 0)) : 0);
-    return { key: sg.key, label: sg.label, aktif: sg.aktif, market: sg.vol, unitEur: Math.round(unitEur),
-             braces, grossK: braces.map(b => Math.round(b * sg.price / eurKur / 1000)), contribK: braces.map(b => Math.round(b * unitEur / 1000)) };
+  // Upside segments (UP-1) — revenue ladder of every centre, then a per-segment
+  // summary of what is already inside the totals.
+  [['istanbul', revIst], ['izmir', revIzmir], ['ankara', revAnkara], ['bursa', revBursa], ['gaziantep', revGaziantep]].forEach(([c, r]) => {
+    const g = _upK(c, 'gross'), sci = _upK(c, 'sci'), edu = _upK(c, 'edu'), lib = _upK(c, 'lib');
+    for (let i = 0; i < 5; i++) {
+      r.gross[i] += Math.round(g[i]); r.sci[i] += Math.round(sci[i]); r.edu[i] += Math.round(edu[i]); r.lib[i] += Math.round(lib[i]);
+      r.fees[i] = r.sci[i] + r.edu[i] + r.lib[i]; r.afterFees[i] = r.gross[i] - r.fees[i];
+    }
+    r.upside = g.map(Math.round);
   });
-  const upside = { segments: _upSegs,
+  const _upCs = ['istanbul','izmir','ankara','bursa','gaziantep'];
+  const _upSegs = upsideSegments().map(sg => {
+    const j = _upSegsOn.findIndex(x => x.key === sg.key), u = _upUnit(sg);
+    const raw = [0,1,2,3,4].map(i => j < 0 ? 0 : _upCs.reduce((a, c) => a + _upBy[c][i][j], 0));
+    return { key: sg.key, label: sg.label, aktif: sg.aktif, market: sg.vol, unitEur: Math.round(u.net), unit: u,
+             braces: raw.map(Math.round), grossK: raw.map(b => Math.round(b * u.gross / 1000)), contribK: raw.map(b => Math.round(b * u.net / 1000)) };
+  });
+  const upside = { segments: _upSegs, included: true,
+    byCentre: Object.fromEntries(_upCs.map(c => [c, _upBraces(c).map(Math.round)])),
     totalBraces: [0,1,2,3,4].map(i => _upSegs.reduce((a, s) => a + s.braces[i], 0)),
     totalContribK: [0,1,2,3,4].map(i => _upSegs.reduce((a, s) => a + s.contribK[i], 0)) };
   const revTotal = {};
@@ -5036,7 +5075,7 @@ function buildProjection() {
   };
   sgkLine.contribK = sgkLine.revK.map((v, i) => v - sgkLine.directK[i]);
   sgkLine.ebitdaK = sgkLine.contribK.map((v, i) => v - sgkLine.extraOpexK[i]);
-  window._lastRoyaltyRow = korseCountTotal.map((k, i) => Math.round((k + sgkBraces.total[i]) * gv('royaltyEur') / 1000));
+  window._lastRoyaltyRow = korseCountTotal.map((k, i) => Math.round((k + sgkBraces.total[i] + upside.totalBraces[i]) * gv('royaltyEur') / 1000));
 
   // Yıl 2 KPI güncelle
   window._lastTotals = totals;
@@ -5048,7 +5087,7 @@ function buildProjection() {
   // growth-page projection table and consolidated total are built from.
   window._lastProjRows = {
     istNet: korseM1, b2b: b2bGrossRow,
-    braces: { istanbul: korseCountIst, izmir: korseCountIzmir, ankara: korseCountAnkara, bursa: korseCountBursa, gaziantep: korseCountGaziantep, b2b: b2bAdetRow, sgk: sgkBraces },
+    braces: { istanbul: korseCountIst, izmir: korseCountIzmir, ankara: korseCountAnkara, bursa: korseCountBursa, gaziantep: korseCountGaziantep, b2b: b2bAdetRow, sgk: sgkBraces, upside: Object.assign({ total: upside.totalBraces }, upside.byCentre) },
     sgk: sgkLine,
     upside,
     ho: { total: hoTotalK, openCentres: _hoOpen, alloc: hoAlloc },
@@ -5339,11 +5378,11 @@ function buildProjection() {
         <tr><td style="font-size:11px;color:#888;">Memo: head-office add-on (quality &amp; regulatory, IT, HR, group finance) — already inside the rows above, allocated by revenue share</td>${hoTotalK.map(v => fmt(-v)).join('')}<td style="color:#aaa;">—</td></tr>
         ${_ebitdaTbl ? `<tr><td style="font-size:11px;">EBITDA <span style="font-weight:400;font-size:10px;opacity:0.7;">(operating profit + expensed printer/branch capex added back)</span></td>${_ebitdaTbl.map(fmt).join('')}<td style="color:#aaa;">—</td></tr>` : ''}
         ${(V.izmirAktif||V.ankaraAktif||V.bursaAktif||V.gaziantepAktif) ? `<tr><td style="font-size:11px;color:#999;">Memo: Minority interest — ${isBiz() ? 'local partner' : 'local investors'} (not in total above)</td>${minorityRow.map(v=>`<td style="font-size:11px;color:#999;">${v>0?'€'+v+'K':'—'}</td>`).join('')}<td style="color:#aaa;font-size:11px;">—</td></tr>` : ''}
-        <tr style="background:#f7f4ee;"><td colspan="7" style="font-size:10px;font-weight:700;text-transform:uppercase;color:#8a6d1a;">Upside segments — excluded from every base figure above (toggle on the Market page)</td></tr>
+        <tr style="background:#f7f4ee;"><td colspan="7" style="font-size:10px;font-weight:700;text-transform:uppercase;color:#8a6d1a;">Upside segments — already included in the rows above (memo; toggle on the Market page)</td></tr>
         ${upside.segments.some(s => s.aktif)
           ? upside.segments.filter(s => s.aktif).map(s => `<tr><td style="font-size:11px;color:#8a6d1a;">${s.label} <span style="font-weight:400;font-size:10px;opacity:0.7;">(own SKU + channel: spine surgeons / trauma / physiatrists · ${s.braces[4].toLocaleString('en-US')} braces in Y5 · contribution, no incremental opex)</span></td>${s.contribK.map(fmt).join('')}<td style="color:#aaa;">—</td></tr>`).join('')
-            + (_ebitdaTbl ? `<tr class="total"><td>Total incl. upside — EBITDA (base + upside contribution, upper bound)</td>${_ebitdaTbl.map((v,i) => fmt(v + upside.totalContribK[i])).join('')}<td style="color:#aaa;">—</td></tr>` : '')
-          : '<tr><td colspan="7" style="font-size:11px;color:#aaa;">No upside segment switched on — the figures above are the base (paediatric) case only.</td></tr>'}
+            + ''
+          : '<tr><td colspan="7" style="font-size:11px;color:#aaa;">No upside segment switched on — the figures above are the paediatric case only.</td></tr>'}
         <tr style="background:#f0efe9;"><td style="font-size:11px;color:#888;">Year 5 target brace count (IST share: %${y5PayPct})</td><td colspan="5" style="text-align:center;color:#888;font-size:11px;">${y5KorseAdet.toLocaleString('tr-TR')} units/year</td></tr>
       </tbody>
     </table>`;
