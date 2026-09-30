@@ -120,6 +120,19 @@
       </div>
     </div>
 
+    <!-- Required pre-money for target return (FU-10) — solver only, never writes the deal pre-money -->
+    <div style="margin-top:14px;padding:12px 14px;background:#f4f3ff;border:1px solid #d8d5f5;border-radius:8px;">
+      <div style="font-size:11px;font-weight:700;color:#534AB7;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Required pre-money for target return <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— solves the price at which dividends + exit + retained cash reach the target; reference only</span></div>
+      <div class="sl-row" style="max-width:420px;">
+        <label style="font-size:10px;">Target investor multiple (×)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_targetMoic" min="1.5" max="4" step="0.1" value="2.5" oninput="sv('targetMoic',this.value)">
+          <span class="sl-val" id="targetMoic" style="min-width:40px;">2,5</span>
+        </div>
+      </div>
+      <div id="anchorOut" style="font-size:12px;color:#333;line-height:1.7;">—</div>
+    </div>
+
     <!-- Two-Tranche Pricing — same investor, two sequential closings at two different pre-money valuations -->
     <div style="margin-top:16px;">
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Two-Tranche Pricing <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— how the hero Investor Stake above is actually priced; independent of the Stage 1/Stage 2 cash-timing split</span></div>

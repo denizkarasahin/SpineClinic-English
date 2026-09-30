@@ -10,6 +10,7 @@ Baseline / after: `scratch/followups-baseline.md`, `scratch/followups-after.md`.
 - **FU-6** — 50% added to the Summary sensitivity table; live footnote with Istanbul orthotists / rooms / printers per year at 30% and 50%.
 - **FU-7** — "CE-marked" wording replaced (3 places); "no local substitute", patents and SRS/EUROSPINE listed in `scratch/content-flags.md`, discount-rate profile flagged, not changed.
 - **FU-8** — Report only: satellites at 50% vs 30% target share compared in `scratch/followups-after.md`; defaults unchanged.
+- **FU-10** — Valuation anchor solved, not committed: new live "Required pre-money for target return" tool on investor.html (`targetMoic` 1.5–4.0×, never writes `dealPreMoneyEur`); results in `scratch/valuation-anchor.md` (2.5× → €4.94M pre-money, 35.96% stake, IRR 25.2%).
 - **FU-9** — Report only: publishing/password options in the hand-over summary; no repo or Pages setting changed.
 
 ---
