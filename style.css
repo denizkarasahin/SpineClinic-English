@@ -1,3 +1,10 @@
+/* ── VIEW MODE (BC-1) — V.viewMode: "business" (default) | "investor".
+   .inv-only = investor / deal / valuation content: hidden unless shared.js marks
+   <html class="mode-investor">. .biz-only = business-case replacement content,
+   hidden in investor mode. Hidden by default so the business case never flashes
+   investor content before shared.js runs. */
+html:not(.mode-investor) .inv-only { display: none !important; }
+html.mode-investor .biz-only { display: none !important; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: Arial, sans-serif; font-size: 13px; background: #f0efe9; color: #1a1a1a; }
 .page { max-width: 1613px; margin: 0 auto; padding: 28px 32px 60px; }
