@@ -4302,6 +4302,7 @@ function buildProjection() {
   // growth-page projection table and consolidated total are built from.
   window._lastProjRows = {
     istNet: korseM1, b2b: b2bGrossRow,
+    braces: { istanbul: korseCountIst, izmir: korseCountIzmir, ankara: korseCountAnkara, bursa: korseCountBursa, gaziantep: korseCountGaziantep, b2b: b2bAdetRow },
     rev: { ist: revIst, b2b: revB2B, izmir: revIzmir, ankara: revAnkara, bursa: revBursa, gaziantep: revGaziantep, total: revTotal },
     fee: feeIncomeRow, equity: equityIncomeRow, minority: minorityRow, totals,
     sat: {
