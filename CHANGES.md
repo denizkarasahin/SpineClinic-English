@@ -1,3 +1,14 @@
+# CHANGES — Catchment & mature year (branch `catchment-mature`, from `origin/main` + DEF-1/UP-1/DEF-2; `_version` 64 → 65)
+
+Baseline / after: `scratch/cm-baseline.md`, `scratch/cm-after.md`. Core plan (5 years): Year-5 EBITDA €1,368K (was €1,367K), cumulative FCF €3,076K (was €3,100K), peak funding need €235K; mature-year EBITDA €1,368K. Phase 2: Bursa mature €69K (pays back in 44 months, Year 6), Gaziantep mature €129K (25 months).
+
+- **CM-1** — Regional catchment replaces the satellites' city-only `NufusPay`: `{city}HomePct` + `{city}RegionPct` × `{city}RegionCapturePct`/100 (default 60), × `{city}YouthWeight` (1.0); TÜİK 2024 shares, approximate, to be verified (Izmir 5.2 + 6.0, Ankara 6.8 + 5.0, Bursa 3.8 + 2.1, Gaziantep 2.5 + 7.3). Sliders and a live catchment table per satellite on the Multi-Year Plan.
+- **CM-2** — `istInflowReductionPct` (50): an open satellite removes RegionPct × capture × 50% from Istanbul's share (pro rata in its opening year; home province not deducted). Istanbul's effective share per year and an overlap check (open centres ≤ 100% of pazarTR) on the Summary and the Multi-Year Plan.
+- **CM-3** — Mature-year view for every centre (braces, revenue, EBITDA, margin, setup capex, payback at maturity, years to maturity) as a "Mature year" column in the per-centre tables (Summary + Multi-Year Plan) and in the Phase 2 block; `horizonYears` 5 / 7 toggle on the Multi-Year Plan — Years 6–7 continue each centre's ramp on the Year-5 basis; headline, payback, funding need and cumulative FCF use the chosen horizon.
+- **CM-4** — Phase 2 decision view on the Summary: per centre, network with vs without it (the other included) for Year-5 EBITDA, cumulative FCF over the horizon and mature-year EBITDA — "incremental to the network".
+
+---
+
 # CHANGES — Committed defaults from snapshot osteoid_2026-09-30 (`_version` 62 → 64)
 
 - **DEF-1** — V defaults replaced by Deniz's 2026-09-30 snapshot: Std-Reported price ₺30,500 → ₺40,500; product mix (B2C and B2B) with no Std-No-Rep. share; adult / post-op / fracture upside toggles on (separate lines, never in the base); competitor volumes (Hedef Spine 1,260/1,680, Can Erdem 900, Nesa 900, Aktif Ortez 1,080 clinic). Two negative mix cells in the snapshot (Month 4 −2, Month 9 −3) set to 0 and taken off that month's largest share. Core plan: Year-5 EBITDA €1,367K (was €1,053K), cumulative FCF €3,100K (was €2,175K), peak funding need €235K (was €332K).
