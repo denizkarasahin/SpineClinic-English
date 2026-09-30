@@ -112,7 +112,7 @@
 <div id="layout-header"></div>
 <div class="group-label">Formula &amp; Validation</div>
 
-<div class="note">⚠️ <strong>Forecast note:</strong> All figures in this projection are assumption-based. Break-even and cumulative positive dates depend on the brace ramp. Figures are prepared for understanding and questioning the business model, not for investment decisions.</div>
+<div class="note">⚠️ <strong>Forecast note:</strong> All figures in this projection are assumption-based. Break-even and cumulative positive dates depend on the brace ramp. Figures are prepared for understanding and questioning the business model<span class="inv-only">, not for investment decisions</span>.</div>
 
 <!-- ══════════════════════════════════════════════════════════ -->
 <!-- SECTION 1: PARAMETRELER -->
@@ -254,7 +254,7 @@
 <!-- ══════════════════════════════════════════════════════════ -->
 <div class="sec">
   <div class="sec-title">5 — Setup Costs (Istanbul Center 1)</div>
-  <p style="font-size:12px;color:#555;margin:0 0 10px;">One-time setup investment. This is the starting value for the cumulative budget calculation (entered as negative).</p>
+  <p style="font-size:12px;color:#555;margin:0 0 10px;">One-time setup cost. This is the starting value for the cumulative budget calculation (entered as negative).</p>
   <table class="setup-tbl" id="kurulumTbl"></table>
 </div>
 
@@ -287,8 +287,10 @@
   </table>
 
   <div class="note">
-    These are the live model's own consolidated projection rows (read directly from <code>window._lastProjRows</code>, the same rows the Multi-Year Plan table is built from) — not an independent re-derivation. Satellites are memo lines (own 100% net); the flagship's actual take is its management fee + equity share (Subsidiary mode) or 100% consolidation (Branch mode, the default). No SSI channel is modelled in this 5-year view.
+    These are the live model's own consolidated projection rows (read directly from <code>window._lastProjRows</code>, the same rows the Multi-Year Plan table is built from) — not an independent re-derivation. Satellite rows are each centre's own 100% operating profit: in Branch mode (the default) they are consolidated into the total; in Subsidiary mode they are memo lines and the flagship takes its management fee + equity share. The SGK (SSI) channel runs from Year 2 (Multi-Year Plan toggle): its revenue sits inside the rows above and its receivables delay is in the cash-flow ledger below.
   </div>
+  <div class="sub-title"><span class="inv-only">Cash Flow, Valuation &amp; Investor Return (Live)</span><span class="biz-only">Cash Flow (Live)</span> — with identity checks</div>
+  <div id="cfLedger"></div>
 </div>
 
 <!-- ══════════════════════════════════════════════════════════ -->
@@ -684,12 +686,12 @@ function renderProjection() {
     '<span class="k">Y2-5_Gross</span>   = LINEAR(Y1 gross €'+(istGross[0]||0)+'K → Y5 target €'+(istGross[4]||0)+'K), reached over istRampYears='+(V.istRampYears||5)+' yr\n' +
     '<span class="k">Y2-5_Opex</span>    = capacity-derived: structural base ×1.15/1.18/1.22/1.25 + time-&-motion staff / printers / branches\n' +
     '<span class="k">           </span>   → Opex €['+istOpex.join(' / ')+']K\n' +
-    '<span class="r">Yr_Net</span>       = MAX(0, Gross − Opex) → €['+P.istNet.join(' / ')+']K\n\n' +
-    '<span class="c">── SATELLITES (memo — each center\'s own 100% net) ─────────────────────────</span>\n' +
+    '<span class="r">Yr_OpProfit</span>  = Gross − Opex, not floored (a ramp-year loss stays a loss) → €['+P.istNet.join(' / ')+']K\n\n' +
+    '<span class="c">── SATELLITES (each centre\'s own 100% operating profit — memo only in Subsidiary mode) ──</span>\n' +
     '<span class="k">Target</span>      = city market (its pop. share of the TR total) × the center\'s target market-share %\n' +
-    '<span class="k">UnitNet</span>     = year-end mix (last 3 months) = ₺'+sonBirimNet.toLocaleString('tr-TR')+'/brace — same basis as Istanbul\'s target year\n' +
+    '<span class="k">UnitNet</span>     = premium-mix ramp (Y2 '+(V.premiumMixY2)+'% · Y3-5 '+(V.premiumMixY3)+'% perforated+sensor) → €'+((window._lastPremiumMix||{unitNetEur:[]}).unitNetEur.slice(1).join(' / '))+'/brace Y2-5 — same for every centre\n' +
     '<span class="k">Ramp</span>        = reaches full target over {city}RampYears yr from opening (Izmir/Ankara open Y2, Bursa/Gaziantep Y3)\n' +
-    '<span class="k">Net</span>         = Gross − the center\'s own operating cost (own rent/staff; no HQ overhead)\n\n' +
+    '<span class="k">Net</span>         = Gross − the centre\'s own operating cost (own rent/staff) − its share of the head-office add-on (quality & regulatory, IT, HR, group finance — functions not already booked; by revenue share)\n\n' +
     '<span class="c">── FLAGSHIP TAKE FROM SATELLITES ──────────────────────────────────────────</span>\n' +
     '<span class="k">Branch (şube)</span> = 100% of the satellite P&L consolidates into the flagship (committed default)\n' +
     '<span class="k">Subsidiary</span>    = management fee ('+(V.yonetimUcretiPct!=null?V.yonetimUcretiPct:5)+'% of gross) + equity (flagshipPay%, default 65%, of net-after-fee); the rest is minority interest\n' +
@@ -700,15 +702,15 @@ function renderProjection() {
   const cells = arr => arr.map(v=>'<td class="result">'+fmt(v)+'</td>').join('');
   const rowHtml = (name, formula, arr) => '<tr><td>'+name+'</td><td class="formula">'+formula+'</td>'+cells(arr)+'</tr>';
   let html = '';
-  html += rowHtml('Istanbul C1 (private channel)', 'gross ramp − capacity-derived opex', P.istNet);
+  html += rowHtml('Istanbul clinic — operating profit', 'gross ramp − capacity-derived opex', P.istNet);
   if (anyB2B) html += rowHtml('B2B — Istanbul', 'ramped Y2-5 stream (printers only)', P.b2b);
   satOrder.forEach(pr => {
     const s = P.sat[pr[0]];
-    if (s.aktif) html += rowHtml(pr[1]+' Center <span style="font-weight:400;font-size:10px;opacity:.7;">— own net, memo</span>', 'target × year-end unit net, ramped '+s.ramp+'yr from Y'+s.openYear, s.net);
+    if (s.aktif) html += rowHtml(pr[1]+' Center <span style="font-weight:400;font-size:10px;opacity:.7;">— '+(s.isSube?'branch, consolidated':'subsidiary, memo')+'</span>', 'target × year-end unit net, ramped '+s.ramp+'yr from Y'+s.openYear, s.net);
   });
   if (anyFee) html += rowHtml('↳ Management fee to flagship', '% of satellite gross revenue', P.fee);
-  if (anyEquity) html += rowHtml('↳ Equity income to flagship', 'flagship % of satellite net-after-fee', P.equity);
-  html += '<tr class="grp"><td>Consolidated Total (Flagship)</td><td class="formula">C1 + B2B + fee + equity</td>'+cells(P.totals)+'</tr>';
+  if (anyEquity) html += rowHtml(_satAggLabels().equity, 'branches: 100% of operating profit · subsidiaries: flagship % of net after fee', P.equity);
+  html += '<tr class="grp"><td>Consolidated operating profit (flagship)</td><td class="formula">clinic + B2B + satellite branches 100% (or subsidiary fee + equity)</td>'+cells(P.totals)+'</tr>';
   document.getElementById('projTbody').innerHTML = html;
 }
 
@@ -738,7 +740,7 @@ function renderMerkezler() {
   document.getElementById('formulMerkez').innerHTML =
     '<span class="c">── SATELLITE FULL-CAPACITY NET REVENUE (live model) ────────────────────────</span>\n\n' +
     '<span class="k">Target</span>       = TR market × city population share × the center\'s target market-share %\n\n' +
-    '<span class="k">UnitNetTRY</span>   = year-end mix (last 3 mo net revenue) / (last 3 mo braces) — the mature product mix, same basis Istanbul\'s target year uses\n\n' +
+    '<span class="k">UnitNetTRY</span>   = Year-5 premium-mix unit net (premiumMixY3 share of perforated+sensor braces, each SKU at its live price − doctor fees − material − royalty) — same basis as every centre\n\n' +
     '<span class="k">GrossRevenue</span> = Target × UnitNetTRY\n\n' +
     '<span class="k">OpCost</span>       = the center\'s own operating cost (rent, expert orthotist + time-&-motion fitting/support staff at the network SGK multiplier, utilities, kitchen) × 1.25 mature-year factor — no HQ overhead\n\n' +
     '<span class="r">NetRevenueEurK</span> = (GrossRevenue − OpCost) / eurRate / 1000\n\n' +
@@ -748,7 +750,7 @@ function renderMerkezler() {
   const sonR = rows.slice(-3);
   const sonK = sonR.reduce((s,r)=>s+(r.korse||0),0)||1;
   const sonN = sonR.reduce((s,r)=>s+(r.gelirNet||0),0);
-  const birimNetTRY = Math.round(sonN / sonK);
+  const birimNetTRY = Math.round(window._lastPremiumMix ? window._lastPremiumMix.unitNetEur[4] * eurKur : sonN / sonK); // FU-3: Year-5 mix
   const satOrder = [['izmir','Izmir'],['ankara','Ankara'],['bursa','Bursa'],['gaziantep','Gaziantep']];
 
   document.getElementById('merkezTbody').innerHTML = satOrder.map(pr => {
@@ -803,6 +805,7 @@ window.addEventListener('load', function() {
   renderMonthlyTable();
   renderKurulum();
   renderProjection();
+  renderValidationLedger('cfLedger');
   renderMerkezler();
 });
 </script>

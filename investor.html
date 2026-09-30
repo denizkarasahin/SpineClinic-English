@@ -14,7 +14,7 @@
 </style>
 </head>
 <body>
-<div class="page" style="padding-top:0">
+<div class="page inv-only" style="padding-top:0">
 
 <div id="layout-header"></div>
 
@@ -33,19 +33,18 @@
   <div class="section-header open" onclick="tog(this)"><h2>The Deal at a Glance</h2><span class="tog">▾</span></div>
   <div class="section-body" style="display:block;">
 
-    <div class="note-box" style="margin-bottom:12px;">Return comes from two mechanisms: annual dividends after cumulative positive, and a strategic exit — see comps below.</div>
+    <div class="note-box" style="margin-bottom:12px;">Return comes from two mechanisms, both modelled and shown on separate lines in Your Return: annual dividends (draft policy: at least the payout % below of distributable profit, from the first year cumulative net income is positive) and a strategic exit (plus the cash still on the balance sheet at exit).</div>
 
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:6px;" id="dcfKpiGrid">
-      <div class="kpi"><div class="kpi-label">Modeled Value (DCF)</div><div class="kpi-val neu" id="dcf_premoney" title="Present value of exit + cash flows, discounted at r — before the negotiation discount">—</div></div>
-      <div class="kpi"><div class="kpi-label">Deal Pre-Money (after discount)</div><div class="kpi-val pos" id="dcf_premoney_final" title="Modeled Value × (1 − negotiation discount) — no asset floor; IP/exclusivity are a cash purchase paid to Osteoid at Stage 2 (Investor Ticket), not an in-kind equity item">—</div></div>
+      <div class="kpi"><div class="kpi-label">Deal Pre-Money (negotiated input)</div><div class="kpi-val pos" id="dcf_premoney_final" title="Set by the Deal Pre-Money slider below — a negotiated price, not a model output. Fixed across scenarios so investor returns are comparable.">—</div><div style="font-size:10px;color:#888;margin-top:2px;" id="dcf_premoney_vs_dcf">—</div></div>
+      <div class="kpi"><div class="kpi-label">DCF value (reference only)</div><div class="kpi-val neu" id="dcf_premoney" title="Present value of Years 1-5 after-tax free cash flow + terminal value (Year-5 after-tax FCF × exit multiple), discounted at r. Shown for reference — it does not set the deal price.">—</div></div>
       <div class="kpi"><div class="kpi-label">Post-Money</div><div class="kpi-val neu" id="dcf_postmoney" title="Deal Pre-Money + actual new cash raised (Investor Ticket + Doctor-Investor) — one priced deal, two closings: the stake and post-money are set once, up front, for the full committed amount">—</div></div>
-      <div class="kpi"><div class="kpi-label">Stage 1 — Bridge</div><div class="kpi-val neu" id="dcf_stage1" title="At closing: Istanbul setup (incl. Overhead) + model-derived working capital + Stage 1 buffer. No rights payments at this stage — see Investment Breakdown">—</div></div>
-      <div class="kpi"><div class="kpi-label">Stage 2 — Committed</div><div class="kpi-val neu" id="dcf_stage2" title="Milestone-triggered: IP license + city exclusivity (purchased from Osteoid A.Ş.) + Izmir/Ankara/Bursa/Gaziantep setup (incl. Overhead) + remaining working capital buffer — see Investment Breakdown">—</div></div>
+      <div class="kpi"><div class="kpi-label">Stage 1 — Bridge</div><div class="kpi-val neu" id="dcf_stage1" title="At closing: Istanbul setup (incl. pre-opening overheads) + model-derived working capital + Stage 1 buffer — see Investment Breakdown">—</div></div>
+      <div class="kpi"><div class="kpi-label">Stage 2 — Committed</div><div class="kpi-val neu" id="dcf_stage2" title="Milestone-triggered: Izmir/Ankara/Bursa/Gaziantep setup (incl. pre-opening overheads) + remaining working capital buffer — see Investment Breakdown">—</div></div>
       <div class="kpi"><div class="kpi-label">Total Committed</div><div class="kpi-val neu" id="dcf_investor_ticket" title="Stage 1 + Stage 2 — one priced deal, two closings: this full amount (not just Stage 1) is what Post-Money and Investor Stake are computed against">—</div></div>
       <div class="kpi"><div class="kpi-label">Investor Stake</div><div class="kpi-val pos" id="dcf_yatirimci_hisse" title="The Two-Tranche Pricing blended stake below — same investor, two sequential closings at two pre-money valuations, not a flat cash÷post-money ratio and not the Contribution Register">—</div></div>
-      <div class="kpi"><div class="kpi-label">Implied Investor MOIC at Exit</div><div class="kpi-val pos" id="dcf_investor_moic_exit" title="Exit Value (Year 5 EBITDA × Exit Multiple) × Investor Stake (two-tranche blended) ÷ Total Committed">—</div></div>
+      <div class="kpi"><div class="kpi-label">Investor MOIC — dividends + exit (Base)</div><div class="kpi-val pos" id="dcf_investor_moic_exit" title="(Dividends received Years 1-5 + Exit EV × stake + retained cash at exit × stake) ÷ Total Committed. Exit EV = Year 5 EBITDA × Base multiple (EV/EBITDA); stake = two-tranche blended, from the fixed deal pre-money">—</div><div style="font-size:10px;color:#888;margin-top:2px;" id="dcf_investor_moic_split">—</div></div>
     </div>
-    <div class="note-box" style="margin-top:10px;margin-bottom:6px;">Stage 1 funds only tangible build-out — rights are purchased at Stage 2, after Istanbul is operational. License &amp; exclusivity (<span id="dcf_rights_purchase">€1,000,000</span>) are bought from Osteoid A.Ş. under a License Purchase Agreement executed at Stage 1 signing — arm's-length, disclosed, price fixed at signing — with payment due at Stage 2 closing.</div>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
       <div class="sl-row" style="grid-column:1 / -1;">
@@ -59,11 +58,11 @@
           <input type="range" id="s_dcfRate" min="10" max="40" step="1" value="20" oninput="svDcf('dcfRate',this.value)">
           <span class="sl-val" id="dcfRate" style="min-width:40px;">20</span>
         </div>
-        <div class="note-box" style="margin-top:8px;background:#f4f3ff;border-color:#d8d5f5;color:#3d3680;">Default profile — <b>Proven technology, new venue (20%)</b>: technology operational in 17 countries, 3,000+ braces produced, CE-marked platform; exclusive territorial rights granted; no local substitute exists. Remaining risk is single-site execution, not technology or market risk.</div>
+        <div class="note-box" style="margin-top:8px;background:#f4f3ff;border-color:#d8d5f5;color:#3d3680;">Default profile — <b>Proven technology, new venue (20%)</b>: technology operational in 17 countries, 3,000+ braces produced, custom-made (ısmarlama) devices produced through licensed Ortez Protez Merkezi centres; no local substitute exists. Remaining risk is single-site execution, not technology or market risk.</div>
         <span class="sl-note">Buttons set the discount rate to a named anchor; drag the slider for anything in between (fine-control range 10–40%).</span>
       </div>
       <div class="sl-row">
-        <label style="font-size:10px;">Base Exit Multiple (×) — used for DCF terminal value &amp; Base scenario</label>
+        <label style="font-size:10px;">Base Exit Multiple (×) — the one multiple set's Base: DCF terminal value &amp; every Base-case exit EV</label>
         <div class="sl-controls">
           <input type="range" id="s_dcfExitMult" min="4" max="20" step="0.5" value="10" oninput="svDcf('dcfExitMult',this.value)">
           <span class="sl-val" id="dcfExitMult" style="min-width:40px;">10×</span>
@@ -71,12 +70,36 @@
         <span class="sl-note">EV/EBITDA at exit — typical healthcare clinic 6–12×; a proven platform with de-risked technology and market fit commands the higher end of that range, not the low end reserved for unproven concepts. The satellite management-fee stream is valued separately, at its own (typically richer) multiple, when the sum-of-parts toggle is on (see Deal Structure &amp; Assumptions below).</span>
       </div>
       <div class="sl-row">
-        <label style="font-size:10px;">Negotiation discount to modeled value (%)</label>
+        <label style="font-size:10px;">Conservative case — offset below Base (−×)</label>
         <div class="sl-controls">
-          <input type="range" id="s_dcfNegotiationDiscount" min="0" max="90" step="5" value="20" oninput="sv('dcfNegotiationDiscount',this.value)">
-          <span class="sl-val" id="dcfNegotiationDiscount" style="min-width:40px;">20</span>
+          <input type="range" id="s_exitMultLowDelta" min="0" max="6" step="0.5" value="2" oninput="sv('exitMultLowDelta',this.value)">
+          <span class="sl-val" id="exitMultLowDelta" style="min-width:40px;">2</span>
         </div>
-        <span class="sl-note">The modeled DCF value is the anchor; this discount is the negotiated concession for single-site execution risk (not yet a proven multi-year, multi-center track record at this specific venue).</span>
+        <span class="sl-note">Conservative multiple = Base − this (never below 2×). Used by every scenario table.</span>
+      </div>
+      <div class="sl-row">
+        <label style="font-size:10px;">Optimistic case — offset above Base (+×)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_exitMultHighDelta" min="0" max="8" step="0.5" value="3" oninput="sv('exitMultHighDelta',this.value)">
+          <span class="sl-val" id="exitMultHighDelta" style="min-width:40px;">3</span>
+        </div>
+        <span class="sl-note">Optimistic multiple = Base + this.</span>
+      </div>
+      <div class="sl-row">
+        <label style="font-size:10px;">Multi-centre premium (+×, added to all three multiples)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_multiCenterPremiumX" min="0" max="4" step="0.5" value="0" oninput="sv('multiCenterPremiumX',this.value)">
+          <span class="sl-val" id="multiCenterPremiumX" style="min-width:40px;">0</span>
+        </div>
+        <span class="sl-note">Explicit, default 0. Replaces the old hidden automatic +1×/+2× for multiple centres. Applies to the DCF terminal value and every exit EV.</span>
+      </div>
+      <div class="sl-row">
+        <label style="font-size:10px;">Deal Pre-Money (€) — negotiated input</label>
+        <div class="sl-controls">
+          <input type="range" id="s_dealPreMoneyEur" min="2000000" max="40000000" step="50000" value="10964800" oninput="sv('dealPreMoneyEur',this.value)">
+          <span class="sl-val" id="dealPreMoneyEur" style="min-width:90px;">10.964.800</span>
+        </div>
+        <span class="sl-note">The price the round is signed at. It is held fixed while other inputs change, so the investor stake stays put and every scenario shows its real effect on the return. The DCF value next to it is a reference point only. Default = the committed-default output of the previous formula (DCF × (1 − 20%)) — a starting point for negotiation, not a recommendation.</span>
       </div>
       <div class="sl-row">
         <label style="font-size:10px;">Tranche 1 amount (€)</label>
@@ -96,6 +119,19 @@
       </div>
     </div>
 
+    <!-- Required pre-money for target return (FU-10) — solver only, never writes the deal pre-money -->
+    <div style="margin-top:14px;padding:12px 14px;background:#f4f3ff;border:1px solid #d8d5f5;border-radius:8px;">
+      <div style="font-size:11px;font-weight:700;color:#534AB7;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Required pre-money for target return <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— solves the price at which dividends + exit + retained cash reach the target; reference only</span></div>
+      <div class="sl-row" style="max-width:420px;">
+        <label style="font-size:10px;">Target investor multiple (×)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_targetMoic" min="1.5" max="4" step="0.1" value="2.5" oninput="sv('targetMoic',this.value)">
+          <span class="sl-val" id="targetMoic" style="min-width:40px;">2,5</span>
+        </div>
+      </div>
+      <div id="anchorOut" style="font-size:12px;color:#333;line-height:1.7;">—</div>
+    </div>
+
     <!-- Two-Tranche Pricing — same investor, two sequential closings at two different pre-money valuations -->
     <div style="margin-top:16px;">
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Two-Tranche Pricing <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— how the hero Investor Stake above is actually priced; independent of the Stage 1/Stage 2 cash-timing split</span></div>
@@ -112,7 +148,7 @@
           </tbody>
         </table>
       </div>
-      <div class="note-box">Tranche 1 buys its stake of the pre-Tranche-2 company at Tranche 1's pre-money; Tranche 2 buys its stake of the post-Tranche-1 company at the full discounted-DCF pre-money. The same investor holds both, so <b>Blended</b> = Tranche 1's diluted remainder + the investor's fresh Tranche 2 stake — this is the "~20%" figure the deck quotes, and it's the exact same number as the "Investor Stake" hero card above (not a separate, second figure).</div>
+      <div class="note-box">Tranche 1 buys its stake of the pre-Tranche-2 company at Tranche 1's pre-money; Tranche 2 buys its stake of the post-Tranche-1 company at the full negotiated deal pre-money. The same investor holds both, so <b>Blended</b> = Tranche 1's diluted remainder + the investor's fresh Tranche 2 stake — this is the "~20%" figure the deck quotes, and it's the exact same number as the "Investor Stake" hero card above (not a separate, second figure).</div>
     </div>
 
   </div>
@@ -125,6 +161,15 @@
   <div class="section-header open" onclick="tog(this)"><h2>Your Return</h2><span class="tog">▾</span></div>
   <div class="section-body" style="display:block;">
 
+    <div class="sl-row" style="max-width:420px;margin-bottom:14px;">
+      <label style="font-size:10px;">Dividend payout (% of distributable profit)</label>
+      <div class="sl-controls">
+        <input type="range" id="s_dividendPayoutPct" min="0" max="100" step="5" value="60" oninput="sv('dividendPayoutPct',this.value)">
+        <span class="sl-val" id="dividendPayoutPct" style="min-width:40px;">60</span>
+      </div>
+      <span class="sl-note">Draft Shareholders' Agreement: "at least [60]% of distributable profit … from the first cumulative-positive year". Distributable = after-tax net income once earlier losses are covered; each year's dividend is capped at the cash actually available. The policy's working-capital reserve is not modelled beyond that cap.</span>
+    </div>
+
     <!-- YATIRIMCİ GETİRİ ANALİZİ -->
     <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:14px;">Investor Return Analysis — For €<span id="gtr_invest_lbl">150.000</span> Investment</div>
 
@@ -133,31 +178,42 @@
         <thead>
           <tr>
             <th style="text-align:left;">Scenario</th>
-            <th>Enterprise Value</th>
+            <th>Exit EV</th>
             <th>Your Stake</th>
-            <th>Your Payout</th>
+            <th>Exit proceeds</th>
+            <th>+ Retained cash</th>
+            <th>+ Dividends (Y1–5)</th>
+            <th>Total to you</th>
             <th>MOIC</th>
-            <th>IRR (5yr ann.)</th>
+            <th>IRR (timed)</th>
           </tr>
         </thead>
         <tbody id="getiriTableBody">
-          <tr><td colspan="6" style="text-align:center;color:#aaa;font-size:11px;">Calculating...</td></tr>
+          <tr><td colspan="9" style="text-align:center;color:#aaa;font-size:11px;">Calculating...</td></tr>
         </tbody>
       </table>
     </div>
-    <div class="note-box" style="margin-bottom:16px;"><b>MOIC</b> = Your payout ÷ your ticket; <b>IRR</b> = annualized return over 5 years. <b>Color guide:</b> green = IRR ≥ 25% / MOIC ≥ 3×, yellow = IRR ≥ 15% / MOIC ≥ 2×, red = below.</div>
+    <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin:14px 0 8px;">Your Cash Flows — Base case <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— each return component on its own line</span></div>
+    <div class="tbl-wrap" style="margin-bottom:6px;">
+      <table>
+        <thead><tr><th style="text-align:left;">Line</th><th>Closing</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>Year 4</th><th>Year 5</th></tr></thead>
+        <tbody id="investorCashflowBody"><tr><td colspan="7" style="text-align:center;color:#aaa;font-size:11px;">Calculating...</td></tr></tbody>
+      </table>
+    </div>
+    <div id="investorReturnSummary" style="font-size:11px;color:#555;margin-bottom:10px;">—</div>
+    <div class="note-box" style="margin-bottom:16px;"><b>MOIC</b> = (dividends + exit proceeds + retained cash at exit) ÷ your ticket; <b>IRR</b> = from the timed cash flows above (Stage 1 at closing, Stage 2 at the start of its release year, dividends at year-end, exit at the end of Year 5). <b>Color guide:</b> green = IRR ≥ 25% / MOIC ≥ 3×, yellow = IRR ≥ 15% / MOIC ≥ 2×, red = below.</div>
 
     <!-- MOIC Sensitivity mini-table -->
     <div style="margin-top:18px;">
-      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">MOIC Sensitivity — Year 5 Exit Multiple Sweep</div>
+      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">MOIC Sensitivity — Year 5 Exit Multiple Sweep <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— a sweep, not a scenario set; the three scenario multiples are tagged</span></div>
       <div class="tbl-wrap" style="margin-bottom:10px;">
         <table id="moicSensTable" style="min-width:340px;">
           <thead>
             <tr>
               <th>Exit Multiple</th>
               <th>Enterprise Value</th>
-              <th>MOIC</th>
-              <th>IRR (5yr)</th>
+              <th>MOIC (incl. dividends)</th>
+              <th>IRR (timed)</th>
             </tr>
           </thead>
           <tbody id="moicSensBody">
@@ -197,13 +253,13 @@
     </div>
 
     <!-- Cash-on-Cash Return — same after-tax FCF stream, two denominators -->
-    <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin:16px 0 8px;">Cash-on-Cash Return <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— cumulative after-tax free cash flow ÷ capital invested</span></div>
+    <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin:16px 0 8px;">Cash-on-Cash Return <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— cumulative after-tax operating cash flow (before build-out capex) ÷ capital invested</span></div>
     <div class="tbl-wrap" style="margin-bottom:10px;">
       <table id="cashReturnTable">
         <thead><tr>
           <th style="text-align:left;">Basis</th>
           <th>Capital invested</th>
-          <th>Cumulative FCF (5yr)</th>
+          <th>Cumulative operating cash after tax (5yr)</th>
           <th>Gross Multiple</th>
           <th>Net-to-Investor Multiple</th>
           <th>Simple payback</th>
@@ -219,13 +275,13 @@
     <details style="margin-bottom:8px;">
       <summary style="cursor:pointer;font-size:11px;font-weight:700;color:#534AB7;">How these numbers are calculated</summary>
       <div class="note-box" style="margin-top:10px;">
-        <b>MOIC</b> = Your payout ÷ your ticket. <b>IRR</b> = annualized return over 5 years (simple: MOIC^(1/5)−1). <b>Enterprise Value</b> = Year 5 EBITDA × exit multiple. Your payout = EV × your equity stake. Equity stake = your ticket ÷ post-money valuation. The "For 3× MOIC" row shows the EV and exit multiple required to triple your investment — use it as a target benchmark. <b>Color guide:</b> green = IRR ≥ 25% / MOIC ≥ 3×, yellow = IRR ≥ 15% / MOIC ≥ 2×, red = below.
+        <b>MOIC</b> = (dividends received + exit proceeds + retained cash at exit) ÷ your ticket. <b>IRR</b> = internal rate of return of the timed investor cash flows (see Your Cash Flows). <b>Exit EV</b> = Year 5 EBITDA × exit multiple (EV/EBITDA). Exit proceeds = Exit EV × your stake; retained cash = the company's cash at the end of Year 5 (after dividends) × your stake — no debt is modelled, so equity value = EV + cash. Your stake = the two-tranche blended stake priced off the fixed deal pre-money. The "For 3× MOIC" row shows the exit EV and multiple at which the three components together reach 3× — use it as a target benchmark. <b>Color guide:</b> green = IRR ≥ 25% / MOIC ≥ 3×, yellow = IRR ≥ 15% / MOIC ≥ 2×, red = below.
       </div>
       <div class="note-box" style="margin-top:10px;font-size:11px;">
         MOIC and IRR above are for the Lead Investor's own Investor Ticket and Investor Stake — the priced round from The Deal at a Glance (the Two-Tranche Pricing blended stake, not a flat Investor Ticket ÷ Post-Money ratio), not the Contribution Register. Doctor-investors have their own cash amount and a flat cash ÷ Post-Money stake (un-tranched). Physician partners referring patients also earn Sci/Edu/Library fees during Years 1–5 (independent of equity) — this is additional return not captured here.
       </div>
       <div class="note-box" style="margin-top:10px;">
-        <b>Return on cash invested</b> is the external investor's cash-on-cash view — capital that actually leaves an investor's pocket (clinic setup cost + working capital, read live from the Investment Breakdown table in Deal Structure &amp; Assumptions). <b>Return on total capital</b> additionally counts Osteoid A.Ş.'s remaining in-kind contribution (machinery, only when Osteoid-owned) as invested capital, so it's always ≤ the cash-only return — IP license and city exclusivity are no longer in-kind here, since the clinic now buys them from Osteoid for cash (the Investor Ticket). Both rows use the same after-tax free cash flow stream as the DCF table, and both react live to the equipment-ownership toggle, the corporate tax toggle, and any P&amp;L slider that moves the Year-1 cash trough. <b>Gross Multiple</b> = cumulative FCF ÷ capital invested, before shareholder-level exit tax. <b>Net-to-Investor Multiple</b> applies the Exit Tax Structuring result (Deal Structure &amp; Assumptions below) to the gain portion only — return of capital itself is never taxed.
+        <b>Return on cash invested</b> is the external investor's cash-on-cash view — capital that actually leaves an investor's pocket (clinic setup cost + working capital, read live from the Investment Breakdown table in Deal Structure &amp; Assumptions). <b>Return on total capital</b> additionally counts Osteoid A.Ş.'s remaining in-kind contribution (machinery, only when Osteoid-owned) as invested capital, so it's always ≤ the cash-only return. Both rows use the same after-tax free cash flow stream as the DCF table, and both react live to the equipment-ownership toggle, the corporate tax toggle, and any P&amp;L slider that moves the Year-1 cash trough. <b>Gross Multiple</b> = cumulative FCF ÷ capital invested, before shareholder-level exit tax. <b>Net-to-Investor Multiple</b> applies the Exit Tax Structuring result (Deal Structure &amp; Assumptions below) to the gain portion only — return of capital itself is never taxed.
       </div>
       <div class="note-box" style="margin-top:10px;font-size:11px;">
         Tax treatment is a structuring assumption based on current Turkish law; certificate printing dates, ilmühaber validity, and KVK 5/1-e conditions must be confirmed with the YMM before signing. Entity structure, certificate timing, and branch/subsidiary selection require YMM sign-off before execution.
@@ -247,7 +303,7 @@
     <!-- NETWORK STRUCTURE (compact mirror) -->
     <div style="margin-bottom:24px;background:#f7f7f4;border:1px solid #e0e0dc;border-radius:8px;padding:16px;">
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">Network Structure — Flagship &amp; Satellites</div>
-      <div style="font-size:12px;color:#555;line-height:1.7;">Osteoid scales hub-and-spoke: Istanbul is the <b>flagship</b> — it runs its own clinic and acts as the network's management company. Izmir, Ankara, Bursa, Gaziantep, and future cities are <b>satellites</b>: separate companies, majority-owned by the flagship, each with its own local investors and its own regulatory license. Satellites pay the flagship a management fee on gross revenue, and the flagship holds an equity stake in each satellite's remaining profit — but satellite expansion is funded by local investors at the satellite level, so the flagship's own cap table never dilutes as the network grows. Full explainer, chain diagram, and the live fee/ownership sliders: <a href="captable.html" style="color:#534AB7;font-weight:700;">Cap Table</a> and <a href="growth.html" style="color:#534AB7;font-weight:700;">Multi-Year Plan</a>.</div>
+      <div style="font-size:12px;color:#555;line-height:1.7;">Osteoid scales hub-and-spoke: Istanbul is the <b>flagship</b> — it runs its own clinic and acts as the network's management company. Izmir, Ankara, Bursa, Gaziantep, and future cities are <b>satellites</b>. In the committed default they are <b>branches (şube) of the flagship</b>: their build-outs are funded by Stage 2 of this round (or, for Bursa/Gaziantep, from the flagship's own free cash), and 100% of their results — including any loss — consolidate into the flagship; there is no management fee and no local investor. Any satellite can instead be modelled as a separate, majority-owned subsidiary with local investors, paying the flagship a management fee on gross revenue plus an equity share of its remaining profit — that alternative is a toggle on the Multi-Year Plan, not the default. Full explainer, chain diagram, and the live fee/ownership sliders: <a href="captable.html" style="color:#534AB7;font-weight:700;">Cap Table</a> and <a href="growth.html" style="color:#534AB7;font-weight:700;">Multi-Year Plan</a>.</div>
     </div>
 
     <!-- MULTI-YEAR ROADMAP -->
@@ -302,11 +358,11 @@
       <!-- WHY DE-RISKED (compact mirror) -->
       <div style="margin-bottom:24px;background:#f7f7f4;border:1px solid #e0e0dc;border-radius:8px;padding:16px;">
         <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">Why This Venture Is De-Risked</div>
-        <div style="font-size:12px;color:#555;line-height:1.7;">Not a first-time startup bet: the platform is already operational in <b>17 countries</b> with 3,000+ braces produced on a CE-marked design; the flagship holds exclusive territorial rights (currently <b id="deRisked_excl">—</b>) including satellite sub-licensing; the underlying CAD/CAM IP (currently <b id="deRisked_ip">—</b>) is proprietary and patent-backed, so local competitors cannot access or replicate it; and clinical/production workflows arrive pre-validated from existing deployments rather than being built from scratch. This is why the model prices at r = <b id="deRisked_rate">—</b> (<b id="deRisked_profile">—</b>), not the startup rate — full explainer on the <a href="captable.html" style="color:#534AB7;font-weight:700;">Cap Table</a> page.</div>
+        <div style="font-size:12px;color:#555;line-height:1.7;">Not a first-time startup bet: the platform is already operational in <b>17 countries</b> with 3,000+ braces delivered as custom-made (ısmarlama) devices produced through licensed Ortez Protez Merkezi centres; the underlying CAD/CAM IP is proprietary and patent-backed, so local competitors cannot access or replicate it; and clinical/production workflows arrive pre-validated from existing deployments rather than being built from scratch. This is why the model prices at r = <b id="deRisked_rate">—</b> (<b id="deRisked_profile">—</b>), not the startup rate — full explainer on the <a href="captable.html" style="color:#534AB7;font-weight:700;">Cap Table</a> page.</div>
       </div>
 
       <!-- Yatırım Dökümü (Investment Breakdown) — fully derived, nothing typed here -->
-      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Investment Breakdown <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— Stage 1 &amp; Stage 2 of the committed cash (Investor Ticket, incl. the Stage 2 rights purchase), clinic cash from the live model, and Osteoid's remaining in-kind (machinery only)</span></div>
+      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Investment Breakdown <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— Stage 1 &amp; Stage 2 of the committed cash (Investor Ticket), clinic cash from the live model, and Osteoid's remaining in-kind (machinery only)</span></div>
       <div class="tbl-wrap" style="margin-bottom:12px;">
         <table id="investBreakdownTable">
           <thead><tr>
@@ -343,84 +399,216 @@
       </div>
       <div id="workingCapFcfNote" class="note-box" style="display:none;margin-bottom:12px;background:#f0faf4;border-color:#b4e0c4;color:#1a7a45;"></div>
 
-      <!-- License & Exclusivity — Rights Purchase, paid to Osteoid at Stage 2, part of the funded round -->
-      <div style="font-size:11px;font-weight:700;color:#185FA5;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Rights Purchase — Stage 2 <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— purchased from Osteoid A.Ş., price fixed at Stage 1 signing, payment due at Stage 2 closing; feeds the Investor Ticket</span></div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:16px;background:#eef6ff;border:1px solid #b8d4f0;border-radius:8px;padding:14px;">
+
+      <!-- Royalty — scenario only (FU-2) -->
+      <div style="font-size:11px;font-weight:700;color:#BA7517;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Royalty to Osteoid A.Ş. — scenario only <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— €0 in the base case</span></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-bottom:16px;background:#fffaf0;border:1px solid #f0d9a8;border-radius:8px;padding:14px;">
         <div class="sl-row">
-          <label style="font-size:10px;">IP / Design-Library License (€)</label>
+          <label style="font-size:10px;">Royalty (€ per brace, every brace incl. B2B)</label>
           <div class="sl-controls">
-            <input type="range" id="s_ipLisansEur" min="100000" max="1000000" step="10000" value="500000" oninput="sv('ipLisansEur',this.value)">
-            <span class="sl-val" id="ipLisansEur" style="min-width:70px;">500.000</span>
+            <input type="range" id="s_royaltyEur" min="0" max="150" step="5" value="0" oninput="sv('royaltyEur',this.value)">
+            <span class="sl-val" id="royaltyEur" style="min-width:40px;">0</span>
           </div>
-          <span class="sl-note">Purchased for cash from Osteoid A.Ş. under a License Purchase Agreement executed at Stage 1 signing (arm's-length, disclosed) — payment due at Stage 2 closing, part of the Investor Ticket</span>
-        </div>
-        <div class="sl-row">
-          <label style="font-size:10px;">Master Development Rights / Territory Exclusivity (€)</label>
-          <div class="sl-controls">
-            <input type="range" id="s_sehirEksklusifEur" min="100000" max="1000000" step="10000" value="500000" oninput="sv('sehirEksklusifEur',this.value)">
-            <span class="sl-val" id="sehirEksklusifEur" style="min-width:70px;">500.000</span>
+          <div style="display:flex;gap:6px;margin-top:4px;">
+            <button type="button" onclick="setRoyalty(0)" style="font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;border:1px solid #534AB7;background:#fff;color:#534AB7;cursor:pointer;">Base — €0</button>
+            <button type="button" onclick="setRoyalty(75)" style="font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;border:1px solid #BA7517;background:#fff;color:#BA7517;cursor:pointer;">€75/brace royalty (scenario)</button>
           </div>
-          <span class="sl-note">Purchased for cash from Osteoid A.Ş. at Stage 2 closing — includes satellite sub-licensing rights (see Network Structure above); performance-conditional only if Osteoid's stake falls below 50%</span>
+          <span class="sl-note">Intercompany transfer to Osteoid A.Ş.; nets out in the consolidated view, a cost in the centres-company view.</span>
         </div>
       </div>
 
       <!-- Setup Costs — 5 Centers, grouped side by side -->
-      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Setup Costs — 5 Centers <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— each linked to its own model, each with a manual Overhead adjustment; all five feed the Investor Ticket</span></div>
+      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Setup Costs — 5 Centers <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— each linked to its own model, each with itemised pre-opening overheads; all five feed the Investor Ticket</span></div>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:16px;">
         <div class="sl-row">
           <label style="font-size:10px;">Setup Costs — Center 1 (€)</label>
           <div style="background:#f4f3ff;border:1px solid #d8d5f5;border-radius:6px;padding:10px 12px;font-size:11px;color:#3d3680;">
-            <strong id="setupCostsEurDisp" style="color:#534AB7;font-size:13px;">—</strong> — Istanbul capex from the <a href="expenses.html" style="color:#534AB7;font-weight:700;">Expenses</a> page (rent, deposit, broker fee, renovation, decoration, furniture, license, and machinery if clinic-owned) + Overhead below
+            <strong id="setupCostsEurDisp" style="color:#534AB7;font-size:13px;">—</strong> — Istanbul capex from the <a href="expenses.html" style="color:#534AB7;font-weight:700;">Expenses</a> page (rent, deposit, broker fee, renovation, decoration, furniture, license, and machinery if clinic-owned) + pre-opening overheads below
           </div>
-          <div class="sl-controls" style="margin-top:8px;">
-            <input type="range" id="s_setupOverheadC1" min="-50000" max="250000" step="5000" value="0" oninput="sv('setupOverheadC1',this.value)">
-            <span class="sl-val" id="setupOverheadC1" style="min-width:70px;">0</span>
-          </div>
-          <span class="sl-note">Overhead — added on top of the modeled Istanbul capex; dial it in to round the total to a clean number</span>
+          <details style="margin-top:8px;">
+            <summary style="cursor:pointer;font-size:10px;font-weight:700;color:#555;">Pre-opening overheads: <span id="preOpenTotalC1">—</span></summary>
+            <div class="sl-row" style="margin-bottom:4px;">
+              <label style="font-size:10px;">Pre-hiring &amp; training (€)</label>
+              <div class="sl-controls">
+                <input type="range" id="s_preOpenHireC1" min="0" max="250000" step="5000" value="0" oninput="sv('preOpenHireC1',this.value)">
+                <span class="sl-val" id="preOpenHireC1" style="min-width:70px;">0</span>
+              </div>
+            </div>
+            <div class="sl-row" style="margin-bottom:4px;">
+              <label style="font-size:10px;">Launch marketing (€)</label>
+              <div class="sl-controls">
+                <input type="range" id="s_preOpenMktC1" min="0" max="250000" step="5000" value="0" oninput="sv('preOpenMktC1',this.value)">
+                <span class="sl-val" id="preOpenMktC1" style="min-width:70px;">0</span>
+              </div>
+            </div>
+            <div class="sl-row" style="margin-bottom:4px;">
+              <label style="font-size:10px;">Legal, licensing &amp; advisory (€)</label>
+              <div class="sl-controls">
+                <input type="range" id="s_preOpenLegalC1" min="0" max="250000" step="5000" value="0" oninput="sv('preOpenLegalC1',this.value)">
+                <span class="sl-val" id="preOpenLegalC1" style="min-width:70px;">0</span>
+              </div>
+            </div>
+            <div class="sl-row" style="margin-bottom:4px;">
+              <label style="font-size:10px;">Other (to be itemised) (€)</label>
+              <div class="sl-controls">
+                <input type="range" id="s_preOpenOtherC1" min="0" max="250000" step="5000" value="30000" oninput="sv('preOpenOtherC1',this.value)">
+                <span class="sl-val" id="preOpenOtherC1" style="min-width:70px;">30.000</span>
+              </div>
+            </div>
+          </details>
+          <span class="sl-note">One-off pre-opening costs on top of the modeled Istanbul capex, itemised. "Other (to be itemised)" holds the previous single overhead amount until it is broken down; the other lines start at €0 until quotes exist.</span>
         </div>
         <div class="sl-row">
           <label style="font-size:10px;">Setup Costs — Center 2 (€)</label>
           <div style="background:#f4f3ff;border:1px solid #d8d5f5;border-radius:6px;padding:10px 12px;font-size:11px;color:#3d3680;">
-            <strong id="setupCostsEurDisp2" style="color:#534AB7;font-size:13px;">—</strong> — Izmir's own setup-cost model (<a href="growth.html" style="color:#534AB7;font-weight:700;">Multi-Year Plan</a>) + Overhead below
+            <strong id="setupCostsEurDisp2" style="color:#534AB7;font-size:13px;">—</strong> — Izmir's own setup-cost model (<a href="growth.html" style="color:#534AB7;font-weight:700;">Multi-Year Plan</a>) + pre-opening overheads below
           </div>
-          <div class="sl-controls" style="margin-top:8px;">
-            <input type="range" id="s_setupOverheadC2" min="-50000" max="250000" step="5000" value="0" oninput="sv('setupOverheadC2',this.value)">
-            <span class="sl-val" id="setupOverheadC2" style="min-width:70px;">0</span>
-          </div>
-          <span class="sl-note">Overhead — added on top of Izmir's modeled capex; dial it in to round the total to a clean number</span>
+          <details style="margin-top:8px;">
+            <summary style="cursor:pointer;font-size:10px;font-weight:700;color:#555;">Pre-opening overheads: <span id="preOpenTotalC2">—</span></summary>
+            <div class="sl-row" style="margin-bottom:4px;">
+              <label style="font-size:10px;">Pre-hiring &amp; training (€)</label>
+              <div class="sl-controls">
+                <input type="range" id="s_preOpenHireC2" min="0" max="250000" step="5000" value="0" oninput="sv('preOpenHireC2',this.value)">
+                <span class="sl-val" id="preOpenHireC2" style="min-width:70px;">0</span>
+              </div>
+            </div>
+            <div class="sl-row" style="margin-bottom:4px;">
+              <label style="font-size:10px;">Launch marketing (€)</label>
+              <div class="sl-controls">
+                <input type="range" id="s_preOpenMktC2" min="0" max="250000" step="5000" value="0" oninput="sv('preOpenMktC2',this.value)">
+                <span class="sl-val" id="preOpenMktC2" style="min-width:70px;">0</span>
+              </div>
+            </div>
+            <div class="sl-row" style="margin-bottom:4px;">
+              <label style="font-size:10px;">Legal, licensing &amp; advisory (€)</label>
+              <div class="sl-controls">
+                <input type="range" id="s_preOpenLegalC2" min="0" max="250000" step="5000" value="0" oninput="sv('preOpenLegalC2',this.value)">
+                <span class="sl-val" id="preOpenLegalC2" style="min-width:70px;">0</span>
+              </div>
+            </div>
+            <div class="sl-row" style="margin-bottom:4px;">
+              <label style="font-size:10px;">Other (to be itemised) (€)</label>
+              <div class="sl-controls">
+                <input type="range" id="s_preOpenOtherC2" min="0" max="250000" step="5000" value="30000" oninput="sv('preOpenOtherC2',this.value)">
+                <span class="sl-val" id="preOpenOtherC2" style="min-width:70px;">30.000</span>
+              </div>
+            </div>
+          </details>
+          <span class="sl-note">One-off pre-opening costs on top of Izmir's modeled capex, itemised. "Other (to be itemised)" holds the previous single overhead amount until it is broken down; the other lines start at €0 until quotes exist.</span>
         </div>
         <div class="sl-row">
           <label style="font-size:10px;">Setup Costs — Center 3 (€)</label>
           <div style="background:#f4f3ff;border:1px solid #d8d5f5;border-radius:6px;padding:10px 12px;font-size:11px;color:#3d3680;">
-            <strong id="setupCostsEurDisp3" style="color:#534AB7;font-size:13px;">—</strong> — Ankara's own setup-cost model (<a href="growth.html" style="color:#534AB7;font-weight:700;">Multi-Year Plan</a>) + Overhead below
+            <strong id="setupCostsEurDisp3" style="color:#534AB7;font-size:13px;">—</strong> — Ankara's own setup-cost model (<a href="growth.html" style="color:#534AB7;font-weight:700;">Multi-Year Plan</a>) + pre-opening overheads below
           </div>
-          <div class="sl-controls" style="margin-top:8px;">
-            <input type="range" id="s_setupOverheadC3" min="-50000" max="250000" step="5000" value="0" oninput="sv('setupOverheadC3',this.value)">
-            <span class="sl-val" id="setupOverheadC3" style="min-width:70px;">0</span>
-          </div>
-          <span class="sl-note">Overhead — added on top of Ankara's modeled capex; dial it in to round the total to a clean number</span>
+          <details style="margin-top:8px;">
+            <summary style="cursor:pointer;font-size:10px;font-weight:700;color:#555;">Pre-opening overheads: <span id="preOpenTotalC3">—</span></summary>
+            <div class="sl-row" style="margin-bottom:4px;">
+              <label style="font-size:10px;">Pre-hiring &amp; training (€)</label>
+              <div class="sl-controls">
+                <input type="range" id="s_preOpenHireC3" min="0" max="250000" step="5000" value="0" oninput="sv('preOpenHireC3',this.value)">
+                <span class="sl-val" id="preOpenHireC3" style="min-width:70px;">0</span>
+              </div>
+            </div>
+            <div class="sl-row" style="margin-bottom:4px;">
+              <label style="font-size:10px;">Launch marketing (€)</label>
+              <div class="sl-controls">
+                <input type="range" id="s_preOpenMktC3" min="0" max="250000" step="5000" value="0" oninput="sv('preOpenMktC3',this.value)">
+                <span class="sl-val" id="preOpenMktC3" style="min-width:70px;">0</span>
+              </div>
+            </div>
+            <div class="sl-row" style="margin-bottom:4px;">
+              <label style="font-size:10px;">Legal, licensing &amp; advisory (€)</label>
+              <div class="sl-controls">
+                <input type="range" id="s_preOpenLegalC3" min="0" max="250000" step="5000" value="0" oninput="sv('preOpenLegalC3',this.value)">
+                <span class="sl-val" id="preOpenLegalC3" style="min-width:70px;">0</span>
+              </div>
+            </div>
+            <div class="sl-row" style="margin-bottom:4px;">
+              <label style="font-size:10px;">Other (to be itemised) (€)</label>
+              <div class="sl-controls">
+                <input type="range" id="s_preOpenOtherC3" min="0" max="250000" step="5000" value="45000" oninput="sv('preOpenOtherC3',this.value)">
+                <span class="sl-val" id="preOpenOtherC3" style="min-width:70px;">45.000</span>
+              </div>
+            </div>
+          </details>
+          <span class="sl-note">One-off pre-opening costs on top of Ankara's modeled capex, itemised. "Other (to be itemised)" holds the previous single overhead amount until it is broken down; the other lines start at €0 until quotes exist.</span>
         </div>
         <div class="sl-row">
           <label style="font-size:10px;">Setup Costs — Center 4 (€)</label>
           <div style="background:#fdf1ec;border:1px solid #e8c3b3;border-radius:6px;padding:10px 12px;font-size:11px;color:#8a3d24;">
-            <strong id="setupCostsEurDisp4" style="color:#c94f2a;font-size:13px;">—</strong> — Bursa's own setup-cost model (<a href="growth.html" style="color:#c94f2a;font-weight:700;">Multi-Year Plan</a>) + Overhead below. Opens Year 3.
+            <strong id="setupCostsEurDisp4" style="color:#c94f2a;font-size:13px;">—</strong> — Bursa's own setup-cost model (<a href="growth.html" style="color:#c94f2a;font-weight:700;">Multi-Year Plan</a>) + pre-opening overheads below. Opens Year 3.
           </div>
-          <div class="sl-controls" style="margin-top:8px;">
-            <input type="range" id="s_setupOverheadC4" min="-50000" max="250000" step="5000" value="0" oninput="sv('setupOverheadC4',this.value)">
-            <span class="sl-val" id="setupOverheadC4" style="min-width:70px;">0</span>
-          </div>
-          <span class="sl-note">Overhead — added on top of Bursa's modeled capex; dial it in to round the total to a clean number</span>
+          <details style="margin-top:8px;">
+            <summary style="cursor:pointer;font-size:10px;font-weight:700;color:#555;">Pre-opening overheads: <span id="preOpenTotalC4">—</span></summary>
+            <div class="sl-row" style="margin-bottom:4px;">
+              <label style="font-size:10px;">Pre-hiring &amp; training (€)</label>
+              <div class="sl-controls">
+                <input type="range" id="s_preOpenHireC4" min="0" max="250000" step="5000" value="0" oninput="sv('preOpenHireC4',this.value)">
+                <span class="sl-val" id="preOpenHireC4" style="min-width:70px;">0</span>
+              </div>
+            </div>
+            <div class="sl-row" style="margin-bottom:4px;">
+              <label style="font-size:10px;">Launch marketing (€)</label>
+              <div class="sl-controls">
+                <input type="range" id="s_preOpenMktC4" min="0" max="250000" step="5000" value="0" oninput="sv('preOpenMktC4',this.value)">
+                <span class="sl-val" id="preOpenMktC4" style="min-width:70px;">0</span>
+              </div>
+            </div>
+            <div class="sl-row" style="margin-bottom:4px;">
+              <label style="font-size:10px;">Legal, licensing &amp; advisory (€)</label>
+              <div class="sl-controls">
+                <input type="range" id="s_preOpenLegalC4" min="0" max="250000" step="5000" value="0" oninput="sv('preOpenLegalC4',this.value)">
+                <span class="sl-val" id="preOpenLegalC4" style="min-width:70px;">0</span>
+              </div>
+            </div>
+            <div class="sl-row" style="margin-bottom:4px;">
+              <label style="font-size:10px;">Other (to be itemised) (€)</label>
+              <div class="sl-controls">
+                <input type="range" id="s_preOpenOtherC4" min="0" max="250000" step="5000" value="40000" oninput="sv('preOpenOtherC4',this.value)">
+                <span class="sl-val" id="preOpenOtherC4" style="min-width:70px;">40.000</span>
+              </div>
+            </div>
+          </details>
+          <span class="sl-note">One-off pre-opening costs on top of Bursa's modeled capex, itemised. "Other (to be itemised)" holds the previous single overhead amount until it is broken down; the other lines start at €0 until quotes exist.</span>
         </div>
         <div class="sl-row">
           <label style="font-size:10px;">Setup Costs — Center 5 (€)</label>
           <div style="background:#fdf8ee;border:1px solid #e8d9a8;border-radius:6px;padding:10px 12px;font-size:11px;color:#6b551a;">
-            <strong id="setupCostsEurDisp5" style="color:#8a6d1a;font-size:13px;">—</strong> — Gaziantep's own setup-cost model (<a href="growth.html" style="color:#8a6d1a;font-weight:700;">Multi-Year Plan</a>) + Overhead below. Opens Year 3.
+            <strong id="setupCostsEurDisp5" style="color:#8a6d1a;font-size:13px;">—</strong> — Gaziantep's own setup-cost model (<a href="growth.html" style="color:#8a6d1a;font-weight:700;">Multi-Year Plan</a>) + pre-opening overheads below. Opens Year 3.
           </div>
-          <div class="sl-controls" style="margin-top:8px;">
-            <input type="range" id="s_setupOverheadC5" min="-50000" max="250000" step="5000" value="0" oninput="sv('setupOverheadC5',this.value)">
-            <span class="sl-val" id="setupOverheadC5" style="min-width:70px;">0</span>
-          </div>
-          <span class="sl-note">Overhead — added on top of Gaziantep's modeled capex; dial it in to round the total to a clean number</span>
+          <details style="margin-top:8px;">
+            <summary style="cursor:pointer;font-size:10px;font-weight:700;color:#555;">Pre-opening overheads: <span id="preOpenTotalC5">—</span></summary>
+            <div class="sl-row" style="margin-bottom:4px;">
+              <label style="font-size:10px;">Pre-hiring &amp; training (€)</label>
+              <div class="sl-controls">
+                <input type="range" id="s_preOpenHireC5" min="0" max="250000" step="5000" value="0" oninput="sv('preOpenHireC5',this.value)">
+                <span class="sl-val" id="preOpenHireC5" style="min-width:70px;">0</span>
+              </div>
+            </div>
+            <div class="sl-row" style="margin-bottom:4px;">
+              <label style="font-size:10px;">Launch marketing (€)</label>
+              <div class="sl-controls">
+                <input type="range" id="s_preOpenMktC5" min="0" max="250000" step="5000" value="0" oninput="sv('preOpenMktC5',this.value)">
+                <span class="sl-val" id="preOpenMktC5" style="min-width:70px;">0</span>
+              </div>
+            </div>
+            <div class="sl-row" style="margin-bottom:4px;">
+              <label style="font-size:10px;">Legal, licensing &amp; advisory (€)</label>
+              <div class="sl-controls">
+                <input type="range" id="s_preOpenLegalC5" min="0" max="250000" step="5000" value="0" oninput="sv('preOpenLegalC5',this.value)">
+                <span class="sl-val" id="preOpenLegalC5" style="min-width:70px;">0</span>
+              </div>
+            </div>
+            <div class="sl-row" style="margin-bottom:4px;">
+              <label style="font-size:10px;">Other (to be itemised) (€)</label>
+              <div class="sl-controls">
+                <input type="range" id="s_preOpenOtherC5" min="0" max="250000" step="5000" value="40000" oninput="sv('preOpenOtherC5',this.value)">
+                <span class="sl-val" id="preOpenOtherC5" style="min-width:70px;">40.000</span>
+              </div>
+            </div>
+          </details>
+          <span class="sl-note">One-off pre-opening costs on top of Gaziantep's modeled capex, itemised. "Other (to be itemised)" holds the previous single overhead amount until it is broken down; the other lines start at €0 until quotes exist.</span>
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:8px;margin:4px 0 8px;background:#f0faf4;border:1px solid #b4e0c4;border-radius:6px;padding:10px 14px;">
@@ -428,7 +616,7 @@
         <label for="bursaGaziantepFcfFundedToggle" style="font-size:11px;font-weight:700;color:#1a7a45;cursor:pointer;">Fund Center 4/5 (Bursa/Gaziantep) setup from flagship operating cash flow instead of the Investor Ticket</label>
       </div>
       <div id="fcfFundedNote" class="note-box" style="display:none;margin-bottom:12px;background:#f0faf4;border-color:#b4e0c4;color:#1a7a45;"></div>
-      <div class="note-box" style="margin-bottom:16px;">Setup cost and working capital are read directly from the model above — they are not typed, and they move whenever a P&amp;L slider, the brace ramp, or the equipment-ownership toggle changes. The Working Capital Buffer above is the one exception: it's an additional reserve on top of that derived figure, not a re-estimate of it — investor-contributed by default, unless the toggle above switches its Stage 2 portion to flagship cash flow instead (the Stage 1 portion, needed at Day-1 closing before any income exists, always stays investor-funded). Machinery is counted once: it appears under "Osteoid parent in-kind" only when equipment is Osteoid-owned; otherwise its cost is already inside clinic setup. Setup Costs cover <b>five centers</b> — Istanbul (Center 1), Izmir (Center 2), Ankara (Center 3), Bursa (Center 4) and Gaziantep (Center 5), each its own modeled capex plus a manual Overhead adjustment — this round funds all five build-outs up front, not just Istanbul's (Bursa/Gaziantep open Year 3, one year after Izmir/Ankara) — unless the Bursa/Gaziantep toggle further above is on, in which case Center 4/5 setup is drawn from the flagship's own operating cash flow instead and drops out of Stage 2. <b>Stage 1 — Bridge</b> = Istanbul setup (incl. Overhead) + model-derived working capital + Stage 1 Buffer — funded at closing, no rights payment. <b>Stage 2 — Committed</b> = the Rights Purchase (IP license + city exclusivity, purchased from Osteoid A.Ş., price fixed at Stage 1 signing) + Izmir/Ankara/Bursa/Gaziantep setup (incl. Overhead) + the remaining Working Capital Buffer (unless self-funded, see toggle above) — all released/paid once Istanbul milestones are met. <b>Total Committed</b> (The Deal at a Glance) = Stage 1 + Stage 2 — that's the number Post-Money and Investor Stake actually use, one priced deal across both closings; the modeled Y1 working-capital trough shown again below and Osteoid's in-kind machinery (this bucket is machinery only — the rights purchase above is cash, not in-kind) are separate figures kept only for the Tax Optimization and Cash-on-Cash Return sections below.</div>
+      <div class="note-box" style="margin-bottom:16px;">Setup cost and working capital are read directly from the model above — they are not typed, and they move whenever a P&amp;L slider, the brace ramp, or the equipment-ownership toggle changes. The Working Capital Buffer above is the one exception: it's an additional reserve on top of that derived figure, not a re-estimate of it — investor-contributed by default, unless the toggle above switches its Stage 2 portion to flagship cash flow instead (the Stage 1 portion, needed at Day-1 closing before any income exists, always stays investor-funded). Machinery is counted once: it appears under "Osteoid parent in-kind" only when equipment is Osteoid-owned; otherwise its cost is already inside clinic setup. Setup Costs cover <b>five centers</b> — Istanbul (Center 1), Izmir (Center 2), Ankara (Center 3), Bursa (Center 4) and Gaziantep (Center 5), each its own modeled capex plus itemised pre-opening overheads — this round funds all five build-outs up front, not just Istanbul's (Bursa/Gaziantep open Year 3, one year after Izmir/Ankara) — unless the Bursa/Gaziantep toggle further above is on, in which case Center 4/5 setup is drawn from the flagship's own operating cash flow instead and drops out of Stage 2. <b>Stage 1 — Bridge</b> = Istanbul setup (incl. pre-opening overheads) + model-derived working capital + Stage 1 Buffer — funded at closing. <b>Stage 2 — Committed</b> = Izmir/Ankara/Bursa/Gaziantep setup (incl. pre-opening overheads) + the remaining Working Capital Buffer (unless self-funded, see toggle above) — all released/paid once Istanbul milestones are met. <b>Total Committed</b> (The Deal at a Glance) = Stage 1 + Stage 2 — that's the number Post-Money and Investor Stake actually use, one priced deal across both closings; the modeled Y1 working-capital trough shown again below and Osteoid's in-kind machinery are separate figures kept only for the Tax Optimization and Cash-on-Cash Return sections below.</div>
 
       <!-- Fee Stream Split (sum-of-parts) -->
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Fee Stream Split <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— shown when the sum-of-parts toggle above is on</span></div>
@@ -545,8 +733,10 @@
       <!-- Additional detail — dropped from the hero grid when it was cut down to the 6 priced-round KPIs -->
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Additional Detail</div>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;margin-bottom:16px;">
-        <div class="kpi"><div class="kpi-label">Exit Value — Year 5 (flagship scope)</div><div class="kpi-val neu" id="dcf_exitValue" title="Year 5 flagship-consolidated EBITDA × Exit Multiple (undiscounted). Flagship scope = own clinic + B2B + management fee + equity share of satellites; local-investor minority excluded. The Summary page shows the whole-business (100%) figure — see the bridge below.">—</div></div>
-        <div class="kpi"><div class="kpi-label">Cumulative Free Cash (5yr)</div><div class="kpi-val neu" id="kpi_cumFcf" title="Sum of Y1-Y5 free cash flow, taxed per the toggle above">—</div></div>
+        <div class="kpi"><div class="kpi-label">Exit EV — Year 5, EV/EBITDA (flagship scope)</div><div class="kpi-val neu" id="dcf_exitValue" title="Exit enterprise value = Year 5 flagship-consolidated EBITDA × Exit Multiple (EV/EBITDA, undiscounted) — the basis of the investor exit return. NOT the DCF terminal value (that one is Year-5 after-tax FCF × multiple, see next card). Flagship scope = own clinic + B2B + management fee + equity share of satellites; local-investor minority excluded. The Summary page shows the whole-business (100%) figure — see the bridge below.">—</div></div>
+        <div class="kpi"><div class="kpi-label">DCF Terminal Value — FCF₅ × multiple</div><div class="kpi-val neu" id="dcf_tv_value" title="DCF terminal value = Year-5 after-tax free cash flow (centres-company view) × exit multiple, discounted 5 years inside the DCF. Different basis from the Exit EV (EBITDA) card.">—</div><div style="font-size:10px;color:#888;margin-top:2px;" id="dcf_tv_basis">—</div></div>
+        <div class="kpi"><div class="kpi-label">Terminal value share of DCF</div><div class="kpi-val neu" id="dcf_tv_share" title="PV(terminal value) ÷ Modeled Value (DCF) — how much of the DCF sits beyond Year 5">—</div></div>
+        <div class="kpi"><div class="kpi-label">Cumulative Free Cash Flow (5yr, after build-out)</div><div class="kpi-val neu" id="kpi_cumFcf" title="Sum of Y1-Y5 free cash flow, centres-company / investor view: operating cash after tax − setup capex of every centre ± working capital">—</div></div>
         <div class="kpi"><div class="kpi-label">Osteoid Stake</div><div class="kpi-val neu" id="dcf_osteoid_hisse" title="100% − Investor − Doctor-Investor, from the priced round above. Sweat equity is not a stake in this priced round — it's tracked separately in the Contribution Register (reference view, Cap Table page)">—</div></div>
       </div>
       <div id="exitScopeBridge" style="font-size:10px;color:#666;background:#f7f7f4;border:1px solid #e0e0dc;border-left:3px solid #185FA5;border-radius:6px;padding:9px 12px;margin-bottom:16px;line-height:1.6;"></div>
@@ -569,7 +759,7 @@
           </tbody>
         </table>
       </div>
-      <div id="warn_control" style="display:none;font-size:11px;font-weight:700;color:#c0392b;background:#fef0f0;border:1px solid #e8b4b4;border-radius:4px;padding:8px 12px;margin-bottom:16px;">⚠ Control Risk: Osteoid's priced-round stake (The Deal at a Glance) falls below 50%+1. The shareholders agreement guarantees Osteoid/founder majority control at all times. Reduce the negotiation discount or the investor/doctor-investor ticket size — the Contribution Register weights below (and sweat equity, which isn't a stake in this priced round) no longer affect this.</div>
+      <div id="warn_control" style="display:none;font-size:11px;font-weight:700;color:#c0392b;background:#fef0f0;border:1px solid #e8b4b4;border-radius:4px;padding:8px 12px;margin-bottom:16px;">⚠ Control Risk: Osteoid's priced-round stake (The Deal at a Glance) falls below 50%+1. The shareholders agreement guarantees Osteoid/founder majority control at all times. Raise the negotiated deal pre-money or reduce the investor/doctor-investor ticket size — the Contribution Register weights below (and sweat equity, which isn't a stake in this priced round) no longer affect this.</div>
 
       <div class="note-box" style="margin-bottom:16px;">The contribution-weight sliders (Osteoid/Investor/Doctor-Investor weights, machinery %, royalty offset) and the Sweat Equity terms that drive the table above now live in the <a href="captable.html" style="color:#534AB7;font-weight:700;">"Contribution Register — Weights &amp; Sweat Equity"</a> section on the Cap Table page — edits there update this table on next load.</div>
 
@@ -591,7 +781,7 @@
           </tbody>
         </table>
       </div>
-      <div class="note-box" id="dcfNote">Free Cash Flow Years 1–5 are taken directly from the 5-year projection model (same data as the Multi-Year Plan page), taxed per the Corporate Tax toggle above (25% KV by default, with 5-year loss carryforward — no VAT is modeled, orthosis sales are VAT-exempt under KDV Kanunu 17/4-s). Terminal value uses an exit-multiple method: TV = FCF₅ × Exit Multiple — computed on the <i>same after-tax</i> FCF₅ as the interim cash flows (a proxy for an after-tax earnings multiple, not a pre-tax number an exit buyer would never actually receive). <b>Modeled Value (DCF)</b> = NPV(FCF₁₋₅) + PV(Terminal Value) — the unadjusted model output. <b>Deal Pre-Money</b> = Modeled Value × (1 − Negotiation Discount) — see The Deal at a Glance; the discount is the negotiated concession for single-site execution risk, not a re-run of the DCF itself. No asset floor: IP license and city exclusivity are a cash purchase paid to Osteoid at Stage 2 (see the Rights Purchase — Stage 2 block above), not an in-kind equity contribution, so there's no contributed-asset value to floor pre-money against. <b>Post-Money</b> = Deal Pre-Money + actual new cash raised (Investor Ticket + any Doctor-Investor cash). <b>Investor Ticket</b> = Stage 1 (Istanbul setup + working capital + Stage 1 buffer) + Stage 2 (the Rights Purchase — IP license + city exclusivity — + Izmir/Ankara/Bursa/Gaziantep setup + remaining working capital buffer); no rights payment at Stage 1, the rights purchase is paid entirely at Stage 2. <b>Investor Stake</b> = the Two-Tranche Pricing blended stake (see that table above) — Tranche 1's diluted remainder + the investor's fresh Tranche 2 stake, not a flat Investor Ticket ÷ Post-Money ratio; <b>Doctor-Investor Stake</b> = their cash ÷ Post-Money (a single, un-tranched contribution); <b>Osteoid Stake</b> = the remainder — a priced round, not the Ownership Register below (that Contribution Register is now reference-only, showing machinery in-kind vs cash under the old weighted model — see captable.html; sweat equity is tracked there only, it is not a stake in this priced round). Discount rate (r) is set by the Risk Profile control on The Deal at a Glance, not a generic early-stage-startup premium — see "Why This Venture Is De-Risked" above.</div>
+      <div class="note-box" id="dcfNote">Free Cash Flow Years 1–5 (centres-company / investor view) = the 5-year projection's operating result (same data as the Multi-Year Plan page), taxed per the Corporate Tax toggle above (25% KV by default, with 5-year loss carryforward — no VAT is modeled, orthosis sales are VAT-exempt under KDV Kanunu 17/4-s), <b>minus the setup capex of every active centre in its opening year</b>; working capital = the increase in SGK receivables (Year 2+; SGK revenue × payment delay ÷ 365 — the private channel is paid at fitting). Terminal value uses an exit-multiple method: <b>DCF terminal value = FCF₅ × Exit Multiple</b> — computed on the <i>same after-tax</i> Year-5 free cash flow as the interim cash flows (a proxy for an after-tax earnings multiple). Its share of the DCF is shown in the "Terminal value share of DCF" card. This is deliberately a different figure from the <b>Exit EV (EV/EBITDA)</b> = Year-5 EBITDA × Exit Multiple, which drives the investor exit return tables; the two never share a label. <b>DCF value (reference only)</b> = NPV(FCF₁₋₅) + PV(Terminal Value) — the unadjusted model output. <b>Deal Pre-Money</b> = a negotiated input (slider in The Deal at a Glance), held fixed across scenarios; the DCF is shown next to it as a reference with the % premium/discount between the two. Because the price no longer re-solves from the DCF, a weaker scenario now lowers the investor's return instead of silently raising their stake. <b>Post-Money</b> = Deal Pre-Money + actual new cash raised (Investor Ticket + any Doctor-Investor cash). <b>Investor Ticket</b> = Stage 1 (Istanbul setup + working capital + Stage 1 buffer) + Stage 2 (Izmir/Ankara/Bursa/Gaziantep setup + remaining working capital buffer). <b>Investor Stake</b> = the Two-Tranche Pricing blended stake (see that table above) — Tranche 1's diluted remainder + the investor's fresh Tranche 2 stake, not a flat Investor Ticket ÷ Post-Money ratio; <b>Doctor-Investor Stake</b> = their cash ÷ Post-Money (a single, un-tranched contribution); <b>Osteoid Stake</b> = the remainder — a priced round, not the Ownership Register below (that Contribution Register is now reference-only, showing machinery in-kind vs cash under the old weighted model — see captable.html; sweat equity is tracked there only, it is not a stake in this priced round). Discount rate (r) is set by the Risk Profile control on The Deal at a Glance, not a generic early-stage-startup premium — see "Why This Venture Is De-Risked" above.</div>
 
       <!-- Exit Tax Structuring (Shareholder-Level) -->
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin:20px 0 8px;">Exit Tax Structuring <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— shareholder-level only; corporate tax (KV) on operating profit above is unaffected</span></div>
@@ -602,7 +792,7 @@
           <div style="display:flex;gap:8px;margin:2px 0;">
             <div style="flex:1;font-size:11px;font-weight:700;padding:8px 10px;border-radius:6px;border:1.5px solid #534AB7;background:#534AB7;color:#fff;text-align:center;">A.Ş. (share certificates printed) — locked</div>
           </div>
-          <span class="sl-note">Flagship is locked in as A.Ş. — required for the GVK mük.80 individual exit-tax exemption below; Ltd. şirket shares never qualify for individuals, regardless of holding period. Satellites are separate Ltd. companies (see Network Structure above) and are not affected by this.</span>
+          <span class="sl-note">Flagship is locked in as A.Ş. — required for the GVK mük.80 individual exit-tax exemption below; Ltd. şirket shares never qualify for individuals, regardless of holding period. Satellites are branches of the flagship by default (see Network Structure above); a satellite switched to Subsidiary mode would be a separate Ltd., not affected by this.</span>
         </div>
       </div>
       <div id="exitTax_clock_chip" style="font-size:11px;font-weight:700;padding:8px 12px;border-radius:4px;border:1px solid #ccc;margin-bottom:8px;">—</div>
@@ -633,7 +823,7 @@
             <td id="vt_marj_c">—</td>
             <td id="vt_vergi_c" style="color:#c94f2a;">—</td>
             <td id="vt_netkâr_c">—</td>
-            <td>4x</td>
+            <td id="vt_mult_c">—</td>
             <td id="vt_ev_c">—</td>
             <td id="vt_not_c" data-base="Ref: US/Europe MSO 8–13x → 50–60% Turkey discount" style="font-size:11px;color:#888;">Ref: US/Europe MSO 8–13x → 50–60% Turkey discount</td>
           </tr>
@@ -644,7 +834,7 @@
             <td id="vt_marj_b">—</td>
             <td id="vt_vergi_b" style="color:#c94f2a;">—</td>
             <td id="vt_netkâr_b">—</td>
-            <td>6x</td>
+            <td id="vt_mult_b">—</td>
             <td id="vt_ev_b">—</td>
             <td id="vt_not_b" data-base="Ref: 8–13x → 30–40% discount; 2+ centers, model proven" style="font-size:11px;color:#888;">Ref: 8–13x → 30–40% discount; 2+ centers, model proven</td>
           </tr>
@@ -655,7 +845,7 @@
             <td id="vt_marj_o">—</td>
             <td id="vt_vergi_o" style="color:#c94f2a;">—</td>
             <td id="vt_netkâr_o">—</td>
-            <td>9x</td>
+            <td id="vt_mult_o">—</td>
             <td id="vt_ev_o">—</td>
             <td id="vt_not_o" data-base="Strategic acquirer (Europe/global) + clinical database → minimal discount" style="font-size:11px;color:#888;">Strategic acquirer (Europe/global) + clinical database → minimal discount</td>
           </tr>
@@ -663,15 +853,15 @@
       </table>
     </div>
     <div class="note-box" style="margin-bottom:24px;font-size:11px;line-height:1.7;">
-      <b>Multiple Methodology:</b> EV = Year 5 EBITDA × EV/EBITDA multiple. The <b>Base Exit Multiple slider</b> (The Deal at a Glance) drives all three calculations simultaneously — DCF terminal value, DCF pre-money, and the Base scenario exit EV all use the same multiple so there is one consistent Year-5 enterprise value. Conservative = Base−2×, Optimistic = Base+3×. Reference: US/Europe physical therapy chain (MSO) multiples 8–13× (Metro MSO, Confluent Health, etc.); Turkey market discount applied:
+      <b>Multiple Methodology:</b> EV = Year 5 EBITDA × EV/EBITDA multiple. There is <b>one multiple set</b> for the whole dashboard, set in The Deal at a Glance: Base = the Base Exit Multiple slider (+ the Multi-centre premium slider, default 0), Conservative = Base − the low-case offset, Optimistic = Base + the high-case offset. The same set drives this table, the Investor Return Analysis, the MOIC sweep and the Summary page's exit box; the Base multiple is also the DCF terminal-value multiple (applied there to Year-5 after-tax FCF, not EBITDA). There is no automatic multi-centre uplift. Reference: US/Europe physical therapy chain (MSO) multiples 8–13× (Metro MSO, Confluent Health, etc.); Turkey market discount applied:
       <ul style="margin:6px 0 0 16px;padding:0;">
-        <li><b>Conservative (Base−2×):</b> Single clinic or early stage → 40–60% Turkey/liquidity discount</li>
+        <li><b>Conservative (Base − <span id="vt_lowDeltaLbl">—</span>×):</b> Single clinic or early stage → 40–60% Turkey/liquidity discount</li>
         <li><b>Base (slider value):</b> Multi-center, model proven → moderate Turkey discount</li>
-        <li><b>Optimistic (Base+3×):</b> Strategic European/global acquirer + clinical database + SRS/EUROSPINE publications → premium</li>
+        <li><b>Optimistic (Base + <span id="vt_highDeltaLbl">—</span>×):</b> Strategic European/global acquirer + clinical database + SRS/EUROSPINE publications → premium</li>
       </ul>
     </div>
 
-    <div class="note-box">EBITDA = Earnings Before Interest, Taxes, Depreciation and Amortization. This model carries no interest and no depreciation (capex is expensed in the year incurred rather than capitalized and depreciated), so EBITDA = operating profit + that expensed capex added back. In a steady-state year with no new capex the two coincide; in a build-out year EBITDA sits above operating profit by the year's capex. The metric ladder is: operating profit (revenue − cash opex, capex expensed) → EBITDA (that + capex add-back) → after-tax net (− 25% corporate tax). VAT: orthosis-prosthesis delivery is exempt under VAT Law 17/4-s at 0% (full exemption). Corporate tax: 25% on profit from clinic operations; no sales exemption (Technology Development Zone exemption belongs solely to Osteoid Inc.). EV is always calculated on EBITDA — the figures above are total enterprise value, not equity value. Your equity value = EV × your ownership percentage. In addition to multiples, the multiple automatically increases by +1x (2nd center) or +2x (3rd center) as the number of active centers grows.</div>
+    <div class="note-box">EBITDA = Earnings Before Interest, Taxes, Depreciation and Amortization. This model carries no interest and no depreciation (capex is expensed in the year incurred rather than capitalized and depreciated), so EBITDA = operating profit + that expensed capex added back. In a steady-state year with no new capex the two coincide; in a build-out year EBITDA sits above operating profit by the year's capex. The metric ladder is: operating profit (revenue − cash opex, capex expensed) → EBITDA (that + capex add-back) → after-tax net (− 25% corporate tax). VAT: orthosis-prosthesis delivery is exempt under VAT Law 17/4-s at 0% (full exemption). Corporate tax: 25% on profit from clinic operations; no sales exemption (Technology Development Zone exemption belongs solely to Osteoid Inc.). EV is always calculated on EBITDA — the figures above are total enterprise value, not equity value. Your equity value = EV × your ownership percentage.</div>
 
   </div>
 </div>

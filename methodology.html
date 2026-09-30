@@ -72,7 +72,7 @@
   <div class="section-header" onclick="tog(this)"><h2>Model Methodology</h2><span class="tog">▸</span></div>
   <div class="section-body">
 
-    <div class="note-box" style="margin-bottom:20px;">This section explains how the model works, which assumptions are used, and why these approaches were chosen. It establishes common ground for a productive dialogue with investors.</div>
+    <div class="note-box" style="margin-bottom:20px;">This section explains how the model works, which assumptions are used, and why these approaches were chosen. It establishes common ground <span class="inv-only">for a productive dialogue with investors.</span><span class="biz-only">for judging the business on its own numbers.</span></div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
 
@@ -82,18 +82,19 @@
       </div>
 
       <div style="background:#f7f7f4;border:1px solid #e0e0dc;border-radius:8px;padding:16px;">
-        <div style="font-size:12px;font-weight:700;color:#c94f2a;margin-bottom:8px;">Year-End Mix Baseline</div>
-        <div style="font-size:12px;color:#555;line-height:1.7;">For Year 2-3 unit revenue calculations, the <b>Month 10-12 average</b> is used rather than the annual average. Rationale: the product mix shifts toward premium products over time (sensor, perforated); if the mature mix is not used as the baseline, the projection will be understated.</div>
+        <div style="font-size:12px;font-weight:700;color:#c94f2a;margin-bottom:8px;">Premium Mix Ramp (Years 2-5)</div>
+        <div style="font-size:12px;color:#555;line-height:1.7;">Years 2-5 do <b>not</b> inherit the Month-12 mix. The share of premium braces (perforated, sensor, sensor+perforated) follows its own ramp — Year-1 average reference, Year 2, Year 3 onward (Multi-Year Plan sliders; defaults 25% → 37.5% → 50%, Years 4-5 hold Year 3). Each year's unit revenue = that mix of the standard and premium pools, every SKU at its live price minus doctor fees, material, cutting fee and royalty. Year 1 stays the monthly model.</div>
       </div>
 
       <div style="background:#f7f7f4;border:1px solid #e0e0dc;border-radius:8px;padding:16px;">
         <div style="font-size:12px;font-weight:700;color:#534AB7;margin-bottom:8px;">Istanbul Year 2-5 Cost — Capacity-Derived</div>
         <div style="font-size:12px;color:#555;line-height:1.7;">
           For each year: <b>Net = Gross brace revenue − Operating cost</b>. Gross revenue is target brace count × year-end unit net revenue. Istanbul's Year 2-5 operating cost is no longer a flat multiple of Year 1 — it is built up from the time-and-motion capacity engine (see below):<br><br>
-          • <b>Structural base</b> (rent, expert orthotist, operator, interns, utilities, kitchen, admin, advertising) inflates off Year 1 at ×1.15 / ×1.18 / ×1.22 / ×1.25 for Years 2-5 — rent-and-salary inflation only.<br>
+          • <b>Structural base</b> (Year 1's rent, expert orthotist, operator, interns, utilities, kitchen, admin, advertising and periodic costs, with Year 1's capacity-driven staff taken out) carries real cost step-ups of ×1.15 / ×1.18 / ×1.22 / ×1.25 for Years 2-5 (rent and salary step-ups — see Price &amp; FX basis).<br>
           • <b>Fitting orthotists &amp; workshop support</b> are added on top, sized each year by the capacity engine from that year's monthly brace volume (annual ramp ÷ 12).<br>
           • <b>Printers</b> are bought as the ramp crosses each printer's monthly capacity — the incremental capex lands in the year acquired (zeroed if Osteoid Inc. supplies the equipment).<br>
-          • <b>Branch fitting offices</b> open when required rooms exceed the per-site maximum; their one-time fit-out lands in the opening year, with rent + utilities recurring thereafter.
+          • <b>Branch fitting offices</b> open when required rooms exceed the per-site maximum; their one-time fit-out lands in the opening year, with utilities recurring thereafter (no separate branch rent is modelled).<br><br>
+          The Multi-Year Plan's projection note describes exactly this method — there is no flat uplift of Year 1's total cost.
         </div>
       </div>
 
@@ -104,29 +105,69 @@
           • <b>Weekend-peak sizing:</b> the patients are school children, so a large share (default 60%) can only attend on weekends and school holidays. Rooms and fitting staff are therefore sized to the busiest <i>design day</i> — the peak weekend/holiday day — not the smoother weekly average, so the clinic can actually absorb the concentrated demand.<br>
           • <b>B2B asymmetry:</b> B2B (wholesale / orthosis-store) braces consume <b>printers only</b> — they never enter a fitting room, take orthotist time, or add workshop hours, since the patient is never seen at the clinic. So B2B scales printers but adds zero rooms, orthotists or support staff.<br>
           • <b>Interns and the junior/graduate orthotist</b> remain threshold-gated (a training pipeline, not capacity math); the fitting orthotists and workshop support staff above are the capacity-driven lines.<br>
-          • <b>B2B stream (Years 2-5):</b> the wholesale / orthosis-store channel ramps its monthly rate from the Year-1 exit rate toward a Year-5 target (<code>b2bHedefAdetYil</code>, default 1,200/yr) over <code>b2bRampYears</code> (default 3), then holds; set the target to 0 to remove it. Revenue = ramped volume × the Year-1 B2B channel's year-end unit net (same doctor-fee / print-cost / royalty deductions as B2C). It flows into consolidated gross, FCF, Year-5 EBITDA and Exit Value as its own visible "Center 1 (B2B channel)" line. B2B lifts printer capex (shared hardware, sized on B2C + B2B volume) but adds no rooms, orthotist or workshop cost.
+          • <b>B2B stream (Years 2-5):</b> the wholesale / orthosis-store channel ramps its monthly rate from the Year-1 closing (Month 12) rate toward a Year-5 target (<code>b2bHedefAdetYil</code>, default 1,200/yr) over <code>b2bRampYears</code> (default 3), then holds; set the target to 0 to remove it. Revenue = ramped volume × the Year-1 B2B channel's year-end unit net (same doctor-fee / print-cost / royalty deductions as B2C). It flows into consolidated gross, FCF, Year-5 EBITDA<span class="inv-only"> and Exit Value</span> as its own visible "Center 1 (B2B channel)" line. B2B lifts printer capex (shared hardware, sized on B2C + B2B volume) but adds no rooms, orthotist or workshop cost.
         </div>
       </div>
 
       <div style="background:#f7f7f4;border:1px solid #e0e0dc;border-radius:8px;padding:16px;">
         <div style="font-size:12px;font-weight:700;color:#1D9E75;margin-bottom:8px;">Izmir / Ankara Revenue Calculation</div>
         <div style="font-size:12px;color:#555;line-height:1.7;">
-          New center net revenue = <b>Gross revenue − Year 1 operating cost</b><br><br>
-          • Gross revenue: ramp total braces × year-end unit net revenue<br>
-          • Cost: Istanbul Year 1 cost (or city sliders if custom costs selected)<br>
-          • Staff: automatically scales according to threshold system<br>
-          • Advertising: central cost — not charged separately to new centers
+          Satellite operating profit = <b>net revenue − the centre's own operating cost</b>, ramped from its opening year<br><br>
+          • Target braces: city market (population share × TR market) × the centre's target market share<br>
+          • Net revenue: target braces × Istanbul's year-end unit net revenue (after doctor fees and materials)<br>
+          • Cost: the centre's own rent, expert orthotist, intern, kitchen, supplies, utilities + fitting orthotists and support staff sized by the same capacity engine (network SGK multiplier), × 1.25 mature-year factor<br>
+          • Central functions: the operator (business development / doctor relations), YMM bookkeeping, general expenses, advertising and congresses are already booked in Istanbul's own costs and serve the network. A head-office <b>add-on</b> covers only what is not booked — quality &amp; regulatory, IT, HR, group finance (<span id="mHoTerms">—</span>, Multi-Year Plan sliders) — allocated to every centre by revenue share<br>
+          • Ramp: reaches the full-capacity result over the centre's "years to reach target" slider
+        </div>
+      </div>
+
+      <div style="background:#f7f7f4;border:1px solid #e0e0dc;border-radius:8px;padding:16px;grid-column:1 / -1;">
+        <div style="font-size:12px;font-weight:700;color:#534AB7;margin-bottom:8px;">Market size — definition, build-up and sources</div>
+        <div style="font-size:12px;color:#555;line-height:1.7;">
+          • <b>What is counted:</b> custom rigid spinal braces for curves ≥20° in growing patients (SOSORT guidelines; BrAIST treated 20–40°). Off-the-shelf orthoses are excluded. The Turkey market input (<code>pazarTR</code>, Market page) has a base of 20,000 braces/yr within a 15,000–25,000 range; it is an independent input.<br>
+          • <b>Bottom-up cross-check</b> (Market page build-up, live): birth cohort ~1.25–1.3M (TÜİK) × 0.4–0.5% braceable × 2.5–3 braces per treatment course, + a share for other paediatric indications (juvenile, neuromuscular, Scheuermann). The computed figure is shown next to <code>pazarTR</code> and flagged if the two differ by more than 10%; it never overwrites the input.<br>
+          • <b>Istanbul</b> takes <code>pazarIstPct</code> of the national market (base 30.1%, sensitivity case 21%) — above its ~18% population share because scoliosis specialists and brace providers are concentrated there; to be evidenced by Istanbul's share of named supply. Each satellite's market is its population share × <code>pazarTR</code>; each centre then targets its own share of its own city market.<br>
+          • <b>Named supply</b> (Competition page): five named competitors + Osteoid's partner centre. Named supply plus hospital and small-workshop production is consistent with a 15,000–25,000 treated market.<br>
+          • <b>B2B</b> is a separate national line (its own prices, its own share of the national market); it is never part of any clinic volume or Istanbul share.<br>
+          • <b>Upside segments</b> (adult/degenerative, post-op TLSO, fracture TLSO) are excluded from the base; each can be switched on as its own SKU and referral channel and then appears only in separately labelled "incl. upside" figures.<br>
+          • <b>Demographics:</b> Paediatric cohorts decline ~5–10% over 2027–2031 (births 937,559 in 2024 vs ~1.34M at the 2014 peak), partly offset by rising detection; the adult segment grows with the 65+ population.<br><br>
+          <b>Sources</b>
+          <ul style="margin:4px 0 0 18px;padding:0;">
+            <li>Yılmaz H. et al., Spine J 2020;20(6):947–955</li>
+            <li>Weinstein S.L. et al., Lancet 2008;371:1527–1537</li>
+            <li>Weinstein S.L. et al. (BrAIST), NEJM 2013;369:1512–1521</li>
+            <li>Negrini S. et al., 2016 SOSORT guidelines, Scoliosis Spinal Disord 2018;13:3</li>
+            <li>Schwab F. et al., Spine 2005;30(9):1082–1085</li>
+            <li>Zileli M. et al., Neurospine 2021;18(4):704–712</li>
+            <li>TÜİK Birth Statistics 2024; TÜİK Elderly Statistics 2024</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="background:#f7f7f4;border:1px solid #e0e0dc;border-radius:8px;padding:16px;">
+        <div style="font-size:12px;font-weight:700;color:#1D9E75;margin-bottom:8px;">Price &amp; FX basis</div>
+        <div style="font-size:12px;color:#555;line-height:1.7;">
+          <b>The model is built in real 2026 terms, with TRY prices and costs held flat.</b><br><br>
+          • Revenue and costs are both in TRY; the EUR/TRY rate only translates results into euros. Every euro figure uses the <b>fixed model rate</b> shown in the header of every page (with its date), so figures do not change between viewings. The live market rate is opt-in via the header toggle (off by default); applying a rate by hand makes it the new fixed rate, dated that day.<br>
+          • Stated exceptions to "held flat": Istanbul's structural cost base steps up ×1.15 / ×1.18 / ×1.22 / ×1.25 in Years 2-5, and satellite opex carries a ×1.25 mature-year factor — explicit cost-growth assumptions (see the Istanbul cost card), not inflation indexation.
         </div>
       </div>
 
       <div style="background:#f7f7f4;border:1px solid #e0e0dc;border-radius:8px;padding:16px;">
         <div style="font-size:12px;font-weight:700;color:#1D9E75;margin-bottom:8px;">Metric definitions</div>
         <div style="font-size:12px;color:#555;line-height:1.7;">
-          One set of definitions feeds every valuation figure on every page (Summary Exit box, Investor DCF, scenario table) — no figure borrows another's name:<br><br>
-          • <b>Operating profit</b> = revenue − all cash operating costs; equipment purchases are expensed when incurred.<br>
-          • <b>EBITDA</b> = operating profit + that year's expensed equipment/setup added back; no depreciation is modeled because capex is expensed.<br>
-          • <b>FCF</b> = operating profit − corporate tax at 25% (with loss carryforward).<br>
-          • <b>Exit Value</b> = Year-5 EBITDA × the exit-multiple slider; exit-year taxation is not modeled (a stated simplification — see shareholder Exit Tax Structuring on the Investor page).<br><br>
+          <span class="inv-only">One set of definitions feeds every valuation figure on every page (Summary Exit box, Investor DCF, scenario table) — no figure borrows another's name:</span><span class="biz-only">One set of definitions feeds every figure on every page (Summary, Multi-Year Plan, sensitivity) — no figure borrows another's name:</span><br><br>
+          • <b>Revenue ladder</b> = Gross revenue (list price × braces) → − doctor fees = Net revenue after doctor fees → − materials, royalty/cutting and all operating costs = Operating profit.<br>
+          • <b>Operating profit</b> = revenue − all cash operating costs; printer/branch purchases inside opex are expensed when incurred. Not floored: a ramp-year loss stays in the P&amp;L and in cumulative profit.<br>
+          • <b>EBITDA</b> = operating profit + that year's expensed equipment added back; no depreciation is modeled because capex is expensed.<br>
+          <span class="biz-only">• <b>FCF</b> (whole business) = EBITDA − corporate tax at 25% (with loss carryforward) − expensed capex − each centre's setup capex in its opening year ± working capital (the increase in SGK receivables: SGK revenue × payment delay ÷ 365). In a group view that consolidates Osteoid A.Ş. any royalty nets out.<br>
+          • <b>Payback</b> per centre = months from opening until the centre's cumulative pre-tax cash (EBITDA − expensed capex) covers its setup capex; opening losses are part of that cumulative cash. <b>Return on setup capital</b> = Year-3 EBITDA ÷ setup capex. <b>Peak funding need</b> = the lowest point of the network's cumulative cash (monthly in Year 1, year-end afterwards).<br></span>
+          <span class="inv-only">• <b>FCF</b> (centres company / investor view) = EBITDA − corporate tax at 25% (with loss carryforward) − expensed capex − each centre's setup capex in its opening year ± working capital (the increase in SGK receivables: SGK revenue × payment delay ÷ 365).<br></span>
+          <span class="inv-only">• <b>DCF value</b> (reference only) = Σ PV(FCF₁₋₅) + PV(terminal value), with <b>terminal value = Year-5 after-tax FCF × Base exit multiple</b>.<br>
+          • <b>Exit EV</b> = Year-5 EBITDA × exit multiple (EV/EBITDA). One multiple set everywhere: Base (slider + optional multi-centre premium, default 0), Conservative = Base − offset, Optimistic = Base + offset.<br>
+          • <b>Deal pre-money</b> = a negotiated input (slider), not a model output; the investor stake is priced off it and stays fixed across scenarios.<br>
+          • <b>Investor return</b> = dividends (payout % × after-tax profit once earlier losses are covered, capped at available cash) + Exit EV × stake + cash retained at exit × stake; exit-year taxation is not modeled (see Exit Tax Structuring on the Investor page).<br>
+          • <b>Stage 2 attributable yield</b> = Year-5 flagship-attributable operating profit of only the centres Stage 2 funds ÷ Stage 2 investment.<br></span><br>
           • VAT: orthosis-prosthesis supply is <b>fully exempt (0%)</b> under VAT Law 17/4-s.<br>
           • Corporate tax: clinic activity subject to <b>25%</b> (TGB exemption applies only to Osteoid Inc.).
         </div>
@@ -173,7 +214,7 @@
 <div id="tab-saglamasayfasi" style="display:none;">
 <div class="group-label">Formula &amp; Validation</div>
 
-<div class="note">⚠️ <strong>Forecast note:</strong> All figures in this projection are assumption-based. Break-even and cumulative positive dates depend on the brace ramp. Figures are prepared for understanding and questioning the business model, not for investment decisions.</div>
+<div class="note">⚠️ <strong>Forecast note:</strong> All figures in this projection are assumption-based. Break-even and cumulative positive dates depend on the brace ramp. Figures are prepared for understanding and questioning the business model<span class="inv-only">, not for investment decisions</span>.</div>
 
 <div class="sec">
   <div class="sec-title">1 — Key Parameters (Input Values)</div>
@@ -241,7 +282,7 @@
 
 <div class="sec">
   <div class="sec-title">5 — Setup Costs (Istanbul Center 1)</div>
-  <p style="font-size:12px;color:#555;margin:0 0 10px;">One-time setup investment. This is the starting value for the cumulative budget calculation (entered as negative).</p>
+  <p style="font-size:12px;color:#555;margin:0 0 10px;">One-time setup cost. This is the starting value for the cumulative budget calculation (entered as negative).</p>
   <table class="setup-tbl" id="kurulumTbl"></table>
 </div>
 
@@ -256,7 +297,9 @@
     <thead><tr><th style="min-width:260px;">Revenue Item</th><th>Formula / Source</th><th style="text-align:right;">Year 1 (€K)</th><th style="text-align:right;">Year 2 (€K)</th><th style="text-align:right;">Year 3 (€K)</th><th style="text-align:right;">Year 4 (€K)</th><th style="text-align:right;">Year 5 (€K)</th></tr></thead>
     <tbody id="projTbody"></tbody>
   </table>
-  <div class="note">These are the live model's own consolidated projection rows (read directly from <code>window._lastProjRows</code>, the same rows the Multi-Year Plan table is built from) — not an independent re-derivation. Satellites are memo lines (own 100% net); the flagship's actual take from each is its management fee + equity share (Subsidiary mode) or 100% consolidation (Branch mode, the default). No SSI channel is modelled in this 5-year view.</div>
+  <div class="note">These are the live model's own consolidated projection rows (read directly from <code>window._lastProjRows</code>, the same rows the Multi-Year Plan table is built from) — not an independent re-derivation. Satellite rows are each centre's own 100% operating profit: in Branch mode (the default) they are consolidated into the total; in Subsidiary mode they are memo lines and the flagship takes its management fee + equity share. The SGK (SSI) channel runs from Year 2 (Multi-Year Plan toggle): its revenue sits inside the rows above and its receivables delay is in the cash-flow ledger below.</div>
+  <div class="sub-title"><span class="inv-only">Cash Flow, Valuation &amp; Investor Return (Live)</span><span class="biz-only">Cash Flow (Live)</span> — with identity checks</div>
+  <div id="cfLedger"></div>
 </div>
 
 <div class="sec">
@@ -284,7 +327,8 @@
 </div><!-- /tab-saglamasayfasi -->
 
 <div style="display:flex;justify-content:flex-start;margin-top:28px;padding:16px 0;border-top:1px solid #e0e0dc;">
-  <a href="investor.html" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#534AB7;text-decoration:none;padding:9px 20px;border:1.5px solid #534AB7;border-radius:6px;">&#8592; Investor &amp; Agreement</a>
+  <a class="inv-only" href="investor.html" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#534AB7;text-decoration:none;padding:9px 20px;border:1.5px solid #534AB7;border-radius:6px;">&#8592; Investor &amp; Agreement</a>
+  <a class="biz-only" href="growth.html" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#534AB7;text-decoration:none;padding:9px 20px;border:1.5px solid #534AB7;border-radius:6px;">&#8592; Multi-Year Plan</a>
 </div>
 
 </div><!-- /page -->
@@ -583,12 +627,12 @@ function renderProjection() {
     '<span class="k">Y2-5_Gross</span>   = LINEAR(Y1 gross €'+(istGross[0]||0)+'K → Y5 target €'+(istGross[4]||0)+'K), reached over istRampYears='+(V.istRampYears||5)+' yr\n' +
     '<span class="k">Y2-5_Opex</span>    = capacity-derived: structural base ×1.15/1.18/1.22/1.25 + time-&-motion staff / printers / branches\n' +
     '<span class="k">           </span>   → Opex €['+istOpex.join(' / ')+']K\n' +
-    '<span class="r">Yr_Net</span>       = MAX(0, Gross − Opex) → €['+P.istNet.join(' / ')+']K\n\n' +
-    '<span class="c">── SATELLITES (memo — each center\'s own 100% net) ─────────────────────────</span>\n' +
+    '<span class="r">Yr_OpProfit</span>  = Gross − Opex, not floored (a ramp-year loss stays a loss) → €['+P.istNet.join(' / ')+']K\n\n' +
+    '<span class="c">── SATELLITES (each centre\'s own 100% operating profit — memo only in Subsidiary mode) ──</span>\n' +
     '<span class="k">Target</span>      = city market (its pop. share of the TR total) × the center\'s target market-share %\n' +
-    '<span class="k">UnitNet</span>     = year-end mix (last 3 months) = ₺'+sonBirimNet.toLocaleString('tr-TR')+'/brace — same basis as Istanbul\'s target year\n' +
+    '<span class="k">UnitNet</span>     = premium-mix ramp (Y2 '+(V.premiumMixY2)+'% · Y3-5 '+(V.premiumMixY3)+'% perforated+sensor) → €'+((window._lastPremiumMix||{unitNetEur:[]}).unitNetEur.slice(1).join(' / '))+'/brace Y2-5 — same for every centre\n' +
     '<span class="k">Ramp</span>        = reaches full target over {city}RampYears yr from opening (Izmir/Ankara open Y2, Bursa/Gaziantep Y3)\n' +
-    '<span class="k">Net</span>         = Gross − the center\'s own operating cost (own rent/staff; no HQ overhead)\n\n' +
+    '<span class="k">Net</span>         = Gross − the centre\'s own operating cost (own rent/staff) − its share of the head-office add-on (quality & regulatory, IT, HR, group finance — functions not already booked; by revenue share)\n\n' +
     '<span class="c">── FLAGSHIP TAKE FROM SATELLITES ──────────────────────────────────────────</span>\n' +
     '<span class="k">Branch (şube)</span> = 100% of the satellite P&L consolidates into the flagship (committed default)\n' +
     '<span class="k">Subsidiary</span>    = management fee ('+(V.yonetimUcretiPct!=null?V.yonetimUcretiPct:5)+'% of gross) + equity (flagshipPay%, default 65%, of net-after-fee); the rest is minority interest\n' +
@@ -599,15 +643,15 @@ function renderProjection() {
   var cells=function(arr){return arr.map(function(v){return '<td class="result">'+fmt(v)+'</td>';}).join('');};
   var rowHtml=function(name,formula,arr){return '<tr><td>'+name+'</td><td class="formula">'+formula+'</td>'+cells(arr)+'</tr>';};
   var html='';
-  html+=rowHtml('Istanbul C1 (private channel)','gross ramp − capacity-derived opex',P.istNet);
+  html+=rowHtml('Istanbul clinic — operating profit','gross ramp − capacity-derived opex',P.istNet);
   if(anyB2B) html+=rowHtml('B2B — Istanbul','ramped Y2-5 stream (printers only)',P.b2b);
   satOrder.forEach(function(pr){
     var s=P.sat[pr[0]];
-    if(s.aktif) html+=rowHtml(pr[1]+' Center <span style="font-weight:400;font-size:10px;opacity:.7;">— own net, memo</span>','target × year-end unit net, ramped '+s.ramp+'yr from Y'+s.openYear,s.net);
+    if(s.aktif) html+=rowHtml(pr[1]+' Center <span style="font-weight:400;font-size:10px;opacity:.7;">— '+(s.isSube?'branch, consolidated':'subsidiary, memo')+'</span>','target × year-end unit net, ramped '+s.ramp+'yr from Y'+s.openYear,s.net);
   });
   if(anyFee) html+=rowHtml('↳ Management fee to flagship','% of satellite gross revenue',P.fee);
-  if(anyEquity) html+=rowHtml('↳ Equity income to flagship','flagship % of satellite net-after-fee',P.equity);
-  html+='<tr class="grp"><td>Consolidated Total (Flagship)</td><td class="formula">C1 + B2B + fee + equity</td>'+cells(P.totals)+'</tr>';
+  if(anyEquity) html+=rowHtml(_satAggLabels().equity,'branches: 100% of operating profit · subsidiaries: flagship % of net after fee',P.equity);
+  html+='<tr class="grp"><td>Consolidated operating profit (flagship)</td><td class="formula">clinic + B2B + satellite branches 100% (or subsidiary fee + equity)</td>'+cells(P.totals)+'</tr>';
   document.getElementById('projTbody').innerHTML=html;
 }
 
@@ -636,7 +680,7 @@ function renderMerkezler() {
   document.getElementById('formulMerkez').innerHTML =
     '<span class="c">── SATELLITE FULL-CAPACITY NET REVENUE (live model) ────────────────────────</span>\n\n' +
     '<span class="k">Target</span>      = TR market × city population share × the center\'s target market-share %\n\n' +
-    '<span class="k">UnitNetTRY</span>  = year-end mix (last 3 mo net revenue) / (last 3 mo braces) — the mature product mix, same basis Istanbul\'s target year uses\n\n' +
+    '<span class="k">UnitNetTRY</span>  = Year-5 premium-mix unit net (premiumMixY3 share of perforated+sensor braces, each SKU at its live price − doctor fees − material − royalty) — same basis as every centre\n\n' +
     '<span class="k">GrossRev</span>    = Target × UnitNetTRY\n\n' +
     '<span class="k">OpCost</span>      = the center\'s own operating cost (rent, expert orthotist + time-&-motion fitting/support staff at the network SGK multiplier, utilities, kitchen) × 1.25 mature-year factor — no HQ overhead\n\n' +
     '<span class="r">NetRevEurK</span>  = (GrossRev − OpCost) / eurKur / 1000\n\n' +
@@ -646,7 +690,7 @@ function renderMerkezler() {
   var sonR=rows.slice(-3);
   var sonK=sonR.reduce(function(s,r){return s+(r.korse||0);},0)||1;
   var sonN=sonR.reduce(function(s,r){return s+(r.gelirNet||0);},0);
-  var birimNetTRY=Math.round(sonN/sonK);
+  var birimNetTRY=Math.round(window._lastPremiumMix ? window._lastPremiumMix.unitNetEur[4]*eurKur : sonN/sonK); // FU-3: Year-5 mix
   var satOrder=[['izmir','Izmir'],['ankara','Ankara'],['bursa','Bursa'],['gaziantep','Gaziantep']];
 
   document.getElementById('merkezTbody').innerHTML=satOrder.map(function(pr){
@@ -697,6 +741,7 @@ function switchInnerTab(btn, tabId) {
     if(!window._lastRows||!window._lastRows.length) recalc();
     renderParams(); renderUrunMarj(); renderFormulas();
     renderMonthlyTable(); renderKurulum(); renderProjection(); renderMerkezler();
+    renderValidationLedger('cfLedger');
   }
 }
 

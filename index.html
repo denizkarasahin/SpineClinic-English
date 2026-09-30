@@ -13,6 +13,24 @@
 
 <div id="layout-header"></div>
 
+<!-- ⓪ BUSINESS CASE (BC-3) — business mode only; every figure live from the model -->
+<div class="section biz-only">
+  <div class="section-header open" onclick="tog(this)"><h2>Business Case — Is This a Good Business?</h2><span class="tog">▾</span></div>
+  <div class="section-body" style="display:block;">
+    <div class="note-box" style="margin-bottom:14px;">Volumes, unit economics, P&amp;L, cash, capex and payback for the network and for each centre — all read live from the model at the current settings. <b>Core plan</b>: Istanbul (clinic + B2B), Izmir and Ankara; Bursa and Gaziantep are a Phase 2 option (below), included only when switched on. ⚠ Every value is a scenario output from adjustable starting points, not a forecast.</div>
+    <div id="bcKpis"><div style="text-align:center;padding:24px;color:#aaa;font-size:12px;">Loading projection…</div></div>
+  </div>
+</div>
+
+<!-- PHASE 2 OPTION (FIN-3) -->
+<div class="section">
+  <div class="section-header open" onclick="tog(this)"><h2>Phase 2 Option — Bursa &amp; Gaziantep</h2><span class="tog">▾</span></div>
+  <div class="section-body" style="display:block;">
+    <label style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:#c94f2a;cursor:pointer;margin-bottom:10px;"><input type="checkbox" class="phase2Toggle" onchange="svPhase2(this.checked)" style="width:14px;height:14px;accent-color:#c94f2a;"> Include Phase 2 (Bursa + Gaziantep) in the plan — all totals, capex, funding need and KPIs</label>
+    <div id="phase2Opt"><div style="text-align:center;padding:16px;color:#aaa;font-size:12px;">Loading projection…</div></div>
+  </div>
+</div>
+
 <!-- ① 12 AYLIK ÖZET -->
 
 
@@ -20,21 +38,19 @@
 <div class="section">
   <div class="section-header open" onclick="tog(this)"><h2>12-Month Summary</h2><span class="tog">▾</span></div>
   <div class="section-body" style="display:block;">
-    <div style="margin-bottom:20px;">
+    <div class="inv-only" style="margin-bottom:20px;">
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Use of Funds — Investor Ticket <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— <a href="investor.html" style="color:#534AB7;">full breakdown on the Investor page</a></span></div>
       <div style="display:flex;height:28px;border-radius:6px;overflow:hidden;border:1px solid #e0e0dc;">
         <div id="useOfFundsStage1" style="background:#534AB7;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden;width:34%;">—</div>
-        <div id="useOfFundsRights" style="background:#185FA5;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden;width:33%;">—</div>
         <div id="useOfFundsStage2" style="background:#D85A30;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden;width:33%;">—</div>
       </div>
       <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:10px;color:#888;">
         <span><span style="display:inline-block;width:8px;height:8px;background:#534AB7;border-radius:2px;margin-right:4px;"></span>Stage 1 — Bridge (at closing)</span>
-        <span><span style="display:inline-block;width:8px;height:8px;background:#185FA5;border-radius:2px;margin-right:4px;"></span>Platform rights (Stage 2)</span>
         <span><span style="display:inline-block;width:8px;height:8px;background:#D85A30;border-radius:2px;margin-right:4px;"></span>Stage 2 — build-outs</span>
       </div>
     </div>
 
-    <div style="border:1px solid #534AB744;border-left:3px solid #534AB7;border-radius:6px;padding:12px 16px;margin-bottom:20px;background:#f9f8f4;">
+    <div class="inv-only" style="border:1px solid #534AB744;border-left:3px solid #534AB7;border-radius:6px;padding:12px 16px;margin-bottom:20px;background:#f9f8f4;">
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">Stage 1 Investment &amp; Return <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— the Bridge, funded at closing</span></div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
         <div>
@@ -42,7 +58,7 @@
           <div style="font-size:18px;font-weight:700;color:#534AB7;" id="stage1InvestEur">—</div>
         </div>
         <div>
-          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Year 1 net profit</div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Year 1 operating profit — Istanbul clinic + B2B</div>
           <div style="font-size:18px;font-weight:700;color:#333;" id="stage1ProfitEur">—</div>
         </div>
         <div>
@@ -50,10 +66,10 @@
           <div style="font-size:18px;font-weight:700;color:#1a7a45;" id="stage1YieldPct">—</div>
         </div>
       </div>
-      <div style="font-size:10px;color:#888;margin-top:8px;">Year 1 net profit is the operating result only — revenue minus Year 1's running costs (rent/staff/marketing), <b>excluding</b> the one-time Setup Cost KPI above. Annual yield = Year 1 net profit ÷ Stage 1 investment — a per-year operating ratio, same basis as Stage 2's yield below.</div>
+      <div style="font-size:10px;color:#888;margin-top:8px;">Year 1 operating profit = the Istanbul clinic's and the B2B channel's revenue minus all Year 1 running costs (rent/staff/marketing), pre-tax, <b>excluding</b> the one-time setup capex (a cash outflow, not a cost of the year). It is not floored: a ramp-year loss shows here as a negative and stays in cumulative profit; its financing by Stage 1 working capital is a cash-flow item (Investor page). Annual yield = Year 1 operating profit ÷ Stage 1 investment — a per-year operating ratio.</div>
     </div>
 
-    <div style="border:1px solid #D85A3044;border-left:3px solid #D85A30;border-radius:6px;padding:12px 16px;margin-bottom:20px;background:#f9f8f4;">
+    <div class="inv-only" style="border:1px solid #D85A3044;border-left:3px solid #D85A30;border-radius:6px;padding:12px 16px;margin-bottom:20px;background:#f9f8f4;">
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">Stage 2 Investment &amp; Return <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— the Committed tranche, funds the Izmir/Ankara/Bursa/Gaziantep build-outs</span></div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
         <div>
@@ -61,19 +77,19 @@
           <div style="font-size:18px;font-weight:700;color:#D85A30;" id="stage2InvestEur">—</div>
         </div>
         <div>
-          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">All 5 centers' operating profit (100%, Year 5 only)</div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Year-5 operating profit — Stage-2-funded centres (<span id="stage2CentresLbl">—</span>; flagship-attributable)</div>
           <div style="font-size:18px;font-weight:700;color:#333;" id="stage2ProfitEur">—</div>
         </div>
         <div>
-          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Blended yield</div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Stage 2 attributable yield</div>
           <div style="font-size:18px;font-weight:700;color:#1a7a45;" id="stage2YieldPct">—</div>
         </div>
       </div>
-      <div style="font-size:10px;color:#888;margin-top:8px;">Blended yield = Istanbul + Izmir + Ankara + Bursa + Gaziantep's own <b>100% operating profit</b> (Year 5, pre-tax, net of each center's own operating costs — before any fee/equity split) ÷ Stage 2 investment alone — deliberately whole-network profit over just Stage 2's slice of capital, at Deniz's request, so it overstates a return purely attributable to Stage 2 money (Istanbul's own profit came from Stage 1's capital, not this). <b>This is not the same figure as "Net consolidated at capacity"</b> on the <a href="growth.html" style="color:#D85A30;">Multi-Year Plan</a> page: that figure is also Istanbul-inclusive but only carries the flagship's management-fee + equity-share cut of each satellite (not their full 100% net) — the two totals measure different things and aren't directly comparable.</div>
+      <div style="font-size:10px;color:#888;margin-top:8px;">Stage 2 attributable yield = Year-5 operating profit of <b>only the centres Stage 2 funds</b> (Izmir and Ankara, plus Bursa/Gaziantep unless their setup is self-funded from free cash) ÷ Stage 2 investment. Profit is the flagship-attributable share (management fee + equity share in Subsidiary mode; 100% in Branch mode, the default). Istanbul and B2B are excluded — Stage 1 funded them. Stage 2 investment includes the deferred working-capital buffer, so this is a single-year ratio on the whole tranche, not an IRR.</div>
     </div>
 
-    <div style="border:2px solid #534AB7;border-radius:6px;padding:12px 16px;margin-bottom:20px;background:#f9f8ff;">
-      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">Total Investment &amp; Return <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— Total Committed (Stage 1+2) funds the entire business: Istanbul, the IP/exclusivity rights, and all four satellite build-outs</span></div>
+    <div class="inv-only" style="border:2px solid #534AB7;border-radius:6px;padding:12px 16px;margin-bottom:20px;background:#f9f8ff;">
+      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">Total Investment &amp; Return <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— Total Committed (Stage 1+2) funds the entire business: Istanbul and all four satellite build-outs</span></div>
       <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;">
         <div>
           <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Total Committed</div>
@@ -100,6 +116,25 @@
       <div style="font-size:10px;color:#888;margin-top:8px;">Metric ladder (all 100% ownership, pre fee/equity split): <b>Operating profit</b> = revenue − all cash operating costs, capex expensed. <b>EBITDA</b> = operating profit + the capex expensed that year added back (this model expenses capex rather than depreciating it, and carries no interest, so operating-profit + capex is a true EBITDA; at defaults Year-5 capex is 0, so EBITDA equals operating profit here but diverges in any capex year). <b>After-tax net</b> = pre-tax − 25% corporate tax (Investor page). Multiple = the sum of every center's own <b>100% operating profit across all 5 model years</b> ÷ Total Committed — a cumulative multi-year figure, not an annual rate (comparable to a simple gross MOIC, not IRR). Exit Value = Year-5 EBITDA × the Exit Multiple slider (industry-appropriate: healthcare clinics typically trade at 6–12× EV/EBITDA at exit, a proven de-risked platform like this one commanding the higher end — same slider and same EBITDA base as the Investor page). The flagship's actual entitlement is smaller — see "Exit Value — Year 5" and "Implied Investor MOIC at Exit" on the <a href="investor.html" style="color:#534AB7;">Investor page</a> for the equity-adjusted figures.</div>
     </div>
 
+    <div class="biz-only" style="border:1px solid #e0e0dc;border-radius:6px;padding:12px 16px;margin-bottom:20px;">
+      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Sensitivity <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— one input changed at a time, everything else at the current settings; every cell is a live model run</span></div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th style="text-align:left;">Case</th><th>Year-5 EBITDA</th><th>Cumulative FCF, Years 1–5</th><th>Peak funding need</th><th style="color:#8a6d1a;">Year-5 EBITDA with upside</th></tr></thead>
+        <tbody id="bcSensBody"><tr><td colspan="5" style="text-align:center;color:#aaa;font-size:11px;">Calculating…</td></tr></tbody>
+      </table></div>
+      <div style="font-size:10px;color:#888;margin-top:6px;">Whole network at 100%. Satellite target shares stay at their own sliders in the Istanbul rows, and vice versa. Channel fee = Scientific + Education + Library fees together, split equally, same rate for every product. Royalty is paid to Osteoid A.Ş. (intercompany): a cost to the centres, revenue to the parent. "With upside" = the same case with the adult, post-op and fracture segments switched on (own SKU and channel; upper bound, pre-tax) — the base columns never include them; toggle them on the Market page. ⚠ Scenario outputs, not forecasts.</div>
+    </div>
+
+    <div class="inv-only" style="border:1px solid #e0e0dc;border-radius:6px;padding:12px 16px;margin-bottom:20px;">
+      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Market Sensitivity <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— one input changed at a time, everything else at the current settings; every cell is a live model run</span></div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th style="text-align:left;">Case</th><th>Year-5 EBITDA (100%)</th><th>Investor return (dividends + exit)</th><th>Investor IRR</th></tr></thead>
+        <tbody id="mktSensBody"><tr><td colspan="4" style="text-align:center;color:#aaa;font-size:11px;">Calculating…</td></tr></tbody>
+      </table></div>
+      <div id="mktSensCap" style="font-size:10px;color:#555;margin-top:6px;line-height:1.6;">—</div>
+      <div style="font-size:10px;color:#888;margin-top:6px;">Investor return is at the fixed negotiated deal pre-money (Investor page), so the rows are comparable. Satellite target shares stay at their own sliders in the Istanbul-share rows. Upside segments are excluded unless switched on.</div>
+    </div>
+
     <div style="border-top:1px solid #eeeee9;padding-top:16px;">
       <div style="display:flex;gap:6px;margin-bottom:12px;" id="tblChartTabs">
         <button class="tct active" onclick="setTblTab('gelir',this)">Revenue &amp; Cost</button>
@@ -120,7 +155,8 @@
     <div id="summaryOutcomes3yr" style="padding:4px 0;">
       <div style="text-align:center;padding:24px;color:#aaa;font-size:12px;">Loading projection…</div>
     </div>
-    <div class="note-box" style="margin-top:16px;">This dashboard models Istanbul as the <b>flagship</b> — its own clinic plus the network's management company. Additional cities (Izmir, Ankara, ...) come online as <b>satellites</b>: separate, majority-owned companies with their own local investors and their own regulatory license, funded by those local investors rather than by raising more money into the flagship. The flagship earns a management fee on satellite revenue plus an equity share of satellite profit — see <a href="captable.html" style="color:#534AB7;font-weight:700;">Cap Table</a> for the full structure and <a href="growth.html" style="color:#534AB7;font-weight:700;">Multi-Year Plan</a> for the live numbers.</div>
+    <div class="note-box biz-only" style="margin-top:16px;">The network starts with Istanbul as the <b>flagship</b> — its own clinic plus the network's central functions. Izmir and Ankara come online as <b>satellites</b> in Year 2 (core plan); Bursa and Gaziantep are a <b>Phase 2 option</b> from Year 3. In the committed default each centre is a <b>branch of the flagship</b>: 100% of its results are consolidated, with no management fee. Each can alternatively be modelled as a separate, majority-owned subsidiary with a local partner — the flagship then earns a management fee on satellite revenue plus its share of satellite profit. See the <a href="growth.html" style="color:#534AB7;font-weight:700;">Multi-Year Plan</a> for the live numbers of each centre.</div>
+    <div class="note-box inv-only" style="margin-top:16px;">This dashboard models Istanbul as the <b>flagship</b> — its own clinic plus the network's management company. Additional cities (Izmir, Ankara, Bursa, Gaziantep) come online as <b>satellites</b>. In the committed default they are <b>branches of the flagship</b>: funded by Stage 2 of this round, 100% of their results consolidated into the flagship, no management fee and no local investors. Each can alternatively be modelled as a separate, majority-owned subsidiary with local investors — the flagship then earns a management fee on satellite revenue plus an equity share of satellite profit. See <a href="captable.html" style="color:#534AB7;font-weight:700;">Cap Table</a> for the full structure and <a href="growth.html" style="color:#534AB7;font-weight:700;">Multi-Year Plan</a> for the live numbers.</div>
   </div>
 </div>
 

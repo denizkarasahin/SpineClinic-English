@@ -26,26 +26,26 @@
   <!-- COVER -->
   <div class="cover">
     <div class="cover-left">
-      <div class="cover-tag">Growth Plan — Investor Summary</div>
+      <div class="cover-tag"><span class="inv-only">Growth Plan — Investor Summary</span><span class="biz-only">Growth Plan — Business Case</span></div>
       <h1>Osteoid<br><em>Centers</em></h1>
       <div class="cover-sub">Starting from Istanbul, scaling with technology infrastructure —<br>custom orthosis clinic chain — multi-year roadmap</div>
     </div>
     <div class="cover-meta">
-      <strong>Version</strong> April 2026
+      <strong>Version</strong> September 2026
       <strong style="margin-top:8px;">Prepared by</strong> Osteoid Health Technologies Inc.
       <div class="note-box" style="margin-bottom:16px;border-left:3px solid #534AB7;padding-left:14px;">
         <b style="color:#534AB7;display:block;margin-bottom:4px;">Why fast scaling is possible?</b>
         Orthosis and prosthesis centers in Turkey are structurally unable to scale — the process is dependent on human labor, each center must be built from scratch, and quality cannot be standardized. Osteoid's software, 3D manufacturing, and AI technologies remove this constraint: opening a new center is not building a system from scratch, but copying an existing system to a new location. This makes chain expansion genuinely possible in this sector for the first time.
       </div>
       <strong style="margin-top:8px;">Scope</strong> Year 1 — Year 5
-      <strong style="margin-top:8px;">Status</strong> Confidential / Investor-only
+      <strong style="margin-top:8px;">Status</strong> <span class="inv-only">Confidential / Investor-only</span><span class="biz-only">Confidential</span>
     </div>
   </div>
 
   <!-- 3 YIL ÖZET KARTLARI -->
   <div class="section">
     <div class="section-label">Annual Summary</div>
-    <div style="font-size:11px;color:var(--ink3);margin-bottom:10px;">"Total braces" = clinic private channel (Istanbul + Izmir + Ankara) only. B2B wholesale volume is tracked separately (see Brace Ramp page) and isn't folded into this count.</div>
+    <div style="font-size:11px;color:var(--ink3);margin-bottom:10px;">"Total braces" = clinic private channel of every centre open that year (Istanbul; Izmir/Ankara from Year 2; Bursa/Gaziantep from Year 3, when active). B2B wholesale volume is tracked separately (see Brace Ramp page) and isn't folded into this count.</div>
     <div class="year-grid">
       <div class="year-card">
         <div class="year-card-header y1">
@@ -54,7 +54,7 @@
         </div>
         <div class="year-card-body">
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px;">
-            <div class="year-kpi"><div class="year-kpi-label">Net revenue</div><div class="year-kpi-val pos" id="y1GelirKpi">—</div></div>
+            <div class="year-kpi"><div class="year-kpi-label">Consolidated operating profit</div><div class="year-kpi-val pos" id="y1GelirKpi">—</div></div>
             <div class="year-kpi"><div class="year-kpi-label">Break-even</div><div class="year-kpi-val pos" id="y1BasKpi">—</div></div>
             <div class="year-kpi"><div class="year-kpi-label">Cumulative +</div><div class="year-kpi-val neu" id="y1CumKpi">—</div></div>
             <div class="year-kpi"><div class="year-kpi-label">Total braces</div><div class="year-kpi-val" id="y1KorseKpi">—</div></div>
@@ -68,19 +68,19 @@
             <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;margin-bottom:4px;" id="rampBadges"></div>
             <div class="kpi-grid" id="kpiGridB2C" style="margin-bottom:10px;">
               <div class="kpi"><div class="kpi-label">B2C total braces</div><div class="kpi-val neu">0 units</div></div>
-              <div class="kpi"><div class="kpi-label">B2C annual net revenue</div><div class="kpi-val neu">—</div></div>
-              <div class="kpi"><div class="kpi-label">TR market share (B2C)</div><div class="kpi-val neu">0.00%</div></div>
+              <div class="kpi"><div class="kpi-label">B2C net revenue after fees &amp; materials</div><div class="kpi-val neu">—</div></div>
+              <div class="kpi"><div class="kpi-label">TR market share (B2C) — vs national market</div><div class="kpi-val neu">0.00%</div></div>
             </div>
             <div class="note-box" style="margin-bottom:10px;">Drag the top edge of each column to adjust units. Range: 0–100, integer steps.</div>
             <div style="font-size:10px;color:#888;font-weight:700;text-transform:uppercase;margin-bottom:8px;">Istanbul — Target &amp; Ramp</div>
             <div style="padding:8px 10px;background:#f0f0ff;border:1px solid #534AB744;border-radius:6px;">
               <div class="sl-row" style="margin-bottom:0;">
-                <label style="font-size:11px;color:#534AB7;">Target Market Share (%) — Istanbul's designated potential at Year 5</label>
+                <label style="font-size:11px;color:#534AB7;">Target Market Share (%) — Istanbul's designated potential at Year 5 · % of the Istanbul market (TR market × Istanbul share)</label>
                 <div class="sl-controls">
                   <input type="range" id="s_hedefOsteoidPay" min="1" max="100" step="0.5" value="30" style="accent-color:#534AB7;" oninput="sv('hedefOsteoidPay',this.value)">
                   <span class="sl-val" id="hedefOsteoidPay" contenteditable="true" onblur="sv2('hedefOsteoidPay','s_hedefOsteoidPay',this)" style="min-width:40px;color:#534AB7;">30</span>
                 </div>
-                <span class="sl-note">Share of Istanbul's addressable market (Market &amp; Product Mix page) targeted at full capacity — drives the Year 5 target brace count.</span>
+                <span class="sl-note">Share of Istanbul's market targeted at full capacity — drives the Year 5 target brace count. Istanbul market = the Turkey market for custom rigid spinal braces (pazarTR, paediatric curves ≥20°) × Istanbul's share, both set on the Market &amp; Product Mix page. B2B is a separate national line and is not part of this share.</span>
               </div>
               <div class="sl-row" style="margin-bottom:0;margin-top:8px;">
                 <label style="font-size:11px;color:#534AB7;">Years to reach full target — designated market potential</label>
@@ -92,6 +92,37 @@
               </div>
             </div>
             <div style="margin-top:12px;padding-top:10px;border-top:1px solid #e8e8e4;">
+              <div style="font-size:10px;color:#888;font-weight:700;text-transform:uppercase;margin-bottom:8px;">Premium Mix Ramp <span style="font-weight:400;text-transform:none;color:#888;">— share of perforated + sensor braces; drives every centre's Years 2-5 unit revenue (Years 4-5 hold Year 3)</span></div>
+              <div style="padding:8px 10px;background:#f7f7f4;border:1px solid #e0e0dc;border-radius:6px;">
+                <div class="sl-row" style="margin-bottom:0;"><label style="font-size:11px;">Year 1 average (reference point of the ramp) (%)</label><div class="sl-controls"><input type="range" id="s_premiumMixY1" min="0" max="100" step="0.5" value="25" oninput="sv('premiumMixY1',this.value)"><span class="sl-val" id="premiumMixY1" style="min-width:40px;">25</span></div></div>
+                <div class="sl-row" style="margin-bottom:0;margin-top:6px;"><label style="font-size:11px;">Year 2 (%)</label><div class="sl-controls"><input type="range" id="s_premiumMixY2" min="0" max="100" step="0.5" value="37.5" oninput="sv('premiumMixY2',this.value)"><span class="sl-val" id="premiumMixY2" style="min-width:40px;">37,5</span></div></div>
+                <div class="sl-row" style="margin-bottom:0;margin-top:6px;"><label style="font-size:11px;">Year 3 onward (%)</label><div class="sl-controls"><input type="range" id="s_premiumMixY3" min="0" max="100" step="0.5" value="50" oninput="sv('premiumMixY3',this.value)"><span class="sl-val" id="premiumMixY3" style="min-width:40px;">50</span></div></div>
+                <div id="premiumMixNote" style="font-size:10px;color:#888;margin-top:6px;">—</div>
+              </div>
+            </div>
+            <div style="margin-top:12px;padding-top:10px;border-top:1px solid #e8e8e4;">
+              <div style="font-size:10px;color:#888;font-weight:700;text-transform:uppercase;margin-bottom:8px;">SGK Channel <span style="font-weight:400;text-transform:none;color:#888;">— extra medical-report braces reimbursed by SGK, on top of private volume; Year 2 onward in every centre, never Year 1; off by default (private channel first)</span></div>
+              <div style="padding:8px 10px;background:#eef4ff;border:1px solid #185FA544;border-radius:6px;">
+                <label style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:#185FA5;cursor:pointer;"><input type="checkbox" id="sgkAktifToggle" onchange="svToggle('sgkAktif',this.checked)" style="width:13px;height:13px;accent-color:#185FA5;"> SGK channel on from Year 2</label>
+                <div class="sl-row" style="margin-bottom:0;margin-top:6px;"><label style="font-size:11px;">Extra SGK braces (% of private clinic volume)</label><div class="sl-controls"><input type="range" id="s_sgkIncrementalPct" min="0" max="60" step="1" value="20" oninput="sv('sgkIncrementalPct',this.value)"><span class="sl-val" id="sgkIncrementalPct" style="min-width:40px;">20</span></div></div>
+                <div class="sl-row" style="margin-bottom:0;margin-top:6px;"><label style="font-size:11px;">SGK price per brace (₺, SUT)</label><div class="sl-controls"><input type="range" id="s_sgkPrice" min="5000" max="40000" step="500" value="17500" oninput="sv('sgkPrice',this.value)"><span class="sl-val" id="sgkPrice" style="min-width:60px;">17.500</span></div></div>
+                <div class="sl-row" style="margin-bottom:0;margin-top:6px;"><label style="font-size:11px;">Patient top-up above SUT per SGK brace (₺)</label><div class="sl-controls"><input type="range" id="s_sgkTopUp" min="0" max="30000" step="500" value="5000" oninput="sv('sgkTopUp',this.value)"><span class="sl-val" id="sgkTopUp" style="min-width:60px;">5.000</span></div></div>
+                <div class="sl-row" style="margin-bottom:0;margin-top:6px;"><label style="font-size:11px;">SGK payment delay (days)</label><div class="sl-controls"><input type="range" id="s_sgkDelayDays" min="0" max="180" step="5" value="75" oninput="sv('sgkDelayDays',this.value)"><span class="sl-val" id="sgkDelayDays" style="min-width:40px;">75</span></div></div>
+                <div style="font-size:10px;color:#888;margin-top:6px;">SGK braces are additional patients, not a share taken from private volume. No channel fee on SGK braces; material and royalty still apply, and the extra fittings load rooms, orthotists and printers. Revenue is booked at fitting; the receivable (revenue × delay ÷ 365) is a working-capital outflow in the cash flow. ⚠ The 60–90-day delay should be confirmed with operator experience.</div>
+                <div id="sgkLine" style="margin-top:8px;">—</div>
+              </div>
+            </div>
+            <div style="margin-top:12px;padding-top:10px;border-top:1px solid #e8e8e4;">
+              <div style="font-size:10px;color:#888;font-weight:700;text-transform:uppercase;margin-bottom:8px;">Head-Office Add-On <span style="font-weight:400;text-transform:none;color:#888;">— only central functions not already booked (quality &amp; regulatory, IT, HR, group finance); allocated to every open centre by revenue share</span></div>
+              <div style="padding:8px 10px;background:#f7f7f4;border:1px solid #e0e0dc;border-radius:6px;">
+                <div class="sl-row" style="margin-bottom:0;"><label style="font-size:11px;">Head-office add-on, Year 1 (€/yr)</label><div class="sl-controls"><input type="range" id="s_hoCostY1Eur" min="0" max="200000" step="5000" value="30000" oninput="sv('hoCostY1Eur',this.value)"><span class="sl-val" id="hoCostY1Eur" style="min-width:60px;">30.000</span></div></div>
+                <div class="sl-row" style="margin-bottom:0;margin-top:6px;"><label style="font-size:11px;">+ per additional open centre (€/yr)</label><div class="sl-controls"><input type="range" id="s_hoPerCentreEur" min="0" max="60000" step="1000" value="10000" oninput="sv('hoPerCentreEur',this.value)"><span class="sl-val" id="hoPerCentreEur" style="min-width:60px;">10.000</span></div></div>
+                <div class="sl-row" style="margin-bottom:0;margin-top:6px;"><label style="font-size:11px;">Cap (€/yr)</label><div class="sl-controls"><input type="range" id="s_hoCapEur" min="0" max="300000" step="5000" value="80000" oninput="sv('hoCapEur',this.value)"><span class="sl-val" id="hoCapEur" style="min-width:60px;">80.000</span></div></div>
+                <div id="hoNote" style="font-size:10px;color:#888;margin-top:6px;">—</div>
+                <div id="hoBooked" style="font-size:10px;color:#555;margin-top:6px;line-height:1.6;">—</div>
+              </div>
+            </div>
+            <div style="margin-top:12px;padding-top:10px;border-top:1px solid #e8e8e4;">
               <div style="font-size:10px;color:#888;font-weight:700;text-transform:uppercase;margin-bottom:8px;">B2B Wholesale Channel <span style="font-weight:400;text-transform:none;color:#888;">— flagship-run, printers only (no rooms/staff); runs Year 1 onward like a parallel line, not a satellite clinic</span></div>
               <div style="padding:8px 10px;background:#eef4ff;border:1px solid #378ADD44;border-radius:6px;">
                 <div class="sl-row" style="margin-bottom:0;">
@@ -100,7 +131,7 @@
                     <input type="range" id="s_b2bHedefAdetYil" min="0" max="5000" step="60" value="1200" style="accent-color:#378ADD;" oninput="sv('b2bHedefAdetYil',this.value)">
                     <span class="sl-val" id="b2bHedefAdetYil" contenteditable="true" onblur="sv2('b2bHedefAdetYil','s_b2bHedefAdetYil',this)" style="min-width:40px;color:#378ADD;">1.200</span>
                   </div>
-                  <span class="sl-note">Wholesale braces printed centrally at Istanbul and shipped to buyer clinics. Ramps the monthly rate from the Year-1 exit rate toward this target, then holds. Its net revenue is its own "Center 1 (B2B channel)" line in the tables below; it lifts shared printer capex but adds no rooms, orthotist or workshop cost.</span>
+                  <span class="sl-note">Wholesale braces printed centrally at Istanbul and shipped to buyer clinics. Ramps the monthly rate from the Year-1 closing (Month 12) rate toward this target, then holds. Its net revenue is its own "Center 1 (B2B channel)" line in the tables below; it lifts shared printer capex but adds no rooms, orthotist or workshop cost.</span>
                 </div>
                 <div class="sl-row" style="margin-bottom:0;margin-top:8px;">
                   <label style="font-size:11px;color:#378ADD;">Years to reach target</label>
@@ -123,7 +154,7 @@
         </div>
         <div class="year-card-body">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
-            <div class="year-kpi"><div class="year-kpi-label">Consolidated net revenue</div><div class="year-kpi-val pos" id="y2GelirKpi">—</div></div>
+            <div class="year-kpi"><div class="year-kpi-label">Consolidated operating profit</div><div class="year-kpi-val pos" id="y2GelirKpi">—</div></div>
             <div class="year-kpi"><div class="year-kpi-label">Total braces</div><div class="year-kpi-val" id="y2KorseKpi">—</div></div>
             <div class="year-kpi"><div class="year-kpi-label">Active centers</div><div class="year-kpi-val" id="y2MerkezKpi">—</div></div>
             <div class="year-kpi" id="izmirAcilisKpi" style="display:none;"><div class="year-kpi-label" style="color:#1D9E75;">Izmir opening</div><div class="year-kpi-val neu" id="izmirAcilisTarihi">—</div></div>
@@ -131,7 +162,7 @@
           </div>
           <div style="border-top:1px solid #e8e8e4;margin-top:10px;padding-top:10px;">
             <div style="font-size:10px;color:#888;font-weight:700;text-transform:uppercase;margin-bottom:8px;">New Center Selection</div>
-            <div class="note-box" style="margin-bottom:8px;font-size:11px;">⚠ Izmir/Ankara opex below (rent, orthotist, intern, kitchen, utilities) excludes HQ-shared costs — advertising, CPA/financial advisor, general admin. These centers are modeled as if they benefit from those centrally-run functions for free; no cost-sharing allocation is charged to them. Their net figures are optimistic to that extent — a scenario simplification, not a claim that shared overhead is actually free.</div>
+            <div class="note-box" style="margin-bottom:8px;font-size:11px;">Izmir/Ankara opex below covers each centre's own clinic costs (rent, orthotist, intern, kitchen, utilities). Central functions not already booked — quality &amp; regulatory, IT, HR, group finance — are charged to every centre as a head-office add-on by revenue share (Head-Office Add-On block on the Year 1 card); the operator, advertising, congresses and CPA stay in Istanbul's own costs and serve the whole network.</div>
             <div style="padding:8px 10px;background:#fdf8ee;border:1px solid #e8d9a8;border-radius:6px;margin-bottom:10px;">
               <div style="font-size:10px;font-weight:700;color:#8a6d1a;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">Hub-and-Spoke — Network-Wide Term</div>
               <div class="sl-row" style="margin-bottom:0;">
@@ -140,9 +171,9 @@
                   <input type="range" id="s_yonetimUcretiPct" min="0" max="10" step="0.5" value="5" oninput="sv('yonetimUcretiPct',this.value)">
                   <span class="sl-val" id="yonetimUcretiPct" style="min-width:30px;">5</span>
                 </div>
-                <span class="sl-note">Charged to every active satellite on 100% of its gross revenue, before the ownership split below — the flagship earns this fee regardless of its equity %, and bears it only pro-rata to that same %. Related-party management fees require transfer-pricing documentation (emsallere uygunluk) and are VAT-able services (unlike KDV-exempt orthosis sales) — flagged for the tax advisor, not modeled here.</span>
+                <span class="sl-note">Applies only to satellites in Subsidiary mode (the defaults are all Branch, where no fee exists — a company cannot invoice itself). Charged on 100% of the subsidiary's gross revenue, before the ownership split below — the flagship earns this fee regardless of its equity %, and bears it only pro-rata to that same %. Related-party management fees require transfer-pricing documentation (emsallere uygunluk) and are VAT-able services (unlike KDV-exempt orthosis sales) — flagged for the tax advisor, not modeled here.</span>
               </div>
-              <div class="note-box" style="margin-top:10px;margin-bottom:0;font-size:11px;">⚠ Structure assumption — confirm with tax advisor, not tax advice. <b>Subsidiary Ltd. vs. Branch (şube), per satellite:</b> Turkey has no group taxation — a subsidiary's startup losses are trapped inside its own Ltd. and can never offset the flagship's profit (only that Ltd.'s own future profit, 5-yr carryforward), while a branch's losses flow directly into the flagship's own P&amp;L and reduce its taxable profit immediately. The trade-off: a branch cannot take local investors and does not isolate liability from the flagship, while a subsidiary can raise local capital and keeps satellite-level risk out of the flagship entity. Subsidiary is the default below; switch a satellite to Branch to see its full P&amp;L (fee replaced by "n/a — internal", no minority interest) consolidate into the flagship figures. Entity structure and branch/subsidiary selection require YMM sign-off before execution.</div>
+              <div class="note-box" style="margin-top:10px;margin-bottom:0;font-size:11px;">⚠ Structure assumption — confirm with tax advisor, not tax advice. <b>Subsidiary Ltd. vs. Branch (şube), per satellite:</b> Turkey has no group taxation — a subsidiary's startup losses are trapped inside its own Ltd. and can never offset the flagship's profit (only that Ltd.'s own future profit, 5-yr carryforward), while a branch's losses flow directly into the flagship's own P&amp;L and reduce its taxable profit immediately. The trade-off: a branch <span class="inv-only">cannot take local investors</span><span class="biz-only">cannot take a local partner</span> and does not isolate liability from the flagship, while a subsidiary <span class="inv-only">can raise local capital</span><span class="biz-only">can bring in a local partner</span> and keeps satellite-level risk out of the flagship entity. <b>Branch is the committed default</b> for every satellite below (full P&amp;L consolidated, fee "n/a — internal", no minority interest); switch a satellite to Subsidiary to see the fee + equity-share structure with <span class="inv-only">local investors</span><span class="biz-only">a local partner</span> instead. Entity structure and branch/subsidiary selection require YMM sign-off before execution.</div>
             </div>
             <label style="display:flex;align-items:center;gap:8px;margin-bottom:4px;cursor:pointer;padding:8px;background:#f0fdf4;border:1px solid #1D9E7544;border-radius:6px 6px 0 0;">
               <input type="checkbox" id="izmirToggle" onchange="toggleMerkez('izmir',this.checked)" style="width:14px;height:14px;accent-color:#1D9E75;cursor:pointer;">
@@ -158,14 +189,14 @@
                 </div>
               </div>
               <div id="izmirFlagshipPayWrap" class="sl-row" style="margin-bottom:0;">
-                <label style="font-size:10px;color:#1D9E75;">Flagship Ownership of Izmir (%) — remainder to local investors</label>
+                <label style="font-size:10px;color:#1D9E75;">Flagship Ownership of Izmir (%) — remainder to <span class="inv-only">local investors</span><span class="biz-only">the local partner</span></label>
                 <div class="sl-controls">
                   <input type="range" id="s_izmirFlagshipPay" min="30" max="100" step="5" value="65" style="accent-color:#1D9E75;" oninput="sv('izmirFlagshipPay',this.value)">
                   <span class="sl-val" id="izmirFlagshipPay" style="min-width:30px;color:#1D9E75;">65</span>
                 </div>
               </div>
               <div id="izmirHedefWrap" class="sl-row" style="margin-bottom:0;margin-top:8px;">
-                <label style="font-size:10px;color:#1D9E75;">Target Market Share (%) — Izmir's designated potential at Year 5</label>
+                <label style="font-size:10px;color:#1D9E75;">Target Market Share (%) — Izmir's designated potential at Year 5 · % of the Izmir market (TR market × population share)</label>
                 <div class="sl-controls">
                   <input type="range" id="s_izmirHedefPay" min="1" max="100" step="0.5" value="30" style="accent-color:#1D9E75;" oninput="sv('izmirHedefPay',this.value)">
                   <span class="sl-val" id="izmirHedefPay" contenteditable="true" onblur="sv2('izmirHedefPay','s_izmirHedefPay',this)" style="min-width:40px;color:#1D9E75;">30</span>
@@ -276,14 +307,14 @@
                 </div>
               </div>
               <div id="ankaraFlagshipPayWrap" class="sl-row" style="margin-bottom:0;">
-                <label style="font-size:10px;color:#E8963C;">Flagship Ownership of Ankara (%) — remainder to local investors</label>
+                <label style="font-size:10px;color:#E8963C;">Flagship Ownership of Ankara (%) — remainder to <span class="inv-only">local investors</span><span class="biz-only">the local partner</span></label>
                 <div class="sl-controls">
                   <input type="range" id="s_ankaraFlagshipPay" min="30" max="100" step="5" value="65" style="accent-color:#E8963C;" oninput="sv('ankaraFlagshipPay',this.value)">
                   <span class="sl-val" id="ankaraFlagshipPay" style="min-width:30px;color:#E8963C;">65</span>
                 </div>
               </div>
               <div id="ankaraHedefWrap" class="sl-row" style="margin-bottom:0;margin-top:8px;">
-                <label style="font-size:10px;color:#E8963C;">Target Market Share (%) — Ankara's designated potential at Year 5</label>
+                <label style="font-size:10px;color:#E8963C;">Target Market Share (%) — Ankara's designated potential at Year 5 · % of the Ankara market (TR market × population share)</label>
                 <div class="sl-controls">
                   <input type="range" id="s_ankaraHedefPay" min="1" max="100" step="0.5" value="30" style="accent-color:#E8963C;" oninput="sv('ankaraHedefPay',this.value)">
                   <span class="sl-val" id="ankaraHedefPay" contenteditable="true" onblur="sv2('ankaraHedefPay','s_ankaraHedefPay',this)" style="min-width:40px;color:#E8963C;">30</span>
@@ -400,15 +431,20 @@
         </div>
         <div class="year-card-body">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
-            <div class="year-kpi"><div class="year-kpi-label">Consolidated net revenue</div><div class="year-kpi-val pos" id="y3GelirKpi">—</div></div>
+            <div class="year-kpi"><div class="year-kpi-label">Consolidated operating profit</div><div class="year-kpi-val pos" id="y3GelirKpi">—</div></div>
             <div class="year-kpi"><div class="year-kpi-label">Total braces</div><div class="year-kpi-val" id="y3KorseKpi">—</div></div>
             <div class="year-kpi" style="grid-column:span 2;"><div class="year-kpi-label">Active centers</div><div class="year-kpi-val" id="y3MerkezKpi">—</div></div>
             <div class="year-kpi" id="bursaAcilisKpi" style="display:none;"><div class="year-kpi-label" style="color:#c94f2a;">Bursa opening</div><div class="year-kpi-val neu" id="bursaAcilisTarihi">—</div></div>
             <div class="year-kpi" id="gaziantepAcilisKpi" style="display:none;"><div class="year-kpi-label" style="color:#8a6d1a;">Gaziantep opening</div><div class="year-kpi-val neu" id="gaziantepAcilisTarihi">—</div></div>
           </div>
           <div style="border-top:1px solid #e8e8e4;padding-top:10px;">
-            <div style="font-size:10px;color:#888;font-weight:700;text-transform:uppercase;margin-bottom:8px;">3rd/4th Center Selection — Bursa &amp; Gaziantep (Year 3)</div>
-            <div class="note-box" style="margin-bottom:8px;font-size:11px;">⚠ Same modeling approach as Izmir/Ankara: opex below excludes HQ-shared costs, satellite management fee and Subsidiary/Branch mode use the network-wide terms set in the Year 2 card above. Bursa/Gaziantep open one year later than Izmir/Ankara — each has its own "Years to reach full target" slider (below), so how much of their target they've reached by Year 5 is now adjustable rather than fixed.</div>
+            <div style="font-size:10px;color:#888;font-weight:700;text-transform:uppercase;margin-bottom:8px;">Phase 2 Option — Bursa &amp; Gaziantep (Year 3) <span style="font-weight:400;text-transform:none;color:#888;">— outside the core plan unless switched on</span></div>
+            <div style="padding:8px 10px;background:#fdf1ec;border:1px solid #c94f2a44;border-radius:6px;margin-bottom:10px;">
+    <label style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:#c94f2a;cursor:pointer;margin-bottom:10px;"><input type="checkbox" class="phase2Toggle" onchange="svPhase2(this.checked)" style="width:14px;height:14px;accent-color:#c94f2a;"> Include Phase 2 (Bursa + Gaziantep) in the plan — all totals, capex, funding need and KPIs</label>
+    <div id="phase2OptG"><div style="text-align:center;padding:16px;color:#aaa;font-size:12px;">Loading projection…</div></div>
+            </div>
+            <div id="phase2CardNote" class="note-box" style="margin-bottom:8px;font-size:11px;">Phase 2 is off — the Bursa and Gaziantep toggles below take effect once Phase 2 is switched on above.</div>
+            <div class="note-box" style="margin-bottom:8px;font-size:11px;">⚠ Same modeling approach as Izmir/Ankara: opex below is the centre's own clinic cost plus its share of the head-office add-on; satellite management fee and Subsidiary/Branch mode use the network-wide terms set in the Year 2 card above. Bursa/Gaziantep open one year later than Izmir/Ankara — each has its own "Years to reach full target" slider (below), so how much of their target they've reached by Year 5 is now adjustable rather than fixed.</div>
             <label style="display:flex;align-items:center;gap:8px;margin-bottom:4px;cursor:pointer;padding:8px;background:#fdf1ec;border:1px solid #c94f2a44;border-radius:6px 6px 0 0;">
               <input type="checkbox" id="bursaToggle" onchange="toggleMerkez('bursa',this.checked)" style="width:14px;height:14px;accent-color:#c94f2a;cursor:pointer;">
               <span style="font-size:12px;font-weight:700;color:#c94f2a;">Bursa Center</span>
@@ -423,14 +459,14 @@
                 </div>
               </div>
               <div id="bursaFlagshipPayWrap" class="sl-row" style="margin-bottom:0;">
-                <label style="font-size:10px;color:#c94f2a;">Flagship Ownership of Bursa (%) — remainder to local investors</label>
+                <label style="font-size:10px;color:#c94f2a;">Flagship Ownership of Bursa (%) — remainder to <span class="inv-only">local investors</span><span class="biz-only">the local partner</span></label>
                 <div class="sl-controls">
                   <input type="range" id="s_bursaFlagshipPay" min="30" max="100" step="5" value="65" style="accent-color:#c94f2a;" oninput="sv('bursaFlagshipPay',this.value)">
                   <span class="sl-val" id="bursaFlagshipPay" style="min-width:30px;color:#c94f2a;">65</span>
                 </div>
               </div>
               <div id="bursaHedefWrap" class="sl-row" style="margin-bottom:0;margin-top:8px;">
-                <label style="font-size:10px;color:#c94f2a;">Target Market Share (%) — Bursa's designated potential at Year 5</label>
+                <label style="font-size:10px;color:#c94f2a;">Target Market Share (%) — Bursa's designated potential at Year 5 · % of the Bursa market (TR market × population share)</label>
                 <div class="sl-controls">
                   <input type="range" id="s_bursaHedefPay" min="1" max="100" step="0.5" value="30" style="accent-color:#c94f2a;" oninput="sv('bursaHedefPay',this.value)">
                   <span class="sl-val" id="bursaHedefPay" contenteditable="true" onblur="sv2('bursaHedefPay','s_bursaHedefPay',this)" style="min-width:40px;color:#c94f2a;">30</span>
@@ -546,14 +582,14 @@
                 </div>
               </div>
               <div id="gaziantepFlagshipPayWrap" class="sl-row" style="margin-bottom:0;">
-                <label style="font-size:10px;color:#8a6d1a;">Flagship Ownership of Gaziantep (%) — remainder to local investors</label>
+                <label style="font-size:10px;color:#8a6d1a;">Flagship Ownership of Gaziantep (%) — remainder to <span class="inv-only">local investors</span><span class="biz-only">the local partner</span></label>
                 <div class="sl-controls">
                   <input type="range" id="s_gaziantepFlagshipPay" min="30" max="100" step="5" value="65" style="accent-color:#8a6d1a;" oninput="sv('gaziantepFlagshipPay',this.value)">
                   <span class="sl-val" id="gaziantepFlagshipPay" style="min-width:30px;color:#8a6d1a;">65</span>
                 </div>
               </div>
               <div id="gaziantepHedefWrap" class="sl-row" style="margin-bottom:0;margin-top:8px;">
-                <label style="font-size:10px;color:#8a6d1a;">Target Market Share (%) — Gaziantep's designated potential at Year 5</label>
+                <label style="font-size:10px;color:#8a6d1a;">Target Market Share (%) — Gaziantep's designated potential at Year 5 · % of the Gaziantep market (TR market × population share)</label>
                 <div class="sl-controls">
                   <input type="range" id="s_gaziantepHedefPay" min="1" max="100" step="0.5" value="30" style="accent-color:#8a6d1a;" oninput="sv('gaziantepHedefPay',this.value)">
                   <span class="sl-val" id="gaziantepHedefPay" contenteditable="true" onblur="sv2('gaziantepHedefPay','s_gaziantepHedefPay',this)" style="min-width:40px;color:#8a6d1a;">30</span>
@@ -666,7 +702,7 @@
         </div>
         <div class="year-card-body">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-            <div class="year-kpi"><div class="year-kpi-label">Consolidated net revenue</div><div class="year-kpi-val pos" id="y4GelirKpi">—</div></div>
+            <div class="year-kpi"><div class="year-kpi-label">Consolidated operating profit</div><div class="year-kpi-val pos" id="y4GelirKpi">—</div></div>
             <div class="year-kpi"><div class="year-kpi-label">Total braces</div><div class="year-kpi-val" id="y4KorseKpi">—</div></div>
             <div class="year-kpi" style="grid-column:span 2;"><div class="year-kpi-label">Active centers</div><div class="year-kpi-val" id="y4MerkezKpi">—</div></div>
           </div>
@@ -680,16 +716,15 @@
         </div>
         <div class="year-card-body">
           <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px;">
-            <div class="year-kpi"><div class="year-kpi-label">Net consolidated at capacity</div><div class="year-kpi-val pos" id="y5GelirKpi">—</div></div>
+            <div class="year-kpi"><div class="year-kpi-label">Consolidated operating profit (Year 5)</div><div class="year-kpi-val pos" id="y5GelirKpi">—</div></div>
             <div class="year-kpi"><div class="year-kpi-label">Target market share</div><div class="year-kpi-val neu" id="y5PayKpi">—</div></div>
             <div class="year-kpi"><div class="year-kpi-label">Target brace count</div><div class="year-kpi-val pos" id="y5KorseKpi">—</div></div>
           </div>
           <div class="note-box" style="margin-top:12px;font-size:11px;">Each satellite's Target Market Share and Years-to-Reach sliders now live in its own panel — Izmir/Ankara on the Year 2 card, Bursa/Gaziantep on the Year 3 card.</div>
           <ul class="year-milestones">
-            <li>2 centers at full capacity</li>
-            <li>Hospital royalty established</li>
-            <li>Platform valuation ready</li>
-            <li>3rd center decision</li>
+            <li id="y5CapMilestone">—</li>
+            <li>Hospital royalty established <span style="color:#999;">(not modelled)</span></li>
+            <li class="inv-only">Platform valuation ready</li>
           </ul>
         </div>
       </div>
@@ -703,10 +738,10 @@
     <div id="projTableWrap">
     <table class="rev-table">
       <thead><tr>
-        <th>Revenue Item</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>Year 4</th><th>Year 5</th><th>Y1→Y5</th>
+        <th>€K</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>Year 4</th><th>Year 5</th><th>Y1→Y5</th>
       </tr></thead>
       <tbody>
-        <tr><td>Brace — Center 1 (private channel)</td><td class="val-pos">—</td><td class="val-pos">—</td><td class="val-pos">—</td><td class="val-grow">—</td></tr>
+        <tr><td>Istanbul clinic — operating profit</td><td class="val-pos">—</td><td class="val-pos">—</td><td class="val-pos">—</td><td class="val-grow">—</td></tr>
       </tbody>
     </table></div>
     <div style="font-size:11px;color:var(--ink3);margin-top:8px;" id="projTableNote"></div>
@@ -788,37 +823,8 @@
   <div class="section">
     <div class="section-label">Implementation Timeline</div>
     <div class="section-title">Trigger-Based Roadmap</div>
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-dot y1"></div>
-        <div class="tl-period">Month 1–6 · Year 1</div>
-        <div class="tl-title">Center 1 opening — Istanbul Flagship</div>
-        <div class="tl-desc">License, team, first doctor activations. Standard brace focused. Intern joins at Month 3. Perforated and sensor brace launch at Month 6.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot y1"></div>
-        <div class="tl-period">Month 7–11 · Year 1</div>
-        <div class="tl-title">Product range expanding, break-even approaching</div>
-        <div class="tl-desc">Sensor + perforated brace entering the mix. Diabetic foot and cranial helmet first cases. Break-even ~Month 9. Cumulative positive ~Month 10–11.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot trigger"></div>
-        <div class="tl-period">Month 9–11 · Trigger</div>
-        <div class="tl-title">4-month moving average net profit → 2nd center signal</div>
-        <div class="tl-desc">4-month moving average filters out patient fluctuations. When trigger fires, Center 2 location and partner process begins.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot y2"></div>
-        <div class="tl-period">Month 13–15 · Early Year 2</div>
-        <div class="tl-title">Center 2 opening — Ankara or Izmir</div>
-        <div class="tl-desc">Faster ramp using Center 1's learned processes. Local partner brings doctor referral channel.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot y3"></div>
-        <div class="tl-period">Year 4–5</div>
-        <div class="tl-title">Platform maturation — exit readiness</div>
-        <div class="tl-desc">Both centers at full capacity. 3rd center evaluation. Platform at full market penetration — exit valuation basis.</div>
-      </div>
+    <div class="timeline" id="implTimeline">
+      <div class="tl-item"><div class="tl-dot y1"></div><div class="tl-period">Loading timeline from the live model…</div></div>
     </div>
   </div>
 
@@ -833,7 +839,7 @@
           <div class="risk-pip"><span class="pip-fill"></span><span class="pip-fill"></span><span class="pip-fill"></span><span class="pip-empty"></span><span class="pip-empty"></span></div>
           <div style="font-size:10px;color:var(--ink3);">Medium</div>
         </div>
-        <div class="risk-mit">Strategic partner investors bring a physician network from the start. BD team active from Month 1.</div>
+        <div class="risk-mit"><span class="inv-only">Strategic partner investors bring a physician network from the start.</span><span class="biz-only">Strategic doctor partners bring a physician network from the start.</span> BD team active from Month 1.</div>
       </div>
       <div class="risk-row">
         <div class="risk-label"><strong style="display:block;color:var(--ink);margin-bottom:3px;">FX risk</strong>TRY revenue, EUR reporting</div>
@@ -867,7 +873,8 @@
 
 <div style="display:flex;justify-content:space-between;margin-top:28px;padding:16px 0;border-top:1px solid #e0e0dc;">
   <a href="expenses.html" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#534AB7;text-decoration:none;padding:9px 20px;border:1.5px solid #534AB7;border-radius:6px;">&#8592; Expenses</a>
-  <a href="investor.html" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#fff;text-decoration:none;padding:9px 20px;background:#534AB7;border:1.5px solid #534AB7;border-radius:6px;">Investor &amp; Agreement &#8594;</a>
+  <a class="inv-only" href="investor.html" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#fff;text-decoration:none;padding:9px 20px;background:#534AB7;border:1.5px solid #534AB7;border-radius:6px;">Investor &amp; Agreement &#8594;</a>
+  <a class="biz-only" href="methodology.html" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#fff;text-decoration:none;padding:9px 20px;background:#534AB7;border:1.5px solid #534AB7;border-radius:6px;">Methodology &amp; Validation &#8594;</a>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
