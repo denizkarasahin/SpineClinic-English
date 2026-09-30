@@ -438,7 +438,12 @@
             <div class="year-kpi" id="gaziantepAcilisKpi" style="display:none;"><div class="year-kpi-label" style="color:#8a6d1a;">Gaziantep opening</div><div class="year-kpi-val neu" id="gaziantepAcilisTarihi">—</div></div>
           </div>
           <div style="border-top:1px solid #e8e8e4;padding-top:10px;">
-            <div style="font-size:10px;color:#888;font-weight:700;text-transform:uppercase;margin-bottom:8px;">3rd/4th Center Selection — Bursa &amp; Gaziantep (Year 3)</div>
+            <div style="font-size:10px;color:#888;font-weight:700;text-transform:uppercase;margin-bottom:8px;">Phase 2 Option — Bursa &amp; Gaziantep (Year 3) <span style="font-weight:400;text-transform:none;color:#888;">— outside the core plan unless switched on</span></div>
+            <div style="padding:8px 10px;background:#fdf1ec;border:1px solid #c94f2a44;border-radius:6px;margin-bottom:10px;">
+    <label style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:#c94f2a;cursor:pointer;margin-bottom:10px;"><input type="checkbox" class="phase2Toggle" onchange="svPhase2(this.checked)" style="width:14px;height:14px;accent-color:#c94f2a;"> Include Phase 2 (Bursa + Gaziantep) in the plan — all totals, capex, funding need and KPIs</label>
+    <div id="phase2OptG"><div style="text-align:center;padding:16px;color:#aaa;font-size:12px;">Loading projection…</div></div>
+            </div>
+            <div id="phase2CardNote" class="note-box" style="margin-bottom:8px;font-size:11px;">Phase 2 is off — the Bursa and Gaziantep toggles below take effect once Phase 2 is switched on above.</div>
             <div class="note-box" style="margin-bottom:8px;font-size:11px;">⚠ Same modeling approach as Izmir/Ankara: opex below is the centre's own clinic cost plus its share of the head-office add-on; satellite management fee and Subsidiary/Branch mode use the network-wide terms set in the Year 2 card above. Bursa/Gaziantep open one year later than Izmir/Ankara — each has its own "Years to reach full target" slider (below), so how much of their target they've reached by Year 5 is now adjustable rather than fixed.</div>
             <label style="display:flex;align-items:center;gap:8px;margin-bottom:4px;cursor:pointer;padding:8px;background:#fdf1ec;border:1px solid #c94f2a44;border-radius:6px 6px 0 0;">
               <input type="checkbox" id="bursaToggle" onchange="toggleMerkez('bursa',this.checked)" style="width:14px;height:14px;accent-color:#c94f2a;cursor:pointer;">

@@ -17,8 +17,17 @@
 <div class="section biz-only">
   <div class="section-header open" onclick="tog(this)"><h2>Business Case — Is This a Good Business?</h2><span class="tog">▾</span></div>
   <div class="section-body" style="display:block;">
-    <div class="note-box" style="margin-bottom:14px;">Volumes, unit economics, P&amp;L, cash, capex and payback for the whole network and for each centre — all read live from the model at the current settings. ⚠ Every value is a scenario output from adjustable starting points, not a forecast.</div>
+    <div class="note-box" style="margin-bottom:14px;">Volumes, unit economics, P&amp;L, cash, capex and payback for the network and for each centre — all read live from the model at the current settings. <b>Core plan</b>: Istanbul (clinic + B2B), Izmir and Ankara; Bursa and Gaziantep are a Phase 2 option (below), included only when switched on. ⚠ Every value is a scenario output from adjustable starting points, not a forecast.</div>
     <div id="bcKpis"><div style="text-align:center;padding:24px;color:#aaa;font-size:12px;">Loading projection…</div></div>
+  </div>
+</div>
+
+<!-- PHASE 2 OPTION (FIN-3) -->
+<div class="section">
+  <div class="section-header open" onclick="tog(this)"><h2>Phase 2 Option — Bursa &amp; Gaziantep</h2><span class="tog">▾</span></div>
+  <div class="section-body" style="display:block;">
+    <label style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:#c94f2a;cursor:pointer;margin-bottom:10px;"><input type="checkbox" class="phase2Toggle" onchange="svPhase2(this.checked)" style="width:14px;height:14px;accent-color:#c94f2a;"> Include Phase 2 (Bursa + Gaziantep) in the plan — all totals, capex, funding need and KPIs</label>
+    <div id="phase2Opt"><div style="text-align:center;padding:16px;color:#aaa;font-size:12px;">Loading projection…</div></div>
   </div>
 </div>
 
@@ -146,7 +155,7 @@
     <div id="summaryOutcomes3yr" style="padding:4px 0;">
       <div style="text-align:center;padding:24px;color:#aaa;font-size:12px;">Loading projection…</div>
     </div>
-    <div class="note-box biz-only" style="margin-top:16px;">The network starts with Istanbul as the <b>flagship</b> — its own clinic plus the network's central functions. Additional cities (Izmir, Ankara, Bursa, Gaziantep) come online as <b>satellites</b>. In the committed default each centre is a <b>branch of the flagship</b>: 100% of its results are consolidated, with no management fee. Each can alternatively be modelled as a separate, majority-owned subsidiary with a local partner — the flagship then earns a management fee on satellite revenue plus its share of satellite profit. See the <a href="growth.html" style="color:#534AB7;font-weight:700;">Multi-Year Plan</a> for the live numbers of each centre.</div>
+    <div class="note-box biz-only" style="margin-top:16px;">The network starts with Istanbul as the <b>flagship</b> — its own clinic plus the network's central functions. Izmir and Ankara come online as <b>satellites</b> in Year 2 (core plan); Bursa and Gaziantep are a <b>Phase 2 option</b> from Year 3. In the committed default each centre is a <b>branch of the flagship</b>: 100% of its results are consolidated, with no management fee. Each can alternatively be modelled as a separate, majority-owned subsidiary with a local partner — the flagship then earns a management fee on satellite revenue plus its share of satellite profit. See the <a href="growth.html" style="color:#534AB7;font-weight:700;">Multi-Year Plan</a> for the live numbers of each centre.</div>
     <div class="note-box inv-only" style="margin-top:16px;">This dashboard models Istanbul as the <b>flagship</b> — its own clinic plus the network's management company. Additional cities (Izmir, Ankara, Bursa, Gaziantep) come online as <b>satellites</b>. In the committed default they are <b>branches of the flagship</b>: funded by Stage 2 of this round, 100% of their results consolidated into the flagship, no management fee and no local investors. Each can alternatively be modelled as a separate, majority-owned subsidiary with local investors — the flagship then earns a management fee on satellite revenue plus an equity share of satellite profit. See <a href="captable.html" style="color:#534AB7;font-weight:700;">Cap Table</a> for the full structure and <a href="growth.html" style="color:#534AB7;font-weight:700;">Multi-Year Plan</a> for the live numbers.</div>
   </div>
 </div>
