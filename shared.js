@@ -2689,7 +2689,6 @@ function recalc() {
   document.getElementById('kurulumTop').textContent=ff(kurulumTop);
   renderKurulumDonut(gv('kira'),gv('depozito'),gv('emlakci'),tadilatTop,dekoTopV,gv('mobilya')+printerMaliyet+robotKolMaliyet,gv('ruhsat'));
   window._lastInvestBreakdown = renderInvestBreakdown(kurulumTop, rows);
-  renderStage1Return(window._lastInvestBreakdown, tNet);
   window._lastRegister = buildRegister(V);
   refreshAgreementTerms();
 
@@ -2882,6 +2881,9 @@ function recalc() {
   if(window._redrawDonem) window._redrawDonem();
   window._lastRows = rows;
   window._lastGelirB2B = tGelirB2B;
+  // Year-1 operating profit for the Stage 1 box = Istanbul clinic + B2B (both
+  // flagship lines funded by Stage 1), unfloored — a loss shows as a loss (4-A3).
+  renderStage1Return(window._lastInvestBreakdown, tNet + tGelirB2B);
   window._lastRowsB2B = rowsB2B; // Year-1 B2B monthly rows — buildProjection reads the year-end unit economics for the Y2-5 B2B stream
   updatePinnedKpi(rows, tGelir, basAy, pozAy, tKorse);
   updateValuationTable(rows, tNet);
@@ -2963,7 +2965,8 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
   // satellite's full 100% net); in Subsidiary mode totals carries just the
   // flagship's fee+equity slice, so subtracting each satellite's full net
   // pushed the minority share in as a phantom Istanbul loss, then floored to
-  // 0 (audit F8). istNetRow[i] is already floored ≥ 0; b2bRow[i] ≥ 0.
+  // 0 (audit F8). istNetRow[i] is the unfloored operating result (a ramp-year
+  // loss stays negative — review 4-A3); b2bRow[i] ≥ 0.
   const _istRow = istNetRow || [];
   const istNet     = (_istRow[_n] || 0) + (b2bRow[_n] || 0);
   const izmirNet   = izmirRow[_n]  || 0;  // net after center-specific opex (= izmirFullNet)
@@ -3316,7 +3319,6 @@ function renderInvestorRoadmap(el, totals, korseM1, feeIncomeRow, equityIncomeRo
     </tr></thead>
     <tbody>
       <tr><td>Istanbul C1 (private)</td>${fmtCell(korseM1[0])}${fmtCell(korseM1[1])}${fmtCell(korseM1[2])}${fmtCell(korseM1[3])}${fmtCell(korseM1[4])}${growCell(korseM1[0],korseM1[4])}</tr>
-      ${istFinancingGapRow.some(v=>v>0) ? `<tr><td style="color:#8a6d1a;font-size:11px;">↳ Opex gap financed by raised capital</td>${istFinancingGapRow.map(v=>`<td style="text-align:right;font-size:11px;color:#8a6d1a;">${v>0?'€'+v+'K':'—'}</td>`).join('')}<td></td></tr>` : ''}
       ${b2bRow[0]>0||b2bRow[1]>0 ? `<tr><td style="color:#378ADD;">Brace — Center 1 (B2B channel)</td>${fmtCell(b2bRow[0])}${fmtCell(b2bRow[1])}${fmtCell(b2bRow[2])}${fmtCell(b2bRow[3])}${fmtCell(b2bRow[4])}${growCell(b2bRow[0],b2bRow[4])}</tr>` : ''}
       ${V.izmirAktif ? `<tr><td style="color:#1D9E75;">Izmir Center <span style="font-weight:400;font-size:10px;opacity:0.7;">— satellite's own net, memo only</span></td>${fmtCell(izmirRow[0])}${fmtCell(izmirRow[1])}${fmtCell(izmirRow[2])}${fmtCell(izmirRow[3])}${fmtCell(izmirRow[4])}${growCell(izmirRow[1],izmirRow[4])}</tr>` : ''}
       ${V.ankaraAktif ? `<tr><td style="color:#E8963C;">Ankara Center <span style="font-weight:400;font-size:10px;opacity:0.7;">— satellite's own net, memo only</span></td>${fmtCell(ankaraRow[0])}${fmtCell(ankaraRow[1])}${fmtCell(ankaraRow[2])}${fmtCell(ankaraRow[3])}${fmtCell(ankaraRow[4])}${growCell(ankaraRow[1],ankaraRow[4])}</tr>` : ''}
@@ -3337,7 +3339,7 @@ function renderInvestorRoadmap(el, totals, korseM1, feeIncomeRow, equityIncomeRo
       ${fcfData && fcfData.vergiDahil ? `<tr><td style="font-size:10px;color:#999;">↳ Loss carryforward balance (year-end)</td>${fcfData.carryEnd.map(c=>`<td style="text-align:right;font-size:10px;color:#999;">${c>0?'€'+c+'K':'—'}</td>`).join('')}<td></td></tr>` : ''}
     </tbody>
   </table></div>
-  <div style="font-size:10px;color:#888;">⚠ Istanbul C1 Y1–Y5 = net after fixed operating costs, one consistent basis every year (Y1's opex briefly exceeds gross revenue in this ramp year — that gap is the "Opex gap financed by raised capital" row above, not a basis switch). Izmir/Ankara rows show each satellite's own full net revenue for visibility once activated, but satellites are separate, majority-owned companies — they are memo lines, NOT summed into the flagship total. The flagship's actual take (in the total) is its management fee (100% of satellite gross revenue × the fee rate, indented below each satellite) plus its equity share of that satellite's profit after the fee. See <a href="captable.html" style="color:#534AB7;font-weight:700;">Cap Table</a> for the Network Structure explainer.${fcfData ? ' Operating cash flow = the consolidated post-opex total above (every year, same basis)'+(fcfData.vergiDahil?', taxed at '+fcfData.kvOraniPct+'% corporate tax (KV) with 5-year loss carryforward. Orthosis sales are VAT-exempt (KDV Kanunu 17/4-s) — no VAT is modeled.':' — corporate tax is currently switched off.')+' Free cash flow = operating cash flow − setup capex of every active centre (in its opening year) − the rights purchase (in the Stage 2 year) ± working capital. Setup capex and the rights purchase are not depreciated/amortised for tax (a conservative simplification). The rights purchase is a real outflow for the centres company (the investor view used by the DCF); in a group view that consolidates Osteoid A.Ş. it is intercompany and nets out.' : ''} &nbsp;<a href="growth.html" style="color:#534AB7;font-weight:700;">Full Multi-Year Model →</a></div>`;
+  <div style="font-size:10px;color:#888;">⚠ Istanbul C1 Y1–Y5 = operating profit (net after all operating costs), one consistent basis every year — a ramp-year loss, if any, is shown as a negative here and flows into every total; how it is financed (Stage 1 working capital) appears only in the cash-flow block below, never as profit. Izmir/Ankara rows show each satellite's own full net revenue for visibility once activated, but satellites are separate, majority-owned companies — they are memo lines, NOT summed into the flagship total. The flagship's actual take (in the total) is its management fee (100% of satellite gross revenue × the fee rate, indented below each satellite) plus its equity share of that satellite's profit after the fee. See <a href="captable.html" style="color:#534AB7;font-weight:700;">Cap Table</a> for the Network Structure explainer.${fcfData ? ' Operating cash flow = the consolidated post-opex total above (every year, same basis)'+(fcfData.vergiDahil?', taxed at '+fcfData.kvOraniPct+'% corporate tax (KV) with 5-year loss carryforward. Orthosis sales are VAT-exempt (KDV Kanunu 17/4-s) — no VAT is modeled.':' — corporate tax is currently switched off.')+' Free cash flow = operating cash flow − setup capex of every active centre (in its opening year) − the rights purchase (in the Stage 2 year) ± working capital. Setup capex and the rights purchase are not depreciated/amortised for tax (a conservative simplification). The rights purchase is a real outflow for the centres company (the investor view used by the DCF); in a group view that consolidates Osteoid A.Ş. it is intercompany and nets out.' : ''} &nbsp;<a href="growth.html" style="color:#534AB7;font-weight:700;">Full Multi-Year Model →</a></div>`;
 
   el.innerHTML = html;
 }
@@ -3466,15 +3468,10 @@ function computeFcfStream() {
   // separate carryforward tracking, so an unused deduction never persists
   // beyond what the existing 5-yr carryforward mechanism already allows.
   const nakdi = computeNakdiSermayeDeduction();
-  // True accounting pre-tax result = the cash row minus the Istanbul ramp-
-  // year financing gap that `totals` floors away (buildProjection's
-  // istFinancingGapRow). The CASH view (pretaxFcf/taxedFcf) keeps the floor —
-  // that burn is funded by the raised working capital, already counted in
-  // the investment denominator — but the TAX base must see the real loss,
-  // otherwise Year 1 pays KV on B2B profit while the entity as a whole made
-  // less (or lost money), and no loss carryforward ever accrues (audit F3).
-  const _finGapRow = window._lastIstFinancingGapRow || [0,0,0,0,0];
-  const accountingPretax = pretaxFcf.map((v,i) => v - (_finGapRow[i] || 0));
+  // `totals` is no longer floored (review 4-A3), so the cash row IS the
+  // accounting pre-tax result — the tax base sees every loss directly and
+  // feeds the carryforward (audit F3's intent, now without a separate row).
+  const accountingPretax = pretaxFcf.slice();
   const taxableBase = accountingPretax.map((v,i) => v - nakdi.deduction[i]);
 
   let carry = 0;
@@ -3659,13 +3656,10 @@ function buildProjection() {
   const y3BrutGelir = y5KorseToplam; // €K (gider henüz düşülmedi)
 
   // ── Istanbul private-clinic channel — one consistent basis every year:
-  // gross revenue, opex, and net (gross − opex, floored at 0). Y1 used to
-  // show gross instead of net here (the opex gap was "hidden" by switching
-  // basis for one year only), which made Year 1 a different metric than
-  // Years 2-5 and silently broke anything that summed this row across years
-  // (computeFcfStream, in particular — see there). Y1's real shortfall — the
-  // startup-year opex gap covered by raised capital — is now its own
-  // explicit row (istFinancingGapRow) instead of a basis switch.
+  // gross revenue, opex, and net (gross − opex, NOT floored — a ramp-year loss
+  // stays a loss, review 4-A3). Y1 used to show gross instead of net here,
+  // which made Year 1 a different metric than Years 2-5 and silently broke
+  // anything that summed this row across years (computeFcfStream).
   const y1BrutM1 = toEur(y1KorseNet);
   const istRampYears = V.istRampYears || 5;
   const istGrossRow = [1,2,3,4,5].map(y => y===1 ? y1BrutM1 : lerp(y1BrutM1, y3BrutGelir, _istRampFrac(y, istRampYears)));
@@ -3791,14 +3785,15 @@ function buildProjection() {
     return Math.round(opexEurK);
   });
   window._lastIstCapBuildout = istCapBuildout;
-  const istNetRow   = istGrossRow.map((g,i) => Math.max(0, g - istOpexRow[i]));
-  // Amount by which opex exceeds gross, before flooring — the gap raised
-  // capital covers in a ramp year (0 once gross overtakes opex). Exposed as
-  // a window global so computeFcfStream() can reconstruct the UNfloored
-  // accounting result for the tax base (audit F3): the floor is a cash-view
-  // convention (the gap is funded by the working capital already counted in
-  // the investment denominator), but tax law still sees the whole entity's
-  // P&L — the loss must reduce taxable profit / feed the carryforward.
+  // Istanbul operating result, NOT floored (review 4-A3): a ramp-year loss is
+  // a loss — it stays in the P&L, in cumulative profit and in the tax base.
+  // How it is financed (Stage 1 working capital) is a cash-flow matter, shown
+  // only in the cash-flow block (investor inflows → cash balance), never by
+  // moving the loss out of the profit line. (Previously floored at 0 with the
+  // loss parked in an "opex gap financed by raised capital" row.)
+  const istNetRow   = istGrossRow.map((g,i) => g - istOpexRow[i]);
+  // Operating loss per year (0 when profitable) — informational only; it is
+  // already inside istNetRow and every total built from it.
   const istFinancingGapRow = istGrossRow.map((g,i) => Math.max(0, istOpexRow[i] - g));
   window._lastIstFinancingGapRow = istFinancingGapRow;
 
@@ -4367,7 +4362,6 @@ function buildProjection() {
       </tr></thead>
       <tbody>
         <tr><td>Brace — Center 1 (private channel)</td>${fmt(korseM1[0])}${fmt(korseM1[1])}${fmt(korseM1[2])}${fmt(korseM1[3])}${fmt(korseM1[4])}${grow(korseM1[0],korseM1[4])}</tr>
-        ${istFinancingGapRow.some(v=>v>0) ? `<tr><td style="color:#8a6d1a;font-size:11px;">↳ Opex gap financed by raised capital</td>${istFinancingGapRow.map(v=>v>0?`<td style="color:#8a6d1a;font-size:11px;">€${v}K</td>`:`<td style="color:#aaa;font-size:11px;">—</td>`).join('')}<td style="color:#aaa;font-size:11px;">—</td></tr>` : ''}
         ${b2bRow[0] > 0 || b2bRow[1] > 0 ? `<tr><td style="color:#378ADD;">Brace — Center 1 (B2B channel)</td>${fmt(b2bRow[0])}${fmt(b2bRow[1])}${fmt(b2bRow[2])}${fmt(b2bRow[3])}${fmt(b2bRow[4])}${grow(b2bRow[0],b2bRow[4])}</tr>` : ''}
         ${V.izmirAktif  ? `<tr><td style="color:#1D9E75;">Izmir Center <span style="font-weight:400;font-size:10px;opacity:0.7;">— satellite's own net, memo only</span></td>${fmt(izmirRow[0])}${fmt(izmirRow[1])}${fmt(izmirRow[2])}${fmt(izmirRow[3])}${fmt(izmirRow[4])}${grow(izmirRow[1],izmirRow[4])}</tr>` : ''}
         ${V.ankaraAktif ? `<tr><td style="color:#E8963C;">Ankara Center <span style="font-weight:400;font-size:10px;opacity:0.7;">— satellite's own net, memo only</span></td>${fmt(ankaraRow[0])}${fmt(ankaraRow[1])}${fmt(ankaraRow[2])}${fmt(ankaraRow[3])}${fmt(ankaraRow[4])}${grow(ankaraRow[1],ankaraRow[4])}</tr>` : ''}
@@ -4387,7 +4381,7 @@ function buildProjection() {
   }
 
   const noteEl = document.getElementById('projTableNote');
-  if (noteEl) noteEl.textContent = 'Istanbul Y1–Y5 = net after fixed operating costs, one consistent basis every year (see the Brace — Center 1 row above; its opex briefly exceeds gross revenue in Year 1, the ramp year — that gap is the "Opex gap financed by raised capital" row, not a basis switch). Istanbul Y2–Y5 opex is Y1\'s total cost (incl. periodic costs — advertising, conferences, workshops, CPA fee) scaled flat by +15%/+18%/+22%/+25%, not modeled fresh per year. Izmir/Ankara default to separate satellite Ltd. companies (see Network Structure on the Cap Table page) — their own opex excludes HQ-shared costs entirely (see note above), and their revenue reaches the flagship only as management fee income (on 100% of satellite gross revenue) plus equity income (the flagship\'s ownership % of satellite net profit after that fee); the rest is minority interest belonging to local investors. Switching a satellite to Branch (şube) mode above instead consolidates 100% of its P&L (including any loss) directly into these figures, with no fee and no minority interest. New centers interpolated from full-market net. Figures in €K. Not final.';
+  if (noteEl) noteEl.textContent = 'Istanbul Y1–Y5 = operating profit (net after all operating costs), one consistent basis every year — a ramp-year loss, if any, stays negative in this row and in every total (its financing by Stage 1 working capital is a cash-flow item, shown on the Investor page). Istanbul Y2–Y5 opex is Y1\'s total cost (incl. periodic costs — advertising, conferences, workshops, CPA fee) scaled flat by +15%/+18%/+22%/+25%, not modeled fresh per year. Izmir/Ankara default to separate satellite Ltd. companies (see Network Structure on the Cap Table page) — their own opex excludes HQ-shared costs entirely (see note above), and their revenue reaches the flagship only as management fee income (on 100% of satellite gross revenue) plus equity income (the flagship\'s ownership % of satellite net profit after that fee); the rest is minority interest belonging to local investors. Switching a satellite to Branch (şube) mode above instead consolidates 100% of its P&L (including any loss) directly into these figures, with no fee and no minority interest. New centers interpolated from full-market net. Figures in €K. Not final.';
 
   // Yıl 5 kartı KPI'ları güncelle
   const y5g = document.getElementById('y5GelirKpi');
@@ -5403,20 +5397,17 @@ function renderTaxOptPanel() {
   // ── Waterfall: pre-tax profit → levers → taxable profit → KV → effective rate ──
   const wfBody = document.getElementById('taxOptWaterfallBody');
   if (wfBody) {
-    // Waterfall starts from the ACCOUNTING pre-tax result (cash row minus the
-    // Istanbul ramp-year financing gap) — the same base computeFcfStream()
-    // actually taxes — so "Taxable profit" here always reconciles with the
-    // "KV paid" row below it. The gap line is shown whenever it's nonzero.
+    // Waterfall starts from the accounting pre-tax result — the same base
+    // computeFcfStream() taxes (unfloored since review 4-A3, so a ramp-year
+    // loss appears here directly) — so "Taxable profit" always reconciles
+    // with the "KV paid" row below it.
     const pretax = fcfData.accountingPretax || fcfData.pretaxFcf;
-    const gapRow = fcfData.pretaxFcf.map((v,i) => v - pretax[i]);
     const dedRow = nakdi.active ? nakdi.deduction : [0,0,0,0,0];
     const taxableProfit = pretax.map((v,i) => v - dedRow[i]);
     const kvPaid = fcfData.taxPaid;
     const effRate = pretax.map((v,i) => v > 0 ? (kvPaid[i]/v*100) : 0);
     const fmtSigned = v => (v>=0?'€':'-€') + Math.abs(Math.round(v)).toLocaleString('en-US') + 'K';
     wfBody.innerHTML =
-      (gapRow.some(v=>v>0) ? '<tr><td style="text-align:left;color:#8a6d1a;font-size:11px;">Cash-view FCF row</td>' + fcfData.pretaxFcf.map(v=>`<td style="color:#8a6d1a;font-size:11px;">${fmtSigned(v)}</td>`).join('') + '</tr>' +
-      '<tr><td style="text-align:left;color:#8a6d1a;font-size:11px;">− Ramp-year opex gap (financed by raised capital, floored out of the cash row but still a real P&amp;L loss)</td>' + gapRow.map(v=>`<td style="color:#8a6d1a;font-size:11px;">${v>0?'-'+fmtEurK(v):'—'}</td>`).join('') + '</tr>' : '') +
       '<tr><td style="text-align:left;"><b>Pre-tax profit (accounting)</b></td>' + pretax.map(v=>`<td>${fmtSigned(v)}</td>`).join('') + '</tr>' +
       '<tr><td style="text-align:left;color:#534AB7;">− Lever 1: notional interest deduction</td>' + dedRow.map(v=>`<td style="color:#534AB7;">${v?'-'+fmtEurK(v):'—'}</td>`).join('') + '</tr>' +
       '<tr><td style="text-align:left;"><b>Taxable profit</b></td>' + taxableProfit.map(v=>`<td>${fmtSigned(v)}</td>`).join('') + '</tr>' +
