@@ -10,6 +10,7 @@
 
 .soz-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 @media (max-width: 800px) { .soz-grid { grid-template-columns: 1fr; } }
+html:not(.mode-investor) .soz-grid { grid-template-columns: 1fr; } /* business mode: Channel Fee Agreement only (BC-2) */
 
 .soz-col-title { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #fff; padding: 8px 14px; border-radius: 5px; margin-bottom: 12px; }
 .soz-col-title.yatirimci { background: #534AB7; }
@@ -38,7 +39,7 @@
 
 
 <!-- Shareholders Agreement -->
-<div class="section">
+<div class="section inv-only">
   <div class="section-header open" onclick="tog(this)"><h2>Shareholders Agreement</h2><span class="tog">▾</span></div>
   <div class="section-body" style="display:block;">
     <div class="note-box" style="margin-bottom:14px;">
@@ -55,13 +56,13 @@
 
 <!-- Key Terms General Summary -->
 <div class="section" id="keyTermsSection" data-terms-version="5">
-  <div class="section-header open" onclick="tog(this)"><h2>Key Terms — General Summary</h2><span class="tog">▾</span></div>
+  <div class="section-header open" onclick="tog(this)"><h2><span class="inv-only">Key Terms — General Summary</span><span class="biz-only">Channel Fee Agreement — Key Terms</span></h2><span class="tog">▾</span></div>
   <div class="section-body" style="display:block;">
     <div class="note-box" style="margin-bottom:18px;">⚠ This summary is a draft and has no legal binding. Term descriptions can be edited by clicking; changes are saved in the browser. [Bracketed] items are still open for negotiation.</div>
     <div class="soz-grid">
 
       <!-- INVESTOR -->
-      <div>
+      <div class="inv-only">
         <div class="soz-col-title yatirimci">Investor Agreement — Two-Stage Committed Structure</div>
 
         <div class="term-card" style="border-left:3px solid #534AB7;">
@@ -108,7 +109,7 @@
       <!-- DOCTOR PARTNERSHIP -->
       <div>
         <div class="soz-col-title hekim">Channel Fee Agreement</div>
-        <div class="note-box" style="margin-bottom:12px;border-left:3px solid #1a7a45;">Doctor investors may participate directly or through a holding entity; the participation structure is set out in the shareholders' agreement.</div>
+        <div class="note-box inv-only" style="margin-bottom:12px;border-left:3px solid #1a7a45;">Doctor investors may participate directly or through a holding entity; the participation structure is set out in the shareholders' agreement.</div>
 
         <div class="term-card" style="border-left:3px solid #1a7a45;">
           <div class="term-title" style="color:#1a7a45;">Channel Fee Rate &amp; Accrual <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:10px;">— <a href="market.html" style="color:#1a7a45;">Updated from the Market page</a></span></div>
@@ -126,7 +127,7 @@
           <div class="term-body" contenteditable="true" id="term_H_fatura" onblur="saveTerm('H_fatura',this)">If a cash payment is requested, the doctor or a recommended third party must issue an invoice to the company. The invoice must include VAT; payment will be made within 15 business days from the invoice date.</div>
         </div>
 
-        <div class="term-card" style="border-left:3px solid #D4537E;">
+        <div class="term-card inv-only" style="border-left:3px solid #D4537E;">
           <div class="term-title" style="color:#D4537E;">Channel Share — Equity Conversion Right</div>
           <div class="term-body" contenteditable="true" id="term_H_kanal" onblur="saveTerm('H_kanal',this)">Doctors who establish and sustain the referral channel have the right to use their accrued channel shares, in exchange for that contribution, to purchase shares in the company at a discounted price at a later stage. Conversion terms (price discount, duration, minimum accrued share amount) shall be determined by separate mutual agreement between the parties.</div>
         </div>

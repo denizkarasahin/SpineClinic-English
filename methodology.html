@@ -72,7 +72,7 @@
   <div class="section-header" onclick="tog(this)"><h2>Model Methodology</h2><span class="tog">▸</span></div>
   <div class="section-body">
 
-    <div class="note-box" style="margin-bottom:20px;">This section explains how the model works, which assumptions are used, and why these approaches were chosen. It establishes common ground for a productive dialogue with investors.</div>
+    <div class="note-box" style="margin-bottom:20px;">This section explains how the model works, which assumptions are used, and why these approaches were chosen. It establishes common ground <span class="inv-only">for a productive dialogue with investors.</span><span class="biz-only">for judging the business on its own numbers.</span></div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
 
@@ -105,7 +105,7 @@
           • <b>Weekend-peak sizing:</b> the patients are school children, so a large share (default 60%) can only attend on weekends and school holidays. Rooms and fitting staff are therefore sized to the busiest <i>design day</i> — the peak weekend/holiday day — not the smoother weekly average, so the clinic can actually absorb the concentrated demand.<br>
           • <b>B2B asymmetry:</b> B2B (wholesale / orthosis-store) braces consume <b>printers only</b> — they never enter a fitting room, take orthotist time, or add workshop hours, since the patient is never seen at the clinic. So B2B scales printers but adds zero rooms, orthotists or support staff.<br>
           • <b>Interns and the junior/graduate orthotist</b> remain threshold-gated (a training pipeline, not capacity math); the fitting orthotists and workshop support staff above are the capacity-driven lines.<br>
-          • <b>B2B stream (Years 2-5):</b> the wholesale / orthosis-store channel ramps its monthly rate from the Year-1 exit rate toward a Year-5 target (<code>b2bHedefAdetYil</code>, default 1,200/yr) over <code>b2bRampYears</code> (default 3), then holds; set the target to 0 to remove it. Revenue = ramped volume × the Year-1 B2B channel's year-end unit net (same doctor-fee / print-cost / royalty deductions as B2C). It flows into consolidated gross, FCF, Year-5 EBITDA and Exit Value as its own visible "Center 1 (B2B channel)" line. B2B lifts printer capex (shared hardware, sized on B2C + B2B volume) but adds no rooms, orthotist or workshop cost.
+          • <b>B2B stream (Years 2-5):</b> the wholesale / orthosis-store channel ramps its monthly rate from the Year-1 closing (Month 12) rate toward a Year-5 target (<code>b2bHedefAdetYil</code>, default 1,200/yr) over <code>b2bRampYears</code> (default 3), then holds; set the target to 0 to remove it. Revenue = ramped volume × the Year-1 B2B channel's year-end unit net (same doctor-fee / print-cost / royalty deductions as B2C). It flows into consolidated gross, FCF, Year-5 EBITDA and Exit Value as its own visible "Center 1 (B2B channel)" line. B2B lifts printer capex (shared hardware, sized on B2C + B2B volume) but adds no rooms, orthotist or workshop cost.
         </div>
       </div>
 
@@ -156,16 +156,18 @@
       <div style="background:#f7f7f4;border:1px solid #e0e0dc;border-radius:8px;padding:16px;">
         <div style="font-size:12px;font-weight:700;color:#1D9E75;margin-bottom:8px;">Metric definitions</div>
         <div style="font-size:12px;color:#555;line-height:1.7;">
-          One set of definitions feeds every valuation figure on every page (Summary Exit box, Investor DCF, scenario table) — no figure borrows another's name:<br><br>
+          <span class="inv-only">One set of definitions feeds every valuation figure on every page (Summary Exit box, Investor DCF, scenario table) — no figure borrows another's name:</span><span class="biz-only">One set of definitions feeds every figure on every page (Summary, Multi-Year Plan, sensitivity) — no figure borrows another's name:</span><br><br>
           • <b>Revenue ladder</b> = Gross revenue (list price × braces) → − doctor fees = Net revenue after doctor fees → − materials, royalty/cutting and all operating costs = Operating profit.<br>
           • <b>Operating profit</b> = revenue − all cash operating costs; printer/branch purchases inside opex are expensed when incurred. Not floored: a ramp-year loss stays in the P&amp;L and in cumulative profit.<br>
           • <b>EBITDA</b> = operating profit + that year's expensed equipment added back; no depreciation is modeled because capex is expensed.<br>
-          • <b>FCF</b> (centres company / investor view) = EBITDA − corporate tax at 25% (with loss carryforward) − expensed capex − each centre's setup capex in its opening year − the rights purchase in the Stage 2 year ± working capital (the increase in SGK receivables: SGK revenue × payment delay ÷ 365). In a group view that consolidates Osteoid A.Ş. the rights purchase is intercompany and nets out.<br>
-          • <b>DCF value</b> (reference only) = Σ PV(FCF₁₋₅) + PV(terminal value), with <b>terminal value = Year-5 after-tax FCF × Base exit multiple</b>.<br>
+          <span class="biz-only">• <b>FCF</b> (whole business) = EBITDA − corporate tax at 25% (with loss carryforward) − expensed capex − each centre's setup capex in its opening year − the IP licence + city exclusivity purchase (intercompany to Osteoid A.Ş.) in the year the first satellites open ± working capital (the increase in SGK receivables: SGK revenue × payment delay ÷ 365). In a group view that consolidates Osteoid A.Ş. that purchase and any royalty net out.<br>
+          • <b>Payback</b> per centre = months from opening until the centre's cumulative pre-tax cash (EBITDA − expensed capex) covers its setup capex; opening losses are part of that cumulative cash. <b>Return on setup capital</b> = Year-3 EBITDA ÷ setup capex. <b>Peak funding need</b> = the lowest point of the network's cumulative cash (monthly in Year 1, year-end afterwards).<br></span>
+          <span class="inv-only">• <b>FCF</b> (centres company / investor view) = EBITDA − corporate tax at 25% (with loss carryforward) − expensed capex − each centre's setup capex in its opening year − the rights purchase in the Stage 2 year ± working capital (the increase in SGK receivables: SGK revenue × payment delay ÷ 365). In a group view that consolidates Osteoid A.Ş. the rights purchase is intercompany and nets out.<br></span>
+          <span class="inv-only">• <b>DCF value</b> (reference only) = Σ PV(FCF₁₋₅) + PV(terminal value), with <b>terminal value = Year-5 after-tax FCF × Base exit multiple</b>.<br>
           • <b>Exit EV</b> = Year-5 EBITDA × exit multiple (EV/EBITDA). One multiple set everywhere: Base (slider + optional multi-centre premium, default 0), Conservative = Base − offset, Optimistic = Base + offset.<br>
           • <b>Deal pre-money</b> = a negotiated input (slider), not a model output; the investor stake is priced off it and stays fixed across scenarios.<br>
           • <b>Investor return</b> = dividends (payout % × after-tax profit once earlier losses are covered, capped at available cash) + Exit EV × stake + cash retained at exit × stake; exit-year taxation is not modeled (see Exit Tax Structuring on the Investor page).<br>
-          • <b>Stage 2 attributable yield</b> = Year-5 flagship-attributable operating profit of only the centres Stage 2 funds ÷ Stage 2 investment.<br><br>
+          • <b>Stage 2 attributable yield</b> = Year-5 flagship-attributable operating profit of only the centres Stage 2 funds ÷ Stage 2 investment.<br></span><br>
           • VAT: orthosis-prosthesis supply is <b>fully exempt (0%)</b> under VAT Law 17/4-s.<br>
           • Corporate tax: clinic activity subject to <b>25%</b> (TGB exemption applies only to Osteoid Inc.).
         </div>
@@ -296,7 +298,7 @@
     <tbody id="projTbody"></tbody>
   </table>
   <div class="note">These are the live model's own consolidated projection rows (read directly from <code>window._lastProjRows</code>, the same rows the Multi-Year Plan table is built from) — not an independent re-derivation. Satellite rows are each centre's own 100% operating profit: in Branch mode (the default) they are consolidated into the total; in Subsidiary mode they are memo lines and the flagship takes its management fee + equity share. The SGK (SSI) channel runs from Year 2 (Multi-Year Plan toggle): its revenue sits inside the rows above and its receivables delay is in the cash-flow ledger below.</div>
-  <div class="sub-title">Cash Flow, Valuation &amp; Investor Return (Live) — with identity checks</div>
+  <div class="sub-title"><span class="inv-only">Cash Flow, Valuation &amp; Investor Return (Live)</span><span class="biz-only">Cash Flow (Live)</span> — with identity checks</div>
   <div id="cfLedger"></div>
 </div>
 

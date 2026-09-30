@@ -1694,7 +1694,7 @@ function supplyKpiHtml(fmtPrice) {
 // nested recalc() calls never re-enter this table.
 function renderMarketSensitivity() {
   const el = _origGetById('mktSensBody');
-  if (!el || window._inScenario) return;
+  if (!el || window._inScenario || isBiz()) return;
   const keys = ['hedefOsteoidPay', 'pazarIstPct', 'pazarTR'];
   const base = {}; keys.forEach(k => { base[k] = V[k]; });
   const cases = [
@@ -3442,7 +3442,7 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
       stage2YieldTopEl.style.color = stage2YieldColor;
     }
     html += `
-    <div style="border:1px solid #D85A3044;border-left:3px solid #D85A30;border-radius:6px;padding:12px 16px;margin-top:16px;">
+    <div class="inv-only" style="border:1px solid #D85A3044;border-left:3px solid #D85A30;border-radius:6px;padding:12px 16px;margin-top:16px;">
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">Stage 2 Investment &amp; Return <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— the Committed tranche, funds the Izmir/Ankara/Bursa/Gaziantep build-outs</span></div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
         <div>
@@ -3513,7 +3513,7 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
     const totalExitLabelTopEl = document.getElementById('totalExitValueLabel');
     if (totalExitLabelTopEl) totalExitLabelTopEl.innerHTML = 'Exit Value — whole business (100%) <span style="color:#185FA5;">(' + exitMult100 + '× EBITDA)</span>';
     html += `
-    <div style="border:2px solid #534AB7;border-radius:6px;padding:12px 16px;margin-top:16px;background:#f9f8ff;">
+    <div class="inv-only" style="border:2px solid #534AB7;border-radius:6px;padding:12px 16px;margin-top:16px;background:#f9f8ff;">
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">Total Investment &amp; Return <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— Total Committed (Stage 1+2) funds the entire business: Istanbul, the IP/exclusivity rights, and all four satellite build-outs</span></div>
       <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;">
         <div>
@@ -3592,7 +3592,7 @@ function renderTimeline(rows) {
   html += item('y3', 'Year 5', cap.atTarget.length + ' of ' + cap.total + ' centres at full target',
     (cap.atTarget.length ? cap.atTarget.join(', ') + ' reach 100% of their designated market potential by Year 5' : 'No centre reaches its full target by Year 5')
     + (cap.atTarget.length < cap.total ? '; the others are still ramping (see each centre\'s "years to reach target" slider).' : '.')
-    + ' Year-5 figures are the exit valuation basis.');
+    + (isBiz() ? '' : ' Year-5 figures are the exit valuation basis.'));
   el.innerHTML = html;
   const ms = document.getElementById('y5CapMilestone');
   if (ms) ms.textContent = cap.atTarget.length + ' of ' + cap.total + ' centres at full target';
@@ -4023,21 +4023,25 @@ function renderValidationLedger(elId) {
   f.plan.centres.forEach(c => { byStage[c.funding] += c.totalEur; });
   const setupOk = Math.abs(byStage.stage1 + byStage.stage2 + byStage.fcf - f.plan.totalSetupEur) < 0.5 && Math.abs(sum(f.setupOut) * 1000 - f.plan.totalSetupEur) < 3000;
   const ms = exitMultSet();
-  let h = '<table class="proj-tbl"><thead><tr><th style="min-width:300px;">Cash flow — centres company / investor view</th><th style="text-align:right;">Y1</th><th style="text-align:right;">Y2</th><th style="text-align:right;">Y3</th><th style="text-align:right;">Y4</th><th style="text-align:right;">Y5</th><th style="text-align:right;">Σ</th></tr></thead><tbody>'
+  const _biz = isBiz();
+  let h = '<table class="proj-tbl"><thead><tr><th style="min-width:300px;">' + (_biz ? 'Cash flow — whole business (centres company)' : 'Cash flow — centres company / investor view') + '</th><th style="text-align:right;">Y1</th><th style="text-align:right;">Y2</th><th style="text-align:right;">Y3</th><th style="text-align:right;">Y4</th><th style="text-align:right;">Y5</th><th style="text-align:right;">Σ</th></tr></thead><tbody>'
     + tr('EBITDA (operating profit + expensed capex)', L.ebitda)
     + tr('− Corporate tax (25%, 5-yr loss carryforward)', f.taxPaid.map(v => -v))
     + tr('− Capex expensed inside opex (printers, branch fit-out)', L.capex.map(v => -v))
     + tr('− Setup capex (each centre in its opening year)', f.setupOut.map(v => -v))
-    + tr('− Rights purchase (Stage 2 year)', f.rightsOut.map(v => -v))
+    + tr(_biz ? '− IP licence &amp; city exclusivity (intercompany to Osteoid A.Ş.)' : '− Rights purchase (Stage 2 year)', f.rightsOut.map(v => -v))
     + tr('± Working capital (SGK receivables)', f.wcChange)
     + tr('= Free cash flow', f.fcf, 'grp')
     + '<tr><td colspan="7" style="font-size:11px;color:' + (fcfOk ? '#1a7a45' : '#c0392b') + ';">' + (fcfOk ? '✓' : '⚠') + ' Check: the rows above rebuild FCF exactly in every year; cumulative 5-year FCF = ' + k(f.cum[4]) + '.</td></tr>'
     + tr('Memo: group view (Osteoid A.Ş. consolidated — rights + royalty net out)', f.fcfGroup)
-    + tr('+ Investor funding (financing, not profit)', f.investorIn)
-    + '<tr><td>Year-end cash balance (before dividends)</td>' + f.cashBalance.map(v => '<td class="result">' + k(v) + '</td>').join('') + '<td></td></tr>'
+    + (_biz
+      ? '<tr><td>Cumulative free cash flow</td>' + f.cum.map(v => '<td class="result">' + k(v) + '</td>').join('') + '<td></td></tr>'
+      : tr('+ Investor funding (financing, not profit)', f.investorIn)
+        + '<tr><td>Year-end cash balance (before dividends)</td>' + f.cashBalance.map(v => '<td class="result">' + k(v) + '</td>').join('') + '<td></td></tr>')
     + '</tbody></table>';
-  h += '<div class="note" style="margin-top:8px;">' + (setupOk ? '✓' : '⚠') + ' Setup funding: Stage 1 ' + k(byStage.stage1 / 1000) + ' + Stage 2 ' + k(byStage.stage2 / 1000) + ' + self-funded from free cash ' + k(byStage.fcf / 1000) + ' = ' + k(f.plan.totalSetupEur / 1000) + ' total setup (capex + pre-opening overheads) of all active centres — the same total the FCF stream deducts (each setup counted once).</div>';
-  if (d && deal) {
+  if (_biz) h += '<div class="note" style="margin-top:8px;">' + (setupOk ? '✓' : '⚠') + ' Setup check: the setup of every active centre (capex + pre-opening overheads) adds up to ' + k(f.plan.totalSetupEur / 1000) + ' — the same total the FCF stream deducts, each centre once, in its opening year.</div>';
+  else h += '<div class="note" style="margin-top:8px;">' + (setupOk ? '✓' : '⚠') + ' Setup funding: Stage 1 ' + k(byStage.stage1 / 1000) + ' + Stage 2 ' + k(byStage.stage2 / 1000) + ' + self-funded from free cash ' + k(byStage.fcf / 1000) + ' = ' + k(f.plan.totalSetupEur / 1000) + ' total setup (capex + pre-opening overheads) of all active centres — the same total the FCF stream deducts (each setup counted once).</div>';
+  if (d && deal && !_biz) {
     h += '<div class="fbox">'
       + '<span class="k">Exit multiples</span>  = one set: Conservative ' + ms.low + '× · Base ' + ms.base + '× · Optimistic ' + ms.high + '× (multi-centre premium +' + ms.premium + '×)\n'
       + '<span class="k">DCF TV</span>          = FCF₅ ' + k(f.fcf[4]) + ' × ' + ms.base + '× = ' + k(d.tv) + ' → PV ' + k(d.pvTv) + '\n'
@@ -5022,7 +5026,7 @@ function buildProjection() {
         <tr class="total"><td>Consolidated operating profit — flagship (clinic + B2B + satellite fee/equity)</td>${fmt(totals[0])}${fmt(totals[1])}${fmt(totals[2])}${fmt(totals[3])}${fmt(totals[4])}${grow(totals[0],totals[4])}</tr>
         <tr><td style="font-size:11px;color:#888;">Memo: head-office add-on (quality &amp; regulatory, IT, HR, group finance) — already inside the rows above, allocated by revenue share</td>${hoTotalK.map(v => fmt(-v)).join('')}<td style="color:#aaa;">—</td></tr>
         ${_ebitdaTbl ? `<tr><td style="font-size:11px;">EBITDA <span style="font-weight:400;font-size:10px;opacity:0.7;">(operating profit + expensed printer/branch capex added back)</span></td>${_ebitdaTbl.map(fmt).join('')}<td style="color:#aaa;">—</td></tr>` : ''}
-        ${(V.izmirAktif||V.ankaraAktif||V.bursaAktif||V.gaziantepAktif) ? `<tr><td style="font-size:11px;color:#999;">Memo: Minority interest — local investors (not in total above)</td>${minorityRow.map(v=>`<td style="font-size:11px;color:#999;">${v>0?'€'+v+'K':'—'}</td>`).join('')}<td style="color:#aaa;font-size:11px;">—</td></tr>` : ''}
+        ${(V.izmirAktif||V.ankaraAktif||V.bursaAktif||V.gaziantepAktif) ? `<tr><td style="font-size:11px;color:#999;">Memo: Minority interest — ${isBiz() ? 'local partner' : 'local investors'} (not in total above)</td>${minorityRow.map(v=>`<td style="font-size:11px;color:#999;">${v>0?'€'+v+'K':'—'}</td>`).join('')}<td style="color:#aaa;font-size:11px;">—</td></tr>` : ''}
         <tr style="background:#f7f4ee;"><td colspan="7" style="font-size:10px;font-weight:700;text-transform:uppercase;color:#8a6d1a;">Upside segments — excluded from every base figure above (toggle on the Market page)</td></tr>
         ${upside.segments.some(s => s.aktif)
           ? upside.segments.filter(s => s.aktif).map(s => `<tr><td style="font-size:11px;color:#8a6d1a;">${s.label} <span style="font-weight:400;font-size:10px;opacity:0.7;">(own SKU + channel: spine surgeons / trauma / physiatrists · ${s.braces[4].toLocaleString('en-US')} braces in Y5 · contribution, no incremental opex)</span></td>${s.contribK.map(fmt).join('')}<td style="color:#aaa;">—</td></tr>`).join('')
@@ -5034,7 +5038,7 @@ function buildProjection() {
   }
 
   const noteEl = document.getElementById('projTableNote');
-  if (noteEl) noteEl.textContent = 'Istanbul Y1–Y5 = operating profit (net after all operating costs), one consistent basis every year — a ramp-year loss, if any, stays negative in this row and in every total (its financing by Stage 1 working capital is a cash-flow item, shown on the Investor page). Istanbul Y2–Y5 opex is capacity-built: the structural base (Year 1\'s rent, expert orthotist, operator, interns, utilities, kitchen, admin, advertising and periodic costs — with Year 1\'s capacity-driven staff taken out) carries real cost step-ups of ×1.15 / ×1.18 / ×1.22 / ×1.25, and on top of it fitting orthotists, workshop support staff, printers (capex in the year bought) and branch fitting offices (one-time fit-out + utilities; no separate branch rent) are sized each year from that year\'s brace volume by the time-and-motion engine — the same method the Methodology page describes. All four satellites default to Branch (şube) mode: 100% of each centre\'s P&L (including any loss) is consolidated into these figures, with no management fee and no minority interest; besides their own clinic opex they carry a revenue-share allocation of the head-office cost (finance, marketing, quality, IT). Switching a satellite to Subsidiary Ltd. above turns its row into a memo line — its result then reaches the flagship only as management fee income (on 100% of its gross revenue) plus the flagship\'s equity share of its profit after that fee; the rest is minority interest belonging to local investors. New centers interpolated from full-market net. Figures in €K. Not final.';
+  if (noteEl) noteEl.textContent = 'Istanbul Y1–Y5 = operating profit (net after all operating costs), one consistent basis every year — a ramp-year loss, if any, stays negative in this row and in every total (' + (isBiz() ? 'how it is financed is a cash item — see the peak funding need on the Summary' : 'its financing by Stage 1 working capital is a cash-flow item, shown on the Investor page') + '). Istanbul Y2–Y5 opex is capacity-built: the structural base (Year 1\'s rent, expert orthotist, operator, interns, utilities, kitchen, admin, advertising and periodic costs — with Year 1\'s capacity-driven staff taken out) carries real cost step-ups of ×1.15 / ×1.18 / ×1.22 / ×1.25, and on top of it fitting orthotists, workshop support staff, printers (capex in the year bought) and branch fitting offices (one-time fit-out + utilities; no separate branch rent) are sized each year from that year\'s brace volume by the time-and-motion engine — the same method the Methodology page describes. All four satellites default to Branch (şube) mode: 100% of each centre\'s P&L (including any loss) is consolidated into these figures, with no management fee and no minority interest; besides their own clinic opex they carry a revenue-share allocation of the head-office add-on (quality & regulatory, IT, HR, group finance — functions not already booked). Switching a satellite to Subsidiary Ltd. above turns its row into a memo line — its result then reaches the flagship only as management fee income (on 100% of its gross revenue) plus the flagship\'s equity share of its profit after that fee; the rest is minority interest belonging to ' + (isBiz() ? 'the local partner' : 'local investors') + '. New centers interpolated from full-market net. Figures in €K. Not final.';
 
   // Yıl 5 kartı KPI'ları güncelle
   const y5g = document.getElementById('y5GelirKpi');
@@ -5133,8 +5137,8 @@ function renderAnnualDetailTable(elId, sehirLabel, cfg) {
       ${cfg.capBuildout ? row('Capacity build-out', cfg.capBuildout.map(fmtText), '(time &amp; motion — printers/orthotists/support/rooms/branches; Y1 = peak-month)') : ''}
       ${cfg.flagshipEquity ? row('↳ Flagship equity income', cfg.flagshipEquity.map(fmtEurK), cfg.isSube ? '(100% — branch, fully consolidated, incl. any loss)' : '('+cfg.flagshipPayPct+'% ownership — see growth.html slider)') : ''}
       ${cfg.minorityLocal ? (cfg.isSube
-        ? row('↳ Local investor share (minority)', cfg.minorityLocal.map(()=>'<td style="color:#aaa;">n/a — branch</td>'), '(a branch cannot take local investors)')
-        : row('↳ Local investor share (minority)', cfg.minorityLocal.map(fmtRoyaltyPos), '('+(100-cfg.flagshipPayPct)+'% ownership — not flagship income)')
+        ? row(isBiz() ? '↳ Local partner share (minority)' : '↳ Local investor share (minority)', cfg.minorityLocal.map(()=>'<td style="color:#aaa;">n/a — branch</td>'), isBiz() ? '(a branch has no local partner)' : '(a branch cannot take local investors)')
+        : row(isBiz() ? '↳ Local partner share (minority)' : '↳ Local investor share (minority)', cfg.minorityLocal.map(fmtRoyaltyPos), '('+(100-cfg.flagshipPayPct)+'% ownership — not flagship income)')
       ) : ''}
     </tbody>
   </table>`;
