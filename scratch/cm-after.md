@@ -130,3 +130,28 @@ investor.html and captable.html redirect to the Summary in business mode. A copy
 ## Business mode — investor terms
 
 Visible text of all 12 business-mode pages in both states was searched for: pre-money, post-money, stake, ticket, tranche, MOIC, IRR, exit, investor, dividend, cap table, frontman, convertible. Every inner tab, collapsed section and `display:none` element was forced open first. **0 hits.**
+
+## Full validation pass (2026-10-01, after push of `catchment-mature`)
+
+Headless Edge, committed defaults unless stated; harness fixed first so every run starts from pristine defaults (the old `pre` step inherited the previous run's V through the periodic.html reload — this produced one false mismatch, €3,219K vs €3,076K, that vanished once fixed).
+
+**Model integrity — 84/84 checks pass** (`scratchpad/vcheck.mjs`):
+- Core (5 yr): monthly cash path ties to year-end cumulative FCF every year; total EBITDA / revenue / braces = Σ centres (+ SGK + upside); cumulative FCF = running sum; mature EBITDA = Σ centre mature EBITDA; every centre mature by Y5 → Y5 EBITDA ≈ mature EBITDA (1,368 vs 1,368).
+- Catchment: `satMarketShare` = (home + region × capture) × youth for all four; defaults 8.8 / 9.8 / 5.06 / 6.88 %.
+- Overlap: effective share = pazarIstPct − reduction each year; Y1 reduction 0 (no satellite open); Y3+ reduction = Σ open satellites' RegionPct × capture × 50 %; Istanbul target = round(pazarTR × eff % × hedef %); Istanbul Y5 private braces = Y5 target; ✓ overlap check on the Summary.
+- Decision view (CM-4): each shown increment = an independent "network with − network without" run, for Y5 EBITDA, cumulative FCF and mature EBITDA, Bursa and Gaziantep.
+- Horizon 7 (Phase 2): Years 1–5 identical to the 5-year run (totals and per centre); Y6–7 no setup, no expensed capex, no WC with SGK off; FCF = EBITDA − tax + WC; tax 0–25 %; every centre mature by Y6 and its Y7 EBITDA ≈ mature EBITDA; mature EBITDA and peak funding need identical on both horizons; payback at maturity = setup ÷ mature EBITDA; Phase 2 lowers Istanbul's share further than the core.
+- SGK + all upside on (Phase 2, 7 yr): SGK braces > 0 from Y2, WC ≠ 0, upside braces counted in totals, EBITDA and mature EBITDA higher than without, path ties, Y7 ≈ mature.
+- Multi-Year Plan sliders: catchment sliders built for all four with the right ranges; Izmir label 8.8 %, table 1,760 braces / 528 target; capture 100 % → 11.2 %, label/table/value update, Y5 EBITDA rises, back to 60 restores; inflow reduction 0 % → effective share 30.1 % every year, EBITDA up, 50 % restores; horizon button → n = 7, Y7 + Mature-year columns, button highlighted, persisted; back to 5 restores. Summary and Multi-Year Plan agree on Y5 EBITDA.
+- Cache: a v64 cache is discarded (v65 defaults load); a v65 cache with a user value is kept.
+- Ledger (formula-validation): FCF rebuild ✓, setup ✓, no ⚠, cumulative 5-year FCF = Summary cumulative FCF.
+
+**Pages:** all 14 pages, 0 exceptions / console errors, no NaN / undefined / Infinity, no stuck placeholder — in the default state, in Phase 2 + 7 years + SGK + adult/post-op/fracture upside, and in an investor-mode copy (all 14 incl. investor.html / captable.html).
+
+**Business mode, investor terms:** the 13-term list of the business-case review (pre-money … convertible): **0 hits**. The broader list the grep script also carries ("equity", "minority") finds 22 / 4 / 4 lines on growth / methodology / formula-validation — all pre-existing satellite ownership-structure wording (branch vs subsidiary, local partner's minority interest / equity share), none added by CM; left as is, judgement call for Deniz.
+
+**Static:** `node --check shared.js` OK; `_version` 65; no `NufusPay` left in shared.js / pages; no duplicate element ids on any page; every CM element id exists on its page; every inline `on*=` handler resolves to a defined function; inline scripts of the two edited pages parse; no hard-coded results in the CM markup (all placeholders filled by `recalc()`).
+
+**Fixed during the pass:** methodology.html / formula-validation.html still described the satellite target as "city population share × TR market" (pre CM-1) in two formula boxes and one prose bullet; Istanbul's share sentence lacked the overlap reduction; the "5-year horizon" note was static. Now: regional catchment, effective share and overlap check, horizon reads `V.horizonYears`. Verified rendered on both pages in both horizons.
+
+**Noted, not changed:** `buyume.html` is an empty, untracked stray file in the repo root (0 bytes); CLAUDE.md predates SGK / head office / viewMode / Phase 2 / catchment (not edited — consult Deniz); AUDIT.md (2026-07-18) still mentions `NufusPay` as a historical record.
