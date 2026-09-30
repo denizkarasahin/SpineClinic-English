@@ -3285,6 +3285,59 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
   el.innerHTML = html;
 }
 
+// ── Implementation Timeline (growth.html) — read from the live model (4-B16)
+// Every month/centre claim here is derived: product launch months from
+// V.aktifAy, intern start from the esikStajyer1 threshold, break-even and
+// cumulative-positive from the Year-1 monthly rows (cumulative includes setup),
+// the 2nd-centre trigger from the 4-month moving average, the opening order
+// from _satOpenMonth(), and "centres at full target by Year 5" from the same
+// ramp fractions the projection uses.
+function _centresAtTargetY5() {
+  const list = [{ n:'Istanbul', ok: _istRampFrac(5, V.istRampYears || 5) >= 1 }];
+  [['izmir','Izmir',2],['ankara','Ankara',2],['bursa','Bursa',3],['gaziantep','Gaziantep',3]].forEach(([k, n, oy]) => {
+    if (V[k + 'Aktif']) list.push({ n, ok: _satRampFrac(5, oy, V[k + 'RampYears'] || 4) >= 1 });
+  });
+  return { total: list.length, atTarget: list.filter(c => c.ok).map(c => c.n) };
+}
+function renderTimeline(rows) {
+  const el = _origGetById('implTimeline');
+  if (!el || !rows || !rows.length) return;
+  const ym = m => 'Year ' + Math.ceil(m / 12) + ' Month ' + (m - (Math.ceil(m / 12) - 1) * 12);
+  const launch = pi => { const a = (V.aktifAy || [])[pi]; return (a !== undefined && a < 12) ? 'Month ' + (a + 1) : null; };
+  const interns = rows.find(r => (r.ayStajyer || 0) > 0);
+  const lp = [['Sensor', 3], ['Perforated', 2], ['Sensor+perforated', 4]].map(([n, pi]) => launch(pi) ? n + ' brace from ' + launch(pi) : null).filter(Boolean);
+  const bas = (rows.find(r => r.net >= 0) || {}).ay || null;
+  const poz = (rows.find(r => r.cumBudget >= 0) || {}).ay || null;
+  const tahmin = poz ? null : _tahminPozAy(rows);
+  const { triggerAy } = calc4AyOrtalama(rows);
+  const opens = [['izmir','Izmir'],['ankara','Ankara'],['bursa','Bursa'],['gaziantep','Gaziantep']]
+    .filter(([k]) => V[k + 'Aktif']).map(([k, n]) => ({ n, m: _satOpenMonth(k) })).sort((a, b) => a.m - b.m);
+  const cap = _centresAtTargetY5();
+  const item = (dot, period, title, desc) => '<div class="tl-item"><div class="tl-dot ' + dot + '"></div><div class="tl-period">' + period + '</div><div class="tl-title">' + title + '</div><div class="tl-desc">' + desc + '</div></div>';
+  let html = item('y1', 'Year 1 · from Month 1', 'Center 1 opening — Istanbul Flagship',
+    'Licence, team, first doctor activations; standard braces first. '
+    + (interns ? 'Intern joins at Month ' + interns.ay + ' (≥' + (V.esikStajyer1 ?? 15) + ' braces/month). ' : 'No intern within Year 1 at this ramp. ')
+    + (lp.length ? lp.join(' · ') + '.' : ''));
+  html += item('y1', 'Year 1', bas ? 'Monthly break-even at Month ' + bas : 'Monthly break-even not reached in Year 1',
+    'Cumulative cash (after the one-time setup) turns positive '
+    + (poz ? 'at Month ' + poz : tahmin ? 'at ~Month ' + tahmin + ' (linear trend beyond Year 1)' : 'beyond the modelled horizon')
+    + '. Diabetic-foot and cranial-helmet cases may start in this period but are outside this model — <b>revenue not modelled</b>.');
+  html += item('trigger', triggerAy ? 'Month ' + triggerAy + ' · Trigger' : 'Trigger',
+    '4-month moving average net profit → 2nd centre signal',
+    triggerAy ? 'Fires at Month ' + triggerAy + ' in the current model; Izmir opens 3 months later, never before Month 13.'
+              : 'Does not fire within Year 1 in the current model — Izmir defaults to Year 2 Month 1.');
+  opens.forEach(o => {
+    html += item(o.m <= 24 ? 'y2' : 'y3', ym(o.m), o.n + ' opening', 'Opening order from the live model (Izmir: trigger-based; others: their opening-month sliders).');
+  });
+  html += item('y3', 'Year 5', cap.atTarget.length + ' of ' + cap.total + ' centres at full target',
+    (cap.atTarget.length ? cap.atTarget.join(', ') + ' reach 100% of their designated market potential by Year 5' : 'No centre reaches its full target by Year 5')
+    + (cap.atTarget.length < cap.total ? '; the others are still ramping (see each centre\'s "years to reach target" slider).' : '.')
+    + ' Year-5 figures are the exit valuation basis.');
+  el.innerHTML = html;
+  const ms = document.getElementById('y5CapMilestone');
+  if (ms) ms.textContent = cap.atTarget.length + ' of ' + cap.total + ' centres at full target';
+}
+
 function renderInvestorRoadmap(el, totals, korseM1, feeIncomeRow, equityIncomeRow, minorityRow, b2bRow, fcfData, izmirRow, ankaraRow, istFinancingGapRow, bursaRow, gaziantepRow) {
   const fmtK = v => v > 0 ? '~€' + v + 'K' : v < 0 ? '-€' + Math.abs(v) + 'K' : '—';
   const fmtCell = v => v > 0
@@ -3330,8 +3383,8 @@ function renderInvestorRoadmap(el, totals, korseM1, feeIncomeRow, equityIncomeRo
       body: cCount + ' active center' + (cCount>1?'s':'') + ' · ' + _rmPct(3) + '% of market target' },
     { label:'Year 4', badge:_rmPct(4) + '% capacity', color:'#c94f2a',
       body: cCount + ' active center' + (cCount>1?'s':'') + ' · ' + _rmPct(4) + '% of market target' },
-    { label:'Year 5', badge:'Full penetration', color:'#2c4a2e',
-      body:'Market penetration target reached · ' + cCount + ' center' + (cCount>1?'s':'') + ' at capacity' },
+    { label:'Year 5', badge:'Exit basis', color:'#2c4a2e',
+      body: (function(){ const c = _centresAtTargetY5(); return c.atTarget.length + ' of ' + c.total + ' centres at full market target'; })() },
   ];
 
   const _rv = window._lastProjRows && window._lastProjRows.rev ? window._lastProjRows.rev.total : null;
@@ -4248,6 +4301,7 @@ function buildProjection() {
     gaziantep: { isSube: gaziantepIsSube, row: gaziantepEquityRow.slice() },
   };
   window._lastFcf = computeFcfStream();
+  renderTimeline(rows);
   renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmirY5Gelir, ankaraY5Gelir, izmirY5Adet, ankaraY5Adet, bursaRow, gaziantepRow, bursaY5Gelir, gaziantepY5Gelir, bursaY5Adet, gaziantepY5Adet, korseM1);
   const _roadmapEl = document.getElementById('investorRoadmap');
   if (_roadmapEl) renderInvestorRoadmap(_roadmapEl, totals, korseM1, feeIncomeRow, equityIncomeRow, minorityRow, b2bRow, window._lastFcf, izmirRow, ankaraRow, istFinancingGapRow, bursaRow, gaziantepRow);
