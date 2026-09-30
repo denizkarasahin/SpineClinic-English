@@ -90,10 +90,11 @@
         <div style="font-size:12px;font-weight:700;color:#534AB7;margin-bottom:8px;">Istanbul Year 2-5 Cost — Capacity-Derived</div>
         <div style="font-size:12px;color:#555;line-height:1.7;">
           For each year: <b>Net = Gross brace revenue − Operating cost</b>. Gross revenue is target brace count × year-end unit net revenue. Istanbul's Year 2-5 operating cost is no longer a flat multiple of Year 1 — it is built up from the time-and-motion capacity engine (see below):<br><br>
-          • <b>Structural base</b> (rent, expert orthotist, operator, interns, utilities, kitchen, admin, advertising) inflates off Year 1 at ×1.15 / ×1.18 / ×1.22 / ×1.25 for Years 2-5 — rent-and-salary inflation only.<br>
+          • <b>Structural base</b> (Year 1's rent, expert orthotist, operator, interns, utilities, kitchen, admin, advertising and periodic costs, with Year 1's capacity-driven staff taken out) carries real cost step-ups of ×1.15 / ×1.18 / ×1.22 / ×1.25 for Years 2-5 (rent and salary step-ups — see Price &amp; FX basis).<br>
           • <b>Fitting orthotists &amp; workshop support</b> are added on top, sized each year by the capacity engine from that year's monthly brace volume (annual ramp ÷ 12).<br>
           • <b>Printers</b> are bought as the ramp crosses each printer's monthly capacity — the incremental capex lands in the year acquired (zeroed if Osteoid Inc. supplies the equipment).<br>
-          • <b>Branch fitting offices</b> open when required rooms exceed the per-site maximum; their one-time fit-out lands in the opening year, with rent + utilities recurring thereafter.
+          • <b>Branch fitting offices</b> open when required rooms exceed the per-site maximum; their one-time fit-out lands in the opening year, with utilities recurring thereafter (no separate branch rent is modelled).<br><br>
+          The Multi-Year Plan's projection note describes exactly this method — there is no flat uplift of Year 1's total cost.
         </div>
       </div>
 
@@ -111,11 +112,12 @@
       <div style="background:#f7f7f4;border:1px solid #e0e0dc;border-radius:8px;padding:16px;">
         <div style="font-size:12px;font-weight:700;color:#1D9E75;margin-bottom:8px;">Izmir / Ankara Revenue Calculation</div>
         <div style="font-size:12px;color:#555;line-height:1.7;">
-          New center net revenue = <b>Gross revenue − Year 1 operating cost</b><br><br>
-          • Gross revenue: ramp total braces × year-end unit net revenue<br>
-          • Cost: Istanbul Year 1 cost (or city sliders if custom costs selected)<br>
-          • Staff: automatically scales according to threshold system<br>
-          • Advertising: central cost — not charged separately to new centers
+          Satellite operating profit = <b>net revenue − the centre's own operating cost</b>, ramped from its opening year<br><br>
+          • Target braces: city market (population share × TR market) × the centre's target market share<br>
+          • Net revenue: target braces × Istanbul's year-end unit net revenue (after doctor fees and materials)<br>
+          • Cost: the centre's own rent, expert orthotist, intern, kitchen, supplies, utilities + fitting orthotists and support staff sized by the same capacity engine (network SGK multiplier), × 1.25 mature-year factor<br>
+          • Advertising and other HQ costs: central — not charged to satellites<br>
+          • Ramp: reaches the full-capacity result over the centre's "years to reach target" slider
         </div>
       </div>
 

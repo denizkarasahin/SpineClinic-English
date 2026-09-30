@@ -3773,9 +3773,10 @@ function buildProjection() {
 
   // ── Istanbul Years 2-5 opex — capacity-derived (time & motion) ───────────
   // Year 1 (index 0) keeps its real monthly-engine opex (y1GiderEur). Years
-  // 2-5 inflate only the STRUCTURAL Y1 base (rent, expert orthotist, operator,
-  // interns, utilities, kitchen, admin, advertising) at the historical
-  // ×1.15/1.18/1.22/1.25 rent-and-salary inflation, then ADD freshly derived
+  // 2-5 are capacity-built (review 4-B14 — one method, described the same way
+  // on the Multi-Year Plan and Methodology pages): the STRUCTURAL Y1 base (rent,
+  // expert orthotist, operator, interns, utilities, kitchen, admin, advertising)
+  // carries real cost step-ups of ×1.15/1.18/1.22/1.25, then ADD freshly derived
   // capacity lines: (a) printer capex, (b) fitting-orthotist + support staff,
   // (c) branch premises. The Y1 base is first stripped of its own capacity
   // staff (the fitting-orthotist + support lines Prompt 2 added to the
@@ -4466,7 +4467,7 @@ function buildProjection() {
   }
 
   const noteEl = document.getElementById('projTableNote');
-  if (noteEl) noteEl.textContent = 'Istanbul Y1–Y5 = operating profit (net after all operating costs), one consistent basis every year — a ramp-year loss, if any, stays negative in this row and in every total (its financing by Stage 1 working capital is a cash-flow item, shown on the Investor page). Istanbul Y2–Y5 opex is Y1\'s total cost (incl. periodic costs — advertising, conferences, workshops, CPA fee) scaled flat by +15%/+18%/+22%/+25%, not modeled fresh per year. All four satellites default to Branch (şube) mode: 100% of each centre\'s P&L (including any loss) is consolidated into these figures, with no management fee and no minority interest; their own opex excludes HQ-shared costs (see note above). Switching a satellite to Subsidiary Ltd. above turns its row into a memo line — its result then reaches the flagship only as management fee income (on 100% of its gross revenue) plus the flagship\'s equity share of its profit after that fee; the rest is minority interest belonging to local investors. New centers interpolated from full-market net. Figures in €K. Not final.';
+  if (noteEl) noteEl.textContent = 'Istanbul Y1–Y5 = operating profit (net after all operating costs), one consistent basis every year — a ramp-year loss, if any, stays negative in this row and in every total (its financing by Stage 1 working capital is a cash-flow item, shown on the Investor page). Istanbul Y2–Y5 opex is capacity-built: the structural base (Year 1\'s rent, expert orthotist, operator, interns, utilities, kitchen, admin, advertising and periodic costs — with Year 1\'s capacity-driven staff taken out) carries real cost step-ups of ×1.15 / ×1.18 / ×1.22 / ×1.25, and on top of it fitting orthotists, workshop support staff, printers (capex in the year bought) and branch fitting offices (one-time fit-out + utilities; no separate branch rent) are sized each year from that year\'s brace volume by the time-and-motion engine — the same method the Methodology page describes. All four satellites default to Branch (şube) mode: 100% of each centre\'s P&L (including any loss) is consolidated into these figures, with no management fee and no minority interest; their own opex excludes HQ-shared costs (see note above). Switching a satellite to Subsidiary Ltd. above turns its row into a memo line — its result then reaches the flagship only as management fee income (on 100% of its gross revenue) plus the flagship\'s equity share of its profit after that fee; the rest is minority interest belonging to local investors. New centers interpolated from full-market net. Figures in €K. Not final.';
 
   // Yıl 5 kartı KPI'ları güncelle
   const y5g = document.getElementById('y5GelirKpi');
