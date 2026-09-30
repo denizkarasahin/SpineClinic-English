@@ -1901,6 +1901,63 @@ function renderMarketSensitivity() {
       + ' · fitting orthotists (+1 expert) ' + capNote[v].orth.join(' / ') + ' · fitting rooms ' + capNote[v].rooms.join(' / ') + ' · printers ' + capNote[v].printers.join(' / ') + ' (Years 1–5)').join('<br>')
     + '<br>Orthotists, rooms and printers are sized each year by the time-and-motion engine from that year\'s volume (fitting ' + (V.ortotistDkFitting || 60) + ' min per brace, weekend-peak design day) — their cost is inside each case\'s EBITDA.';
 }
+// ── Business sensitivity (BC-6) — Summary page, business terms only ───────
+// Every cell is a full live model run: one input changed at a time from the
+// current settings, recalc(), read Year-5 EBITDA, 5-year cumulative FCF and
+// peak funding need; the "with upside" column repeats the run with the three
+// upside segments (adult, post-op, fracture) switched on — they are separate
+// lines, so the base columns never include them. Everything is restored
+// afterwards; guarded so nested recalc() calls never re-enter this table.
+function renderBusinessSensitivity() {
+  const el = _origGetById('bcSensBody');
+  if (!el || window._inScenario) return;
+  const PRODS = ['stdR','stdRl','delik','sens','sensDelik'];
+  const feeKeys = [].concat(...PRODS.map(p => ['feeSci_' + p, 'feeEdu_' + p, 'feeLib_' + p]));
+  const SAT = ['izmir','ankara','bursa','gaziantep'];
+  const UPS = ['adultAktif','postopAktif','fractureAktif'];
+  const keys = ['hedefOsteoidPay','pazarTR','sgkAktif','royaltyEur'].concat(SAT.map(s => s + 'HedefPay'), feeKeys, UPS);
+  const base = {}; keys.forEach(k => { base[k] = V[k]; });
+  const feeNow = PRODS.reduce((s, p) => s + gv('feeSci_' + p) + gv('feeEdu_' + p) + gv('feeLib_' + p), 0) / PRODS.length;
+  const feeUniform = PRODS.every(p => ['feeSci_','feeEdu_','feeLib_'].every(f => Math.abs(gv(f + p) - gv('feeSci_stdR')) < 1e-9));
+  const set = {
+    ist: v => { V.hedefOsteoidPay = v; },
+    sat: v => { SAT.forEach(s => { V[s + 'HedefPay'] = v; }); },
+    mkt: v => { V.pazarTR = v; },
+    fee: v => { feeKeys.forEach(k => { V[k] = v / 3; }); },
+    sgk: v => { V.sgkAktif = v; },
+    roy: v => { V.royaltyEur = v; },
+  };
+  const cases = [
+    ['Istanbul target market share (Year 5)', 'ist', [15, 20, 25, 30, 50], v => v + '%', v => Math.abs(v - base.hedefOsteoidPay) < 1e-9],
+    ['Satellite target market share (all four)', 'sat', [30, 50], v => v + '%', v => SAT.every(s => !V[s + 'Aktif'] || Math.abs(v - base[s + 'HedefPay']) < 1e-9)],
+    ['National market (braces/yr)', 'mkt', [15000, 20000, 25000], v => v.toLocaleString('en-US'), v => Math.abs(v - base.pazarTR) < 1e-9],
+    ['Channel fee (% of price, all products)', 'fee', [20, 25, 30], v => v + '%', v => feeUniform && Math.abs(v - feeNow) < 1e-9],
+    ['SGK line (extra braces, Year 2+)', 'sgk', [false, true], v => v ? 'on (' + gv('sgkIncrementalPct') + '% extra)' : 'off', v => v === (base.sgkAktif === true)],
+    ['Royalty per brace — intercompany to Osteoid A.Ş.', 'roy', [0, 75], v => '€' + v, v => Math.abs(v - (base.royaltyEur || 0)) < 1e-9],
+  ];
+  const run = () => { recalc(); const L = metricLadder('100'), f = window._lastFcf, B = window._lastBusinessCase; return { e5: L ? L.ebitda[4] : 0, cum: f ? f.cum[4] : 0, peak: B ? B.peakNeedK : 0 }; };
+  const out = [];
+  window._inScenario = true;
+  try {
+    cases.forEach(([grp, k, vals, fmt, isB]) => vals.forEach(v => {
+      Object.assign(V, base); UPS.forEach(u => { V[u] = false; }); set[k](v);
+      const r = run();
+      UPS.forEach(u => { V[u] = true; }); recalc();
+      const U = window._lastProjRows && window._lastProjRows.upside;
+      out.push(Object.assign(r, { grp, lbl: fmt(v), isBase: isB(v), e5Up: r.e5 + (U ? U.totalContribK[4] : 0) }));
+    }));
+  } finally {
+    Object.assign(V, base); recalc(); window._inScenario = false;
+  }
+  const kK = v => (v < 0 ? '−€' : '€') + Math.abs(Math.round(v)).toLocaleString('en-US') + 'K';
+  let lastGrp = '';
+  el.innerHTML = out.map(r => {
+    const head = r.grp !== lastGrp ? '<tr><td colspan="5" style="text-align:left;font-size:10px;font-weight:700;color:#555;background:#f0efe9;">' + r.grp + '</td></tr>' : '';
+    lastGrp = r.grp;
+    return head + '<tr' + (r.isBase ? ' class="r-bas"' : '') + '><td style="text-align:left;">' + r.lbl + (r.isBase ? ' <b>(current)</b>' : '') + '</td>'
+      + '<td>' + kK(r.e5) + '</td><td>' + kK(r.cum) + '</td><td>' + kK(r.peak) + '</td><td style="color:#8a6d1a;">' + kK(r.e5Up) + '</td></tr>';
+  }).join('');
+}
 function marketBuildUp() {
   const core = gv('kohortTR') * gv('braceablePct') / 100 * gv('bracePerCourse');
   const paed = core * (1 + gv('otherPaedPct') / 100);
@@ -3328,6 +3385,7 @@ function recalc() {
   renderGiderDagilim(rows);
   renderMain(rows);
   if (!window._inScenario) renderMarketSensitivity();
+  if (!window._inScenario) renderBusinessSensitivity();
 }
 
 function toggleTablo(btn) {
