@@ -47,10 +47,10 @@
         <div class="sl-row">
           <label>Turkey annual spinal braces (units)</label>
           <div class="sl-controls">
-            <input type="range" id="s_pazarTR" min="10000" max="60000" step="1000" value="45000" oninput="sv('pazarTR',this.value)">
-            <span class="sl-val" id="pazarTR" contenteditable="true" onblur="sv2('pazarTR','s_pazarTR',this)">45.000</span>
+            <input type="range" id="s_pazarTR" min="10000" max="40000" step="500" value="20000" oninput="sv('pazarTR',this.value)">
+            <span class="sl-val" id="pazarTR" contenteditable="true" onblur="sv2('pazarTR','s_pazarTR',this)">20.000</span>
           </div>
-          <span class="sl-note">Source: Ministry of Health data · B2B addressable market size</span>
+          <span class="sl-note">Custom rigid spinal braces, curves ≥20° in growing patients (SOSORT; BrAIST 20–40°). Base 20,000/yr, range 15,000–25,000. Bottom-up: birth cohort ~1.25–1.3M (TÜİK) × 0.4–0.5% braceable (Yılmaz et al., Spine J 2020; Weinstein et al., Lancet 2008) × 2.5–3 braces per course. Off-the-shelf orthoses excluded.</span>
         </div>
         <div class="sl-row">
           <label>Istanbul share (%) <span style="font-size:10px;font-weight:600;color:#534AB7;background:#F0EEFF;padding:1px 6px;border-radius:3px;margin-left:4px;">Clinic market</span></label>
@@ -61,6 +61,18 @@
           <span class="sl-note">Population + surroundings (TurkStat) · Addressable: <b id="pazarIstAdet">—</b> units/year</span>
         </div>
       </div>
+    </div>
+
+    <!-- Market build-up (MKT-A4) — bottom-up cross-check, never overwrites pazarTR -->
+    <div style="margin:-6px 0 18px;padding:10px 12px;background:#f7f7f4;border:1px solid #e0e0dc;border-radius:6px;">
+      <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Market build-up — paediatric, bottom-up <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— a cross-check; the Turkey market input above stays independent</span></div>
+      <div class="sl-grid">
+        <div class="sl-row"><label style="font-size:10px;">Birth cohort (TÜİK)</label><div class="sl-controls"><input type="range" id="s_kohortTR" min="800000" max="1500000" step="5000" value="1275000" oninput="sv('kohortTR',this.value)"><span class="sl-val" id="kohortTR" style="min-width:80px;">1.275.000</span></div></div>
+        <div class="sl-row"><label style="font-size:10px;">Braceable share of cohort (%)</label><div class="sl-controls"><input type="range" id="s_braceablePct" min="0.3" max="0.6" step="0.01" value="0.45" oninput="sv('braceablePct',this.value)"><span class="sl-val" id="braceablePct" style="min-width:40px;">0,45</span></div></div>
+        <div class="sl-row"><label style="font-size:10px;">Braces per treatment course</label><div class="sl-controls"><input type="range" id="s_bracePerCourse" min="2" max="4" step="0.05" value="2.75" oninput="sv('bracePerCourse',this.value)"><span class="sl-val" id="bracePerCourse" style="min-width:40px;">2,75</span></div></div>
+        <div class="sl-row"><label style="font-size:10px;">Other paediatric indications (+%) — juvenile / neuromuscular / Scheuermann</label><div class="sl-controls"><input type="range" id="s_otherPaedPct" min="0" max="40" step="1" value="15" oninput="sv('otherPaedPct',this.value)"><span class="sl-val" id="otherPaedPct" style="min-width:40px;">15</span></div></div>
+      </div>
+      <div style="font-size:11px;color:#555;margin-top:6px;">Cohort × braceable % × braces/course = <b id="mktBuildCore">—</b> idiopathic → × (1 + other %) = computed paediatric market <b id="mktBuildPaed">—</b> <span id="mktBuildNote" style="font-size:10px;"></span></div>
     </div>
 
     <!-- Klinik pazar KPI'ları -->
