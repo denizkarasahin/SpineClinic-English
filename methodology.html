@@ -113,7 +113,7 @@
         <div style="font-size:12px;font-weight:700;color:#1D9E75;margin-bottom:8px;">Izmir / Ankara Revenue Calculation</div>
         <div style="font-size:12px;color:#555;line-height:1.7;">
           Satellite operating profit = <b>net revenue − the centre's own operating cost</b>, ramped from its opening year<br><br>
-          • Target braces: city market (population share × TR market) × the centre's target market share<br>
+          • Target braces: regional catchment market (home-province population share + surrounding provinces' share × capture %, × youth weight, × TR market) × the centre's target market share<br>
           • Net revenue: target braces × Istanbul's year-end unit net revenue (after doctor fees and materials)<br>
           • Cost: the centre's own rent, expert orthotist, intern, kitchen, supplies, utilities + fitting orthotists and support staff sized by the same capacity engine (network SGK multiplier), × 1.25 mature-year factor<br>
           • Central functions: the operator (business development / doctor relations), YMM bookkeeping, general expenses, advertising and congresses are already booked in Istanbul's own costs and serve the network. A head-office <b>add-on</b> covers only what is not booked — quality &amp; regulatory, IT, HR, group finance (<span id="mHoTerms">—</span>, Multi-Year Plan sliders) — allocated to every centre by revenue share<br>
@@ -126,7 +126,7 @@
         <div style="font-size:12px;color:#555;line-height:1.7;">
           • <b>What is counted:</b> custom rigid spinal braces for curves ≥20° in growing patients (SOSORT guidelines; BrAIST treated 20–40°). Off-the-shelf orthoses are excluded. The Turkey market input (<code>pazarTR</code>, Market page) has a base of 20,000 braces/yr within a 15,000–25,000 range; it is an independent input.<br>
           • <b>Bottom-up cross-check</b> (Market page build-up, live): birth cohort ~1.25–1.3M (TÜİK) × 0.4–0.5% braceable × 2.5–3 braces per treatment course, + a share for other paediatric indications (juvenile, neuromuscular, Scheuermann). The computed figure is shown next to <code>pazarTR</code> and flagged if the two differ by more than 10%; it never overwrites the input.<br>
-          • <b>Istanbul</b> takes <code>pazarIstPct</code> of the national market (base 30.1%, sensitivity case 21%) — above its ~18% population share because scoliosis specialists and brace providers are concentrated there; to be evidenced by Istanbul's share of named supply. Each satellite's market is its <b>regional catchment</b> × <code>pazarTR</code> — home-province population share + surrounding provinces' share × the share of their patients it captures (default 60%), × a youth weight (default 1.0); TÜİK 2024 population shares, approximate, to be verified; each centre then targets its own share of its own city market.<br>
+          • <b>Istanbul</b> takes <code>pazarIstPct</code> of the national market (base 30.1%, sensitivity case 21%) — above its ~18% population share because scoliosis specialists and brace providers are concentrated there; to be evidenced by Istanbul's share of named supply. Each satellite's market is its <b>regional catchment</b> × <code>pazarTR</code> — home-province population share + surrounding provinces' share × the share of their patients it captures (default 60%), × a youth weight (default 1.0); TÜİK 2024 population shares, approximate, to be verified; each centre then targets its own share of its own catchment market. An open satellite also takes part of Istanbul's regional inflow: Istanbul's <b>effective share</b> = <code>pazarIstPct</code> − Σ open satellites' (surrounding-province share × capture %) × <code>istInflowReductionPct</code> (default 50%), pro rata in the opening year; the home province is not deducted. The overlap check (Summary, Multi-Year Plan) confirms the open centres together stay ≤ 100% of the national market.<br>
           • <b>Named supply</b> (Competition page): five named competitors + Osteoid's partner centre. Named supply plus hospital and small-workshop production is consistent with a 15,000–25,000 treated market.<br>
           • <b>B2B</b> is a separate national line (its own prices, its own share of the national market); it is never part of any clinic volume or Istanbul share.<br>
           • <b>Upside segments</b> (adult/degenerative, post-op TLSO, fracture TLSO) are off by default; each can be switched on as its own SKU and referral channel (Market page). When on, it is part of the plan from Year 2: volume = segment national market × the centre's share of the national market × the centre's target share, on each centre's ramp; own SKU price, channel fee and material at the standard SKU's rates; its fittings load the capacity engine — so it is inside every revenue, EBITDA, FCF, funding-need and KPI figure.<br>
@@ -624,12 +624,12 @@ function renderProjection() {
   document.getElementById('formulProj').innerHTML =
     '<span class="c">── ISTANBUL C1 (private channel) — one consistent net basis every year ─────</span>\n' +
     '<span class="k">Y1_Net</span>       = direct from the 12-month model → €'+P.istNet[0]+'K\n' +
-    '<span class="k">Y2-5_Gross</span>   = LINEAR(Y1 gross €'+(istGross[0]||0)+'K → Y5 target €'+(istGross[4]||0)+'K), reached over istRampYears='+(V.istRampYears||5)+' yr\n' +
+    '<span class="k">Y2-5_Gross</span>   = LINEAR(Y1 gross €'+(istGross[0]||0)+'K → Y5 target €'+(istGross[4]||0)+'K), reached over istRampYears='+(V.istRampYears||5)+' yr; each year\'s target is at Istanbul\'s effective share (pazarIstPct − regional inflow served by open satellites)\n' +
     '<span class="k">Y2-5_Opex</span>    = capacity-derived: structural base ×1.15/1.18/1.22/1.25 + time-&-motion staff / printers / branches\n' +
     '<span class="k">           </span>   → Opex €['+istOpex.join(' / ')+']K\n' +
     '<span class="r">Yr_OpProfit</span>  = Gross − Opex, not floored (a ramp-year loss stays a loss) → €['+P.istNet.join(' / ')+']K\n\n' +
     '<span class="c">── SATELLITES (each centre\'s own 100% operating profit — memo only in Subsidiary mode) ──</span>\n' +
-    '<span class="k">Target</span>      = city market (its pop. share of the TR total) × the center\'s target market-share %\n' +
+    '<span class="k">Target</span>      = regional catchment (home-province pop. share + surrounding provinces\' share × capture %, × youth weight) × TR market × the center\'s target market-share %\n' +
     '<span class="k">UnitNet</span>     = premium-mix ramp (Y2 '+(V.premiumMixY2)+'% · Y3-5 '+(V.premiumMixY3)+'% perforated+sensor) → €'+((window._lastPremiumMix||{unitNetEur:[]}).unitNetEur.slice(1).join(' / '))+'/brace Y2-5 — same for every centre\n' +
     '<span class="k">Ramp</span>        = reaches full target over {city}RampYears yr from opening (Izmir/Ankara open Y2, Bursa/Gaziantep Y3)\n' +
     '<span class="k">Net</span>         = Gross − the centre\'s own operating cost (own rent/staff) − its share of the head-office add-on (quality & regulatory, IT, HR, group finance — functions not already booked; by revenue share)\n\n' +
@@ -679,12 +679,12 @@ function renderMerkezler() {
 
   document.getElementById('formulMerkez').innerHTML =
     '<span class="c">── SATELLITE FULL-CAPACITY NET REVENUE (live model) ────────────────────────</span>\n\n' +
-    '<span class="k">Target</span>      = TR market × city population share × the center\'s target market-share %\n\n' +
+    '<span class="k">Target</span>      = TR market × regional catchment (home-province share + surrounding provinces\' share × capture %, × youth weight) × the center\'s target market-share %\n\n' +
     '<span class="k">UnitNetTRY</span>  = Year-5 premium-mix unit net (premiumMixY3 share of perforated+sensor braces, each SKU at its live price − doctor fees − material − royalty) — same basis as every centre\n\n' +
     '<span class="k">GrossRev</span>    = Target × UnitNetTRY\n\n' +
     '<span class="k">OpCost</span>      = the center\'s own operating cost (rent, expert orthotist + time-&-motion fitting/support staff at the network SGK multiplier, utilities, kitchen) × 1.25 mature-year factor — no HQ overhead\n\n' +
     '<span class="r">NetRevEurK</span>  = (GrossRev − OpCost) / eurKur / 1000\n\n' +
-    '<span class="c">The table below is each center at FULL capacity. Bursa/Gaziantep open in Year 3, so within this 5-year horizon they reach a fraction of this (see their Years-to-target slider); the live projection above ramps to it.</span>';
+    '<span class="c">The table below is each center at FULL capacity (its mature year). Bursa/Gaziantep open in Year 3, so within the '+(V.horizonYears===7?7:5)+'-year horizon (Multi-Year Plan toggle) they reach it only once their ramp completes (see their Years-to-target slider); the live projection above ramps to it.</span>';
 
   var P=window._lastProjRows;
   var sonR=rows.slice(-3);
