@@ -540,7 +540,7 @@ function renderPiyasaKpi() {
     { label:'Osteoid clinic (annual)',  val: osteoidK+' units',       c:'pos' },
     { label:'Osteoid B2B (annual)',     val: osteoidB2B+' units',     c:'neu' },
     { label:'Competitor total (annual)',val: rakipToplam+' units',     c:'neu' },
-    { label:'Osteoid market share',     val: '%'+osteoidPay,          c: osteoidPay>=10?'pos':'neu' },
+    { label:'Osteoid share — vs Osteoid + the ' + RAKIPLER.length + ' listed competitors\' total (' + tumToplam.toLocaleString('en-US') + ' braces/yr)', val: '%'+osteoidPay,          c: osteoidPay>=10?'pos':'neu' },
     { label:'Competitor avg. clinic price', val: ffR(ortFiyat),       c:'neu' },
     { label:'Osteoid base price',       val: ffR(osteoidFiyat),       c: osteoidFiyat>=ortFiyat?'pos':'neg' },
   ].map(function(k){return '<div class="kpi"><div class="kpi-label">'+k.label+'</div><div class="kpi-val '+k.c+'">'+k.val+'</div></div>';}).join('');

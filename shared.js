@@ -336,7 +336,7 @@ function renderPazarChartB2B(rowsB2B) {
     kpiB2B.innerHTML = [
       { label:'B2B total braces', val: tKorseB2B+' units', c:'neu' },
       { label:'B2B net revenue after fees & materials', val: ff(tGelirB2B), c: tGelirB2B>0?'pos':'neu' },
-      { label:'TR market share (B2B)', val: payB2B+'%', c: parseFloat(payB2B)>=1?'pos':'neu' },
+      { label:'TR market share (B2B) — vs national market of ' + pazarTR.toLocaleString('en-US') + ' braces/yr', val: payB2B+'%', c: parseFloat(payB2B)>=1?'pos':'neu' },
     ].map(k=>`<div class="kpi"><div class="kpi-label">${k.label}</div><div class="kpi-val ${k.c}">${k.val}</div></div>`).join('');
   }
   if (mixB2BChartInst) { mixB2BChartInst.destroy(); mixB2BChartInst = null; }
@@ -1561,7 +1561,7 @@ function renderPazarChart(rows) {
     { label:'Turkey market (year)',        val: pazarTR.toLocaleString('tr-TR')+' units', c:'neu' },
     { label:'Istanbul market (year)',      val: pazarIst.toLocaleString('tr-TR')+' units', c:'neu' },
     { label:'Year 1 braces (total) (from brace ramp)', val: totalKorse+' units', c:'neu' },
-    { label:'Break-even market share (IST)',val: _beShare === null ? 'n/a' : _beShare.toFixed(2)+'%', c:'neg' },
+    { label:'Break-even market share — vs Istanbul market of ' + pazarIst.toLocaleString('en-US') + ' braces/yr', val: _beShare === null ? 'n/a' : _beShare.toFixed(2)+'%', c:'neg' },
   ].map(k=>`<div class="kpi"><div class="kpi-label">${k.label}</div><div class="kpi-val ${k.c}">${k.val}</div></div>`).join('');
 
   // B2C KPI mirror (korse.html) — same 3-card format as kpiGridB2B below it.
@@ -1571,7 +1571,7 @@ function renderPazarChart(rows) {
     kpiB2C.innerHTML = [
       { label:'B2C total braces', val: totalKorse+' units', c:'neu' },
       { label:'B2C net revenue after fees & materials', val: ff(tGelirB2C), c: tGelirB2C>0?'pos':'neu' },
-      { label:'TR market share (B2C)', val: payTR.toFixed(2)+'%', c: payTR>=1?'pos':'neu' },
+      { label:'TR market share (B2C) — vs national market of ' + pazarTR.toLocaleString('en-US') + ' braces/yr', val: payTR.toFixed(2)+'%', c: payTR>=1?'pos':'neu' },
     ].map(k=>`<div class="kpi"><div class="kpi-label">${k.label}</div><div class="kpi-val ${k.c}">${k.val}</div></div>`).join('');
   }
 
@@ -3018,7 +3018,7 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
                     : v < 0 ? '-€' + Math.abs(v * 1000).toLocaleString('en-US') : '—';
   const fmtN    = v => v > 0 ? v.toLocaleString('en-US') + ' units/yr' : '—';
 
-  const clinicCard = (name, badge, color, adet, payPct, net, note, revLabel) => `
+  const clinicCard = (name, badge, color, adet, payPct, net, note, revLabel, mktAdet) => `
     <div style="border:1px solid ${color}44;border-left:3px solid ${color};border-radius:6px;padding:12px 16px;margin-bottom:8px;">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
         <div style="font-size:12px;font-weight:700;color:#ddd;">${name}</div>
@@ -3036,6 +3036,7 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
         <div>
           <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Market share target</div>
           <div style="font-size:14px;font-weight:600;color:#bbb;">${payPct}%</div>
+          ${mktAdet ? `<div style="font-size:9px;color:#888;">of the city market, ${Math.round(mktAdet).toLocaleString('en-US')} braces/yr</div>` : ''}
         </div>
       </div>
       ${note ? `<div style="font-size:10px;color:#777;margin-top:8px;padding-top:8px;border-top:1px solid #2a2a3e;">${note}</div>` : ''}
@@ -3079,7 +3080,8 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
     '#534AB7', istAdet,
     (V.hedefOsteoidPay || 20).toFixed(1),
     istNet,
-    'Includes B2B channel · operating profit after all operating costs'
+    'Includes B2B channel · operating profit after all operating costs',
+    undefined, Math.round(pazarTR * (V.pazarIstPct || 18.3) / 100)
   );
 
   if (V.izmirAktif) {
@@ -3090,7 +3092,7 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
       (V.izmirHedefPay || 21).toFixed(1),
       izmirNet,
       'Operating profit after centre-specific opex (own rent, orthotist, staff). Gross revenue: ~€' + (_RV ? _RV.izmir.gross[4] : 0) + 'K',
-      'Operating profit (Year 5)'
+      'Operating profit (Year 5)', pazarTR * (V.izmirNufusPay || 0) / 100
     );
   }
 
@@ -3102,7 +3104,7 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
       (V.ankaraHedefPay || 20.5).toFixed(1),
       ankaraNet,
       'Operating profit after centre-specific opex (own rent, orthotist, staff). Gross revenue: ~€' + (_RV ? _RV.ankara.gross[4] : 0) + 'K',
-      'Operating profit (Year 5)'
+      'Operating profit (Year 5)', pazarTR * (V.ankaraNufusPay || 0) / 100
     );
   }
 
@@ -3115,7 +3117,7 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
       (V.bursaHedefPay || 30).toFixed(1),
       bursaNet,
       'Opens Year 3 — ' + bursaReachPct + '% of full-capacity target reached by Year 5 within this model\'s horizon (adjustable via the "Years to reach target" slider on the Multi-Year Plan page). Operating profit after centre-specific opex. Gross revenue: ~€' + (_RV ? _RV.bursa.gross[4] : 0) + 'K',
-      'Operating profit (Year 5, ' + bursaReachPct + '% of target)'
+      'Operating profit (Year 5, ' + bursaReachPct + '% of target)', pazarTR * (V.bursaNufusPay || 0) / 100
     );
   }
 
@@ -3128,7 +3130,7 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
       (V.gaziantepHedefPay || 30).toFixed(1),
       gaziantepNet,
       'Opens Year 3 — ' + gaziantepReachPct + '% of full-capacity target reached by Year 5 within this model\'s horizon (adjustable via the "Years to reach target" slider on the Multi-Year Plan page). Operating profit after centre-specific opex. Gross revenue: ~€' + (_RV ? _RV.gaziantep.gross[4] : 0) + 'K',
-      'Operating profit (Year 5, ' + gaziantepReachPct + '% of target)'
+      'Operating profit (Year 5, ' + gaziantepReachPct + '% of target)', pazarTR * (V.gaziantepNufusPay || 0) / 100
     );
   }
 
@@ -4474,7 +4476,7 @@ function buildProjection() {
   const y5p = document.getElementById('y5PayKpi');
   const y5k = document.getElementById('y5KorseKpi');
   if (y5g) y5g.textContent = '~€' + totals[4] + 'K';
-  const y5PayLabel = '%' + y5PayPct + ' IST'
+  const y5PayLabel = '(each % of its own city market) %' + y5PayPct + ' IST'
     + (V.izmirAktif  ? ' · %' + gv('izmirHedefPay').toFixed(1)  + ' IZM' : '')
     + (V.ankaraAktif ? ' · %' + gv('ankaraHedefPay').toFixed(1) + ' ANK' : '')
     + (V.bursaAktif ? ' · %' + gv('bursaHedefPay').toFixed(1) + ' BUR (target; '

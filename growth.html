@@ -69,13 +69,13 @@
             <div class="kpi-grid" id="kpiGridB2C" style="margin-bottom:10px;">
               <div class="kpi"><div class="kpi-label">B2C total braces</div><div class="kpi-val neu">0 units</div></div>
               <div class="kpi"><div class="kpi-label">B2C net revenue after fees &amp; materials</div><div class="kpi-val neu">—</div></div>
-              <div class="kpi"><div class="kpi-label">TR market share (B2C)</div><div class="kpi-val neu">0.00%</div></div>
+              <div class="kpi"><div class="kpi-label">TR market share (B2C) — vs national market</div><div class="kpi-val neu">0.00%</div></div>
             </div>
             <div class="note-box" style="margin-bottom:10px;">Drag the top edge of each column to adjust units. Range: 0–100, integer steps.</div>
             <div style="font-size:10px;color:#888;font-weight:700;text-transform:uppercase;margin-bottom:8px;">Istanbul — Target &amp; Ramp</div>
             <div style="padding:8px 10px;background:#f0f0ff;border:1px solid #534AB744;border-radius:6px;">
               <div class="sl-row" style="margin-bottom:0;">
-                <label style="font-size:11px;color:#534AB7;">Target Market Share (%) — Istanbul's designated potential at Year 5</label>
+                <label style="font-size:11px;color:#534AB7;">Target Market Share (%) — Istanbul's designated potential at Year 5 · % of the Istanbul market (TR market × Istanbul share)</label>
                 <div class="sl-controls">
                   <input type="range" id="s_hedefOsteoidPay" min="1" max="100" step="0.5" value="30" style="accent-color:#534AB7;" oninput="sv('hedefOsteoidPay',this.value)">
                   <span class="sl-val" id="hedefOsteoidPay" contenteditable="true" onblur="sv2('hedefOsteoidPay','s_hedefOsteoidPay',this)" style="min-width:40px;color:#534AB7;">30</span>
@@ -165,7 +165,7 @@
                 </div>
               </div>
               <div id="izmirHedefWrap" class="sl-row" style="margin-bottom:0;margin-top:8px;">
-                <label style="font-size:10px;color:#1D9E75;">Target Market Share (%) — Izmir's designated potential at Year 5</label>
+                <label style="font-size:10px;color:#1D9E75;">Target Market Share (%) — Izmir's designated potential at Year 5 · % of the Izmir market (TR market × population share)</label>
                 <div class="sl-controls">
                   <input type="range" id="s_izmirHedefPay" min="1" max="100" step="0.5" value="30" style="accent-color:#1D9E75;" oninput="sv('izmirHedefPay',this.value)">
                   <span class="sl-val" id="izmirHedefPay" contenteditable="true" onblur="sv2('izmirHedefPay','s_izmirHedefPay',this)" style="min-width:40px;color:#1D9E75;">30</span>
@@ -283,7 +283,7 @@
                 </div>
               </div>
               <div id="ankaraHedefWrap" class="sl-row" style="margin-bottom:0;margin-top:8px;">
-                <label style="font-size:10px;color:#E8963C;">Target Market Share (%) — Ankara's designated potential at Year 5</label>
+                <label style="font-size:10px;color:#E8963C;">Target Market Share (%) — Ankara's designated potential at Year 5 · % of the Ankara market (TR market × population share)</label>
                 <div class="sl-controls">
                   <input type="range" id="s_ankaraHedefPay" min="1" max="100" step="0.5" value="30" style="accent-color:#E8963C;" oninput="sv('ankaraHedefPay',this.value)">
                   <span class="sl-val" id="ankaraHedefPay" contenteditable="true" onblur="sv2('ankaraHedefPay','s_ankaraHedefPay',this)" style="min-width:40px;color:#E8963C;">30</span>
@@ -430,7 +430,7 @@
                 </div>
               </div>
               <div id="bursaHedefWrap" class="sl-row" style="margin-bottom:0;margin-top:8px;">
-                <label style="font-size:10px;color:#c94f2a;">Target Market Share (%) — Bursa's designated potential at Year 5</label>
+                <label style="font-size:10px;color:#c94f2a;">Target Market Share (%) — Bursa's designated potential at Year 5 · % of the Bursa market (TR market × population share)</label>
                 <div class="sl-controls">
                   <input type="range" id="s_bursaHedefPay" min="1" max="100" step="0.5" value="30" style="accent-color:#c94f2a;" oninput="sv('bursaHedefPay',this.value)">
                   <span class="sl-val" id="bursaHedefPay" contenteditable="true" onblur="sv2('bursaHedefPay','s_bursaHedefPay',this)" style="min-width:40px;color:#c94f2a;">30</span>
@@ -553,7 +553,7 @@
                 </div>
               </div>
               <div id="gaziantepHedefWrap" class="sl-row" style="margin-bottom:0;margin-top:8px;">
-                <label style="font-size:10px;color:#8a6d1a;">Target Market Share (%) — Gaziantep's designated potential at Year 5</label>
+                <label style="font-size:10px;color:#8a6d1a;">Target Market Share (%) — Gaziantep's designated potential at Year 5 · % of the Gaziantep market (TR market × population share)</label>
                 <div class="sl-controls">
                   <input type="range" id="s_gaziantepHedefPay" min="1" max="100" step="0.5" value="30" style="accent-color:#8a6d1a;" oninput="sv('gaziantepHedefPay',this.value)">
                   <span class="sl-val" id="gaziantepHedefPay" contenteditable="true" onblur="sv2('gaziantepHedefPay','s_gaziantepHedefPay',this)" style="min-width:40px;color:#8a6d1a;">30</span>
