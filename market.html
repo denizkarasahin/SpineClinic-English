@@ -514,7 +514,7 @@ const RAKIPLER = [
   { id:'proklinik',     ad:'Proklinik',                sehir:'Istanbul (3 branches) & Cyprus',  renk:'#EF9F27',
     aciklama:'One of Turkey\'s largest prosthetics and orthotics application centers. 20 years of experience, 20,000+ patients, and 40+ specialist staff. Operates with 3 branches in Istanbul and 1 in Cyprus. Provides lower/upper limb and arm prosthetics, carbon walking devices, and rehabilitation services.',
     dK:960, dB:0, dFK:20000, dFB:16000 },
-  { id:'aktifOrtez',    ad:'Aktif Ortez Protez',       sehir:'Istanbul — Fatih (Şehremini)',renk:'#2A9D8F',
+  { id:'aktifOrtez',    ad:"Özgür's centre — Aktif Ortez Protez (partner)", sehir:'Istanbul — Fatih (Şehremini)',renk:'#2A9D8F',
     aciklama:'Orthosis and prosthesis manufacturing and application center in Fatih/Istanbul, led by specialist physiotherapist Özgür Aydoğan. Focused on custom orthosis production; stands out in the area for combining physiotherapy expertise with orthotic prescription.',
     dK:180, dB:0, dFK:18000, dFB:14000 },
 ];
@@ -544,7 +544,7 @@ function renderRakipGrid() {
     var fK = gRV(r,'FiyatK',r.dFK), fB = gRV(r,'FiyatB',r.dFB);
     var toplam = kK + kB, ciro = kK*fK + kB*fB;
     return '<div class="rakip-card">' +
-      '<div class="rakip-card-header"><div class="rakip-name" style="color:'+r.renk+';">'+r.ad+'</div><div class="rakip-city">'+r.sehir+'</div></div>' +
+      '<div class="rakip-card-header"><div class="rakip-name" style="color:'+r.renk+';">'+r.ad+'</div><div class="rakip-city">'+r.sehir+'</div></div>' + namedSupplyTag(r.id) +
       '<div class="rakip-desc">'+r.aciklama+'</div>' +
       '<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 16px;">' +
         '<div><div style="font-size:10px;font-weight:800;color:#1a7a45;text-transform:uppercase;letter-spacing:0.5px;margin:8px 0 4px;">Clinic</div>' +
@@ -587,14 +587,7 @@ function renderPiyasaKpi() {
 
   var grid = document.getElementById('piyasaKpiGrid');
   if (!grid) return;
-  grid.innerHTML = [
-    { label:'Osteoid clinic (annual)',  val: osteoidK+' units',       c:'pos' },
-    { label:'Osteoid B2B (annual)',     val: osteoidB2B+' units',     c:'neu' },
-    { label:'Competitor total (annual)',val: rakipToplam+' units',     c:'neu' },
-    { label:'Osteoid share — vs Osteoid + the ' + RAKIPLER.length + ' listed competitors\' total (' + tumToplam.toLocaleString('en-US') + ' braces/yr)', val: '%'+osteoidPay,          c: osteoidPay>=10?'pos':'neu' },
-    { label:'Competitor avg. clinic price', val: ffR(ortFiyat),       c:'neu' },
-    { label:'Osteoid base price',       val: ffR(osteoidFiyat),       c: osteoidFiyat>=ortFiyat?'pos':'neg' },
-  ].map(function(k){return '<div class="kpi"><div class="kpi-label">'+k.label+'</div><div class="kpi-val '+k.c+'">'+k.val+'</div></div>';}).join('');
+  grid.innerHTML = supplyKpiHtml(ffR); // shared (MKT-E): partner excluded from competitor totals
 }
 
 var rekabetChartInst = null;

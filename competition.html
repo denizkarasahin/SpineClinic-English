@@ -97,7 +97,7 @@ const RAKIPLER = [
     dK: 960, dB: 0,   dFK: 20000, dFB: 16000,
   },
   {
-    id: 'aktifOrtez',    ad: 'Aktif Ortez Protez',      sehir: 'Istanbul — Fatih (Şehremini)', renk: '#2A9D8F',
+    id: 'aktifOrtez',    ad: "Özgür's centre — Aktif Ortez Protez (partner)", sehir: 'Istanbul — Fatih (Şehremini)', renk: '#2A9D8F',
     aciklama: 'Orthosis-prosthesis manufacturing and application center in Fatih/Istanbul, led by Specialist Physiotherapist Özgür Aydoğan. Focused on custom orthosis production and application; stands out in the area with a clinical profile combining physiotherapy expertise with orthosis prescription.',
     dK: 180, dB: 0,   dFK: 18000, dFB: 14000,
   },
@@ -132,6 +132,7 @@ function renderRakipGrid() {
         <div class="rakip-name" style="color:${r.renk};">${r.ad}</div>
         <div class="rakip-city">${r.sehir}</div>
       </div>
+      ${namedSupplyTag(r.id)}
       <div class="rakip-desc">${r.aciklama}</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 16px;">
         <div>
@@ -177,14 +178,7 @@ function renderPiyasaKpi() {
     if(el('kpi_'+r.id+'_C')) el('kpi_'+r.id+'_C').textContent = '€'+((kK*fK+kB*fB)/(V.eurKur||50)/1000000).toFixed(2)+'M';
   });
 
-  document.getElementById('piyasaKpiGrid').innerHTML = [
-    { label:'Osteoid clinic (annual)',       val: osteoidK+' units',       c:'pos' },
-    { label:'Osteoid B2B (annual)',          val: osteoidB2B+' units',     c:'neu' },
-    { label:'Competitor total (annual)',     val: rakipToplam+' units',    c:'neu' },
-    { label:'Osteoid share — vs Osteoid + the ' + RAKIPLER.length + ' listed competitors\' total (' + tumToplam.toLocaleString('en-US') + ' braces/yr)', val: osteoidPay+'%',          c: osteoidPay>=10?'pos':'neu' },
-    { label:'Competitor avg. clinic price',  val: ff(ortFiyat),            c:'neu' },
-    { label:'Osteoid base price',            val: ff(osteoidFiyat),        c: osteoidFiyat>=ortFiyat?'pos':'neg' },
-  ].map(k=>`<div class="kpi"><div class="kpi-label">${k.label}</div><div class="kpi-val ${k.c}">${k.val}</div></div>`).join('');
+  document.getElementById('piyasaKpiGrid').innerHTML = supplyKpiHtml(ff); // shared (MKT-E)
 }
 
 let rekabetChartInst = null;
