@@ -2554,6 +2554,8 @@ function updateValuationTable(rows, tNet) {
     set('vt_netkâr_'+ s.id, netKarEur > 0 ? '~€' + (netKarEur/1000).toFixed(2) + 'M' : '—');
     set('vt_ev_'    + s.id, evEur   > 0 ? '~€' + evM + 'M' : '—');
     set('vt_mult_'  + s.id, s.mult + '× EV/EBITDA');
+    set('vt_lowDeltaLbl', V.exitMultLowDelta ?? 2);
+    set('vt_highDeltaLbl', V.exitMultHighDelta ?? 3);
     const notEl = document.getElementById('vt_not_' + s.id);
     if (notEl) {
       notEl.textContent = notEl.dataset.base + ' · ' + aktifMerkez + (aktifMerkez === 1 ? ' centre' : ' centres') + (_ms.premium ? ' · incl. +' + _ms.premium + '× multi-centre premium (slider)' : '');
