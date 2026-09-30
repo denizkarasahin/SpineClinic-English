@@ -408,6 +408,23 @@
         </div>
       </div>
 
+      <!-- Royalty — scenario only (FU-2) -->
+      <div style="font-size:11px;font-weight:700;color:#BA7517;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Royalty to Osteoid A.Ş. — scenario only <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— €0 in the base case</span></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-bottom:16px;background:#fffaf0;border:1px solid #f0d9a8;border-radius:8px;padding:14px;">
+        <div class="sl-row">
+          <label style="font-size:10px;">Royalty (€ per brace, every brace incl. B2B)</label>
+          <div class="sl-controls">
+            <input type="range" id="s_royaltyEur" min="0" max="150" step="5" value="0" oninput="sv('royaltyEur',this.value)">
+            <span class="sl-val" id="royaltyEur" style="min-width:40px;">0</span>
+          </div>
+          <div style="display:flex;gap:6px;margin-top:4px;">
+            <button type="button" onclick="setRoyalty(0)" style="font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;border:1px solid #534AB7;background:#fff;color:#534AB7;cursor:pointer;">Base — €0</button>
+            <button type="button" onclick="setRoyalty(75)" style="font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;border:1px solid #BA7517;background:#fff;color:#BA7517;cursor:pointer;">€75/brace royalty (scenario)</button>
+          </div>
+          <span class="sl-note">Intercompany transfer to Osteoid A.Ş.; nets out in the consolidated view, a cost in the centres-company view.</span>
+        </div>
+      </div>
+
       <!-- Setup Costs — 5 Centers, grouped side by side -->
       <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Setup Costs — 5 Centers <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— each linked to its own model, each with itemised pre-opening overheads; all five feed the Investor Ticket</span></div>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:16px;">

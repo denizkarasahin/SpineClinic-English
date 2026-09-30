@@ -1532,6 +1532,11 @@ let pazarChartInst = null, mixChartInst = null, mixB2BChartInst = null;
 // Scheuermann). Shown next to pazarTR; it never overwrites it — pazarTR stays
 // an independent input. A >10% gap is flagged.
 // Istanbul-share presets (MKT-C7): named points on the live pazarIstPct slider.
+// Royalty scenario presets (FU-2) — named points on the live royaltyEur slider.
+function setRoyalty(v) {
+  sv('royaltyEur', v);
+  const sl = document.getElementById('s_royaltyEur'); if (sl) sl.value = v;
+}
 function setIstShare(v) {
   sv('pazarIstPct', v);
   const sl = document.getElementById('s_pazarIstPct'); if (sl) sl.value = v;
@@ -3616,7 +3621,7 @@ function renderInvestorRoadmap(el, totals, korseM1, feeIncomeRow, equityIncomeRo
       <tr><td style="font-size:11px;">− Rights purchase <span style="font-size:10px;color:#999;">(IP licence + exclusivity, paid to Osteoid A.Ş. at Stage 2 — centres-company view)</span></td>${fcfData.rightsOut.map(v=>fmtSignedCell(-v)).join('')}<td></td></tr>
       <tr><td style="font-size:11px;color:#999;">± Working capital <span style="font-size:10px;">(not modelled — private channel paid at fitting; SGK channel excluded)</span></td>${fcfData.wcChange.map(fmtSignedCell).join('')}<td></td></tr>
       <tr style="font-weight:700;"><td>Free cash flow — centres company / investor view</td>${fcfData.fcf.map(fmtSignedCell).join('')}<td></td></tr>
-      <tr><td style="font-size:10px;color:#999;">Memo: group view (Osteoid A.Ş. + centres) — rights purchase is intercompany, nets to €0</td>${fcfData.fcfGroup.map(v=>`<td style="text-align:right;font-size:10px;color:#999;">${v<0?'-':''}€${Math.abs(v)}K</td>`).join('')}<td></td></tr>
+      <tr><td style="font-size:10px;color:#999;">Memo: group view (Osteoid A.Ş. + centres) — rights purchase and royalty are intercompany, net to €0</td>${fcfData.fcfGroup.map(v=>`<td style="text-align:right;font-size:10px;color:#999;">${v<0?'-':''}€${Math.abs(v)}K</td>`).join('')}<td></td></tr>
       <tr><td style="font-size:11px;color:#534AB7;">+ Investor funding <span style="font-size:10px;color:#999;">(financing — Stage 1 at closing, Stage 2 in its release year; not profit)</span></td>${fcfData.investorIn.map(fmtSignedCell).join('')}<td></td></tr>
       <tr style="font-weight:700;"><td>Year-end cash balance <span style="font-weight:400;font-size:10px;color:#999;">(before dividends)</span></td>${fcfData.cashBalance.map(fmtSignedCell).join('')}<td></td></tr>` : ''}
       ${fcfData && fcfData.vergiDahil ? `<tr><td style="font-size:10px;color:#999;">↳ Loss carryforward balance (year-end)</td>${fcfData.carryEnd.map(c=>`<td style="text-align:right;font-size:10px;color:#999;">${c>0?'€'+c+'K':'—'}</td>`).join('')}<td></td></tr>` : ''}
@@ -3813,7 +3818,12 @@ function computeFcfStream() {
   const rightsOut = plan.rightsByYearK;        // €K, Stage 2 year
   const wcChange = [0,0,0,0,0];
   const fcf = opCash.map((v,i) => v - setupOut[i] - rightsOut[i] + wcChange[i]);   // centres-company / investor view
-  const fcfGroup = fcf.map((v,i) => v + rightsOut[i]);                            // group view — rights net out
+  // Royalty to Osteoid A.Ş. (FU-2) is an intercompany transfer too: a cost in
+  // the centres-company view (already inside operating profit), revenue at
+  // Osteoid A.Ş. — so the group view adds it back alongside the rights.
+  const _BR = (window._lastProjRows && window._lastProjRows.braces) || null;
+  const royaltyK = [0,1,2,3,4].map(i => _BR ? Math.round(((_BR.istanbul[i]||0) + (_BR.izmir[i]||0) + (_BR.ankara[i]||0) + (_BR.bursa[i]||0) + (_BR.gaziantep[i]||0) + (_BR.b2b[i]||0)) * gv('royaltyEur') / 1000) : 0);
+  const fcfGroup = fcf.map((v,i) => v + rightsOut[i] + royaltyK[i]);             // group view — rights + royalty net out
   const runSum = arr => { let r = 0; return arr.map(v => (r += v)); };
   const cum = runSum(fcf), cumGroup = runSum(fcfGroup), cumOpCash = runSum(opCash);
 
@@ -3831,7 +3841,7 @@ function computeFcfStream() {
   const cashBalance = runSum(fcf.map((v,i) => v + investorIn[i]));
 
   return { pretaxFcf, accountingPretax, opCash, taxPaid, carryEnd, vergiDahil, kvOraniPct, nakdi,
-           setupOut, rightsOut, wcChange, fcf, fcfGroup, cum, cumGroup, cumOpCash, plan,
+           setupOut, rightsOut, royaltyK, wcChange, fcf, fcfGroup, cum, cumGroup, cumOpCash, plan,
            investorIn, cashBalance };
 }
 
@@ -3943,7 +3953,7 @@ function renderValidationLedger(elId) {
     + tr('± Working capital (not modelled)', f.wcChange)
     + tr('= Free cash flow', f.fcf, 'grp')
     + '<tr><td colspan="7" style="font-size:11px;color:' + (fcfOk ? '#1a7a45' : '#c0392b') + ';">' + (fcfOk ? '✓' : '⚠') + ' Check: the rows above rebuild FCF exactly in every year; cumulative 5-year FCF = ' + k(f.cum[4]) + '.</td></tr>'
-    + tr('Memo: group view (Osteoid A.Ş. consolidated — rights net out)', f.fcfGroup)
+    + tr('Memo: group view (Osteoid A.Ş. consolidated — rights + royalty net out)', f.fcfGroup)
     + tr('+ Investor funding (financing, not profit)', f.investorIn)
     + '<tr><td>Year-end cash balance (before dividends)</td>' + f.cashBalance.map(v => '<td class="result">' + k(v) + '</td>').join('') + '<td></td></tr>'
     + '</tbody></table>';
