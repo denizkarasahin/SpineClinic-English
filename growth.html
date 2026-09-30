@@ -178,7 +178,7 @@
             <label style="display:flex;align-items:center;gap:8px;margin-bottom:4px;cursor:pointer;padding:8px;background:#f0fdf4;border:1px solid #1D9E7544;border-radius:6px 6px 0 0;">
               <input type="checkbox" id="izmirToggle" onchange="toggleMerkez('izmir',this.checked)" style="width:14px;height:14px;accent-color:#1D9E75;cursor:pointer;">
               <span style="font-size:12px;font-weight:700;color:#1D9E75;">Izmir Center</span>
-              <span style="font-size:10px;color:#888;margin-left:auto;">7.1% population share (incl. surroundings)</span>
+              <span id="izmirCatchLbl" style="font-size:10px;color:#888;margin-left:auto;">—</span>
             </label>
             <div style="padding:6px 10px;background:#e8f5ee;border:1px solid #1D9E7544;border-top:none;font-size:11px;">
               <div class="sl-row" style="margin-bottom:8px;">
@@ -196,11 +196,16 @@
                 </div>
               </div>
               <div id="izmirHedefWrap" class="sl-row" style="margin-bottom:0;margin-top:8px;">
-                <label style="font-size:10px;color:#1D9E75;">Target Market Share (%) — Izmir's designated potential at Year 5 · % of the Izmir market (TR market × population share)</label>
+                <label style="font-size:10px;color:#1D9E75;">Target Market Share (%) — Izmir's designated potential at Year 5 · % of the Izmir market (TR market × regional catchment)</label>
                 <div class="sl-controls">
                   <input type="range" id="s_izmirHedefPay" min="1" max="100" step="0.5" value="30" style="accent-color:#1D9E75;" oninput="sv('izmirHedefPay',this.value)">
                   <span class="sl-val" id="izmirHedefPay" contenteditable="true" onblur="sv2('izmirHedefPay','s_izmirHedefPay',this)" style="min-width:40px;color:#1D9E75;">30</span>
                 </div>
+              </div>
+              <div style="margin-top:8px;padding:8px;background:#fff;border:1px solid #1D9E7533;border-radius:6px;">
+                <div style="font-size:10px;font-weight:700;color:#1D9E75;text-transform:uppercase;letter-spacing:0.3px;">Regional catchment — Izmir</div>
+                <div id="izmirCatchInputs"></div>
+                <div id="izmirCatchTable"></div>
               </div>
               <div class="sl-row" style="margin-bottom:0;margin-top:8px;">
                 <label style="font-size:10px;color:#1D9E75;">Years to reach Izmir's full target — designated market potential</label>
@@ -296,7 +301,7 @@
             <label style="display:flex;align-items:center;gap:8px;cursor:pointer;padding:8px;background:#fdf6ec;border:1px solid #E8963C44;border-radius:6px;">
               <input type="checkbox" id="ankaraToggle" onchange="toggleMerkez('ankara',this.checked)" style="width:14px;height:14px;accent-color:#E8963C;cursor:pointer;">
               <span style="font-size:12px;font-weight:700;color:#E8963C;">Ankara Center</span>
-              <span style="font-size:10px;color:#888;margin-left:auto;">8.2% population share (incl. surroundings)</span>
+              <span id="ankaraCatchLbl" style="font-size:10px;color:#888;margin-left:auto;">—</span>
             </label>
             <div style="padding:6px 10px;background:#fdf6ec;border:1px solid #E8963C44;border-top:none;font-size:11px;">
               <div class="sl-row" style="margin-bottom:8px;">
@@ -319,6 +324,11 @@
                   <input type="range" id="s_ankaraHedefPay" min="1" max="100" step="0.5" value="30" style="accent-color:#E8963C;" oninput="sv('ankaraHedefPay',this.value)">
                   <span class="sl-val" id="ankaraHedefPay" contenteditable="true" onblur="sv2('ankaraHedefPay','s_ankaraHedefPay',this)" style="min-width:40px;color:#E8963C;">30</span>
                 </div>
+              </div>
+              <div style="margin-top:8px;padding:8px;background:#fff;border:1px solid #E8963C33;border-radius:6px;">
+                <div style="font-size:10px;font-weight:700;color:#E8963C;text-transform:uppercase;letter-spacing:0.3px;">Regional catchment — Ankara</div>
+                <div id="ankaraCatchInputs"></div>
+                <div id="ankaraCatchTable"></div>
               </div>
               <div class="sl-row" style="margin-bottom:0;margin-top:8px;">
                 <label style="font-size:10px;color:#E8963C;">Years to reach Ankara's full target — designated market potential</label>
@@ -448,7 +458,7 @@
             <label style="display:flex;align-items:center;gap:8px;margin-bottom:4px;cursor:pointer;padding:8px;background:#fdf1ec;border:1px solid #c94f2a44;border-radius:6px 6px 0 0;">
               <input type="checkbox" id="bursaToggle" onchange="toggleMerkez('bursa',this.checked)" style="width:14px;height:14px;accent-color:#c94f2a;cursor:pointer;">
               <span style="font-size:12px;font-weight:700;color:#c94f2a;">Bursa Center</span>
-              <span style="font-size:10px;color:#888;margin-left:auto;">4.5% population share (incl. surroundings)</span>
+              <span id="bursaCatchLbl" style="font-size:10px;color:#888;margin-left:auto;">—</span>
             </label>
             <div style="padding:6px 10px;background:#fdf1ec;border:1px solid #c94f2a44;border-top:none;font-size:11px;">
               <div class="sl-row" style="margin-bottom:8px;">
@@ -471,6 +481,11 @@
                   <input type="range" id="s_bursaHedefPay" min="1" max="100" step="0.5" value="30" style="accent-color:#c94f2a;" oninput="sv('bursaHedefPay',this.value)">
                   <span class="sl-val" id="bursaHedefPay" contenteditable="true" onblur="sv2('bursaHedefPay','s_bursaHedefPay',this)" style="min-width:40px;color:#c94f2a;">30</span>
                 </div>
+              </div>
+              <div style="margin-top:8px;padding:8px;background:#fff;border:1px solid #c94f2a33;border-radius:6px;">
+                <div style="font-size:10px;font-weight:700;color:#c94f2a;text-transform:uppercase;letter-spacing:0.3px;">Regional catchment — Bursa</div>
+                <div id="bursaCatchInputs"></div>
+                <div id="bursaCatchTable"></div>
               </div>
               <div class="sl-row" style="margin-bottom:0;margin-top:8px;">
                 <label style="font-size:10px;color:#c94f2a;">Years to reach Bursa's full target — designated market potential</label>
@@ -571,7 +586,7 @@
             <label style="display:flex;align-items:center;gap:8px;cursor:pointer;padding:8px;background:#fdf8ee;border:1px solid #8a6d1a44;border-radius:6px;">
               <input type="checkbox" id="gaziantepToggle" onchange="toggleMerkez('gaziantep',this.checked)" style="width:14px;height:14px;accent-color:#8a6d1a;cursor:pointer;">
               <span style="font-size:12px;font-weight:700;color:#8a6d1a;">Gaziantep Center</span>
-              <span style="font-size:10px;color:#888;margin-left:auto;">3.0% population share (incl. surroundings)</span>
+              <span id="gaziantepCatchLbl" style="font-size:10px;color:#888;margin-left:auto;">—</span>
             </label>
             <div style="padding:6px 10px;background:#fdf8ee;border:1px solid #8a6d1a44;border-top:none;font-size:11px;">
               <div class="sl-row" style="margin-bottom:8px;">
@@ -594,6 +609,11 @@
                   <input type="range" id="s_gaziantepHedefPay" min="1" max="100" step="0.5" value="30" style="accent-color:#8a6d1a;" oninput="sv('gaziantepHedefPay',this.value)">
                   <span class="sl-val" id="gaziantepHedefPay" contenteditable="true" onblur="sv2('gaziantepHedefPay','s_gaziantepHedefPay',this)" style="min-width:40px;color:#8a6d1a;">30</span>
                 </div>
+              </div>
+              <div style="margin-top:8px;padding:8px;background:#fff;border:1px solid #8a6d1a33;border-radius:6px;">
+                <div style="font-size:10px;font-weight:700;color:#8a6d1a;text-transform:uppercase;letter-spacing:0.3px;">Regional catchment — Gaziantep</div>
+                <div id="gaziantepCatchInputs"></div>
+                <div id="gaziantepCatchTable"></div>
               </div>
               <div class="sl-row" style="margin-bottom:0;margin-top:8px;">
                 <label style="font-size:10px;color:#8a6d1a;">Years to reach Gaziantep's full target — designated market potential</label>
