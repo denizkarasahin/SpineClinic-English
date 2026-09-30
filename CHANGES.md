@@ -1,3 +1,13 @@
+# CHANGES — Final business case (branch `business-case`; `_version` 61 → 62)
+
+BEFORE / AFTER / DELTA (core plan and core + Phase 2): `scratch/final-after.md`. Core plan: Year-5 EBITDA €1,053K (was €1,467K), cumulative FCF Years 1–5 €2,175K (was €1,653K), peak funding need €332K (was €1,344K), setup capex €513K (was €843K).
+
+- **FIN-1** — Intercompany rights payment removed from the model, not hidden: `ipLisansEur` / `sehirEksklusifEur` deleted from V, sliders, build-out plan, FCF, investor ticket and use-of-funds strip, monthly cash path, validation ledger, methodology and every page (agreement License Grant / Exclusivity / Related-Party Hygiene cards removed, terms version 6). Peak funding need is purely operational. The €0 royalty stays as the sensitivity lever.
+- **FIN-2** — Satellite target market share 50% → 30% (`izmir/ankara/bursa/gaziantepHedefPay`), the same as Istanbul.
+- **FIN-3** — Bursa and Gaziantep are a Phase 2 option: `V.phase2Aktif` (default false) gates `bursaAktif` / `gaziantepAktif` (accessors), so the core plan (Istanbul clinic + B2B, Izmir, Ankara) drives every total, capex, funding need, KPI and the sensitivity table; a live "Phase 2 option" block on the Summary and the Multi-Year Plan shows their setup capex, EBITDA Y3–5, payback and the effect on network totals.
+
+---
+
 # CHANGES — Business case (branch `business-case`, from `origin/fix/review-followups`; `_version` 60 → 61)
 
 Baseline / after with BEFORE-AFTER-DELTA: `scratch/bc-baseline.md`, `scratch/bc-after.md`. New Year-5 EBITDA €1,467K (was €1,172K); cumulative FCF Years 1–5 €1,653K (was €854K); peak funding need €1,344K (was €1,415K). Only BC-4 and BC-5 move numbers.
