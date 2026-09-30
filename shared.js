@@ -1847,9 +1847,16 @@ function renderPhase2Option() {
   const on = V.phase2Aktif === true;
   const cur = _p2Snap();
   let alt = null;
+  const wo = {}, raw = { bursa: V._bursaOn, gaziantep: V._gaziantepOn };
   window._inScenario = true;
-  try { V.phase2Aktif = !on; recalc(); alt = _p2Snap(); }
-  finally { V.phase2Aktif = on; recalc(); window._inScenario = false; }
+  try {
+    V.phase2Aktif = !on; recalc(); alt = _p2Snap();
+    // Decision view (CM-4): the full Phase 2 network without one centre at a time
+    ['bursa', 'gaziantep'].forEach(c => {
+      if (!raw[c]) return;
+      V.phase2Aktif = true; V['_' + c + 'On'] = false; recalc(); wo[c] = _p2Snap(); V['_' + c + 'On'] = raw[c];
+    });
+  } finally { V._bursaOn = raw.bursa; V._gaziantepOn = raw.gaziantep; V.phase2Aktif = on; recalc(); window._inScenario = false; }
   _refreshPhase2Ui();
   if (!cur || !alt) return;
   const core = on ? alt : cur, full = on ? cur : alt;
@@ -1876,6 +1883,14 @@ function renderPhase2Option() {
     + nr('Year-5 revenue', core.rev5, full.rev5) + nr('Year-5 EBITDA', core.e5, full.e5) + nr('Mature-year EBITDA (all open centres)', core.mat, full.mat) + nr('Cumulative FCF, Years 1–' + full.n, core.cum, full.cum)
     + nr('Peak funding need', core.peak, full.peak) + nr('Setup capex, all centres', core.setup, full.setup)
     + '</tbody></table></div>'
+    + (Object.keys(wo).length ? (() => {
+        const ks = Object.keys(wo), lbl = c => c.charAt(0).toUpperCase() + c.slice(1);
+        const ir = (l, f) => '<tr><td style="text-align:left;">' + l + '</td>' + ks.map(c => { const d = f(full) - f(wo[c]); return '<td style="text-align:right;color:' + (d >= 0 ? '#1a7a45' : '#c0392b') + ';"><b>' + dK(d) + '</b></td>'; }).join('') + '</tr>';
+        return '<div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin:12px 0 6px;">Decision view — incremental to the network <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">(network with vs without the centre, the other Phase 2 centre included)</span></div>'
+          + '<div class="tbl-wrap"><table><thead><tr><th style="text-align:left;">Incremental to the network</th>' + ks.map(c => '<th ' + R + '>' + lbl(c) + '</th>').join('') + '</tr></thead><tbody>'
+          + ir('Year-5 EBITDA', x => x.e5) + ir('Cumulative FCF, Years 1–' + full.n, x => x.cum) + ir('Mature-year EBITDA', x => x.mat)
+          + '</tbody></table></div><div style="font-size:10px;color:#888;margin-top:4px;">Each figure = the whole network with the centre minus the whole network without it — so it includes the head-office add-on step, the reduction in Istanbul\'s share for that region and the tax effect, not only the centre\'s own result.</div>';
+      })() : '')
     + '<div style="font-size:10px;color:#888;margin-top:4px;">Live: the other column is a full model run with Phase 2 switched ' + (on ? 'off' : 'on') + ' (head-office add-on, capacity and tax included). ' + (on ? 'Phase 2 is <b>on</b>: every total, capex, funding-need and KPI figure on the dashboard includes Bursa and Gaziantep.' : 'Phase 2 is <b>off</b> (default): every total, capex, funding-need and KPI figure on the dashboard is the core plan — Istanbul (clinic + B2B), Izmir, Ankara.') + ' ⚠ Scenario outputs, not forecasts.</div>';
   els.forEach(el => { el.innerHTML = h; });
 }
