@@ -105,7 +105,7 @@
           • <b>Weekend-peak sizing:</b> the patients are school children, so a large share (default 60%) can only attend on weekends and school holidays. Rooms and fitting staff are therefore sized to the busiest <i>design day</i> — the peak weekend/holiday day — not the smoother weekly average, so the clinic can actually absorb the concentrated demand.<br>
           • <b>B2B asymmetry:</b> B2B (wholesale / orthosis-store) braces consume <b>printers only</b> — they never enter a fitting room, take orthotist time, or add workshop hours, since the patient is never seen at the clinic. So B2B scales printers but adds zero rooms, orthotists or support staff.<br>
           • <b>Interns and the junior/graduate orthotist</b> remain threshold-gated (a training pipeline, not capacity math); the fitting orthotists and workshop support staff above are the capacity-driven lines.<br>
-          • <b>B2B stream (Years 2-5):</b> the wholesale / orthosis-store channel ramps its monthly rate from the Year-1 closing (Month 12) rate toward a Year-5 target (<code>b2bHedefAdetYil</code>, default 1,200/yr) over <code>b2bRampYears</code> (default 3), then holds; set the target to 0 to remove it. Revenue = ramped volume × the Year-1 B2B channel's year-end unit net (same doctor-fee / print-cost / royalty deductions as B2C). It flows into consolidated gross, FCF, Year-5 EBITDA and Exit Value as its own visible "Center 1 (B2B channel)" line. B2B lifts printer capex (shared hardware, sized on B2C + B2B volume) but adds no rooms, orthotist or workshop cost.
+          • <b>B2B stream (Years 2-5):</b> the wholesale / orthosis-store channel ramps its monthly rate from the Year-1 closing (Month 12) rate toward a Year-5 target (<code>b2bHedefAdetYil</code>, default 1,200/yr) over <code>b2bRampYears</code> (default 3), then holds; set the target to 0 to remove it. Revenue = ramped volume × the Year-1 B2B channel's year-end unit net (same doctor-fee / print-cost / royalty deductions as B2C). It flows into consolidated gross, FCF, Year-5 EBITDA<span class="inv-only"> and Exit Value</span> as its own visible "Center 1 (B2B channel)" line. B2B lifts printer capex (shared hardware, sized on B2C + B2B volume) but adds no rooms, orthotist or workshop cost.
         </div>
       </div>
 
@@ -214,7 +214,7 @@
 <div id="tab-saglamasayfasi" style="display:none;">
 <div class="group-label">Formula &amp; Validation</div>
 
-<div class="note">⚠️ <strong>Forecast note:</strong> All figures in this projection are assumption-based. Break-even and cumulative positive dates depend on the brace ramp. Figures are prepared for understanding and questioning the business model, not for investment decisions.</div>
+<div class="note">⚠️ <strong>Forecast note:</strong> All figures in this projection are assumption-based. Break-even and cumulative positive dates depend on the brace ramp. Figures are prepared for understanding and questioning the business model<span class="inv-only">, not for investment decisions</span>.</div>
 
 <div class="sec">
   <div class="sec-title">1 — Key Parameters (Input Values)</div>
@@ -282,7 +282,7 @@
 
 <div class="sec">
   <div class="sec-title">5 — Setup Costs (Istanbul Center 1)</div>
-  <p style="font-size:12px;color:#555;margin:0 0 10px;">One-time setup investment. This is the starting value for the cumulative budget calculation (entered as negative).</p>
+  <p style="font-size:12px;color:#555;margin:0 0 10px;">One-time setup cost. This is the starting value for the cumulative budget calculation (entered as negative).</p>
   <table class="setup-tbl" id="kurulumTbl"></table>
 </div>
 

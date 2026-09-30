@@ -5370,7 +5370,7 @@ function renderAnnualDetailTable(elId, sehirLabel, cfg) {
       ${row('Cumulative year-end', cfg.cumEnd.map(fmtEurK), null, 'total')}
       ${row('Monthly break-even', cfg.basAyLabels.map(fmtText))}
       ${row('Cumulative positive', cfg.pozAyLabels.map(fmtText))}
-      ${row('Total investment', cfg.invest.map(fmtEurK))}
+      ${row((isBiz() ? 'Total setup capex' : 'Total investment'), cfg.invest.map(fmtEurK))}
       ${row('Setup cost', cfg.setup.map(fmtCost))}
       ${row('Scientific study fee', cfg.sciFee.map(fmtCostOrZero), '(Y1 actual · Y2-5 year-end fee % of gross)')}
       ${row('Education fee', cfg.eduFee.map(fmtCostOrZero), '(Y1 actual · Y2-5 year-end fee % of gross)')}
