@@ -3326,11 +3326,16 @@ function renderInvestorRoadmap(el, totals, korseM1, feeIncomeRow, equityIncomeRo
       ${(V.izmirAktif||V.ankaraAktif||V.bursaAktif||V.gaziantepAktif) ? `<tr><td style="color:#1D9E75;">↳ Equity income to flagship</td>${fmtCell(equityIncomeRow[0])}${fmtCell(equityIncomeRow[1])}${fmtCell(equityIncomeRow[2])}${fmtCell(equityIncomeRow[3])}${fmtCell(equityIncomeRow[4])}${growCell(equityIncomeRow[1],equityIncomeRow[4])}</tr>` : ''}
       <tr style="font-weight:700;border-top:2px solid #e0e0dc;"><td>Consolidated Total (Flagship)</td>${fmtCell(totals[0])}${fmtCell(totals[1])}${fmtCell(totals[2])}${fmtCell(totals[3])}${fmtCell(totals[4])}${growCell(totals[0],totals[4])}</tr>
       ${(V.izmirAktif||V.ankaraAktif||V.bursaAktif||V.gaziantepAktif) ? `<tr><td style="font-size:10px;color:#999;">Memo: Minority interest (local investors — not in total above)</td>${minorityRow.map(v=>`<td style="text-align:right;font-size:10px;color:#999;">${v>0?'€'+v+'K':'—'}</td>`).join('')}<td></td></tr>` : ''}
-      ${fcfData ? `<tr style="border-top:1px solid #e0e0dc;"><td>${fcfData.vergiDahil?'Free cash flow (after tax)':'Free cash flow (pre-tax)'}</td>${fcfData.taxedFcf.map(fmtSignedCell).join('')}${growCell(fcfData.taxedFcf[0], fcfData.taxedFcf[4])}</tr>` : ''}
+      ${fcfData ? `<tr style="border-top:1px solid #e0e0dc;"><td>${fcfData.vergiDahil?'Operating cash flow (after tax)':'Operating cash flow (pre-tax)'}</td>${fcfData.opCash.map(fmtSignedCell).join('')}<td></td></tr>
+      <tr><td style="font-size:11px;">− Setup capex <span style="font-size:10px;color:#999;">(each centre in its opening year)</span></td>${fcfData.setupOut.map(v=>fmtSignedCell(-v)).join('')}<td></td></tr>
+      <tr><td style="font-size:11px;">− Rights purchase <span style="font-size:10px;color:#999;">(IP licence + exclusivity, paid to Osteoid A.Ş. at Stage 2 — centres-company view)</span></td>${fcfData.rightsOut.map(v=>fmtSignedCell(-v)).join('')}<td></td></tr>
+      <tr><td style="font-size:11px;color:#999;">± Working capital <span style="font-size:10px;">(not modelled — private channel paid at fitting; SGK channel excluded)</span></td>${fcfData.wcChange.map(fmtSignedCell).join('')}<td></td></tr>
+      <tr style="font-weight:700;"><td>Free cash flow — centres company / investor view</td>${fcfData.fcf.map(fmtSignedCell).join('')}<td></td></tr>
+      <tr><td style="font-size:10px;color:#999;">Memo: group view (Osteoid A.Ş. + centres) — rights purchase is intercompany, nets to €0</td>${fcfData.fcfGroup.map(v=>`<td style="text-align:right;font-size:10px;color:#999;">${v<0?'-':''}€${Math.abs(v)}K</td>`).join('')}<td></td></tr>` : ''}
       ${fcfData && fcfData.vergiDahil ? `<tr><td style="font-size:10px;color:#999;">↳ Loss carryforward balance (year-end)</td>${fcfData.carryEnd.map(c=>`<td style="text-align:right;font-size:10px;color:#999;">${c>0?'€'+c+'K':'—'}</td>`).join('')}<td></td></tr>` : ''}
     </tbody>
   </table></div>
-  <div style="font-size:10px;color:#888;">⚠ Istanbul C1 Y1–Y5 = net after fixed operating costs, one consistent basis every year (Y1's opex briefly exceeds gross revenue in this ramp year — that gap is the "Opex gap financed by raised capital" row above, not a basis switch). Izmir/Ankara rows show each satellite's own full net revenue for visibility once activated, but satellites are separate, majority-owned companies — they are memo lines, NOT summed into the flagship total. The flagship's actual take (in the total) is its management fee (100% of satellite gross revenue × the fee rate, indented below each satellite) plus its equity share of that satellite's profit after the fee. See <a href="captable.html" style="color:#534AB7;font-weight:700;">Cap Table</a> for the Network Structure explainer.${fcfData ? ' Free cash flow = the consolidated post-opex total above (every year, same basis)'+(fcfData.vergiDahil?', taxed at '+fcfData.kvOraniPct+'% corporate tax (KV) with 5-year loss carryforward. Orthosis sales are VAT-exempt (KDV Kanunu 17/4-s) — no VAT is modeled.':' — corporate tax is currently switched off.') : ''} &nbsp;<a href="growth.html" style="color:#534AB7;font-weight:700;">Full Multi-Year Model →</a></div>`;
+  <div style="font-size:10px;color:#888;">⚠ Istanbul C1 Y1–Y5 = net after fixed operating costs, one consistent basis every year (Y1's opex briefly exceeds gross revenue in this ramp year — that gap is the "Opex gap financed by raised capital" row above, not a basis switch). Izmir/Ankara rows show each satellite's own full net revenue for visibility once activated, but satellites are separate, majority-owned companies — they are memo lines, NOT summed into the flagship total. The flagship's actual take (in the total) is its management fee (100% of satellite gross revenue × the fee rate, indented below each satellite) plus its equity share of that satellite's profit after the fee. See <a href="captable.html" style="color:#534AB7;font-weight:700;">Cap Table</a> for the Network Structure explainer.${fcfData ? ' Operating cash flow = the consolidated post-opex total above (every year, same basis)'+(fcfData.vergiDahil?', taxed at '+fcfData.kvOraniPct+'% corporate tax (KV) with 5-year loss carryforward. Orthosis sales are VAT-exempt (KDV Kanunu 17/4-s) — no VAT is modeled.':' — corporate tax is currently switched off.')+' Free cash flow = operating cash flow − setup capex of every active centre (in its opening year) − the rights purchase (in the Stage 2 year) ± working capital. Setup capex and the rights purchase are not depreciated/amortised for tax (a conservative simplification). The rights purchase is a real outflow for the centres company (the investor view used by the DCF); in a group view that consolidates Osteoid A.Ş. it is intercompany and nets out.' : ''} &nbsp;<a href="growth.html" style="color:#534AB7;font-weight:700;">Full Multi-Year Model →</a></div>`;
 
   el.innerHTML = html;
 }
@@ -3373,6 +3378,68 @@ function computeNakdiSermayeDeduction() {
     }
   }
   return { active, deduction, fundedCashEur, fundingYear, perYearK };
+}
+
+// Global opening month (1 = Year 1 Month 1) of each satellite — the single
+// source for WHEN a centre opens, shared by the projection ramp and the
+// build-out cash plan below. Izmir opens off the 4-month-moving-average
+// trigger (trigger + 3 months prep, never before Month 13); Ankara/Bursa/
+// Gaziantep use their own opening-month sliders inside their opening year.
+function _satOpenMonth(sehir) {
+  if (sehir === 'izmir') {
+    const { triggerAy } = calc4AyOrtalama(window._lastRows || []);
+    return triggerAy ? Math.max(13, triggerAy + 3) : 13;
+  }
+  return ((_MERKEZ_ACILIS_YIL[sehir] || 2) - 1) * 12 + (V[sehir + 'AcilisAy'] || 3);
+}
+
+// ── BUILD-OUT CASH PLAN — setup capex + rights purchase, by year (review 4-A1)
+// Setup capex never passes through any centre's P&L (it is not expensed and
+// not depreciated), so it must be taken out of free cash flow explicitly, in
+// the year each centre opens. Same for the rights purchase (IP licence + city
+// exclusivity) paid to Osteoid A.Ş. at Stage 2 closing. Views:
+//   • Centres-company / investor view — both are real cash outflows (this is
+//     the FCF the DCF discounts and the investor-return tables use).
+//   • Group view (Osteoid A.Ş. + centres consolidated) — the rights payment is
+//     intercompany (outflow here, revenue at Osteoid A.Ş.), so it nets to 0;
+//     setup capex stays an outflow. Osteoid A.Ş.'s own tax on that revenue is
+//     not modelled.
+// Funding source of each setup (Stage 1 / Stage 2 / self-funded from free
+// cash) is recorded so each setup is counted exactly once (review 4-A2).
+function buildOutPlan() {
+  const eurK = V.eurKur ?? 50;
+  const fcfFundedSat = V.bursaGaziantepFcfFunded === true;
+  const centres = [
+    { key:'istanbul', n:1, label:'Istanbul', aktif:true, baseEur: -computeYear1(V).kurulumTop / eurK, openMonth: 1 },
+  ].concat(['izmir','ankara','bursa','gaziantep'].map((s, j) => ({
+    key: s, n: j + 2, label: s.charAt(0).toUpperCase() + s.slice(1), aktif: !!V[s + 'Aktif'],
+    baseEur: getMerkezKurulum(s) / eurK, openMonth: _satOpenMonth(s),
+  })));
+  centres.forEach(c => {
+    c.overheadEur = V['setupOverheadC' + c.n] ?? 0;
+    c.totalEur = c.aktif ? c.baseEur + c.overheadEur : 0;
+    c.yearIdx = Math.max(0, Math.min(4, Math.ceil(c.openMonth / 12) - 1));
+    c.funding = c.n === 1 ? 'stage1' : (c.n >= 4 && fcfFundedSat) ? 'fcf' : 'stage2';
+  });
+  // Stage 2 closes before the first Stage-2-funded centre opens — the rights
+  // purchase is booked in that year (Year 2 at the committed defaults).
+  const s2 = centres.filter(c => c.aktif && c.funding === 'stage2');
+  const stage2YearIdx = s2.length ? Math.min(...s2.map(c => c.yearIdx)) : 1;
+  const rightsEur = gv('ipLisansEur') + gv('sehirEksklusifEur');
+  const setupByYearK = [0,0,0,0,0], selfFundedSetupK = [0,0,0,0,0];
+  centres.forEach(c => {
+    setupByYearK[c.yearIdx] += c.totalEur / 1000;
+    if (c.funding === 'fcf') selfFundedSetupK[c.yearIdx] += c.totalEur / 1000;
+  });
+  const rightsByYearK = [0,0,0,0,0];
+  rightsByYearK[stage2YearIdx] = rightsEur / 1000;
+  return {
+    centres, rightsEur, stage2YearIdx,
+    setupByYearK: setupByYearK.map(Math.round),
+    selfFundedSetupK: selfFundedSetupK.map(Math.round),
+    rightsByYearK: rightsByYearK.map(Math.round),
+    totalSetupEur: centres.reduce((s, c) => s + c.totalEur, 0),
+  };
 }
 
 function computeFcfStream() {
@@ -3429,11 +3496,23 @@ function computeFcfStream() {
     carryEnd.push(carry);
   }
 
-  const cum = [];
-  let running = 0;
-  for (let i = 0; i < 5; i++) { running += taxedFcf[i]; cum.push(running); }
+  // Build-out outflows (review 4-A1): FCF = operating cash after tax − setup
+  // capex − rights purchase ± working capital. Working capital: no receivable/
+  // payable timing is modelled (private channel is paid at fitting; the SGK
+  // channel with its 60–90-day lag is excluded) → 0 every year, shown as such.
+  // The Working Capital Buffer is cash held in reserve, not spent — not an outflow.
+  const plan = buildOutPlan();
+  const opCash = taxedFcf;                    // operating cash flow after tax (€K)
+  const setupOut = plan.setupByYearK;          // €K, in each centre's opening year
+  const rightsOut = plan.rightsByYearK;        // €K, Stage 2 year
+  const wcChange = [0,0,0,0,0];
+  const fcf = opCash.map((v,i) => v - setupOut[i] - rightsOut[i] + wcChange[i]);   // centres-company / investor view
+  const fcfGroup = fcf.map((v,i) => v + rightsOut[i]);                            // group view — rights net out
+  const runSum = arr => { let r = 0; return arr.map(v => (r += v)); };
+  const cum = runSum(fcf), cumGroup = runSum(fcfGroup), cumOpCash = runSum(opCash);
 
-  return { pretaxFcf, accountingPretax, taxedFcf, taxPaid, carryEnd, vergiDahil, kvOraniPct, cum, nakdi };
+  return { pretaxFcf, accountingPretax, opCash, taxPaid, carryEnd, vergiDahil, kvOraniPct, nakdi,
+           setupOut, rightsOut, wcChange, fcf, fcfGroup, cum, cumGroup, cumOpCash, plan };
 }
 
 // ── METRIC LADDER (single source of truth for the exit-value metrics) ─────────
@@ -3506,10 +3585,13 @@ function metricLadder(scope) {
   // ebitda = opProfit + capex add-back (genuine — see header).
   const ebitda = opProfit.map((v,i) => v + (capex[i]||0));
 
-  // fcf — the existing taxed stream (flagship-consolidated basis).
-  const fcf = (fcfData && fcfData.taxedFcf) ? fcfData.taxedFcf.slice() : opProfit.map(()=>0);
+  // fcf — the taxed stream AFTER build-out outflows (setup capex + rights
+  // purchase, review 4-A1), flagship-consolidated / investor view. Identity:
+  // fcf = ebitda − tax − (capex + setup) − rights ± working capital.
+  const fcf = (fcfData && fcfData.fcf) ? fcfData.fcf.slice() : opProfit.map(()=>0);
+  const setup = (fcfData && fcfData.setupOut) ? fcfData.setupOut.slice() : [0,0,0,0,0];
 
-  return { opProfit, capex, ebitda, fcf };
+  return { opProfit, capex, ebitda, fcf, setup };
 }
 
 // 5 Yıllık Projeksiyon — dinamik
@@ -4948,7 +5030,7 @@ function renderInvestBreakdown(kurulumTop, rows) {
       fcfNoteEl.style.display = 'none';
     } else {
       const fcf = window._lastFcf;
-      const cumY2 = fcf ? fcf.cum[1] : null;
+      const cumY2 = fcf ? fcf.cumOpCash[1] : null;
       fcfNoteEl.style.display = 'block';
       if (cumY2 === null) {
         fcfNoteEl.textContent = 'Feasibility check will appear once the 5-year projection loads.';
@@ -4973,7 +5055,7 @@ function renderInvestBreakdown(kurulumTop, rows) {
       bufferNoteEl.style.display = 'none';
     } else {
       const fcf = window._lastFcf;
-      const cumY1 = fcf ? fcf.cum[0] : null;
+      const cumY1 = fcf ? fcf.cumOpCash[0] : null;
       bufferNoteEl.style.display = 'block';
       if (cumY1 === null) {
         bufferNoteEl.textContent = 'Feasibility check will appear once the 5-year projection loads.';
@@ -5080,8 +5162,12 @@ function renderCashReturn(fcfData) {
   const tbody = document.getElementById('cashReturnBody');
   if (!inv || !tbody) return;
 
-  const cumFcfK = fcfData.cum[4];
-  const cum = fcfData.cum;
+  // Numerator = cumulative operating cash after tax, BEFORE build-out capex and
+  // the rights purchase (those are funded by the capital in the denominator, so
+  // netting them out here would count the investment twice). The investor's
+  // own return — dividends + exit — is the Investor Return Analysis table.
+  const cumFcfK = fcfData.cumOpCash[4];
+  const cum = fcfData.cumOpCash;
   const clinicCashK = inv.clinicCashEur / 1000;
   const totalInvestK = inv.totalInvestEur / 1000;
 
@@ -5571,7 +5657,9 @@ function renderDcf() {
 
   // Same taxed FCF stream shown in the investor projection table (buildProjection
   // → computeFcfStream) — DCF and the displayed FCF row can never diverge.
-  const fcf = fcfData.taxedFcf;
+  // Centres-company / investor-view FCF: operating cash after tax minus setup
+  // capex and the rights purchase in the year they occur (review 4-A1).
+  const fcf = fcfData.fcf;
   // Year-5 EBITDA (investor scope, same scope as this fcf stream) from the
   // metric ladder — the terminal value's exit multiple applies to EBITDA, while
   // the interim years discount after-tax FCF. Standard simple-DCF convention;
