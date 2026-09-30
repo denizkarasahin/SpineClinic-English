@@ -336,7 +336,7 @@ function renderPazarChartB2B(rowsB2B) {
     kpiB2B.innerHTML = [
       { label:'B2B total braces', val: tKorseB2B+' units', c:'neu' },
       { label:'B2B net revenue after fees & materials', val: ff(tGelirB2B), c: tGelirB2B>0?'pos':'neu' },
-      { label:'TR market share (B2B) — vs national market of ' + pazarTR.toLocaleString('en-US') + ' braces/yr', val: payB2B+'%', c: parseFloat(payB2B)>=1?'pos':'neu' },
+      { label:'B2B — share of national market (vs pazarTR ' + pazarTR.toLocaleString('en-US') + ' braces/yr)', val: payB2B+'%', c: parseFloat(payB2B)>=1?'pos':'neu' },
     ].map(k=>`<div class="kpi"><div class="kpi-label">${k.label}</div><div class="kpi-val ${k.c}">${k.val}</div></div>`).join('');
   }
   if (mixB2BChartInst) { mixB2BChartInst.destroy(); mixB2BChartInst = null; }
@@ -2845,7 +2845,7 @@ function recalc() {
   const _eduTL = rows.reduce((s,r)=>s+(r.feeEdu||0),0);
   const _libTL = rows.reduce((s,r)=>s+(r.feeLib||0),0);
   document.getElementById('kpiGrid').innerHTML=[
-    {label:'Total braces',              val:tKorse+' units',                            sub:'',                 c:'neu'},
+    {label:'Total braces — clinic (excl. B2B)', val:tKorse+' units',                            sub:'',                 c:'neu'},
     {label:'Clinic net revenue after doctor fees & materials (year)', val:feEur(tGelir),                              sub:ffTRY(tGelir),         c:tGelir>=0?'pos':'neg'},
     {label:'B2B net revenue after doctor fees & materials (year)', val:feEur(tGelirB2B),                           sub:ffTRY(tGelirB2B),      c:tGelirB2B>0?'pos':'neu'},
     {label:'Cumulative year-end',       val:feEur(rows[11].cumBudget),                  sub:ffTRY(rows[11].cumBudget), c:rows[11].cumBudget>=0?'pos':'neg'},
@@ -3069,7 +3069,8 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
   // 0 (audit F8). istNetRow[i] is the unfloored operating result (a ramp-year
   // loss stays negative — review 4-A3); b2bRow[i] ≥ 0.
   const _istRow = istNetRow || [];
-  const istNet     = (_istRow[_n] || 0) + (b2bRow[_n] || 0);
+  const istNet     = (_istRow[_n] || 0);            // Istanbul CLINIC only — B2B is its own national line (MKT-D11)
+  const b2bNetY5   = (b2bRow[_n] || 0);
   const izmirNet   = izmirRow[_n]  || 0;  // net after center-specific opex (= izmirFullNet)
   const ankaraNet  = ankaraRow[_n] || 0;  // net after center-specific opex (= ankaraFullNet)
   // Bursa/Gaziantep open Year 3, so their _n (=Year 5) figure is whatever
@@ -3130,12 +3131,13 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
         <div>
-          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Operating profit (Year 1, clinic + B2B)</div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Operating profit (Year 1)</div>
           <div style="font-size:22px;font-weight:700;color:#534AB7;">${fmtKEur(_y1Op)}</div>
-          <div style="font-size:10px;color:#888;margin-top:2px;">Gross revenue ${fmtKEur(_y1Gross)} · net after doctor fees ${fmtKEur(_y1After)}</div>
+          <div style="font-size:10px;color:#888;margin-top:2px;">clinic ${fmtKEur(istNetRow ? (istNetRow[0] || 0) : 0)} + B2B line ${fmtKEur(b2bRow[0] || 0)}</div>
+          <div style="font-size:10px;color:#888;margin-top:2px;">Gross revenue (clinic + B2B line) ${fmtKEur(_y1Gross)} · net after doctor fees ${fmtKEur(_y1After)}</div>
         </div>
         <div>
-          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Braces Year 1</div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Clinic braces Year 1 (excl. B2B)</div>
           <div style="font-size:14px;font-weight:600;color:#bbb;">${y1Braces.toLocaleString('en-US')} units</div>
         </div>
         <div>
@@ -3157,9 +3159,27 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
     '#534AB7', istAdet,
     gv('hedefOsteoidPay').toFixed(1),
     istNet,
-    'Includes B2B channel · operating profit after all operating costs',
+    'Istanbul clinic only · operating profit after all operating costs · B2B is shown separately below',
     undefined, Math.round(pazarTR * gv('pazarIstPct') / 100)
   );
+  {
+    const _PB = window._lastProjRows || {};
+    const _b2bAd = (_PB.braces && _PB.braces.b2b) ? _PB.braces.b2b[_n] : 0;
+    const _b2bSharePct = pazarTR > 0 ? _b2bAd / pazarTR * 100 : 0;
+    html += `
+    <div style="border:1px solid #378ADD44;border-left:3px solid #378ADD;border-radius:6px;padding:12px 16px;margin-bottom:8px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+        <div style="font-size:12px;font-weight:700;color:#ddd;">B2B — national wholesale line (printed in Istanbul)</div>
+        <div style="font-size:10px;font-weight:700;color:#378ADD;background:#378ADD22;padding:2px 8px;border-radius:10px;">Not part of Istanbul clinic volume or share</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+        <div><div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">EBITDA contribution (Year 5)</div><div style="font-size:18px;font-weight:700;color:#378ADD;">${fmtKEur(b2bNetY5)}</div></div>
+        <div><div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">B2B braces (Year 5)</div><div style="font-size:14px;font-weight:600;color:#bbb;">${fmtN(_b2bAd)}</div></div>
+        <div><div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Share of national market</div><div style="font-size:14px;font-weight:600;color:#bbb;">${_b2bSharePct.toFixed(1)}%</div><div style="font-size:9px;color:#888;">vs national market (pazarTR) ${pazarTR.toLocaleString('en-US')}/yr</div></div>
+      </div>
+      <div style="font-size:10px;color:#777;margin-top:8px;padding-top:8px;border-top:1px solid #2a2a3e;">Own B2B unit prices (₺${gv('korseFB2B_stdR').toLocaleString('en-US')}–₺${gv('korseFB2B_sensDelik').toLocaleString('en-US')} per brace by SKU, Market page); consumes printers only — no rooms, orthotists or workshop time.</div>
+    </div>`;
+  }
 
   if (V.izmirAktif) {
     html += clinicCard(
@@ -4473,7 +4493,7 @@ function buildProjection() {
     const gEl = document.getElementById(yid+'GelirKpi');
     if (gEl) gEl.textContent = '~€' + totals[i] + 'K';
     const kEl = document.getElementById(yid+'KorseKpi');
-    if (kEl) kEl.textContent = korseCountTotal[i].toLocaleString('tr-TR') + ' units';
+    if (kEl) kEl.textContent = korseCountTotal[i].toLocaleString('tr-TR') + ' clinic units (+ B2B line ' + b2bAdetRow[i].toLocaleString('tr-TR') + ', separate)';
     const mEl = document.getElementById(yid+'MerkezKpi');
     if (mEl) mEl.textContent = yid === 'y2' ? _aktifCenterLabelY2 : _aktifCenterLabelY3plus;
   });
