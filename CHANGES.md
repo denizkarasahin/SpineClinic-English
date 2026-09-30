@@ -1,3 +1,17 @@
+# CHANGES — Business case (branch `business-case`, from `origin/fix/review-followups`; `_version` 60 → 61)
+
+Baseline / after with BEFORE-AFTER-DELTA: `scratch/bc-baseline.md`, `scratch/bc-after.md`. New Year-5 EBITDA €1,467K (was €1,172K); cumulative FCF Years 1–5 €1,653K (was €854K); peak funding need €1,344K (was €1,415K). Only BC-4 and BC-5 move numbers.
+
+- **BC-1** — `V.viewMode` ("business" default / "investor"), no UI toggle; the committed value wins over the cache. Investor content is hidden (`.inv-only` / `.biz-only` in style.css), never deleted; in business mode investor.html and captable.html leave the nav and prev/next chain and redirect to the Summary.
+- **BC-2** — Hidden in business mode: use of funds, Stage 1/2 and total-investment boxes, exit value, investor-return sensitivity (Summary); investor cover tags, valuation milestone, Stage 1 note (Multi-Year Plan); DCF / exit EV / deal pre-money / investor return / Stage 2 yield definitions, investor funding and the valuation block of the cash-flow ledger (Methodology, Formula Validation); shareholders agreement, investor column, doctor-investor note and equity conversion right (agreement.html keeps the Channel Fee Agreement).
+- **BC-3** — Summary business KPIs, all live: braces, revenue, EBITDA and margin per centre + B2B (Y1–5); unit economics per brace (clinic Y1 actual / Y5 mix, B2B, SGK when on); setup capex, opening, operating break-even, payback months and return on setup capital (Y3 EBITDA ÷ setup) per centre; cumulative FCF and peak funding need (lowest point of a monthly cash path tying to year-end cumulative FCF).
+- **BC-4** — SGK is incremental volume: `sgkSharePct` (carve-out) → `sgkIncrementalPct` 20% of private clinic volume from Year 2; `sgkTopUp` 0 → ₺5,000; `sgkAktif` true → false (private channel first). SGK braces load fitting capacity; the SGK line shows its own braces, P&L and cash effect on the Multi-Year Plan.
+- **BC-5** — Head office is an add-on for functions not already booked (operator/BD, YMM, general expenses, advertising, congresses and workshops stay in Istanbul's costs and are listed live): `hoCostY1Eur` 60,000 → 30,000, `hoPerCentreEur` 15,000 → 10,000, new `hoCapEur` 80,000 → €30K / 50K / 70K / 70K / 70K.
+- **BC-6** — Summary sensitivity in business terms: Year-5 EBITDA, cumulative FCF and peak funding need for Istanbul share 15/20/25/30/50%, satellite share 30/50%, national market 15K/20K/25K, channel fee 20/25/30%, SGK off/on, royalty €0/€75 (intercompany to Osteoid A.Ş.), plus a "with upside" column (upside segments stay OFF in the base).
+- **BC-7** — Texts address the business, the network and each centre: intros, disclaimers, local-partner wording for Subsidiary mode, "Total setup capex", B2B "Year-1 closing rate"; investor-mode wording kept behind `.inv-only`.
+
+---
+
 # CHANGES — Review follow-ups (branch `fix/review-followups`, from `origin/fix/market-size`; `_version` 59 → 60)
 
 Baseline / after: `scratch/followups-baseline.md`, `scratch/followups-after.md`. New Year-5 EBITDA €1,172K (was €1,519K); investor return 1.34× / IRR 7.4% (was 1.75× / 14.8%).
