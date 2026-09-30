@@ -5624,18 +5624,19 @@ function svSweatVestedToday(checked) {
 // Shared by renderDcf() (investor.html) and captable.html's reconciliation
 // section — same taxed FCF stream, same formula, called from both places
 // instead of two copies of the same math that could quietly drift apart.
-// tvBaseY5 = the Year-5 base the exit multiple is applied to for the terminal
-// value. EV-based TV on EBITDA, cash-flow years on after-tax FCF — standard
-// simple-DCF convention; exit taxation ignored, stated in methodology. Falls
-// back to fcf[4] when no base is passed (preserves any caller not yet on the
-// ladder). PROMPT 7.
-function computeDcfPremoney(fcf, r, exitMult, tvBaseY5) {
-  const _tvBase = (tvBaseY5 != null) ? tvBaseY5 : fcf[4];
-  const tv = _tvBase > 0 ? Math.round(_tvBase * exitMult) : 0;
+// Terminal value basis (review 4-A4): DCF TV = Year-5 AFTER-TAX free cash
+// flow × the exit multiple — the same after-tax FCF basis as the discounted
+// Years 1-5 (the methodology text always said so; the code had drifted to
+// pre-tax EBITDA). The investor EXIT EV is a different figure on a different
+// basis — Year-5 EBITDA × multiple, "EV/EBITDA" — and is never shown under the
+// DCF's name. tvShare = PV(TV) ÷ DCF value, surfaced on the Investor page.
+function computeDcfPremoney(fcf, r, exitMult) {
+  const tv = fcf[4] > 0 ? Math.round(fcf[4] * exitMult) : 0;
   const pv = fcf.map((cf, i) => cf / Math.pow(1 + r, i + 1));
   const pvTv = tv / Math.pow(1 + r, 5);
   const npv = pv.reduce((s, v) => s + v, 0) + pvTv; // €K
-  return { tv, pv, pvTv, npv, premoney_eur: Math.round(npv) * 1000 };
+  const tvShare = npv > 0 ? pvTv / npv : 0;
+  return { tv, pv, pvTv, npv, tvShare, premoney_eur: Math.round(npv) * 1000 };
 }
 
 function _refreshRiskProfile() {
@@ -5696,7 +5697,9 @@ function renderDcf() {
   const _ladderInv = metricLadder('investor');
   const ebitdaY5 = _ladderInv ? _ladderInv.ebitda[4] : fcf[4];
 
-  const { tv, pv, pvTv, npv, premoney_eur: blendedPremoney_eur } = computeDcfPremoney(fcf, r, exitMult, ebitdaY5);
+  // DCF on after-tax FCF throughout, terminal included (4-A4). ebitdaY5 is used
+  // only for the separately-named Exit EV (EV/EBITDA) below.
+  const { tv, pv, pvTv, npv, tvShare, premoney_eur: blendedPremoney_eur } = computeDcfPremoney(fcf, r, exitMult);
 
   // Sum-of-parts toggle: value the management-fee income stream at its own
   // (higher) multiple instead of blending it into the main business's
@@ -5714,16 +5717,24 @@ function renderDcf() {
     const feePretax = window._lastFeeIncomeRow; // €K, Y1-Y5, pretax
     const feeAfterTax = fcfData.vergiDahil ? feePretax.map(v => Math.round(v * (1 - kvRate))) : feePretax;
     const mainFcf = fcf.map((v,i) => v - feeAfterTax[i]);
-    // Terminal value bases stay on the ladder: the core stream's TV on core
-    // EBITDA (network EBITDA minus the carved-out fee), the fee stream's TV on
-    // its own Year-5 figure (fee income is asset-light — no capex, so its
-    // EBITDA is the fee itself). PROMPT 7.
-    const coreEbitdaY5 = ebitdaY5 - feeAfterTax[4];
-    const mainCalc = computeDcfPremoney(mainFcf, r, exitMult, coreEbitdaY5);
-    const feeCalc = computeDcfPremoney(feeAfterTax, r, feeExitMult, feeAfterTax[4]);
-    feeSplit = { corePremoney: mainCalc.premoney_eur, feePremoney: feeCalc.premoney_eur };
+    // Both pieces keep the one DCF basis (4-A4): TV = each stream's own
+    // Year-5 after-tax cash flow × its multiple (core at the main exit
+    // multiple, fee stream at the separately-labelled fee multiple).
+    const mainCalc = computeDcfPremoney(mainFcf, r, exitMult);
+    const feeCalc = computeDcfPremoney(feeAfterTax, r, feeExitMult);
+    feeSplit = { corePremoney: mainCalc.premoney_eur, feePremoney: feeCalc.premoney_eur, feeExitMult,
+                 pvTv: mainCalc.pvTv + feeCalc.pvTv, tv: mainCalc.tv + feeCalc.tv, npv: mainCalc.npv + feeCalc.npv };
   }
   const dcfValue_eur = feeSplit ? (feeSplit.corePremoney + feeSplit.feePremoney) : blendedPremoney_eur;
+  // Terminal value and its share of the DCF — shown on the Investor page so a
+  // reader can see how much of the valuation sits beyond Year 5 (4-A4).
+  const dcfTvK = feeSplit ? feeSplit.tv : tv;
+  const dcfPvTvK = feeSplit ? feeSplit.pvTv : pvTv;
+  const dcfNpvK = feeSplit ? feeSplit.npv : npv;
+  const dcfTvSharePct = dcfNpvK > 0 ? dcfPvTvK / dcfNpvK * 100 : 0;
+  window._lastDcf = { basis: 'Year-5 after-tax FCF × exit multiple', tv: dcfTvK, pvTv: Math.round(dcfPvTvK),
+                      npv: Math.round(dcfNpvK), dcfValueEur: dcfValue_eur, tvSharePct: +dcfTvSharePct.toFixed(1),
+                      sumPvFcf: Math.round(dcfNpvK - dcfPvTvK), fcf: fcf.slice(), sumOfParts: !!feeSplit };
 
   // Deal Pre-Money = the modeled DCF value discounted for negotiation — the
   // model is the anchor, the discount is the concession an investor extracts
@@ -5836,6 +5847,9 @@ function renderDcf() {
       + feeSep;
   }
   set('dcf_premoney',        dcfValue_eur > 0 ? fmtEur(dcfValue_eur) : '—');
+  set('dcf_tv_value',        dcfTvK > 0 ? fmtEur(dcfTvK * 1000) + ' (PV ' + fmtEur(dcfPvTvK * 1000) + ')' : '—');
+  set('dcf_tv_share',        dcfNpvK > 0 ? dcfTvSharePct.toFixed(1) + '%' : '—');
+  set('dcf_tv_basis',        'FCF₅ (after tax) ' + (window._lastFcf ? '€' + fcf[4] + 'K' : '') + ' × ' + exitMult + '×' + (feeSplit ? ' · fee stream separately at ' + feeSplit.feeExitMult + '× (sum-of-parts)' : ''));
   set('dcf_premoney_final',  premoney_eur > 0 ? fmtEur(premoney_eur) : '—');
   set('dcf_postmoney',       fmtEur(postmoney_eur));
   set('dcf_investor_ticket', investorTicketEur > 0 ? fmtEur(investorTicketEur) : '—');
@@ -5875,22 +5889,23 @@ function renderDcf() {
   const disc = pv.map(v => Math.round(v));
   const fmtE = v => {
     const cls = v >= 0 ? 'pc' : 'nc';
-    return '<td class="'+cls+'">€'+(Math.abs(v)/1000).toFixed(2)+'M</td>';
+    return '<td class="'+cls+'">'+(v<0?'-':'')+'€'+(Math.abs(v)/1000).toFixed(2)+'M</td>';
   };
   tbody.innerHTML =
     '<tr><td>Free Cash Flow'+(fcfData.vergiDahil?' (after tax, €M)':' (pre-tax, €M)')+'</td>'
     + fcf.map(v => fmtE(v)).join('')
-    + '<td style="color:#888;font-size:11px;">TV '+exitMult+'× EBITDA: €'+(tv/1000).toFixed(2)+'M</td></tr>'
+    + '<td style="color:#888;font-size:11px;">TV = FCF₅ × '+exitMult+'×: €'+(tv/1000).toFixed(2)+'M</td></tr>'
     + '<tr><td style="color:#888;font-size:11px;">Discount factor (1/(1+r)ⁿ)</td>'
     + fcf.map((_,i)=>'<td style="color:#888;font-size:11px;">'+(1/Math.pow(1+r,i+1)).toFixed(3)+'</td>').join('')
     + '<td style="color:#888;font-size:11px;">'+(1/Math.pow(1+r,5)).toFixed(3)+'</td></tr>'
     + '<tr><td>PV (Discounted, €M)</td>'
-    + disc.map(v=>'<td class="'+(v>=0?'pc':'nc')+'">€'+(Math.abs(v)/1000).toFixed(2)+'M</td>').join('')
+    + disc.map(v=>'<td class="'+(v>=0?'pc':'nc')+'">'+(v<0?'-':'')+'€'+(Math.abs(v)/1000).toFixed(2)+'M</td>').join('')
     + '<td class="neu">€'+(Math.round(pvTv)/1000).toFixed(2)+'M</td></tr>'
     + '<tr class="r-cum"><td><b>DCF Value (NPV)</b></td>'
     + '<td colspan="5" style="text-align:center;font-weight:700;">'
     + 'Σ PV = €'+(Math.round(npv)/1000).toFixed(2)+'M &nbsp;≈&nbsp; <b>'+fmtEur(dcfValue_eur)+'</b>'
-    + '</td><td class="neu" style="font-size:11px;">TV: €'+(Math.round(pvTv)/1000).toFixed(2)+'M incl.</td></tr>';
+    + '</td><td class="neu" style="font-size:11px;">PV(TV) €'+(Math.round(pvTv)/1000).toFixed(2)+'M = '+(npv>0?(pvTv/npv*100).toFixed(1):'0')+'% of DCF</td></tr>'
+    + (feeSplit ? '<tr><td colspan="7" style="font-size:10px;color:#888;">Sum-of-parts is ON: the DCF value above = core stream at '+exitMult+'× + management-fee stream at '+feeSplit.feeExitMult+'× (fee multiple, labelled separately) — the blended row above is shown for reference.</td></tr>' : '');
 }
 
 
