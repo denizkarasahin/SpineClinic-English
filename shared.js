@@ -1644,17 +1644,23 @@ function renderMarketSensitivity() {
   const keys = ['hedefOsteoidPay', 'pazarIstPct', 'pazarTR'];
   const base = {}; keys.forEach(k => { base[k] = V[k]; });
   const cases = [
-    ['Istanbul target share (hedefOsteoidPay)', 'hedefOsteoidPay', [15, 20, 25, 30], v => v + '%'],
+    ['Istanbul target share (hedefOsteoidPay)', 'hedefOsteoidPay', [15, 20, 25, 30, 50], v => v + '%'],
     ['Istanbul share of national market (pazarIstPct)', 'pazarIstPct', [21, 30.1], v => v + '%'],
     ['National market (pazarTR)', 'pazarTR', [15000, 20000, 25000], v => v.toLocaleString('en-US') + '/yr'],
   ];
-  const out = [];
+  const out = [], capNote = {};
   window._inScenario = true;
   try {
     cases.forEach(([grp, k, vals, fmt]) => vals.forEach(v => {
       Object.assign(V, base); V[k] = v; recalc();
       const R = window._lastInvestorReturn || {}, L = metricLadder('100');
       out.push({ grp, lbl: fmt(v), isBase: Math.abs(v - base[k]) < 1e-9, e5: L ? L.ebitda[4] : 0, moic: R.moic, irr: R.irr });
+      // FU-6: capture Istanbul's capacity build-out (time & motion) for the footnote
+      if (k === 'hedefOsteoidPay' && (v === 30 || v === 50)) {
+        const cap = window._lastIstCapBuildout || [];
+        capNote[v] = { orth: cap.map(c => c ? c.orthotists : '—'), rooms: cap.map(c => c ? c.rooms : '—'), printers: cap.map(c => c ? c.printers : '—'),
+                       braces: ((window._lastProjRows || {}).braces || {}).istanbul || [] };
+      }
     }));
   } finally {
     Object.assign(V, base); recalc(); window._inScenario = false;
@@ -1668,6 +1674,10 @@ function renderMarketSensitivity() {
       + '<td>' + (r.moic !== undefined ? r.moic.toFixed(2) + '×' : '—') + '</td>'
       + '<td>' + (r.irr !== null && r.irr !== undefined ? r.irr.toFixed(1) + '%' : '—') + '</td></tr>';
   }).join('');
+  const cn = document.getElementById('mktSensCap');
+  if (cn) cn.innerHTML = [30, 50].filter(v => capNote[v]).map(v => '<b>Istanbul at ' + v + '% target share</b> — braces ' + capNote[v].braces.join(' / ')
+      + ' · fitting orthotists (+1 expert) ' + capNote[v].orth.join(' / ') + ' · fitting rooms ' + capNote[v].rooms.join(' / ') + ' · printers ' + capNote[v].printers.join(' / ') + ' (Years 1–5)').join('<br>')
+    + '<br>Orthotists, rooms and printers are sized each year by the time-and-motion engine from that year\'s volume (fitting ' + (V.ortotistDkFitting || 60) + ' min per brace, weekend-peak design day) — their cost is inside each case\'s EBITDA.';
 }
 function marketBuildUp() {
   const core = gv('kohortTR') * gv('braceablePct') / 100 * gv('bracePerCourse');
