@@ -79,6 +79,41 @@
       <div style="font-size:11px;color:#555;margin-top:6px;">Cohort × braceable % × braces/course = <b id="mktBuildCore">—</b> idiopathic → × (1 + other %) = computed paediatric market <b id="mktBuildPaed">—</b> <span id="mktBuildNote" style="font-size:10px;"></span></div>
     </div>
 
+    <!-- Upside segments (MKT-B5/B6) — OFF by default, never merged into the paediatric base -->
+    <div style="margin:0 0 18px;">
+      <div style="font-size:10px;font-weight:700;color:#8a6d1a;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Upside segments — excluded from the base by default <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— each is its own SKU and referral channel; when on, it adds its own lines in the Multi-Year Plan and a separate "incl. upside" total</span></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;">
+        <div style="border:1px solid #e8d9a8;border-radius:6px;padding:10px 12px;background:#fffdf6;">
+          <label style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:#8a6d1a;cursor:pointer;">
+            <input type="checkbox" id="adultAktifToggle" onchange="svToggle('adultAktif',this.checked)" style="width:13px;height:13px;accent-color:#8a6d1a;"> Adult / degenerative <span style="font-weight:400;color:#999;">(assumption)</span>
+          </label>
+          <div style="font-size:10px;color:#888;margin:3px 0 6px;">Low / base / high: 1,000 / 2,500 / 5,000 braces/yr · 65+ population 9.1M (TÜİK 2024); Schwab et al., Spine 2005</div>
+          <div class="sl-row"><label style="font-size:10px;">National market (braces/yr)</label><div class="sl-controls"><input type="range" id="s_adultBraceYil" min="1000" max="5000" step="100" value="2500" oninput="sv('adultBraceYil',this.value)"><span class="sl-val" id="adultBraceYil" style="min-width:50px;">2.500</span></div></div>
+          <div class="sl-row"><label style="font-size:10px;">Own SKU price (₺) — defaults to the standard SKU list price</label><div class="sl-controls"><input type="range" id="s_adultFiyat" min="10000" max="80000" step="500" value="25000" oninput="sv('adultFiyat',this.value)"><span class="sl-val" id="adultFiyat" style="min-width:60px;">25.000</span></div></div>
+          <div style="font-size:10px;color:#888;">Referral channel: spine surgeons / trauma / physiatrists (separate from the paediatric channel)</div>
+        </div>
+        <div style="border:1px solid #e8d9a8;border-radius:6px;padding:10px 12px;background:#fffdf6;">
+          <label style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:#8a6d1a;cursor:pointer;">
+            <input type="checkbox" id="postopAktifToggle" onchange="svToggle('postopAktif',this.checked)" style="width:13px;height:13px;accent-color:#8a6d1a;"> Post-op TLSO after spinal fusion <span style="font-weight:400;color:#999;">(assumption)</span>
+          </label>
+          <div style="font-size:10px;color:#888;margin:3px 0 6px;">Low / base / high: 1,000 / 2,000 / 5,000 braces/yr · Post-op TLSO after spinal fusion; surgeon-dependent; Turkish fusion count not yet sourced</div>
+          <div class="sl-row"><label style="font-size:10px;">National market (braces/yr)</label><div class="sl-controls"><input type="range" id="s_postopBraceYil" min="1000" max="5000" step="100" value="2000" oninput="sv('postopBraceYil',this.value)"><span class="sl-val" id="postopBraceYil" style="min-width:50px;">2.000</span></div></div>
+          <div class="sl-row"><label style="font-size:10px;">Own SKU price (₺) — defaults to the standard SKU list price</label><div class="sl-controls"><input type="range" id="s_postopFiyat" min="10000" max="80000" step="500" value="25000" oninput="sv('postopFiyat',this.value)"><span class="sl-val" id="postopFiyat" style="min-width:60px;">25.000</span></div></div>
+          <div style="font-size:10px;color:#888;">Referral channel: spine surgeons / trauma / physiatrists (separate from the paediatric channel)</div>
+        </div>
+        <div style="border:1px solid #e8d9a8;border-radius:6px;padding:10px 12px;background:#fffdf6;">
+          <label style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:#8a6d1a;cursor:pointer;">
+            <input type="checkbox" id="fractureAktifToggle" onchange="svToggle('fractureAktif',this.checked)" style="width:13px;height:13px;accent-color:#8a6d1a;"> Fracture TLSO (traumatic + osteoporotic) <span style="font-weight:400;color:#999;">(assumption)</span>
+          </label>
+          <div style="font-size:10px;color:#888;margin:3px 0 6px;">Low / base / high: 500 / 1,700 / 3,900 braces/yr · Fracture TLSO, traumatic + osteoporotic; thoracolumbar fractures ~30/100,000/yr (Zileli et al., Neurospine 2021) × conservative share × braced share × custom share</div>
+          <div class="sl-row"><label style="font-size:10px;">National market (braces/yr)</label><div class="sl-controls"><input type="range" id="s_fractureBraceYil" min="500" max="3900" step="100" value="1700" oninput="sv('fractureBraceYil',this.value)"><span class="sl-val" id="fractureBraceYil" style="min-width:50px;">1.700</span></div></div>
+          <div class="sl-row"><label style="font-size:10px;">Own SKU price (₺) — defaults to the standard SKU list price</label><div class="sl-controls"><input type="range" id="s_fractureFiyat" min="10000" max="80000" step="500" value="25000" oninput="sv('fractureFiyat',this.value)"><span class="sl-val" id="fractureFiyat" style="min-width:60px;">25.000</span></div></div>
+          <div style="font-size:10px;color:#888;">Referral channel: spine surgeons / trauma / physiatrists (separate from the paediatric channel)</div>
+        </div>
+      </div>
+      <div id="upsideSummary" style="font-size:11px;color:#555;margin-top:8px;">—</div>
+    </div>
+
     <!-- Klinik pazar KPI'ları -->
     <div class="kpi-grid" id="pazarKpi" style="margin-bottom:18px;"><div class="kpi"><div class="kpi-label">Turkey market (year)</div><div class="kpi-val neu">—</div></div><div class="kpi"><div class="kpi-label">Istanbul market (year)</div><div class="kpi-val neu">—</div></div><div class="kpi"><div class="kpi-label">Year 1 braces (total) (from brace ramp)</div><div class="kpi-val neu">—</div></div><div class="kpi"><div class="kpi-label">Break-even market share (IST)</div><div class="kpi-val neg">—</div></div></div>
 
