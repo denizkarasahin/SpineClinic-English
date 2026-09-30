@@ -6319,8 +6319,7 @@ function initLayout() {
       </div>
     </div>
     <div class="inv-meta" style="margin-top:10px;">
-      <span>Date</span> April 2026<br>
-      <span>Status</span> Pre-revenue<br>
+      <span>Date</span> September 2026<br>
       <span>Location</span> Istanbul<br>
       <span>Parent Co.</span> Osteoid Inc. (TGB)
     </div>
