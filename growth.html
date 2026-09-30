@@ -101,6 +101,17 @@
               </div>
             </div>
             <div style="margin-top:12px;padding-top:10px;border-top:1px solid #e8e8e4;">
+              <div style="font-size:10px;color:#888;font-weight:700;text-transform:uppercase;margin-bottom:8px;">SGK Channel <span style="font-weight:400;text-transform:none;color:#888;">— medical-report braces reimbursed by SGK; Year 2 onward in every centre, never Year 1</span></div>
+              <div style="padding:8px 10px;background:#eef4ff;border:1px solid #185FA544;border-radius:6px;">
+                <label style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:#185FA5;cursor:pointer;"><input type="checkbox" id="sgkAktifToggle" checked onchange="svToggle('sgkAktif',this.checked)" style="width:13px;height:13px;accent-color:#185FA5;"> SGK channel on from Year 2</label>
+                <div class="sl-row" style="margin-bottom:0;margin-top:6px;"><label style="font-size:11px;">Share of clinic volume via medical report (%)</label><div class="sl-controls"><input type="range" id="s_sgkSharePct" min="0" max="80" step="1" value="30" oninput="sv('sgkSharePct',this.value)"><span class="sl-val" id="sgkSharePct" style="min-width:40px;">30</span></div></div>
+                <div class="sl-row" style="margin-bottom:0;margin-top:6px;"><label style="font-size:11px;">SGK price per brace (₺, SUT)</label><div class="sl-controls"><input type="range" id="s_sgkPrice" min="5000" max="40000" step="500" value="17500" oninput="sv('sgkPrice',this.value)"><span class="sl-val" id="sgkPrice" style="min-width:60px;">17.500</span></div></div>
+                <div class="sl-row" style="margin-bottom:0;margin-top:6px;"><label style="font-size:11px;">Patient top-up per SGK brace (₺)</label><div class="sl-controls"><input type="range" id="s_sgkTopUp" min="0" max="30000" step="500" value="0" oninput="sv('sgkTopUp',this.value)"><span class="sl-val" id="sgkTopUp" style="min-width:60px;">0</span></div></div>
+                <div class="sl-row" style="margin-bottom:0;margin-top:6px;"><label style="font-size:11px;">SGK payment delay (days)</label><div class="sl-controls"><input type="range" id="s_sgkDelayDays" min="0" max="180" step="5" value="75" oninput="sv('sgkDelayDays',this.value)"><span class="sl-val" id="sgkDelayDays" style="min-width:40px;">75</span></div></div>
+                <div style="font-size:10px;color:#888;margin-top:6px;">No channel (doctor) fee on SGK braces; material and royalty still apply. Revenue is booked at fitting; the receivable (revenue × delay ÷ 365) is a working-capital outflow in the cash flow. The 60–90-day delay should be confirmed with operator experience.</div>
+              </div>
+            </div>
+            <div style="margin-top:12px;padding-top:10px;border-top:1px solid #e8e8e4;">
               <div style="font-size:10px;color:#888;font-weight:700;text-transform:uppercase;margin-bottom:8px;">B2B Wholesale Channel <span style="font-weight:400;text-transform:none;color:#888;">— flagship-run, printers only (no rooms/staff); runs Year 1 onward like a parallel line, not a satellite clinic</span></div>
               <div style="padding:8px 10px;background:#eef4ff;border:1px solid #378ADD44;border-radius:6px;">
                 <div class="sl-row" style="margin-bottom:0;">

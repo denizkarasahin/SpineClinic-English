@@ -160,7 +160,7 @@
           • <b>Revenue ladder</b> = Gross revenue (list price × braces) → − doctor fees = Net revenue after doctor fees → − materials, royalty/cutting and all operating costs = Operating profit.<br>
           • <b>Operating profit</b> = revenue − all cash operating costs; printer/branch purchases inside opex are expensed when incurred. Not floored: a ramp-year loss stays in the P&amp;L and in cumulative profit.<br>
           • <b>EBITDA</b> = operating profit + that year's expensed equipment added back; no depreciation is modeled because capex is expensed.<br>
-          • <b>FCF</b> (centres company / investor view) = EBITDA − corporate tax at 25% (with loss carryforward) − expensed capex − each centre's setup capex in its opening year − the rights purchase in the Stage 2 year ± working capital (not modelled, 0). In a group view that consolidates Osteoid A.Ş. the rights purchase is intercompany and nets out.<br>
+          • <b>FCF</b> (centres company / investor view) = EBITDA − corporate tax at 25% (with loss carryforward) − expensed capex − each centre's setup capex in its opening year − the rights purchase in the Stage 2 year ± working capital (the increase in SGK receivables: SGK revenue × payment delay ÷ 365). In a group view that consolidates Osteoid A.Ş. the rights purchase is intercompany and nets out.<br>
           • <b>DCF value</b> (reference only) = Σ PV(FCF₁₋₅) + PV(terminal value), with <b>terminal value = Year-5 after-tax FCF × Base exit multiple</b>.<br>
           • <b>Exit EV</b> = Year-5 EBITDA × exit multiple (EV/EBITDA). One multiple set everywhere: Base (slider + optional multi-centre premium, default 0), Conservative = Base − offset, Optimistic = Base + offset.<br>
           • <b>Deal pre-money</b> = a negotiated input (slider), not a model output; the investor stake is priced off it and stays fixed across scenarios.<br>
@@ -295,7 +295,7 @@
     <thead><tr><th style="min-width:260px;">Revenue Item</th><th>Formula / Source</th><th style="text-align:right;">Year 1 (€K)</th><th style="text-align:right;">Year 2 (€K)</th><th style="text-align:right;">Year 3 (€K)</th><th style="text-align:right;">Year 4 (€K)</th><th style="text-align:right;">Year 5 (€K)</th></tr></thead>
     <tbody id="projTbody"></tbody>
   </table>
-  <div class="note">These are the live model's own consolidated projection rows (read directly from <code>window._lastProjRows</code>, the same rows the Multi-Year Plan table is built from) — not an independent re-derivation. Satellite rows are each centre's own 100% operating profit: in Branch mode (the default) they are consolidated into the total; in Subsidiary mode they are memo lines and the flagship takes its management fee + equity share. No SSI channel is modelled in this 5-year view.</div>
+  <div class="note">These are the live model's own consolidated projection rows (read directly from <code>window._lastProjRows</code>, the same rows the Multi-Year Plan table is built from) — not an independent re-derivation. Satellite rows are each centre's own 100% operating profit: in Branch mode (the default) they are consolidated into the total; in Subsidiary mode they are memo lines and the flagship takes its management fee + equity share. The SGK (SSI) channel runs from Year 2 (Multi-Year Plan toggle): its revenue sits inside the rows above and its receivables delay is in the cash-flow ledger below.</div>
   <div class="sub-title">Cash Flow, Valuation &amp; Investor Return (Live) — with identity checks</div>
   <div id="cfLedger"></div>
 </div>
