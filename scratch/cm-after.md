@@ -73,7 +73,7 @@ Before = scratch/cm-baseline.md (`_version` 64); after `_version` 65. Every stat
 ### Why the numbers moved
 
 - **CM-1 regional catchment.** Satellite markets now = pazarTR × (home + region × 60% capture): Izmir 8.8% (was 7.1% city share), Ankara 9.8% (8.2%), Bursa 5.06% (4.5%), Gaziantep 6.88% (3.0%) → more satellite volume, most for Gaziantep (+129%).
-- **CM-2 Istanbul overlap.** Istanbul's effective share falls from 30.1% to 27.3% in Year 2 and 26.8% from Year 3 in the core plan (24.450000000000003% with Phase 2) — Istanbul's Year-3+ target drops from 1,806 to 1,608 braces (1,467 with Phase 2). In the core plan this almost exactly offsets CM-1.
+- **CM-2 Istanbul overlap.** Istanbul's effective share falls from 30.1% to 27.3% in Year 2 and 26.8% from Year 3 in the core plan (24.5% with Phase 2) — Istanbul's Year-3+ target drops from 1,806 to 1,608 braces (1,467 with Phase 2). In the core plan this almost exactly offsets CM-1.
 
 ## Horizon 7 (CM-3)
 

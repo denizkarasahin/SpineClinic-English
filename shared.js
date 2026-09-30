@@ -421,7 +421,7 @@ function renderPazarChartB2B(rowsB2B) {
   const kpiB2B = document.getElementById('kpiGridB2B');
   if (kpiB2B) {
     const pazarTR = gv('pazarTR');
-    const payB2B = pazarTR > 0 ? (tKorseB2B / pazarTR * 100).toFixed(2) : '0.00';
+    const payB2B = pazarTR > 0 ? (tKorseB2B / pazarTR * 100).toFixed(1) : '0.0';
     kpiB2B.innerHTML = [
       { label:'B2B total braces', val: tKorseB2B+' units', c:'neu' },
       { label:'B2B net revenue after fees & materials', val: ff(tGelirB2B), c: tGelirB2B>0?'pos':'neu' },
@@ -2187,7 +2187,7 @@ function renderCatchment() {
   Object.keys(R).forEach(s => {
     const inp = _origGetById(s + 'CatchInputs'), tbl = _origGetById(s + 'CatchTable'), lbl = _origGetById(s + 'CatchLbl');
     const cat = satCatchmentPct(s), w = V[s + 'YouthWeight'] ?? 1, mkt = gv('pazarTR') * satMarketShare(s);
-    if (lbl) lbl.textContent = cat.toFixed(2).replace(/\.?0+$/, '') + '% regional catchment';
+    if (lbl) lbl.textContent = cat.toFixed(1) + '% regional catchment';
     if (inp && !inp.dataset.built) {
       const sl = (k, l, min, max, step) => '<div class="sl-row" style="margin-bottom:0;margin-top:6px;"><label style="font-size:10px;">' + l + '</label><div class="sl-controls"><input type="range" id="s_' + s + k + '" min="' + min + '" max="' + max + '" step="' + step + '" value="' + gv(s + k) + '" oninput="svCatch(\'' + s + k + '\',this.value)"><span class="sl-val" id="' + s + k + '" style="min-width:40px;">' + numFmt(s + k, gv(s + k)) + '</span></div></div>';
       inp.innerHTML = sl('HomePct', 'Home province (' + R[s].home + ') — % of Turkey\'s population', 0, 20, 0.1)
@@ -2199,10 +2199,10 @@ function renderCatchment() {
     if (tbl) {
       const r = (a, b, c, d) => '<tr><td style="text-align:left;">' + a + '</td><td>' + b + '</td><td>' + c + '</td><td>' + d + '</td></tr>';
       tbl.innerHTML = '<table class="proj-tbl" style="font-size:10px;margin-top:6px;"><thead><tr><th style="text-align:left;">Catchment</th><th>Population share</th><th>Capture</th><th>Catchment</th></tr></thead><tbody>'
-        + r('Home: ' + R[s].home, gv(s + 'HomePct').toFixed(1) + '%', '100%', gv(s + 'HomePct').toFixed(2) + '%')
-        + r('Region: ' + R[s].region.join(', '), gv(s + 'RegionPct').toFixed(1) + '%', gv(s + 'RegionCapturePct') + '%', (gv(s + 'RegionPct') * gv(s + 'RegionCapturePct') / 100).toFixed(2) + '%')
-        + '<tr style="font-weight:700;"><td style="text-align:left;">Catchment × youth weight ' + w.toFixed(2) + '</td><td></td><td></td><td>' + (cat * w).toFixed(2) + '%</td></tr>'
-        + '</tbody></table><div style="font-size:10px;color:#888;margin-top:3px;">Market = pazarTR ' + gv('pazarTR').toLocaleString('en-US') + ' × ' + (cat * w).toFixed(2) + '% = <b>' + Math.round(mkt).toLocaleString('en-US') + '</b> braces/yr; target volume at ' + gv(s + 'HedefPay') + '% = <b>' + Math.round(mkt * gv(s + 'HedefPay') / 100).toLocaleString('en-US') + '</b>/yr. ⚠ Population shares: TÜİK 2024 address-based population, approximate — to be verified.'
+        + r('Home: ' + R[s].home, gv(s + 'HomePct').toFixed(1) + '%', '100%', gv(s + 'HomePct').toFixed(1) + '%')
+        + r('Region: ' + R[s].region.join(', '), gv(s + 'RegionPct').toFixed(1) + '%', gv(s + 'RegionCapturePct') + '%', (gv(s + 'RegionPct') * gv(s + 'RegionCapturePct') / 100).toFixed(1) + '%')
+        + '<tr style="font-weight:700;"><td style="text-align:left;">Catchment × youth weight ' + w.toFixed(2) + '</td><td></td><td></td><td>' + (cat * w).toFixed(1) + '%</td></tr>'
+        + '</tbody></table><div style="font-size:10px;color:#888;margin-top:3px;">Market = pazarTR ' + gv('pazarTR').toLocaleString('en-US') + ' × ' + (cat * w).toFixed(1) + '% = <b>' + Math.round(mkt).toLocaleString('en-US') + '</b> braces/yr; target volume at ' + gv(s + 'HedefPay') + '% = <b>' + Math.round(mkt * gv(s + 'HedefPay') / 100).toLocaleString('en-US') + '</b>/yr. ⚠ Population shares: TÜİK 2024 address-based population, approximate — to be verified.'
         + (s === 'gaziantep' ? ' South-east provinces have Turkey\'s highest fertility (Şanlıurfa TFR 3.28, TÜİK 2024); set the youth weight from TÜİK age-group data before relying on it.' : '') + '</div>';
     }
   });
@@ -2222,7 +2222,7 @@ function renderIstOverlap() {
   const row = (l, a, b) => '<tr' + (b ? ' style="font-weight:700;"' : '') + '><td style="text-align:left;">' + l + '</td>' + a.map(v => '<td>' + v + '</td>').join('') + '</tr>';
   const h = '<table class="proj-tbl" style="font-size:10px;"><thead><tr><th style="text-align:left;">Share of the national market (pazarTR)</th>' + cols + '</tr></thead><tbody>'
     + row('Istanbul — input share (pazarIstPct)', E.pct.map(() => f(gv('pazarIstPct'))))
-    + row('− inflow now served by open satellites (× ' + gv('istInflowReductionPct') + '%)', E.reduction.map(v => v ? '−' + v.toFixed(2) + '%' : '—'))
+    + row('− inflow now served by open satellites (× ' + gv('istInflowReductionPct') + '%)', E.reduction.map(v => v ? '−' + v.toFixed(1) + '%' : '—'))
     + row('= Istanbul effective share', E.pct.map(f), true)
     + S.filter(s => V[s + 'Aktif']).map(s => row(s.charAt(0).toUpperCase() + s.slice(1) + ' catchment (× youth weight)', E.pct.map((_, i) => openIn(s, i) ? f(satMarketShare(s) * 100) : '—'))).join('')
     + row('All open centres', sum.map(f), true)
@@ -2292,7 +2292,7 @@ function renderPazarChart(rows) {
     { label:'Named supply (5 competitors + partner centre)', val: namedSupply().named.toLocaleString('tr-TR')+' units', c:'neu', sub:'Named supply plus hospital and small-workshop production is consistent with a 15,000–25,000 treated market.' },
     { label:'Istanbul market (year)',      val: pazarIst.toLocaleString('tr-TR')+' units', c:'neu' },
     { label:'Year 1 braces (total) (from brace ramp)', val: totalKorse+' units', c:'neu' },
-    { label:'Break-even market share — vs Istanbul market of ' + pazarIst.toLocaleString('en-US') + ' braces/yr', val: _beShare === null ? 'n/a' : _beShare.toFixed(2)+'%', c:'neg' },
+    { label:'Break-even market share — vs Istanbul market of ' + pazarIst.toLocaleString('en-US') + ' braces/yr', val: _beShare === null ? 'n/a' : _beShare.toFixed(1)+'%', c:'neg' },
   ].map(k=>`<div class="kpi"><div class="kpi-label">${k.label}</div><div class="kpi-val ${k.c}">${k.val}</div>${k.sub ? `<div style="font-size:9px;color:#888;margin-top:2px;">${k.sub}</div>` : ''}</div>`).join('');
 
   // B2C KPI mirror (korse.html) — same 3-card format as kpiGridB2B below it.
@@ -2302,7 +2302,7 @@ function renderPazarChart(rows) {
     kpiB2C.innerHTML = [
       { label:'B2C total braces', val: totalKorse+' units', c:'neu' },
       { label:'B2C net revenue after fees & materials', val: ff(tGelirB2C), c: tGelirB2C>0?'pos':'neu' },
-      { label:'TR market share (B2C) — vs national market of ' + pazarTR.toLocaleString('en-US') + ' braces/yr', val: payTR.toFixed(2)+'%', c: payTR>=1?'pos':'neu' },
+      { label:'TR market share (B2C) — vs national market of ' + pazarTR.toLocaleString('en-US') + ' braces/yr', val: payTR.toFixed(1)+'%', c: payTR>=1?'pos':'neu' },
     ].map(k=>`<div class="kpi"><div class="kpi-label">${k.label}</div><div class="kpi-val ${k.c}">${k.val}</div></div>`).join('');
   }
 
