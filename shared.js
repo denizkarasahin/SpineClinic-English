@@ -3730,6 +3730,53 @@ function metricLadder(scope) {
   return { opProfit, capex, ebitda, fcf, setup };
 }
 
+// ── VALIDATION LEDGER (Methodology + Formula Validation pages) ─────────────
+// Renders the live cash-flow / valuation / investor-return chain from the
+// same globals every page uses, with the identity checks shown explicitly:
+//   FCF = EBITDA − tax − expensed capex − setup capex − rights ± working capital
+//   Stage 1 setup + Stage 2 setup + self-funded setup = total setup
+//   DCF = Σ PV(FCF₁₋₅) + PV(FCF₅ × Base multiple)
+// Nothing here is typed — every figure is read from the model (CLAUDE.md rule).
+function renderValidationLedger(elId) {
+  const el = document.getElementById(elId);
+  const f = window._lastFcf, L = metricLadder('investor'), d = window._lastDcf, deal = window._lastDeal, R = window._lastInvestorReturn;
+  if (!el || !f || !L) return;
+  const k = v => (v < 0 ? '-€' : '€') + Math.abs(Math.round(v)).toLocaleString('en-US') + 'K';
+  const sum = a => a.reduce((s, v) => s + v, 0);
+  const tr = (label, arr, cls) => '<tr' + (cls ? ' class="' + cls + '"' : '') + '><td>' + label + '</td>' + arr.map(v => '<td class="result">' + k(v) + '</td>').join('') + '<td class="result">' + k(sum(arr)) + '</td></tr>';
+  const rebuilt = [0,1,2,3,4].map(i => L.ebitda[i] - f.taxPaid[i] - L.capex[i] - f.setupOut[i] - f.rightsOut[i] + f.wcChange[i]);
+  const fcfOk = rebuilt.every((v, i) => v === f.fcf[i]);
+  const byStage = { stage1: 0, stage2: 0, fcf: 0 };
+  f.plan.centres.forEach(c => { byStage[c.funding] += c.totalEur; });
+  const setupOk = Math.abs(byStage.stage1 + byStage.stage2 + byStage.fcf - f.plan.totalSetupEur) < 0.5 && Math.abs(sum(f.setupOut) * 1000 - f.plan.totalSetupEur) < 3000;
+  const ms = exitMultSet();
+  let h = '<table class="proj-tbl"><thead><tr><th style="min-width:300px;">Cash flow — centres company / investor view</th><th style="text-align:right;">Y1</th><th style="text-align:right;">Y2</th><th style="text-align:right;">Y3</th><th style="text-align:right;">Y4</th><th style="text-align:right;">Y5</th><th style="text-align:right;">Σ</th></tr></thead><tbody>'
+    + tr('EBITDA (operating profit + expensed capex)', L.ebitda)
+    + tr('− Corporate tax (25%, 5-yr loss carryforward)', f.taxPaid.map(v => -v))
+    + tr('− Capex expensed inside opex (printers, branch fit-out)', L.capex.map(v => -v))
+    + tr('− Setup capex (each centre in its opening year)', f.setupOut.map(v => -v))
+    + tr('− Rights purchase (Stage 2 year)', f.rightsOut.map(v => -v))
+    + tr('± Working capital (not modelled)', f.wcChange)
+    + tr('= Free cash flow', f.fcf, 'grp')
+    + '<tr><td colspan="7" style="font-size:11px;color:' + (fcfOk ? '#1a7a45' : '#c0392b') + ';">' + (fcfOk ? '✓' : '⚠') + ' Check: the rows above rebuild FCF exactly in every year; cumulative 5-year FCF = ' + k(f.cum[4]) + '.</td></tr>'
+    + tr('Memo: group view (Osteoid A.Ş. consolidated — rights net out)', f.fcfGroup)
+    + tr('+ Investor funding (financing, not profit)', f.investorIn)
+    + '<tr><td>Year-end cash balance (before dividends)</td>' + f.cashBalance.map(v => '<td class="result">' + k(v) + '</td>').join('') + '<td></td></tr>'
+    + '</tbody></table>';
+  h += '<div class="note" style="margin-top:8px;">' + (setupOk ? '✓' : '⚠') + ' Setup funding: Stage 1 ' + k(byStage.stage1 / 1000) + ' + Stage 2 ' + k(byStage.stage2 / 1000) + ' + self-funded from free cash ' + k(byStage.fcf / 1000) + ' = ' + k(f.plan.totalSetupEur / 1000) + ' total setup (capex + pre-opening overheads) of all active centres — the same total the FCF stream deducts (each setup counted once).</div>';
+  if (d && deal) {
+    h += '<div class="fbox">'
+      + '<span class="k">Exit multiples</span>  = one set: Conservative ' + ms.low + '× · Base ' + ms.base + '× · Optimistic ' + ms.high + '× (multi-centre premium +' + ms.premium + '×)\n'
+      + '<span class="k">DCF TV</span>          = FCF₅ ' + k(f.fcf[4]) + ' × ' + ms.base + '× = ' + k(d.tv) + ' → PV ' + k(d.pvTv) + '\n'
+      + '<span class="k">DCF value</span>       = Σ PV(FCF₁₋₅) ' + k(d.sumPvFcf) + ' + PV(TV) ' + k(d.pvTv) + ' = ' + k(d.npv) + ' (TV share ' + d.tvSharePct + '%) — reference only\n'
+      + '<span class="k">Exit EV</span>         = Year-5 EBITDA ' + k(L.ebitda[4]) + ' × ' + ms.base + '× = ' + k(L.ebitda[4] * ms.base) + ' (EV/EBITDA)\n'
+      + '<span class="k">Deal pre-money</span>  = negotiated input €' + Math.round(deal.premoney).toLocaleString('en-US') + ' → investor stake ' + deal.stakes.investor.toFixed(2) + '% (two-tranche blend)\n'
+      + (R ? '<span class="r">Investor return</span> = dividends ' + k(R.divInvTotK) + ' + exit ' + k(R.exitInvK) + ' + retained cash ' + k(R.cashInvK) + ' = ' + k(R.totalK) + ' ÷ ticket ' + k(R.ticket / 1000) + ' = ' + R.moic.toFixed(2) + '×' + (R.irr !== null ? ', IRR ' + R.irr.toFixed(1) + '%' : '') + '\n' : '')
+      + '</div>';
+  }
+  el.innerHTML = h;
+}
+
 // 5 Yıllık Projeksiyon — dinamik
 function buildProjection() {
   // Yıl 1 verileri recalc rows'tan

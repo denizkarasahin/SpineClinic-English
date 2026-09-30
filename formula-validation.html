@@ -287,8 +287,10 @@
   </table>
 
   <div class="note">
-    These are the live model's own consolidated projection rows (read directly from <code>window._lastProjRows</code>, the same rows the Multi-Year Plan table is built from) — not an independent re-derivation. Satellites are memo lines (own 100% net); the flagship's actual take is its management fee + equity share (Subsidiary mode) or 100% consolidation (Branch mode, the default). No SSI channel is modelled in this 5-year view.
+    These are the live model's own consolidated projection rows (read directly from <code>window._lastProjRows</code>, the same rows the Multi-Year Plan table is built from) — not an independent re-derivation. Satellite rows are each centre's own 100% operating profit: in Branch mode (the default) they are consolidated into the total; in Subsidiary mode they are memo lines and the flagship takes its management fee + equity share. No SSI channel is modelled in this 5-year view.
   </div>
+  <div class="sub-title">Cash Flow, Valuation &amp; Investor Return (Live) — with identity checks</div>
+  <div id="cfLedger"></div>
 </div>
 
 <!-- ══════════════════════════════════════════════════════════ -->
@@ -684,8 +686,8 @@ function renderProjection() {
     '<span class="k">Y2-5_Gross</span>   = LINEAR(Y1 gross €'+(istGross[0]||0)+'K → Y5 target €'+(istGross[4]||0)+'K), reached over istRampYears='+(V.istRampYears||5)+' yr\n' +
     '<span class="k">Y2-5_Opex</span>    = capacity-derived: structural base ×1.15/1.18/1.22/1.25 + time-&-motion staff / printers / branches\n' +
     '<span class="k">           </span>   → Opex €['+istOpex.join(' / ')+']K\n' +
-    '<span class="r">Yr_Net</span>       = MAX(0, Gross − Opex) → €['+P.istNet.join(' / ')+']K\n\n' +
-    '<span class="c">── SATELLITES (memo — each center\'s own 100% net) ─────────────────────────</span>\n' +
+    '<span class="r">Yr_OpProfit</span>  = Gross − Opex, not floored (a ramp-year loss stays a loss) → €['+P.istNet.join(' / ')+']K\n\n' +
+    '<span class="c">── SATELLITES (each centre\'s own 100% operating profit — memo only in Subsidiary mode) ──</span>\n' +
     '<span class="k">Target</span>      = city market (its pop. share of the TR total) × the center\'s target market-share %\n' +
     '<span class="k">UnitNet</span>     = year-end mix (last 3 months) = ₺'+sonBirimNet.toLocaleString('tr-TR')+'/brace — same basis as Istanbul\'s target year\n' +
     '<span class="k">Ramp</span>        = reaches full target over {city}RampYears yr from opening (Izmir/Ankara open Y2, Bursa/Gaziantep Y3)\n' +
@@ -700,15 +702,15 @@ function renderProjection() {
   const cells = arr => arr.map(v=>'<td class="result">'+fmt(v)+'</td>').join('');
   const rowHtml = (name, formula, arr) => '<tr><td>'+name+'</td><td class="formula">'+formula+'</td>'+cells(arr)+'</tr>';
   let html = '';
-  html += rowHtml('Istanbul C1 (private channel)', 'gross ramp − capacity-derived opex', P.istNet);
+  html += rowHtml('Istanbul clinic — operating profit', 'gross ramp − capacity-derived opex', P.istNet);
   if (anyB2B) html += rowHtml('B2B — Istanbul', 'ramped Y2-5 stream (printers only)', P.b2b);
   satOrder.forEach(pr => {
     const s = P.sat[pr[0]];
-    if (s.aktif) html += rowHtml(pr[1]+' Center <span style="font-weight:400;font-size:10px;opacity:.7;">— own net, memo</span>', 'target × year-end unit net, ramped '+s.ramp+'yr from Y'+s.openYear, s.net);
+    if (s.aktif) html += rowHtml(pr[1]+' Center <span style="font-weight:400;font-size:10px;opacity:.7;">— '+(s.isSube?'branch, consolidated':'subsidiary, memo')+'</span>', 'target × year-end unit net, ramped '+s.ramp+'yr from Y'+s.openYear, s.net);
   });
   if (anyFee) html += rowHtml('↳ Management fee to flagship', '% of satellite gross revenue', P.fee);
-  if (anyEquity) html += rowHtml('↳ Equity income to flagship', 'flagship % of satellite net-after-fee', P.equity);
-  html += '<tr class="grp"><td>Consolidated Total (Flagship)</td><td class="formula">C1 + B2B + fee + equity</td>'+cells(P.totals)+'</tr>';
+  if (anyEquity) html += rowHtml(_satAggLabels().equity, 'branches: 100% of operating profit · subsidiaries: flagship % of net after fee', P.equity);
+  html += '<tr class="grp"><td>Consolidated operating profit (flagship)</td><td class="formula">clinic + B2B + satellite branches 100% (or subsidiary fee + equity)</td>'+cells(P.totals)+'</tr>';
   document.getElementById('projTbody').innerHTML = html;
 }
 
@@ -803,6 +805,7 @@ window.addEventListener('load', function() {
   renderMonthlyTable();
   renderKurulum();
   renderProjection();
+  renderValidationLedger('cfLedger');
   renderMerkezler();
 });
 </script>

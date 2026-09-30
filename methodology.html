@@ -134,10 +134,15 @@
         <div style="font-size:12px;font-weight:700;color:#1D9E75;margin-bottom:8px;">Metric definitions</div>
         <div style="font-size:12px;color:#555;line-height:1.7;">
           One set of definitions feeds every valuation figure on every page (Summary Exit box, Investor DCF, scenario table) — no figure borrows another's name:<br><br>
-          • <b>Operating profit</b> = revenue − all cash operating costs; equipment purchases are expensed when incurred.<br>
-          • <b>EBITDA</b> = operating profit + that year's expensed equipment/setup added back; no depreciation is modeled because capex is expensed.<br>
-          • <b>FCF</b> = operating profit − corporate tax at 25% (with loss carryforward).<br>
-          • <b>Exit Value</b> = Year-5 EBITDA × the exit-multiple slider; exit-year taxation is not modeled (a stated simplification — see shareholder Exit Tax Structuring on the Investor page).<br><br>
+          • <b>Revenue ladder</b> = Gross revenue (list price × braces) → − doctor fees = Net revenue after doctor fees → − materials, royalty/cutting and all operating costs = Operating profit.<br>
+          • <b>Operating profit</b> = revenue − all cash operating costs; printer/branch purchases inside opex are expensed when incurred. Not floored: a ramp-year loss stays in the P&amp;L and in cumulative profit.<br>
+          • <b>EBITDA</b> = operating profit + that year's expensed equipment added back; no depreciation is modeled because capex is expensed.<br>
+          • <b>FCF</b> (centres company / investor view) = EBITDA − corporate tax at 25% (with loss carryforward) − expensed capex − each centre's setup capex in its opening year − the rights purchase in the Stage 2 year ± working capital (not modelled, 0). In a group view that consolidates Osteoid A.Ş. the rights purchase is intercompany and nets out.<br>
+          • <b>DCF value</b> (reference only) = Σ PV(FCF₁₋₅) + PV(terminal value), with <b>terminal value = Year-5 after-tax FCF × Base exit multiple</b>.<br>
+          • <b>Exit EV</b> = Year-5 EBITDA × exit multiple (EV/EBITDA). One multiple set everywhere: Base (slider + optional multi-centre premium, default 0), Conservative = Base − offset, Optimistic = Base + offset.<br>
+          • <b>Deal pre-money</b> = a negotiated input (slider), not a model output; the investor stake is priced off it and stays fixed across scenarios.<br>
+          • <b>Investor return</b> = dividends (payout % × after-tax profit once earlier losses are covered, capped at available cash) + Exit EV × stake + cash retained at exit × stake; exit-year taxation is not modeled (see Exit Tax Structuring on the Investor page).<br>
+          • <b>Stage 2 attributable yield</b> = Year-5 flagship-attributable operating profit of only the centres Stage 2 funds ÷ Stage 2 investment.<br><br>
           • VAT: orthosis-prosthesis supply is <b>fully exempt (0%)</b> under VAT Law 17/4-s.<br>
           • Corporate tax: clinic activity subject to <b>25%</b> (TGB exemption applies only to Osteoid Inc.).
         </div>
@@ -267,7 +272,9 @@
     <thead><tr><th style="min-width:260px;">Revenue Item</th><th>Formula / Source</th><th style="text-align:right;">Year 1 (€K)</th><th style="text-align:right;">Year 2 (€K)</th><th style="text-align:right;">Year 3 (€K)</th><th style="text-align:right;">Year 4 (€K)</th><th style="text-align:right;">Year 5 (€K)</th></tr></thead>
     <tbody id="projTbody"></tbody>
   </table>
-  <div class="note">These are the live model's own consolidated projection rows (read directly from <code>window._lastProjRows</code>, the same rows the Multi-Year Plan table is built from) — not an independent re-derivation. Satellites are memo lines (own 100% net); the flagship's actual take from each is its management fee + equity share (Subsidiary mode) or 100% consolidation (Branch mode, the default). No SSI channel is modelled in this 5-year view.</div>
+  <div class="note">These are the live model's own consolidated projection rows (read directly from <code>window._lastProjRows</code>, the same rows the Multi-Year Plan table is built from) — not an independent re-derivation. Satellite rows are each centre's own 100% operating profit: in Branch mode (the default) they are consolidated into the total; in Subsidiary mode they are memo lines and the flagship takes its management fee + equity share. No SSI channel is modelled in this 5-year view.</div>
+  <div class="sub-title">Cash Flow, Valuation &amp; Investor Return (Live) — with identity checks</div>
+  <div id="cfLedger"></div>
 </div>
 
 <div class="sec">
@@ -594,8 +601,8 @@ function renderProjection() {
     '<span class="k">Y2-5_Gross</span>   = LINEAR(Y1 gross €'+(istGross[0]||0)+'K → Y5 target €'+(istGross[4]||0)+'K), reached over istRampYears='+(V.istRampYears||5)+' yr\n' +
     '<span class="k">Y2-5_Opex</span>    = capacity-derived: structural base ×1.15/1.18/1.22/1.25 + time-&-motion staff / printers / branches\n' +
     '<span class="k">           </span>   → Opex €['+istOpex.join(' / ')+']K\n' +
-    '<span class="r">Yr_Net</span>       = MAX(0, Gross − Opex) → €['+P.istNet.join(' / ')+']K\n\n' +
-    '<span class="c">── SATELLITES (memo — each center\'s own 100% net) ─────────────────────────</span>\n' +
+    '<span class="r">Yr_OpProfit</span>  = Gross − Opex, not floored (a ramp-year loss stays a loss) → €['+P.istNet.join(' / ')+']K\n\n' +
+    '<span class="c">── SATELLITES (each centre\'s own 100% operating profit — memo only in Subsidiary mode) ──</span>\n' +
     '<span class="k">Target</span>      = city market (its pop. share of the TR total) × the center\'s target market-share %\n' +
     '<span class="k">UnitNet</span>     = year-end mix (last 3 months) = ₺'+sonBirimNet.toLocaleString('tr-TR')+'/brace — same basis as Istanbul\'s target year\n' +
     '<span class="k">Ramp</span>        = reaches full target over {city}RampYears yr from opening (Izmir/Ankara open Y2, Bursa/Gaziantep Y3)\n' +
@@ -610,15 +617,15 @@ function renderProjection() {
   var cells=function(arr){return arr.map(function(v){return '<td class="result">'+fmt(v)+'</td>';}).join('');};
   var rowHtml=function(name,formula,arr){return '<tr><td>'+name+'</td><td class="formula">'+formula+'</td>'+cells(arr)+'</tr>';};
   var html='';
-  html+=rowHtml('Istanbul C1 (private channel)','gross ramp − capacity-derived opex',P.istNet);
+  html+=rowHtml('Istanbul clinic — operating profit','gross ramp − capacity-derived opex',P.istNet);
   if(anyB2B) html+=rowHtml('B2B — Istanbul','ramped Y2-5 stream (printers only)',P.b2b);
   satOrder.forEach(function(pr){
     var s=P.sat[pr[0]];
-    if(s.aktif) html+=rowHtml(pr[1]+' Center <span style="font-weight:400;font-size:10px;opacity:.7;">— own net, memo</span>','target × year-end unit net, ramped '+s.ramp+'yr from Y'+s.openYear,s.net);
+    if(s.aktif) html+=rowHtml(pr[1]+' Center <span style="font-weight:400;font-size:10px;opacity:.7;">— '+(s.isSube?'branch, consolidated':'subsidiary, memo')+'</span>','target × year-end unit net, ramped '+s.ramp+'yr from Y'+s.openYear,s.net);
   });
   if(anyFee) html+=rowHtml('↳ Management fee to flagship','% of satellite gross revenue',P.fee);
-  if(anyEquity) html+=rowHtml('↳ Equity income to flagship','flagship % of satellite net-after-fee',P.equity);
-  html+='<tr class="grp"><td>Consolidated Total (Flagship)</td><td class="formula">C1 + B2B + fee + equity</td>'+cells(P.totals)+'</tr>';
+  if(anyEquity) html+=rowHtml(_satAggLabels().equity,'branches: 100% of operating profit · subsidiaries: flagship % of net after fee',P.equity);
+  html+='<tr class="grp"><td>Consolidated operating profit (flagship)</td><td class="formula">clinic + B2B + satellite branches 100% (or subsidiary fee + equity)</td>'+cells(P.totals)+'</tr>';
   document.getElementById('projTbody').innerHTML=html;
 }
 
@@ -708,6 +715,7 @@ function switchInnerTab(btn, tabId) {
     if(!window._lastRows||!window._lastRows.length) recalc();
     renderParams(); renderUrunMarj(); renderFormulas();
     renderMonthlyTable(); renderKurulum(); renderProjection(); renderMerkezler();
+    renderValidationLedger('cfLedger');
   }
 }
 
