@@ -1,6 +1,7 @@
 # CHANGES — Committed defaults from snapshot osteoid_2026-09-30 (`_version` 62 → 63)
 
 - **DEF-1** — V defaults replaced by Deniz's 2026-09-30 snapshot: Std-Reported price ₺30,500 → ₺40,500; product mix (B2C and B2B) with no Std-No-Rep. share; adult / post-op / fracture upside toggles on (separate lines, never in the base); competitor volumes (Hedef Spine 1,260/1,680, Can Erdem 900, Nesa 900, Aktif Ortez 1,080 clinic). Two negative mix cells in the snapshot (Month 4 −2, Month 9 −3) set to 0 and taken off that month's largest share. Core plan: Year-5 EBITDA €1,367K (was €1,053K), cumulative FCF €3,100K (was €2,175K), peak funding need €235K (was €332K).
+- **UP-1** — Upside segments (adult / post-op / fracture) now count when switched on: their braces (Year 2+, on each centre's ramp) load the capacity engine and their revenue, channel fee, material and royalty flow into each centre's P&L, so into every total, FCF, funding need, payback and KPI. Before, a toggle only changed a memo line. With the committed defaults (all three on): Year-5 EBITDA €1,611K (€1,367K with them off), cumulative FCF €3,704K; the Summary sensitivity's last column shows the opposite upside state.
 
 ---
 
