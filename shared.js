@@ -1628,6 +1628,42 @@ function supplyKpiHtml(fmtPrice) {
   ].map(x => '<div class="kpi"><div class="kpi-label">' + x.label + '</div><div class="kpi-val ' + x.c + '">' + x.val + '</div></div>').join('');
   return k + '<div style="grid-column:1/-1;font-size:10px;color:#888;">Named supply plus hospital and small-workshop production is consistent with a 15,000–25,000 treated market.</div>';
 }
+// ── Market sensitivity (MKT-G19) — Summary page ────────────────────────────
+// Every cell is a full live model run: set one input, recalc(), read Year-5
+// EBITDA (whole business, 100%) and the investor return (dividends + exit +
+// retained cash, at the fixed deal pre-money), then restore. Guarded so the
+// nested recalc() calls never re-enter this table.
+function renderMarketSensitivity() {
+  const el = _origGetById('mktSensBody');
+  if (!el || window._inScenario) return;
+  const keys = ['hedefOsteoidPay', 'pazarIstPct', 'pazarTR'];
+  const base = {}; keys.forEach(k => { base[k] = V[k]; });
+  const cases = [
+    ['Istanbul target share (hedefOsteoidPay)', 'hedefOsteoidPay', [15, 20, 25, 30], v => v + '%'],
+    ['Istanbul share of national market (pazarIstPct)', 'pazarIstPct', [21, 30.1], v => v + '%'],
+    ['National market (pazarTR)', 'pazarTR', [15000, 20000, 25000], v => v.toLocaleString('en-US') + '/yr'],
+  ];
+  const out = [];
+  window._inScenario = true;
+  try {
+    cases.forEach(([grp, k, vals, fmt]) => vals.forEach(v => {
+      Object.assign(V, base); V[k] = v; recalc();
+      const R = window._lastInvestorReturn || {}, L = metricLadder('100');
+      out.push({ grp, lbl: fmt(v), isBase: Math.abs(v - base[k]) < 1e-9, e5: L ? L.ebitda[4] : 0, moic: R.moic, irr: R.irr });
+    }));
+  } finally {
+    Object.assign(V, base); recalc(); window._inScenario = false;
+  }
+  let lastGrp = '';
+  el.innerHTML = out.map(r => {
+    const head = r.grp !== lastGrp ? '<tr><td colspan="4" style="text-align:left;font-size:10px;font-weight:700;color:#555;background:#f0efe9;">' + r.grp + '</td></tr>' : '';
+    lastGrp = r.grp;
+    return head + '<tr' + (r.isBase ? ' class="r-bas"' : '') + '><td style="text-align:left;">' + r.lbl + (r.isBase ? ' <b>(current)</b>' : '') + '</td>'
+      + '<td>' + (r.e5 < 0 ? '-€' : '€') + Math.abs(Math.round(r.e5)).toLocaleString('en-US') + 'K</td>'
+      + '<td>' + (r.moic !== undefined ? r.moic.toFixed(2) + '×' : '—') + '</td>'
+      + '<td>' + (r.irr !== null && r.irr !== undefined ? r.irr.toFixed(1) + '%' : '—') + '</td></tr>';
+  }).join('');
+}
 function marketBuildUp() {
   const core = gv('kohortTR') * gv('braceablePct') / 100 * gv('bracePerCourse');
   const paed = core * (1 + gv('otherPaedPct') / 100);
@@ -3049,6 +3085,7 @@ function recalc() {
   updateKapasiteUyari(rows);
   renderGiderDagilim(rows);
   renderMain(rows);
+  if (!window._inScenario) renderMarketSensitivity();
 }
 
 function toggleTablo(btn) {
