@@ -3331,7 +3331,9 @@ function renderInvestorRoadmap(el, totals, korseM1, feeIncomeRow, equityIncomeRo
       <tr><td style="font-size:11px;">− Rights purchase <span style="font-size:10px;color:#999;">(IP licence + exclusivity, paid to Osteoid A.Ş. at Stage 2 — centres-company view)</span></td>${fcfData.rightsOut.map(v=>fmtSignedCell(-v)).join('')}<td></td></tr>
       <tr><td style="font-size:11px;color:#999;">± Working capital <span style="font-size:10px;">(not modelled — private channel paid at fitting; SGK channel excluded)</span></td>${fcfData.wcChange.map(fmtSignedCell).join('')}<td></td></tr>
       <tr style="font-weight:700;"><td>Free cash flow — centres company / investor view</td>${fcfData.fcf.map(fmtSignedCell).join('')}<td></td></tr>
-      <tr><td style="font-size:10px;color:#999;">Memo: group view (Osteoid A.Ş. + centres) — rights purchase is intercompany, nets to €0</td>${fcfData.fcfGroup.map(v=>`<td style="text-align:right;font-size:10px;color:#999;">${v<0?'-':''}€${Math.abs(v)}K</td>`).join('')}<td></td></tr>` : ''}
+      <tr><td style="font-size:10px;color:#999;">Memo: group view (Osteoid A.Ş. + centres) — rights purchase is intercompany, nets to €0</td>${fcfData.fcfGroup.map(v=>`<td style="text-align:right;font-size:10px;color:#999;">${v<0?'-':''}€${Math.abs(v)}K</td>`).join('')}<td></td></tr>
+      <tr><td style="font-size:11px;color:#534AB7;">+ Investor funding <span style="font-size:10px;color:#999;">(financing — Stage 1 at closing, Stage 2 in its release year; not profit)</span></td>${fcfData.investorIn.map(fmtSignedCell).join('')}<td></td></tr>
+      <tr style="font-weight:700;"><td>Year-end cash balance <span style="font-weight:400;font-size:10px;color:#999;">(before dividends)</span></td>${fcfData.cashBalance.map(fmtSignedCell).join('')}<td></td></tr>` : ''}
       ${fcfData && fcfData.vergiDahil ? `<tr><td style="font-size:10px;color:#999;">↳ Loss carryforward balance (year-end)</td>${fcfData.carryEnd.map(c=>`<td style="text-align:right;font-size:10px;color:#999;">${c>0?'€'+c+'K':'—'}</td>`).join('')}<td></td></tr>` : ''}
     </tbody>
   </table></div>
@@ -3511,8 +3513,22 @@ function computeFcfStream() {
   const runSum = arr => { let r = 0; return arr.map(v => (r += v)); };
   const cum = runSum(fcf), cumGroup = runSum(fcfGroup), cumOpCash = runSum(opCash);
 
+  // Cash ledger (review 4-A2): investor inflows (Stage 1 in Year 1, Stage 2 in
+  // the Stage 2 year) + FCF. Every setup leaves once through FCF; its funding
+  // arrives once — via Stage 1/Stage 2 here, or not at all when self-funded
+  // (then operating cash pays for it). Reads the breakdown computed earlier in
+  // the same recalc() pass.
+  const _inv = window._lastInvestBreakdown;
+  const investorIn = [0,0,0,0,0];
+  if (_inv) {
+    investorIn[0] += Math.round(_inv.stage1Eur / 1000);
+    investorIn[plan.stage2YearIdx] += Math.round(_inv.stage2Eur / 1000);
+  }
+  const cashBalance = runSum(fcf.map((v,i) => v + investorIn[i]));
+
   return { pretaxFcf, accountingPretax, opCash, taxPaid, carryEnd, vergiDahil, kvOraniPct, nakdi,
-           setupOut, rightsOut, wcChange, fcf, fcfGroup, cum, cumGroup, cumOpCash, plan };
+           setupOut, rightsOut, wcChange, fcf, fcfGroup, cum, cumGroup, cumOpCash, plan,
+           investorIn, cashBalance };
 }
 
 // ── METRIC LADDER (single source of truth for the exit-value metrics) ─────────
@@ -4906,20 +4922,19 @@ function renderInvestBreakdown(kurulumTop, rows) {
   // Overhead adjustment (default 0) so the total can be rounded to a clean
   // ask number without editing the underlying model.
   const setupCostsEur = setupCashTRY / eurK;
-  const izmirSetupBaseEur = getMerkezKurulum('izmir') / eurK;
-  const ankaraSetupBaseEur = getMerkezKurulum('ankara') / eurK;
-  const bursaSetupBaseEur = getMerkezKurulum('bursa') / eurK;
-  const gaziantepSetupBaseEur = getMerkezKurulum('gaziantep') / eurK;
-  const overheadC1 = V.setupOverheadC1 ?? 0;
-  const overheadC2 = V.setupOverheadC2 ?? 0;
-  const overheadC3 = V.setupOverheadC3 ?? 0;
-  const overheadC4 = V.setupOverheadC4 ?? 0;
-  const overheadC5 = V.setupOverheadC5 ?? 0;
-  const setupC1Eur = setupCostsEur + overheadC1;
-  const setupC2Eur = izmirSetupBaseEur + overheadC2;
-  const setupC3Eur = ankaraSetupBaseEur + overheadC3;
-  const setupC4Eur = bursaSetupBaseEur + overheadC4;
-  const setupC5Eur = gaziantepSetupBaseEur + overheadC5;
+  // Per-centre setup (capex + overhead) comes from the ONE build-out plan the
+  // FCF stream also deducts (buildOutPlan) — so the amount funded here and the
+  // amount taken out of free cash are the same number (review 4-A2). An
+  // inactive satellite carries no setup in either place.
+  const _plan = buildOutPlan();
+  const _pc = _plan.centres;
+  const overheadC1 = _pc[0].overheadEur, overheadC2 = _pc[1].overheadEur, overheadC3 = _pc[2].overheadEur,
+        overheadC4 = _pc[3].overheadEur, overheadC5 = _pc[4].overheadEur;
+  const setupC1Eur = _pc[0].totalEur;
+  const setupC2Eur = _pc[1].totalEur;
+  const setupC3Eur = _pc[2].totalEur;
+  const setupC4Eur = _pc[3].totalEur;
+  const setupC5Eur = _pc[4].totalEur;
 
   // Toggle: Bursa/Gaziantep (Center 4/5) open Year 3, by which point the
   // flagship's own after-tax free cash flow (computeFcfStream(), Years 1-2
@@ -4964,6 +4979,13 @@ function renderInvestBreakdown(kurulumTop, rows) {
     console.warn('Investor Ticket stage split does not reconcile with the total — check renderInvestBreakdown().');
   }
 
+  const _setupByStage = { stage1: 0, stage2: 0, fcf: 0 };
+  _pc.forEach(c => { _setupByStage[c.funding] += c.totalEur; });
+  const _setupCheckOk = Math.abs(_setupByStage.stage1 + _setupByStage.stage2 + _setupByStage.fcf - _plan.totalSetupEur) < 0.5
+    && Math.abs(_setupByStage.stage1 - setupC1Eur) < 0.5
+    && Math.abs(_setupByStage.stage2 - (setupC2Eur + setupC3Eur + (fcfFundedSatellites ? 0 : satelliteFcfEur))) < 0.5;
+  if (!_setupCheckOk) console.warn('Setup funding does not reconcile (Stage 1 + Stage 2 + self-funded ≠ total setup) — check renderInvestBreakdown()/buildOutPlan().');
+
   const tbody = document.getElementById('investBreakdownBody');
   if (tbody) {
     const line = (label, eur, cls) =>
@@ -4995,8 +5017,16 @@ function renderInvestBreakdown(kurulumTop, rows) {
               + line('Setup cost — Center 5, Gaziantep (capex' + (overheadC5 ? ' + overhead' : '') + ')', setupC5Eur)
             : '')
           + (workingCapBufferFcfFunded ? line('Working capital buffer (deferred remainder)', stage2BufferEur) : '')
-          + line('Self-funded — subtotal (drawn from Cumulative Free Cash)', (fcfFundedSatellites ? satelliteFcfEur : 0) + (workingCapBufferFcfFunded ? stage2BufferEur : 0), 'r-bas')
+          + line('Self-funded — subtotal (paid out of operating cash, deducted from that year\'s free cash flow)', (fcfFundedSatellites ? satelliteFcfEur : 0) + (workingCapBufferFcfFunded ? stage2BufferEur : 0), 'r-bas')
         : '')
+      // Setup funding reconciliation (review 4-A2): every active centre's setup
+      // is funded from exactly one source, and the three sources add up to the
+      // same total the FCF stream deducts.
+      + '<tr><td colspan="3" style="text-align:left;font-weight:700;color:#555;font-size:10px;text-transform:uppercase;padding-top:8px;">Setup funding check — each setup counted exactly once</td></tr>'
+      + line('Setup funded by Stage 1 (Istanbul)', _setupByStage.stage1)
+      + line('Setup funded by Stage 2', _setupByStage.stage2)
+      + line('Setup self-funded from free cash', _setupByStage.fcf)
+      + line('= Total setup, all active centres (same total the FCF stream deducts)' + (_setupCheckOk ? ' ✓' : ' ⚠ mismatch'), _plan.totalSetupEur, 'r-bas')
       + '<tr><td colspan="3" style="text-align:left;font-weight:700;color:#555;font-size:10px;text-transform:uppercase;padding-top:8px;">Clinic cash (model-derived — feeds the Tax Optimization and Cash-on-Cash Return sections only)</td></tr>'
       + line('Setup cost (capex)', setupCostsEur)
       + line('Working capital (Y1 burn beyond setup)', workingCapTRY/eurK)
@@ -5022,8 +5052,12 @@ function renderInvestBreakdown(kurulumTop, rows) {
   // 5-year FCF stream computed by buildProjection() (one recalc cycle behind
   // on first load, like every other cross-reference into window._lastFcf on
   // this page; harmless since it's informational only, not part of the math
-  // above). cum[1] = cumulative after-tax free cash through Year 2, the last
-  // full year before Bursa/Gaziantep open in Year 3.
+  // above). Counted exactly once (review 4-A2): when ON, the two setups are
+  // NOT in Stage 2 and ARE deducted from free cash flow in their opening year
+  // (Year 3); when OFF they are in Stage 2 (funding) and the same outflow sits
+  // in Year 3's FCF. The check compares operating cash after tax accumulated
+  // through Year 2 (before any build-out) with the setup, and reports the
+  // lowest year-end cash balance (investor inflows + FCF) over Years 1-5.
   const fcfNoteEl = document.getElementById('fcfFundedNote');
   if (fcfNoteEl) {
     if (!fcfFundedSatellites) {
@@ -5037,9 +5071,13 @@ function renderInvestBreakdown(kurulumTop, rows) {
       } else {
         const neededK = Math.round(satelliteFcfEur / 1000);
         const spareK = cumY2 - neededK;
-        fcfNoteEl.innerHTML = spareK >= 0
-          ? '✓ Cumulative Free Cash through Year 2 (€' + cumY2.toLocaleString('en-US') + 'K) covers Bursa+Gaziantep\'s combined setup cost (€' + neededK.toLocaleString('en-US') + 'K), €' + spareK.toLocaleString('en-US') + 'K to spare.'
-          : '⚠ Cumulative Free Cash through Year 2 (€' + cumY2.toLocaleString('en-US') + 'K) falls €' + (-spareK).toLocaleString('en-US') + 'K short of Bursa+Gaziantep\'s combined setup cost (€' + neededK.toLocaleString('en-US') + 'K) — the shortfall would still need to come from the Investor Ticket or a bridge.';
+        const minBal = fcf.cashBalance ? Math.min(...fcf.cashBalance) : null;
+        const minYr = minBal !== null ? fcf.cashBalance.indexOf(minBal) + 1 : null;
+        const balTxt = minBal === null ? '' : ' Lowest year-end cash balance (investor inflows + free cash flow, after every setup and the rights purchase): €' + minBal.toLocaleString('en-US') + 'K in Year ' + minYr + (minBal >= 0 ? ' — never negative.' : ' — NEGATIVE: the plan is not fully funded.');
+        fcfNoteEl.innerHTML = (spareK >= 0
+          ? '✓ Operating cash after tax through Year 2 (€' + cumY2.toLocaleString('en-US') + 'K) covers Bursa+Gaziantep\'s combined setup (€' + neededK.toLocaleString('en-US') + 'K), €' + spareK.toLocaleString('en-US') + 'K to spare. That setup is deducted once, from Year 3\'s free cash flow — it is not in Stage 2.'
+          : '⚠ Operating cash after tax through Year 2 (€' + cumY2.toLocaleString('en-US') + 'K) falls €' + (-spareK).toLocaleString('en-US') + 'K short of Bursa+Gaziantep\'s combined setup (€' + neededK.toLocaleString('en-US') + 'K) — the shortfall would still need to come from the Investor Ticket or a bridge.')
+          + balTxt;
       }
     }
   }
