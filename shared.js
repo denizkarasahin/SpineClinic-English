@@ -23,7 +23,7 @@ document.getElementById = function(id) {
   };
 };
 
-const V = {"reklamCarpan":1,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.93,"eurKurSabit":53.93,"eurKurTarih":"2026-07-20","liveFxAktif":false,"kira":150000,"depozito":250000,"emlakci":500000,"m2":360,"tadilatM2":4500,"dekoM2":4500,"mobilya":300000,"ruhsat":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":90000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[24,25,30,35,35,44,44,52,54,63,62,69],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":25000,"korseF_stdRl":30500,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":3500,"mal_sens":2075,"mal_sensDelik":4975,"feeSci_stdR":10,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdR":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdR":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":20000,"kohortTR":1275000,"braceablePct":0.45,"bracePerCourse":2.75,"otherPaedPct":15,"premiumMixY1":25,"premiumMixY2":37.5,"premiumMixY3":50,"sgkAktif":false,"sgkIncrementalPct":20,"sgkPrice":17500,"sgkTopUp":5000,"sgkDelayDays":75,"hoCostY1Eur":30000,"hoPerCentreEur":10000,"hoCapEur":80000,"adultAktif":false,"adultBraceYil":2500,"adultFiyat":25000,"postopAktif":false,"postopBraceYil":2000,"postopFiyat":25000,"fractureAktif":false,"fractureBraceYil":1700,"fractureFiyat":25000,"pazarIstPct":30.1,"hedefOsteoidPay":30,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":true,"izmirHedefPay":50,"izmirUseIst":true,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[18,19,23,26,26,33,33,39,41,47,47,52],"ankaraAktif":true,"ankaraHedefPay":50,"ankaraUseIst":true,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[19,20,24,28,28,35,35,42,43,50,50,55],"bursaAktif":true,"bursaHedefPay":50,"bursaUseIst":true,"bursaUseIstGider":true,"bursaKira":80000,"bursaOrtotistM":55000,"bursaStajyerM":25000,"bursaMutfak":18000,"bursaSarf":3000,"bursaUseIstKurulum":true,"bursaKurulumKira":120000,"bursaKurulumDepozito":200000,"bursaKurulumTadilat":4750,"bursaKurulumDeko":2000,"bursaKurulumMobilya":600000,"bursaRampa":[18,19,23,26,26,33,33,39,41,47,47,52],"gaziantepAktif":true,"gaziantepHedefPay":50,"gaziantepUseIst":true,"gaziantepUseIstGider":true,"gaziantepKira":85000,"gaziantepOrtotistM":55000,"gaziantepStajyerM":25000,"gaziantepMutfak":18000,"gaziantepSarf":3000,"gaziantepUseIstKurulum":true,"gaziantepKurulumKira":120000,"gaziantepKurulumDepozito":200000,"gaziantepKurulumTadilat":4750,"gaziantepKurulumDeko":2000,"gaziantepKurulumMobilya":600000,"gaziantepRampa":[19,20,24,28,28,35,35,42,43,50,50,55],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"bursaNufusPay":4.5,"gaziantepNufusPay":3,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":true,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":18,"dcfExitMult":10,"exitMultLowDelta":2,"exitMultHighDelta":3,"multiCenterPremiumX":0,"dealPreMoneyEur":10964800,"tranche1Eur":500000,"dividendPayoutPct":60,"targetMoic":2.5,"trancheStepUp":1.75,"dcfInvest":719032,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":12500,"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":80000,"_sen_max_kira":300000,"_sen_min_tadilatM2":2500,"_sen_max_tadilatM2":11500,"_sen_min_dekoM2":2250,"_sen_max_dekoM2":11250,"_sen_min_ortotistM":55000,"_sen_max_ortotistM":160000,"_sen_min_operatorM":90000,"_sen_max_operatorM":240000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":1286,"hedefSpine_KorseB":1714,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseK":600,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":590,"aktifOrtez_KorseB":410,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.75,"bursaRampaOran":0.75,"bursaKurulumOran":0.75,"gaziantepRampaOran":0.8,"gaziantepKurulumOran":0.75,"operatorM":150000,"ipLisansEur":500000,"sehirEksklusifEur":500000,"workingCapBufferEur":500000,"stage1BufferEur":200000,"kvOrani":25,"vergiDahil":true,"exitYili":5,"kisiselVergiOrani":15,"fundAy":0,"makineKatkiOran":50,"osteoidCarpan":1,"yatirimciCarpan":1,"doktorYatirim":0,"doktorCarpan":1.5,"sweatEur":80000,"sweatVestAy":48,"sweatCliffAy":12,"sweatElapsedAy":0,"sweatMaxPct":5,"sweatCarpan":1,"sweatVestedToday":true,"royaltyOffsetYil":1,"royaltyOffsetPct":0,"yonetimUcretiPct":5,"izmirFlagshipPay":65,"ankaraFlagshipPay":65,"bursaFlagshipPay":65,"gaziantepFlagshipPay":65,"izmirSubeMi":true,"ankaraSubeMi":true,"bursaSubeMi":true,"gaziantepSubeMi":true,"euLegalFaiz":5,"preOpenHireC1":0,"preOpenMktC1":0,"preOpenLegalC1":0,"preOpenOtherC1":30000,"preOpenHireC2":0,"preOpenMktC2":0,"preOpenLegalC2":0,"preOpenOtherC2":30000,"preOpenHireC3":0,"preOpenMktC3":0,"preOpenLegalC3":0,"preOpenOtherC3":45000,"preOpenHireC4":0,"preOpenMktC4":0,"preOpenLegalC4":0,"preOpenOtherC4":40000,"preOpenHireC5":0,"preOpenMktC5":0,"preOpenLegalC5":0,"preOpenOtherC5":40000,"bursaGaziantepFcfFunded":true,"nakdiSermayeAktif":true,"teknokentKapsam":false,"emisyonPrimiAktif":true,"nominalPayOrani":10,"feeStreamAyriMult":false,"feeExitMult":12,"istRampYears":3,"izmirRampYears":3,"ankaraRampYears":3,"bursaRampYears":4,"gaziantepRampYears":3,"bursaAcilisAy":3,"ankaraAcilisAy":5,"gaziantepAcilisAy":3,"workingCapBufferFcfFunded":false,"hastaPerOdaGun":6,"odaMaxPerKlinik":6,"odaM2":10,"calismaGunAy":26,"haftaSonuGunAy":9,"haftaSonuTalepPct":60,"visitPerKorse":1,"ortotistDkFitting":60,"expertDkHasta":8,"destekDkHasta":45,"staffUtilPct":75,"korsePerPrinterAy":66,"ekOrtotistM":65000,"subeSetupTRY":900000,"izmirDestekM":25000,"ankaraDestekM":25000,"bursaDestekM":25000,"gaziantepDestekM":25000,"b2bHedefAdetYil":1200,"b2bRampYears":3,"viewMode":"business","_version":61};
+const V = {"reklamCarpan":1,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.93,"eurKurSabit":53.93,"eurKurTarih":"2026-07-20","liveFxAktif":false,"kira":150000,"depozito":250000,"emlakci":500000,"m2":360,"tadilatM2":4500,"dekoM2":4500,"mobilya":300000,"ruhsat":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":90000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[24,25,30,35,35,44,44,52,54,63,62,69],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":25000,"korseF_stdRl":30500,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":3500,"mal_sens":2075,"mal_sensDelik":4975,"feeSci_stdR":10,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdR":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdR":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":20000,"kohortTR":1275000,"braceablePct":0.45,"bracePerCourse":2.75,"otherPaedPct":15,"premiumMixY1":25,"premiumMixY2":37.5,"premiumMixY3":50,"sgkAktif":false,"sgkIncrementalPct":20,"sgkPrice":17500,"sgkTopUp":5000,"sgkDelayDays":75,"hoCostY1Eur":30000,"hoPerCentreEur":10000,"hoCapEur":80000,"adultAktif":false,"adultBraceYil":2500,"adultFiyat":25000,"postopAktif":false,"postopBraceYil":2000,"postopFiyat":25000,"fractureAktif":false,"fractureBraceYil":1700,"fractureFiyat":25000,"pazarIstPct":30.1,"hedefOsteoidPay":30,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":true,"izmirHedefPay":50,"izmirUseIst":true,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[18,19,23,26,26,33,33,39,41,47,47,52],"ankaraAktif":true,"ankaraHedefPay":50,"ankaraUseIst":true,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[19,20,24,28,28,35,35,42,43,50,50,55],"bursaAktif":true,"bursaHedefPay":50,"bursaUseIst":true,"bursaUseIstGider":true,"bursaKira":80000,"bursaOrtotistM":55000,"bursaStajyerM":25000,"bursaMutfak":18000,"bursaSarf":3000,"bursaUseIstKurulum":true,"bursaKurulumKira":120000,"bursaKurulumDepozito":200000,"bursaKurulumTadilat":4750,"bursaKurulumDeko":2000,"bursaKurulumMobilya":600000,"bursaRampa":[18,19,23,26,26,33,33,39,41,47,47,52],"gaziantepAktif":true,"gaziantepHedefPay":50,"gaziantepUseIst":true,"gaziantepUseIstGider":true,"gaziantepKira":85000,"gaziantepOrtotistM":55000,"gaziantepStajyerM":25000,"gaziantepMutfak":18000,"gaziantepSarf":3000,"gaziantepUseIstKurulum":true,"gaziantepKurulumKira":120000,"gaziantepKurulumDepozito":200000,"gaziantepKurulumTadilat":4750,"gaziantepKurulumDeko":2000,"gaziantepKurulumMobilya":600000,"gaziantepRampa":[19,20,24,28,28,35,35,42,43,50,50,55],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"bursaNufusPay":4.5,"gaziantepNufusPay":3,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":true,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":18,"dcfExitMult":10,"exitMultLowDelta":2,"exitMultHighDelta":3,"multiCenterPremiumX":0,"dealPreMoneyEur":10964800,"tranche1Eur":500000,"dividendPayoutPct":60,"targetMoic":2.5,"trancheStepUp":1.75,"dcfInvest":719032,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":12500,"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":80000,"_sen_max_kira":300000,"_sen_min_tadilatM2":2500,"_sen_max_tadilatM2":11500,"_sen_min_dekoM2":2250,"_sen_max_dekoM2":11250,"_sen_min_ortotistM":55000,"_sen_max_ortotistM":160000,"_sen_min_operatorM":90000,"_sen_max_operatorM":240000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":1286,"hedefSpine_KorseB":1714,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseK":600,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":590,"aktifOrtez_KorseB":410,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.75,"bursaRampaOran":0.75,"bursaKurulumOran":0.75,"gaziantepRampaOran":0.8,"gaziantepKurulumOran":0.75,"operatorM":150000,"workingCapBufferEur":500000,"stage1BufferEur":200000,"kvOrani":25,"vergiDahil":true,"exitYili":5,"kisiselVergiOrani":15,"fundAy":0,"makineKatkiOran":50,"osteoidCarpan":1,"yatirimciCarpan":1,"doktorYatirim":0,"doktorCarpan":1.5,"sweatEur":80000,"sweatVestAy":48,"sweatCliffAy":12,"sweatElapsedAy":0,"sweatMaxPct":5,"sweatCarpan":1,"sweatVestedToday":true,"royaltyOffsetYil":1,"royaltyOffsetPct":0,"yonetimUcretiPct":5,"izmirFlagshipPay":65,"ankaraFlagshipPay":65,"bursaFlagshipPay":65,"gaziantepFlagshipPay":65,"izmirSubeMi":true,"ankaraSubeMi":true,"bursaSubeMi":true,"gaziantepSubeMi":true,"euLegalFaiz":5,"preOpenHireC1":0,"preOpenMktC1":0,"preOpenLegalC1":0,"preOpenOtherC1":30000,"preOpenHireC2":0,"preOpenMktC2":0,"preOpenLegalC2":0,"preOpenOtherC2":30000,"preOpenHireC3":0,"preOpenMktC3":0,"preOpenLegalC3":0,"preOpenOtherC3":45000,"preOpenHireC4":0,"preOpenMktC4":0,"preOpenLegalC4":0,"preOpenOtherC4":40000,"preOpenHireC5":0,"preOpenMktC5":0,"preOpenLegalC5":0,"preOpenOtherC5":40000,"bursaGaziantepFcfFunded":true,"nakdiSermayeAktif":true,"teknokentKapsam":false,"emisyonPrimiAktif":true,"nominalPayOrani":10,"feeStreamAyriMult":false,"feeExitMult":12,"istRampYears":3,"izmirRampYears":3,"ankaraRampYears":3,"bursaRampYears":4,"gaziantepRampYears":3,"bursaAcilisAy":3,"ankaraAcilisAy":5,"gaziantepAcilisAy":3,"workingCapBufferFcfFunded":false,"hastaPerOdaGun":6,"odaMaxPerKlinik":6,"odaM2":10,"calismaGunAy":26,"haftaSonuGunAy":9,"haftaSonuTalepPct":60,"visitPerKorse":1,"ortotistDkFitting":60,"expertDkHasta":8,"destekDkHasta":45,"staffUtilPct":75,"korsePerPrinterAy":66,"ekOrtotistM":65000,"subeSetupTRY":900000,"izmirDestekM":25000,"ankaraDestekM":25000,"bursaDestekM":25000,"gaziantepDestekM":25000,"b2bHedefAdetYil":1200,"b2bRampYears":3,"viewMode":"business","_version":61};
 // ── VIEW MODE (BC-1) ──────────────────────────────────────────────────────
 // V.viewMode = "business" (default) shows the pure business case: volumes,
 // unit economics, P&L, cash, capex, payback, sensitivity. "investor" restores
@@ -568,7 +568,7 @@ function initDynamic() {
   const _exitSp = document.getElementById('dcfExitMult');
   if (_exitSl) _exitSl.value = V.dcfExitMult || 10;
   if (_exitSp) _exitSp.textContent = (V.dcfExitMult || 10) + '×';
-  ['ipLisansEur','sehirEksklusifEur','workingCapBufferEur'].forEach(function(k) {
+  ['workingCapBufferEur'].forEach(function(k) {
     const sl = document.getElementById('s_'+k);
     const sp = document.getElementById(k);
     if (sl) sl.value = V[k];
@@ -1608,9 +1608,9 @@ function renderUpsideSummary() {
 //   break-even   = first month from opening with a non-negative monthly result
 //   return on setup capital = Year-3 EBITDA ÷ setup capex
 //   peak funding need = lowest point of the network's cumulative cash, monthly
-//                  (setup in each opening month, the IP licence + exclusivity
-//                  purchase when the first satellites open, tax and working
-//                  capital spread over each year); year-ends tie to the FCF.
+//                  — purely operational: setup capex in each opening month,
+//                  opening losses, tax and working capital spread over each
+//                  year; year-ends tie to the FCF.
 function computeBusinessCase() {
   const P = window._lastProjRows, f = window._lastFcf, L = metricLadder('100');
   const rows = window._lastRows || [], rowsB = window._lastRowsB2B || [];
@@ -1657,15 +1657,11 @@ function computeBusinessCase() {
     c.rosc = c.setupK > 0 ? (c.ebitda[2] || 0) / c.setupK * 100 : null;
   });
   // Network monthly cash → peak funding need
-  const s2 = plan.centres.filter(c => c.aktif && c.funding === 'stage2').map(c => c.openMonth);
-  const rightsMonth = s2.length ? Math.min(...s2) : plan.stage2YearIdx * 12 + 1;
-  const rightsK = f.rightsOut.reduce((a, b) => a + b, 0);
   let cum = 0, low = 0, lowMonth = 1;
   const cumMonthly = [];
   for (let m = 1; m <= H; m++) {
     const i = Math.ceil(m / 12) - 1;
     centres.forEach(c => { if (c.aktif && c.openMonth === m) cum -= c.setupK; });
-    if (m === rightsMonth) cum -= rightsK;
     cum += centres.reduce((a, c) => a + c.monthly[m - 1], 0) - (f.taxPaid[i] || 0) / 12 + (f.wcChange[i] || 0) / 12;
     cumMonthly.push(cum);
     if (cum < low) { low = cum; lowMonth = m; }
@@ -1678,8 +1674,8 @@ function computeBusinessCase() {
   tot.margin = tot.ebitda.map((e, i) => tot.rev[i] > 0 ? e / tot.rev[i] * 100 : null);
   return { centres, tot, sgkBraces: P.braces.sgk ? P.braces.sgk.total : [0,0,0,0,0], sgkOn: V.sgkAktif === true,
            unit: window._lastUnitEcon, fcf: f.fcf.slice(), cumFcf: f.cum.slice(), taxK: f.taxPaid.slice(), capexK: L.capex.slice(),
-           setupOutK: f.setupOut.slice(), rightsK: f.rightsOut.slice(), wcK: f.wcChange.slice(),
-           cumMonthly, peakNeedK: -low, peakNeedMonth: lowMonth, totalSetupK: plan.totalSetupEur / 1000, rightsMonth,
+           setupOutK: f.setupOut.slice(), wcK: f.wcChange.slice(),
+           cumMonthly, peakNeedK: -low, peakNeedMonth: lowMonth, totalSetupK: plan.totalSetupEur / 1000,
            yearEndCheck: [0,1,2,3,4].map(i => Math.round(cumMonthly[12 * i + 11] - f.cum[i])) };
 }
 function _ym(m) { const y = Math.ceil(m / 12); return 'Year ' + y + ' Month ' + (m - (y - 1) * 12); }
@@ -1755,12 +1751,11 @@ function renderBusinessCase() {
     + row('− Corporate tax (25%, 5-yr loss carryforward)', B.taxK.map(v => -v), kK)
     + row('− Capex expensed in opex (printers, branch fit-out)', B.capexK.map(v => -v), kK)
     + row('− Setup capex (each centre in its opening year)', B.setupOutK.map(v => -v), kK)
-    + row('− IP licence &amp; city exclusivity (intercompany to Osteoid A.Ş.)', B.rightsK.map(v => -v), kK)
     + row('± Working capital (SGK receivables)', B.wcK, kK)
     + row('<b>= Free cash flow</b>', B.fcf, v => '<b>' + kK(v) + '</b>')
     + row('<b>Cumulative FCF</b>', B.cumFcf, v => '<b>' + kK(v) + '</b>')
     + '</tbody></table></div>'
-    + '<div style="font-size:10px;color:#888;margin-top:4px;"><b>Peak funding need ' + kK(B.peakNeedK) + '</b> — the lowest point of cumulative cash (' + _ym(B.peakNeedMonth) + '), on a monthly path: setup in each opening month, the IP licence + exclusivity purchase in ' + _ym(B.rightsMonth) + ', tax and working capital spread over each year; the path ties to the year-end cumulative FCF above. It is the cash the network needs before it funds itself — how it is financed is not part of this business case.</div>';
+    + '<div style="font-size:10px;color:#888;margin-top:4px;"><b>Peak funding need ' + kK(B.peakNeedK) + '</b> — the lowest point of cumulative cash (' + _ym(B.peakNeedMonth) + '), on a monthly path that is purely operational: setup capex in each opening month, opening losses, tax and working capital spread over each year; the path ties to the year-end cumulative FCF above. It is the cash the network needs before it funds itself — how it is financed is not part of this business case.</div>';
   el.innerHTML = h;
 }
 
@@ -3684,12 +3679,12 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
           <div style="font-size:18px;font-weight:700;color:${stage2YieldColor};">${stage2YieldPct.toFixed(1)}%</div>
         </div>
       </div>
-      <div style="font-size:10px;color:#888;margin-top:8px;">Stage 2 attributable yield = Year-5 operating profit of only the centres Stage 2 funds (${_s2Names.join(', ') || 'none'}) ÷ Stage 2 investment. Profit is the flagship-attributable share — management fee + equity share in Subsidiary mode, 100% of the centre's operating profit in Branch mode (the default). Istanbul and B2B are excluded (Stage 1 funded them); Bursa/Gaziantep drop out when their setup is self-funded from free cash. Stage 2 investment includes the €${Math.round(inv2.rightsEur).toLocaleString('en-US')} rights purchase and the deferred working-capital buffer, so this is a single-year ratio on the whole tranche, not an IRR.</div>
+      <div style="font-size:10px;color:#888;margin-top:8px;">Stage 2 attributable yield = Year-5 operating profit of only the centres Stage 2 funds (${_s2Names.join(', ') || 'none'}) ÷ Stage 2 investment. Profit is the flagship-attributable share — management fee + equity share in Subsidiary mode, 100% of the centre's operating profit in Branch mode (the default). Istanbul and B2B are excluded (Stage 1 funded them); Bursa/Gaziantep drop out when their setup is self-funded from free cash. Stage 2 investment includes the deferred working-capital buffer, so this is a single-year ratio on the whole tranche, not an IRR.</div>
     </div>`;
 
     // ── Total Investment & Return — Total Committed (Stage 1+2) buys the
-    // whole business: Istanbul's build-out, the IP/exclusivity rights, AND
-    // all four satellite build-outs together. So the "whole business"
+    // whole business: Istanbul's build-out AND all four satellite build-outs
+    // together. So the "whole business"
     // comparison is Total Committed against the entire network's cumulative
     // net profit across all 5 model years (not a single year's snapshot) —
     // 100% basis per center (whole-business view).
@@ -3740,7 +3735,7 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
     if (totalExitLabelTopEl) totalExitLabelTopEl.innerHTML = 'Exit Value — whole business (100%) <span style="color:#185FA5;">(' + exitMult100 + '× EBITDA)</span>';
     html += `
     <div class="inv-only" style="border:2px solid #534AB7;border-radius:6px;padding:12px 16px;margin-top:16px;background:#f9f8ff;">
-      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">Total Investment &amp; Return <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— Total Committed (Stage 1+2) funds the entire business: Istanbul, the IP/exclusivity rights, and all four satellite build-outs</span></div>
+      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">Total Investment &amp; Return <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— Total Committed (Stage 1+2) funds the entire business: Istanbul and all four satellite build-outs</span></div>
       <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;">
         <div>
           <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Total Committed</div>
@@ -3914,16 +3909,15 @@ function renderInvestorRoadmap(el, totals, korseM1, feeIncomeRow, equityIncomeRo
       ${(V.izmirAktif||V.ankaraAktif||V.bursaAktif||V.gaziantepAktif) ? `<tr><td style="font-size:10px;color:#999;">Memo: Minority interest (local investors — not in total above)</td>${minorityRow.map(v=>`<td style="text-align:right;font-size:10px;color:#999;">${v>0?'€'+v+'K':'—'}</td>`).join('')}<td></td></tr>` : ''}
       ${fcfData ? `<tr style="border-top:1px solid #e0e0dc;"><td>${fcfData.vergiDahil?'Operating cash flow (after tax)':'Operating cash flow (pre-tax)'}</td>${fcfData.opCash.map(fmtSignedCell).join('')}<td></td></tr>
       <tr><td style="font-size:11px;">− Setup capex <span style="font-size:10px;color:#999;">(each centre in its opening year)</span></td>${fcfData.setupOut.map(v=>fmtSignedCell(-v)).join('')}<td></td></tr>
-      <tr><td style="font-size:11px;">− Rights purchase <span style="font-size:10px;color:#999;">(IP licence + exclusivity, paid to Osteoid A.Ş. at Stage 2 — centres-company view)</span></td>${fcfData.rightsOut.map(v=>fmtSignedCell(-v)).join('')}<td></td></tr>
       <tr><td style="font-size:11px;color:#999;">± Working capital <span style="font-size:10px;">(SGK receivables: SGK revenue × delay days ÷ 365; private channel paid at fitting)</span></td>${fcfData.wcChange.map(fmtSignedCell).join('')}<td></td></tr>
       <tr style="font-weight:700;"><td>Free cash flow — centres company / investor view</td>${fcfData.fcf.map(fmtSignedCell).join('')}<td></td></tr>
-      <tr><td style="font-size:10px;color:#999;">Memo: group view (Osteoid A.Ş. + centres) — rights purchase and royalty are intercompany, net to €0</td>${fcfData.fcfGroup.map(v=>`<td style="text-align:right;font-size:10px;color:#999;">${v<0?'-':''}€${Math.abs(v)}K</td>`).join('')}<td></td></tr>
+      <tr><td style="font-size:10px;color:#999;">Memo: group view (Osteoid A.Ş. + centres) — royalty is intercompany, nets to €0</td>${fcfData.fcfGroup.map(v=>`<td style="text-align:right;font-size:10px;color:#999;">${v<0?'-':''}€${Math.abs(v)}K</td>`).join('')}<td></td></tr>
       <tr><td style="font-size:11px;color:#534AB7;">+ Investor funding <span style="font-size:10px;color:#999;">(financing — Stage 1 at closing, Stage 2 in its release year; not profit)</span></td>${fcfData.investorIn.map(fmtSignedCell).join('')}<td></td></tr>
       <tr style="font-weight:700;"><td>Year-end cash balance <span style="font-weight:400;font-size:10px;color:#999;">(before dividends)</span></td>${fcfData.cashBalance.map(fmtSignedCell).join('')}<td></td></tr>` : ''}
       ${fcfData && fcfData.vergiDahil ? `<tr><td style="font-size:10px;color:#999;">↳ Loss carryforward balance (year-end)</td>${fcfData.carryEnd.map(c=>`<td style="text-align:right;font-size:10px;color:#999;">${c>0?'€'+c+'K':'—'}</td>`).join('')}<td></td></tr>` : ''}
     </tbody>
   </table></div>
-  <div style="font-size:10px;color:#888;">⚠ Istanbul C1 Y1–Y5 = operating profit (net after all operating costs), one consistent basis every year — a ramp-year loss, if any, is shown as a negative here and flows into every total; how it is financed (Stage 1 working capital) appears only in the cash-flow block below, never as profit. Satellite rows show each centre's own operating profit. At the committed defaults every satellite is a <b>branch</b> of the flagship: its full result (including any loss) is consolidated into the total through the "satellite branches" line — no management fee, no minority interest. A satellite switched to <b>Subsidiary</b> mode becomes a memo line: the flagship then takes only a management fee on its gross revenue plus its equity share of the profit after that fee, and the rest is minority interest. See <a href="captable.html" style="color:#534AB7;font-weight:700;">Cap Table</a> for the Network Structure explainer.${fcfData ? ' Operating cash flow = the consolidated post-opex total above (every year, same basis)'+(fcfData.vergiDahil?', taxed at '+fcfData.kvOraniPct+'% corporate tax (KV) with 5-year loss carryforward. Orthosis sales are VAT-exempt (KDV Kanunu 17/4-s) — no VAT is modeled.':' — corporate tax is currently switched off.')+' Free cash flow = operating cash flow − setup capex of every active centre (in its opening year) − the rights purchase (in the Stage 2 year) ± working capital (SGK receivables). Setup capex and the rights purchase are not depreciated/amortised for tax (a conservative simplification). The rights purchase is a real outflow for the centres company (the investor view used by the DCF); in a group view that consolidates Osteoid A.Ş. it is intercompany and nets out.' : ''} &nbsp;<a href="growth.html" style="color:#534AB7;font-weight:700;">Full Multi-Year Model →</a></div>`;
+  <div style="font-size:10px;color:#888;">⚠ Istanbul C1 Y1–Y5 = operating profit (net after all operating costs), one consistent basis every year — a ramp-year loss, if any, is shown as a negative here and flows into every total; how it is financed (Stage 1 working capital) appears only in the cash-flow block below, never as profit. Satellite rows show each centre's own operating profit. At the committed defaults every satellite is a <b>branch</b> of the flagship: its full result (including any loss) is consolidated into the total through the "satellite branches" line — no management fee, no minority interest. A satellite switched to <b>Subsidiary</b> mode becomes a memo line: the flagship then takes only a management fee on its gross revenue plus its equity share of the profit after that fee, and the rest is minority interest. See <a href="captable.html" style="color:#534AB7;font-weight:700;">Cap Table</a> for the Network Structure explainer.${fcfData ? ' Operating cash flow = the consolidated post-opex total above (every year, same basis)'+(fcfData.vergiDahil?', taxed at '+fcfData.kvOraniPct+'% corporate tax (KV) with 5-year loss carryforward. Orthosis sales are VAT-exempt (KDV Kanunu 17/4-s) — no VAT is modeled.':' — corporate tax is currently switched off.')+' Free cash flow = operating cash flow − setup capex of every active centre (in its opening year) ± working capital (SGK receivables). Setup capex is not depreciated for tax (a conservative simplification).' : ''} &nbsp;<a href="growth.html" style="color:#534AB7;font-weight:700;">Full Multi-Year Model →</a></div>`;
 
   el.innerHTML = html;
 }
@@ -3981,17 +3975,10 @@ function _satOpenMonth(sehir) {
   return ((_MERKEZ_ACILIS_YIL[sehir] || 2) - 1) * 12 + (V[sehir + 'AcilisAy'] || 3);
 }
 
-// ── BUILD-OUT CASH PLAN — setup capex + rights purchase, by year (review 4-A1)
+// ── BUILD-OUT CASH PLAN — setup capex by year (review 4-A1) ─────────────────
 // Setup capex never passes through any centre's P&L (it is not expensed and
 // not depreciated), so it must be taken out of free cash flow explicitly, in
-// the year each centre opens. Same for the rights purchase (IP licence + city
-// exclusivity) paid to Osteoid A.Ş. at Stage 2 closing. Views:
-//   • Centres-company / investor view — both are real cash outflows (this is
-//     the FCF the DCF discounts and the investor-return tables use).
-//   • Group view (Osteoid A.Ş. + centres consolidated) — the rights payment is
-//     intercompany (outflow here, revenue at Osteoid A.Ş.), so it nets to 0;
-//     setup capex stays an outflow. Osteoid A.Ş.'s own tax on that revenue is
-//     not modelled.
+// the year each centre opens.
 // Funding source of each setup (Stage 1 / Stage 2 / self-funded from free
 // cash) is recorded so each setup is counted exactly once (review 4-A2).
 // Pre-opening overheads per centre (review 4-A8) — the one-off costs of
@@ -4033,23 +4020,19 @@ function buildOutPlan() {
     c.yearIdx = Math.max(0, Math.min(4, Math.ceil(c.openMonth / 12) - 1));
     c.funding = c.n === 1 ? 'stage1' : (c.n >= 4 && fcfFundedSat) ? 'fcf' : 'stage2';
   });
-  // Stage 2 closes before the first Stage-2-funded centre opens — the rights
-  // purchase is booked in that year (Year 2 at the committed defaults).
+  // Stage 2 closes before the first Stage-2-funded centre opens (Year 2 at the
+  // committed defaults) — investor-mode funding timing only.
   const s2 = centres.filter(c => c.aktif && c.funding === 'stage2');
   const stage2YearIdx = s2.length ? Math.min(...s2.map(c => c.yearIdx)) : 1;
-  const rightsEur = gv('ipLisansEur') + gv('sehirEksklusifEur');
   const setupByYearK = [0,0,0,0,0], selfFundedSetupK = [0,0,0,0,0];
   centres.forEach(c => {
     setupByYearK[c.yearIdx] += c.totalEur / 1000;
     if (c.funding === 'fcf') selfFundedSetupK[c.yearIdx] += c.totalEur / 1000;
   });
-  const rightsByYearK = [0,0,0,0,0];
-  rightsByYearK[stage2YearIdx] = rightsEur / 1000;
   return {
-    centres, rightsEur, stage2YearIdx,
+    centres, stage2YearIdx,
     setupByYearK: setupByYearK.map(Math.round),
     selfFundedSetupK: selfFundedSetupK.map(Math.round),
-    rightsByYearK: rightsByYearK.map(Math.round),
     totalSetupEur: centres.reduce((s, c) => s + c.totalEur, 0),
   };
 }
@@ -4104,14 +4087,13 @@ function computeFcfStream() {
   }
 
   // Build-out outflows (review 4-A1): FCF = operating cash after tax − setup
-  // capex − rights purchase ± working capital. Working capital: no receivable/
+  // capex ± working capital. Working capital: no receivable/
   // payable timing is modelled (private channel is paid at fitting; the SGK
   // channel with its 60–90-day lag is excluded) → 0 every year, shown as such.
   // The Working Capital Buffer is cash held in reserve, not spent — not an outflow.
   const plan = buildOutPlan();
   const opCash = taxedFcf;                    // operating cash flow after tax (€K)
   const setupOut = plan.setupByYearK;          // €K, in each centre's opening year
-  const rightsOut = plan.rightsByYearK;        // €K, Stage 2 year
   // SGK receivables (FU-4): revenue booked at fitting, cash sgkDelayDays
   // later → the receivable balance at year-end ≈ that year's SGK revenue ×
   // delay/365; its increase is a cash outflow (the private channel is paid at
@@ -4119,16 +4101,16 @@ function computeFcfStream() {
   const _sgkRev = (window._lastProjRows && window._lastProjRows.rev && window._lastProjRows.rev.total.sgk) || [0,0,0,0,0];
   const _sgkRecv = _sgkRev.map(v => v * gv('sgkDelayDays') / 365);
   const wcChange = [0,1,2,3,4].map(i => -Math.round(_sgkRecv[i] - (i ? _sgkRecv[i-1] : 0)));
-  const fcf = opCash.map((v,i) => v - setupOut[i] - rightsOut[i] + wcChange[i]);   // centres-company / investor view
+  const fcf = opCash.map((v,i) => v - setupOut[i] + wcChange[i]);   // whole business (centres company)
   // Royalty to Osteoid A.Ş. (FU-2) is an intercompany transfer too: a cost in
   // the centres-company view (already inside operating profit), revenue at
-  // Osteoid A.Ş. — so the group view adds it back alongside the rights.
+  // Osteoid A.Ş. — so the group view adds it back.
   const _BR = (window._lastProjRows && window._lastProjRows.braces) || null;
   const royaltyK = [0,1,2,3,4].map(i => _BR ? Math.round(((_BR.istanbul[i]||0) + (_BR.izmir[i]||0) + (_BR.ankara[i]||0) + (_BR.bursa[i]||0) + (_BR.gaziantep[i]||0) + (_BR.b2b[i]||0) + ((_BR.sgk && _BR.sgk.total[i])||0)) * gv('royaltyEur') / 1000) : 0);
   // SGK line cash effect (BC-4): EBITDA effect − its extra capex + its receivables change
   const _sgkL = window._lastProjRows && window._lastProjRows.sgk;
   if (_sgkL) _sgkL.cashK = _sgkL.ebitdaK.map((v, i) => v - _sgkL.extraCapexK[i] + wcChange[i]);
-  const fcfGroup = fcf.map((v,i) => v + rightsOut[i] + royaltyK[i]);             // group view — rights + royalty net out
+  const fcfGroup = fcf.map((v,i) => v + royaltyK[i]);             // group view — royalty nets out
   const runSum = arr => { let r = 0; return arr.map(v => (r += v)); };
   const cum = runSum(fcf), cumGroup = runSum(fcfGroup), cumOpCash = runSum(opCash);
 
@@ -4146,7 +4128,7 @@ function computeFcfStream() {
   const cashBalance = runSum(fcf.map((v,i) => v + investorIn[i]));
 
   return { pretaxFcf, accountingPretax, opCash, taxPaid, carryEnd, vergiDahil, kvOraniPct, nakdi,
-           setupOut, rightsOut, royaltyK, wcChange, fcf, fcfGroup, cum, cumGroup, cumOpCash, plan,
+           setupOut, royaltyK, wcChange, fcf, fcfGroup, cum, cumGroup, cumOpCash, plan,
            investorIn, cashBalance };
 }
 
@@ -4220,9 +4202,8 @@ function metricLadder(scope) {
   // ebitda = opProfit + capex add-back (genuine — see header).
   const ebitda = opProfit.map((v,i) => v + (capex[i]||0));
 
-  // fcf — the taxed stream AFTER build-out outflows (setup capex + rights
-  // purchase, review 4-A1), flagship-consolidated / investor view. Identity:
-  // fcf = ebitda − tax − (capex + setup) − rights ± working capital.
+  // fcf — the taxed stream AFTER build-out outflows (setup capex, review 4-A1), flagship-consolidated / investor view. Identity:
+  // fcf = ebitda − tax − (capex + setup) ± working capital.
   const fcf = (fcfData && fcfData.fcf) ? fcfData.fcf.slice() : opProfit.map(()=>0);
   const setup = (fcfData && fcfData.setupOut) ? fcfData.setupOut.slice() : [0,0,0,0,0];
 
@@ -4232,7 +4213,7 @@ function metricLadder(scope) {
 // ── VALIDATION LEDGER (Methodology + Formula Validation pages) ─────────────
 // Renders the live cash-flow / valuation / investor-return chain from the
 // same globals every page uses, with the identity checks shown explicitly:
-//   FCF = EBITDA − tax − expensed capex − setup capex − rights ± working capital
+//   FCF = EBITDA − tax − expensed capex − setup capex ± working capital
 //   Stage 1 setup + Stage 2 setup + self-funded setup = total setup
 //   DCF = Σ PV(FCF₁₋₅) + PV(FCF₅ × Base multiple)
 // Nothing here is typed — every figure is read from the model (CLAUDE.md rule).
@@ -4243,7 +4224,7 @@ function renderValidationLedger(elId) {
   const k = v => (v < 0 ? '-€' : '€') + Math.abs(Math.round(v)).toLocaleString('en-US') + 'K';
   const sum = a => a.reduce((s, v) => s + v, 0);
   const tr = (label, arr, cls) => '<tr' + (cls ? ' class="' + cls + '"' : '') + '><td>' + label + '</td>' + arr.map(v => '<td class="result">' + k(v) + '</td>').join('') + '<td class="result">' + k(sum(arr)) + '</td></tr>';
-  const rebuilt = [0,1,2,3,4].map(i => L.ebitda[i] - f.taxPaid[i] - L.capex[i] - f.setupOut[i] - f.rightsOut[i] + f.wcChange[i]);
+  const rebuilt = [0,1,2,3,4].map(i => L.ebitda[i] - f.taxPaid[i] - L.capex[i] - f.setupOut[i] + f.wcChange[i]);
   const fcfOk = rebuilt.every((v, i) => v === f.fcf[i]);
   const byStage = { stage1: 0, stage2: 0, fcf: 0 };
   f.plan.centres.forEach(c => { byStage[c.funding] += c.totalEur; });
@@ -4255,11 +4236,10 @@ function renderValidationLedger(elId) {
     + tr('− Corporate tax (25%, 5-yr loss carryforward)', f.taxPaid.map(v => -v))
     + tr('− Capex expensed inside opex (printers, branch fit-out)', L.capex.map(v => -v))
     + tr('− Setup capex (each centre in its opening year)', f.setupOut.map(v => -v))
-    + tr(_biz ? '− IP licence &amp; city exclusivity (intercompany to Osteoid A.Ş.)' : '− Rights purchase (Stage 2 year)', f.rightsOut.map(v => -v))
     + tr('± Working capital (SGK receivables)', f.wcChange)
     + tr('= Free cash flow', f.fcf, 'grp')
     + '<tr><td colspan="7" style="font-size:11px;color:' + (fcfOk ? '#1a7a45' : '#c0392b') + ';">' + (fcfOk ? '✓' : '⚠') + ' Check: the rows above rebuild FCF exactly in every year; cumulative 5-year FCF = ' + k(f.cum[4]) + '.</td></tr>'
-    + tr('Memo: group view (Osteoid A.Ş. consolidated — rights + royalty net out)', f.fcfGroup)
+    + tr('Memo: group view (Osteoid A.Ş. consolidated — royalty nets out)', f.fcfGroup)
     + (_biz
       ? '<tr><td>Cumulative free cash flow</td>' + f.cum.map(v => '<td class="result">' + k(v) + '</td>').join('') + '<td></td></tr>'
       : tr('+ Investor funding (financing, not profit)', f.investorIn)
@@ -5763,11 +5743,8 @@ function updateKapasiteUyari(rows) {
 
 // ── YATIRIM DÖKÜMÜ (Investor Ticket + Clinic cash + Osteoid parent in-kind) ──
 // V.dcfInvest is fully derived here — never typed directly.
-//  (1) Investor Ticket = the cash this bridge round actually asks for: IP
-//      license + city exclusivity, bought outright from Osteoid A.Ş. (a cash
-//      sale to the clinic company, NOT an in-kind contribution for equity —
-//      Osteoid is paid, not issued shares, for these two items) + the
-//      working capital buffer + Istanbul setup capex. Satellite funding
+//  (1) Investor Ticket = the cash this round actually asks for: the working
+//      capital buffer + setup capex. Satellite funding
 //      (Izmir/Ankara) is a separate future ask, not part of this ticket.
 //  (2) Clinic cash = setup capex + working capital (the deepest Year-1 cash
 //      trough beyond setup, i.e. operating burn before break-even). Both are
@@ -5777,7 +5754,7 @@ function updateKapasiteUyari(rows) {
 //      key off it — not part of the Investor Ticket above.
 //  (3) Osteoid parent in-kind = machinery only (when ekipmanOsteoidden=true —
 //      when false, its cost already lives inside clinic setup above, so it's
-//      never counted twice). IP/exclusivity moved out of this bucket — see (1).
+//      never counted twice).
 // Identity: clinicCashCore === -trough === setupCash + workingCapital, by
 // construction (workingCapital is defined as kurulumTop - trough). The
 // working-capital BUFFER (V.workingCapBufferEur) is a separate, investor-
@@ -5798,16 +5775,7 @@ function renderInvestBreakdown(kurulumTop, rows) {
   const printerAdet = V.printerAdetManual !== undefined ? V.printerAdetManual : _autoPrinterAdet();
   const machineryEur = printerAdet * (V.printerEurFiyat || 35000) + (V.robotKolAktif ? (V.robotKolEurFiyat || 30000) : 0);
   const machineryParentEur = ekipmanOsteoidden ? machineryEur : 0;
-  // License & exclusivity are SOLD by Osteoid A.Ş. to the clinic company for
-  // cash under a License Purchase Agreement executed at Stage 1 signing
-  // (arm's-length, disclosed at signing) — price fixed at signing, payment
-  // due at Stage 2 closing (see agreement.html's Structure / License Grant /
-  // Related-Party Hygiene term cards). So this cash feeds Stage 2 of the
-  // Investor Ticket below, not a separate in-kind bucket.
-  const ipLisansEur = gv('ipLisansEur');
-  const sehirEksklusifEur = gv('sehirEksklusifEur');
-  // Osteoid parent in-kind is machinery only — IP/exclusivity are a cash
-  // purchase (Investor Ticket, Stage 2 below), not an in-kind equity item.
+  // Osteoid parent in-kind is machinery only.
   const parentInKindEur = machineryParentEur;
 
   const totalInvestEur = clinicCashEur + parentInKindEur;
@@ -5846,14 +5814,12 @@ function renderInvestBreakdown(kurulumTop, rows) {
   const fcfFundedSatellites = V.bursaGaziantepFcfFunded === true;
   const satelliteFcfEur = setupC4Eur + setupC5Eur;
 
-  // Two-stage committed structure: one Shareholders' Agreement + one License
-  // Purchase Agreement, both signed at Stage-1 closing, but Stage 2's cash
-  // (rights payment + satellite build-outs) only moves once Istanbul
-  // milestones are met (see agreement.html's "Structure — Stage 1 & Stage 2"
-  // term card). Stage 1 ("Bridge") funds only tangible build-out + working
-  // capital — no rights payment at this stage. Stage 2 ("Committed") is the
-  // rights purchase (IP license + city exclusivity, price fixed at signing)
-  // plus the satellite build-outs, released on milestone.
+  // Two-stage committed structure: one Shareholders' Agreement signed at
+  // Stage-1 closing, but Stage 2's cash (satellite build-outs) only moves once
+  // Istanbul milestones are met (see agreement.html's "Structure — Stage 1 &
+  // Stage 2" term card). Stage 1 ("Bridge") funds tangible build-out +
+  // working capital; Stage 2 ("Committed") the satellite build-outs,
+  // released on milestone.
   // The Working Capital Buffer slider is one pool, split by stage1BufferEur:
   // up to that much is front-loaded into Stage 1, the rest (floored at 0, in
   // case stage1BufferEur is dialed above the whole buffer) rolls into Stage 2.
@@ -5868,7 +5834,7 @@ function renderInvestBreakdown(kurulumTop, rows) {
   // off — the original investor-funded buffer stays the committed default.
   const workingCapBufferFcfFunded = V.workingCapBufferFcfFunded === true;
   const stage1Eur = setupC1Eur + (workingCapTRY / eurK) + stage1BufferEur;
-  const stage2Eur = setupC2Eur + setupC3Eur + (fcfFundedSatellites ? 0 : satelliteFcfEur) + (workingCapBufferFcfFunded ? 0 : stage2BufferEur) + ipLisansEur + sehirEksklusifEur;
+  const stage2Eur = setupC2Eur + setupC3Eur + (fcfFundedSatellites ? 0 : satelliteFcfEur) + (workingCapBufferFcfFunded ? 0 : stage2BufferEur);
   const investorTicketEur = stage1Eur + stage2Eur;
   // Identity guard — Investor Ticket is defined as the two stage subtotals
   // added together (so the breakdown table's grand total always matches what
@@ -5891,15 +5857,12 @@ function renderInvestBreakdown(kurulumTop, rows) {
       + '<td>₺' + Math.round(eur*eurK).toLocaleString('tr-TR') + '</td>'
       + '<td>€' + Math.round(eur).toLocaleString('en-US') + '</td></tr>';
     tbody.innerHTML =
-      '<tr><td colspan="3" style="text-align:left;font-weight:700;color:#534AB7;font-size:10px;text-transform:uppercase;">Stage 1 — Bridge (at closing) — tangible build-out + working capital, no rights payments</td></tr>'
+      '<tr><td colspan="3" style="text-align:left;font-weight:700;color:#534AB7;font-size:10px;text-transform:uppercase;">Stage 1 — Bridge (at closing) — tangible build-out + working capital</td></tr>'
       + line('Setup cost — Center 1, Istanbul (capex' + (overheadC1 ? ' + pre-opening overheads' : '') + ')', setupC1Eur)
       + line('Working capital (Y1 burn beyond setup)', workingCapTRY/eurK)
       + line('Stage 1 buffer (immediate reserve)', stage1BufferEur)
       + line('Stage 1 — subtotal', stage1Eur, 'r-bas')
       + '<tr><td colspan="3" style="text-align:left;font-weight:700;color:#D85A30;font-size:10px;text-transform:uppercase;padding-top:8px;">Stage 2 — Committed (milestone-triggered) — released once Istanbul is operational and milestones are met</td></tr>'
-      + '<tr><td colspan="3" style="text-align:left;font-weight:700;color:#185FA5;font-size:10px;text-transform:uppercase;padding-top:6px;">Rights purchase — paid to Osteoid A.Ş. at Stage 2 (arm\'s-length, disclosed at signing)</td></tr>'
-      + line('IP / design-library license (purchased from Osteoid A.Ş.)', ipLisansEur)
-      + line('City exclusivity (purchased from Osteoid A.Ş.)', sehirEksklusifEur)
       + line('Setup cost — Center 2, Izmir (capex' + (overheadC2 ? ' + pre-opening overheads' : '') + ')', setupC2Eur)
       + line('Setup cost — Center 3, Ankara (capex' + (overheadC3 ? ' + pre-opening overheads' : '') + ')', setupC3Eur)
       + (fcfFundedSatellites ? '' :
@@ -5975,7 +5938,7 @@ function renderInvestBreakdown(kurulumTop, rows) {
         const spareK = cumY2 - neededK;
         const minBal = fcf.cashBalance ? Math.min(...fcf.cashBalance) : null;
         const minYr = minBal !== null ? fcf.cashBalance.indexOf(minBal) + 1 : null;
-        const balTxt = minBal === null ? '' : ' Lowest year-end cash balance (investor inflows + free cash flow, after every setup and the rights purchase): €' + minBal.toLocaleString('en-US') + 'K in Year ' + minYr + (minBal >= 0 ? ' — never negative.' : ' — NEGATIVE: the plan is not fully funded.');
+        const balTxt = minBal === null ? '' : ' Lowest year-end cash balance (investor inflows + free cash flow, after every setup): €' + minBal.toLocaleString('en-US') + 'K in Year ' + minYr + (minBal >= 0 ? ' — never negative.' : ' — NEGATIVE: the plan is not fully funded.');
         fcfNoteEl.innerHTML = (spareK >= 0
           ? '✓ Operating cash after tax through Year 2 (€' + cumY2.toLocaleString('en-US') + 'K) covers Bursa+Gaziantep\'s combined setup (€' + neededK.toLocaleString('en-US') + 'K), €' + spareK.toLocaleString('en-US') + 'K to spare. That setup is deducted once, from Year 3\'s free cash flow — it is not in Stage 2.'
           : '⚠ Operating cash after tax through Year 2 (€' + cumY2.toLocaleString('en-US') + 'K) falls €' + (-spareK).toLocaleString('en-US') + 'K short of Bursa+Gaziantep\'s combined setup (€' + neededK.toLocaleString('en-US') + 'K) — the shortfall would still need to come from the Investor Ticket or a bridge.')
@@ -6009,36 +5972,28 @@ function renderInvestBreakdown(kurulumTop, rows) {
     }
   }
 
-  return { clinicCashEur, parentInKindEur, totalInvestEur, investorTicketEur, stage1Eur, stage2Eur, rightsEur: ipLisansEur + sehirEksklusifEur, fcfFundedSatellites, satelliteFcfEur, workingCapBufferFcfFunded, stage2BufferEur };
+  return { clinicCashEur, parentInKindEur, totalInvestEur, investorTicketEur, stage1Eur, stage2Eur, fcfFundedSatellites, satelliteFcfEur, workingCapBufferFcfFunded, stage2BufferEur };
 }
 
 // ── USE OF FUNDS STRIP (index.html) ──────────────────────────────────────────
-// Three-segment bar: Stage 1 / Platform rights (the Stage 2 rights purchase,
-// broken out as its own segment) / Stage 2 build-outs (the rest of Stage 2) —
-// reads the same stage1Eur/stage2Eur/rightsEur renderInvestBreakdown() already
+// Two-segment bar: Stage 1 / Stage 2 build-outs — reads the same
+// stage1Eur/stage2Eur renderInvestBreakdown() already
 // computed (passed in via inv), so it can never drift from the Investment
 // Breakdown table or the hero cards on investor.html. Null-safe: index.html
 // is the only page with these ids, every other page just skips it.
 function renderUseOfFundsStrip(inv) {
   const bar1 = document.getElementById('useOfFundsStage1');
-  const barRights = document.getElementById('useOfFundsRights');
   const bar2 = document.getElementById('useOfFundsStage2');
-  if (!inv || (!bar1 && !barRights && !bar2)) return;
-  const stage2BuildOutsEur = inv.stage2Eur - inv.rightsEur; // Izmir/Ankara/Bursa/Gaziantep setup + deferred buffer only
+  if (!inv || (!bar1 && !bar2)) return;
+  const stage2BuildOutsEur = inv.stage2Eur; // satellite setup + deferred buffer
   const total = inv.stage1Eur + inv.stage2Eur; // === investorTicketEur
   const pct1 = total > 0 ? (inv.stage1Eur / total) * 100 : 34;
-  const pctRights = total > 0 ? (inv.rightsEur / total) * 100 : 33;
-  const pct2 = 100 - pct1 - pctRights;
+  const pct2 = 100 - pct1;
   const fmtEurAbbr = v => '€' + Math.round(v).toLocaleString('en-US');
   if (bar1) {
     bar1.style.width = pct1.toFixed(1) + '%';
     bar1.textContent = fmtEurAbbr(inv.stage1Eur);
     bar1.title = 'Stage 1 — Bridge (at closing): ' + fmtEurAbbr(inv.stage1Eur);
-  }
-  if (barRights) {
-    barRights.style.width = pctRights.toFixed(1) + '%';
-    barRights.textContent = fmtEurAbbr(inv.rightsEur);
-    barRights.title = 'Platform rights (IP license + city exclusivity), purchased from Osteoid A.Ş. at Stage 2: ' + fmtEurAbbr(inv.rightsEur);
   }
   if (bar2) {
     bar2.style.width = pct2.toFixed(1) + '%';
@@ -6102,8 +6057,8 @@ function renderCashReturn(fcfData) {
   const tbody = document.getElementById('cashReturnBody');
   if (!inv || !tbody) return;
 
-  // Numerator = cumulative operating cash after tax, BEFORE build-out capex and
-  // the rights purchase (those are funded by the capital in the denominator, so
+  // Numerator = cumulative operating cash after tax, BEFORE build-out capex
+  // (that is funded by the capital in the denominator, so
   // netting them out here would count the investment twice). The investor's
   // own return — dividends + exit — is the Investor Return Analysis table.
   const cumFcfK = fcfData.cumOpCash[4];
@@ -6384,10 +6339,7 @@ function buildRegister(V) {
   const machineryFullEur = printerAdet * (V.printerEurFiyat ?? 35000) + (V.robotKolAktif ? (V.robotKolEurFiyat ?? 30000) : 0);
   const makineOran = (V.makineKatkiOran ?? 100) / 100;
   const machineryContribEur = ekipmanOsteoidden ? machineryFullEur * makineOran : 0;
-  // IP license and city exclusivity are no longer an in-kind equity
-  // contribution — the clinic buys them from Osteoid A.Ş. for cash (the
-  // Investor Ticket, renderInvestBreakdown) — so Osteoid's in-kind bucket
-  // here is machinery only.
+  // Osteoid's in-kind bucket here is machinery only.
   const osteoidRawEur = machineryContribEur;
 
   // Royalty + cutting-fee double-dip offset: Osteoid already extracts these as
@@ -6585,8 +6537,6 @@ function renderDeRiskedNarrative() {
   const set = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
   set('deRisked_rate', rate + '%');
   set('deRisked_profile', anchor ? anchor.label : 'Custom');
-  set('deRisked_ip', '€' + Math.round(gv('ipLisansEur')).toLocaleString('en-US'));
-  set('deRisked_excl', '€' + Math.round(gv('sehirEksklusifEur')).toLocaleString('en-US'));
 }
 function svRiskProfile(rate) {
   svDcf('dcfRate', rate);
@@ -6614,8 +6564,8 @@ function renderDcf() {
 
   // Same taxed FCF stream shown in the investor projection table (buildProjection
   // → computeFcfStream) — DCF and the displayed FCF row can never diverge.
-  // Centres-company / investor-view FCF: operating cash after tax minus setup
-  // capex and the rights purchase in the year they occur (review 4-A1).
+  // Centres-company FCF: operating cash after tax minus setup capex in the
+  // year each centre opens (review 4-A1).
   const fcf = fcfData.fcf;
   // Year-5 EBITDA (investor scope, same scope as this fcf stream) from the
   // metric ladder — the terminal value's exit multiple applies to EBITDA, while
@@ -6676,10 +6626,7 @@ function renderDcf() {
   const preVsDcfPct = dcfValue_eur > 0 ? (premoney_eur / dcfValue_eur - 1) * 100 : null;
 
   // Post-Money = deal pre-money + actual NEW CASH raised (Investor Ticket +
-  // any Doctor-Investor cash). Investor Ticket already includes the cash
-  // paid to Osteoid for IP/exclusivity (see renderInvestBreakdown) — that
-  // cash leaves the round's coffers as a purchase price, but it still came
-  // in as new money raised, so it belongs in Post-Money like any other cash.
+  // any Doctor-Investor cash).
   const investorTicketEur = inv ? inv.investorTicketEur : 0;
   const doktorYatirimEur = V.doktorYatirim ?? 0;
   const postmoney_eur = premoney_eur + investorTicketEur + doktorYatirimEur;
@@ -6784,7 +6731,6 @@ function renderDcf() {
   set('dcf_investor_ticket', investorTicketEur > 0 ? fmtEur(investorTicketEur) : '—');
   set('dcf_stage1',         inv && inv.stage1Eur > 0 ? fmtEur(inv.stage1Eur) : '—');
   set('dcf_stage2',         inv && inv.stage2Eur > 0 ? fmtEur(inv.stage2Eur) : '—');
-  set('dcf_rights_purchase', inv ? fmtEur(inv.rightsEur) : '—');
   renderUseOfFundsStrip(inv);
 
   // Two-tranche pricing table — T1/T2 priced independently, blended stake is
