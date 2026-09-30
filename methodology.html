@@ -367,7 +367,7 @@ function renderParams() {
   var mKeys = ['mal_stdR','mal_stdRl','mal_delik','mal_sens','mal_sensDelik'];
   var b2bFKeys = ['korseFB2B_stdR','korseFB2B_stdRl','korseFB2B_delik','korseFB2B_sens','korseFB2B_sensDelik'];
 
-  document.getElementById('p_fiyat').innerHTML = prods.map(function(p,i){ return row(prodNames[i],fKeys[i],tf(V[fKeys[i]]),i===0?'Month 1-5 starter product':i>=2?'Month 6+ advanced product':''); }).join('');
+  document.getElementById('p_fiyat').innerHTML = prods.map(function(p,i){ return row(prodNames[i],(i===1 && typeof vrOff==='function' && vrOff()) ? 'noVrStdRl (no-VR case)' : fKeys[i],tf(typeof priceOf==='function' ? priceOf(prods[i]) : V[fKeys[i]]),i===0?'Month 1-5 starter product':i>=2?'Month 6+ advanced product':''); }).join('');
   document.getElementById('p_malzeme').innerHTML = prods.map(function(p,i){ return row(prodNames[i],mKeys[i],tf(V[mKeys[i]]),(i===2||i===4)?'+ €'+(V.kesimEurPer??0)+'/unit cutting cost (Osteoid A.Ş. revenue)':''); }).join('');
   document.getElementById('p_danis').innerHTML = prods.map(function(p,i){
     var fiyat=V[fKeys[i]]||0;
@@ -411,7 +411,7 @@ function renderUrunMarj() {
   document.getElementById('kanalPctDisp').textContent = 'varies by product — see Referral Fees table above';
   var wrap = document.getElementById('urunMarjWrap');
   wrap.innerHTML = prods.map(function(p){
-    var f=V[p.fKey]||0, m=V[p.mKey]||0;
+    var f=(typeof priceOf==='function'?priceOf(p.pKey):V[p.fKey])||0, m=V[p.mKey]||0; // VR-1: active Std-Reported price
     var sciR=(V['feeSci_'+p.pKey]??10)/100, eduR=(V['feeEdu_'+p.pKey]??10)/100, libR=(V['feeLib_'+p.pKey]??10)/100;
     var sci=Math.round(f*sciR), edu=Math.round(f*eduR), lib=Math.round(f*libR);
     var kesimTRY=p.kesim?Math.round((V.kesimEurPer??0)*(V.eurKur||53.56)):0;
@@ -429,7 +429,7 @@ function renderUrunMarj() {
   }).join('');
   var tbody = document.querySelector('#marjKarsilastirma tbody');
   tbody.innerHTML = prods.map(function(p){
-    var f=V[p.fKey]||0, m=V[p.mKey]||0;
+    var f=(typeof priceOf==='function'?priceOf(p.pKey):V[p.fKey])||0, m=V[p.mKey]||0; // VR-1: active Std-Reported price
     var sciR=(V['feeSci_'+p.pKey]??10)/100, eduR=(V['feeEdu_'+p.pKey]??10)/100, libR=(V['feeLib_'+p.pKey]??10)/100;
     var sci=Math.round(f*sciR), edu=Math.round(f*eduR), lib=Math.round(f*libR);
     var kesimTRY=p.kesim?Math.round((V.kesimEurPer??0)*(V.eurKur||53.56)):0;

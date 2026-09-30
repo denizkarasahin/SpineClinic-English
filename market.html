@@ -41,6 +41,17 @@
   <div class="section-header" onclick="tog(this)"><h2>Market &amp; Product Mix</h2><span class="tog">▸</span></div>
   <div class="section-body">
 
+    <!-- VR effect (VR-1): the committed prices and mix assume the VR-guided offer; the no-VR case is a live scenario switch -->
+    <div style="border:1px solid #534AB744;border-left:3px solid #534AB7;border-radius:6px;padding:10px 14px;margin-bottom:18px;background:#f9f8ff;">
+      <div style="font-size:12px;color:#333;line-height:1.6;margin-bottom:6px;">Pricing and product mix assume the VR-guided design and fitting offer (launched September 2026). The no-VR case shows the business without the VR premium.</div>
+      <label style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:#534AB7;cursor:pointer;margin-bottom:8px;"><input type="checkbox" class="vrToggle" onchange="svVr(this.checked)" style="width:14px;height:14px;accent-color:#534AB7;"> VR effect on &nbsp;<span class="vrState" style="font-weight:400;font-size:11px;">—</span></label>
+      <div class="sl-grid">
+        <div class="sl-row"><label>No-VR case — Std-Reported clinic price (₺)</label><div class="sl-controls"><input type="range" id="s_noVrStdRl" min="20000" max="60000" step="500" value="30500" oninput="sv('noVrStdRl',this.value)"><span class="sl-val" id="noVrStdRl" contenteditable="true" onblur="sv2('noVrStdRl','s_noVrStdRl',this)" style="min-width:60px;">30.500</span></div></div>
+        <div class="sl-row"><label>No-VR case — premium share cap from Month 10 and Years 2+ (%)</label><div class="sl-controls"><input type="range" id="s_noVrPremiumCapPct" min="0" max="100" step="5" value="50" oninput="sv('noVrPremiumCapPct',this.value)"><span class="sl-val" id="noVrPremiumCapPct" style="min-width:40px;">50</span></div></div>
+      </div>
+      <div style="font-size:10px;color:#888;margin-top:4px;">With the VR effect off, the model prices Std-Reported at the no-VR price, uses the pre-VR monthly mix for the clinic and B2B (the mix tables below switch to it) and caps the premium share; the product cards keep the VR prices. ⚠ Scenario switch, not a forecast.</div>
+    </div>
+
     <!-- Pazar büyüklüğü -->
     <div style="margin-bottom:18px;">
       <div class="sl-grid">
@@ -427,6 +438,7 @@
     <hr class="divider">
     <!-- Mix slider grid -->
     <div style="font-size:11px;font-weight:700;color:#534AB7;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Clinic Mix (%) — All Months</div>
+<div id="vrMixNote" class="note-box" style="margin-bottom:8px;">—</div>
 <div id="mixTableWrap"><div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:12px;"><tbody><tr><td colspan="7" style="text-align:center;color:#999;padding:16px;">Loading…</td></tr></tbody></table></div></div></div>
     <div class="note-box" style="margin-top:8px;">Each product's active start month is set via the "Active Month" selector on the card. If the total exceeds 100%, it is automatically normalized. Grey cell = product not yet active.</div>
 
@@ -567,7 +579,7 @@ function renderPiyasaKpi() {
   var osteoidK   = (window._lastRows||[]).reduce(function(s,r){return s+(r.korse||0);},0) || (V.korse||[]).reduce(function(a,b){return a+b;},0);
   var osteoidB2B = ((window._lastRows||[]).length ? V.korseB2B||[] : []).reduce(function(s,v){return s+(+v||0);},0);
   var osteoidToplam = osteoidK + osteoidB2B;
-  var osteoidFiyat  = V.korseF_stdR || 27000;
+  var osteoidFiyat  = (typeof entryPrice === 'function' ? entryPrice().v : (V.korseF_stdR || 27000)); // entry price — premium positioning (VR-1)
   var rakipToplam = RAKIPLER.reduce(function(s,r){return s+gRV(r,'KorseK',r.dK)+gRV(r,'KorseB',r.dB);},0);
   var tumToplam   = osteoidToplam + rakipToplam;
   var osteoidPay  = tumToplam > 0 ? Math.round(osteoidToplam/tumToplam*100) : 0;
@@ -598,7 +610,7 @@ function renderRekabetChart() {
   var dataK   = [osteoidK].concat(RAKIPLER.map(function(r){return gRV(r,'KorseK',r.dK);}));
   var dataB   = [osteoidB2B].concat(RAKIPLER.map(function(r){return gRV(r,'KorseB',r.dB);}));
   var colors  = ['#534AB7'].concat(RAKIPLER.map(function(r){return r.renk;}));
-  var fiyatK  = [V.korseF_stdR||27000].concat(RAKIPLER.map(function(r){return gRV(r,'FiyatK',r.dFK);}));
+  var fiyatK  = [(typeof entryPrice === 'function' ? entryPrice().v : (V.korseF_stdR||27000))].concat(RAKIPLER.map(function(r){return gRV(r,'FiyatK',r.dFK);}));
   var fiyatB  = [V.korseFB2B_stdR||10000].concat(RAKIPLER.map(function(r){return gRV(r,'FiyatB',r.dFB);}));
 
   if (rekabetChartInst) { rekabetChartInst.destroy(); rekabetChartInst = null; }
@@ -611,7 +623,7 @@ function renderRekabetChart() {
       datasets: [
         { label:'Clinic (units)', data:dataK, backgroundColor:colors.map(function(c){return c+'bb';}), borderColor:colors, borderWidth:1.5, borderRadius:3, stack:'s', yAxisID:'y' },
         { label:'B2B (units)',    data:dataB, backgroundColor:colors.map(function(c){return c+'55';}), borderColor:colors, borderWidth:1,   borderRadius:3, stack:'s', yAxisID:'y' },
-        { label:'Clinic price (₺)', data:fiyatK, type:'line', borderColor:'#1a7a45', backgroundColor:'transparent', borderWidth:2, pointRadius:4, pointBackgroundColor:colors, tension:0.3, yAxisID:'y2' },
+        { label:'Clinic price (₺) — Osteoid: entry price, premium positioning', data:fiyatK, type:'line', borderColor:'#1a7a45', backgroundColor:'transparent', borderWidth:2, pointRadius:4, pointBackgroundColor:colors, tension:0.3, yAxisID:'y2' },
         { label:'B2B price (₺)',    data:fiyatB, type:'line', borderColor:'#534AB7', backgroundColor:'transparent', borderWidth:2, borderDash:[4,3], pointRadius:4, pointBackgroundColor:colors, tension:0.3, yAxisID:'y2' },
       ]
     },

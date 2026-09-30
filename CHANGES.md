@@ -1,3 +1,8 @@
+# CHANGES — VR effect, Phase 2 / Phase 3, percentages (branch `catchment-mature`; `_version` 65 → 66)
+
+Baseline / after: `scratch/vr-p2-after.md` (core, core + Phase 2, core + Phase 2 + Phase 3, each with the VR effect on and off).
+
+- **VR-1** — The committed prices and monthly mix (entry SKU Std-NR at 0% of the mix, Std-Reported ₺40,500, ~80% premium from Month 10) are the VR-guided design and fitting offer (launched September 2026) — unchanged. New scenario switch `vrAktif` (default true; Market and Summary pages). Off = the no-VR case: Std-Reported at `noVrStdRl` (₺30,500), the pre-VR monthly clinic and B2B mix (`mixNoVr` / `mixB2BNoVr`, the version-62 arrays of commit 2cd424f; the Market-page mix tables switch to them), premium share capped at `noVrPremiumCapPct` (50%) from Month 10 and in Years 2+. Label on both pages. Summary sensitivity: "VR effect" row (on / off) and a new Mature-year EBITDA column. Competitor comparison shows Osteoid's entry price (lowest-priced SKU in the live clinic mix) as "premium positioning"; the below-average price colouring is gone.
 # CHANGES — Catchment & mature year (branch `catchment-mature`, from `origin/main` + DEF-1/UP-1/DEF-2; `_version` 64 → 65)
 
 Baseline / after: `scratch/cm-baseline.md`, `scratch/cm-after.md`. Core plan (5 years): Year-5 EBITDA €1,368K (was €1,367K), cumulative FCF €3,076K (was €3,100K), peak funding need €235K; mature-year EBITDA €1,368K. Phase 2: Bursa mature €69K (pays back in 44 months, Year 6), Gaziantep mature €129K (25 months).
