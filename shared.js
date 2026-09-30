@@ -23,7 +23,7 @@ document.getElementById = function(id) {
   };
 };
 
-const V = {"reklamCarpan":1,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.93,"eurKurSabit":53.93,"eurKurTarih":"2026-07-20","liveFxAktif":false,"kira":150000,"depozito":250000,"emlakci":500000,"m2":360,"tadilatM2":4500,"dekoM2":4500,"mobilya":300000,"ruhsat":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":90000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[24,25,30,35,35,44,44,52,54,63,62,69],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":25000,"korseF_stdRl":30500,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":3500,"mal_sens":2075,"mal_sensDelik":4975,"feeSci_stdR":10,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdR":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdR":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":20000,"pazarIstPct":30.1,"hedefOsteoidPay":60,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":true,"izmirHedefPay":50,"izmirUseIst":true,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[18,19,23,26,26,33,33,39,41,47,47,52],"ankaraAktif":true,"ankaraHedefPay":50,"ankaraUseIst":true,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[19,20,24,28,28,35,35,42,43,50,50,55],"bursaAktif":true,"bursaHedefPay":50,"bursaUseIst":true,"bursaUseIstGider":true,"bursaKira":80000,"bursaOrtotistM":55000,"bursaStajyerM":25000,"bursaMutfak":18000,"bursaSarf":3000,"bursaUseIstKurulum":true,"bursaKurulumKira":120000,"bursaKurulumDepozito":200000,"bursaKurulumTadilat":4750,"bursaKurulumDeko":2000,"bursaKurulumMobilya":600000,"bursaRampa":[18,19,23,26,26,33,33,39,41,47,47,52],"gaziantepAktif":true,"gaziantepHedefPay":50,"gaziantepUseIst":true,"gaziantepUseIstGider":true,"gaziantepKira":85000,"gaziantepOrtotistM":55000,"gaziantepStajyerM":25000,"gaziantepMutfak":18000,"gaziantepSarf":3000,"gaziantepUseIstKurulum":true,"gaziantepKurulumKira":120000,"gaziantepKurulumDepozito":200000,"gaziantepKurulumTadilat":4750,"gaziantepKurulumDeko":2000,"gaziantepKurulumMobilya":600000,"gaziantepRampa":[19,20,24,28,28,35,35,42,43,50,50,55],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"bursaNufusPay":4.5,"gaziantepNufusPay":3,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":true,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":18,"dcfExitMult":10,"exitMultLowDelta":2,"exitMultHighDelta":3,"multiCenterPremiumX":0,"dealPreMoneyEur":10964800,"tranche1Eur":500000,"trancheStepUp":1.75,"dcfInvest":719032,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":12500,"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":80000,"_sen_max_kira":300000,"_sen_min_tadilatM2":2500,"_sen_max_tadilatM2":11500,"_sen_min_dekoM2":2250,"_sen_max_dekoM2":11250,"_sen_min_ortotistM":55000,"_sen_max_ortotistM":160000,"_sen_min_operatorM":90000,"_sen_max_operatorM":240000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.75,"bursaRampaOran":0.75,"bursaKurulumOran":0.75,"gaziantepRampaOran":0.8,"gaziantepKurulumOran":0.75,"operatorM":150000,"ipLisansEur":500000,"sehirEksklusifEur":500000,"workingCapBufferEur":500000,"stage1BufferEur":200000,"kvOrani":25,"vergiDahil":true,"exitYili":5,"kisiselVergiOrani":15,"fundAy":0,"makineKatkiOran":50,"osteoidCarpan":1,"yatirimciCarpan":1,"doktorYatirim":0,"doktorCarpan":1.5,"sweatEur":80000,"sweatVestAy":48,"sweatCliffAy":12,"sweatElapsedAy":0,"sweatMaxPct":5,"sweatCarpan":1,"sweatVestedToday":true,"royaltyOffsetYil":1,"royaltyOffsetPct":0,"yonetimUcretiPct":5,"izmirFlagshipPay":65,"ankaraFlagshipPay":65,"bursaFlagshipPay":65,"gaziantepFlagshipPay":65,"izmirSubeMi":true,"ankaraSubeMi":true,"bursaSubeMi":true,"gaziantepSubeMi":true,"euLegalFaiz":5,"preOpenHireC1":0,"preOpenMktC1":0,"preOpenLegalC1":0,"preOpenOtherC1":30000,"preOpenHireC2":0,"preOpenMktC2":0,"preOpenLegalC2":0,"preOpenOtherC2":30000,"preOpenHireC3":0,"preOpenMktC3":0,"preOpenLegalC3":0,"preOpenOtherC3":45000,"preOpenHireC4":0,"preOpenMktC4":0,"preOpenLegalC4":0,"preOpenOtherC4":40000,"preOpenHireC5":0,"preOpenMktC5":0,"preOpenLegalC5":0,"preOpenOtherC5":40000,"bursaGaziantepFcfFunded":true,"nakdiSermayeAktif":true,"teknokentKapsam":false,"emisyonPrimiAktif":true,"nominalPayOrani":10,"feeStreamAyriMult":false,"feeExitMult":12,"istRampYears":3,"izmirRampYears":3,"ankaraRampYears":3,"bursaRampYears":4,"gaziantepRampYears":3,"bursaAcilisAy":3,"ankaraAcilisAy":5,"gaziantepAcilisAy":3,"workingCapBufferFcfFunded":false,"hastaPerOdaGun":6,"odaMaxPerKlinik":6,"odaM2":10,"calismaGunAy":26,"haftaSonuGunAy":9,"haftaSonuTalepPct":60,"visitPerKorse":1,"ortotistDkFitting":20,"expertDkHasta":8,"destekDkHasta":45,"staffUtilPct":75,"korsePerPrinterAy":66,"ekOrtotistM":65000,"subeSetupTRY":900000,"izmirDestekM":25000,"ankaraDestekM":25000,"bursaDestekM":25000,"gaziantepDestekM":25000,"b2bHedefAdetYil":1200,"b2bRampYears":3,"_version":58};
+const V = {"reklamCarpan":1,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.93,"eurKurSabit":53.93,"eurKurTarih":"2026-07-20","liveFxAktif":false,"kira":150000,"depozito":250000,"emlakci":500000,"m2":360,"tadilatM2":4500,"dekoM2":4500,"mobilya":300000,"ruhsat":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":90000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[24,25,30,35,35,44,44,52,54,63,62,69],"aktifAy":[0,0,9,2,9],"mix":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"korseF_stdR":25000,"korseF_stdRl":30500,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":3500,"mal_sens":2075,"mal_sensDelik":4975,"feeSci_stdR":10,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdR":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdR":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":20000,"pazarIstPct":30.1,"hedefOsteoidPay":60,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":true,"izmirHedefPay":50,"izmirUseIst":true,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[18,19,23,26,26,33,33,39,41,47,47,52],"ankaraAktif":true,"ankaraHedefPay":50,"ankaraUseIst":true,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[19,20,24,28,28,35,35,42,43,50,50,55],"bursaAktif":true,"bursaHedefPay":50,"bursaUseIst":true,"bursaUseIstGider":true,"bursaKira":80000,"bursaOrtotistM":55000,"bursaStajyerM":25000,"bursaMutfak":18000,"bursaSarf":3000,"bursaUseIstKurulum":true,"bursaKurulumKira":120000,"bursaKurulumDepozito":200000,"bursaKurulumTadilat":4750,"bursaKurulumDeko":2000,"bursaKurulumMobilya":600000,"bursaRampa":[18,19,23,26,26,33,33,39,41,47,47,52],"gaziantepAktif":true,"gaziantepHedefPay":50,"gaziantepUseIst":true,"gaziantepUseIstGider":true,"gaziantepKira":85000,"gaziantepOrtotistM":55000,"gaziantepStajyerM":25000,"gaziantepMutfak":18000,"gaziantepSarf":3000,"gaziantepUseIstKurulum":true,"gaziantepKurulumKira":120000,"gaziantepKurulumDepozito":200000,"gaziantepKurulumTadilat":4750,"gaziantepKurulumDeko":2000,"gaziantepKurulumMobilya":600000,"gaziantepRampa":[19,20,24,28,28,35,35,42,43,50,50,55],"izmirNufusPay":7.1,"ankaraNufusPay":8.2,"bursaNufusPay":4.5,"gaziantepNufusPay":3,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":true,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":18,"dcfExitMult":10,"exitMultLowDelta":2,"exitMultHighDelta":3,"multiCenterPremiumX":0,"dealPreMoneyEur":10964800,"tranche1Eur":500000,"dividendPayoutPct":60,"trancheStepUp":1.75,"dcfInvest":719032,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":12500,"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"_sen_min_kira":80000,"_sen_max_kira":300000,"_sen_min_tadilatM2":2500,"_sen_max_tadilatM2":11500,"_sen_min_dekoM2":2250,"_sen_max_dekoM2":11250,"_sen_min_ortotistM":55000,"_sen_max_ortotistM":160000,"_sen_min_operatorM":90000,"_sen_max_operatorM":240000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":900,"hedefSpine_KorseB":1200,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":600,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":600,"aktifOrtez_KorseB":420,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.75,"bursaRampaOran":0.75,"bursaKurulumOran":0.75,"gaziantepRampaOran":0.8,"gaziantepKurulumOran":0.75,"operatorM":150000,"ipLisansEur":500000,"sehirEksklusifEur":500000,"workingCapBufferEur":500000,"stage1BufferEur":200000,"kvOrani":25,"vergiDahil":true,"exitYili":5,"kisiselVergiOrani":15,"fundAy":0,"makineKatkiOran":50,"osteoidCarpan":1,"yatirimciCarpan":1,"doktorYatirim":0,"doktorCarpan":1.5,"sweatEur":80000,"sweatVestAy":48,"sweatCliffAy":12,"sweatElapsedAy":0,"sweatMaxPct":5,"sweatCarpan":1,"sweatVestedToday":true,"royaltyOffsetYil":1,"royaltyOffsetPct":0,"yonetimUcretiPct":5,"izmirFlagshipPay":65,"ankaraFlagshipPay":65,"bursaFlagshipPay":65,"gaziantepFlagshipPay":65,"izmirSubeMi":true,"ankaraSubeMi":true,"bursaSubeMi":true,"gaziantepSubeMi":true,"euLegalFaiz":5,"preOpenHireC1":0,"preOpenMktC1":0,"preOpenLegalC1":0,"preOpenOtherC1":30000,"preOpenHireC2":0,"preOpenMktC2":0,"preOpenLegalC2":0,"preOpenOtherC2":30000,"preOpenHireC3":0,"preOpenMktC3":0,"preOpenLegalC3":0,"preOpenOtherC3":45000,"preOpenHireC4":0,"preOpenMktC4":0,"preOpenLegalC4":0,"preOpenOtherC4":40000,"preOpenHireC5":0,"preOpenMktC5":0,"preOpenLegalC5":0,"preOpenOtherC5":40000,"bursaGaziantepFcfFunded":true,"nakdiSermayeAktif":true,"teknokentKapsam":false,"emisyonPrimiAktif":true,"nominalPayOrani":10,"feeStreamAyriMult":false,"feeExitMult":12,"istRampYears":3,"izmirRampYears":3,"ankaraRampYears":3,"bursaRampYears":4,"gaziantepRampYears":3,"bursaAcilisAy":3,"ankaraAcilisAy":5,"gaziantepAcilisAy":3,"workingCapBufferFcfFunded":false,"hastaPerOdaGun":6,"odaMaxPerKlinik":6,"odaM2":10,"calismaGunAy":26,"haftaSonuGunAy":9,"haftaSonuTalepPct":60,"visitPerKorse":1,"ortotistDkFitting":20,"expertDkHasta":8,"destekDkHasta":45,"staffUtilPct":75,"korsePerPrinterAy":66,"ekOrtotistM":65000,"subeSetupTRY":900000,"izmirDestekM":25000,"ankaraDestekM":25000,"bursaDestekM":25000,"gaziantepDestekM":25000,"b2bHedefAdetYil":1200,"b2bRampYears":3,"_version":58};
 // Restore state from localStorage if available; clear cache on version mismatch
 (function() {
   try {
@@ -5866,7 +5866,7 @@ function renderDcf() {
   // ebitdaY5 is €K; ×1000 → EUR, matching the prior fcf[4]-based unit convention
   // exactly (PROMPT 7). MOIC at exit rides on the same EBITDA-based EV.
   const exitValue_eur = ebitdaY5 > 0 ? ebitdaY5 * exitMult * 1000 : 0;
-  const investorMoicExit = investorTicketEur > 0 ? (exitValue_eur * (yatirimci_pct/100)) / investorTicketEur : 0;
+  const investorMoicExit = investorTicketEur > 0 ? (exitValue_eur * (yatirimci_pct/100)) / investorTicketEur : 0; // exit-only part
   set('dcf_exitValue',       exitValue_eur > 0 ? fmtEur(exitValue_eur) : '—');
 
   // ── Exit-value scope bridge (PROMPT 7 §4) — tie the two Exit KPIs on screen.
@@ -5893,7 +5893,7 @@ function renderDcf() {
       + '− local-investor minority interest in the satellites <b>' + fmtEur(minorityExitEur) + '</b> '
       + '= flagship-consolidated EV <b>' + fmtEur(exitValue_eur) + '</b> (shown above). '
       + (minorityExitEur === 0 ? 'All satellites are in Branch mode, so minority = €0 and the two figures match. ' : 'Satellites in Subsidiary mode carry local investors, hence the gap. ')
-      + 'Your own share at exit = flagship EV × your ' + fmtPct(yatirimci_pct) + ' stake = <b>' + fmtEur(investorShareEur) + '</b> (drives the MOIC).'
+      + 'Your own share at exit = flagship EV × your ' + fmtPct(yatirimci_pct) + ' stake = <b>' + fmtEur(investorShareEur) + '</b> (the exit-proceeds line of the investor return; dividends and retained cash are separate lines).'
       + feeSep;
   }
   set('dcf_premoney',        dcfValue_eur !== 0 ? (dcfValue_eur < 0 ? '-' : '') + fmtEur(dcfValue_eur) : '—');
@@ -5921,7 +5921,11 @@ function renderDcf() {
   }
   set('dcf_yatirimci_hisse', fmtPct(yatirimci_pct));
   set('dcf_osteoid_hisse',   fmtPct(osteoid_pct));
-  set('dcf_investor_moic_exit', investorMoicExit > 0 ? investorMoicExit.toFixed(2)+'×' : '—');
+  // Hero MOIC = dividends + exit proceeds + retained cash (Base multiple), 4-A10.
+  const _Rh = computeInvestorReturns(exitMult);
+  window._lastInvestorReturn = _Rh;
+  set('dcf_investor_moic_exit', _Rh && _Rh.moic > 0 ? _Rh.moic.toFixed(2)+'×' : '—');
+  set('dcf_investor_moic_split', _Rh ? 'exit only ' + investorMoicExit.toFixed(2) + '× · dividends + retained cash add ' + (_Rh.moic - investorMoicExit).toFixed(2) + '×' + (_Rh.irr !== null ? ' · IRR ' + _Rh.irr.toFixed(1) + '%' : '') : '—');
   set('dcf_core_premoney',   feeSplit ? fmtEur(feeSplit.corePremoney) : '—');
   set('dcf_fee_premoney',    feeSplit ? fmtEur(feeSplit.feePremoney) : '—');
   const feeRowEl = document.getElementById('dcfFeeSplitRow');
@@ -5959,6 +5963,67 @@ function renderDcf() {
     + (feeSplit ? '<tr><td colspan="7" style="font-size:10px;color:#888;">Sum-of-parts is ON: the DCF value above = core stream at '+exitMult+'× + management-fee stream at '+feeSplit.feeExitMult+'× (fee multiple, labelled separately) — the blended row above is shown for reference.</td></tr>' : '');
 }
 
+
+// ── INVESTOR RETURN = DIVIDENDS + EXIT (review 4-A10) ───────────────────────
+// The draft dividend policy (agreement.html, "at least [60]% of distributable
+// profit … from the first cumulative-positive year") is modelled explicitly:
+//   distributable[i] = after-tax net income of year i, after retained losses
+//                      from earlier years are covered (no dividend while
+//                      cumulative net income is ≤ 0);
+//   dividend[i]      = payout% × distributable[i], capped at the cash actually
+//                      available that year (opening cash + investor inflows +
+//                      FCF) — never paid out of cash the company does not have.
+//                      The policy's "working-capital reserve" is not modelled
+//                      beyond that cap (stated simplification).
+//   exit equity      = Exit EV (Year-5 EBITDA × multiple) + cash retained on the
+//                      balance sheet at the end of Year 5 (no debt modelled).
+// Investor share of each = × the priced-round stake. Lines are kept separate.
+// IRR: timed cash flows — Stage 1 at closing (t=0), Stage 2 at the start of its
+// release year, dividends at each year-end, exit proceeds at t=5.
+function _irr(flows) { // flows: [{t, v}] — bisection on NPV, returns % or null
+  const npv = r => flows.reduce((s, f) => s + f.v / Math.pow(1 + r, f.t), 0);
+  let lo = -0.99, hi = 5;
+  if (npv(lo) * npv(hi) > 0) return null;
+  for (let k = 0; k < 200; k++) { const m = (lo + hi) / 2; (npv(lo) * npv(m) <= 0) ? hi = m : lo = m; }
+  return ((lo + hi) / 2) * 100;
+}
+function computeInvestorReturns(exitMult) {
+  const f = window._lastFcf, deal = window._lastDeal;
+  if (!f || !deal) return null;
+  const L = metricLadder('investor');
+  const payout = (V.dividendPayoutPct ?? 60) / 100;
+  const stake = deal.stakes.investor / 100;
+  const netIncome = f.accountingPretax.map((v, i) => v - (f.taxPaid[i] || 0)); // €K, after tax
+  let lossPool = 0, cash = 0;
+  const dividends = [], cashEnd = [], distributable = [];
+  for (let i = 0; i < 5; i++) {
+    let d0 = 0;
+    if (netIncome[i] < 0) lossPool += -netIncome[i];
+    else { const cover = Math.min(lossPool, netIncome[i]); lossPool -= cover; d0 = netIncome[i] - cover; }
+    distributable.push(Math.round(d0));
+    const avail = cash + (f.investorIn[i] || 0) + (f.fcf[i] || 0);
+    const d = Math.max(0, Math.min(d0 * payout, avail));
+    dividends.push(Math.round(d));
+    cash = avail - d;
+    cashEnd.push(Math.round(cash));
+  }
+  const ebitdaY5 = L ? L.ebitda[4] : 0;
+  const exitEvK = ebitdaY5 > 0 ? ebitdaY5 * exitMult : 0;
+  const retainedCashK = Math.max(0, cashEnd[4]);
+  const divInvK = dividends.map(d => d * stake);
+  const divInvTotK = divInvK.reduce((a, b) => a + b, 0);
+  const exitInvK = exitEvK * stake;
+  const cashInvK = retainedCashK * stake;
+  const totalK = divInvTotK + exitInvK + cashInvK;
+  const ticket = deal.ticket;
+  const moic = ticket > 0 ? totalK * 1000 / ticket : 0;
+  const s2t = (f.plan && f.plan.stage2YearIdx) || 1;
+  const flows = [{ t: 0, v: -(deal.stage1 || 0) / 1000 }, { t: s2t, v: -(deal.stage2 || 0) / 1000 }]
+    .concat(divInvK.map((v, i) => ({ t: i + 1, v })))
+    .concat([{ t: 5, v: exitInvK + cashInvK }]);
+  return { payoutPct: payout * 100, stake, netIncome, distributable, dividends, cashEnd, exitEvK, retainedCashK,
+           divInvK, divInvTotK, exitInvK, cashInvK, totalK, moic, irr: _irr(flows), ticket, exitMult, stage2YearIdx: s2t };
+}
 
 // ── YATIRIMCI GETİRİ ANALİZİ ─────────────────────────────────────────────────
 function renderGetiriTable() {
@@ -6003,39 +6068,70 @@ function renderGetiriTable() {
   const fmtPct  = v => (v * 100).toFixed(1) + '%';
   const fmtMoic = v => v > 0 ? v.toFixed(2)+'×' : '—';
   const moicCls = v => v >= 3 ? 'pc' : v >= 2 ? 'neu' : 'nc';
-  const irr5    = v => v > 0 ? (Math.pow(v, 0.2) - 1) * 100 : null;
-  const fmtIrr  = v => { const i = irr5(v); return i !== null ? i.toFixed(1)+'%' : '—'; };
-  const irrCls  = v => { const i = irr5(v); if (i === null) return 'nc'; return i >= 25 ? 'pc' : i >= 15 ? 'neu' : 'nc'; };
+  const fmtIrr  = i => i !== null && i !== undefined ? i.toFixed(1)+'%' : '—';
+  const irrCls  = i => { if (i === null || i === undefined) return 'nc'; return i >= 25 ? 'pc' : i >= 15 ? 'neu' : 'nc'; };
 
+  // Each scenario = dividends (same in every row — they don't depend on the
+  // exit multiple) + exit proceeds + retained cash at exit (4-A10).
   const scenRows = senaryolar.map(s => {
-    const ev_eur = y5ebitda_eur * s.mult;
-    const payout = Math.round(ev_eur * hisse_pct);
-    const moic   = invest > 0 ? payout / invest : 0;
+    const R = computeInvestorReturns(s.mult);
+    const ev_eur = R.exitEvK * 1000;
     return `<tr class="${s.rowClass}">
-      <td><b>${s.label}</b> <span style="color:#999;font-size:10px;">${s.mult}× EBITDA</span></td>
+      <td><b>${s.label}</b> <span style="color:#999;font-size:10px;">${s.mult}× EV/EBITDA</span></td>
       <td class="neu">${fmtEur(ev_eur)}</td>
       <td class="neu">${fmtPct(hisse_pct)}</td>
-      <td class="${moicCls(moic)}">${fmtEur(payout)}</td>
-      <td class="${moicCls(moic)}">${fmtMoic(moic)}</td>
-      <td class="${irrCls(moic)}">${fmtIrr(moic)}</td>
+      <td>${fmtEur(R.exitInvK * 1000)}</td>
+      <td>${fmtEur(R.cashInvK * 1000)}</td>
+      <td>${fmtEur(R.divInvTotK * 1000)}</td>
+      <td class="${moicCls(R.moic)}"><b>${fmtEur(R.totalK * 1000)}</b></td>
+      <td class="${moicCls(R.moic)}">${fmtMoic(R.moic)}</td>
+      <td class="${irrCls(R.irr)}">${fmtIrr(R.irr)}</td>
     </tr>`;
   }).join('');
 
-  // "For 3× MOIC" target row — shows what EV / exit multiple is required
-  // (general form: payout = EV × hisse_pct = 3×invest  =>  EV = 3×invest/hisse_pct)
-  const target3x_ev   = hisse_pct > 0 ? 3 * invest / hisse_pct : 0;
-  const target3x_mult = y5ebitda_eur > 0 ? (target3x_ev / y5ebitda_eur).toFixed(1) : '—';
-  const target3x_pout = Math.round(target3x_ev * hisse_pct);
+  // "For 3× MOIC" target row — the exit EV (and multiple) at which dividends +
+  // retained cash + exit proceeds reach 3× the ticket:
+  //   (EV × stake) + dividends + cash share = 3 × invest  →  EV = (3×invest − div − cash) / stake
+  const _Rb = computeInvestorReturns(exitMult);
+  const target3x_ev   = hisse_pct > 0 ? Math.max(0, 3 * invest - (_Rb.divInvTotK + _Rb.cashInvK) * 1000) / hisse_pct : 0;
+  const target3x_mult = y5ebitda_eur > 0 ? target3x_ev / y5ebitda_eur : 0;
+  const _R3 = computeInvestorReturns(target3x_mult);
   const targetRow = `<tr style="border-top:2px dashed #a89ff7;background:#f4f3ff;">
-    <td style="color:#534AB7;"><b>For 3× MOIC</b> <span style="font-size:10px;">${target3x_mult}× EBITDA needed</span></td>
+    <td style="color:#534AB7;"><b>For 3× MOIC</b> <span style="font-size:10px;">${y5ebitda_eur > 0 ? target3x_mult.toFixed(1) : '—'}× EBITDA needed</span></td>
     <td style="color:#534AB7;">${fmtEur(target3x_ev)}</td>
     <td class="neu">${fmtPct(hisse_pct)}</td>
-    <td class="pc">${fmtEur(target3x_pout)}</td>
-    <td class="pc">3.00×</td>
-    <td class="pc">24.6%</td>
+    <td>${fmtEur(_R3.exitInvK * 1000)}</td>
+    <td>${fmtEur(_R3.cashInvK * 1000)}</td>
+    <td>${fmtEur(_R3.divInvTotK * 1000)}</td>
+    <td class="pc"><b>${fmtEur(_R3.totalK * 1000)}</b></td>
+    <td class="pc">${fmtMoic(_R3.moic)}</td>
+    <td class="${irrCls(_R3.irr)}">${fmtIrr(_R3.irr)}</td>
   </tr>`;
 
   tbody.innerHTML = scenRows + targetRow;
+
+  // Base-case investor cash flows by year — each return component on its own line.
+  const cfEl = document.getElementById('investorCashflowBody');
+  if (cfEl) {
+    const k = v => (v < 0 ? '-€' : '€') + Math.abs(Math.round(v)).toLocaleString('en-US') + 'K';
+    const cellsY = arr => arr.map(v => '<td>' + (Math.round(v) ? k(v) : '—') + '</td>').join('');
+    const inv0 = [-(deal.stage1||0)/1000, 0, 0, 0, 0, 0];
+    inv0[_Rb.stage2YearIdx] += -(deal.stage2||0)/1000;
+    const divRow = [0].concat(_Rb.divInvK);
+    const exitRow = [0,0,0,0,0,_Rb.exitInvK];
+    const cashRow = [0,0,0,0,0,_Rb.cashInvK];
+    const net = inv0.map((v,i) => v + divRow[i] + exitRow[i] + cashRow[i]);
+    cfEl.innerHTML =
+      '<tr><td style="text-align:left;">Investment (Stage 1 at closing; Stage 2 at the start of its release year = the preceding year-end column)</td>' + cellsY(inv0) + '</tr>'
+      + '<tr><td style="text-align:left;">Dividends to investor (' + Math.round(_Rb.payoutPct) + '% payout × ' + fmtPct(hisse_pct) + ' stake)</td>' + cellsY(divRow) + '</tr>'
+      + '<tr><td style="text-align:left;">Exit proceeds — Exit EV (' + exitMult + '× EV/EBITDA) × stake</td>' + cellsY(exitRow) + '</tr>'
+      + '<tr><td style="text-align:left;">Retained cash at exit × stake</td>' + cellsY(cashRow) + '</tr>'
+      + '<tr class="r-cum"><td style="text-align:left;"><b>Net cash flow to investor</b></td>' + cellsY(net) + '</tr>'
+      + '<tr><td style="text-align:left;font-size:10px;color:#888;">Memo: company dividends paid (100%)</td><td>—</td>' + _Rb.dividends.map(v => '<td style="font-size:10px;color:#888;">' + (v ? k(v) : '—') + '</td>').join('') + '</tr>'
+      + '<tr><td style="text-align:left;font-size:10px;color:#888;">Memo: company cash at year-end after dividends (100%)</td><td>—</td>' + _Rb.cashEnd.map(v => '<td style="font-size:10px;color:#888;">' + k(v) + '</td>').join('') + '</tr>';
+    const sumEl = document.getElementById('investorReturnSummary');
+    if (sumEl) sumEl.textContent = 'Base case: dividends ' + k(_Rb.divInvTotK) + ' + exit proceeds ' + k(_Rb.exitInvK) + ' + retained cash ' + k(_Rb.cashInvK) + ' = ' + k(_Rb.totalK) + ' on a €' + Math.round(invest/1000).toLocaleString('en-US') + 'K ticket → ' + fmtMoic(_Rb.moic) + ', IRR ' + fmtIrr(_Rb.irr) + '.';
+  }
 
   // MOIC sensitivity mini-table across exit multiples
   const sensEl = document.getElementById('moicSensBody');
@@ -6047,13 +6143,13 @@ function renderGetiriTable() {
     const mults = [...new Set([4, 6, 8, 10, 12, 15, 18, _ms.low, _ms.base, _ms.high])].sort((a,b)=>a-b);
     sensEl.innerHTML = mults.map(m => {
       const ev   = y5ebitda_eur * m;
-      const pout = Math.round(ev * hisse_pct);
-      const moic = invest > 0 ? pout / invest : 0;
+      const _Rm  = computeInvestorReturns(m);   // dividends + exit + retained cash (4-A10)
+      const moic = _Rm.moic;
       return `<tr>
         <td>${m}×${_tag(m)}</td>
         <td class="neu">${fmtEur(ev)}</td>
         <td class="${moicCls(moic)}">${fmtMoic(moic)}</td>
-        <td class="${irrCls(moic)}">${fmtIrr(moic)}</td>
+        <td class="${irrCls(_Rm.irr)}">${fmtIrr(_Rm.irr)}</td>
       </tr>`;
     }).join('');
   }

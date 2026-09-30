@@ -33,7 +33,7 @@
   <div class="section-header open" onclick="tog(this)"><h2>The Deal at a Glance</h2><span class="tog">▾</span></div>
   <div class="section-body" style="display:block;">
 
-    <div class="note-box" style="margin-bottom:12px;">Return comes from two mechanisms: annual dividends after cumulative positive, and a strategic exit — see comps below.</div>
+    <div class="note-box" style="margin-bottom:12px;">Return comes from two mechanisms, both modelled and shown on separate lines in Your Return: annual dividends (draft policy: at least the payout % below of distributable profit, from the first year cumulative net income is positive) and a strategic exit (plus the cash still on the balance sheet at exit).</div>
 
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:6px;" id="dcfKpiGrid">
       <div class="kpi"><div class="kpi-label">Deal Pre-Money (negotiated input)</div><div class="kpi-val pos" id="dcf_premoney_final" title="Set by the Deal Pre-Money slider below — a negotiated price, not a model output. Fixed across scenarios so investor returns are comparable.">—</div><div style="font-size:10px;color:#888;margin-top:2px;" id="dcf_premoney_vs_dcf">—</div></div>
@@ -43,7 +43,7 @@
       <div class="kpi"><div class="kpi-label">Stage 2 — Committed</div><div class="kpi-val neu" id="dcf_stage2" title="Milestone-triggered: IP license + city exclusivity (purchased from Osteoid A.Ş.) + Izmir/Ankara/Bursa/Gaziantep setup (incl. pre-opening overheads) + remaining working capital buffer — see Investment Breakdown">—</div></div>
       <div class="kpi"><div class="kpi-label">Total Committed</div><div class="kpi-val neu" id="dcf_investor_ticket" title="Stage 1 + Stage 2 — one priced deal, two closings: this full amount (not just Stage 1) is what Post-Money and Investor Stake are computed against">—</div></div>
       <div class="kpi"><div class="kpi-label">Investor Stake</div><div class="kpi-val pos" id="dcf_yatirimci_hisse" title="The Two-Tranche Pricing blended stake below — same investor, two sequential closings at two pre-money valuations, not a flat cash÷post-money ratio and not the Contribution Register">—</div></div>
-      <div class="kpi"><div class="kpi-label">Implied Investor MOIC at Exit</div><div class="kpi-val pos" id="dcf_investor_moic_exit" title="Exit EV (Year 5 EBITDA × Exit Multiple, EV/EBITDA) × Investor Stake (two-tranche blended, from the fixed deal pre-money) ÷ Total Committed">—</div></div>
+      <div class="kpi"><div class="kpi-label">Investor MOIC — dividends + exit (Base)</div><div class="kpi-val pos" id="dcf_investor_moic_exit" title="(Dividends received Years 1-5 + Exit EV × stake + retained cash at exit × stake) ÷ Total Committed. Exit EV = Year 5 EBITDA × Base multiple (EV/EBITDA); stake = two-tranche blended, from the fixed deal pre-money">—</div><div style="font-size:10px;color:#888;margin-top:2px;" id="dcf_investor_moic_split">—</div></div>
     </div>
     <div class="note-box" style="margin-top:10px;margin-bottom:6px;">Stage 1 funds only tangible build-out — rights are purchased at Stage 2, after Istanbul is operational. License &amp; exclusivity (<span id="dcf_rights_purchase">€1,000,000</span>) are bought from Osteoid A.Ş. under a License Purchase Agreement executed at Stage 1 signing — arm's-length, disclosed, price fixed at signing — with payment due at Stage 2 closing.</div>
 
@@ -149,6 +149,15 @@
   <div class="section-header open" onclick="tog(this)"><h2>Your Return</h2><span class="tog">▾</span></div>
   <div class="section-body" style="display:block;">
 
+    <div class="sl-row" style="max-width:420px;margin-bottom:14px;">
+      <label style="font-size:10px;">Dividend payout (% of distributable profit)</label>
+      <div class="sl-controls">
+        <input type="range" id="s_dividendPayoutPct" min="0" max="100" step="5" value="60" oninput="sv('dividendPayoutPct',this.value)">
+        <span class="sl-val" id="dividendPayoutPct" style="min-width:40px;">60</span>
+      </div>
+      <span class="sl-note">Draft Shareholders' Agreement: "at least [60]% of distributable profit … from the first cumulative-positive year". Distributable = after-tax net income once earlier losses are covered; each year's dividend is capped at the cash actually available. The policy's working-capital reserve is not modelled beyond that cap.</span>
+    </div>
+
     <!-- YATIRIMCİ GETİRİ ANALİZİ -->
     <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:14px;">Investor Return Analysis — For €<span id="gtr_invest_lbl">150.000</span> Investment</div>
 
@@ -157,19 +166,30 @@
         <thead>
           <tr>
             <th style="text-align:left;">Scenario</th>
-            <th>Enterprise Value</th>
+            <th>Exit EV</th>
             <th>Your Stake</th>
-            <th>Your Payout</th>
+            <th>Exit proceeds</th>
+            <th>+ Retained cash</th>
+            <th>+ Dividends (Y1–5)</th>
+            <th>Total to you</th>
             <th>MOIC</th>
-            <th>IRR (5yr ann.)</th>
+            <th>IRR (timed)</th>
           </tr>
         </thead>
         <tbody id="getiriTableBody">
-          <tr><td colspan="6" style="text-align:center;color:#aaa;font-size:11px;">Calculating...</td></tr>
+          <tr><td colspan="9" style="text-align:center;color:#aaa;font-size:11px;">Calculating...</td></tr>
         </tbody>
       </table>
     </div>
-    <div class="note-box" style="margin-bottom:16px;"><b>MOIC</b> = Your payout ÷ your ticket; <b>IRR</b> = annualized return over 5 years. <b>Color guide:</b> green = IRR ≥ 25% / MOIC ≥ 3×, yellow = IRR ≥ 15% / MOIC ≥ 2×, red = below.</div>
+    <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin:14px 0 8px;">Your Cash Flows — Base case <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— each return component on its own line</span></div>
+    <div class="tbl-wrap" style="margin-bottom:6px;">
+      <table>
+        <thead><tr><th style="text-align:left;">Line</th><th>Closing</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>Year 4</th><th>Year 5</th></tr></thead>
+        <tbody id="investorCashflowBody"><tr><td colspan="7" style="text-align:center;color:#aaa;font-size:11px;">Calculating...</td></tr></tbody>
+      </table>
+    </div>
+    <div id="investorReturnSummary" style="font-size:11px;color:#555;margin-bottom:10px;">—</div>
+    <div class="note-box" style="margin-bottom:16px;"><b>MOIC</b> = (dividends + exit proceeds + retained cash at exit) ÷ your ticket; <b>IRR</b> = from the timed cash flows above (Stage 1 at closing, Stage 2 at the start of its release year, dividends at year-end, exit at the end of Year 5). <b>Color guide:</b> green = IRR ≥ 25% / MOIC ≥ 3×, yellow = IRR ≥ 15% / MOIC ≥ 2×, red = below.</div>
 
     <!-- MOIC Sensitivity mini-table -->
     <div style="margin-top:18px;">
@@ -180,8 +200,8 @@
             <tr>
               <th>Exit Multiple</th>
               <th>Enterprise Value</th>
-              <th>MOIC</th>
-              <th>IRR (5yr)</th>
+              <th>MOIC (incl. dividends)</th>
+              <th>IRR (timed)</th>
             </tr>
           </thead>
           <tbody id="moicSensBody">
@@ -243,7 +263,7 @@
     <details style="margin-bottom:8px;">
       <summary style="cursor:pointer;font-size:11px;font-weight:700;color:#534AB7;">How these numbers are calculated</summary>
       <div class="note-box" style="margin-top:10px;">
-        <b>MOIC</b> = Your payout ÷ your ticket. <b>IRR</b> = annualized return over 5 years (simple: MOIC^(1/5)−1). <b>Enterprise Value</b> = Year 5 EBITDA × exit multiple. Your payout = EV × your equity stake. Equity stake = your ticket ÷ post-money valuation. The "For 3× MOIC" row shows the EV and exit multiple required to triple your investment — use it as a target benchmark. <b>Color guide:</b> green = IRR ≥ 25% / MOIC ≥ 3×, yellow = IRR ≥ 15% / MOIC ≥ 2×, red = below.
+        <b>MOIC</b> = (dividends received + exit proceeds + retained cash at exit) ÷ your ticket. <b>IRR</b> = internal rate of return of the timed investor cash flows (see Your Cash Flows). <b>Exit EV</b> = Year 5 EBITDA × exit multiple (EV/EBITDA). Exit proceeds = Exit EV × your stake; retained cash = the company's cash at the end of Year 5 (after dividends) × your stake — no debt is modelled, so equity value = EV + cash. Your stake = the two-tranche blended stake priced off the fixed deal pre-money. The "For 3× MOIC" row shows the exit EV and multiple at which the three components together reach 3× — use it as a target benchmark. <b>Color guide:</b> green = IRR ≥ 25% / MOIC ≥ 3×, yellow = IRR ≥ 15% / MOIC ≥ 2×, red = below.
       </div>
       <div class="note-box" style="margin-top:10px;font-size:11px;">
         MOIC and IRR above are for the Lead Investor's own Investor Ticket and Investor Stake — the priced round from The Deal at a Glance (the Two-Tranche Pricing blended stake, not a flat Investor Ticket ÷ Post-Money ratio), not the Contribution Register. Doctor-investors have their own cash amount and a flat cash ÷ Post-Money stake (un-tranched). Physician partners referring patients also earn Sci/Edu/Library fees during Years 1–5 (independent of equity) — this is additional return not captured here.
