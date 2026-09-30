@@ -1,3 +1,19 @@
+# CHANGES — Review follow-ups (branch `fix/review-followups`, from `origin/fix/market-size`; `_version` 59 → 60)
+
+Baseline / after: `scratch/followups-baseline.md`, `scratch/followups-after.md`. New Year-5 EBITDA €1,172K (was €1,519K); investor return 1.34× / IRR 7.4% (was 1.75× / 14.8%).
+
+- **FU-1** — agreement.html: "Channel Fee Agreement", "commission" → "channel fee", live 30% rate (Sci + Edu + Lib), frontman/grey-area note replaced; terms version 4 → 5.
+- **FU-2** — Royalty slider + "€75/brace royalty (scenario)" preset + intercompany note on investor.html; base stays €0; group view nets royalty out.
+- **FU-3** — Premium-mix ramp (`premiumMixY1/Y2/Y3` 25 / 37.5 / 50%, Y4–5 hold Y3) drives every centre's Years 2–5 unit revenue; Month-12 mix no longer inherited.
+- **FU-4** — SGK channel from Year 2 (`sgkAktif`, `sgkSharePct` 30, `sgkPrice` 17,500, `sgkTopUp` 0, `sgkDelayDays` 75): own revenue line, no channel fee, receivables in FCF working capital.
+- **FU-5** — Head office (`hoCostY1Eur` 60,000 + `hoPerCentreEur` 15,000/extra centre) in Year-1 monthly costs and, from Year 2, allocated to every centre by revenue share; "central functions for free" texts removed.
+- **FU-6** — 50% added to the Summary sensitivity table; live footnote with Istanbul orthotists / rooms / printers per year at 30% and 50%.
+- **FU-7** — "CE-marked" wording replaced (3 places); "no local substitute", patents and SRS/EUROSPINE listed in `scratch/content-flags.md`, discount-rate profile flagged, not changed.
+- **FU-8** — Report only: satellites at 50% vs 30% target share compared in `scratch/followups-after.md`; defaults unchanged.
+- **FU-9** — Report only: publishing/password options in the hand-over summary; no repo or Pages setting changed.
+
+---
+
 # CHANGES — Market size (branch `fix/market-size`, from `fix/model-integrity`; `_version` 58 → 59)
 
 Baseline / after with BEFORE-AFTER-DELTA: `scratch/market-baseline.md`, `scratch/market-after.md`. New Year-5 EBITDA €1,519K (was €2,393K); Istanbul clinic 1,806 braces/yr from Year 3.
