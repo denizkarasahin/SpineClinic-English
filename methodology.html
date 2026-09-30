@@ -116,7 +116,7 @@
           • Target braces: city market (population share × TR market) × the centre's target market share<br>
           • Net revenue: target braces × Istanbul's year-end unit net revenue (after doctor fees and materials)<br>
           • Cost: the centre's own rent, expert orthotist, intern, kitchen, supplies, utilities + fitting orthotists and support staff sized by the same capacity engine (network SGK multiplier), × 1.25 mature-year factor<br>
-          • Advertising and other HQ costs: central — not charged to satellites<br>
+          • Central functions (finance, marketing, quality, IT): a head-office cost (€60K in Year 1 + €15K per additional open centre, Multi-Year Plan sliders) allocated to every centre by revenue share<br>
           • Ramp: reaches the full-capacity result over the centre's "years to reach target" slider
         </div>
       </div>
@@ -629,7 +629,7 @@ function renderProjection() {
     '<span class="k">Target</span>      = city market (its pop. share of the TR total) × the center\'s target market-share %\n' +
     '<span class="k">UnitNet</span>     = premium-mix ramp (Y2 '+(V.premiumMixY2)+'% · Y3-5 '+(V.premiumMixY3)+'% perforated+sensor) → €'+((window._lastPremiumMix||{unitNetEur:[]}).unitNetEur.slice(1).join(' / '))+'/brace Y2-5 — same for every centre\n' +
     '<span class="k">Ramp</span>        = reaches full target over {city}RampYears yr from opening (Izmir/Ankara open Y2, Bursa/Gaziantep Y3)\n' +
-    '<span class="k">Net</span>         = Gross − the center\'s own operating cost (own rent/staff; no HQ overhead)\n\n' +
+    '<span class="k">Net</span>         = Gross − the centre\'s own operating cost (own rent/staff) − its head-office allocation (finance, marketing, quality, IT; by revenue share)\n\n' +
     '<span class="c">── FLAGSHIP TAKE FROM SATELLITES ──────────────────────────────────────────</span>\n' +
     '<span class="k">Branch (şube)</span> = 100% of the satellite P&L consolidates into the flagship (committed default)\n' +
     '<span class="k">Subsidiary</span>    = management fee ('+(V.yonetimUcretiPct!=null?V.yonetimUcretiPct:5)+'% of gross) + equity (flagshipPay%, default 65%, of net-after-fee); the rest is minority interest\n' +
