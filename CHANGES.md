@@ -1,3 +1,32 @@
+# CHANGES — Market size (branch `fix/market-size`, from `fix/model-integrity`; `_version` 58 → 59)
+
+Baseline / after with BEFORE-AFTER-DELTA: `scratch/market-baseline.md`, `scratch/market-after.md`. New Year-5 EBITDA €1,519K (was €2,393K); Istanbul clinic 1,806 braces/yr from Year 3.
+
+- **MKT-A1** — pazarTR default 20,000 (V already 20,000 since v57; slider markup said 45,000), range 10,000–40,000.
+- **MKT-A2** — pazarTR note replaced by the SOSORT/BrAIST/TÜİK/Yılmaz/Weinstein definition.
+- **MKT-A3** — "Ministry of Health data" label removed; the "107→161/100K" claim was not present anywhere.
+- **MKT-A4** — Market build-up block (kohortTR, braceablePct, bracePerCourse, otherPaedPct): computed paediatric market (18,145) next to pazarTR, >10% gap flagged, pazarTR never overwritten.
+- **MKT-B5** — Adult, post-op and fracture upside segments (toggles OFF, low/base/high, "(assumption)", sources).
+- **MKT-B6** — When ON, each is its own per-centre channel line (own SKU price, surgeon/trauma/physiatrist channel), only in separate "incl. upside" totals — never in the base, FCF, DCF or investor return.
+- **MKT-C7** — pazarIstPct note rewritten; 30.1% base / 21% sensitivity preset buttons.
+- **MKT-C8** — hedefOsteoidPay 60 → 30 (on request); Istanbul = 1,806/yr from Year 3.
+- **MKT-C9** — Satellites unchanged on NufusPay × pazarTR (Y3: Izmir 473, Ankara 547, Bursa 94, Gaziantep 83).
+- **MKT-C10** — 21 divergent `||` fallbacks for market inputs replaced by gv().
+- **MKT-D11** — B2B is its own national line on the Summary (own EBITDA, braces, share of national market, own prices); Istanbul card clinic-only.
+- **MKT-D12** — "Total braces"/share labels state clinic vs B2B; no clinic sum includes B2B.
+- **MKT-E13** — Hedef Spine 3,000/yr (1,286 clinic / 1,714 B2B), operator-estimate label.
+- **MKT-E14** — Aktif Ortez Protez row (Özgür Aydoğan) = Özgür's partner centre, 1,000/yr, excluded from competitor totals/average price.
+- **MKT-E15** — Other four competitors unchanged, "Model estimate, to be verified".
+- **MKT-E16** — Named supply total (9,460) next to pazarTR with the 15,000–25,000 note.
+- **MKT-E17** — Competitor-page shares state "vs national market (pazarTR)" or "vs named supply"; competitor data moved into shared.js (was duplicated in two pages).
+- **MKT-F18** — ortotistDkFitting 20 → 60 min (slider range to 90); Istanbul fitting orthotists Y1–5 = 1/2/2/2/2.
+- **MKT-G19** — Live sensitivity table on index.html (Istanbul target share, Istanbul share, pazarTR → Year-5 EBITDA, investor return, IRR).
+- **MKT-H20** — Market definition card + sources list on methodology.html; growth.html target-share note updated.
+- **MKT-H21** — Paediatric-cohort demographics note on methodology.html.
+- **MKT-I** — Page sweep clean (14 pages); `_version` 59; reports written.
+
+---
+
 # CHANGES — Review §4 "Model integrity" (branch `fix/model-integrity`, `_version` 57 → 58)
 
 Baseline, after-state and the full BEFORE / AFTER / DELTA table: `scratch/baseline.md`, `scratch/after.md`. Report-only content items: `scratch/content-flags.md`. No operating assumption (market share, prices, ramps, fees, salaries, rent) was changed.
