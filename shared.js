@@ -3113,23 +3113,28 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
     </div>
     <div style="font-size:10px;color:#555;margin-top:10px;">⚠ These are Year-5 capacity targets — not year-bound projections. All centers show net after their own operating costs. Each center uses its own rent/staff params; combined total matches the Multi-Year Plan page.</div>`;
 
-  // ── Stage 2 Investment & Return — Stage 2 funds the Izmir/Ankara/Bursa/
-  // Gaziantep build-outs, so its "return" is a simple annual yield against
-  // those four cities' own net revenue (Izmir/Ankara at full penetration,
-  // Bursa/Gaziantep at whatever fraction of target their ramp-years slider
-  // has reached by Year 5 — see _satRampFrac; they open a year later),
-  // not the whole network's combined total (which also includes Istanbul +
-  // B2B, none of which Stage 2 money funded).
+  // ── Stage 2 Investment & Return — Stage 2 ATTRIBUTABLE yield (review 4-A7):
+  // Year-5 profit of ONLY the centres Stage 2 actually funds (Izmir, Ankara,
+  // and Bursa/Gaziantep unless their setup is self-funded from free cash —
+  // same funding map as buildOutPlan) ÷ Stage 2 investment. Profit is the
+  // flagship-attributable part (management fee + equity share; = 100% of the
+  // centre's operating profit in Branch mode). Istanbul/B2B are excluded —
+  // Stage 1 funded them. Replaces the old "blended yield", which divided the
+  // whole network's Year-5 profit (Istanbul included) by Stage 2 alone.
   const inv2 = window._lastInvestBreakdown;
   if (inv2) {
     const stage2Eur = inv2.stage2Eur;
-    // All 5 centers' own 100% net profit, per Deniz's explicit call — Istanbul
-    // included even though its own build-out was funded by Stage 1, not
-    // Stage 2, so this yield is a blended reference ratio (whole-network
-    // profit over Stage 2's slice of total capital), not a return purely
-    // attributable to Stage 2 money. See the note below the box.
-    const satelliteNetEur = (istNet + izmirNet + ankaraNet + bursaNet + gaziantepNet) * 1000; // €K -> EUR, already net of each center's own opex
+    const _P2 = window._lastProjRows;
+    const _plan2 = (window._lastFcf && window._lastFcf.plan) || buildOutPlan();
+    const _s2Centres = _plan2.centres.filter(c => c.aktif && c.funding === 'stage2' && c.key !== 'istanbul');
+    const _s2Names = _s2Centres.map(c => c.label);
+    const satelliteNetEur = _s2Centres.reduce((sum, c) => {
+      const r = _P2 && _P2.sat[c.key];
+      return sum + (r ? ((r.fee[_n] || 0) + (r.equity[_n] || 0)) : 0);
+    }, 0) * 1000; // €K -> EUR
     const stage2YieldPct = stage2Eur > 0 ? (satelliteNetEur / stage2Eur) * 100 : 0;
+    const _s2NamesEl = document.getElementById('stage2CentresLbl');
+    if (_s2NamesEl) _s2NamesEl.textContent = _s2Names.join(' + ') || 'none';
     const fmtEurFull = v => (v < 0 ? '-€' : '€') + Math.round(Math.abs(v)).toLocaleString('en-US');
     const stage2YieldColor = stage2YieldPct >= 0 ? '#1a7a45' : '#c94f2a';
     // Mirror the same three figures into the 12-Month Summary section's own
@@ -3153,15 +3158,15 @@ function renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmir
           <div style="font-size:18px;font-weight:700;color:#D85A30;">${fmtEurFull(stage2Eur)}</div>
         </div>
         <div>
-          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">All 5 centers' operating profit (100%, Year 5 only)</div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Year-5 operating profit of Stage-2-funded centres (${_s2Names.join(' + ') || 'none'}; flagship-attributable)</div>
           <div style="font-size:18px;font-weight:700;color:#333;">${fmtEurFull(satelliteNetEur)}</div>
         </div>
         <div>
-          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Blended yield</div>
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;">Stage 2 attributable yield</div>
           <div style="font-size:18px;font-weight:700;color:${stage2YieldColor};">${stage2YieldPct.toFixed(1)}%</div>
         </div>
       </div>
-      <div style="font-size:10px;color:#888;margin-top:8px;">Blended yield = Istanbul + Izmir + Ankara + Bursa + Gaziantep's own 100% operating profit (Year 5, pre-tax, net of each center's own operating costs, before any fee/equity split) ÷ Stage 2 investment alone — deliberately whole-network profit over just Stage 2's slice of capital, at Deniz's request, so it overstates a return purely attributable to Stage 2 money (Istanbul's profit came from Stage 1's capital, not this). Not the same figure as "Combined — net consolidated" above, which is also Istanbul-inclusive but only carries the flagship's fee+equity cut of each satellite, not its full 100%.</div>
+      <div style="font-size:10px;color:#888;margin-top:8px;">Stage 2 attributable yield = Year-5 operating profit of only the centres Stage 2 funds (${_s2Names.join(', ') || 'none'}) ÷ Stage 2 investment. Profit is the flagship-attributable share — management fee + equity share in Subsidiary mode, 100% of the centre's operating profit in Branch mode (the default). Istanbul and B2B are excluded (Stage 1 funded them); Bursa/Gaziantep drop out when their setup is self-funded from free cash. Stage 2 investment includes the €${Math.round(inv2.rightsEur).toLocaleString('en-US')} rights purchase and the deferred working-capital buffer, so this is a single-year ratio on the whole tranche, not an IRR.</div>
     </div>`;
 
     // ── Total Investment & Return — Total Committed (Stage 1+2) buys the
@@ -4094,10 +4099,10 @@ function buildProjection() {
     istNet: korseM1, b2b: b2bGrossRow,
     fee: feeIncomeRow, equity: equityIncomeRow, minority: minorityRow, totals,
     sat: {
-      izmir:     { net: izmirRow,     gross: izmirGrossRow,     adet: izmirY5Adet,     fullGross: izmirY5Gelir,     fullNet: izmirFullNet,     aktif: !!V.izmirAktif,     isSube: izmirIsSube,     openYear: 2, ramp: izmirRampYears,     hedefPay: gv('izmirHedefPay'),     color:'#1D9E75' },
-      ankara:    { net: ankaraRow,    gross: ankaraGrossRow,    adet: ankaraY5Adet,    fullGross: ankaraY5Gelir,    fullNet: ankaraFullNet,    aktif: !!V.ankaraAktif,    isSube: ankaraIsSube,    openYear: 2, ramp: ankaraRampYears,    hedefPay: gv('ankaraHedefPay'),    color:'#E8963C' },
-      bursa:     { net: bursaRow,     gross: bursaGrossRow,     adet: bursaY5Adet,     fullGross: bursaY5Gelir,     fullNet: bursaFullNet,     aktif: !!V.bursaAktif,     isSube: bursaIsSube,     openYear: 3, ramp: bursaRampYears,     hedefPay: gv('bursaHedefPay'),     color:'#c94f2a' },
-      gaziantep: { net: gaziantepRow, gross: gaziantepGrossRow, adet: gaziantepY5Adet, fullGross: gaziantepY5Gelir, fullNet: gaziantepFullNet, aktif: !!V.gaziantepAktif, isSube: gaziantepIsSube, openYear: 3, ramp: gaziantepRampYears, hedefPay: gv('gaziantepHedefPay'), color:'#8a6d1a' },
+      izmir:     { net: izmirRow,     fee: izmirFeeRow,     equity: izmirEquityRow,     gross: izmirGrossRow,     adet: izmirY5Adet,     fullGross: izmirY5Gelir,     fullNet: izmirFullNet,     aktif: !!V.izmirAktif,     isSube: izmirIsSube,     openYear: 2, ramp: izmirRampYears,     hedefPay: gv('izmirHedefPay'),     color:'#1D9E75' },
+      ankara:    { net: ankaraRow,    fee: ankaraFeeRow,    equity: ankaraEquityRow,    gross: ankaraGrossRow,    adet: ankaraY5Adet,    fullGross: ankaraY5Gelir,    fullNet: ankaraFullNet,    aktif: !!V.ankaraAktif,    isSube: ankaraIsSube,    openYear: 2, ramp: ankaraRampYears,    hedefPay: gv('ankaraHedefPay'),    color:'#E8963C' },
+      bursa:     { net: bursaRow,     fee: bursaFeeRow,     equity: bursaEquityRow,     gross: bursaGrossRow,     adet: bursaY5Adet,     fullGross: bursaY5Gelir,     fullNet: bursaFullNet,     aktif: !!V.bursaAktif,     isSube: bursaIsSube,     openYear: 3, ramp: bursaRampYears,     hedefPay: gv('bursaHedefPay'),     color:'#c94f2a' },
+      gaziantep: { net: gaziantepRow, fee: gaziantepFeeRow, equity: gaziantepEquityRow, gross: gaziantepGrossRow, adet: gaziantepY5Adet, fullGross: gaziantepY5Gelir, fullNet: gaziantepFullNet, aktif: !!V.gaziantepAktif, isSube: gaziantepIsSube, openYear: 3, ramp: gaziantepRampYears, hedefPay: gv('gaziantepHedefPay'), color:'#8a6d1a' },
     },
   };
 
