@@ -63,12 +63,36 @@
         <span class="sl-note">Buttons set the discount rate to a named anchor; drag the slider for anything in between (fine-control range 10–40%).</span>
       </div>
       <div class="sl-row">
-        <label style="font-size:10px;">Base Exit Multiple (×) — used for DCF terminal value &amp; Base scenario</label>
+        <label style="font-size:10px;">Base Exit Multiple (×) — the one multiple set's Base: DCF terminal value &amp; every Base-case exit EV</label>
         <div class="sl-controls">
           <input type="range" id="s_dcfExitMult" min="4" max="20" step="0.5" value="10" oninput="svDcf('dcfExitMult',this.value)">
           <span class="sl-val" id="dcfExitMult" style="min-width:40px;">10×</span>
         </div>
         <span class="sl-note">EV/EBITDA at exit — typical healthcare clinic 6–12×; a proven platform with de-risked technology and market fit commands the higher end of that range, not the low end reserved for unproven concepts. The satellite management-fee stream is valued separately, at its own (typically richer) multiple, when the sum-of-parts toggle is on (see Deal Structure &amp; Assumptions below).</span>
+      </div>
+      <div class="sl-row">
+        <label style="font-size:10px;">Conservative case — offset below Base (−×)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_exitMultLowDelta" min="0" max="6" step="0.5" value="2" oninput="sv('exitMultLowDelta',this.value)">
+          <span class="sl-val" id="exitMultLowDelta" style="min-width:40px;">2</span>
+        </div>
+        <span class="sl-note">Conservative multiple = Base − this (never below 2×). Used by every scenario table.</span>
+      </div>
+      <div class="sl-row">
+        <label style="font-size:10px;">Optimistic case — offset above Base (+×)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_exitMultHighDelta" min="0" max="8" step="0.5" value="3" oninput="sv('exitMultHighDelta',this.value)">
+          <span class="sl-val" id="exitMultHighDelta" style="min-width:40px;">3</span>
+        </div>
+        <span class="sl-note">Optimistic multiple = Base + this.</span>
+      </div>
+      <div class="sl-row">
+        <label style="font-size:10px;">Multi-centre premium (+×, added to all three multiples)</label>
+        <div class="sl-controls">
+          <input type="range" id="s_multiCenterPremiumX" min="0" max="4" step="0.5" value="0" oninput="sv('multiCenterPremiumX',this.value)">
+          <span class="sl-val" id="multiCenterPremiumX" style="min-width:40px;">0</span>
+        </div>
+        <span class="sl-note">Explicit, default 0. Replaces the old hidden automatic +1×/+2× for multiple centres. Applies to the DCF terminal value and every exit EV.</span>
       </div>
       <div class="sl-row">
         <label style="font-size:10px;">Deal Pre-Money (€) — negotiated input</label>
@@ -149,7 +173,7 @@
 
     <!-- MOIC Sensitivity mini-table -->
     <div style="margin-top:18px;">
-      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">MOIC Sensitivity — Year 5 Exit Multiple Sweep</div>
+      <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">MOIC Sensitivity — Year 5 Exit Multiple Sweep <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— a sweep, not a scenario set; the three scenario multiples are tagged</span></div>
       <div class="tbl-wrap" style="margin-bottom:10px;">
         <table id="moicSensTable" style="min-width:340px;">
           <thead>
@@ -635,7 +659,7 @@
             <td id="vt_marj_c">—</td>
             <td id="vt_vergi_c" style="color:#c94f2a;">—</td>
             <td id="vt_netkâr_c">—</td>
-            <td>4x</td>
+            <td id="vt_mult_c">—</td>
             <td id="vt_ev_c">—</td>
             <td id="vt_not_c" data-base="Ref: US/Europe MSO 8–13x → 50–60% Turkey discount" style="font-size:11px;color:#888;">Ref: US/Europe MSO 8–13x → 50–60% Turkey discount</td>
           </tr>
@@ -646,7 +670,7 @@
             <td id="vt_marj_b">—</td>
             <td id="vt_vergi_b" style="color:#c94f2a;">—</td>
             <td id="vt_netkâr_b">—</td>
-            <td>6x</td>
+            <td id="vt_mult_b">—</td>
             <td id="vt_ev_b">—</td>
             <td id="vt_not_b" data-base="Ref: 8–13x → 30–40% discount; 2+ centers, model proven" style="font-size:11px;color:#888;">Ref: 8–13x → 30–40% discount; 2+ centers, model proven</td>
           </tr>
@@ -657,7 +681,7 @@
             <td id="vt_marj_o">—</td>
             <td id="vt_vergi_o" style="color:#c94f2a;">—</td>
             <td id="vt_netkâr_o">—</td>
-            <td>9x</td>
+            <td id="vt_mult_o">—</td>
             <td id="vt_ev_o">—</td>
             <td id="vt_not_o" data-base="Strategic acquirer (Europe/global) + clinical database → minimal discount" style="font-size:11px;color:#888;">Strategic acquirer (Europe/global) + clinical database → minimal discount</td>
           </tr>
@@ -665,7 +689,7 @@
       </table>
     </div>
     <div class="note-box" style="margin-bottom:24px;font-size:11px;line-height:1.7;">
-      <b>Multiple Methodology:</b> EV = Year 5 EBITDA × EV/EBITDA multiple. The <b>Base Exit Multiple slider</b> (The Deal at a Glance) drives all three calculations simultaneously — DCF terminal value, DCF pre-money, and the Base scenario exit EV all use the same multiple so there is one consistent Year-5 enterprise value. Conservative = Base−2×, Optimistic = Base+3×. Reference: US/Europe physical therapy chain (MSO) multiples 8–13× (Metro MSO, Confluent Health, etc.); Turkey market discount applied:
+      <b>Multiple Methodology:</b> EV = Year 5 EBITDA × EV/EBITDA multiple. There is <b>one multiple set</b> for the whole dashboard, set in The Deal at a Glance: Base = the Base Exit Multiple slider (+ the Multi-centre premium slider, default 0), Conservative = Base − the low-case offset, Optimistic = Base + the high-case offset. The same set drives this table, the Investor Return Analysis, the MOIC sweep and the Summary page's exit box; the Base multiple is also the DCF terminal-value multiple (applied there to Year-5 after-tax FCF, not EBITDA). There is no automatic multi-centre uplift. Reference: US/Europe physical therapy chain (MSO) multiples 8–13× (Metro MSO, Confluent Health, etc.); Turkey market discount applied:
       <ul style="margin:6px 0 0 16px;padding:0;">
         <li><b>Conservative (Base−2×):</b> Single clinic or early stage → 40–60% Turkey/liquidity discount</li>
         <li><b>Base (slider value):</b> Multi-center, model proven → moderate Turkey discount</li>
@@ -673,7 +697,7 @@
       </ul>
     </div>
 
-    <div class="note-box">EBITDA = Earnings Before Interest, Taxes, Depreciation and Amortization. This model carries no interest and no depreciation (capex is expensed in the year incurred rather than capitalized and depreciated), so EBITDA = operating profit + that expensed capex added back. In a steady-state year with no new capex the two coincide; in a build-out year EBITDA sits above operating profit by the year's capex. The metric ladder is: operating profit (revenue − cash opex, capex expensed) → EBITDA (that + capex add-back) → after-tax net (− 25% corporate tax). VAT: orthosis-prosthesis delivery is exempt under VAT Law 17/4-s at 0% (full exemption). Corporate tax: 25% on profit from clinic operations; no sales exemption (Technology Development Zone exemption belongs solely to Osteoid Inc.). EV is always calculated on EBITDA — the figures above are total enterprise value, not equity value. Your equity value = EV × your ownership percentage. In addition to multiples, the multiple automatically increases by +1x (2nd center) or +2x (3rd center) as the number of active centers grows.</div>
+    <div class="note-box">EBITDA = Earnings Before Interest, Taxes, Depreciation and Amortization. This model carries no interest and no depreciation (capex is expensed in the year incurred rather than capitalized and depreciated), so EBITDA = operating profit + that expensed capex added back. In a steady-state year with no new capex the two coincide; in a build-out year EBITDA sits above operating profit by the year's capex. The metric ladder is: operating profit (revenue − cash opex, capex expensed) → EBITDA (that + capex add-back) → after-tax net (− 25% corporate tax). VAT: orthosis-prosthesis delivery is exempt under VAT Law 17/4-s at 0% (full exemption). Corporate tax: 25% on profit from clinic operations; no sales exemption (Technology Development Zone exemption belongs solely to Osteoid Inc.). EV is always calculated on EBITDA — the figures above are total enterprise value, not equity value. Your equity value = EV × your ownership percentage.</div>
 
   </div>
 </div>
