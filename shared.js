@@ -23,21 +23,23 @@ document.getElementById = function(id) {
   };
 };
 
-const V = {"reklamCarpan":1,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.93,"eurKurSabit":53.93,"eurKurTarih":"2026-07-20","liveFxAktif":false,"kira":150000,"depozito":250000,"emlakci":500000,"m2":360,"tadilatM2":4500,"dekoM2":4500,"mobilya":300000,"ruhsat":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":90000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[24,25,30,35,35,44,44,52,54,63,62,69],"aktifAy":[0,0,9,2,9],"mix":[[0,100,0,0,0],[0,100,0,0,0],[0,66,0,34,0],[0,74,0,26,0],[0,75,0,25,0],[0,76,0,24,0],[0,39,0,61,0],[0,39,0,61,0],[0,38,0,62,0],[0,18,34,31,17],[0,20,33,28,19],[0,19,31,29,21]],"korseF_stdR":25000,"korseF_stdRl":40500,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":3500,"mal_sens":2075,"mal_sensDelik":4975,"feeSci_stdR":10,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdR":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdR":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":20000,"kohortTR":1275000,"braceablePct":0.45,"bracePerCourse":2.75,"otherPaedPct":15,"premiumMixY1":25,"premiumMixY2":37.5,"premiumMixY3":50,"sgkAktif":false,"sgkIncrementalPct":20,"sgkPrice":17500,"sgkTopUp":5000,"sgkDelayDays":75,"hoCostY1Eur":30000,"hoPerCentreEur":10000,"hoCapEur":80000,"adultAktif":false,"adultBraceYil":2500,"adultFiyat":25000,"postopAktif":false,"postopBraceYil":2000,"postopFiyat":25000,"fractureAktif":false,"fractureBraceYil":1700,"fractureFiyat":25000,"pazarIstPct":30.1,"hedefOsteoidPay":30,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":true,"izmirHedefPay":30,"izmirUseIst":true,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[18,19,23,26,26,33,33,39,41,47,47,52],"ankaraAktif":true,"ankaraHedefPay":30,"ankaraUseIst":true,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[19,20,24,28,28,35,35,42,43,50,50,55],"bursaAktif":true,"bursaHedefPay":30,"bursaUseIst":true,"bursaUseIstGider":true,"bursaKira":80000,"bursaOrtotistM":55000,"bursaStajyerM":25000,"bursaMutfak":18000,"bursaSarf":3000,"bursaUseIstKurulum":true,"bursaKurulumKira":120000,"bursaKurulumDepozito":200000,"bursaKurulumTadilat":4750,"bursaKurulumDeko":2000,"bursaKurulumMobilya":600000,"bursaRampa":[18,19,23,26,26,33,33,39,41,47,47,52],"gaziantepAktif":true,"gaziantepHedefPay":30,"gaziantepUseIst":true,"gaziantepUseIstGider":true,"gaziantepKira":85000,"gaziantepOrtotistM":55000,"gaziantepStajyerM":25000,"gaziantepMutfak":18000,"gaziantepSarf":3000,"gaziantepUseIstKurulum":true,"gaziantepKurulumKira":120000,"gaziantepKurulumDepozito":200000,"gaziantepKurulumTadilat":4750,"gaziantepKurulumDeko":2000,"gaziantepKurulumMobilya":600000,"gaziantepRampa":[19,20,24,28,28,35,35,42,43,50,50,55],"istInflowReductionPct":50,"horizonYears":5,"vrAktif":true,"noVrStdRl":30500,"noVrPremiumCapPct":50,"mixNoVr":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"mixB2BNoVr":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"izmirHomePct":5.2,"izmirRegionPct":6,"izmirRegionCapturePct":60,"izmirYouthWeight":1,"ankaraHomePct":6.8,"ankaraRegionPct":5,"ankaraRegionCapturePct":60,"ankaraYouthWeight":1,"bursaHomePct":3.8,"bursaRegionPct":2.1,"bursaRegionCapturePct":60,"bursaYouthWeight":1,"gaziantepHomePct":2.5,"gaziantepRegionPct":7.3,"gaziantepRegionCapturePct":60,"gaziantepYouthWeight":1,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":true,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":18,"dcfExitMult":10,"exitMultLowDelta":2,"exitMultHighDelta":3,"multiCenterPremiumX":0,"dealPreMoneyEur":10964800,"tranche1Eur":500000,"dividendPayoutPct":60,"targetMoic":2.5,"trancheStepUp":1.75,"dcfInvest":705646,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":12500,"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[0,100,0,0,0],[0,100,0,0,0],[0,64,36,0,0],[0,67,33,0,0],[0,64,36,0,0],[0,68,32,0,0],[0,23,31,31,15],[0,24,38,33,5],[0,19,34,32,15],[0,20,38,34,8],[0,22,33,28,17],[0,23,35,32,10]],"_sen_min_kira":80000,"_sen_max_kira":300000,"_sen_min_tadilatM2":2500,"_sen_max_tadilatM2":11500,"_sen_min_dekoM2":2250,"_sen_max_dekoM2":11250,"_sen_min_ortotistM":55000,"_sen_max_ortotistM":160000,"_sen_min_operatorM":90000,"_sen_max_operatorM":240000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":1260,"hedefSpine_KorseB":1680,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":900,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseK":900,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":1080,"aktifOrtez_KorseB":410,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.75,"bursaRampaOran":0.75,"bursaKurulumOran":0.75,"gaziantepRampaOran":0.8,"gaziantepKurulumOran":0.75,"operatorM":150000,"workingCapBufferEur":500000,"stage1BufferEur":200000,"kvOrani":25,"vergiDahil":true,"exitYili":5,"kisiselVergiOrani":15,"fundAy":0,"makineKatkiOran":50,"osteoidCarpan":1,"yatirimciCarpan":1,"doktorYatirim":0,"doktorCarpan":1.5,"sweatEur":80000,"sweatVestAy":48,"sweatCliffAy":12,"sweatElapsedAy":0,"sweatMaxPct":5,"sweatCarpan":1,"sweatVestedToday":true,"royaltyOffsetYil":1,"royaltyOffsetPct":0,"yonetimUcretiPct":5,"izmirFlagshipPay":65,"ankaraFlagshipPay":65,"bursaFlagshipPay":65,"gaziantepFlagshipPay":65,"izmirSubeMi":true,"ankaraSubeMi":true,"bursaSubeMi":true,"gaziantepSubeMi":true,"euLegalFaiz":5,"preOpenHireC1":0,"preOpenMktC1":0,"preOpenLegalC1":0,"preOpenOtherC1":30000,"preOpenHireC2":0,"preOpenMktC2":0,"preOpenLegalC2":0,"preOpenOtherC2":30000,"preOpenHireC3":0,"preOpenMktC3":0,"preOpenLegalC3":0,"preOpenOtherC3":45000,"preOpenHireC4":0,"preOpenMktC4":0,"preOpenLegalC4":0,"preOpenOtherC4":40000,"preOpenHireC5":0,"preOpenMktC5":0,"preOpenLegalC5":0,"preOpenOtherC5":40000,"bursaGaziantepFcfFunded":true,"nakdiSermayeAktif":true,"teknokentKapsam":false,"emisyonPrimiAktif":true,"nominalPayOrani":10,"feeStreamAyriMult":false,"feeExitMult":12,"istRampYears":3,"izmirRampYears":3,"ankaraRampYears":3,"bursaRampYears":4,"gaziantepRampYears":3,"bursaAcilisAy":3,"ankaraAcilisAy":5,"gaziantepAcilisAy":3,"workingCapBufferFcfFunded":false,"hastaPerOdaGun":6,"odaMaxPerKlinik":6,"odaM2":10,"calismaGunAy":26,"haftaSonuGunAy":9,"haftaSonuTalepPct":60,"visitPerKorse":1,"ortotistDkFitting":60,"expertDkHasta":8,"destekDkHasta":45,"staffUtilPct":75,"korsePerPrinterAy":66,"ekOrtotistM":65000,"subeSetupTRY":900000,"izmirDestekM":25000,"ankaraDestekM":25000,"bursaDestekM":25000,"gaziantepDestekM":25000,"b2bHedefAdetYil":1200,"b2bRampYears":3,"viewMode":"business","phase2Aktif":false,"_version":66};
-// ── PHASE 2 (FIN-3) ───────────────────────────────────────────────────────
-// Core plan = Istanbul (clinic + B2B), Izmir, Ankara. Bursa and Gaziantep are a
-// Phase 2 option: V.phase2Aktif (default false). V.bursaAktif / V.gaziantepAktif
-// become accessors = the centre's own toggle (kept in V._bursaOn /
-// V._gaziantepOn) AND phase2Aktif — so every one of the model's many
-// "is this centre active" reads (totals, capex, funding need, KPIs, tables)
-// excludes them while Phase 2 is off, with no second code path. Setting
-// V.bursaAktif writes the centre's own toggle. JSON/localStorage keep both
-// keys; on restore the raw key comes after the accessor, so it wins.
+const V = {"reklamCarpan":1,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.93,"eurKurSabit":53.93,"eurKurTarih":"2026-07-20","liveFxAktif":false,"kira":150000,"depozito":250000,"emlakci":500000,"m2":360,"tadilatM2":4500,"dekoM2":4500,"mobilya":300000,"ruhsat":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":90000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[24,25,30,35,35,44,44,52,54,63,62,69],"aktifAy":[0,0,9,2,9],"mix":[[0,100,0,0,0],[0,100,0,0,0],[0,66,0,34,0],[0,74,0,26,0],[0,75,0,25,0],[0,76,0,24,0],[0,39,0,61,0],[0,39,0,61,0],[0,38,0,62,0],[0,18,34,31,17],[0,20,33,28,19],[0,19,31,29,21]],"korseF_stdR":25000,"korseF_stdRl":40500,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdR":500,"mal_stdRl":600,"mal_delik":3500,"mal_sens":2075,"mal_sensDelik":4975,"feeSci_stdR":10,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdR":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdR":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":20000,"kohortTR":1275000,"braceablePct":0.45,"bracePerCourse":2.75,"otherPaedPct":15,"premiumMixY1":25,"premiumMixY2":37.5,"premiumMixY3":50,"sgkAktif":false,"sgkIncrementalPct":20,"sgkPrice":17500,"sgkTopUp":5000,"sgkDelayDays":75,"hoCostY1Eur":30000,"hoPerCentreEur":10000,"hoCapEur":80000,"adultAktif":false,"adultBraceYil":2500,"adultFiyat":25000,"postopAktif":false,"postopBraceYil":2000,"postopFiyat":25000,"fractureAktif":false,"fractureBraceYil":1700,"fractureFiyat":25000,"pazarIstPct":30.1,"hedefOsteoidPay":30,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":true,"izmirHedefPay":30,"izmirUseIst":true,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[18,19,23,26,26,33,33,39,41,47,47,52],"ankaraAktif":true,"ankaraHedefPay":30,"ankaraUseIst":true,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[19,20,24,28,28,35,35,42,43,50,50,55],"bursaAktif":true,"bursaHedefPay":30,"bursaUseIst":true,"bursaUseIstGider":true,"bursaKira":80000,"bursaOrtotistM":55000,"bursaStajyerM":25000,"bursaMutfak":18000,"bursaSarf":3000,"bursaUseIstKurulum":true,"bursaKurulumKira":120000,"bursaKurulumDepozito":200000,"bursaKurulumTadilat":4750,"bursaKurulumDeko":2000,"bursaKurulumMobilya":600000,"bursaRampa":[18,19,23,26,26,33,33,39,41,47,47,52],"gaziantepAktif":true,"gaziantepHedefPay":30,"gaziantepUseIst":true,"gaziantepUseIstGider":true,"gaziantepKira":85000,"gaziantepOrtotistM":55000,"gaziantepStajyerM":25000,"gaziantepMutfak":18000,"gaziantepSarf":3000,"gaziantepUseIstKurulum":true,"gaziantepKurulumKira":120000,"gaziantepKurulumDepozito":200000,"gaziantepKurulumTadilat":4750,"gaziantepKurulumDeko":2000,"gaziantepKurulumMobilya":600000,"gaziantepRampa":[19,20,24,28,28,35,35,42,43,50,50,55],"istInflowReductionPct":50,"horizonYears":5,"vrAktif":true,"noVrStdRl":30500,"noVrPremiumCapPct":50,"mixNoVr":[[50,50,0,0,0],[50,50,0,0,0],[45,36,0,19,0],[53,35,0,12,0],[53,36,0,11,0],[52,37,0,11,0],[75,10,0,15,0],[75,10,0,15,0],[74,10,0,16,0],[43,10,19,17,11],[40,12,20,17,11],[38,12,20,18,12]],"mixB2BNoVr":[[64,36,0,0,0],[66,34,0,0,0],[66,22,12,0,0],[62,25,13,0,0],[58,27,15,0,0],[52,33,15,0,0],[56,10,14,14,6],[56,10,16,14,4],[54,9,16,15,6],[52,10,18,16,4],[50,12,16,13,9],[50,11,18,16,5]],"izmirHomePct":5.2,"izmirRegionPct":6,"izmirRegionCapturePct":60,"izmirYouthWeight":1,"ankaraHomePct":6.8,"ankaraRegionPct":5,"ankaraRegionCapturePct":60,"ankaraYouthWeight":1,"bursaHomePct":3.8,"bursaRegionPct":2.1,"bursaRegionCapturePct":60,"bursaYouthWeight":1,"gaziantepHomePct":2.5,"gaziantepRegionPct":7.3,"gaziantepRegionCapturePct":60,"gaziantepYouthWeight":1,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":true,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":18,"dcfExitMult":10,"exitMultLowDelta":2,"exitMultHighDelta":3,"multiCenterPremiumX":0,"dealPreMoneyEur":10964800,"tranche1Eur":500000,"dividendPayoutPct":60,"targetMoic":2.5,"trancheStepUp":1.75,"dcfInvest":705646,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdR":12500,"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[0,100,0,0,0],[0,100,0,0,0],[0,64,36,0,0],[0,67,33,0,0],[0,64,36,0,0],[0,68,32,0,0],[0,23,31,31,15],[0,24,38,33,5],[0,19,34,32,15],[0,20,38,34,8],[0,22,33,28,17],[0,23,35,32,10]],"_sen_min_kira":80000,"_sen_max_kira":300000,"_sen_min_tadilatM2":2500,"_sen_max_tadilatM2":11500,"_sen_min_dekoM2":2250,"_sen_max_dekoM2":11250,"_sen_min_ortotistM":55000,"_sen_max_ortotistM":160000,"_sen_min_operatorM":90000,"_sen_max_operatorM":240000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":1260,"hedefSpine_KorseB":1680,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":900,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseK":900,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":1080,"aktifOrtez_KorseB":410,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.75,"bursaRampaOran":0.75,"bursaKurulumOran":0.75,"gaziantepRampaOran":0.8,"gaziantepKurulumOran":0.75,"operatorM":150000,"workingCapBufferEur":500000,"stage1BufferEur":200000,"kvOrani":25,"vergiDahil":true,"exitYili":5,"kisiselVergiOrani":15,"fundAy":0,"makineKatkiOran":50,"osteoidCarpan":1,"yatirimciCarpan":1,"doktorYatirim":0,"doktorCarpan":1.5,"sweatEur":80000,"sweatVestAy":48,"sweatCliffAy":12,"sweatElapsedAy":0,"sweatMaxPct":5,"sweatCarpan":1,"sweatVestedToday":true,"royaltyOffsetYil":1,"royaltyOffsetPct":0,"yonetimUcretiPct":5,"izmirFlagshipPay":65,"ankaraFlagshipPay":65,"bursaFlagshipPay":65,"gaziantepFlagshipPay":65,"izmirSubeMi":true,"ankaraSubeMi":true,"bursaSubeMi":true,"gaziantepSubeMi":true,"euLegalFaiz":5,"preOpenHireC1":0,"preOpenMktC1":0,"preOpenLegalC1":0,"preOpenOtherC1":30000,"preOpenHireC2":0,"preOpenMktC2":0,"preOpenLegalC2":0,"preOpenOtherC2":30000,"preOpenHireC3":0,"preOpenMktC3":0,"preOpenLegalC3":0,"preOpenOtherC3":45000,"preOpenHireC4":0,"preOpenMktC4":0,"preOpenLegalC4":0,"preOpenOtherC4":40000,"preOpenHireC5":0,"preOpenMktC5":0,"preOpenLegalC5":0,"preOpenOtherC5":40000,"bursaGaziantepFcfFunded":true,"nakdiSermayeAktif":true,"teknokentKapsam":false,"emisyonPrimiAktif":true,"nominalPayOrani":10,"feeStreamAyriMult":false,"feeExitMult":12,"istRampYears":3,"izmirRampYears":3,"ankaraRampYears":3,"bursaRampYears":4,"gaziantepRampYears":3,"bursaAcilisAy":3,"ankaraAcilisAy":5,"gaziantepAcilisAy":3,"workingCapBufferFcfFunded":false,"hastaPerOdaGun":6,"odaMaxPerKlinik":6,"odaM2":10,"calismaGunAy":26,"haftaSonuGunAy":9,"haftaSonuTalepPct":60,"visitPerKorse":1,"ortotistDkFitting":60,"expertDkHasta":8,"destekDkHasta":45,"staffUtilPct":75,"korsePerPrinterAy":66,"ekOrtotistM":65000,"subeSetupTRY":900000,"izmirDestekM":25000,"ankaraDestekM":25000,"bursaDestekM":25000,"gaziantepDestekM":25000,"b2bHedefAdetYil":1200,"b2bRampYears":3,"viewMode":"business","phase2Aktif":false,"phase3Aktif":false,"_version":66};
+// ── PHASE 2 / PHASE 3 (FIN-3, P2-1) ────────────────────────────────────────
+// Core plan = Istanbul (clinic + B2B), Izmir, Ankara. Gaziantep is the Phase 2
+// option (V.phase2Aktif, default false) and Bursa the Phase 3 option
+// (V.phase3Aktif, default false). V.gaziantepAktif / V.bursaAktif become
+// accessors = the centre's own toggle (kept in V._gaziantepOn / V._bursaOn)
+// AND its phase switch — so every one of the model's many "is this centre
+// active" reads (totals, capex, funding need, KPIs, tables) excludes it while
+// its phase is off, with no second code path. Setting V.{centre}Aktif writes
+// the centre's own toggle. JSON/localStorage keep both keys; on restore the
+// raw key comes after the accessor, so it wins.
+const _PHASE_KEY = { gaziantep: 'phase2Aktif', bursa: 'phase3Aktif' };
 ['bursa', 'gaziantep'].forEach(s => {
-  const raw = '_' + s + 'On';
+  const raw = '_' + s + 'On', pk = _PHASE_KEY[s];
   V[raw] = V[s + 'Aktif'] !== false;
   Object.defineProperty(V, s + 'Aktif', { enumerable: true, configurable: true,
-    get() { return this[raw] === true && this.phase2Aktif === true; },
+    get() { return this[raw] === true && this[pk] === true; },
     set(v) { this[raw] = !!v; } });
 });
 
@@ -1852,11 +1854,11 @@ function renderBusinessCase() {
   el.innerHTML = h;
 }
 
-// ── PHASE 2 OPTION (FIN-3) — Bursa + Gaziantep, Summary and Multi-Year Plan ─
-// One live scenario run in the opposite Phase 2 state gives both views: the
-// core plan and core + Phase 2, the Phase 2 centres' own setup / EBITDA /
-// payback, and the effect on network totals. Guarded like the sensitivity
-// tables; the committed state is restored afterwards.
+// ── PHASE 2 / PHASE 3 OPTIONS (FIN-3, P2-1) — Summary and Multi-Year Plan ──
+// Phase 2 = Gaziantep (V.phase2Aktif), Phase 3 = Bursa (V.phase3Aktif). Live
+// scenario runs (guarded like the sensitivity tables, committed state restored
+// afterwards) give each phase block the centre's own setup / EBITDA / payback /
+// mature year and its effect on the network at both horizons.
 function svHorizon(n) {
   V.horizonYears = +n === 7 ? 7 : 5;
   recalc();
@@ -1869,11 +1871,11 @@ function _refreshHorizonUi() {
     b.style.background = on ? '#534AB7' : '#fff'; b.style.color = on ? '#fff' : '#534AB7';
   });
 }
-function svPhase2(checked) {
-  V.phase2Aktif = !!checked;
-  ['bursa', 'gaziantep'].forEach(s => {
-    if (V[s + 'Aktif'] && _origGetById(s + 'RampaChartCanvas')) initMerkezRampa(s);
-  });
+function svPhase2(checked) { _svPhase('phase2Aktif', 'gaziantep', checked); }
+function svPhase3(checked) { _svPhase('phase3Aktif', 'bursa', checked); }
+function _svPhase(key, s, checked) {
+  V[key] = !!checked;
+  if (V[s + 'Aktif'] && _origGetById(s + 'RampaChartCanvas')) initMerkezRampa(s);
   recalc();
   if (typeof buildProjection === 'function') buildProjection();
   localStorage.setItem('osteoid_V', JSON.stringify(V));
@@ -1881,75 +1883,83 @@ function svPhase2(checked) {
 function _refreshPhase2Ui() {
   _refreshHorizonUi();
   _refreshVrUi();
-  const on = V.phase2Aktif === true;
-  document.querySelectorAll('.phase2Toggle').forEach(cb => { cb.checked = on; });
+  const on = { gaziantep: V.phase2Aktif === true, bursa: V.phase3Aktif === true };
+  document.querySelectorAll('.phase2Toggle').forEach(cb => { cb.checked = on.gaziantep; });
+  document.querySelectorAll('.phase3Toggle').forEach(cb => { cb.checked = on.bursa; });
   ['bursa', 'gaziantep'].forEach(s => {
     const cb = _origGetById(s + 'Toggle');
-    if (cb) { cb.checked = !!V[s + 'Aktif']; cb.disabled = !on; }
+    if (cb) { cb.checked = !!V[s + 'Aktif']; cb.disabled = !on[s]; }
     ['RampaWrap', 'HedefWrap'].forEach(w => { const e = _origGetById(s + w); if (e) e.style.display = V[s + 'Aktif'] ? '' : 'none'; });
   });
   const n = _origGetById('phase2CardNote');
-  if (n) n.style.display = on ? 'none' : '';
+  if (n) {
+    const off = [!on.gaziantep ? 'Phase 2 (Gaziantep)' : null, !on.bursa ? 'Phase 3 (Bursa)' : null].filter(Boolean);
+    n.style.display = off.length ? '' : 'none';
+    n.textContent = off.join(' and ') + (off.length > 1 ? ' are off — the centre toggles below take' : ' is off — the centre toggle below takes') + ' effect once the phase is switched on above.';
+  }
 }
 function _p2Snap() {
   const B = window._lastBusinessCase;
   if (!B) return null;
-  const pick = k => { const c = B.centres.find(x => x.key === k); return c && c.aktif ? { setupK: c.setupK, open: c.openMonth, ebitda: c.ebitda.slice(), pay: c.paybackMonths, payM: c.paybackMonth, cumY5: c.cumAtEnd, rosc: c.rosc, mature: c.mature } : null; };
-  return { rev5: B.tot.rev[4], e5: B.tot.ebitda[4], cum: B.cumFcf[B.n - 1], n: B.n, mat: B.matureEbitdaK, peak: B.peakNeedK, setup: B.totalSetupK, bursa: pick('bursa'), gaziantep: pick('gaziantep') };
+  const pick = k => { const c = B.centres.find(x => x.key === k); return c && c.aktif ? { setupK: c.setupK, open: c.openMonth, ebitda: c.ebitda.slice(), pay: c.paybackMonths, payM: c.paybackMonth, cumEnd: c.cumAtEnd, rosc: c.rosc, mature: c.mature } : null; };
+  return { rev5: B.tot.rev[4], e5: B.tot.ebitda[4], mat: B.matureEbitdaK, cum5: B.cumFcf[4], cum7: B.n >= 7 ? B.cumFcf[6] : null, n: B.n, peak: B.peakNeedK, setup: B.totalSetupK, bursa: pick('bursa'), gaziantep: pick('gaziantep') };
 }
+// Three full model runs at a 7-year horizon — core; core + Phase 2 (Gaziantep);
+// core + Phase 2 + Phase 3 (Bursa) — give every block both horizons at once:
+// Years 1-5 of a 7-year run are identical to the 5-year run. Each block shows
+// the centre's own setup / EBITDA / payback / mature year and its effect on
+// the network = whole network with it minus without it (head-office add-on
+// step, Istanbul's share reduction for the region, capacity and tax
+// included). Phase 3 is measured on top of Phase 2.
 function renderPhase2Option() {
   _refreshPhase2Ui();
-  const els = ['phase2Opt', 'phase2OptG'].map(id => _origGetById(id)).filter(Boolean);
-  if (!els.length || window._inScenario) return;
-  const on = V.phase2Aktif === true;
-  const cur = _p2Snap();
-  let alt = null;
-  const wo = {}, raw = { bursa: V._bursaOn, gaziantep: V._gaziantepOn };
+  const IDS = { 2: ['phase2Opt', 'phase2OptG'], 3: ['phase3Opt', 'phase3OptG'] };
+  const els = n => IDS[n].map(id => _origGetById(id)).filter(Boolean);
+  if ((!els(2).length && !els(3).length) || window._inScenario) return;
+  const st = { p2: V.phase2Aktif === true, p3: V.phase3Aktif === true, hz: V.horizonYears };
+  const S = {};
   window._inScenario = true;
   try {
-    V.phase2Aktif = !on; recalc(); alt = _p2Snap();
-    // Decision view (CM-4): the full Phase 2 network without one centre at a time
-    ['bursa', 'gaziantep'].forEach(c => {
-      if (!raw[c]) return;
-      V.phase2Aktif = true; V['_' + c + 'On'] = false; recalc(); wo[c] = _p2Snap(); V['_' + c + 'On'] = raw[c];
-    });
-  } finally { V._bursaOn = raw.bursa; V._gaziantepOn = raw.gaziantep; V.phase2Aktif = on; recalc(); window._inScenario = false; }
+    V.horizonYears = 7;
+    [['core', false, false], ['p2', true, false], ['p3', true, true]].forEach(([k, a, b]) => { V.phase2Aktif = a; V.phase3Aktif = b; recalc(); S[k] = _p2Snap(); });
+  } finally { V.phase2Aktif = st.p2; V.phase3Aktif = st.p3; V.horizonYears = st.hz; recalc(); window._inScenario = false; }
   _refreshPhase2Ui();
-  if (!cur || !alt) return;
-  const core = on ? alt : cur, full = on ? cur : alt;
+  if (!S.core || !S.p2 || !S.p3) return;
   const kK = v => v === null || v === undefined ? '—' : (v < 0 ? '−€' : '€') + Math.abs(Math.round(v)).toLocaleString('en-US') + 'K';
   const dK = v => (v > 0 ? '+' : v < 0 ? '−' : '') + '€' + Math.abs(Math.round(v)).toLocaleString('en-US') + 'K';
   const R = 'style="text-align:right;"';
-  const cs = [['Bursa', full.bursa], ['Gaziantep', full.gaziantep]].filter(c => c[1]);
-  let h = '';
-  if (!cs.length) h += '<div style="font-size:11px;color:#888;">Both Phase 2 centres are switched off on their own toggles (Multi-Year Plan, Year 3 card) — nothing to add.</div>';
-  else {
-    const row = (lbl, f) => '<tr><td style="text-align:left;">' + lbl + '</td>' + cs.map(c => '<td ' + R + '>' + f(c[1]) + '</td>').join('') + '</tr>';
-    h += '<div class="tbl-wrap"><table><thead><tr><th style="text-align:left;">Phase 2 centre</th>' + cs.map(c => '<th ' + R + '>' + c[0] + '</th>').join('') + '</tr></thead><tbody>'
-      + row('Setup capex (fit-out + equipment + pre-opening)', c => kK(c.setupK))
-      + row('Opens', c => _ym(c.open))
-      + row('EBITDA Year 3 (part year) / Year 4 / Year 5', c => kK(c.ebitda[2]) + ' / ' + kK(c.ebitda[3]) + ' / ' + kK(c.ebitda[4]))
-      + row('Payback from opening', c => c.pay ? '<b>' + c.pay + ' months</b> · ' + _ym(c.payM) : '<b>not within Year ' + full.n + '</b> (cumulative ' + kK(c.cumY5) + ' at Year ' + full.n + ')')
-      + row('<b>Mature-year EBITDA</b>', c => '<b>' + kK(c.mature && c.mature.ebitda) + '</b>' + (c.mature && c.mature.maturityYear ? ' (Year ' + c.mature.maturityYear + ')' : ''))
-      + row('Payback at maturity (setup ÷ mature EBITDA)', c => c.mature && c.mature.ebitda > 0 ? c.mature.paybackYears.toFixed(1) + ' yrs' : 'never (EBITDA ≤ 0)')
-      + row('Return on setup capital (Y3 EBITDA ÷ setup)', c => c.rosc === null ? '—' : Math.round(c.rosc) + '%')
-      + '</tbody></table></div>';
-  }
-  const nr = (lbl, a, b) => '<tr><td style="text-align:left;">' + lbl + '</td><td ' + R + '>' + kK(a) + '</td><td ' + R + '>' + kK(b) + '</td><td ' + R + '><b>' + dK(b - a) + '</b></td></tr>';
-  h += '<div class="tbl-wrap" style="margin-top:10px;"><table><thead><tr><th style="text-align:left;">Network</th><th ' + R + '>Core plan' + (on ? '' : ' <b>(current)</b>') + '</th><th ' + R + '>Core + Phase 2' + (on ? ' <b>(current)</b>' : '') + '</th><th ' + R + '>Effect of Phase 2</th></tr></thead><tbody>'
-    + nr('Year-5 revenue', core.rev5, full.rev5) + nr('Year-5 EBITDA', core.e5, full.e5) + nr('Mature-year EBITDA (all open centres)', core.mat, full.mat) + nr('Cumulative FCF, Years 1–' + full.n, core.cum, full.cum)
-    + nr('Peak funding need', core.peak, full.peak) + nr('Setup capex, all centres', core.setup, full.setup)
-    + '</tbody></table></div>'
-    + (Object.keys(wo).length ? (() => {
-        const ks = Object.keys(wo), lbl = c => c.charAt(0).toUpperCase() + c.slice(1);
-        const ir = (l, f) => '<tr><td style="text-align:left;">' + l + '</td>' + ks.map(c => { const d = f(full) - f(wo[c]); return '<td style="text-align:right;color:' + (d >= 0 ? '#1a7a45' : '#c0392b') + ';"><b>' + dK(d) + '</b></td>'; }).join('') + '</tr>';
-        return '<div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin:12px 0 6px;">Decision view — incremental to the network <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">(network with vs without the centre, the other Phase 2 centre included)</span></div>'
-          + '<div class="tbl-wrap"><table><thead><tr><th style="text-align:left;">Incremental to the network</th>' + ks.map(c => '<th ' + R + '>' + lbl(c) + '</th>').join('') + '</tr></thead><tbody>'
-          + ir('Year-5 EBITDA', x => x.e5) + ir('Cumulative FCF, Years 1–' + full.n, x => x.cum) + ir('Mature-year EBITDA', x => x.mat)
-          + '</tbody></table></div><div style="font-size:10px;color:#888;margin-top:4px;">Each figure = the whole network with the centre minus the whole network without it — so it includes the head-office add-on step, the reduction in Istanbul\'s share for that region and the tax effect, not only the centre\'s own result.</div>';
-      })() : '')
-    + '<div style="font-size:10px;color:#888;margin-top:4px;">Live: the other column is a full model run with Phase 2 switched ' + (on ? 'off' : 'on') + ' (head-office add-on, capacity and tax included). ' + (on ? 'Phase 2 is <b>on</b>: every total, capex, funding-need and KPI figure on the dashboard includes Bursa and Gaziantep.' : 'Phase 2 is <b>off</b> (default): every total, capex, funding-need and KPI figure on the dashboard is the core plan — Istanbul (clinic + B2B), Izmir, Ankara.') + ' ⚠ Scenario outputs, not forecasts.</div>';
-  els.forEach(el => { el.innerHTML = h; });
+  const cur = st.p2 && st.p3 ? 'p3' : st.p2 ? 'p2' : !st.p3 ? 'core' : 'p3only';
+  const curLbl = { core: 'core plan', p2: 'core + Phase 2', p3: 'core + Phase 2 + Phase 3', p3only: 'core + Phase 3 without Phase 2' }[cur];
+  const block = (n, key, name, base, withIt, baseLbl, withLbl, baseKey, withKey) => {
+    const c = withIt[key];
+    let h = '';
+    if (!c) h += '<div style="font-size:11px;color:#888;">' + name + ' is switched off on its own toggle (Multi-Year Plan, Year 3 card) — nothing to add.</div>';
+    else {
+      const row = (l, v) => '<tr><td style="text-align:left;">' + l + '</td><td ' + R + '>' + v + '</td></tr>';
+      const M = c.mature || {};
+      h += '<div class="tbl-wrap"><table><thead><tr><th style="text-align:left;">Phase ' + n + ' centre</th><th ' + R + '>' + name + '</th></tr></thead><tbody>'
+        + row('Setup capex (fit-out + equipment + pre-opening)', kK(c.setupK))
+        + row('Opens', _ym(c.open))
+        + row('EBITDA Year 3 (part year) / Year 4 / Year 5', kK(c.ebitda[2]) + ' / ' + kK(c.ebitda[3]) + ' / ' + kK(c.ebitda[4]))
+        + row('Payback from opening (7-year horizon)', c.pay ? '<b>' + c.pay + ' months</b> · ' + _ym(c.payM) : '<b>not within Year 7</b> (cumulative ' + kK(c.cumEnd) + ' at Year 7)')
+        + row('<b>Mature-year EBITDA</b>', '<b>' + kK(M.ebitda) + '</b>' + (M.maturityYear ? ' (Year ' + M.maturityYear + ')' : ''))
+        + row('Payback at maturity (setup ÷ mature EBITDA)', M.ebitda > 0 ? M.paybackYears.toFixed(1) + ' yrs' : 'never (EBITDA ≤ 0)')
+        + row('Return on setup capital (Y3 EBITDA ÷ setup)', c.rosc === null || c.rosc === undefined ? '—' : Math.round(c.rosc) + '%')
+        + '</tbody></table></div>';
+    }
+    const mark = k => cur === k ? ' <b>(current)</b>' : '';
+    const nr = (l, a, b) => { const d = b - a; return '<tr><td style="text-align:left;">' + l + '</td><td ' + R + '>' + kK(a) + '</td><td ' + R + '>' + kK(b) + '</td><td style="text-align:right;color:' + (d >= 0 ? '#1a7a45' : '#c0392b') + ';"><b>' + dK(d) + '</b></td></tr>'; };
+    h += '<div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin:12px 0 6px;">Effect on the network <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">(' + withLbl + ' minus ' + baseLbl.toLowerCase() + ', 5- and 7-year horizon)</span></div>'
+      + '<div class="tbl-wrap"><table><thead><tr><th style="text-align:left;">Network</th><th ' + R + '>' + baseLbl + mark(baseKey) + '</th><th ' + R + '>' + withLbl + mark(withKey) + '</th><th ' + R + '>Effect of Phase ' + n + '</th></tr></thead><tbody>'
+      + nr('Year-5 revenue', base.rev5, withIt.rev5) + nr('Year-5 EBITDA', base.e5, withIt.e5) + nr('Mature-year EBITDA (all open centres)', base.mat, withIt.mat)
+      + nr('Cumulative FCF, Years 1–5', base.cum5, withIt.cum5) + nr('Cumulative FCF, Years 1–7', base.cum7, withIt.cum7)
+      + nr('Peak funding need', base.peak, withIt.peak) + nr('Setup capex, all centres', base.setup, withIt.setup)
+      + '</tbody></table></div>'
+      + '<div style="font-size:10px;color:#888;margin-top:4px;">Live: full model runs (core, core + Phase 2, core + Phase 2 + Phase 3) at a 7-year horizon — Years 1–5 are identical to the 5-year run, so both horizons come from the same runs. Effect = the whole network with ' + name + ' minus the whole network without it: head-office add-on step, the reduction in Istanbul\'s share for that region, capacity and tax included — not only the centre\'s own result.' + (n === 3 ? ' Phase 3 is measured on top of Phase 2 (core + Gaziantep).' : '') + ' Current plan: <b>' + curLbl + '</b> — every total, capex, funding-need and KPI figure on the dashboard is that plan at ' + (V.horizonYears === 7 ? 7 : 5) + ' years. ⚠ Scenario outputs, not forecasts.</div>';
+    return h;
+  };
+  els(2).forEach(el => { el.innerHTML = block(2, 'gaziantep', 'Gaziantep', S.core, S.p2, 'Core plan', 'Core + Phase 2', 'core', 'p2'); });
+  els(3).forEach(el => { el.innerHTML = block(3, 'bursa', 'Bursa', S.p2, S.p3, 'Core + Phase 2', 'Core + Phase 2 + Phase 3', 'p2', 'p3'); });
 }
 
 // ── Central costs already booked (BC-5) — read live from V / the Year-1 engine.

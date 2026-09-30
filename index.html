@@ -17,19 +17,27 @@
 <div class="section biz-only">
   <div class="section-header open" onclick="tog(this)"><h2>Business Case — Is This a Good Business?</h2><span class="tog">▾</span></div>
   <div class="section-body" style="display:block;">
-    <div class="note-box" style="margin-bottom:14px;">Volumes, unit economics, P&amp;L, cash, capex and payback for the network and for each centre — all read live from the model at the current settings. <b>Core plan</b>: Istanbul (clinic + B2B), Izmir and Ankara; Bursa and Gaziantep are a Phase 2 option (below), included only when switched on. ⚠ Every value is a scenario output from adjustable starting points, not a forecast.</div>
+    <div class="note-box" style="margin-bottom:14px;">Volumes, unit economics, P&amp;L, cash, capex and payback for the network and for each centre — all read live from the model at the current settings. <b>Core plan</b>: Istanbul (clinic + B2B), Izmir and Ankara; Gaziantep is the Phase 2 option and Bursa the Phase 3 option (below), each included only when switched on. ⚠ Every value is a scenario output from adjustable starting points, not a forecast.</div>
     <div style="border:1px solid #534AB744;border-left:3px solid #534AB7;border-radius:6px;padding:8px 12px;margin-bottom:14px;background:#f9f8ff;font-size:11px;color:#333;line-height:1.6;">Pricing and product mix assume the VR-guided design and fitting offer (launched September 2026). The no-VR case shows the business without the VR premium. <label style="display:inline-flex;align-items:center;gap:6px;font-weight:700;color:#534AB7;cursor:pointer;margin-left:6px;"><input type="checkbox" class="vrToggle" onchange="svVr(this.checked)" style="width:13px;height:13px;accent-color:#534AB7;"> VR effect on</label> <span class="vrState" style="font-size:10px;">—</span> <span style="color:#888;">(no-VR price and cap: Market page)</span></div>
     <div id="bcOverlap" style="margin-bottom:12px;">—</div>
     <div id="bcKpis"><div style="text-align:center;padding:24px;color:#aaa;font-size:12px;">Loading projection…</div></div>
   </div>
 </div>
 
-<!-- PHASE 2 OPTION (FIN-3) -->
+<!-- PHASE 2 (Gaziantep) / PHASE 3 (Bursa) OPTIONS (FIN-3, P2-1) -->
 <div class="section">
-  <div class="section-header open" onclick="tog(this)"><h2>Phase 2 Option — Bursa &amp; Gaziantep</h2><span class="tog">▾</span></div>
+  <div class="section-header open" onclick="tog(this)"><h2>Phase 2 — Gaziantep</h2><span class="tog">▾</span></div>
   <div class="section-body" style="display:block;">
-    <label style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:#c94f2a;cursor:pointer;margin-bottom:10px;"><input type="checkbox" class="phase2Toggle" onchange="svPhase2(this.checked)" style="width:14px;height:14px;accent-color:#c94f2a;"> Include Phase 2 (Bursa + Gaziantep) in the plan — all totals, capex, funding need and KPIs</label>
+    <label style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:#8a6d1a;cursor:pointer;margin-bottom:10px;"><input type="checkbox" class="phase2Toggle" onchange="svPhase2(this.checked)" style="width:14px;height:14px;accent-color:#8a6d1a;"> Include Phase 2 (Gaziantep) in the plan — all totals, capex, funding need and KPIs</label>
     <div id="phase2Opt"><div style="text-align:center;padding:16px;color:#aaa;font-size:12px;">Loading projection…</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header open" onclick="tog(this)"><h2>Phase 3 — Bursa</h2><span class="tog">▾</span></div>
+  <div class="section-body" style="display:block;">
+    <label style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:#c94f2a;cursor:pointer;margin-bottom:10px;"><input type="checkbox" class="phase3Toggle" onchange="svPhase3(this.checked)" style="width:14px;height:14px;accent-color:#c94f2a;"> Include Phase 3 (Bursa) in the plan — all totals, capex, funding need and KPIs</label>
+    <div id="phase3Opt"><div style="text-align:center;padding:16px;color:#aaa;font-size:12px;">Loading projection…</div></div>
   </div>
 </div>
 
