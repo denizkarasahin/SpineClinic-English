@@ -1,3 +1,7 @@
+# CHANGES — Defaults from the 2026-10-01 snapshot (`_version` 67 → 68)
+
+- **DEF-3** — Committed defaults from Deniz's osteoid_2026-10-01 snapshot: clinic mix Months 7–9 Std-Reported / Sensor 60/40, 65/35, 61/39 (was 39/61, 39/61, 38/62); the three upside segments (adult / degenerative, post-op TLSO, fracture TLSO) on by default. Everything else in the snapshot already matched.
+
 # CHANGES — Std-No Report removed (`_version` 66 → 67)
 
 - **SKU-1** — The Standard — No Report SKU is gone from the product range: its V keys (`korseF_stdR`, `korseFB2B_stdR`, `mal_stdR`, `feeSci/Edu/Lib_stdR`), its Market-page card, its column in every mix table, chart and monthly table (Market, Brace Ramp, Methodology, Formula Validation) and its terms in the Year-1 engine, the B2B line and the Years 2–5 standard pool. Product arrays are now 4 wide (Std-Reported, Perforated, Sensor, Sensor + Perforated); Std-Reported is the base product, always available from Month 1. The VR mix already had it at 0%, so the committed figures are unchanged (core: Y5 EBITDA €1,368K, cumulative FCF €3,076K, peak €235K). The no-VR mix (version-62 arrays) had it at up to 75%: that share moved to Std-Reported, so the no-VR case is now Y5 EBITDA €1,152K (was €1,054K), cumulative FCF 5 years €2,441K (was €2,159K), peak €291K (was €332K). Upside segments now use Std-Reported's channel fee and material; Osteoid's competitor-chart B2B price is the Std-Reported B2B price.
