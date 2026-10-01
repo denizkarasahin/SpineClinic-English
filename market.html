@@ -366,21 +366,27 @@
     </div>
 
     <hr class="divider">
-    <!-- Upgrade take-rate (UP-M1) -->
-    <div style="font-size:11px;font-weight:700;color:#534AB7;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Upgrade Take-Rate</div>
+    <!-- Upgrade path (SR-1) -->
+    <div style="font-size:11px;font-weight:700;color:#534AB7;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Upgrade Path <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— share of braces sold with at least one upgrade on the standard brace: 0% before the first month, linear to Month 12, linear through Year 2, long-run from Year 3</span></div>
     <div class="sl-grid">
-      <div class="sl-row"><label>Clinic — % of braces sold with at least one upgrade, Month 10 onward and cap on Years 2–5</label><div class="sl-controls"><input type="range" id="s_upgradeTakeRate" min="0" max="90" step="1" value="81" oninput="sv('upgradeTakeRate',this.value)"><span class="sl-val" id="upgradeTakeRate" style="min-width:40px;">81</span></div></div>
-      <div class="sl-row"><label>B2B — % of braces sold with at least one upgrade, Month 10 onward</label><div class="sl-controls"><input type="range" id="s_upgradeTakeRateB2B" min="0" max="90" step="1" value="78.3" oninput="sv('upgradeTakeRateB2B',this.value)"><span class="sl-val" id="upgradeTakeRateB2B" style="min-width:40px;">78,3</span></div></div>
+      <div class="sl-row"><label>Clinic — first month with upgrades (month)</label><div class="sl-controls"><input type="range" id="s_upgradeStartMonth" min="1" max="12" step="1" value="3" oninput="sv('upgradeStartMonth',this.value)"><span class="sl-val" id="upgradeStartMonth" style="min-width:40px;">3</span></div></div>
+      <div class="sl-row"><label>Clinic — upgrade share at Month 12 (%)</label><div class="sl-controls"><input type="range" id="s_upgradeM12Pct" min="0" max="90" step="1" value="30" oninput="sv('upgradeM12Pct',this.value)"><span class="sl-val" id="upgradeM12Pct" style="min-width:40px;">30</span></div></div>
+      <div class="sl-row"><label>Clinic — upgrade share at the end of Year 2 (%)</label><div class="sl-controls"><input type="range" id="s_upgradeY2EndPct" min="0" max="90" step="1" value="45" oninput="sv('upgradeY2EndPct',this.value)"><span class="sl-val" id="upgradeY2EndPct" style="min-width:40px;">45</span></div></div>
+      <div class="sl-row"><label>Clinic — long-run upgrade share, Year 3 onward (%)</label><div class="sl-controls"><input type="range" id="s_upgradeLongRunPct" min="0" max="90" step="1" value="50" oninput="sv('upgradeLongRunPct',this.value)"><span class="sl-val" id="upgradeLongRunPct" style="min-width:40px;">50</span></div></div>
+      <div class="sl-row"><label>B2B — first month with upgrades (month)</label><div class="sl-controls"><input type="range" id="s_upgradeStartMonthB2B" min="1" max="12" step="1" value="3" oninput="sv('upgradeStartMonthB2B',this.value)"><span class="sl-val" id="upgradeStartMonthB2B" style="min-width:40px;">3</span></div></div>
+      <div class="sl-row"><label>B2B — upgrade share at Month 12 (%)</label><div class="sl-controls"><input type="range" id="s_upgradeM12PctB2B" min="0" max="90" step="1" value="30" oninput="sv('upgradeM12PctB2B',this.value)"><span class="sl-val" id="upgradeM12PctB2B" style="min-width:40px;">30</span></div></div>
+      <div class="sl-row"><label>B2B — upgrade share at the end of Year 2 (%)</label><div class="sl-controls"><input type="range" id="s_upgradeY2EndPctB2B" min="0" max="90" step="1" value="45" oninput="sv('upgradeY2EndPctB2B',this.value)"><span class="sl-val" id="upgradeY2EndPctB2B" style="min-width:40px;">45</span></div></div>
+      <div class="sl-row"><label>B2B — long-run upgrade share, Year 3 onward (%)</label><div class="sl-controls"><input type="range" id="s_upgradeLongRunPctB2B" min="0" max="90" step="1" value="50" oninput="sv('upgradeLongRunPctB2B',this.value)"><span class="sl-val" id="upgradeLongRunPctB2B" style="min-width:40px;">50</span></div></div>
     </div>
-    <div id="upTakeNote" style="font-size:10px;color:#888;margin:4px 0 14px;">—</div>
+    <div id="upgradePathTbl" style="margin:6px 0 14px;"><div style="text-align:center;padding:12px;color:#aaa;font-size:11px;">Loading projection…</div></div>
     <!-- Mix slider grid -->
-    <div style="font-size:11px;font-weight:700;color:#534AB7;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Clinic Mix (%) — All Months <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— the shape; the upgrade take-rate above scales the upgrade shares</span></div>
+    <div style="font-size:11px;font-weight:700;color:#534AB7;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Clinic Mix (%) — All Months <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— generated from the upgrade path above (read-only)</span></div>
 <div id="mixTableWrap"><div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:12px;"><tbody><tr><td colspan="7" style="text-align:center;color:#999;padding:16px;">Loading…</td></tr></tbody></table></div></div></div>
-    <div class="note-box" style="margin-top:8px;">Each product's active start month is set via the "Active Month" selector on the card. If the total exceeds 100%, it is automatically normalized. Grey cell = product not yet active.</div>
+    <div class="note-box" style="margin-top:8px;">Each upgrade's launch month is set via the "Active Month" selector on its card; the monthly mix follows the upgrade path above — before an upgrade launches its share goes to the other launched upgrades. Grey cell = product not yet launched.</div>
 
     <hr class="divider">
     <!-- B2B Mix -->
-    <div style="font-size:11px;font-weight:700;color:#378ADD;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">B2B Mix (%) — All Months</div>
+    <div style="font-size:11px;font-weight:700;color:#378ADD;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">B2B Mix (%) — All Months <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— generated from the B2B upgrade path above (read-only)</span></div>
     <div id="mixB2BTableWrap"></div>
     <div class="note-box" style="margin-top:8px;">B2B uses the same per-product Referral Fee rates (Scientific/Education/Library) and royalty rate set on each product's card above — only price and printing cost differ per SKU.</div>
 
