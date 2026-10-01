@@ -366,8 +366,15 @@
     </div>
 
     <hr class="divider">
+    <!-- Upgrade take-rate (UP-M1) -->
+    <div style="font-size:11px;font-weight:700;color:#534AB7;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Upgrade Take-Rate</div>
+    <div class="sl-grid">
+      <div class="sl-row"><label>Clinic — % of braces sold with at least one upgrade, Month 10 onward and cap on Years 2–5</label><div class="sl-controls"><input type="range" id="s_upgradeTakeRate" min="0" max="90" step="1" value="81" oninput="sv('upgradeTakeRate',this.value)"><span class="sl-val" id="upgradeTakeRate" style="min-width:40px;">81</span></div></div>
+      <div class="sl-row"><label>B2B — % of braces sold with at least one upgrade, Month 10 onward</label><div class="sl-controls"><input type="range" id="s_upgradeTakeRateB2B" min="0" max="90" step="1" value="78.3" oninput="sv('upgradeTakeRateB2B',this.value)"><span class="sl-val" id="upgradeTakeRateB2B" style="min-width:40px;">78,3</span></div></div>
+    </div>
+    <div id="upTakeNote" style="font-size:10px;color:#888;margin:4px 0 14px;">—</div>
     <!-- Mix slider grid -->
-    <div style="font-size:11px;font-weight:700;color:#534AB7;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Clinic Mix (%) — All Months</div>
+    <div style="font-size:11px;font-weight:700;color:#534AB7;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:8px;">Clinic Mix (%) — All Months <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#888;">— the shape; the upgrade take-rate above scales the upgrade shares</span></div>
 <div id="mixTableWrap"><div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:12px;"><tbody><tr><td colspan="7" style="text-align:center;color:#999;padding:16px;">Loading…</td></tr></tbody></table></div></div></div>
     <div class="note-box" style="margin-top:8px;">Each product's active start month is set via the "Active Month" selector on the card. If the total exceeds 100%, it is automatically normalized. Grey cell = product not yet active.</div>
 

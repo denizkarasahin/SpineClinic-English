@@ -1,6 +1,7 @@
 # CHANGES — Upgrade wording, upgrade take-rate, claims, publishing (branch `upgrade-cleanup`)
 
 - **UP-W1** — Base product named "standard brace with medical report, VR-guided design and fitting" (premium quality at a market price); sensor, perforated and sensor + perforated are optional upgrades on top of it (Market cards, note on wear-time sensor / perforated shell / VR preview). Competitor comparison: Osteoid base price (live `korseF_stdRl`) next to the volume-weighted workshop market average and the competitor price range; "premium positioning" and every visible "premium mix / premium share" now read "premium quality at a market price" / "upgrade take-rate" (Multi-Year Plan ramp, Summary unit economics, Methodology, Formula Validation, charts).
+- **UP-M1** — Upgrade take-rate as one control: `upgradeTakeRate` (clinic, default 81 = 100 − the Month 10–12 standard share of the committed mix) and `upgradeTakeRateB2B` (default 78.3, same rule on the B2B mix), sliders 0–90% on the Market page. The model scales every month's upgrade share by take-rate ÷ the mix shape's Month 10–12 reference, keeping the split among the three upgrades; Months 1–9 scale the same way (they stay at or below the take-rate wherever the shape is below its Month 10–12 level — the committed B2B Month 9 is 81% vs 78.3%); Years 2–5 the upgrade ramp is capped at the clinic take-rate. Summary sensitivity: take-rate 40 / 60 / 80%. Defaults reproduce the committed figures exactly. `_version` 69 → 70.
 
 # CHANGES — VR switch removed (`_version` 68 → 69)
 
