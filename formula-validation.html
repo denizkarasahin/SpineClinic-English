@@ -375,7 +375,7 @@ function renderParams() {
   const b2bFKeys = ['korseFB2B_stdRl','korseFB2B_delik','korseFB2B_sens','korseFB2B_sensDelik'];
 
   document.getElementById('p_fiyat').innerHTML = prods.map((p,i) =>
-    row(prodNames[i], (i===0 && typeof vrOff==='function' && vrOff()) ? 'noVrStdRl (no-VR case)' : fKeys[i], tf(typeof priceOf==='function' ? priceOf(prods[i]) : V[fKeys[i]]), i===0?'Base product, Month 1+':'Advanced product (own launch month)')
+    row(prodNames[i], fKeys[i], tf(V[fKeys[i]]), i===0?'Base product, Month 1+':'Advanced product (own launch month)')
   ).join('');
 
   document.getElementById('p_malzeme').innerHTML = prods.map((p,i) =>
@@ -435,7 +435,7 @@ function renderUrunMarj() {
 
   const wrap = document.getElementById('urunMarjWrap');
   wrap.innerHTML = prods.map(p => {
-    const f = (typeof priceOf==='function' ? priceOf(p.pKey) : V[p.fKey])||0; // VR-1: active Std-Reported price
+    const f = V[p.fKey]||0;
     const m = V[p.mKey]||0;
     const sciR = (V['feeSci_'+p.pKey]??10)/100, eduR = (V['feeEdu_'+p.pKey]??10)/100, libR = (V['feeLib_'+p.pKey]??10)/100;
     const sci = Math.round(f * sciR), edu = Math.round(f * eduR), lib = Math.round(f * libR);
@@ -459,7 +459,7 @@ function renderUrunMarj() {
   // Karşılaştırma tablosu
   const tbody = document.querySelector('#marjKarsilastirma tbody');
   tbody.innerHTML = prods.map(p => {
-    const f = (typeof priceOf==='function' ? priceOf(p.pKey) : V[p.fKey])||0; // VR-1: active Std-Reported price
+    const f = V[p.fKey]||0;
     const m = V[p.mKey]||0;
     const sciR = (V['feeSci_'+p.pKey]??10)/100, eduR = (V['feeEdu_'+p.pKey]??10)/100, libR = (V['feeLib_'+p.pKey]??10)/100;
     const sci = Math.round(f * sciR), edu = Math.round(f * eduR), lib = Math.round(f * libR);

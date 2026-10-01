@@ -1,3 +1,7 @@
+# CHANGES — VR switch removed (`_version` 68 → 69)
+
+- **VR-2** — The VR effect switch and the no-VR case are removed completely: no VR label on the Market or Summary page, no VR row in the Summary sensitivity, no no-VR price / premium cap sliders, and the V keys `vrAktif`, `noVrStdRl`, `noVrPremiumCapPct`, `mixNoVr`, `mixB2BNoVr` are gone. The current prices and mix are simply the plan. Figures unchanged (core: Y5 EBITDA €1,633K, cumulative FCF €3,701K, peak €235K).
+
 # CHANGES — Defaults from the 2026-10-01 snapshot (`_version` 67 → 68)
 
 - **DEF-3** — Committed defaults from Deniz's osteoid_2026-10-01 snapshot: clinic mix Months 7–9 Std-Reported / Sensor 60/40, 65/35, 61/39 (was 39/61, 39/61, 38/62); the three upside segments (adult / degenerative, post-op TLSO, fracture TLSO) on by default. Everything else in the snapshot already matched.

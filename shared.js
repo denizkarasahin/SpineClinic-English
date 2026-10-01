@@ -23,7 +23,7 @@ document.getElementById = function(id) {
   };
 };
 
-const V = {"reklamCarpan":1,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.93,"eurKurSabit":53.93,"eurKurTarih":"2026-07-20","liveFxAktif":false,"kira":150000,"depozito":250000,"emlakci":500000,"m2":360,"tadilatM2":4500,"dekoM2":4500,"mobilya":300000,"ruhsat":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":90000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[24,25,30,35,35,44,44,52,54,63,62,69],"aktifAy":[0,9,2,9],"mix":[[100,0,0,0],[100,0,0,0],[66,0,34,0],[74,0,26,0],[75,0,25,0],[76,0,24,0],[60,0,40,0],[65,0,35,0],[61,0,39,0],[18,34,31,17],[20,33,28,19],[19,31,29,21]],"korseF_stdRl":40500,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdRl":600,"mal_delik":3500,"mal_sens":2075,"mal_sensDelik":4975,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":20000,"kohortTR":1275000,"braceablePct":0.45,"bracePerCourse":2.75,"otherPaedPct":15,"premiumMixY1":25,"premiumMixY2":37.5,"premiumMixY3":50,"sgkAktif":false,"sgkIncrementalPct":20,"sgkPrice":17500,"sgkTopUp":5000,"sgkDelayDays":75,"hoCostY1Eur":30000,"hoPerCentreEur":10000,"hoCapEur":80000,"adultAktif":true,"adultBraceYil":2500,"adultFiyat":25000,"postopAktif":true,"postopBraceYil":2000,"postopFiyat":25000,"fractureAktif":true,"fractureBraceYil":1700,"fractureFiyat":25000,"pazarIstPct":30.1,"hedefOsteoidPay":30,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":true,"izmirHedefPay":30,"izmirUseIst":true,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[18,19,23,26,26,33,33,39,41,47,47,52],"ankaraAktif":true,"ankaraHedefPay":30,"ankaraUseIst":true,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[19,20,24,28,28,35,35,42,43,50,50,55],"bursaAktif":true,"bursaHedefPay":30,"bursaUseIst":true,"bursaUseIstGider":true,"bursaKira":80000,"bursaOrtotistM":55000,"bursaStajyerM":25000,"bursaMutfak":18000,"bursaSarf":3000,"bursaUseIstKurulum":true,"bursaKurulumKira":120000,"bursaKurulumDepozito":200000,"bursaKurulumTadilat":4750,"bursaKurulumDeko":2000,"bursaKurulumMobilya":600000,"bursaRampa":[18,19,23,26,26,33,33,39,41,47,47,52],"gaziantepAktif":true,"gaziantepHedefPay":30,"gaziantepUseIst":true,"gaziantepUseIstGider":true,"gaziantepKira":85000,"gaziantepOrtotistM":55000,"gaziantepStajyerM":25000,"gaziantepMutfak":18000,"gaziantepSarf":3000,"gaziantepUseIstKurulum":true,"gaziantepKurulumKira":120000,"gaziantepKurulumDepozito":200000,"gaziantepKurulumTadilat":4750,"gaziantepKurulumDeko":2000,"gaziantepKurulumMobilya":600000,"gaziantepRampa":[19,20,24,28,28,35,35,42,43,50,50,55],"istInflowReductionPct":50,"horizonYears":5,"vrAktif":true,"noVrStdRl":30500,"noVrPremiumCapPct":50,"mixNoVr":[[100,0,0,0],[100,0,0,0],[81,0,19,0],[88,0,12,0],[89,0,11,0],[89,0,11,0],[85,0,15,0],[85,0,15,0],[84,0,16,0],[53,19,17,11],[52,20,17,11],[50,20,18,12]],"mixB2BNoVr":[[100,0,0,0],[100,0,0,0],[88,12,0,0],[87,13,0,0],[85,15,0,0],[85,15,0,0],[66,14,14,6],[66,16,14,4],[63,16,15,6],[62,18,16,4],[62,16,13,9],[61,18,16,5]],"izmirHomePct":5.2,"izmirRegionPct":6,"izmirRegionCapturePct":60,"izmirYouthWeight":1,"ankaraHomePct":6.8,"ankaraRegionPct":5,"ankaraRegionCapturePct":60,"ankaraYouthWeight":1,"bursaHomePct":3.8,"bursaRegionPct":2.1,"bursaRegionCapturePct":60,"bursaYouthWeight":1,"gaziantepHomePct":2.5,"gaziantepRegionPct":7.3,"gaziantepRegionCapturePct":60,"gaziantepYouthWeight":1,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":true,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":18,"dcfExitMult":10,"exitMultLowDelta":2,"exitMultHighDelta":3,"multiCenterPremiumX":0,"dealPreMoneyEur":10964800,"tranche1Eur":500000,"dividendPayoutPct":60,"targetMoic":2.5,"trancheStepUp":1.75,"dcfInvest":705646,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[100,0,0,0],[100,0,0,0],[64,36,0,0],[67,33,0,0],[64,36,0,0],[68,32,0,0],[23,31,31,15],[24,38,33,5],[19,34,32,15],[20,38,34,8],[22,33,28,17],[23,35,32,10]],"_sen_min_kira":80000,"_sen_max_kira":300000,"_sen_min_tadilatM2":2500,"_sen_max_tadilatM2":11500,"_sen_min_dekoM2":2250,"_sen_max_dekoM2":11250,"_sen_min_ortotistM":55000,"_sen_max_ortotistM":160000,"_sen_min_operatorM":90000,"_sen_max_operatorM":240000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":1260,"hedefSpine_KorseB":1680,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":900,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseK":900,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":1080,"aktifOrtez_KorseB":410,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.75,"bursaRampaOran":0.75,"bursaKurulumOran":0.75,"gaziantepRampaOran":0.8,"gaziantepKurulumOran":0.75,"operatorM":150000,"workingCapBufferEur":500000,"stage1BufferEur":200000,"kvOrani":25,"vergiDahil":true,"exitYili":5,"kisiselVergiOrani":15,"fundAy":0,"makineKatkiOran":50,"osteoidCarpan":1,"yatirimciCarpan":1,"doktorYatirim":0,"doktorCarpan":1.5,"sweatEur":80000,"sweatVestAy":48,"sweatCliffAy":12,"sweatElapsedAy":0,"sweatMaxPct":5,"sweatCarpan":1,"sweatVestedToday":true,"royaltyOffsetYil":1,"royaltyOffsetPct":0,"yonetimUcretiPct":5,"izmirFlagshipPay":65,"ankaraFlagshipPay":65,"bursaFlagshipPay":65,"gaziantepFlagshipPay":65,"izmirSubeMi":true,"ankaraSubeMi":true,"bursaSubeMi":true,"gaziantepSubeMi":true,"euLegalFaiz":5,"preOpenHireC1":0,"preOpenMktC1":0,"preOpenLegalC1":0,"preOpenOtherC1":30000,"preOpenHireC2":0,"preOpenMktC2":0,"preOpenLegalC2":0,"preOpenOtherC2":30000,"preOpenHireC3":0,"preOpenMktC3":0,"preOpenLegalC3":0,"preOpenOtherC3":45000,"preOpenHireC4":0,"preOpenMktC4":0,"preOpenLegalC4":0,"preOpenOtherC4":40000,"preOpenHireC5":0,"preOpenMktC5":0,"preOpenLegalC5":0,"preOpenOtherC5":40000,"bursaGaziantepFcfFunded":true,"nakdiSermayeAktif":true,"teknokentKapsam":false,"emisyonPrimiAktif":true,"nominalPayOrani":10,"feeStreamAyriMult":false,"feeExitMult":12,"istRampYears":3,"izmirRampYears":3,"ankaraRampYears":3,"bursaRampYears":4,"gaziantepRampYears":3,"bursaAcilisAy":3,"ankaraAcilisAy":5,"gaziantepAcilisAy":3,"workingCapBufferFcfFunded":false,"hastaPerOdaGun":6,"odaMaxPerKlinik":6,"odaM2":10,"calismaGunAy":26,"haftaSonuGunAy":9,"haftaSonuTalepPct":60,"visitPerKorse":1,"ortotistDkFitting":60,"expertDkHasta":8,"destekDkHasta":45,"staffUtilPct":75,"korsePerPrinterAy":66,"ekOrtotistM":65000,"subeSetupTRY":900000,"izmirDestekM":25000,"ankaraDestekM":25000,"bursaDestekM":25000,"gaziantepDestekM":25000,"b2bHedefAdetYil":1200,"b2bRampYears":3,"viewMode":"business","phase2Aktif":false,"phase3Aktif":false,"_version":68};
+const V = {"reklamCarpan":1,"mutfak":30000,"genelGider":10000,"ymmM":10000,"stopaj":60000,"royaltyEur":0,"eurKur":53.93,"eurKurSabit":53.93,"eurKurTarih":"2026-07-20","liveFxAktif":false,"kira":150000,"depozito":250000,"emlakci":500000,"m2":360,"tadilatM2":4500,"dekoM2":4500,"mobilya":300000,"ruhsat":100000,"elektrik":16500,"internet":1500,"sarf":3000,"ortotistM":90000,"sgkCarpan":1.6,"stajyerM":31000,"destekM":30000,"stajyer2M":30000,"korse":[24,25,30,35,35,44,44,52,54,63,62,69],"aktifAy":[0,9,2,9],"mix":[[100,0,0,0],[100,0,0,0],[66,0,34,0],[74,0,26,0],[75,0,25,0],[76,0,24,0],[60,0,40,0],[65,0,35,0],[61,0,39,0],[18,34,31,17],[20,33,28,19],[19,31,29,21]],"korseF_stdRl":40500,"korseF_delik":55000,"korseF_sens":50000,"korseF_sensDelik":65000,"mal_stdRl":600,"mal_delik":3500,"mal_sens":2075,"mal_sensDelik":4975,"feeSci_stdRl":10,"feeSci_delik":10,"feeSci_sens":10,"feeSci_sensDelik":10,"feeEdu_stdRl":10,"feeEdu_delik":10,"feeEdu_sens":10,"feeEdu_sensDelik":10,"feeLib_stdRl":10,"feeLib_delik":10,"feeLib_sens":10,"feeLib_sensDelik":10,"pazarTR":20000,"kohortTR":1275000,"braceablePct":0.45,"bracePerCourse":2.75,"otherPaedPct":15,"premiumMixY1":25,"premiumMixY2":37.5,"premiumMixY3":50,"sgkAktif":false,"sgkIncrementalPct":20,"sgkPrice":17500,"sgkTopUp":5000,"sgkDelayDays":75,"hoCostY1Eur":30000,"hoPerCentreEur":10000,"hoCapEur":80000,"adultAktif":true,"adultBraceYil":2500,"adultFiyat":25000,"postopAktif":true,"postopBraceYil":2000,"postopFiyat":25000,"fractureAktif":true,"fractureBraceYil":1700,"fractureFiyat":25000,"pazarIstPct":30.1,"hedefOsteoidPay":30,"esikStajyer1":21,"esikDestek":40,"esikStajyer2":90,"izmirAktif":true,"izmirHedefPay":30,"izmirUseIst":true,"izmirUseIstGider":true,"izmirKira":80000,"izmirOrtotistM":55000,"izmirStajyerM":25000,"izmirMutfak":18000,"izmirSarf":3000,"izmirUseIstKurulum":true,"izmirKurulumKira":120000,"izmirKurulumDepozito":200000,"izmirKurulumTadilat":4750,"izmirKurulumDeko":2000,"izmirKurulumMobilya":600000,"izmirRampa":[18,19,23,26,26,33,33,39,41,47,47,52],"ankaraAktif":true,"ankaraHedefPay":30,"ankaraUseIst":true,"ankaraUseIstGider":true,"ankaraKira":85000,"ankaraOrtotistM":55000,"ankaraStajyerM":25000,"ankaraMutfak":18000,"ankaraSarf":3000,"ankaraUseIstKurulum":true,"ankaraKurulumKira":120000,"ankaraKurulumDepozito":200000,"ankaraKurulumTadilat":4750,"ankaraKurulumDeko":2000,"ankaraKurulumMobilya":600000,"ankaraRampa":[19,20,24,28,28,35,35,42,43,50,50,55],"bursaAktif":true,"bursaHedefPay":30,"bursaUseIst":true,"bursaUseIstGider":true,"bursaKira":80000,"bursaOrtotistM":55000,"bursaStajyerM":25000,"bursaMutfak":18000,"bursaSarf":3000,"bursaUseIstKurulum":true,"bursaKurulumKira":120000,"bursaKurulumDepozito":200000,"bursaKurulumTadilat":4750,"bursaKurulumDeko":2000,"bursaKurulumMobilya":600000,"bursaRampa":[18,19,23,26,26,33,33,39,41,47,47,52],"gaziantepAktif":true,"gaziantepHedefPay":30,"gaziantepUseIst":true,"gaziantepUseIstGider":true,"gaziantepKira":85000,"gaziantepOrtotistM":55000,"gaziantepStajyerM":25000,"gaziantepMutfak":18000,"gaziantepSarf":3000,"gaziantepUseIstKurulum":true,"gaziantepKurulumKira":120000,"gaziantepKurulumDepozito":200000,"gaziantepKurulumTadilat":4750,"gaziantepKurulumDeko":2000,"gaziantepKurulumMobilya":600000,"gaziantepRampa":[19,20,24,28,28,35,35,42,43,50,50,55],"istInflowReductionPct":50,"horizonYears":5,"izmirHomePct":5.2,"izmirRegionPct":6,"izmirRegionCapturePct":60,"izmirYouthWeight":1,"ankaraHomePct":6.8,"ankaraRegionPct":5,"ankaraRegionCapturePct":60,"ankaraYouthWeight":1,"bursaHomePct":3.8,"bursaRegionPct":2.1,"bursaRegionCapturePct":60,"bursaYouthWeight":1,"gaziantepHomePct":2.5,"gaziantepRegionPct":7.3,"gaziantepRegionCapturePct":60,"gaziantepYouthWeight":1,"printerAdet":2,"printerEurFiyat":35000,"robotKolAktif":true,"robotKolEurFiyat":30000,"ekipmanOsteoidden":false,"kesimEurPer":0,"dcfRate":18,"dcfExitMult":10,"exitMultLowDelta":2,"exitMultHighDelta":3,"multiCenterPremiumX":0,"dealPreMoneyEur":10964800,"tranche1Eur":500000,"dividendPayoutPct":60,"targetMoic":2.5,"trancheStepUp":1.75,"dcfInvest":705646,"kongre":[160000,210000,65000,30000,205000,120000,70000,20000,70000,195000,70000,30000],"donemsel":{"reklam":[30000,35000,35000,30000,30000,20000,30000,20000,30000,20000,30000,30000],"kongre":[0,175000,0,0,175000,0,0,0,0,175000,0,0],"atolye":[100000,0,0,0,0,100000,0,0,0,0,0,0],"ymm":[0,0,0,0,0,0,0,0,0,0,0,0],"diger":[30000,0,30000,0,0,0,40000,0,40000,0,40000,0]},"korseFB2B_stdRl":15000,"korseFB2B_delik":22000,"korseFB2B_sens":25000,"korseFB2B_sensDelik":35000,"korseB2B":[10,10,25,25,35,35,40,40,45,45,55,55],"mixB2B":[[100,0,0,0],[100,0,0,0],[64,36,0,0],[67,33,0,0],[64,36,0,0],[68,32,0,0],[23,31,31,15],[24,38,33,5],[19,34,32,15],[20,38,34,8],[22,33,28,17],[23,35,32,10]],"_sen_min_kira":80000,"_sen_max_kira":300000,"_sen_min_tadilatM2":2500,"_sen_max_tadilatM2":11500,"_sen_min_dekoM2":2250,"_sen_max_dekoM2":11250,"_sen_min_ortotistM":55000,"_sen_max_ortotistM":160000,"_sen_min_operatorM":90000,"_sen_max_operatorM":240000,"_sen_min_stajyerM":16000,"_sen_max_stajyerM":62000,"_sen_min_reklamCarpan":0.25,"_sen_max_reklamCarpan":3,"_sen_min_royaltyEur":0,"_sen_max_royaltyEur":150,"_sen_min_eurKur":30,"_sen_max_eurKur":95,"printerAktif":true,"hedefSpine_KorseK":1260,"hedefSpine_KorseB":1680,"hedefSpine_FiyatK":40000,"bilimOrtopedi_KorseK":720,"bilimOrtopedi_FiyatK":35000,"bilimOrtopedi_KorseB":780,"canErdem_KorseK":900,"canErdem_KorseB":840,"canErdem_FiyatK":35000,"canErdem_FiyatB":20000,"nesaOrtopedi_KorseK":900,"nesaOrtopedi_KorseB":780,"nesaOrtopedi_FiyatK":33000,"proklinik_KorseK":480,"proklinik_KorseB":660,"proklinik_FiyatK":40000,"proklinik_FiyatB":20000,"aktifOrtez_KorseK":1080,"aktifOrtez_KorseB":410,"aktifOrtez_FiyatK":40000,"aktifOrtez_FiyatB":22000,"izmirRampaOran":0.75,"izmirKurulumOran":0.75,"ankaraRampaOran":0.8,"ankaraKurulumOran":0.75,"bursaRampaOran":0.75,"bursaKurulumOran":0.75,"gaziantepRampaOran":0.8,"gaziantepKurulumOran":0.75,"operatorM":150000,"workingCapBufferEur":500000,"stage1BufferEur":200000,"kvOrani":25,"vergiDahil":true,"exitYili":5,"kisiselVergiOrani":15,"fundAy":0,"makineKatkiOran":50,"osteoidCarpan":1,"yatirimciCarpan":1,"doktorYatirim":0,"doktorCarpan":1.5,"sweatEur":80000,"sweatVestAy":48,"sweatCliffAy":12,"sweatElapsedAy":0,"sweatMaxPct":5,"sweatCarpan":1,"sweatVestedToday":true,"royaltyOffsetYil":1,"royaltyOffsetPct":0,"yonetimUcretiPct":5,"izmirFlagshipPay":65,"ankaraFlagshipPay":65,"bursaFlagshipPay":65,"gaziantepFlagshipPay":65,"izmirSubeMi":true,"ankaraSubeMi":true,"bursaSubeMi":true,"gaziantepSubeMi":true,"euLegalFaiz":5,"preOpenHireC1":0,"preOpenMktC1":0,"preOpenLegalC1":0,"preOpenOtherC1":30000,"preOpenHireC2":0,"preOpenMktC2":0,"preOpenLegalC2":0,"preOpenOtherC2":30000,"preOpenHireC3":0,"preOpenMktC3":0,"preOpenLegalC3":0,"preOpenOtherC3":45000,"preOpenHireC4":0,"preOpenMktC4":0,"preOpenLegalC4":0,"preOpenOtherC4":40000,"preOpenHireC5":0,"preOpenMktC5":0,"preOpenLegalC5":0,"preOpenOtherC5":40000,"bursaGaziantepFcfFunded":true,"nakdiSermayeAktif":true,"teknokentKapsam":false,"emisyonPrimiAktif":true,"nominalPayOrani":10,"feeStreamAyriMult":false,"feeExitMult":12,"istRampYears":3,"izmirRampYears":3,"ankaraRampYears":3,"bursaRampYears":4,"gaziantepRampYears":3,"bursaAcilisAy":3,"ankaraAcilisAy":5,"gaziantepAcilisAy":3,"workingCapBufferFcfFunded":false,"hastaPerOdaGun":6,"odaMaxPerKlinik":6,"odaM2":10,"calismaGunAy":26,"haftaSonuGunAy":9,"haftaSonuTalepPct":60,"visitPerKorse":1,"ortotistDkFitting":60,"expertDkHasta":8,"destekDkHasta":45,"staffUtilPct":75,"korsePerPrinterAy":66,"ekOrtotistM":65000,"subeSetupTRY":900000,"izmirDestekM":25000,"ankaraDestekM":25000,"bursaDestekM":25000,"gaziantepDestekM":25000,"b2bHedefAdetYil":1200,"b2bRampYears":3,"viewMode":"business","phase2Aktif":false,"phase3Aktif":false,"_version":69};
 // ── PHASE 2 / PHASE 3 (FIN-3, P2-1) ────────────────────────────────────────
 // Core plan = Istanbul (clinic + B2B), Izmir, Ankara. Gaziantep is the Phase 2
 // option (V.phase2Aktif, default false) and Bursa the Phase 3 option
@@ -43,60 +43,14 @@ const _PHASE_KEY = { gaziantep: 'phase2Aktif', bursa: 'phase3Aktif' };
     set(v) { this[raw] = !!v; } });
 });
 
-// ── VR EFFECT (VR-1) ──────────────────────────────────────────────────────
-// The committed prices and monthly product mix assume the VR-guided design
-// and fitting offer (launched September 2026): Std-Reported (the entry SKU) at
-// V.korseF_stdRl, ~80% premium from Month 10.
-// V.vrAktif = false is the no-VR case: Std-Reported at V.noVrStdRl, the pre-VR
-// monthly mix for the clinic and B2B (V.mixNoVr / V.mixB2BNoVr — the
-// version-62 arrays) and the premium share (perforated / sensor SKUs) capped
-// at V.noVrPremiumCapPct from Month 10 and in Years 2+. The model reads the
-// active set through the helpers below; the Market page edits both sets.
+// Osteoid's entry price = the lowest-priced clinic SKU with any share in the
+// Year-1 mix (premium positioning on the competitor comparisons).
 const _SKU_NAMES = { stdRl: 'Std-Reported', delik: 'Perf+Rep.', sens: 'Sensor+Rep.', sensDelik: 'Sns+Rep+Perf' };
-function vrOff(Vlike) { return (Vlike || V).vrAktif === false; }
-function _mixArr() { return vrOff() ? (V.mixNoVr || V.mix) : V.mix; }             // the array the Market page shows and edits
-function _mixB2BArr() { return vrOff() ? (V.mixB2BNoVr || V.mixB2B) : V.mixB2B; }
-// Premium cap (no-VR case) from Month 10 (i >= 9): the premium SKUs are scaled
-// down to the cap; the freed share goes to Std-Reported.
-function _premCapRow(row, i, Vlike) {
-  const cap = Math.max(0, Math.min(100, (Vlike || V).noVrPremiumCapPct ?? 50));
-  const r = (row || [100,0,0,0]).map(v => +v || 0);
-  const tot = r.reduce((s, v) => s + v, 0) || 100, prem = r[1] + r[2] + r[3];
-  if (i < 9 || prem <= tot * cap / 100 + 1e-9) return r;
-  const f = tot * cap / 100 / prem, o = r.slice();
-  o[1] = Math.round(r[1] * f); o[2] = Math.round(r[2] * f); o[3] = Math.round(r[3] * f);
-  o[0] = tot - o[1] - o[2] - o[3]; // the freed share goes to Std-Reported
-  return o;
-}
-function _mixRows(Vlike) { const S = Vlike || V, off = S.vrAktif === false; const rows = (off ? (S.mixNoVr || S.mix) : S.mix) || []; return off ? rows.map((r, i) => _premCapRow(r, i, S)) : rows; }
-function _mixB2BRows(Vlike) { const S = Vlike || V, off = S.vrAktif === false; const rows = (off ? (S.mixB2BNoVr || S.mixB2B) : S.mixB2B) || []; return off ? rows.map((r, i) => _premCapRow(r, i, S)) : rows; }
-function priceOf(p, Vlike) { const S = Vlike || V; return p === 'stdRl' && S.vrAktif === false ? (S.noVrStdRl ?? 0) : (S['korseF_' + p] ?? 0); }
-// Osteoid's entry price = the lowest-priced clinic SKU with any share in the active Year-1 mix
 function entryPrice() {
-  const P = ['stdRl','delik','sens','sensDelik'], rows = _mixRows(V);
+  const P = ['stdRl','delik','sens','sensDelik'], rows = V.mix || [];
   const used = P.filter((_, j) => rows.some(r => (r[j] || 0) > 0));
-  const c = (used.length ? used : ['stdRl']).map(p => ({ p, v: priceOf(p) })).filter(x => x.v > 0);
-  return c.length ? c.reduce((a, b) => b.v < a.v ? b : a) : { p: 'stdRl', v: priceOf('stdRl') };
-}
-function svVr(on) {
-  V.vrAktif = !!on;
-  buildMixTable(); buildMixB2BTable(); // the Market page tables follow the active set
-  recalc();
-  if (typeof buildProjection === 'function') buildProjection();
-  localStorage.setItem('osteoid_V', JSON.stringify(V));
-}
-function _refreshVrUi() {
-  const on = V.vrAktif !== false;
-  const cap = V.noVrPremiumCapPct ?? 50, px = (V.noVrStdRl ?? 0).toLocaleString('tr-TR');
-  document.querySelectorAll('.vrToggle').forEach(cb => { cb.checked = on; });
-  document.querySelectorAll('.vrState').forEach(e => {
-    e.textContent = on ? 'VR effect on — current prices and mix' : 'No-VR case — Std-Reported ₺' + px + ', pre-VR mix, premium share ≤ ' + cap + '% from Month 10';
-    e.style.color = on ? '#1a7a45' : '#c94f2a';
-  });
-  const n = _origGetById('vrMixNote');
-  if (n) n.textContent = on
-    ? 'VR effect on: the tables below are the VR mix the model uses. Switch the VR effect off (block at the top of this page) to see and edit the pre-VR mix.'
-    : 'No-VR case active: the tables below show and edit the pre-VR mix the model uses now; the VR mix is kept and comes back when the VR effect is switched on. From Month 10 the model caps the premium share at ' + cap + '%.';
+  const c = (used.length ? used : ['stdRl']).map(p => ({ p, v: gv('korseF_' + p) })).filter(x => x.v > 0);
+  return c.length ? c.reduce((a, b) => b.v < a.v ? b : a) : { p: 'stdRl', v: gv('korseF_stdRl') };
 }
 // ── VIEW MODE (BC-1) ──────────────────────────────────────────────────────
 // V.viewMode = "business" (default) shows the pure business case: volumes,
@@ -302,7 +256,7 @@ function buildMixTable() {
     html += '<tr><td style="padding:6px 8px;border:1px solid #eeeee9;font-weight:600;color:#555;white-space:nowrap;">Month '+(i+1)+'</td>';
     for (let pi = 0; pi < 4; pi++) {
       const aktif = i >= (V.aktifAy[pi] || 0);
-      const val   = _mixArr()[i][pi];
+      const val   = V.mix[i][pi];
       if (aktif) {
         html += '<td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;">'
               + '<div style="display:flex;align-items:center;gap:4px;">'
@@ -314,7 +268,7 @@ function buildMixTable() {
               + '<div style="text-align:center;font-size:11px;color:#ccc;" id="mx_'+i+'_'+pi+'">—</div></td>';
       }
     }
-    const tot = _mixArr()[i].reduce(function(s,v){return s+v;}, 0);
+    const tot = V.mix[i].reduce(function(s,v){return s+v;}, 0);
     html += '<td id="mxtot_'+i+'" style="padding:6px 8px;border:1px solid #eeeee9;text-align:center;font-weight:700;font-size:11px;">'+tot+'%</td>';
     html += '</tr>';
   }
@@ -338,7 +292,7 @@ function buildMixB2BTable() {
     html += '<tr><td style="padding:6px 8px;border:1px solid #eeeee9;font-weight:600;color:#555;white-space:nowrap;">Month '+(i+1)+'</td>';
     for (let pi = 0; pi < 4; pi++) {
       const aktif = i >= (V.aktifAy[pi] || 0);
-      const val   = _mixB2BArr()[i][pi];
+      const val   = V.mixB2B[i][pi];
       if (aktif) {
         html += '<td style="padding:4px 6px;border:1px solid #eeeee9;background:#fff;"><div style="display:flex;align-items:center;gap:4px;">'
               + '<input type="range" style="flex:1;accent-color:'+COLORS[pi]+';" min="0" max="100" step="1" value="'+val+'" oninput="updMixB2B('+i+','+pi+',this.value)">'
@@ -348,7 +302,7 @@ function buildMixB2BTable() {
         html += '<td style="padding:4px 6px;border:1px solid #eeeee9;background:#f8f8f6;"><div style="text-align:center;font-size:11px;color:#ccc;" id="mxb2_'+i+'_'+pi+'">—</div></td>';
       }
     }
-    const tot = _mixB2BArr()[i].reduce(function(s,v){return s+v;},0);
+    const tot = V.mixB2B[i].reduce(function(s,v){return s+v;},0);
     html += '<td id="mxb2tot_'+i+'" style="padding:6px 8px;border:1px solid #eeeee9;text-align:center;font-weight:700;font-size:11px;">'+tot+'%</td></tr>';
   }
   html += '</tbody></table></div>';
@@ -358,38 +312,38 @@ function buildMixB2BTable() {
 function updMixB2B(ayIdx, prodIdx, val) {
   if (!V.mixB2B) V.mixB2B = Array.from({length:12}, () => [100,0,0,0]);
   const newVal = Math.min(100, Math.max(0, parseInt(val)));
-  if (newVal === _mixB2BArr()[ayIdx][prodIdx]) return;
-  const others = _mixB2BArr()[ayIdx].map((v,pi) => pi===prodIdx ? 0 : v);
+  if (newVal === V.mixB2B[ayIdx][prodIdx]) return;
+  const others = V.mixB2B[ayIdx].map((v,pi) => pi===prodIdx ? 0 : v);
   const othersSum = others.reduce((s,v)=>s+v,0);
-  _mixB2BArr()[ayIdx][prodIdx] = newVal;
+  V.mixB2B[ayIdx][prodIdx] = newVal;
   if (othersSum > 0) {
     const remaining = 100 - newVal;
     let distributed = 0;
     others.forEach((v, pi) => {
       if (pi === prodIdx) return;
       const share = Math.round(v / othersSum * remaining);
-      _mixB2BArr()[ayIdx][pi] = share;
+      V.mixB2B[ayIdx][pi] = share;
       distributed += share;
     });
     const leftover = 100 - newVal - distributed;
     if (leftover !== 0) {
-      for (let pi = _mixB2BArr()[ayIdx].length-1; pi >= 0; pi--) {
-        if (pi !== prodIdx) { _mixB2BArr()[ayIdx][pi] += leftover; break; }
+      for (let pi = V.mixB2B[ayIdx].length-1; pi >= 0; pi--) {
+        if (pi !== prodIdx) { V.mixB2B[ayIdx][pi] += leftover; break; }
       }
     }
   } else {
-    for (let pi = 0; pi < _mixB2BArr()[ayIdx].length; pi++) {
-      if (pi !== prodIdx) { _mixB2BArr()[ayIdx][pi] = 100 - newVal; break; }
+    for (let pi = 0; pi < V.mixB2B[ayIdx].length; pi++) {
+      if (pi !== prodIdx) { V.mixB2B[ayIdx][pi] = 100 - newVal; break; }
     }
   }
-  _mixB2BArr()[ayIdx].forEach((v, pi) => {
+  V.mixB2B[ayIdx].forEach((v, pi) => {
     const sp = document.getElementById('mxb2_'+ayIdx+'_'+pi);
     const sl = document.querySelector('input[oninput*="updMixB2B('+ayIdx+','+pi+'"]');
     if (sp) sp.textContent = v+'%';
     if (sl) sl.value = v;
   });
   const totEl = document.getElementById('mxb2tot_'+ayIdx);
-  if (totEl) { totEl.textContent = _mixB2BArr()[ayIdx].reduce((s,v)=>s+v,0)+'%'; totEl.style.color='#1a7a45'; }
+  if (totEl) { totEl.textContent = V.mixB2B[ayIdx].reduce((s,v)=>s+v,0)+'%'; totEl.style.color='#1a7a45'; }
   recalc();
   localStorage.setItem('osteoid_V', JSON.stringify(V));
 }
@@ -1881,7 +1835,6 @@ function _svPhase(key, s, checked) {
 }
 function _refreshPhase2Ui() {
   _refreshHorizonUi();
-  _refreshVrUi();
   const on = { gaziantep: V.phase2Aktif === true, bursa: V.phase3Aktif === true };
   document.querySelectorAll('.phase2Toggle').forEach(cb => { cb.checked = on.gaziantep; });
   document.querySelectorAll('.phase3Toggle').forEach(cb => { cb.checked = on.bursa; });
@@ -2048,7 +2001,7 @@ function supplyKpiHtml(fmtPrice) {
     { label:"Partner centre (Özgür's) — braces/yr", val: ns.partner.toLocaleString('en-US'), c:'pos' },
     { label:'Named supply (competitors + partner) — vs national market', val: ns.named.toLocaleString('en-US') + ' vs ' + nat.toLocaleString('en-US'), c:'neu' },
     { label:'Competitor avg. clinic price (excl. partner)', val: fmtPrice(ns.compAvgPrice), c:'neu' },
-    { label:'Osteoid entry price — premium positioning (' + _SKU_NAMES[entryPrice().p] + ': lowest-priced SKU in the live clinic mix' + (vrOff() ? ', no-VR case' : ', VR-guided offer') + ')', val: fmtPrice(entryPrice().v), c:'neu' },
+    { label:'Osteoid entry price — premium positioning (' + _SKU_NAMES[entryPrice().p] + ': lowest-priced SKU in the live clinic mix)', val: fmtPrice(entryPrice().v), c:'neu' },
   ].map(x => '<div class="kpi"><div class="kpi-label">' + x.label + '</div><div class="kpi-val ' + x.c + '">' + x.val + '</div></div>').join('');
   return k + '<div style="grid-column:1/-1;font-size:10px;color:#888;">Named supply plus hospital and small-workshop production is consistent with a 15,000–25,000 treated market.</div>';
 }
@@ -2112,7 +2065,7 @@ function renderBusinessSensitivity() {
   const feeKeys = [].concat(...PRODS.map(p => ['feeSci_' + p, 'feeEdu_' + p, 'feeLib_' + p]));
   const SAT = ['izmir','ankara','bursa','gaziantep'];
   const UPS = ['adultAktif','postopAktif','fractureAktif'];
-  const keys = ['hedefOsteoidPay','pazarTR','sgkAktif','royaltyEur','vrAktif'].concat(SAT.map(s => s + 'HedefPay'), feeKeys, UPS);
+  const keys = ['hedefOsteoidPay','pazarTR','sgkAktif','royaltyEur'].concat(SAT.map(s => s + 'HedefPay'), feeKeys, UPS);
   const base = {}; keys.forEach(k => { base[k] = V[k]; });
   const feeNow = PRODS.reduce((s, p) => s + gv('feeSci_' + p) + gv('feeEdu_' + p) + gv('feeLib_' + p), 0) / PRODS.length;
   const feeUniform = PRODS.every(p => ['feeSci_','feeEdu_','feeLib_'].every(f => Math.abs(gv(f + p) - gv('feeSci_stdRl')) < 1e-9));
@@ -2123,7 +2076,6 @@ function renderBusinessSensitivity() {
     fee: v => { feeKeys.forEach(k => { V[k] = v / 3; }); },
     sgk: v => { V.sgkAktif = v; },
     roy: v => { V.royaltyEur = v; },
-    vr: v => { V.vrAktif = v; },
   };
   const cases = [
     ['Istanbul target market share (Year 5)', 'ist', [15, 20, 25, 30, 50], v => v + '%', v => Math.abs(v - base.hedefOsteoidPay) < 1e-9],
@@ -2132,7 +2084,6 @@ function renderBusinessSensitivity() {
     ['Channel fee (% of price, all products)', 'fee', [20, 25, 30], v => v + '%', v => feeUniform && Math.abs(v - feeNow) < 1e-9],
     ['SGK line (extra braces, Year 2+)', 'sgk', [false, true], v => v ? 'on (' + gv('sgkIncrementalPct') + '% extra)' : 'off', v => v === (base.sgkAktif === true)],
     ['Royalty per brace — intercompany to Osteoid A.Ş.', 'roy', [0, 75], v => '€' + v, v => Math.abs(v - (base.royaltyEur || 0)) < 1e-9],
-    ['VR effect — pricing and product mix of the VR-guided design and fitting offer', 'vr', [true, false], v => v ? 'on — VR prices and mix' : 'off — no-VR case (Std-Reported ₺' + gv('noVrStdRl').toLocaleString('tr-TR') + ', pre-VR mix, premium ≤ ' + gv('noVrPremiumCapPct') + '%)', v => v === (base.vrAktif !== false)],
   ];
   const run = () => { recalc(); const L = metricLadder('100'), B = window._lastBusinessCase; return { e5: L ? L.ebitda[4] : 0, mat: B ? B.matureEbitdaK : 0, cum: B ? B.cumFcf[B.n - 1] : 0, peak: B ? B.peakNeedK : 0 }; };
   const cumHdr = _origGetById('bcSensCumHdr');
@@ -2390,18 +2341,18 @@ function updAktifAy(prodIdx, val) {
   buildMixB2BTable();
   // zero out mix for months before aktif
   for(let i=0; i<parseInt(val); i++) {
-    if(_mixArr()[i][prodIdx] > 0) {
-      _mixArr()[i][0] += _mixArr()[i][prodIdx];  // shift back to Std-Reported (always available)
-      _mixArr()[i][prodIdx] = 0;
+    if(V.mix[i][prodIdx] > 0) {
+      V.mix[i][0] += V.mix[i][prodIdx];  // shift back to Std-Reported (always available)
+      V.mix[i][prodIdx] = 0;
       // update UI
       const sp = document.getElementById('mx_'+i+'_'+prodIdx);
       const sp0 = document.getElementById('mx_'+i+'_0');
       const sl = document.querySelector(`[oninput*="updMix(${i},${prodIdx}"]`);
       if(sp) sp.textContent = '0%';
       if(sl) sl.value = 0;
-      if(sp0) sp0.textContent = _mixArr()[i][0]+'%';
+      if(sp0) sp0.textContent = V.mix[i][0]+'%';
       const tot = document.getElementById('mxtot_'+i);
-      if(tot) tot.textContent = _mixArr()[i].reduce((s,v)=>s+v,0)+'%';
+      if(tot) tot.textContent = V.mix[i].reduce((s,v)=>s+v,0)+'%';
     }
   }
   recalc();
@@ -2410,16 +2361,16 @@ function updAktifAy(prodIdx, val) {
 
 function updMix(ayIdx, prodIdx, val) {
   const newVal = Math.min(100, Math.max(0, parseInt(val)));
-  const old    = _mixArr()[ayIdx][prodIdx];
+  const old    = V.mix[ayIdx][prodIdx];
   const delta  = newVal - old;
   if (delta === 0) return;
 
   // Diğer ürünlerin toplamı — değiştirileni hariç tut
-  const others = _mixArr()[ayIdx].map((v,pi) => pi===prodIdx ? 0 : v);
+  const others = V.mix[ayIdx].map((v,pi) => pi===prodIdx ? 0 : v);
   const othersSum = others.reduce((s,v)=>s+v,0);
 
   // Yeni değeri ata
-  _mixArr()[ayIdx][prodIdx] = newVal;
+  V.mix[ayIdx][prodIdx] = newVal;
 
   // Kalanı orantısal olarak dağıt
   if (othersSum > 0) {
@@ -2429,26 +2380,26 @@ function updMix(ayIdx, prodIdx, val) {
     others.forEach((v, pi) => {
       if (pi === prodIdx) return;
       const share = Math.round(v / othersSum * remaining);
-      _mixArr()[ayIdx][pi] = share;
+      V.mix[ayIdx][pi] = share;
       distributed += share;
     });
     // Yuvarlama hatası son aktif ürüne ver
     const leftover = 100 - newVal - distributed;
     if (leftover !== 0) {
-      for (let pi = _mixArr()[ayIdx].length-1; pi >= 0; pi--) {
-        if (pi !== prodIdx) { _mixArr()[ayIdx][pi] += leftover; break; }
+      for (let pi = V.mix[ayIdx].length-1; pi >= 0; pi--) {
+        if (pi !== prodIdx) { V.mix[ayIdx][pi] += leftover; break; }
       }
     }
   } else {
     // Diğer tüm ürünler sıfır — ilk non-changed ürüne kalanı ver
     const remainder = 100 - newVal;
-    for (let pi = 0; pi < _mixArr()[ayIdx].length; pi++) {
-      if (pi !== prodIdx) { _mixArr()[ayIdx][pi] = remainder; break; }
+    for (let pi = 0; pi < V.mix[ayIdx].length; pi++) {
+      if (pi !== prodIdx) { V.mix[ayIdx][pi] = remainder; break; }
     }
   }
 
   // UI güncelle — tüm sütun
-  _mixArr()[ayIdx].forEach((v, pi) => {
+  V.mix[ayIdx].forEach((v, pi) => {
     const sp  = document.getElementById('mx_'+ayIdx+'_'+pi);
     const sl  = document.querySelector('input[oninput*="updMix('+ayIdx+','+pi+'"]');
     if (sp) sp.textContent = v+'%';
@@ -2456,7 +2407,7 @@ function updMix(ayIdx, prodIdx, val) {
   });
 
   const totEl = document.getElementById('mxtot_'+ayIdx);
-  const tot   = _mixArr()[ayIdx].reduce((s,v)=>s+v,0);
+  const tot   = V.mix[ayIdx].reduce((s,v)=>s+v,0);
   if (totEl) { totEl.textContent = tot+'%'; totEl.style.color = '#1a7a45'; }
   recalc();
   localStorage.setItem('osteoid_V', JSON.stringify(V));
@@ -2697,7 +2648,7 @@ function computeYear1(Vlike) {
   const robotKolMaliyet = (robotKolAktif && !ekipmanOsteoidden) ? robotKolEurFiyat * eurKur : 0;
   const kurulumTop = -(gv1('kira')+gv1('depozito')+gv1('emlakci')+tadilatTop+dekoTopV+gv1('mobilya')+gv1('ruhsat')+printerMaliyet+robotKolMaliyet);
 
-  const fStdRl=priceOf('stdRl', Vlike), mStdRl=gv1('mal_stdRl'); // VR-1: the no-VR price when the VR effect is off
+  const fStdRl=gv1('korseF_stdRl'), mStdRl=gv1('mal_stdRl');
   const fDelik=gv1('korseF_delik'), mDelik=gv1('mal_delik');
   const fSens=gv1('korseF_sens'), mSens=gv1('mal_sens');
   const fSD=gv1('korseF_sensDelik'), mSD=gv1('mal_sensDelik');
@@ -2726,7 +2677,7 @@ function computeYear1(Vlike) {
   let aktifPrinterSayisi = startPrinterAdet;
   const printerTetikAylari = [];
 
-  const mixArr = _mixRows(Vlike); // VR-1: the active mix set, premium cap applied in the no-VR case
+  const mixArr = Vlike.mix || [];
   const aktifAyArr = Vlike.aktifAy || [];
   const kongreArr = Vlike.kongre || [];
   const donemsel = Vlike.donemsel || {};
@@ -3379,7 +3330,7 @@ function recalc() {
 
   // Hekim payı ₺ gösterimi
   const _danisPairs = [
-    ['stdRl',     priceOf('stdRl')],
+    ['stdRl',     gv('korseF_stdRl')],
     ['delik',     gv('korseF_delik')],
     ['sens',      gv('korseF_sens')],
     ['sensDelik', gv('korseF_sensDelik')],
@@ -3461,7 +3412,7 @@ function recalc() {
   if (!V.mixB2B) V.mixB2B = Array.from({length:12}, () => [100,0,0,0]);
   for (let i2 = 0; i2 < 12; i2++) {
     const kB2 = V.korseB2B[i2] || 0;
-    const rawB2 = (_mixB2BRows()[i2] || [100,0,0,0]).map((v,pi) => i2 < (V.aktifAy[pi]||0) ? 0 : v); // VR-1: active B2B mix, premium cap in the no-VR case
+    const rawB2 = (V.mixB2B[i2] || [100,0,0,0]).map((v,pi) => i2 < (V.aktifAy[pi]||0) ? 0 : v);
     const totB2 = rawB2.reduce((s,v)=>s+v,0) || 100;
     const kB2u = rawB2.map(v => Math.round(kB2 * v / totB2));
     // Same largest-remainder fix as the clinic loop — never dump rounding
@@ -4606,7 +4557,7 @@ function buildProjection() {
   const _PREM  = [false, true, true, true];
   const _kesimTRYp = gv('kesimEurPer') * eurKur, _royTRYp = gv('royaltyEur') * eurKur;
   const _prodUnit = _PRODS.map(p => {
-    const price = priceOf(p);
+    const price = gv('korseF_' + p);
     const sci = price * gv('feeSci_' + p) / 100, edu = price * gv('feeEdu_' + p) / 100, lib = price * gv('feeLib_' + p) / 100;
     const mat = gv('mal_' + p) + ((p === 'delik' || p === 'sensDelik') ? _kesimTRYp : 0);
     return { gross: price, sci, edu, lib, mat, roy: _royTRYp, net: price - sci - edu - lib - mat - _royTRYp };
@@ -4623,7 +4574,7 @@ function buildProjection() {
     return o; // € per brace
   }
   const _stdU = _pool(false), _premU = _pool(true);
-  const _premShare = [gv('premiumMixY1'), gv('premiumMixY2'), gv('premiumMixY3'), gv('premiumMixY3'), gv('premiumMixY3')].map(v => Math.max(0, Math.min(100, vrOff() ? Math.min(v, gv('noVrPremiumCapPct')) : v)) / 100); // VR-1: capped in the no-VR case
+  const _premShare = [gv('premiumMixY1'), gv('premiumMixY2'), gv('premiumMixY3'), gv('premiumMixY3'), gv('premiumMixY3')].map(v => Math.max(0, Math.min(100, v)) / 100);
   // private-pay unit economics for year index i (0-4), € per brace
   const _privUnit = i => { const p = _premShare[i], o = {}; Object.keys(_stdU).forEach(m => { o[m] = (1 - p) * _stdU[m] + p * _premU[m]; }); return o; };
   // ── SGK channel (BC-4) — INCREMENTAL volume, Year 2 onward, never Year 1 ──
