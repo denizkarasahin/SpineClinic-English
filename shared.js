@@ -43,15 +43,6 @@ const _PHASE_KEY = { gaziantep: 'phase2Aktif', bursa: 'phase3Aktif' };
     set(v) { this[raw] = !!v; } });
 });
 
-// Osteoid's entry price = the lowest-priced clinic SKU with any share in the
-// Year-1 mix (premium positioning on the competitor comparisons).
-const _SKU_NAMES = { stdRl: 'Std-Reported', delik: 'Perf+Rep.', sens: 'Sensor+Rep.', sensDelik: 'Sns+Rep+Perf' };
-function entryPrice() {
-  const P = ['stdRl','delik','sens','sensDelik'], rows = V.mix || [];
-  const used = P.filter((_, j) => rows.some(r => (r[j] || 0) > 0));
-  const c = (used.length ? used : ['stdRl']).map(p => ({ p, v: gv('korseF_' + p) })).filter(x => x.v > 0);
-  return c.length ? c.reduce((a, b) => b.v < a.v ? b : a) : { p: 'stdRl', v: gv('korseF_stdRl') };
-}
 // ── VIEW MODE (BC-1) ──────────────────────────────────────────────────────
 // V.viewMode = "business" (default) shows the pure business case: volumes,
 // unit economics, P&L, cash, capex, payback, sensitivity. "investor" restores
@@ -1761,7 +1752,7 @@ function renderBusinessCase() {
   // Unit economics per brace
   const U = B.unit;
   if (U) {
-    const cols = [['Clinic private — Year 1 actual', U.privY1], ['Clinic private — Year 5 mix (' + Math.round(U.premY5Pct) + '% premium)', U.privY5], ['B2B', U.b2b]];
+    const cols = [['Clinic private — Year 1 actual', U.privY1], ['Clinic private — Year 5 (' + Math.round(U.premY5Pct) + '% upgrade take-rate)', U.privY5], ['B2B', U.b2b]];
     if (U.sgk.on) cols.push(['SGK (upside line)', U.sgk]);
     ((window._lastProjRows && window._lastProjRows.upside && window._lastProjRows.upside.segments) || []).filter(s => s.aktif).forEach(s => {
       cols.push([s.label.split(' (')[0] + ' (upside)', { gross: s.unit.gross, fee: s.unit.sci + s.unit.edu + s.unit.lib, mat: s.unit.mat, roy: s.unit.roy, net: s.unit.net }]);
@@ -1978,7 +1969,9 @@ function namedSupply() {
   const comp = rows.filter(r => !r.partner), part = rows.filter(r => r.partner);
   const sum = a => a.reduce((s, r) => s + r.total, 0);
   const compClinic = comp.reduce((s, r) => s + r.k, 0);
+  const fks = comp.map(r => r.fk).filter(v => v > 0);
   return { rows, competitors: sum(comp), partner: sum(part), named: sum(rows), nCompetitors: comp.length,
+           compMinPrice: fks.length ? Math.min(...fks) : 0, compMaxPrice: fks.length ? Math.max(...fks) : 0,
            compAvgPrice: compClinic > 0 ? Math.round(comp.reduce((s, r) => s + r.k * r.fk, 0) / compClinic) : 0 };
 }
 function namedSupplyTag(id) {
@@ -2000,8 +1993,9 @@ function supplyKpiHtml(fmtPrice) {
     { label:'Competitors (' + ns.nCompetitors + ', excl. partner) — braces/yr', val: ns.competitors.toLocaleString('en-US'), c:'neu' },
     { label:"Partner centre (Özgür's) — braces/yr", val: ns.partner.toLocaleString('en-US'), c:'pos' },
     { label:'Named supply (competitors + partner) — vs national market', val: ns.named.toLocaleString('en-US') + ' vs ' + nat.toLocaleString('en-US'), c:'neu' },
-    { label:'Competitor avg. clinic price (excl. partner)', val: fmtPrice(ns.compAvgPrice), c:'neu' },
-    { label:'Osteoid entry price — premium positioning (' + _SKU_NAMES[entryPrice().p] + ': lowest-priced SKU in the live clinic mix)', val: fmtPrice(entryPrice().v), c:'neu' },
+    { label:'Osteoid base price — standard brace with medical report, VR-guided design and fitting: premium quality at a market price', val: fmtPrice(gv('korseF_stdRl')), c:'pos' },
+    { label:'Workshop market average — clinic price, volume-weighted (' + ns.nCompetitors + ' named competitors, excl. partner)', val: fmtPrice(ns.compAvgPrice), c:'neu' },
+    { label:'Competitor clinic price range (excl. partner)', val: fmtPrice(ns.compMinPrice) + ' – ' + fmtPrice(ns.compMaxPrice), c:'neu' },
   ].map(x => '<div class="kpi"><div class="kpi-label">' + x.label + '</div><div class="kpi-val ' + x.c + '">' + x.val + '</div></div>').join('');
   return k + '<div style="grid-column:1/-1;font-size:10px;color:#888;">Named supply plus hospital and small-workshop production is consistent with a 15,000–25,000 treated market.</div>';
 }
@@ -5404,7 +5398,7 @@ function buildProjection() {
   const _pmN = document.getElementById('premiumMixNote');
   if (_pmN && window._lastPremiumMix) {
     const pm = window._lastPremiumMix;
-    _pmN.textContent = 'Monthly engine, Year 1: average premium share ' + pm.y1ActualPct.toFixed(1) + '% · Month 12 ' + pm.m12Pct.toFixed(1) + '% (Year 1 revenue always stays the monthly model). Unit net revenue per brace: standard €' + pm.stdNetEur.toLocaleString('en-US') + ', premium €' + pm.premNetEur.toLocaleString('en-US') + ' → Years 2-5 €' + pm.unitNetEur.slice(1).map(v => v.toLocaleString('en-US')).join(' / ') + '. B2B keeps its own Year-1 B2B mix.';
+    _pmN.textContent = 'Monthly engine, Year 1: average upgrade take-rate ' + pm.y1ActualPct.toFixed(1) + '% · Month 12 ' + pm.m12Pct.toFixed(1) + '% (Year 1 revenue always stays the monthly model). Unit net revenue per brace: standard brace €' + pm.stdNetEur.toLocaleString('en-US') + ', with an upgrade €' + pm.premNetEur.toLocaleString('en-US') + ' → Years 2-5 €' + pm.unitNetEur.slice(1).map(v => v.toLocaleString('en-US')).join(' / ') + '. B2B keeps its own Year-1 B2B mix.';
   }
   renderSummary3yr(totals, izmirRow, ankaraRow, b2bRow, y1KorseNet, izmirY5Gelir, ankaraY5Gelir, izmirY5Adet, ankaraY5Adet, bursaRow, gaziantepRow, bursaY5Gelir, gaziantepY5Gelir, bursaY5Adet, gaziantepY5Adet, korseM1);
   const _roadmapEl = document.getElementById('investorRoadmap');

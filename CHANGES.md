@@ -1,3 +1,7 @@
+# CHANGES — Upgrade wording, upgrade take-rate, claims, publishing (branch `upgrade-cleanup`)
+
+- **UP-W1** — Base product named "standard brace with medical report, VR-guided design and fitting" (premium quality at a market price); sensor, perforated and sensor + perforated are optional upgrades on top of it (Market cards, note on wear-time sensor / perforated shell / VR preview). Competitor comparison: Osteoid base price (live `korseF_stdRl`) next to the volume-weighted workshop market average and the competitor price range; "premium positioning" and every visible "premium mix / premium share" now read "premium quality at a market price" / "upgrade take-rate" (Multi-Year Plan ramp, Summary unit economics, Methodology, Formula Validation, charts).
+
 # CHANGES — VR switch removed (`_version` 68 → 69)
 
 - **VR-2** — The VR effect switch and the no-VR case are removed completely: no VR label on the Market or Summary page, no VR row in the Summary sensitivity, no no-VR price / premium cap sliders, and the V keys `vrAktif`, `noVrStdRl`, `noVrPremiumCapPct`, `mixNoVr`, `mixB2BNoVr` are gone. The current prices and mix are simply the plan. Figures unchanged (core: Y5 EBITDA €1,633K, cumulative FCF €3,701K, peak €235K).

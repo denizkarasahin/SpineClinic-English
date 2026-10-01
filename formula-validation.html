@@ -688,7 +688,7 @@ function renderProjection() {
     '<span class="r">Yr_OpProfit</span>  = Gross − Opex, not floored (a ramp-year loss stays a loss) → €['+P.istNet.join(' / ')+']K\n\n' +
     '<span class="c">── SATELLITES (each centre\'s own 100% operating profit — memo only in Subsidiary mode) ──</span>\n' +
     '<span class="k">Target</span>      = regional catchment (home-province pop. share + surrounding provinces\' share × capture %, × youth weight) × TR market × the center\'s target market-share %\n' +
-    '<span class="k">UnitNet</span>     = premium-mix ramp (Y2 '+(V.premiumMixY2)+'% · Y3-5 '+(V.premiumMixY3)+'% perforated+sensor) → €'+((window._lastPremiumMix||{unitNetEur:[]}).unitNetEur.slice(1).join(' / '))+'/brace Y2-5 — same for every centre\n' +
+    '<span class="k">UnitNet</span>     = upgrade take-rate ramp (Y2 '+(V.premiumMixY2)+'% · Y3-5 '+(V.premiumMixY3)+'% with a sensor and/or perforated upgrade) → €'+((window._lastPremiumMix||{unitNetEur:[]}).unitNetEur.slice(1).join(' / '))+'/brace Y2-5 — same for every centre\n' +
     '<span class="k">Ramp</span>        = reaches full target over {city}RampYears yr from opening (Izmir/Ankara open Y2, Bursa/Gaziantep Y3)\n' +
     '<span class="k">Net</span>         = Gross − the centre\'s own operating cost (own rent/staff) − its share of the head-office add-on (quality & regulatory, IT, HR, group finance — functions not already booked; by revenue share)\n\n' +
     '<span class="c">── FLAGSHIP TAKE FROM SATELLITES ──────────────────────────────────────────</span>\n' +
@@ -739,7 +739,7 @@ function renderMerkezler() {
   document.getElementById('formulMerkez').innerHTML =
     '<span class="c">── SATELLITE FULL-CAPACITY NET REVENUE (live model) ────────────────────────</span>\n\n' +
     '<span class="k">Target</span>       = TR market × regional catchment (home-province share + surrounding provinces\' share × capture %, × youth weight) × the center\'s target market-share %\n\n' +
-    '<span class="k">UnitNetTRY</span>   = Year-5 premium-mix unit net (premiumMixY3 share of perforated+sensor braces, each SKU at its live price − doctor fees − material − royalty) — same basis as every centre\n\n' +
+    '<span class="k">UnitNetTRY</span>   = Year-5 unit net at the upgrade take-rate (premiumMixY3 = share of braces with a sensor and/or perforated upgrade, each SKU at its live price − doctor fees − material − royalty) — same basis as every centre\n\n' +
     '<span class="k">GrossRevenue</span> = Target × UnitNetTRY\n\n' +
     '<span class="k">OpCost</span>       = the center\'s own operating cost (rent, expert orthotist + time-&-motion fitting/support staff at the network SGK multiplier, utilities, kitchen) × 1.25 mature-year factor — no HQ overhead\n\n' +
     '<span class="r">NetRevenueEurK</span> = (GrossRevenue − OpCost) / eurRate / 1000\n\n' +
