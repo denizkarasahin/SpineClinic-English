@@ -100,7 +100,7 @@
           </label>
           <div style="font-size:10px;color:#888;margin:3px 0 6px;">Low / base / high: 1,000 / 2,500 / 5,000 braces/yr · 65+ population 9.1M (TÜİK 2024); Schwab et al., Spine 2005</div>
           <div class="sl-row"><label style="font-size:10px;">National market (braces/yr)</label><div class="sl-controls"><input type="range" id="s_adultBraceYil" min="1000" max="5000" step="100" value="2500" oninput="sv('adultBraceYil',this.value)"><span class="sl-val" id="adultBraceYil" style="min-width:50px;">2.500</span></div></div>
-          <div class="sl-row"><label style="font-size:10px;">Own SKU price (₺) — defaults to the standard SKU list price</label><div class="sl-controls"><input type="range" id="s_adultFiyat" min="10000" max="80000" step="500" value="25000" oninput="sv('adultFiyat',this.value)"><span class="sl-val" id="adultFiyat" style="min-width:60px;">25.000</span></div></div>
+          <div class="sl-row"><label style="font-size:10px;">Own SKU price (₺)</label><div class="sl-controls"><input type="range" id="s_adultFiyat" min="10000" max="80000" step="500" value="25000" oninput="sv('adultFiyat',this.value)"><span class="sl-val" id="adultFiyat" style="min-width:60px;">25.000</span></div></div>
           <div style="font-size:10px;color:#888;">Referral channel: spine surgeons / trauma / physiatrists (separate from the paediatric channel)</div>
         </div>
         <div style="border:1px solid #e8d9a8;border-radius:6px;padding:10px 12px;background:#fffdf6;">
@@ -109,7 +109,7 @@
           </label>
           <div style="font-size:10px;color:#888;margin:3px 0 6px;">Low / base / high: 1,000 / 2,000 / 5,000 braces/yr · Post-op TLSO after spinal fusion; surgeon-dependent; Turkish fusion count not yet sourced</div>
           <div class="sl-row"><label style="font-size:10px;">National market (braces/yr)</label><div class="sl-controls"><input type="range" id="s_postopBraceYil" min="1000" max="5000" step="100" value="2000" oninput="sv('postopBraceYil',this.value)"><span class="sl-val" id="postopBraceYil" style="min-width:50px;">2.000</span></div></div>
-          <div class="sl-row"><label style="font-size:10px;">Own SKU price (₺) — defaults to the standard SKU list price</label><div class="sl-controls"><input type="range" id="s_postopFiyat" min="10000" max="80000" step="500" value="25000" oninput="sv('postopFiyat',this.value)"><span class="sl-val" id="postopFiyat" style="min-width:60px;">25.000</span></div></div>
+          <div class="sl-row"><label style="font-size:10px;">Own SKU price (₺)</label><div class="sl-controls"><input type="range" id="s_postopFiyat" min="10000" max="80000" step="500" value="25000" oninput="sv('postopFiyat',this.value)"><span class="sl-val" id="postopFiyat" style="min-width:60px;">25.000</span></div></div>
           <div style="font-size:10px;color:#888;">Referral channel: spine surgeons / trauma / physiatrists (separate from the paediatric channel)</div>
         </div>
         <div style="border:1px solid #e8d9a8;border-radius:6px;padding:10px 12px;background:#fffdf6;">
@@ -118,7 +118,7 @@
           </label>
           <div style="font-size:10px;color:#888;margin:3px 0 6px;">Low / base / high: 500 / 1,700 / 3,900 braces/yr · Fracture TLSO, traumatic + osteoporotic; thoracolumbar fractures ~30/100,000/yr (Zileli et al., Neurospine 2021) × conservative share × braced share × custom share</div>
           <div class="sl-row"><label style="font-size:10px;">National market (braces/yr)</label><div class="sl-controls"><input type="range" id="s_fractureBraceYil" min="500" max="3900" step="100" value="1700" oninput="sv('fractureBraceYil',this.value)"><span class="sl-val" id="fractureBraceYil" style="min-width:50px;">1.700</span></div></div>
-          <div class="sl-row"><label style="font-size:10px;">Own SKU price (₺) — defaults to the standard SKU list price</label><div class="sl-controls"><input type="range" id="s_fractureFiyat" min="10000" max="80000" step="500" value="25000" oninput="sv('fractureFiyat',this.value)"><span class="sl-val" id="fractureFiyat" style="min-width:60px;">25.000</span></div></div>
+          <div class="sl-row"><label style="font-size:10px;">Own SKU price (₺)</label><div class="sl-controls"><input type="range" id="s_fractureFiyat" min="10000" max="80000" step="500" value="25000" oninput="sv('fractureFiyat',this.value)"><span class="sl-val" id="fractureFiyat" style="min-width:60px;">25.000</span></div></div>
           <div style="font-size:10px;color:#888;">Referral channel: spine surgeons / trauma / physiatrists (separate from the paediatric channel)</div>
         </div>
       </div>
@@ -133,71 +133,11 @@
     <!-- Ürün fiyat & maliyet -->
     <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin-bottom:10px;">Product Price &amp; Cost</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:12px;">
-      <div style="background:#fafaf8;border:1.5px solid #88878044;border-top:3px solid #888780;border-radius:6px;padding:14px 12px;min-width:0;">
-        <div style="font-size:11px;font-weight:700;color:#888780;margin-bottom:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Standard — No Report</div>
-        <div style="margin-bottom:8px;">
-          <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Active Month</label>
-          <select id="aktifAy_0" onchange="updAktifAy(0,this.value)" style="width:100%;font-size:12px;padding:4px 6px;border:1px solid #d0d0cc;border-radius:4px;background:#fff;color:#333;"><option value="0" selected="">Month 1+</option><option value="1">Month 2+</option><option value="2">Month 3+</option><option value="3">Month 4+</option><option value="4">Month 5+</option><option value="5">Month 6+</option><option value="6">Month 7+</option><option value="7">Month 8+</option><option value="8">Month 9+</option><option value="9">Month 10+</option><option value="10">Month 11+</option><option value="11">Month 12+</option></select>
-        </div>
-        <div style="margin-bottom:8px;">
-          <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Clinic price (₺)</label>
-          <div style="display:flex;align-items:center;gap:6px;">
-            <input type="range" id="s_korseF_stdR" min="20000" max="60000" step="500" value="27000" style="flex:1;accent-color:#888780;" oninput="sv('korseF_stdR',this.value)">
-            <span class="sl-val" id="korseF_stdR" contenteditable="true" onblur="sv2('korseF_stdR','s_korseF_stdR',this)" style="min-width:60px;font-size:12px;">27.000</span>
-          </div>
-          <div style="font-size:10px;color:#aaa;margin-top:2px;padding-left:2px;">≈ €<span id="eurFiyat_stdR">—</span></div>
-        </div>
-        <div style="margin-bottom:8px;">
-          <label style="font-size:10px;color:#888780;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">B2B price (₺)</label>
-          <div style="display:flex;align-items:center;gap:6px;">
-            <input type="range" id="s_korseFB2B_stdR" min="5000" max="40000" step="500" value="15000" style="flex:1;accent-color:#888780;" oninput="sv('korseFB2B_stdR',this.value)">
-            <span class="sl-val" id="korseFB2B_stdR" contenteditable="true" onblur="sv2('korseFB2B_stdR','s_korseFB2B_stdR',this)" style="min-width:60px;font-size:12px;color:#888780;">15.000</span>
-          </div>
-        </div>
-        <div>
-          <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Cost (₺)</label>
-          <div style="display:flex;align-items:center;gap:6px;">
-            <input type="range" id="s_mal_stdR" min="0" max="5000" step="25" value="250" style="flex:1;accent-color:#888780;" oninput="sv('mal_stdR',this.value)">
-            <span class="sl-val" id="mal_stdR" contenteditable="true" onblur="sv2('mal_stdR','s_mal_stdR',this)" style="min-width:60px;font-size:12px;">250</span>
-          </div>
-        </div>
-        <div style="margin-top:8px;">
-          <label style="font-size:10px;color:#888780;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Scientific Study Fee (%)</label>
-          <div style="display:flex;align-items:center;gap:6px;">
-            <input type="range" id="s_feeSci_stdR" min="0" max="30" step="1" value="10" style="flex:1;accent-color:#888780;" oninput="sv('feeSci_stdR',this.value)">
-            <span class="sl-val" id="feeSci_stdR" contenteditable="true" onblur="sv2('feeSci_stdR','s_feeSci_stdR',this)" style="min-width:60px;font-size:12px;color:#888780;">10</span>
-          </div>
-          <div style="font-size:10px;color:#aaa;margin-top:2px;">= ₺<span id="sciTL_stdR">—</span></div>
-        </div>
-        <div style="margin-top:8px;">
-          <label style="font-size:10px;color:#888780;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Education Fee (%)</label>
-          <div style="display:flex;align-items:center;gap:6px;">
-            <input type="range" id="s_feeEdu_stdR" min="0" max="30" step="1" value="10" style="flex:1;accent-color:#888780;" oninput="sv('feeEdu_stdR',this.value)">
-            <span class="sl-val" id="feeEdu_stdR" contenteditable="true" onblur="sv2('feeEdu_stdR','s_feeEdu_stdR',this)" style="min-width:60px;font-size:12px;color:#888780;">10</span>
-          </div>
-          <div style="font-size:10px;color:#aaa;margin-top:2px;">= ₺<span id="eduTL_stdR">—</span></div>
-        </div>
-        <div style="margin-top:8px;">
-          <label style="font-size:10px;color:#888780;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Library Fee (%)</label>
-          <div style="display:flex;align-items:center;gap:6px;">
-            <input type="range" id="s_feeLib_stdR" min="0" max="30" step="1" value="10" style="flex:1;accent-color:#888780;" oninput="sv('feeLib_stdR',this.value)">
-            <span class="sl-val" id="feeLib_stdR" contenteditable="true" onblur="sv2('feeLib_stdR','s_feeLib_stdR',this)" style="min-width:60px;font-size:12px;color:#888780;">10</span>
-          </div>
-          <div style="font-size:10px;color:#aaa;margin-top:2px;">= ₺<span id="libTL_stdR">—</span></div>
-        </div>
-        <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(136,135,128,0.2);">
-          <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:4px;">Net Revenue / Brace</label>
-          <div style="display:flex;gap:14px;">
-            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">Clinic</div><div style="font-size:13px;font-weight:700;color:#888780;"><span id="ciroTL_stdR">—</span> ₺</div><div style="font-size:10px;color:#aaa;margin-top:1px;">€<span id="ciroEur_stdR">—</span></div></div>
-            <div><div style="font-size:9px;color:#888;text-transform:uppercase;margin-bottom:1px;">B2B</div><div style="font-size:13px;font-weight:700;color:#888780;"><span id="ciroB2BTL_stdR">—</span> ₺</div><div style="font-size:10px;color:#aaa;margin-top:1px;">€<span id="ciroB2BEur_stdR">—</span></div></div>
-          </div>
-        </div>
-      </div>
       <div style="background:#fafaf8;border:1.5px solid #D85A3044;border-top:3px solid #D85A30;border-radius:6px;padding:14px 12px;min-width:0;">
         <div style="font-size:11px;font-weight:700;color:#D85A30;margin-bottom:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Standard — Reported</div>
         <div style="margin-bottom:8px;">
           <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Active Month</label>
-          <select id="aktifAy_1" onchange="updAktifAy(1,this.value)" style="width:100%;font-size:12px;padding:4px 6px;border:1px solid #d0d0cc;border-radius:4px;background:#fff;color:#333;"><option value="0" selected="">Month 1+</option><option value="1">Month 2+</option><option value="2">Month 3+</option><option value="3">Month 4+</option><option value="4">Month 5+</option><option value="5">Month 6+</option><option value="6">Month 7+</option><option value="7">Month 8+</option><option value="8">Month 9+</option><option value="9">Month 10+</option><option value="10">Month 11+</option><option value="11">Month 12+</option></select>
+          <div style="font-size:12px;padding:4px 6px;color:#333;">Month 1+ <span style="color:#888;font-size:10px;">(base product, always available)</span></div>
         </div>
         <div style="margin-bottom:8px;">
           <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Clinic price (₺)</label>
@@ -257,7 +197,7 @@
         <div style="font-size:11px;font-weight:700;color:#534AB7;margin-bottom:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Sensor + Reported</div>
         <div style="margin-bottom:8px;">
           <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Active Month</label>
-          <select id="aktifAy_3" onchange="updAktifAy(3,this.value)" style="width:100%;font-size:12px;padding:4px 6px;border:1px solid #d0d0cc;border-radius:4px;background:#fff;color:#333;"><option value="0">Month 1+</option><option value="1">Month 2+</option><option value="2" selected="">Month 3+</option><option value="3">Month 4+</option><option value="4">Month 5+</option><option value="5">Month 6+</option><option value="6">Month 7+</option><option value="7">Month 8+</option><option value="8">Month 9+</option><option value="9">Month 10+</option><option value="10">Month 11+</option><option value="11">Month 12+</option></select>
+          <select id="aktifAy_2" onchange="updAktifAy(2,this.value)" style="width:100%;font-size:12px;padding:4px 6px;border:1px solid #d0d0cc;border-radius:4px;background:#fff;color:#333;"><option value="0">Month 1+</option><option value="1">Month 2+</option><option value="2" selected="">Month 3+</option><option value="3">Month 4+</option><option value="4">Month 5+</option><option value="5">Month 6+</option><option value="6">Month 7+</option><option value="7">Month 8+</option><option value="8">Month 9+</option><option value="9">Month 10+</option><option value="10">Month 11+</option><option value="11">Month 12+</option></select>
         </div>
         <div style="margin-bottom:8px;">
           <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Clinic price (₺)</label>
@@ -317,7 +257,7 @@
         <div style="font-size:11px;font-weight:700;color:#1D9E75;margin-bottom:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Perforated + Reported</div>
         <div style="margin-bottom:8px;">
           <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Active Month</label>
-          <select id="aktifAy_2" onchange="updAktifAy(2,this.value)" style="width:100%;font-size:12px;padding:4px 6px;border:1px solid #d0d0cc;border-radius:4px;background:#fff;color:#333;"><option value="0">Month 1+</option><option value="1">Month 2+</option><option value="2">Month 3+</option><option value="3">Month 4+</option><option value="4">Month 5+</option><option value="5">Month 6+</option><option value="6" selected="">Month 7+</option><option value="7">Month 8+</option><option value="8">Month 9+</option><option value="9">Month 10+</option><option value="10">Month 11+</option><option value="11">Month 12+</option></select>
+          <select id="aktifAy_1" onchange="updAktifAy(1,this.value)" style="width:100%;font-size:12px;padding:4px 6px;border:1px solid #d0d0cc;border-radius:4px;background:#fff;color:#333;"><option value="0">Month 1+</option><option value="1">Month 2+</option><option value="2">Month 3+</option><option value="3">Month 4+</option><option value="4">Month 5+</option><option value="5">Month 6+</option><option value="6" selected="">Month 7+</option><option value="7">Month 8+</option><option value="8">Month 9+</option><option value="9">Month 10+</option><option value="10">Month 11+</option><option value="11">Month 12+</option></select>
         </div>
         <div style="margin-bottom:8px;">
           <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Clinic price (₺)</label>
@@ -377,7 +317,7 @@
         <div style="font-size:11px;font-weight:700;color:#D4537E;margin-bottom:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Sensor + Reported + Perforated</div>
         <div style="margin-bottom:8px;">
           <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Active Month</label>
-          <select id="aktifAy_4" onchange="updAktifAy(4,this.value)" style="width:100%;font-size:12px;padding:4px 6px;border:1px solid #d0d0cc;border-radius:4px;background:#fff;color:#333;"><option value="0">Month 1+</option><option value="1">Month 2+</option><option value="2">Month 3+</option><option value="3">Month 4+</option><option value="4">Month 5+</option><option value="5">Month 6+</option><option value="6" selected="">Month 7+</option><option value="7">Month 8+</option><option value="8">Month 9+</option><option value="9">Month 10+</option><option value="10">Month 11+</option><option value="11">Month 12+</option></select>
+          <select id="aktifAy_3" onchange="updAktifAy(3,this.value)" style="width:100%;font-size:12px;padding:4px 6px;border:1px solid #d0d0cc;border-radius:4px;background:#fff;color:#333;"><option value="0">Month 1+</option><option value="1">Month 2+</option><option value="2">Month 3+</option><option value="3">Month 4+</option><option value="4">Month 5+</option><option value="5">Month 6+</option><option value="6" selected="">Month 7+</option><option value="7">Month 8+</option><option value="8">Month 9+</option><option value="9">Month 10+</option><option value="10">Month 11+</option><option value="11">Month 12+</option></select>
         </div>
         <div style="margin-bottom:8px;">
           <label style="font-size:10px;color:#666;font-weight:700;text-transform:uppercase;display:block;margin-bottom:3px;">Clinic price (₺)</label>
@@ -579,7 +519,7 @@ function renderPiyasaKpi() {
   var osteoidK   = (window._lastRows||[]).reduce(function(s,r){return s+(r.korse||0);},0) || (V.korse||[]).reduce(function(a,b){return a+b;},0);
   var osteoidB2B = ((window._lastRows||[]).length ? V.korseB2B||[] : []).reduce(function(s,v){return s+(+v||0);},0);
   var osteoidToplam = osteoidK + osteoidB2B;
-  var osteoidFiyat  = (typeof entryPrice === 'function' ? entryPrice().v : (V.korseF_stdR || 27000)); // entry price — premium positioning (VR-1)
+  var osteoidFiyat  = (typeof entryPrice === 'function' ? entryPrice().v : (V.korseF_stdRl || 40500)); // entry price — premium positioning (VR-1)
   var rakipToplam = RAKIPLER.reduce(function(s,r){return s+gRV(r,'KorseK',r.dK)+gRV(r,'KorseB',r.dB);},0);
   var tumToplam   = osteoidToplam + rakipToplam;
   var osteoidPay  = tumToplam > 0 ? Math.round(osteoidToplam/tumToplam*100) : 0;
@@ -610,8 +550,8 @@ function renderRekabetChart() {
   var dataK   = [osteoidK].concat(RAKIPLER.map(function(r){return gRV(r,'KorseK',r.dK);}));
   var dataB   = [osteoidB2B].concat(RAKIPLER.map(function(r){return gRV(r,'KorseB',r.dB);}));
   var colors  = ['#534AB7'].concat(RAKIPLER.map(function(r){return r.renk;}));
-  var fiyatK  = [(typeof entryPrice === 'function' ? entryPrice().v : (V.korseF_stdR||27000))].concat(RAKIPLER.map(function(r){return gRV(r,'FiyatK',r.dFK);}));
-  var fiyatB  = [V.korseFB2B_stdR||10000].concat(RAKIPLER.map(function(r){return gRV(r,'FiyatB',r.dFB);}));
+  var fiyatK  = [(typeof entryPrice === 'function' ? entryPrice().v : (V.korseF_stdRl||40500))].concat(RAKIPLER.map(function(r){return gRV(r,'FiyatK',r.dFK);}));
+  var fiyatB  = [V.korseFB2B_stdRl||15000].concat(RAKIPLER.map(function(r){return gRV(r,'FiyatB',r.dFB);}));
 
   if (rekabetChartInst) { rekabetChartInst.destroy(); rekabetChartInst = null; }
   var ctx = document.getElementById('rekabetChart');
@@ -663,7 +603,7 @@ window.addEventListener('load', function() {
   if (_pazarSl) _pazarSl.value = gv('pazarIstPct');
   var _pazarSp = document.getElementById('pazarIstPct');
   if (_pazarSp) _pazarSp.textContent = numFmt('pazarIstPct', gv('pazarIstPct'));
-  var b2bKeys = ['stdR','stdRl','delik','sens','sensDelik'];
+  var b2bKeys = ['stdRl','delik','sens','sensDelik'];
   b2bKeys.forEach(function(k) {
     var vk = 'korseFB2B_'+k;
     var val = V[vk] || 0;

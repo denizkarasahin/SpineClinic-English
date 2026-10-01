@@ -217,7 +217,7 @@
       <thead>
         <tr>
           <th class="lft" rowspan="2">Month</th>
-          <th colspan="5">Brace Mix (units)</th>
+          <th colspan="4">Brace Mix (units)</th>
           <th rowspan="2">Total Braces</th>
           <th colspan="6">Revenue (₺)</th>
           <th colspan="6">Cost (₺)</th>
@@ -225,7 +225,7 @@
           <th rowspan="2">Cumulative (₺)</th>
         </tr>
         <tr>
-          <th style="color:#aaa;">Std-R</th>
+          
           <th style="color:#D85A30;">Std-Rl</th>
           <th style="color:#1D9E75;">Perf.</th>
           <th style="color:#534AB7;">Sens</th>
@@ -368,14 +368,14 @@ function renderParams() {
     row('Cutting per unit (EUR)', 'kesimEurPer', '€' + (V.kesimEurPer??0) + '/unit', 'Used for Perforated and S+D braces; Osteoid Inc. cutting revenue'),
   ].join('');
 
-  const prods = ['stdR','stdRl','delik','sens','sensDelik'];
-  const prodNames = ['Std-No Rep.','Std-Reported','Perf+Rep.','Sensor+Rep.','Sns+Rep+Perf'];
-  const fKeys = ['korseF_stdR','korseF_stdRl','korseF_delik','korseF_sens','korseF_sensDelik'];
-  const mKeys = ['mal_stdR','mal_stdRl','mal_delik','mal_sens','mal_sensDelik'];
-  const b2bFKeys = ['korseFB2B_stdR','korseFB2B_stdRl','korseFB2B_delik','korseFB2B_sens','korseFB2B_sensDelik'];
+  const prods = ['stdRl','delik','sens','sensDelik'];
+  const prodNames = ['Std-Reported','Perf+Rep.','Sensor+Rep.','Sns+Rep+Perf'];
+  const fKeys = ['korseF_stdRl','korseF_delik','korseF_sens','korseF_sensDelik'];
+  const mKeys = ['mal_stdRl','mal_delik','mal_sens','mal_sensDelik'];
+  const b2bFKeys = ['korseFB2B_stdRl','korseFB2B_delik','korseFB2B_sens','korseFB2B_sensDelik'];
 
   document.getElementById('p_fiyat').innerHTML = prods.map((p,i) =>
-    row(prodNames[i], (i===1 && typeof vrOff==='function' && vrOff()) ? 'noVrStdRl (no-VR case)' : fKeys[i], tf(typeof priceOf==='function' ? priceOf(prods[i]) : V[fKeys[i]]), i===0?'Month 1-5 launch product':i>=2?'Month 6+ advanced product':'')
+    row(prodNames[i], (i===0 && typeof vrOff==='function' && vrOff()) ? 'noVrStdRl (no-VR case)' : fKeys[i], tf(typeof priceOf==='function' ? priceOf(prods[i]) : V[fKeys[i]]), i===0?'Base product, Month 1+':'Advanced product (own launch month)')
   ).join('');
 
   document.getElementById('p_malzeme').innerHTML = prods.map((p,i) =>
@@ -424,7 +424,6 @@ function renderParams() {
 // ── SECTION 2: Birim Marj ────────────────────────────────────────────────────
 function renderUrunMarj() {
   const prods = [
-    {name:'Std-No Rep.', color:'#888780', fKey:'korseF_stdR', mKey:'mal_stdR', pKey:'stdR'},
     {name:'Std-Reported',  color:'#D85A30', fKey:'korseF_stdRl', mKey:'mal_stdRl', pKey:'stdRl'},
     {name:'Perf+Rep.',  color:'#1D9E75', fKey:'korseF_delik', mKey:'mal_delik', pKey:'delik', kesim:true},
     {name:'Sensor+Rep.', color:'#534AB7', fKey:'korseF_sens', mKey:'mal_sens', pKey:'sens'},
@@ -491,16 +490,16 @@ function renderFormulas() {
   document.getElementById('formulGelir').innerHTML =
     '<span class="c">── REVENUE (per month) ──────────────────────────────────────────────────────</span>\n\n' +
     '<span class="k">GrossRevenue</span> = Σ [ brace_units[type] × price[type] ]\n' +
-    '<span class="c">             type ∈ { Std-R, Std-Rl, Perf, Sens, Sns+P }</span>\n\n' +
+    '<span class="c">             type ∈ { Std-Rl, Perf, Sens, Sns+P }</span>\n\n' +
     '<span class="k">SciFee</span>     = Σ [ brace_units[type] × price[type] × sciPct[type] ]\n' +
-    '<span class="c">            Pct: Std-R='+(V.feeSci_stdR??10)+'%, Std-Rl='+(V.feeSci_stdRl??10)+'%, Perf='+(V.feeSci_delik??10)+'%, Sens='+(V.feeSci_sens??10)+'%, S+P='+(V.feeSci_sensDelik??10)+'%</span>\n\n' +
+    '<span class="c">            Pct: Std-Rl='+(V.feeSci_stdRl??10)+'%, Perf='+(V.feeSci_delik??10)+'%, Sens='+(V.feeSci_sens??10)+'%, S+P='+(V.feeSci_sensDelik??10)+'%</span>\n\n' +
     '<span class="k">EduFee</span>     = Σ [ brace_units[type] × price[type] × eduPct[type] ]\n' +
-    '<span class="c">            Pct: Std-R='+(V.feeEdu_stdR??10)+'%, Std-Rl='+(V.feeEdu_stdRl??10)+'%, Perf='+(V.feeEdu_delik??10)+'%, Sens='+(V.feeEdu_sens??10)+'%, S+P='+(V.feeEdu_sensDelik??10)+'%</span>\n\n' +
+    '<span class="c">            Pct: Std-Rl='+(V.feeEdu_stdRl??10)+'%, Perf='+(V.feeEdu_delik??10)+'%, Sens='+(V.feeEdu_sens??10)+'%, S+P='+(V.feeEdu_sensDelik??10)+'%</span>\n\n' +
     '<span class="k">LibFee</span>     = Σ [ brace_units[type] × price[type] × libPct[type] ]\n' +
-    '<span class="c">            Pct: Std-R='+(V.feeLib_stdR??10)+'%, Std-Rl='+(V.feeLib_stdRl??10)+'%, Perf='+(V.feeLib_delik??10)+'%, Sens='+(V.feeLib_sens??10)+'%, S+P='+(V.feeLib_sensDelik??10)+'%</span>\n' +
+    '<span class="c">            Pct: Std-Rl='+(V.feeLib_stdRl??10)+'%, Perf='+(V.feeLib_delik??10)+'%, Sens='+(V.feeLib_sens??10)+'%, S+P='+(V.feeLib_sensDelik??10)+'%</span>\n' +
     '<span class="c">            Each rate is independently adjustable per product — replaces both the old per-product doctor fee and the channel maintenance fee (removed).</span>\n\n' +
     '<span class="k">Material</span>   = Σ [ brace_units[type] × material[type] ]\n' +
-    '<span class="c">            Material (₺): Std-R='+(V.mal_stdR||500)+', Std-Rl='+(V.mal_stdRl||600)+', Perf='+(V.mal_delik||1600)+', Sens='+(V.mal_sens||2075)+', S+P='+(V.mal_sensDelik||1250)+'</span>\n\n' +
+    '<span class="c">            Material (₺): Std-Rl='+(V.mal_stdRl||600)+', Perf='+(V.mal_delik||1600)+', Sens='+(V.mal_sens||2075)+', S+P='+(V.mal_sensDelik||1250)+'</span>\n\n' +
     '<span class="k">Royalty</span>    = totalBraces × €'+(V.royaltyEur??0)+' × ₺'+(V.eurKur||53.56)+' = totalBraces × ₺'+royTRY+(royTRY===0?' (not applied in this scenario)':'')+'\n\n' +
     '<span class="r">NetRevenue</span> = GrossRevenue − SciFee − EduFee − LibFee − Material − Royalty';
 
@@ -569,11 +568,11 @@ function renderMonthlyTable() {
     const isBas = basAy && r.ay === basAy.ay;
     const isPoz = pozAy && r.ay === pozAy.ay;
     const cls = isPoz ? 'poz' : isBas ? 'bas' : '';
-    const kk = r.k || [r.korse,0,0,0,0];
+    const kk = r.k || [r.korse,0,0,0];
     const donPrn = (r.kongre||0) + (r.ymmDon||0) + (r.printerEkMaliyet||0);
     html += '<tr class="'+cls+'">' +
       '<td class="lft">Month '+r.ay+(isBas?' ✓':isPoz?' ★':'')+'</td>' +
-      '<td>'+kk[0]+'</td><td>'+kk[1]+'</td><td>'+kk[2]+'</td><td>'+kk[3]+'</td><td>'+kk[4]+'</td>' +
+      '<td>'+kk[0]+'</td><td>'+kk[1]+'</td><td>'+kk[2]+'</td><td>'+kk[3]+'</td>' +
       '<td style="font-weight:700;">'+r.korse+'</td>' +
       '<td>'+tfShort(r.gelirBrut)+'</td>' +
       '<td class="neg">'+tfShort(-r.feeSci)+'</td>' +
@@ -603,10 +602,10 @@ function renderMonthlyTable() {
   const tMutfak = rows.reduce((s,r)=>s+(r.mutfakV||0),0);
   const tStopaj = rows.reduce((s,r)=>s+(r.ayStopaj||0),0);
   const tDonPrn = rows.reduce((s,r)=>s+(r.kongre||0)+(r.ymmDon||0)+(r.printerEkMaliyet||0),0);
-  const tpK = rows.reduce((s,r)=>{const k=r.k||[0,0,0,0,0];return s.map((v,j)=>v+k[j]);}, [0,0,0,0,0]);
+  const tpK = rows.reduce((s,r)=>{const k=r.k||[0,0,0,0];return s.map((v,j)=>v+k[j]);}, [0,0,0,0]);
   html += '<tr class="tot">' +
     '<td class="lft">Total</td>' +
-    '<td>'+tpK[0]+'</td><td>'+tpK[1]+'</td><td>'+tpK[2]+'</td><td>'+tpK[3]+'</td><td>'+tpK[4]+'</td>' +
+    '<td>'+tpK[0]+'</td><td>'+tpK[1]+'</td><td>'+tpK[2]+'</td><td>'+tpK[3]+'</td>' +
     '<td>'+tKorse+'</td>' +
     '<td>'+tfShort(tBrut)+'</td>' +
     '<td class="neg">'+tfShort(-tSci)+'</td>' +
