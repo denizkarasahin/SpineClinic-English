@@ -1604,6 +1604,25 @@ function svToggle(key, checked) {
   recalc();
   localStorage.setItem('osteoid_V', JSON.stringify(V));
 }
+// Summary headline (SEG-1): "of which adult / post-op / fracture" = Year-5
+// EBITDA with the three segments minus the same plan without them (a live run:
+// capacity, head-office allocation and tax included), restored afterwards.
+function renderSegContrib() {
+  const el = _origGetById('bcSegLine');
+  if (!el || window._inScenario) return;
+  const KEYS = ['adultAktif', 'postopAktif', 'fractureAktif'], on = KEYS.filter(k => V[k] === true);
+  const B = window._lastBusinessCase;
+  if (!B) return;
+  const kK = v => (v < 0 ? '−€' : '€') + Math.abs(Math.round(v)).toLocaleString('en-US') + 'K';
+  if (!on.length) { el.innerHTML = 'Adult / post-op / fracture segments are switched off (Market page) — the headline is the paediatric case only.'; return; }
+  const withE5 = B.tot.ebitda[4], withMat = B.matureEbitdaK, withCum = B.cumFcf[B.n - 1];
+  let off = null;
+  window._inScenario = true;
+  try { on.forEach(k => { V[k] = false; }); recalc(); const O = window._lastBusinessCase; off = { e5: O.tot.ebitda[4], mat: O.matureEbitdaK, cum: O.cumFcf[O.n - 1] }; }
+  finally { on.forEach(k => { V[k] = true; }); recalc(); window._inScenario = false; }
+  el.innerHTML = 'Year-5 EBITDA <b>' + kK(withE5) + '</b> — <b>of which adult / post-op / fracture: Year-5 EBITDA ' + kK(withE5 - off.e5) + '</b>'
+    + ' (mature year ' + kK(withMat - off.mat) + ', cumulative FCF Years 1–' + B.n + ' ' + kK(withCum - off.cum) + '). Base segments with their own referral channel (spine surgeons, trauma units, physiatrists); measured as the plan with them minus the plan without them. ⚠ Scenario output, not a forecast.';
+}
 function renderUpsideSummary() {
   const el = document.getElementById('upsideSummary');
   if (!el) return;
@@ -1612,9 +1631,9 @@ function renderUpsideSummary() {
   const incl = gv('pazarTR') + act.reduce((a, s) => a + s.vol, 0);
   const U = window._lastProjRows && window._lastProjRows.upside;
   el.innerHTML = 'National market — base (pazarTR, paediatric): <b>' + gv('pazarTR').toLocaleString('en-US') + '</b> braces/yr · '
-    + (act.length ? 'Total incl. active upside (' + act.map(s => s.label).join(', ') + '): <b>' + incl.toLocaleString('en-US') + '</b> braces/yr'
-                  + (U ? ' · Osteoid upside volume Y5 ' + U.totalBraces[4].toLocaleString('en-US') + ' braces, net contribution Y5 €' + U.totalContribK[4].toLocaleString('en-US') + 'K — <b>included in every total</b> (revenue, EBITDA, FCF, funding need, KPIs; the extra fittings load capacity)' : '')
-                  : 'No upside segment is switched on — every figure in the dashboard is the paediatric case only.');
+    + (act.length ? 'National market incl. the adult / post-op / fracture segments switched on (' + act.map(s => s.label).join(', ') + '): <b>' + incl.toLocaleString('en-US') + '</b> braces/yr'
+                  + (U ? ' · Osteoid adult / post-op / fracture volume Y5 ' + U.totalBraces[4].toLocaleString('en-US') + ' braces, net contribution Y5 €' + U.totalContribK[4].toLocaleString('en-US') + 'K — <b>included in every total</b> (revenue, EBITDA, FCF, funding need, KPIs; the extra fittings load capacity)' : '')
+                  : 'The adult / post-op / fracture segments are switched off — every figure in the dashboard is the paediatric case only.');
   segs.forEach(s => {
     const cb = document.getElementById(s.key + 'AktifToggle'); if (cb) cb.checked = s.aktif;
   });
@@ -1713,7 +1732,7 @@ function centreTableHtml(B) {
   h += grp('Braces per year');
   C.forEach(c => { h += row(c.label, c.braces, n, M(c).privBraces); });
   if (B.sgkOn) h += row('SGK extra braces (all centres, upside line)', B.sgkBraces, n, sumM('sgkBraces'), 'color:#185FA5;');
-  if (B.upBraces.some(v => v)) h += row('Upside segments — adult / post-op / fracture (all centres)', B.upBraces, n, sumM('upBraces'), 'color:#8a6d1a;');
+  if (B.upBraces.some(v => v)) h += row('Adult / post-op / fracture segments (all centres)', B.upBraces, n, sumM('upBraces'), 'color:#8a6d1a;');
   h += row('<b>Total</b>', B.tot.braces, v => '<b>' + n(v) + '</b>', sumM('braces'));
   h += grp('Revenue (list price × braces' + (B.sgkOn ? '; SGK inside each centre' : '') + ')');
   C.forEach(c => { h += row(c.label, c.rev, kK, M(c).rev); });
@@ -1724,7 +1743,7 @@ function centreTableHtml(B) {
   h += grp('EBITDA margin');
   C.forEach(c => { h += row(c.label, c.margin, pct, M(c).margin); });
   h += row('<b>Total</b>', B.tot.margin, v => '<b>' + pct(v) + '</b>', sumM('rev') > 0 ? sumM('ebitda') / sumM('rev') * 100 : null);
-  h += '</tbody></table></div><div style="font-size:10px;color:#888;margin-top:4px;"><b>Mature year</b> = each centre in steady state: volume at its target share (Istanbul at its effective share with the satellites open), full staffing and capacity, SGK per its toggle, upside segments if switched on, head-office add-on allocated by revenue share across the fully open network — not a calendar year. ' + (B.n > 5 ? 'Years 6–' + B.n + ' continue each centre on its own ramp on the Year-5 price, mix and cost basis (no further inflation step-ups or new openings).' : '') + ' ⚠ Scenario outputs, not forecasts.</div>';
+  h += '</tbody></table></div><div style="font-size:10px;color:#888;margin-top:4px;"><b>Mature year</b> = each centre in steady state: volume at its target share (Istanbul at its effective share with the satellites open), full staffing and capacity, SGK per its toggle, the adult / post-op / fracture segments if switched on, head-office add-on allocated by revenue share across the fully open network — not a calendar year. ' + (B.n > 5 ? 'Years 6–' + B.n + ' continue each centre on its own ramp on the Year-5 price, mix and cost basis (no further inflation step-ups or new openings).' : '') + ' ⚠ Scenario outputs, not forecasts.</div>';
   return h;
 }
 function renderBusinessCase() {
@@ -1759,7 +1778,7 @@ function renderBusinessCase() {
     const cols = [['Clinic private — Year 1 actual', U.privY1], ['Clinic private — Year 5 (' + Math.round(U.premY5Pct) + '% upgrade take-rate)', U.privY5], ['B2B', U.b2b]];
     if (U.sgk.on) cols.push(['SGK (upside line)', U.sgk]);
     ((window._lastProjRows && window._lastProjRows.upside && window._lastProjRows.upside.segments) || []).filter(s => s.aktif).forEach(s => {
-      cols.push([s.label.split(' (')[0] + ' (upside)', { gross: s.unit.gross, fee: s.unit.sci + s.unit.edu + s.unit.lib, mat: s.unit.mat, roy: s.unit.roy, net: s.unit.net }]);
+      cols.push([s.label.split(' (')[0] + ' (own referral channel)', { gross: s.unit.gross, fee: s.unit.sci + s.unit.edu + s.unit.lib, mat: s.unit.mat, roy: s.unit.roy, net: s.unit.net }]);
     });
     const ur = (lbl, key, sign, b) => '<tr' + (b ? ' style="font-weight:700;"' : '') + '><td style="text-align:left;">' + lbl + '</td>' + cols.map(c => '<td ' + tdR + '>' + kE((sign || 1) * c[1][key]) + '</td>').join('') + '</tr>';
     h += '<div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.3px;margin:16px 0 6px;">Unit economics per brace (€)</div>'
@@ -2091,7 +2110,7 @@ function renderBusinessSensitivity() {
   const out = [];
   const upNow = UPS.some(u => V[u] === true);
   const hdr = _origGetById('bcSensUpHdr');
-  if (hdr) hdr.textContent = upNow ? 'Year-5 EBITDA without upside' : 'Year-5 EBITDA with upside';
+  if (hdr) hdr.textContent = upNow ? 'Year-5 EBITDA without adult / post-op / fracture' : 'Year-5 EBITDA with adult / post-op / fracture';
   window._inScenario = true;
   try {
     cases.forEach(([grp, k, vals, fmt, isB]) => vals.forEach(v => {
@@ -3541,6 +3560,7 @@ function recalc() {
   if (!window._inScenario) renderMarketSensitivity();
   if (!window._inScenario) renderBusinessSensitivity();
   renderPhase2Option();
+  renderSegContrib();
   renderUpgradePath();
 }
 
@@ -5575,11 +5595,11 @@ function buildProjection() {
         <tr><td style="font-size:11px;color:#888;">Memo: head-office add-on (quality &amp; regulatory, IT, HR, group finance) — already inside the rows above, allocated by revenue share</td>${hoTotalK.map(v => fmt(-v)).join('')}<td style="color:#aaa;">—</td></tr>
         ${_ebitdaTbl ? `<tr><td style="font-size:11px;">EBITDA <span style="font-weight:400;font-size:10px;opacity:0.7;">(operating profit + expensed printer/branch capex added back)</span></td>${_ebitdaTbl.map(fmt).join('')}<td style="color:#aaa;">—</td></tr>` : ''}
         ${(V.izmirAktif||V.ankaraAktif||V.bursaAktif||V.gaziantepAktif) ? `<tr><td style="font-size:11px;color:#999;">Memo: Minority interest — ${isBiz() ? 'local partner' : 'local investors'} (not in total above)</td>${minorityRow.map(v=>`<td style="font-size:11px;color:#999;">${v>0?'€'+v+'K':'—'}</td>`).join('')}<td style="color:#aaa;font-size:11px;">—</td></tr>` : ''}
-        <tr style="background:#f7f4ee;"><td colspan="7" style="font-size:10px;font-weight:700;text-transform:uppercase;color:#8a6d1a;">Upside segments — already included in the rows above (memo; toggle on the Market page)</td></tr>
+        <tr style="background:#f7f4ee;"><td colspan="7" style="font-size:10px;font-weight:700;text-transform:uppercase;color:#8a6d1a;">Adult / post-op / fracture segments — base segments, already included in the rows above (memo; switches on the Market page)</td></tr>
         ${upside.segments.some(s => s.aktif)
           ? upside.segments.filter(s => s.aktif).map(s => `<tr><td style="font-size:11px;color:#8a6d1a;">${s.label} <span style="font-weight:400;font-size:10px;opacity:0.7;">(own SKU + channel: spine surgeons / trauma / physiatrists · ${s.braces[4].toLocaleString('en-US')} braces in Y5 · contribution, no incremental opex)</span></td>${s.contribK.map(fmt).join('')}<td style="color:#aaa;">—</td></tr>`).join('')
             + ''
-          : '<tr><td colspan="7" style="font-size:11px;color:#aaa;">No upside segment switched on — the figures above are the paediatric case only.</td></tr>'}
+          : '<tr><td colspan="7" style="font-size:11px;color:#aaa;">The adult / post-op / fracture segments are switched off — the figures above are the paediatric case only.</td></tr>'}
         <tr style="background:#f0efe9;"><td style="font-size:11px;color:#888;">Year 5 target brace count (IST share: %${y5PayPct})</td><td colspan="5" style="text-align:center;color:#888;font-size:11px;">${y5KorseAdet.toLocaleString('tr-TR')} units/year</td></tr>
       </tbody>
     </table>`;
